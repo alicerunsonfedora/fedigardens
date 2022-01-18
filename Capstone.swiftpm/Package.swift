@@ -36,6 +36,9 @@ let package = Package(
         .executableTarget(
             name: "AppModule",
             path: ".",
+            exclude: [
+                "License.pdf"
+            ],
             resources: [
                 .process("Resources")
             ]
