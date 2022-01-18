@@ -8,13 +8,13 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "My App",
+    name: "Capstone",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "My App",
+            name: "Capstone",
             targets: ["AppModule"],
             displayVersion: "1.0",
             bundleVersion: "1",
@@ -35,7 +35,10 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "AppModule",
-            path: "."
+            path: ".",
+            resources: [
+                .process("Resources")
+            ]
         )
     ]
 )
