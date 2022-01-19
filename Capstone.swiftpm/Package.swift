@@ -32,13 +32,17 @@ let package = Package(
             ]
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/hyperspacedev/chica", .branch("main"))
+    ],
     targets: [
         .executableTarget(
             name: "AppModule",
-            path: ".",
-            exclude: [
-                "License.pdf"
+            dependencies: [
+                .product(name: "Chica", package: "chica")
             ],
+            path: ".",
+            exclude: ["License.pdf"],
             resources: [
                 .process("Resources")
             ]
