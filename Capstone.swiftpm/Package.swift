@@ -33,7 +33,7 @@ let package = Package(
         )
     ],
     dependencies: [
-        .package(url: "https://github.com/hyperspacedev/chica", .branch("main"))
+        .package(url: "https://github.com/hyperspacedev/chica", "0.1.0"..<"1.0.0")
     ],
     targets: [
         .executableTarget(

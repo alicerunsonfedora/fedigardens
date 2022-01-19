@@ -5,9 +5,9 @@
         "package": "Chica",
         "repositoryURL": "https://github.com/hyperspacedev/chica",
         "state": {
-          "branch": "main",
+          "branch": null,
           "revision": "826c07b78020752d39b0f86d3bf6af5a52c6ff70",
-          "version": null
+          "version": "0.1.190122"
         }
       },
       {
