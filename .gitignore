@@ -92,4 +92,4 @@ iOSInjectionProject/
 # macOS Files
 #
 # This removes Finder or macOS-specific code that is unnecessary.
-**.DS_Store
+**/**.DS_Store
