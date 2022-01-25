@@ -8,14 +8,16 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "Capstone",
+    name: "Shout",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "Capstone",
+            name: "Shout",
             targets: ["AppModule"],
+            bundleIdentifier: "net.marquiskurt.shout",
+            teamIdentifier: "FQQXSP79X3",
             displayVersion: "1.0",
             bundleVersion: "1",
             iconAssetName: "AppIcon",
