@@ -27,6 +27,10 @@
 		9547230327A0094000D1BA89 /* Capstone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capstone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9547230527A0094000D1BA89 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		95D1036B27A00AF000B1EE3C /* License.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = License.pdf; sourceTree = "<group>"; };
+		95D1037527A00FC400B1EE3C /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CONTRIBUTING.md; path = .github/CONTRIBUTING.md; sourceTree = "<group>"; };
+		95D1037627A00FCA00B1EE3C /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		95D1037727A00FCA00B1EE3C /* OBJECTIVES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = OBJECTIVES.md; sourceTree = "<group>"; };
+		95D1037827A00FCA00B1EE3C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +56,7 @@
 		954722F027A0093F00D1BA89 = {
 			isa = PBXGroup;
 			children = (
+				95D1037427A00FB600B1EE3C /* Documentation */,
 				954722F527A0093F00D1BA89 /* Shared */,
 				9547230427A0094000D1BA89 /* macOS */,
 				954722FE27A0094000D1BA89 /* Products */,
@@ -100,6 +105,17 @@
 				95D1036B27A00AF000B1EE3C /* License.pdf */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		95D1037427A00FB600B1EE3C /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				95D1037827A00FCA00B1EE3C /* README.md */,
+				95D1037627A00FCA00B1EE3C /* LICENSE.md */,
+				95D1037727A00FCA00B1EE3C /* OBJECTIVES.md */,
+				95D1037527A00FC400B1EE3C /* CONTRIBUTING.md */,
+			);
+			name = Documentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
