@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		95019DAA27A82124005DF870 /* Capstone--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Capstone--iOS--Info.plist"; sourceTree = "<group>"; };
 		954722F627A0093F00D1BA89 /* Shout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shout.swift; sourceTree = "<group>"; };
 		954722F727A0093F00D1BA89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		954722F827A0094000D1BA89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		954722F027A0093F00D1BA89 = {
 			isa = PBXGroup;
 			children = (
+				95019DAA27A82124005DF870 /* Capstone--iOS--Info.plist */,
 				95D1037427A00FB600B1EE3C /* Documentation */,
 				954722F527A0093F00D1BA89 /* Shared */,
 				9547230427A0094000D1BA89 /* macOS */,
@@ -365,6 +367,7 @@
 				DEVELOPMENT_TEAM = FQQXSP79X3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Capstone--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -395,6 +398,7 @@
 				DEVELOPMENT_TEAM = FQQXSP79X3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Capstone--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
