@@ -12,12 +12,16 @@
 //  details.
 
 import SwiftUI
+import Chica
 
 @main
 struct Shout: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .onOpenURL { url in
+                    Chica.handleURL(url: url, actions: [:])
+                }
         }
     }
 }

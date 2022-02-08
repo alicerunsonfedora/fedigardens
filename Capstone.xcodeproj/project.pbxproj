@@ -58,8 +58,7 @@
 		954722F027A0093F00D1BA89 = {
 			isa = PBXGroup;
 			children = (
-				95019DAB27A82233005DF870 /* Capstone--macOS--Info.plist */,
-				95019DAA27A82124005DF870 /* Capstone--iOS--Info.plist */,
+				95A3587027B2B18D00DBB76E /* Metadata */,
 				95D1037427A00FB600B1EE3C /* Documentation */,
 				954722F527A0093F00D1BA89 /* Shared */,
 				9547230427A0094000D1BA89 /* macOS */,
@@ -93,6 +92,15 @@
 				9547230527A0094000D1BA89 /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		95A3587027B2B18D00DBB76E /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				95019DAB27A82233005DF870 /* Capstone--macOS--Info.plist */,
+				95019DAA27A82124005DF870 /* Capstone--iOS--Info.plist */,
+			);
+			name = Metadata;
 			sourceTree = "<group>";
 		};
 		95D1036827A00AB200B1EE3C /* Frameworks */ = {
@@ -443,7 +451,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.marquiskurt.Capstone;
+				PRODUCT_BUNDLE_IDENTIFIER = net.marquiskurt.shout;
 				PRODUCT_NAME = Capstone;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -472,7 +480,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 12.1;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = net.marquiskurt.Capstone;
+				PRODUCT_BUNDLE_IDENTIFIER = net.marquiskurt.shout;
 				PRODUCT_NAME = Capstone;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;

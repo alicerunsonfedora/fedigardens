@@ -12,11 +12,67 @@
 //  details.
 
 import SwiftUI
+import Chica
 
 struct ContentView: View {
+
+    /// The shared Chica authentication object.
+    ///
+    /// This is used to handle authentication to the Gopherdon server and watch for state changes.
+    @ObservedObject private var chicaAuth: Chica.OAuth = Chica.OAuth.shared
+
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            authStateTest
+        }.padding()
+    }
+
+    private var authStateTest: some View {
+        Group {
+            if chicaAuth.authState == .signedOut {
+                VStack(spacing: 16) {
+                    Label {
+                        Text("Not authenticated")
+                            .bold()
+                    } icon: {
+                        Image(systemName: "person.crop.circle.badge.exclamationmark.fill")
+                            .foregroundColor(.red)
+                    }
+                    .font(.system(.largeTitle, design: .rounded))
+
+                    Button {
+                        Task {
+                            await Chica.OAuth.shared.startOauthFlow(for: "mastodon.goucher.edu")
+                        }
+                    } label: {
+                        Label("Log In to Gopherdon", systemImage: "key")
+                            .buttonStyle(.borderedProminent)
+                    }
+                }
+            } else {
+                VStack {
+                    Label {
+                        Text("Authenticated")
+                            .bold()
+                    } icon: {
+                        Image(systemName: "person.crop.circle.fill.badge.checkmark")
+                            .foregroundColor(.green)
+                    }
+                    .font(.system(.largeTitle, design: .rounded))
+
+                    Button {
+                        Task {
+                            if let test: Account? = try! await Chica.shared.request(.get, for: .verifyAccountCredentials) {
+                                print(test?.username ?? "unknown username")
+                            }
+                        }
+                    } label: {
+                        Text("Fetch Test Data")
+                    }
+                }
+
+            }
+        }
     }
 }
 
