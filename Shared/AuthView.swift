@@ -31,11 +31,15 @@ struct AuthenticationView: View {
             pinstripes
                 .edgesIgnoringSafeArea(.all)
             Group {
+                #if os(iOS)
                 if horizontalSizeClass == .compact {
                     compactLayout
                 } else {
                     regularLayout
                 }
+                #else
+                regularLayout
+                #endif
             }
             .font(.system(.body, design: .rounded))
         }
@@ -61,7 +65,7 @@ struct AuthenticationView: View {
             ProgressView()
         }
         .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
+            ToolbarItem {
                 Button {
 
                 } label: {
@@ -139,41 +143,29 @@ struct AuthenticationView: View {
             }
             .frame(maxWidth: 450)
         }
-//        .frame(maxWidth: 900)
     }
 
     private var pinstripes: some View {
-        GeometryReader { geometry in
-            let halfHeight = (geometry.size.height / 2) - 64
+        GeometryReader { g in
+            let halfWidth = g.size.width / 2
+            let halfHeight = g.size.height / 2
 
-            #if os(iOS)
-            let endPoint = horizontalSizeClass == .compact
-                ? geometry.size.width / 6
-                : geometry.size.width / 2
-            #else
-            let endPoint = geometry.size.width / 2
-            #endif
+#if os(iOS)
+            let frameWidth = horizontalSizeClass == .compact ? halfWidth * 1.5 : halfWidth
+            let frameHeight = horizontalSizeClass == .compact ? halfWidth * 1.5 : halfWidth
+            let xOffset = horizontalSizeClass == .compact ? halfWidth / 2 : halfWidth
+            let yOffset = horizontalSizeClass == .compact ? 0 : -halfHeight / 2
+#else
+            let frameWidth = halfWidth
+            let frameHeight = halfWidth
+            let xOffset = halfWidth
+            let yOffset = -halfHeight / 2
+#endif
 
-            ZStack {
-                Path { path in
-                    path.move(to: .init(x: geometry.size.width, y: 0))
-                    path.addLine(to: .init(x: endPoint, y: 0))
-                    path.addLine(to: .init(x: geometry.size.width, y: halfHeight))
-                }
-                .fill(Color.accentColor)
-                Path { path in
-                    path.move(to: .init(x: geometry.size.width, y: 0))
-                    path.addLine(to: .init(x: endPoint, y: 0))
-                    path.addLine(to: .init(x: geometry.size.width, y: halfHeight - 100))
-                }
-                .fill(.blue)
-                Path { path in
-                    path.move(to: .init(x: geometry.size.width, y: 0))
-                    path.addLine(to: .init(x: endPoint, y: 0))
-                    path.addLine(to: .init(x: geometry.size.width, y: halfHeight - 200))
-                }
-                .fill(.yellow)
-            }
+            Image("Pinstripes")
+                .resizable()
+                .frame(width: frameWidth, height: frameHeight)
+                .offset(x: xOffset, y: yOffset)
         }
     }
 

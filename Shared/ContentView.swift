@@ -21,6 +21,8 @@ struct ContentView: View {
     /// This is used to handle authentication to the Gopherdon server and watch for state changes.
     @ObservedObject private var chicaAuth: Chica.OAuth = Chica.OAuth.shared
 
+    @State private var penis: Bool = false
+
     var body: some View {
         VStack {
             authStateTest
