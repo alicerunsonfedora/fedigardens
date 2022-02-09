@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Capstone
+
+  Created by Marquis Kurt on 9/2/22.
+  
+*/
+
+// MARK: - General Texts
+"general.appname" = "Shout";
+"general.feedback" = "Send Feedback";
+
+// MARK: - Authentication
+"auth.welcome" = "Welcome to";
+"auth.login.button" = "Get Started";
+"auth.progress" = "Signing In...";
+"auth.startinfo" = "Welcome to a different kind of social media powered by Gopherdon, designed by Goucher students and for the Goucher community.";
+"auth.footnote" = "Don't have a Gopherdon account?";
+"auth.footnote.create" = "Sign Up &rsaquo;";

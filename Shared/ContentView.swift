@@ -24,31 +24,13 @@ struct ContentView: View {
     var body: some View {
         VStack {
             authStateTest
-        }.padding()
+        }
     }
 
     private var authStateTest: some View {
         Group {
             if chicaAuth.authState == .signedOut {
-                VStack(spacing: 16) {
-                    Label {
-                        Text("Not authenticated")
-                            .bold()
-                    } icon: {
-                        Image(systemName: "person.crop.circle.badge.exclamationmark.fill")
-                            .foregroundColor(.red)
-                    }
-                    .font(.system(.largeTitle, design: .rounded))
-
-                    Button {
-                        Task {
-                            await Chica.OAuth.shared.startOauthFlow(for: "mastodon.goucher.edu")
-                        }
-                    } label: {
-                        Label("Log In to Gopherdon", systemImage: "key")
-                            .buttonStyle(.borderedProminent)
-                    }
-                }
+                AuthenticationView()
             } else {
                 VStack {
                     Label {
@@ -70,6 +52,7 @@ struct ContentView: View {
                         Text("Fetch Test Data")
                     }
                 }
+                .padding()
 
             }
         }
