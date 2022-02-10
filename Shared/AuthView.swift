@@ -23,8 +23,15 @@ struct AuthenticationView: View {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 #endif
 
+    /// The shared Chica authentication object.
+    ///
+    /// This is used to handle authentication to the Gopherdon server and watch for state changes.
     @ObservedObject private var chicaAuth: Chica.OAuth = Chica.OAuth.shared
+
+    /// Whether to show the authentication dialog on iOS devices.
     @State private var showAuthDialog: Bool = false
+
+    // MARK: - Auth View Components
 
     var body: some View {
         ZStack {
@@ -33,12 +40,12 @@ struct AuthenticationView: View {
             Group {
 #if os(iOS)
                 if horizontalSizeClass == .compact {
-                    compactLayout
+                    compactModalLayout
                 } else {
-                    regularLayout
+                    widescreenLayout
                 }
 #else
-                compactLayout
+                compactModalLayout
 #endif
             }
             .font(.system(.body, design: .rounded))
@@ -63,6 +70,7 @@ struct AuthenticationView: View {
         }
     }
 
+    /// The view displayed in the authentication sheet.
     var authSheet: some View {
         VStack(spacing: 8) {
             Text("🎸")
@@ -83,38 +91,7 @@ struct AuthenticationView: View {
         }
     }
 
-    private var compactLayout: some View {
-        VStack {
-            Spacer()
-            VStack(alignment: .leading, spacing: 32) {
-                welcomeHeader(alignment: .leading)
-                Text("auth.startinfo")
-                    .font(.title3)
-            }
-            .padding()
-            Spacer()
-#if os(iOS)
-            authButton
-#endif
-        }
-        .frame(maxWidth: .infinity)
-
-    }
-
-    private var regularLayout: some View {
-        HStack(spacing: 8) {
-            VStack(alignment: .trailing, spacing: 32) {
-                welcomeHeader(alignment: .trailing)
-                Text("auth.startinfo")
-                    .font(.title3)
-            }
-            .frame(maxWidth: 450)
-            .padding()
-            authButton
-                .frame(maxWidth: 450)
-        }
-    }
-
+    /// The background view used to render the pinstripes in the corner of the window.
     private var pinstripes: some View {
         GeometryReader { g in
             let halfWidth = g.size.width / 2
@@ -139,6 +116,7 @@ struct AuthenticationView: View {
         }
     }
 
+    /// The authentication button.
     private var authButton: some View {
         VStack(spacing: 8) {
             Button {
@@ -163,6 +141,45 @@ struct AuthenticationView: View {
         }
     }
 
+    // MARK: - Auth View Layouts
+
+    /// The layout used on phones (and macOS, respectively).
+    private var compactModalLayout: some View {
+        VStack {
+            Spacer()
+            VStack(alignment: .leading, spacing: 32) {
+                welcomeHeader(alignment: .leading)
+                Text("auth.startinfo")
+                    .font(.title3)
+            }
+            .padding()
+            Spacer()
+#if os(iOS)
+            authButton
+#endif
+        }
+        .frame(maxWidth: .infinity)
+
+    }
+
+    /// The layout to use on iPads.
+    private var widescreenLayout: some View {
+        HStack(spacing: 8) {
+            VStack(alignment: .trailing, spacing: 32) {
+                welcomeHeader(alignment: .trailing)
+                Text("auth.startinfo")
+                    .font(.title3)
+            }
+            .frame(maxWidth: 450)
+            .padding()
+            authButton
+                .frame(maxWidth: 450)
+        }
+    }
+
+    // MARK: - Auth View Methods
+
+    /// Returns the welcome header with the specified alignment.
     func welcomeHeader(alignment: HorizontalAlignment) -> some View {
         VStack(alignment: alignment) {
             Text("auth.welcome")
@@ -174,6 +191,7 @@ struct AuthenticationView: View {
         }
     }
 
+    /// Start authenticating the user with Gopherdon.
     public func startAuthentication() {
 #if os(macOS)
         Task {
@@ -185,6 +203,8 @@ struct AuthenticationView: View {
     }
 
 }
+
+// MARK: - Previews
 
 struct AuthenticationView_Previews: PreviewProvider {
     static var previews: some View {
