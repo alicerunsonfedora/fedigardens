@@ -18,10 +18,10 @@ import Chica
 
 struct AuthenticationView: View {
 
-    #if os(iOS)
+#if os(iOS)
     /// Determines whether the device is compact or standard
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-    #endif
+#endif
 
     @ObservedObject private var chicaAuth: Chica.OAuth = Chica.OAuth.shared
     @State private var showAuthDialog: Bool = false
@@ -31,15 +31,15 @@ struct AuthenticationView: View {
             pinstripes
                 .edgesIgnoringSafeArea(.all)
             Group {
-                #if os(iOS)
+#if os(iOS)
                 if horizontalSizeClass == .compact {
                     compactLayout
                 } else {
                     regularLayout
                 }
-                #else
-                regularLayout
-                #endif
+#else
+                compactLayout
+#endif
             }
             .font(.system(.body, design: .rounded))
         }
@@ -50,6 +50,14 @@ struct AuthenticationView: View {
             .onAppear {
                 Task {
                     await chicaAuth.startOauthFlow(for: "mastodon.goucher.edu")
+                }
+            }
+            .onChange(of: chicaAuth.authState) { authState in
+                switch authState {
+                case .authenthicated(_):
+                    showAuthDialog = false
+                default:
+                    break
                 }
             }
         }
@@ -85,27 +93,9 @@ struct AuthenticationView: View {
             }
             .padding()
             Spacer()
-            VStack(spacing: 8) {
-                Button {
-                    showAuthDialog.toggle()
-                } label: {
-                    Text("auth.login.button")
-                        .font(.title3)
-                        .bold()
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 8)
-                }
-                .buttonStyle(.borderedProminent)
-                .padding(.horizontal)
-                HStack {
-                    Text("auth.footnote")
-                        .foregroundColor(.secondary)
-                    Link(destination: URL(string: "https://mastodon.goucher.edu/auth/sign_up")!) {
-                        Text("auth.footnote.create")
-                    }
-                }
-                .font(.footnote)
-            }
+#if os(iOS)
+            authButton
+#endif
         }
         .frame(maxWidth: .infinity)
 
@@ -120,28 +110,8 @@ struct AuthenticationView: View {
             }
             .frame(maxWidth: 450)
             .padding()
-            VStack(spacing: 8) {
-                Button {
-                    showAuthDialog.toggle()
-                } label: {
-                    Text("auth.login.button")
-                        .font(.title3)
-                        .bold()
-                        .frame(width: 300)
-                        .padding(.vertical, 8)
-                }
-                .buttonStyle(.borderedProminent)
-                .padding(.horizontal)
-                HStack {
-                    Text("auth.footnote")
-                        .foregroundColor(.secondary)
-                    Link(destination: URL(string: "https://mastodon.goucher.edu/auth/sign_up")!) {
-                        Text("auth.footnote.create")
-                    }
-                }
-                .font(.footnote)
-            }
-            .frame(maxWidth: 450)
+            authButton
+                .frame(maxWidth: 450)
         }
     }
 
@@ -169,6 +139,30 @@ struct AuthenticationView: View {
         }
     }
 
+    private var authButton: some View {
+        VStack(spacing: 8) {
+            Button {
+                showAuthDialog.toggle()
+            } label: {
+                Text("auth.login.button")
+                    .font(.title3)
+                    .bold()
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 8)
+            }
+            .buttonStyle(.borderedProminent)
+            .padding(.horizontal)
+            HStack {
+                Text("auth.footnote")
+                    .foregroundColor(.secondary)
+                Link(destination: URL(string: "https://mastodon.goucher.edu/auth/sign_up")!) {
+                    Text("auth.footnote.create")
+                }
+            }
+            .font(.footnote)
+        }
+    }
+
     func welcomeHeader(alignment: HorizontalAlignment) -> some View {
         VStack(alignment: alignment) {
             Text("auth.welcome")
@@ -178,6 +172,16 @@ struct AuthenticationView: View {
                 .font(.system(size: 56, weight: .bold, design: .rounded))
                 .foregroundColor(.accentColor)
         }
+    }
+
+    public func startAuthentication() {
+#if os(macOS)
+        Task {
+            await chicaAuth.startOauthFlow(for: "mastodon.goucher.edu")
+        }
+#else
+        showAuthDialog.toggle()
+#endif
     }
 
 }

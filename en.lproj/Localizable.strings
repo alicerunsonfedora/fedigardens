@@ -9,6 +9,7 @@
 // MARK: - General Texts
 "general.appname" = "Shout";
 "general.feedback" = "Send Feedback";
+"general.cancel" = "Cancel";
 
 // MARK: - Authentication
 "auth.welcome" = "Welcome to";

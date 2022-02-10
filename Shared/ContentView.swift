@@ -21,43 +21,59 @@ struct ContentView: View {
     /// This is used to handle authentication to the Gopherdon server and watch for state changes.
     @ObservedObject private var chicaAuth: Chica.OAuth = Chica.OAuth.shared
 
-    @State private var penis: Bool = false
+    @State private var showAuthSheet: Bool = false
 
     var body: some View {
         VStack {
-            authStateTest
-        }
-    }
-
-    private var authStateTest: some View {
-        Group {
             if chicaAuth.authState == .signedOut {
-                AuthenticationView()
+#if os(macOS)
+                Image("Cliffs")
+                    .resizable()
+                    .scaledToFill()
+#else
+                authDialog
+#endif
             } else {
-                VStack {
-                    Label {
-                        Text("Authenticated")
-                            .bold()
-                    } icon: {
-                        Image(systemName: "person.crop.circle.fill.badge.checkmark")
-                            .foregroundColor(.green)
-                    }
-                    .font(.system(.largeTitle, design: .rounded))
-
-                    Button {
-                        Task {
-                            if let test: Account? = try! await Chica.shared.request(.get, for: .verifyAccountCredentials) {
-                                print(test?.username ?? "unknown username")
-                            }
-                        }
-                    } label: {
-                        Text("Fetch Test Data")
-                    }
-                }
-                .padding()
-
+                Text("Welcome to Shout")
+                    .padding()
             }
         }
+#if os(macOS)
+        .frame(minWidth: 800, minHeight: 600)
+        .onAppear {
+            if chicaAuth.authState == .signedOut {
+                showAuthSheet = true
+            }
+        }
+        .sheet(isPresented: $showAuthSheet) {
+            authDialog
+                .frame(width: 500, height: 400)
+                .toolbar {
+                    ToolbarItem {
+                        Button {
+                            showAuthSheet.toggle()
+                        } label: {
+                            Text("general.cancel")
+                        }
+                        .keyboardShortcut(.cancelAction)
+                    }
+
+                    ToolbarItem(placement: .confirmationAction) {
+                        Button {
+                            authDialog.startAuthentication()
+                        } label: {
+                            Text("auth.login.button")
+                        }
+                        .keyboardShortcut(.defaultAction)
+                    }
+
+                }
+        }
+#endif
+    }
+
+    var authDialog: AuthenticationView {
+        AuthenticationView()
     }
 }
 
