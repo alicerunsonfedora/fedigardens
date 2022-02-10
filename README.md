@@ -35,3 +35,4 @@ applicable. You may view the terms for these licenses on their respective
 projects:
 
 - Chica: Non-Violent Public License v4+
+- Cliffs image: Unsplash License (Paula Sotomayor)
