@@ -16,6 +16,7 @@ import Foundation
 
 extension String {
 
+    /// Returns a plain-text form of an HTML-formatted string.
     func toPlainText() -> String {
         guard let strData = self.data(using: .utf8) else {
             return self
