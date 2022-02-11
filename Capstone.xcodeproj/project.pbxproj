@@ -28,6 +28,9 @@
 		95ADAE0A27B6B49A0011FD83 /* JSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE0927B6B49A0011FD83 /* JSONExtension.swift */; };
 		95ADAE0B27B6B49A0011FD83 /* JSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE0927B6B49A0011FD83 /* JSONExtension.swift */; };
 		95ADAE0C27B6B49A0011FD83 /* JSONExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE0927B6B49A0011FD83 /* JSONExtension.swift */; };
+		95ADAE1227B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1127B6CDC50011FD83 /* DateFormatterExtension.swift */; };
+		95ADAE1327B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1127B6CDC50011FD83 /* DateFormatterExtension.swift */; };
+		95ADAE1427B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1127B6CDC50011FD83 /* DateFormatterExtension.swift */; };
 		95D1036727A00AAB00B1EE3C /* Chica in Frameworks */ = {isa = PBXBuildFile; productRef = 95D1036627A00AAB00B1EE3C /* Chica */; };
 		95D1036A27A00AB200B1EE3C /* Chica in Frameworks */ = {isa = PBXBuildFile; productRef = 95D1036927A00AB200B1EE3C /* Chica */; };
 		95D1036C27A00AF000B1EE3C /* License.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 95D1036B27A00AF000B1EE3C /* License.pdf */; };
@@ -63,6 +66,7 @@
 		95ADAE0527B6B3900011FD83 /* Status.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Status.json; sourceTree = "<group>"; };
 		95ADAE0827B6B3BA0011FD83 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		95ADAE0927B6B49A0011FD83 /* JSONExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONExtension.swift; sourceTree = "<group>"; };
+		95ADAE1127B6CDC50011FD83 /* DateFormatterExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterExtension.swift; sourceTree = "<group>"; };
 		95D1036B27A00AF000B1EE3C /* License.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = License.pdf; sourceTree = "<group>"; };
 		95D1037527A00FC400B1EE3C /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CONTRIBUTING.md; path = .github/CONTRIBUTING.md; sourceTree = "<group>"; };
 		95D1037627A00FCA00B1EE3C /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
@@ -157,6 +161,7 @@
 			children = (
 				95ADADE327B6A6BB0011FD83 /* StringExtension.swift */,
 				95ADAE0927B6B49A0011FD83 /* JSONExtension.swift */,
+				95ADAE1127B6CDC50011FD83 /* DateFormatterExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 			files = (
 				95ADADE427B6A6BB0011FD83 /* StringExtension.swift in Sources */,
 				95ADAE0A27B6B49A0011FD83 /* JSONExtension.swift in Sources */,
+				95ADAE1227B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */,
 				9547230827A0094000D1BA89 /* ContentView.swift in Sources */,
 				9547230627A0094000D1BA89 /* Shout.swift in Sources */,
 				9503EFAF27B4173C00ABB7B0 /* AuthView.swift in Sources */,
@@ -372,6 +378,7 @@
 			files = (
 				95ADADE527B6A6BB0011FD83 /* StringExtension.swift in Sources */,
 				95ADAE0B27B6B49A0011FD83 /* JSONExtension.swift in Sources */,
+				95ADAE1327B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */,
 				9547230927A0094000D1BA89 /* ContentView.swift in Sources */,
 				9547230727A0094000D1BA89 /* Shout.swift in Sources */,
 				9503EFB027B4173C00ABB7B0 /* AuthView.swift in Sources */,
@@ -385,6 +392,7 @@
 			files = (
 				95ADADFE27B6A9730011FD83 /* Shared.swift in Sources */,
 				95ADAE0C27B6B49A0011FD83 /* JSONExtension.swift in Sources */,
+				95ADAE1427B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */,
 				95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
