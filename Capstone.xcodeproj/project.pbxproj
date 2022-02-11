@@ -17,11 +17,25 @@
 		9547230927A0094000D1BA89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F727A0093F00D1BA89 /* ContentView.swift */; };
 		9547230A27A0094000D1BA89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 954722F827A0094000D1BA89 /* Assets.xcassets */; };
 		9547230B27A0094000D1BA89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 954722F827A0094000D1BA89 /* Assets.xcassets */; };
+		95ADADE427B6A6BB0011FD83 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* StringExtension.swift */; };
+		95ADADE527B6A6BB0011FD83 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* StringExtension.swift */; };
+		95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE727B6A7F10011FD83 /* Statuses.swift */; };
+		95ADADFE27B6A9730011FD83 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADEB27B6A8E40011FD83 /* Shared.swift */; };
 		95D1036727A00AAB00B1EE3C /* Chica in Frameworks */ = {isa = PBXBuildFile; productRef = 95D1036627A00AAB00B1EE3C /* Chica */; };
 		95D1036A27A00AB200B1EE3C /* Chica in Frameworks */ = {isa = PBXBuildFile; productRef = 95D1036927A00AB200B1EE3C /* Chica */; };
 		95D1036C27A00AF000B1EE3C /* License.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 95D1036B27A00AF000B1EE3C /* License.pdf */; };
 		95D1036D27A00AF000B1EE3C /* License.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 95D1036B27A00AF000B1EE3C /* License.pdf */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		95ADADF727B6A9630011FD83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 954722F127A0093F00D1BA89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9547230227A0094000D1BA89;
+			remoteInfo = "Capstone (macOS)";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		95019DAA27A82124005DF870 /* Capstone--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Capstone--iOS--Info.plist"; sourceTree = "<group>"; };
@@ -34,6 +48,10 @@
 		954722FD27A0094000D1BA89 /* Capstone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capstone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9547230327A0094000D1BA89 /* Capstone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capstone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9547230527A0094000D1BA89 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		95ADADE327B6A6BB0011FD83 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		95ADADE727B6A7F10011FD83 /* Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
+		95ADADEB27B6A8E40011FD83 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
+		95ADADF327B6A9630011FD83 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95D1036B27A00AF000B1EE3C /* License.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = License.pdf; sourceTree = "<group>"; };
 		95D1037527A00FC400B1EE3C /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CONTRIBUTING.md; path = .github/CONTRIBUTING.md; sourceTree = "<group>"; };
 		95D1037627A00FCA00B1EE3C /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
@@ -58,6 +76,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		95ADADF027B6A9630011FD83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -69,6 +94,7 @@
 				95D1037427A00FB600B1EE3C /* Documentation */,
 				954722F527A0093F00D1BA89 /* Shared */,
 				9547230427A0094000D1BA89 /* macOS */,
+				95ADADF427B6A9630011FD83 /* Tests */,
 				954722FE27A0094000D1BA89 /* Products */,
 				95D1036827A00AB200B1EE3C /* Frameworks */,
 			);
@@ -77,6 +103,7 @@
 		954722F527A0093F00D1BA89 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				95ADADE227B6A6AB0011FD83 /* Utilities */,
 				95D1036E27A00AF400B1EE3C /* Resources */,
 				954722F627A0093F00D1BA89 /* Shout.swift */,
 				954722F727A0093F00D1BA89 /* ContentView.swift */,
@@ -90,6 +117,7 @@
 			children = (
 				954722FD27A0094000D1BA89 /* Capstone.app */,
 				9547230327A0094000D1BA89 /* Capstone.app */,
+				95ADADF327B6A9630011FD83 /* Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +137,23 @@
 				95019DAA27A82124005DF870 /* Capstone--iOS--Info.plist */,
 			);
 			name = Metadata;
+			sourceTree = "<group>";
+		};
+		95ADADE227B6A6AB0011FD83 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				95ADADE327B6A6BB0011FD83 /* StringExtension.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		95ADADF427B6A9630011FD83 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				95ADADE727B6A7F10011FD83 /* Statuses.swift */,
+				95ADADEB27B6A8E40011FD83 /* Shared.swift */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 		95D1036827A00AB200B1EE3C /* Frameworks */ = {
@@ -181,6 +226,24 @@
 			productReference = 9547230327A0094000D1BA89 /* Capstone.app */;
 			productType = "com.apple.product-type.application";
 		};
+		95ADADF227B6A9630011FD83 /* Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95ADADF927B6A9630011FD83 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildPhases = (
+				95ADADEF27B6A9630011FD83 /* Sources */,
+				95ADADF027B6A9630011FD83 /* Frameworks */,
+				95ADADF127B6A9630011FD83 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				95ADADF827B6A9630011FD83 /* PBXTargetDependency */,
+			);
+			name = Tests;
+			productName = Tests;
+			productReference = 95ADADF327B6A9630011FD83 /* Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -196,6 +259,10 @@
 					};
 					9547230227A0094000D1BA89 = {
 						CreatedOnToolsVersion = 13.2;
+					};
+					95ADADF227B6A9630011FD83 = {
+						CreatedOnToolsVersion = 13.2.1;
+						TestTargetID = 9547230227A0094000D1BA89;
 					};
 				};
 			};
@@ -217,6 +284,7 @@
 			targets = (
 				954722FC27A0094000D1BA89 /* Capstone (iOS) */,
 				9547230227A0094000D1BA89 /* Capstone (macOS) */,
+				95ADADF227B6A9630011FD83 /* Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -242,6 +310,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		95ADADF127B6A9630011FD83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -249,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95ADADE427B6A6BB0011FD83 /* StringExtension.swift in Sources */,
 				9547230827A0094000D1BA89 /* ContentView.swift in Sources */,
 				9547230627A0094000D1BA89 /* Shout.swift in Sources */,
 				9503EFAF27B4173C00ABB7B0 /* AuthView.swift in Sources */,
@@ -259,13 +335,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95ADADE527B6A6BB0011FD83 /* StringExtension.swift in Sources */,
 				9547230927A0094000D1BA89 /* ContentView.swift in Sources */,
 				9547230727A0094000D1BA89 /* Shout.swift in Sources */,
 				9503EFB027B4173C00ABB7B0 /* AuthView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		95ADADEF27B6A9630011FD83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95ADADFE27B6A9730011FD83 /* Shared.swift in Sources */,
+				95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		95ADADF827B6A9630011FD83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9547230227A0094000D1BA89 /* Capstone (macOS) */;
+			targetProxy = 95ADADF727B6A9630011FD83 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9503EFB727B417DD00ABB7B0 /* Localizable.strings */ = {
@@ -511,6 +605,44 @@
 			};
 			name = Release;
 		};
+		95ADADFA27B6A9630011FD83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FQQXSP79X3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.marquiskurt.capstone.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Capstone.app/Contents/MacOS/Capstone";
+			};
+			name = Debug;
+		};
+		95ADADFB27B6A9630011FD83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FQQXSP79X3;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 12.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = net.marquiskurt.capstone.Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Capstone.app/Contents/MacOS/Capstone";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -537,6 +669,15 @@
 			buildConfigurations = (
 				9547231227A0094000D1BA89 /* Debug */,
 				9547231327A0094000D1BA89 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		95ADADF927B6A9630011FD83 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95ADADFA27B6A9630011FD83 /* Debug */,
+				95ADADFB27B6A9630011FD83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
