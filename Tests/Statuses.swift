@@ -26,4 +26,20 @@ class ShoutTest_Status: XCTestCase {
         XCTAssertEqual(originalText.toPlainText(), expectedText)
     }
 
+    /// Test that an HTML-formatted string is stripped, converted to plain text, and ignores any HTML formatting.
+    func testStatusConversionToPlainTextIgnoresFormatting() throws {
+        let originalText = """
+        <p>
+            Shout, shout, let it all out<br/>
+            <b>These</b> are the things I can do without<br/>
+            Come on; I'm talking to you<br/>
+            <span class="roland">Come on</span>
+        </p>
+        """
+        let convertedText = originalText.toPlainText()
+        for element in ["<p>", "</p>", "<br/>", "<b>", "</b>", "<span", "</span>"] {
+            XCTAssertTrue(!convertedText.contains(element))
+        }
+    }
+
 }
