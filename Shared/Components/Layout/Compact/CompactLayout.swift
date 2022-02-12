@@ -20,8 +20,28 @@ import Chica
 /// A view that represents the layout for compact devices.
 /// This is commonly used on iOS devices such as iPhone.
 struct CompactLayout: View {
+
+    @State private var t: Status? = JSONDecoder.safeDecodeFromResource(from: "Status")
+
     var body: some View {
-        Text("E")
+        TabView {
+            NavigationView {
+                CompactTimeline(timeline: .home)
+                    .navigationTitle("endpoint.home")
+                    .padding()
+            }
+            .tabItem {
+                Label("endpoint.home", systemImage: "house")
+            }
+            NavigationView {
+                CompactTimeline(timeline: .network)
+                    .navigationTitle("endpoint.local")
+                    .padding()
+            }
+            .tabItem {
+                Label("endpoint.local", systemImage: "star")
+            }
+        }
     }
 }
 
@@ -29,6 +49,6 @@ struct CompactLayout: View {
 struct CompactLayout_Previews: PreviewProvider {
     static var previews: some View {
         CompactLayout()
-            .previewDevice("iPhone 13")
+            .previewDevice("iPhone 13 Pro")
     }
 }

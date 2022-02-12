@@ -20,6 +20,12 @@
 		95369B6227B837BD00F39531 /* CompactLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6127B837BD00F39531 /* CompactLayout.swift */; };
 		95369B6327B837BD00F39531 /* CompactLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6127B837BD00F39531 /* CompactLayout.swift */; };
 		95369B6427B837BD00F39531 /* CompactLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6127B837BD00F39531 /* CompactLayout.swift */; };
+		95369B6627B8403A00F39531 /* CompactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6527B8403A00F39531 /* CompactTimeline.swift */; };
+		95369B6727B8403A00F39531 /* CompactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6527B8403A00F39531 /* CompactTimeline.swift */; };
+		95369B6827B8403A00F39531 /* CompactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6527B8403A00F39531 /* CompactTimeline.swift */; };
+		95369B6C27B8408A00F39531 /* StatusListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6B27B8408A00F39531 /* StatusListScrollView.swift */; };
+		95369B6D27B8408A00F39531 /* StatusListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6B27B8408A00F39531 /* StatusListScrollView.swift */; };
+		95369B6E27B8408A00F39531 /* StatusListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6B27B8408A00F39531 /* StatusListScrollView.swift */; };
 		9547230627A0094000D1BA89 /* Shout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F627A0093F00D1BA89 /* Shout.swift */; };
 		9547230727A0094000D1BA89 /* Shout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F627A0093F00D1BA89 /* Shout.swift */; };
 		9547230827A0094000D1BA89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F727A0093F00D1BA89 /* ContentView.swift */; };
@@ -73,6 +79,8 @@
 		95369B5827B82D4100F39531 /* WidescreenTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidescreenTimeline.swift; sourceTree = "<group>"; };
 		95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LayoutStateRepresentable.swift; path = Utilities/LayoutStateRepresentable.swift; sourceTree = "<group>"; };
 		95369B6127B837BD00F39531 /* CompactLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactLayout.swift; sourceTree = "<group>"; };
+		95369B6527B8403A00F39531 /* CompactTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactTimeline.swift; sourceTree = "<group>"; };
+		95369B6B27B8408A00F39531 /* StatusListScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListScrollView.swift; sourceTree = "<group>"; };
 		954722F627A0093F00D1BA89 /* Shout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shout.swift; sourceTree = "<group>"; };
 		954722F727A0093F00D1BA89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		954722F827A0094000D1BA89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -138,8 +146,19 @@
 			isa = PBXGroup;
 			children = (
 				95369B6127B837BD00F39531 /* CompactLayout.swift */,
+				95369B6527B8403A00F39531 /* CompactTimeline.swift */,
 			);
 			path = Compact;
+			sourceTree = "<group>";
+		};
+		95369B6927B8406B00F39531 /* Statuses */ = {
+			isa = PBXGroup;
+			children = (
+				95ADAE0127B6B2E10011FD83 /* StatusView.swift */,
+				95ADAE1927B6D9740011FD83 /* StatusListMDView.swift */,
+				95369B6B27B8408A00F39531 /* StatusListScrollView.swift */,
+			);
+			path = Statuses;
 			sourceTree = "<group>";
 		};
 		954722F027A0093F00D1BA89 = {
@@ -220,9 +239,8 @@
 		95ADAE0027B6B2D10011FD83 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				95369B6927B8406B00F39531 /* Statuses */,
 				95ADAE1D27B6DB830011FD83 /* Layout */,
-				95ADAE0127B6B2E10011FD83 /* StatusView.swift */,
-				95ADAE1927B6D9740011FD83 /* StatusListMDView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -426,6 +444,8 @@
 				95ADAE1227B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */,
 				9547230827A0094000D1BA89 /* ContentView.swift in Sources */,
 				9547230627A0094000D1BA89 /* Shout.swift in Sources */,
+				95369B6C27B8408A00F39531 /* StatusListScrollView.swift in Sources */,
+				95369B6627B8403A00F39531 /* CompactTimeline.swift in Sources */,
 				95ADAE1F27B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
 				95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95ADAE1A27B6D9740011FD83 /* StatusListMDView.swift in Sources */,
@@ -445,6 +465,8 @@
 				95ADAE1327B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */,
 				9547230927A0094000D1BA89 /* ContentView.swift in Sources */,
 				9547230727A0094000D1BA89 /* Shout.swift in Sources */,
+				95369B6D27B8408A00F39531 /* StatusListScrollView.swift in Sources */,
+				95369B6727B8403A00F39531 /* CompactTimeline.swift in Sources */,
 				95ADAE2027B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
 				95369B5E27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95ADAE1B27B6D9740011FD83 /* StatusListMDView.swift in Sources */,
@@ -463,6 +485,8 @@
 				95369B5B27B82D4100F39531 /* WidescreenTimeline.swift in Sources */,
 				95ADAE2127B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
 				95369B5F27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
+				95369B6E27B8408A00F39531 /* StatusListScrollView.swift in Sources */,
+				95369B6827B8403A00F39531 /* CompactTimeline.swift in Sources */,
 				95ADAE1C27B6D9740011FD83 /* StatusListMDView.swift in Sources */,
 				95ADAE1427B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */,
 				95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */,

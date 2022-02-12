@@ -43,8 +43,7 @@ struct ContentView: View {
                 WidescreenLayout()
 #else
                 if horizontalSizeClass == .compact {
-                    Text("Welcome to Shout")
-                        .padding()
+                    CompactLayout()
                 } else {
                     WidescreenLayout()
                 }

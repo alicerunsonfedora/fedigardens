@@ -1,5 +1,5 @@
 // 
-//  WidescreenHomeView.swift
+//  CompactTimeline.swift
 //  Codename Shout
 //
 //  Created by Marquis Kurt on 12/2/22.
@@ -16,8 +16,8 @@ import Foundation
 import SwiftUI
 import Chica
 
-/// A view used to render a timeline in the widescreen layout.
-struct WidescreenTimeline: View, LayoutStateRepresentable {
+/// A view used to render a timeline in the compact layout.
+struct CompactTimeline: View, LayoutStateRepresentable {
 
     /// The timeline scope to render into view.
     @State var timeline: TimelineScope
@@ -32,18 +32,20 @@ struct WidescreenTimeline: View, LayoutStateRepresentable {
     @State var state: LayoutState = .initial
 
     var body: some View {
-        Group {
-            switch state {
-            case .initial, .loading:
-                StatusListMDView(statuses: dummyTimeline!)
-                    .redacted(reason: .placeholder)
-            case .loaded:
-                StatusListMDView(statuses: timelineData ?? [])
-            case .errored(let message):
-                Image(systemName: "exclamationmark.triangle")
-                    .font(.largeTitle)
-                    .foregroundColor(.secondary)
-                Text("\(message)")
+        ScrollView {
+            Group {
+                switch state {
+                case .initial, .loading:
+                    StatusListScrollView(statuses: dummyTimeline!)
+                        .redacted(reason: .placeholder)
+                case .loaded:
+                    StatusListScrollView(statuses: timelineData ?? [])
+                case .errored(let message):
+                    Image(systemName: "exclamationmark.triangle")
+                        .font(.largeTitle)
+                        .foregroundColor(.secondary)
+                    Text("\(message)")
+                }
             }
         }
         .onAppear {
@@ -87,7 +89,7 @@ struct WidescreenTimeline: View, LayoutStateRepresentable {
             timelineData = try await Chica.shared.request(
                 .get,
                 for: .timeline(scope: timeline),
-                params: ["limit": "10"]
+                params: ["limit": "7"]
             )
             state = .loaded
         } catch {
