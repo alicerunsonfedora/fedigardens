@@ -16,6 +16,11 @@ import Chica
 
 struct ContentView: View {
 
+#if os(iOS)
+    /// Determines whether the device is compact or standard
+    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+#endif
+
     /// The shared Chica authentication object.
     ///
     /// This is used to handle authentication to the Gopherdon server and watch for state changes.
@@ -34,8 +39,16 @@ struct ContentView: View {
                 authDialog
 #endif
             } else {
-                Text("Welcome to Shout")
-                    .padding()
+#if os(macOS)
+                WidescreenLayout()
+#else
+                if horizontalSizeClass == .compact {
+                    Text("Welcome to Shout")
+                        .padding()
+                } else {
+                    WidescreenLayout()
+                }
+#endif
             }
         }
 #if os(macOS)

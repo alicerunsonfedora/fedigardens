@@ -10,6 +10,14 @@
 "general.appname" = "Shout";
 "general.feedback" = "Send Feedback";
 "general.cancel" = "Cancel";
+"general.togglesidebar" = "Toggle Sidebar";
+"general.post" = "Status";
+
+// MARK: - Endpoints
+"endpoint.home" = "For You";
+"endpoint.local" = "Latest";
+"endpoint.directmessage" = "Messages";
+"endpoint.notifications" = "Notifications";
 
 // MARK: - Authentication
 "auth.welcome" = "Welcome to";

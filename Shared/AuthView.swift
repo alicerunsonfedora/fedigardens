@@ -1,6 +1,6 @@
 // 
 //  AuthView.swift
-//  Capstone
+//  Codename Shout
 //
 //  Created by Marquis Kurt on 9/2/22.
 //

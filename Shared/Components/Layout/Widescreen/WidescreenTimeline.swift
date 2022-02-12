@@ -1,0 +1,98 @@
+// 
+//  WidescreenHomeView.swift
+//  Codename Shout
+//
+//  Created by Marquis Kurt on 12/2/22.
+//
+//  This file is part of Codename Shout.
+//
+//  Codename Shout is non-violent software: you can use, redistribute, and/or modify it under the terms of the CNPLv7+
+//  as found in the LICENSE file in the source code root directory or at <https://git.pixie.town/thufie/npl-builder>.
+//
+//  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
+//  details.
+
+import Foundation
+import SwiftUI
+import Chica
+
+/// A view used to render a timeline in the widescreen layout.
+struct WidescreenTimeline: View, LayoutStateRepresentable {
+
+    /// The timeline scope to render into view.
+    @State var timeline: TimelineScope
+
+    /// The data fetched from the specified timeline.
+    @State private var timelineData: [Status]? = []
+
+    /// A dummy timeline dataset used to render statuses into view.
+    @State private var dummyTimeline: [Status]? = try! JSONDecoder.decodeFromResource(from: "Timeline")
+
+    /// The internal state of the view.
+    @State var state: LayoutState = .initial
+
+    var body: some View {
+        Group {
+            switch state {
+            case .initial, .loading:
+                StatusListMDView(statuses: dummyTimeline!)
+                    .redacted(reason: .placeholder)
+            case .loaded:
+                StatusListMDView(statuses: timelineData ?? [])
+            case .errored(let message):
+                Image(systemName: "exclamationmark.triangle")
+                    .font(.largeTitle)
+                    .foregroundColor(.secondary)
+                Text("\(message)")
+            }
+        }
+        .onAppear {
+            Task {
+                await loadTimeline()
+            }
+        }
+        .toolbar {
+            ToolbarItem {
+                Button {
+
+                } label: {
+                    Image(systemName: "square.and.pencil")
+                }
+            }
+            ToolbarItem {
+                Button {
+                    Task { await loadTimeline(forcefully: true) }
+                } label: {
+                    Image(systemName: "arrow.clockwise")
+                }
+            }
+        }
+    }
+
+    /// Load the timeline into the view.
+    /// - Parameter forcefully: Whether to forcefully reload the data, regardless if the timeline is already loaded.
+    ///     Defaults to false.
+    ///
+    /// Typically, this method is called when rendering the view for the first time to fetch the timeline contents.
+    /// Since the network call is asynchronous, this method has been made asynchronous.
+    ///
+    /// - Important: Only forcefully reload data when the user requests it. This call may be expensive on the network
+    ///     and may take time to re-fetch the data into memory.
+    func loadTimeline(forcefully: Bool = false) async {
+        if (!forcefully && timelineData?.isEmpty == false) {
+            return
+        }
+        state = .loading
+        do {
+            timelineData = try await Chica.shared.request(
+                .get,
+                for: .timeline(scope: timeline),
+                params: ["limit": "12"]
+            )
+            state = .loaded
+        } catch {
+            print(error)
+            state = .errored(message: error.localizedDescription)
+        }
+    }
+}

@@ -22,7 +22,7 @@ import Chica
 struct StatusView: View {
 
     /// An enumeration representing the different position options for the status creation date.
-    enum DatePlacement {
+    public enum DatePlacement {
 
         /// The default position. Typically, this appears as the last line, under the status's content.
         case `default`
@@ -32,7 +32,7 @@ struct StatusView: View {
     }
 
     /// An enumeration representing the different position options for the author's profile image.
-    enum ProfileImagePlacement {
+    public enum ProfileImagePlacement {
 
         /// Next to the author's name, towards the left side.
         case byAuthorName
