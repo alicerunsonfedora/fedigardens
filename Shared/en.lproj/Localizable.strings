@@ -26,3 +26,6 @@
 "auth.startinfo" = "Welcome to a different kind of social media powered by Gopherdon, designed by Goucher students and for the Goucher community.";
 "auth.footnote" = "Don't have a Gopherdon account?";
 "auth.footnote.create" = "Sign Up &rsaquo;";
+
+// MARK: - Statuses
+"status.commentary" = "status.commentary";

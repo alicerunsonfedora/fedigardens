@@ -32,6 +32,15 @@
 		9547230927A0094000D1BA89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F727A0093F00D1BA89 /* ContentView.swift */; };
 		9547230A27A0094000D1BA89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 954722F827A0094000D1BA89 /* Assets.xcassets */; };
 		9547230B27A0094000D1BA89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 954722F827A0094000D1BA89 /* Assets.xcassets */; };
+		95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7527B85BD3009D2251 /* StatusDetailView.swift */; };
+		95667E7727B85BD3009D2251 /* StatusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7527B85BD3009D2251 /* StatusDetailView.swift */; };
+		95667E7827B85BD3009D2251 /* StatusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7527B85BD3009D2251 /* StatusDetailView.swift */; };
+		95667E7A27B85C3B009D2251 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7927B85C3B009D2251 /* MockData.swift */; };
+		95667E7B27B85C3B009D2251 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7927B85C3B009D2251 /* MockData.swift */; };
+		95667E7C27B85C3B009D2251 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7927B85C3B009D2251 /* MockData.swift */; };
+		95667E7E27B86273009D2251 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 95667E7D27B86273009D2251 /* Localizable.stringsdict */; };
+		95667E7F27B86273009D2251 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 95667E7D27B86273009D2251 /* Localizable.stringsdict */; };
+		95667E8027B86273009D2251 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 95667E7D27B86273009D2251 /* Localizable.stringsdict */; };
 		95ADADE427B6A6BB0011FD83 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* StringExtension.swift */; };
 		95ADADE527B6A6BB0011FD83 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* StringExtension.swift */; };
 		95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE727B6A7F10011FD83 /* Statuses.swift */; };
@@ -87,6 +96,9 @@
 		954722FD27A0094000D1BA89 /* Capstone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capstone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9547230327A0094000D1BA89 /* Capstone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capstone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9547230527A0094000D1BA89 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		95667E7527B85BD3009D2251 /* StatusDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailView.swift; sourceTree = "<group>"; };
+		95667E7927B85C3B009D2251 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
+		95667E7D27B86273009D2251 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 		95ADADE327B6A6BB0011FD83 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		95ADADE727B6A7F10011FD83 /* Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
 		95ADADEB27B6A8E40011FD83 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
@@ -157,6 +169,7 @@
 				95ADAE0127B6B2E10011FD83 /* StatusView.swift */,
 				95ADAE1927B6D9740011FD83 /* StatusListMDView.swift */,
 				95369B6B27B8408A00F39531 /* StatusListScrollView.swift */,
+				95667E7527B85BD3009D2251 /* StatusDetailView.swift */,
 			);
 			path = Statuses;
 			sourceTree = "<group>";
@@ -177,6 +190,7 @@
 		954722F527A0093F00D1BA89 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				95667E7D27B86273009D2251 /* Localizable.stringsdict */,
 				9503EFB727B417DD00ABB7B0 /* Localizable.strings */,
 				95ADAE0427B6B3770011FD83 /* Mock Data */,
 				95ADAE0027B6B2D10011FD83 /* Components */,
@@ -223,6 +237,7 @@
 				95ADADE327B6A6BB0011FD83 /* StringExtension.swift */,
 				95ADAE0927B6B49A0011FD83 /* JSONExtension.swift */,
 				95ADAE1127B6CDC50011FD83 /* DateFormatterExtension.swift */,
+				95667E7927B85C3B009D2251 /* MockData.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -407,6 +422,7 @@
 				9547230A27A0094000D1BA89 /* Assets.xcassets in Resources */,
 				95ADAE0627B6B3900011FD83 /* Status.json in Resources */,
 				95ADAE1627B6D9140011FD83 /* Timeline.json in Resources */,
+				95667E7E27B86273009D2251 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +435,7 @@
 				9547230B27A0094000D1BA89 /* Assets.xcassets in Resources */,
 				95ADAE0727B6B3900011FD83 /* Status.json in Resources */,
 				95ADAE1727B6D9140011FD83 /* Timeline.json in Resources */,
+				95667E7F27B86273009D2251 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95ADAE1827B6D9140011FD83 /* Timeline.json in Resources */,
+				95667E8027B86273009D2251 /* Localizable.stringsdict in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -443,12 +461,14 @@
 				95369B6227B837BD00F39531 /* CompactLayout.swift in Sources */,
 				95ADAE1227B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */,
 				9547230827A0094000D1BA89 /* ContentView.swift in Sources */,
+				95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */,
 				9547230627A0094000D1BA89 /* Shout.swift in Sources */,
 				95369B6C27B8408A00F39531 /* StatusListScrollView.swift in Sources */,
 				95369B6627B8403A00F39531 /* CompactTimeline.swift in Sources */,
 				95ADAE1F27B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
 				95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95ADAE1A27B6D9740011FD83 /* StatusListMDView.swift in Sources */,
+				95667E7A27B85C3B009D2251 /* MockData.swift in Sources */,
 				9503EFAF27B4173C00ABB7B0 /* AuthView.swift in Sources */,
 				95ADAE0227B6B2E10011FD83 /* StatusView.swift in Sources */,
 			);
@@ -464,12 +484,14 @@
 				95369B6327B837BD00F39531 /* CompactLayout.swift in Sources */,
 				95ADAE1327B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */,
 				9547230927A0094000D1BA89 /* ContentView.swift in Sources */,
+				95667E7727B85BD3009D2251 /* StatusDetailView.swift in Sources */,
 				9547230727A0094000D1BA89 /* Shout.swift in Sources */,
 				95369B6D27B8408A00F39531 /* StatusListScrollView.swift in Sources */,
 				95369B6727B8403A00F39531 /* CompactTimeline.swift in Sources */,
 				95ADAE2027B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
 				95369B5E27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95ADAE1B27B6D9740011FD83 /* StatusListMDView.swift in Sources */,
+				95667E7B27B85C3B009D2251 /* MockData.swift in Sources */,
 				9503EFB027B4173C00ABB7B0 /* AuthView.swift in Sources */,
 				95ADAE0327B6B2E10011FD83 /* StatusView.swift in Sources */,
 			);
@@ -482,6 +504,8 @@
 				95369B6427B837BD00F39531 /* CompactLayout.swift in Sources */,
 				95ADADFE27B6A9730011FD83 /* Shared.swift in Sources */,
 				95ADAE0C27B6B49A0011FD83 /* JSONExtension.swift in Sources */,
+				95667E7C27B85C3B009D2251 /* MockData.swift in Sources */,
+				95667E7827B85BD3009D2251 /* StatusDetailView.swift in Sources */,
 				95369B5B27B82D4100F39531 /* WidescreenTimeline.swift in Sources */,
 				95ADAE2127B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
 				95369B5F27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,

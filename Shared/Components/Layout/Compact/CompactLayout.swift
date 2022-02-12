@@ -21,8 +21,6 @@ import Chica
 /// This is commonly used on iOS devices such as iPhone.
 struct CompactLayout: View {
 
-    @State private var t: Status? = JSONDecoder.safeDecodeFromResource(from: "Status")
-
     var body: some View {
         TabView {
             NavigationView {

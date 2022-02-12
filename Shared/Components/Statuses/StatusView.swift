@@ -57,20 +57,31 @@ struct StatusView: View {
     /// The placement configuration for the author's profile image.
     @State fileprivate var profileImagePlacement: ProfileImagePlacement
 
+    /// The square size of the author's profile image.
+    @State fileprivate var profileImageSize: CGFloat
+
     init(status: Status) {
-        self.init(status: status, truncateLines: nil, datePlacement: .default, profileImagePlacement: .byAuthorName)
+        self.init(
+            status: status,
+            truncateLines: nil,
+            datePlacement: .default,
+            profileImagePlacement: .byAuthorName,
+            profileImageSize: 48
+        )
     }
 
     fileprivate init(
         status: Status,
         truncateLines: Int?,
         datePlacement: DatePlacement,
-        profileImagePlacement: ProfileImagePlacement
+        profileImagePlacement: ProfileImagePlacement,
+        profileImageSize: CGFloat
     ) {
         self.status = status
         self.truncateLines = truncateLines
         self.datePlacement = datePlacement
         self.profileImagePlacement = profileImagePlacement
+        self.profileImageSize = profileImageSize
     }
 
     var body: some View {
@@ -127,7 +138,7 @@ struct StatusView: View {
             Image(systemName: "person.circle")
                 .imageScale(.large)
         }
-        .frame(width: 48, height: 48)
+        .frame(width: profileImageSize, height: profileImageSize)
     }
 }
 
@@ -142,7 +153,8 @@ extension StatusView {
             truncateLines: lineLimit,
             datePlacement: self.datePlacement,
             profileImagePlacement:
-                self.profileImagePlacement
+                self.profileImagePlacement,
+            profileImageSize: self.profileImageSize
         )
     }
 
@@ -152,7 +164,18 @@ extension StatusView {
             status: self.status,
             truncateLines: self.truncateLines,
             datePlacement: self.datePlacement,
-            profileImagePlacement: profilePlacement
+            profileImagePlacement: profilePlacement,
+            profileImageSize: self.profileImageSize
+        )
+    }
+
+    func profileImageSize(_ profileSize: CGFloat) -> StatusView {
+        StatusView(
+            status: self.status,
+            truncateLines: self.truncateLines,
+            datePlacement: self.datePlacement,
+            profileImagePlacement: self.profileImagePlacement,
+            profileImageSize: profileSize
         )
     }
 
@@ -162,26 +185,25 @@ extension StatusView {
             status: self.status,
             truncateLines: self.truncateLines,
             datePlacement: datePlacement,
-            profileImagePlacement: self.profileImagePlacement
+            profileImagePlacement: self.profileImagePlacement,
+            profileImageSize: self.profileImageSize
         )
     }
 }
 
 // MARK: - Previews
 struct StatusView_Previews: PreviewProvider {
-    static var statusData: Status? = try! JSONDecoder.decodeFromResource(from: "Status")
-
     static var previews: some View {
         Group {
 
-            StatusView(status: statusData!)
+            StatusView(status: MockData.status!)
                 .datePlacement(.underUsername)
                 .padding()
                 .frame(maxWidth: 550)
 
             List {
                 ForEach(1..<5) { _ in
-                    StatusView(status: statusData!)
+                    StatusView(status: MockData.status!)
                         .lineLimit(2)
                         .profilePlacement(.byEntireView)
                         .datePlacement(.default)

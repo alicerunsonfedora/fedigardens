@@ -24,7 +24,7 @@ struct StatusListScrollView: View {
         VStack {
             ForEach(statuses, id: \.id) { status in
                 NavigationLink {
-                    StatusView(status: status)
+                    StatusDetailView(status: status)
                 } label: {
                     StatusView(status: status)
                         .multilineTextAlignment(.leading)
@@ -38,12 +38,10 @@ struct StatusListScrollView: View {
 }
 
 struct StatusListScrollView_Previews: PreviewProvider {
-    static var timelineData: [Status]? = try! JSONDecoder.decodeFromResource(from: "Timeline")
-
     static var previews: some View {
         NavigationView {
             ScrollView {
-                StatusListScrollView(statuses: timelineData!)
+                StatusListScrollView(statuses: MockData.timeline!)
                     .previewDevice("iPhone 13 Pro")
                     .navigationTitle("Timeline")
             }

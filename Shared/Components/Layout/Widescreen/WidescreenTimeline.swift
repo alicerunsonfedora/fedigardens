@@ -26,7 +26,7 @@ struct WidescreenTimeline: View, LayoutStateRepresentable {
     @State private var timelineData: [Status]? = []
 
     /// A dummy timeline dataset used to render statuses into view.
-    @State private var dummyTimeline: [Status]? = try! JSONDecoder.decodeFromResource(from: "Timeline")
+    @State private var dummyTimeline: [Status]? = MockData.timeline
 
     /// The internal state of the view.
     @State var state: LayoutState = .initial

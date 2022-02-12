@@ -39,7 +39,7 @@ struct WidescreenLayout: View {
     }
 
     /// The dummy timeline data used to render certain components.
-    @State private var dummyTimeline: [Status]? = try! JSONDecoder.decodeFromResource(from: "Timeline")
+    @State private var dummyTimeline: [Status]? = MockData.timeline
 
     /// The current selected page.
     @State private var currentPage: PageSelection? = .forYou

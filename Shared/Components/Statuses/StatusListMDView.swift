@@ -27,26 +27,14 @@ struct StatusListMDView: View {
     var body: some View {
         List(statuses, id: \.id) { status in
             NavigationLink {
-                VStack(alignment: .leading) {
-                    StatusView(status: status)
-                        .profilePlacement(.byAuthorName)
-                        .datePlacement(.underUsername)
-                    Spacer()
-                }
-                .frame(minWidth: 300, idealWidth: 400)
-                .padding()
-                .toolbar {
-                    Button {
-
-                    } label: {
-                        Image(systemName: "arrowshape.turn.up.backward")
-                    }
-                }
+                StatusDetailView(status: status)
+                    .frame(minWidth: 300, idealWidth: 400)
             } label: {
                 StatusView(status: status)
                     .lineLimit(2)
                     .profilePlacement(.byEntireView)
                     .datePlacement(.default)
+                    .profileImageSize(44)
                     .padding(.vertical, 2)
                     .padding(.horizontal, 4)
             }
@@ -57,11 +45,9 @@ struct StatusListMDView: View {
 
 // MARK: - Previews
 struct StatusListMDView_Previews: PreviewProvider {
-    static var timelineData: [Status]? = try! JSONDecoder.decodeFromResource(from: "Timeline")
-
     static var previews: some View {
         NavigationView {
-            StatusListMDView(statuses: timelineData!)
+            StatusListMDView(statuses: MockData.timeline!)
         }
         .frame(minWidth: 700)
     }
