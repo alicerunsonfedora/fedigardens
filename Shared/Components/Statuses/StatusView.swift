@@ -24,11 +24,17 @@ struct StatusView: View {
     /// An enumeration representing the different position options for the status creation date.
     public enum DatePlacement {
 
-        /// The default position. Typically, this appears as the last line, under the status's content.
-        case `default`
+        /// Automatically determine the position of the date in the view.
+        ///
+        /// If there is no line limit for the status content, it is placed below the status content, right-aligned.
+        /// Otherwise, it is placed above, across from the author's username.
+        case automatic
 
         /// Under the author's username, before the status's content.
         case underUsername
+
+        /// Under the status content.
+        case underContent
     }
 
     /// An enumeration representing the different position options for the author's profile image.
@@ -41,6 +47,11 @@ struct StatusView: View {
         ///
         /// Ideal for messages and list entries in a master-detail view.
         case byEntireView
+
+        /// The profile image is completely hidden from view.
+        ///
+        /// Ideal for messages and list entries in a master-detail view, where space is limited.
+        case hidden
     }
 
     /// The status data to render in this view.
@@ -60,11 +71,13 @@ struct StatusView: View {
     /// The square size of the author's profile image.
     @State fileprivate var profileImageSize: CGFloat
 
+    @State private var renderedContent: String = "status"
+
     init(status: Status) {
         self.init(
             status: status,
             truncateLines: nil,
-            datePlacement: .default,
+            datePlacement: .automatic,
             profileImagePlacement: .byAuthorName,
             profileImageSize: 48
         )
@@ -95,11 +108,19 @@ struct StatusView: View {
                         authorImage
                     }
                     VStack(alignment: .leading) {
-                        HStack {
-                            Text(status.account.displayName)
-                                .bold()
-                            Text("(@\(status.account.acct))")
-                                .foregroundColor(.secondary)
+                        HStack(alignment: .top) {
+                            VStack(alignment: .leading) {
+                                Text(status.account.displayName)
+                                    .font(.system(.callout, design: .rounded))
+                                    .bold()
+                                Text("(@\(status.account.acct))")
+                                    .foregroundColor(.secondary)
+                                    .font(.system(.callout, design: .rounded))
+                            }
+                            if datePlacement == .automatic && truncateLines != nil {
+                                Spacer()
+                                statusCreationDate
+                            }
                         }
                         .font(.system(.title3, design: .rounded))
                         if datePlacement == .underUsername {
@@ -107,9 +128,9 @@ struct StatusView: View {
                         }
                     }
                 }
-                Text(status.content.toPlainText())
+                Text(renderedContent)
                     .lineLimit(truncateLines)
-                if datePlacement == .default {
+                if (datePlacement == .automatic && truncateLines == nil) || datePlacement == .underContent {
                     HStack {
                         Spacer()
                         statusCreationDate
@@ -118,6 +139,11 @@ struct StatusView: View {
             }
         }
         .font(.system(.body, design: .rounded))
+        .onAppear {
+            Task {
+                renderedContent = await status.content.toPlainText()
+            }
+        }
     }
 
     private var statusCreationDate: some View {
@@ -126,6 +152,7 @@ struct StatusView: View {
             format: .relative(presentation: .named)
         )
             .foregroundColor(.secondary)
+            .font(.system(.footnote, design: .rounded))
     }
 
     private var authorImage: some View {
@@ -206,7 +233,7 @@ struct StatusView_Previews: PreviewProvider {
                     StatusView(status: MockData.status!)
                         .lineLimit(2)
                         .profilePlacement(.byEntireView)
-                        .datePlacement(.default)
+                        .datePlacement(.automatic)
                 }
             }
             .frame(maxWidth: 400)

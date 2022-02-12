@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9503EFAF27B4173C00ABB7B0 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503EFAE27B4173C00ABB7B0 /* AuthView.swift */; };
-		9503EFB027B4173C00ABB7B0 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503EFAE27B4173C00ABB7B0 /* AuthView.swift */; };
+		9503EFAF27B4173C00ABB7B0 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */; };
+		9503EFB027B4173C00ABB7B0 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */; };
 		9503EFB427B417DD00ABB7B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9503EFB727B417DD00ABB7B0 /* Localizable.strings */; };
 		9503EFB527B417DD00ABB7B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9503EFB727B417DD00ABB7B0 /* Localizable.strings */; };
 		95369B5927B82D4100F39531 /* WidescreenTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5827B82D4100F39531 /* WidescreenTimeline.swift */; };
@@ -83,7 +83,7 @@
 /* Begin PBXFileReference section */
 		95019DAA27A82124005DF870 /* Capstone--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Capstone--iOS--Info.plist"; sourceTree = "<group>"; };
 		95019DAB27A82233005DF870 /* Capstone--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Capstone--macOS--Info.plist"; sourceTree = "<group>"; };
-		9503EFAE27B4173C00ABB7B0 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		9503EFB627B417DD00ABB7B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95369B5827B82D4100F39531 /* WidescreenTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidescreenTimeline.swift; sourceTree = "<group>"; };
 		95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LayoutStateRepresentable.swift; path = Utilities/LayoutStateRepresentable.swift; sourceTree = "<group>"; };
@@ -198,7 +198,7 @@
 				95D1036E27A00AF400B1EE3C /* Resources */,
 				954722F627A0093F00D1BA89 /* Shout.swift */,
 				954722F727A0093F00D1BA89 /* ContentView.swift */,
-				9503EFAE27B4173C00ABB7B0 /* AuthView.swift */,
+				9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */,
 				95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */,
 			);
 			path = Shared;
@@ -469,7 +469,7 @@
 				95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95ADAE1A27B6D9740011FD83 /* StatusListMDView.swift in Sources */,
 				95667E7A27B85C3B009D2251 /* MockData.swift in Sources */,
-				9503EFAF27B4173C00ABB7B0 /* AuthView.swift in Sources */,
+				9503EFAF27B4173C00ABB7B0 /* AuthenticationView.swift in Sources */,
 				95ADAE0227B6B2E10011FD83 /* StatusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -492,7 +492,7 @@
 				95369B5E27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95ADAE1B27B6D9740011FD83 /* StatusListMDView.swift in Sources */,
 				95667E7B27B85C3B009D2251 /* MockData.swift in Sources */,
-				9503EFB027B4173C00ABB7B0 /* AuthView.swift in Sources */,
+				9503EFB027B4173C00ABB7B0 /* AuthenticationView.swift in Sources */,
 				95ADAE0327B6B2E10011FD83 /* StatusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

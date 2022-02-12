@@ -24,7 +24,6 @@ struct StatusDetailView: View {
         ScrollView {
             VStack(alignment: .leading) {
                 StatusView(status: status)
-                    .datePlacement(.underUsername)
                     .profileImageSize(36)
                 Divider()
                 Text("missingno")

@@ -30,24 +30,27 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            if chicaAuth.authState == .signedOut {
+            Group {
+                switch chicaAuth.authState {
+                case .authenthicated(_):
 #if os(macOS)
-                Image("Cliffs")
-                    .resizable()
-                    .scaledToFill()
-#else
-                authDialog
-#endif
-            } else {
-#if os(macOS)
-                WidescreenLayout()
-#else
-                if horizontalSizeClass == .compact {
-                    CompactLayout()
-                } else {
                     WidescreenLayout()
-                }
+#else
+                    if horizontalSizeClass == .compact {
+                        CompactLayout()
+                    } else {
+                        WidescreenLayout()
+                    }
 #endif
+                default:
+#if os(macOS)
+                    Image("Cliffs")
+                        .resizable()
+                        .scaledToFill()
+#else
+                    authDialog
+#endif
+                }
             }
         }
 #if os(macOS)

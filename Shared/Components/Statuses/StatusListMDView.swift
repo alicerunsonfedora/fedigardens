@@ -32,11 +32,11 @@ struct StatusListMDView: View {
             } label: {
                 StatusView(status: status)
                     .lineLimit(2)
-                    .profilePlacement(.byEntireView)
-                    .datePlacement(.default)
+                    .profilePlacement(.hidden)
+                    .datePlacement(.automatic)
                     .profileImageSize(44)
-                    .padding(.vertical, 2)
-                    .padding(.horizontal, 4)
+                    .padding(4)
+                    .padding(.leading, 12)
             }
         }
         .frame(minWidth: 350, idealWidth: 400)

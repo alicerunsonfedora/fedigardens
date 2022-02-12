@@ -17,10 +17,14 @@ import Foundation
 extension String {
 
     /// Returns a plain-text form of an HTML-formatted string.
-    func toPlainText() -> String {
-        guard let strData = self.data(using: .utf8) else {
+    ///
+    /// This method returns asynchronously due to the nature of how ``NSAttributedString`` renders HTML with respect
+    /// to threads.
+    func toPlainText() async -> String {
+        guard let strData = self.data(using: String.Encoding.utf8) else {
             return self
         }
+
         do {
             var string = try NSAttributedString(
                 data: strData,

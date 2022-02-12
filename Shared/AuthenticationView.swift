@@ -1,5 +1,5 @@
 // 
-//  AuthView.swift
+//  AuthenticationView.swift
 //  Codename Shout
 //
 //  Created by Marquis Kurt on 9/2/22.
@@ -193,15 +193,10 @@ struct AuthenticationView: View {
 
     /// Start authenticating the user with Gopherdon.
     public func startAuthentication() {
-#if os(macOS)
         Task {
             await chicaAuth.startOauthFlow(for: "mastodon.goucher.edu")
         }
-#else
-        showAuthDialog.toggle()
-#endif
     }
-
 }
 
 // MARK: - Previews
