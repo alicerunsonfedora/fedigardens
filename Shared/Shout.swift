@@ -19,9 +19,11 @@ struct Shout: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .handlesExternalEvents(preferring: .init(arrayLiteral: "oauth"), allowing: .init(arrayLiteral: "*"))
                 .onOpenURL { url in
                     Chica.handleURL(url: url, actions: [:])
                 }
         }
+        .handlesExternalEvents(matching: .init(arrayLiteral: "oauth"))
     }
 }
