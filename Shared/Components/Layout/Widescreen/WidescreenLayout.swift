@@ -48,20 +48,18 @@ struct WidescreenLayout: View {
         NavigationView {
             List(selection: $currentPage) {
                 Section {
-                    NavigationLink {
+                    NavigationLink(tag: PageSelection.forYou, selection: $currentPage) {
                         WidescreenTimeline(timeline: .home)
                             .navigationTitle("endpoint.home")
                     } label: {
                         Label("endpoint.home", systemImage: "house")
                     }
-                    .tag(PageSelection.forYou)
-                    NavigationLink {
+                    NavigationLink(tag: PageSelection.latest, selection: $currentPage) {
                         WidescreenTimeline(timeline: .network)
                             .navigationTitle("endpoint.local")
                     } label: {
                         Label("endpoint.local", systemImage: "star")
                     }
-                    .tag(PageSelection.latest)
                 } header: {
                     Text("Quick Places")
                 }
@@ -84,8 +82,16 @@ struct WidescreenLayout: View {
             }
 
             EmptyView()
-            EmptyView()
+            VStack(spacing: 8) {
+                Image(systemName: "list.bullet.rectangle")
+                Text("general.nopage")
+            }
+            .font(.system(.largeTitle, design: .rounded))
+            .foregroundColor(.secondary)
 
+        }
+        .onAppear {
+            self.currentPage = .forYou
         }
     }
 }

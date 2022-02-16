@@ -12,6 +12,7 @@
 "general.cancel" = "Cancel";
 "general.togglesidebar" = "Toggle Sidebar";
 "general.post" = "Status";
+"general.nopage" = "No Page Selected";
 
 // MARK: - Endpoints
 "endpoint.home" = "For You";
