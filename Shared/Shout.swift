@@ -38,6 +38,9 @@ struct Shout: App {
                         replyID = params["reply_id"] ?? ""
                     }
                 }
+                .onDisappear {
+                    replyID = ""
+                }
         }
         .handlesExternalEvents(matching: .init(arrayLiteral: "create"))
         #endif
