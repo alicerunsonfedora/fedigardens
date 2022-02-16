@@ -16,14 +16,30 @@ import Chica
 
 @main
 struct Shout: App {
+
+    @State private var replyID: String = ""
+
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .handlesExternalEvents(preferring: .init(arrayLiteral: "oauth"), allowing: .init(arrayLiteral: "*"))
+                .handlesExternalEvents(preferring: .init(arrayLiteral: "oauth"), allowing: .init(arrayLiteral: "oauth"))
                 .onOpenURL { url in
                     Chica.handleURL(url: url, actions: [:])
                 }
         }
         .handlesExternalEvents(matching: .init(arrayLiteral: "oauth"))
+
+        #if os(macOS)
+        WindowGroup("create") {
+            AuthorView(promptId: $replyID)
+                .frame(minWidth: 500, minHeight: 250)
+                .onOpenURL { url in
+                    if let params = url.queryParameters {
+                        replyID = params["reply_id"] ?? ""
+                    }
+                }
+        }
+        .handlesExternalEvents(matching: .init(arrayLiteral: "create"))
+        #endif
     }
 }

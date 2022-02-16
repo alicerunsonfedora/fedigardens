@@ -68,6 +68,8 @@
 		95D1036A27A00AB200B1EE3C /* Chica in Frameworks */ = {isa = PBXBuildFile; productRef = 95D1036927A00AB200B1EE3C /* Chica */; };
 		95D1036C27A00AF000B1EE3C /* License.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 95D1036B27A00AF000B1EE3C /* License.pdf */; };
 		95D1036D27A00AF000B1EE3C /* License.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 95D1036B27A00AF000B1EE3C /* License.pdf */; };
+		95D3EADD27BBE51F00AF33D9 /* AuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */; };
+		95D3EADE27BBE51F00AF33D9 /* AuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +118,7 @@
 		95D1037627A00FCA00B1EE3C /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		95D1037727A00FCA00B1EE3C /* OBJECTIVES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = OBJECTIVES.md; sourceTree = "<group>"; };
 		95D1037827A00FCA00B1EE3C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +259,7 @@
 			children = (
 				95369B6927B8406B00F39531 /* Statuses */,
 				95ADAE1D27B6DB830011FD83 /* Layout */,
+				95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -469,6 +473,7 @@
 				95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95ADAE1A27B6D9740011FD83 /* StatusListMDView.swift in Sources */,
 				95667E7A27B85C3B009D2251 /* MockData.swift in Sources */,
+				95D3EADD27BBE51F00AF33D9 /* AuthorView.swift in Sources */,
 				9503EFAF27B4173C00ABB7B0 /* AuthenticationView.swift in Sources */,
 				95ADAE0227B6B2E10011FD83 /* StatusView.swift in Sources */,
 			);
@@ -492,6 +497,7 @@
 				95369B5E27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95ADAE1B27B6D9740011FD83 /* StatusListMDView.swift in Sources */,
 				95667E7B27B85C3B009D2251 /* MockData.swift in Sources */,
+				95D3EADE27BBE51F00AF33D9 /* AuthorView.swift in Sources */,
 				9503EFB027B4173C00ABB7B0 /* AuthenticationView.swift in Sources */,
 				95ADAE0327B6B2E10011FD83 /* StatusView.swift in Sources */,
 			);
@@ -859,8 +865,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hyperspacedev/chica";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.59050;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

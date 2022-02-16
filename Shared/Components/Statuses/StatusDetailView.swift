@@ -18,7 +18,12 @@ import Chica
 
 // MARK: - Status Detail View
 struct StatusDetailView: View {
+
+    @Environment(\.openURL) var openURL
+
     @State var status: Status
+
+    @State private var composeReply: Bool = false
 
     var body: some View {
         ScrollView {
@@ -36,9 +41,20 @@ struct StatusDetailView: View {
 #endif
         .toolbar {
             Button {
-
+#if os(macOS)
+                if let url = URL(string: "starlight://create?reply_id=\(status.id)") {
+                    openURL(url)
+                }
+#else
+                composeReply.toggle()
+#endif
             } label: {
                 Image(systemName: "arrowshape.turn.up.backward")
+            }
+        }
+        .sheet(isPresented: $composeReply) {
+            NavigationView {
+                AuthorView(prompt: status, visibility: status.visibility)
             }
         }
     }

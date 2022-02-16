@@ -28,6 +28,8 @@ struct CompactTimeline: View, LayoutStateRepresentable {
     /// A dummy timeline dataset used to render statuses into view.
     @State private var dummyTimeline: [Status]? = MockData.timeline
 
+    @State private var composeStatus: Bool = false
+
     /// The internal state of the view.
     @State var state: LayoutState = .initial
 
@@ -56,7 +58,7 @@ struct CompactTimeline: View, LayoutStateRepresentable {
         .toolbar {
             ToolbarItem {
                 Button {
-
+                    composeStatus.toggle()
                 } label: {
                     Image(systemName: "square.and.pencil")
                 }
@@ -67,6 +69,11 @@ struct CompactTimeline: View, LayoutStateRepresentable {
                 } label: {
                     Image(systemName: "arrow.clockwise")
                 }
+            }
+        }
+        .sheet(isPresented: $composeStatus) {
+            NavigationView {
+                AuthorView()
             }
         }
     }

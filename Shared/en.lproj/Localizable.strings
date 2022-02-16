@@ -29,3 +29,13 @@
 
 // MARK: - Statuses
 "status.commentary" = "status.commentary";
+"status.new" = "New Status";
+"status.postaction" = "Post";
+"status.visibility" = "Visible To";
+"status.charsremain" = "status.charsremain";
+"status.replytext" = "In reply to @%@'s status: ";
+
+// MARK: - Status Visibility
+"status.visibility.public" = "Everyone";
+"status.visibility.unlisted" = "Anyone with a link";
+"status.visibility.private" = "Followers only";

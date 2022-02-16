@@ -19,6 +19,8 @@ import Chica
 /// A view used to render a timeline in the widescreen layout.
 struct WidescreenTimeline: View, LayoutStateRepresentable {
 
+    @Environment(\.openURL) var openURL
+
     /// The timeline scope to render into view.
     @State var timeline: TimelineScope
 
@@ -27,6 +29,8 @@ struct WidescreenTimeline: View, LayoutStateRepresentable {
 
     /// A dummy timeline dataset used to render statuses into view.
     @State private var dummyTimeline: [Status]? = MockData.timeline
+
+    @State private var composeStatus: Bool = false
 
     /// The internal state of the view.
     @State var state: LayoutState = .initial
@@ -51,10 +55,23 @@ struct WidescreenTimeline: View, LayoutStateRepresentable {
                 await loadTimeline()
             }
         }
+#if os(iOS)
+        .refreshable {
+            Task {
+                await loadTimeline(forcefully: true)
+            }
+        }
+#endif
         .toolbar {
             ToolbarItem {
                 Button {
-
+#if os(macOS)
+                    if let url = URL(string: "starlight://create") {
+                        openURL(url)
+                    }
+#else
+                    composeStatus.toggle()
+#endif
                 } label: {
                     Image(systemName: "square.and.pencil")
                 }
@@ -65,6 +82,11 @@ struct WidescreenTimeline: View, LayoutStateRepresentable {
                 } label: {
                     Image(systemName: "arrow.clockwise")
                 }
+            }
+        }
+        .sheet(isPresented: $composeStatus) {
+            NavigationView {
+                AuthorView()
             }
         }
     }

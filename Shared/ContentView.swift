@@ -85,6 +85,7 @@ struct ContentView: View {
                 }
         }
 #endif
+        .animation(.spring(), value: chicaAuth.authState)
     }
 
     var authDialog: AuthenticationView {
