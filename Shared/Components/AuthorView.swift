@@ -21,19 +21,34 @@ import enum Chica.Visibility
 import UIKit
 #endif
 
+// MARK: - Author View
+
+/// A view that displays a text editor used to make posts on Gopherdon.
 struct AuthorView: View {
 
     #if os(iOS)
+    /// An environment variable used to dismiss the view if this were displayed as a sheet.
     @Environment(\.dismiss) var dismiss
     #endif
 
+    /// The status that the current status will respond to, if the user is replying.
     @State var prompt: Status?
+
+    /// The ID of the status that the current status will respond to, if the user is replying.
+    ///
+    /// Typically, this is used on macOS variants where a deep link is used to display the window.
     @State var promptId: Binding<String>?
+
+    /// The body of the status that's being authored.
     @State var text: String = ""
+
+    /// The visibility of the status. Defaults to public.
     @State var visibility: Visibility = .public
 
+    /// A prompt content variable used to render the status's text asynchronously.
     @State private var promptContent = "Content goes here."
 
+    /// The number of characters remaining that the user can utilize.
     private var charactersRemaining: Int { 500 - text.count }
 
     var body: some View {
@@ -49,52 +64,12 @@ struct AuthorView: View {
                         charsRemainText
                     }
                 }
-
-                if let reply = prompt {
-                    Section {
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(
-                                String(
-                                    format: NSLocalizedString("status.replytext", comment: "reply"),
-                                    reply.account.username
-                                )
-                            )
-                                .font(.system(.callout, design: .rounded))
-                                .bold()
-                            Text(promptContent)
-                        }
-                        .foregroundColor(.secondary)
-                        .onAppear {
-                            Task {
-                                promptContent = await reply.content.toPlainText()
-                            }
-                        }
-                    }
-                }
+                replySection
             }
             .listStyle(.grouped)
             #else
             statusText
-            if let reply = prompt {
-                VStack(alignment: .leading, spacing: 4) {
-                    Text(
-                        String(
-                            format: NSLocalizedString("status.replytext", comment: "reply"),
-                            reply.account.username
-                        )
-                    )
-                        .font(.system(.callout, design: .rounded))
-                        .bold()
-                    Text(promptContent)
-                }
-                .padding()
-                .foregroundColor(.secondary)
-                .onAppear {
-                    Task {
-                        promptContent = await reply.content.toPlainText()
-                    }
-                }
-            }
+            replySection
             #endif
         }
         .navigationTitle("status.new")
@@ -145,6 +120,32 @@ struct AuthorView: View {
         }
     }
 
+    var replySection: some View {
+        Group {
+            if let reply = prompt {
+                Section {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text(
+                            String(
+                                format: NSLocalizedString("status.replytext", comment: "reply"),
+                                reply.account.username
+                            )
+                        )
+                            .font(.system(.callout, design: .rounded))
+                            .bold()
+                        Text(promptContent)
+                    }
+                    .foregroundColor(.secondary)
+                    .onAppear {
+                        Task {
+                            promptContent = await reply.content.toPlainText()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     private var charsRemainText: some View {
         Text("\(charactersRemaining)")
             .font(.system(.body, design: .monospaced))
@@ -166,6 +167,12 @@ struct AuthorView: View {
         .font(.system(.body, design: .rounded))
     }
 
+    // MARK: - Author View Methods
+
+    /// Initialized the reply text if there is a prompted status to reply to.
+    ///
+    /// This will attempt to load in the usernames of the mentioned people in the thread, like most Mastodon clients
+    /// do, to maintain consistency and clarity in the conversation thread.
     private func constructReplyText() async {
         guard let reply = prompt else { return }
         let respondent = "@\(reply.account.acct)"
@@ -173,6 +180,8 @@ struct AuthorView: View {
         text = "\(respondent) \(otherMembers) "
     }
 
+    /// Returns the foreground color used to color the characters remaining text, to subtly warn the user if they are
+    /// about to go over the limit.
     private func getColorForChars() -> Color {
         switch charactersRemaining {
         case let chars where chars < 0:
@@ -184,6 +193,8 @@ struct AuthorView: View {
         }
     }
 
+    /// Returns a localized version of the navigation subtitle on macOS, which displays the number of characters
+    /// remaining.
     private func makeSubtitle() -> String {
         String(
             format: NSLocalizedString("status.charsremain", comment: ""),
@@ -191,6 +202,7 @@ struct AuthorView: View {
         )
     }
 
+    /// Submits the status to Gopherdon as a POST request, then attempts to close the window.
     private func submit() async {
         var params = [
             "status" : text,
@@ -217,6 +229,7 @@ struct AuthorView: View {
     }
 }
 
+// MARK: - Previews
 struct AuthorView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
