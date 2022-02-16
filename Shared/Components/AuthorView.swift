@@ -140,6 +140,7 @@ struct AuthorView: View {
                         prompt = try! await Chica.shared.request(.get, for: .statuses(id: trueId))
                     }
                 }
+                await constructReplyText()
             }
         }
     }
@@ -163,6 +164,13 @@ struct AuthorView: View {
             Text("status.visibility.private").tag(Visibility.private)
         }
         .font(.system(.body, design: .rounded))
+    }
+
+    private func constructReplyText() async {
+        guard let reply = prompt else { return }
+        let respondent = "@\(reply.account.acct)"
+        let otherMembers = reply.mentions.map { mention in "@\(mention.acct)" }.joined(separator: " ")
+        text = "\(respondent) \(otherMembers) "
     }
 
     private func getColorForChars() -> Color {
