@@ -17,6 +17,7 @@ import Chica
 @main
 struct Shout: App {
 
+    @Environment(\.openURL) var openURL
     @State private var replyID: String = ""
 
     var body: some Scene {
@@ -30,7 +31,7 @@ struct Shout: App {
         .handlesExternalEvents(matching: .init(arrayLiteral: "oauth"))
 
         #if os(macOS)
-        WindowGroup("create") {
+        WindowGroup("general.post") {
             AuthorView(promptId: $replyID)
                 .frame(minWidth: 500, idealWidth: 550, minHeight: 250, idealHeight: 300)
                 .onOpenURL { url in
@@ -43,6 +44,9 @@ struct Shout: App {
                 }
         }
         .handlesExternalEvents(matching: .init(arrayLiteral: "create"))
+        .commands {
+            TextEditingCommands()
+        }
         #endif
     }
 }

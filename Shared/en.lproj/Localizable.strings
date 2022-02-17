@@ -36,8 +36,13 @@
 "status.replyaction" = "Reply";
 "status.visibility" = "Visible To";
 "status.charsremain" = "status.charsremain";
-"status.replytext" = "In reply to @%@'s status: ";
+"status.replytext" = "In reply to %@'s status: ";
+"status.replysubtitle" = "Replying to %@";
 "status.nocontext" = "No Replies";
+"status.marksensitive" = "Mark as Sensitive";
+"status.spoilerprompt" = "You have marked this status as sensitive to some followers.";
+"status.spoilerdetail" = "Please specify a reason for this action, or mark it as sensitive without context by leaving this field blank.";
+"status.spoilerplaceholder" = "Enter a Content Warning here...";
 
 // MARK: - Status Visibility
 "status.visibility.public" = "Everyone";

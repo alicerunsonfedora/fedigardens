@@ -31,6 +31,7 @@ struct StatusDetailView: View {
             VStack(alignment: .leading) {
                 StatusView(status: status)
                     .profileImageSize(36)
+                    .statistics(true)
                 Divider()
                 context
             }
@@ -71,6 +72,7 @@ struct StatusDetailView: View {
                                 .profilePlacement(.byAuthorName)
                                 .profileImageSize(32)
                                 .datePlacement(.underContent)
+                                .statistics(true)
                         }
                         .padding(.top, 6)
                     }

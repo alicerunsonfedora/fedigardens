@@ -45,8 +45,14 @@ struct AuthorView: View {
     /// The visibility of the status. Defaults to public.
     @State var visibility: Visibility = .public
 
+    /// Whether the post should be marked as sensitive. Defaults to false.
+    @State private var sensitive: Bool = false
+
     /// A prompt content variable used to render the status's text asynchronously.
     @State private var promptContent = "Content goes here."
+
+    /// Associated warning text with a sensitive status context.
+    @State private var sensitiveText = ""
 
     /// The number of characters remaining that the user can utilize.
     private var charactersRemaining: Int { 500 - text.count }
@@ -57,29 +63,66 @@ struct AuthorView: View {
             List {
                 Section {
                     visibilityPicker
+                    Toggle("status.marksensitive", isOn: $sensitive)
+                    replySection
                     statusText
                         .frame(minHeight: 250)
                     HStack {
                         Spacer()
                         charsRemainText
                     }
+                    .listRowSeparator(.hidden)
                 }
-                Section {
-                    replySection
+                if sensitive {
+                    Section {
+                        TextField("status.spoilerplaceholder", text: $sensitiveText)
+                    } footer: {
+                        Label {
+                            VStack(alignment: .leading) {
+                                Text("status.spoilerprompt")
+                                    .bold()
+                                    .foregroundColor(.indigo)
+                                Text("status.spoilerdetail")
+                            }
+                        } icon: {
+                            Image(systemName: "eye.trianglebadge.exclamationmark")
+                                .foregroundColor(.indigo)
+                        }
+                    }
+                    .animation(.spring(), value: sensitive)
+                    .tint(.indigo)
                 }
+
             }
             .listStyle(.grouped)
             #else
-            HStack {
-                replySection
-                    .padding()
-                Spacer()
+            replyBanner
+                .animation(.spring(), value: prompt)
+            if sensitive {
+                sensitiveBanner
+                    .animation(.spring(), value: sensitive)
             }
-                .frame(maxWidth: .infinity)
-                .background(Color.accentColor.opacity(0.1))
-                .tint(.accentColor)
-            statusText
-                .padding(.top, 0)
+            ZStack {
+                statusText
+                    .padding(.top, 0)
+                VStack(alignment: .trailing) {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        ZStack {
+                            Circle()
+                                .fill(.thinMaterial)
+                                .tint(getColorForChars())
+                                .frame(width: 48, height: 48)
+                            charsRemainText
+                                .animation(.default, value: charactersRemaining)
+                        }
+
+                    }
+                }
+                .padding()
+            }
+
             #endif
         }
         .navigationTitle(
@@ -105,6 +148,20 @@ struct AuthorView: View {
             ToolbarItem {
                 visibilityPicker
             }
+
+            ToolbarItem {
+                Button {
+                    sensitive.toggle()
+                } label: {
+                    Label(
+                        "status.marksensitive",
+                        systemImage:
+                            sensitive
+                        ? "eye.trianglebadge.exclamationmark.fill"
+                        : "eye.trianglebadge.exclamationmark"
+                    )
+                }
+            }
 #endif
             ToolbarItem {
                 Button {
@@ -114,8 +171,9 @@ struct AuthorView: View {
                 } label: {
                     Label("status.postaction", systemImage: "paperplane")
                 }
-                .keyboardShortcut(.defaultAction)
+                .keyboardShortcut(.init(.return, modifiers: [.command]))
                 .tint(.accentColor)
+                .disabled(charactersRemaining < 0)
             }
 
         }
@@ -132,31 +190,23 @@ struct AuthorView: View {
         }
     }
 
+    // MARK: - Author View Computed Subviews
+
+    private var replyBanner: some View {
+        HStack {
+            replySection
+                .padding()
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
+        .background(Color.accentColor.opacity(0.1))
+        .tint(.accentColor)
+    }
+
     var replySection: some View {
         Group {
             if let reply = prompt {
-                HStack(alignment: .firstTextBaseline, spacing: 8) {
-                    Image(systemName: "text.bubble")
-                        .foregroundColor(.accentColor)
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(
-                            String(
-                                format: NSLocalizedString("status.replytext", comment: "reply"),
-                                reply.account.username
-                            )
-                        )
-                            .font(.system(.callout, design: .rounded))
-                            .foregroundColor(.accentColor)
-                            .bold()
-                        Text(promptContent)
-                    }
-                    .foregroundColor(.secondary)
-                    .onAppear {
-                        Task {
-                            promptContent = await reply.content.toPlainText()
-                        }
-                    }
-                }
+                AuthorReplySegment(reply: reply)
             }
         }
     }
@@ -171,6 +221,41 @@ struct AuthorView: View {
         TextEditor(text: $text)
             .font(.system(.title3, design: .serif))
             .lineSpacing(1.2)
+            .onChange(of: text) { newText in
+                text = newText.count < 600
+                ? newText
+                : String(newText[...newText.index(newText.startIndex, offsetBy: 600)])
+            }
+    }
+
+    private var sensitivePrompt: some View {
+        HStack(alignment: .firstTextBaseline, spacing: 8) {
+            Image(systemName: "eye.trianglebadge.exclamationmark")
+                .foregroundColor(.indigo)
+            VStack(alignment: .leading, spacing: 4) {
+                Text("status.spoilerprompt")
+                    .font(.system(.callout, design: .rounded))
+                    .foregroundColor(.indigo)
+                    .bold()
+                Text("status.spoilerdetail")
+                    .font(.system(.caption, design: .rounded))
+                    .foregroundColor(.indigo)
+                TextField("status.spoilerplaceholder", text: $sensitiveText)
+                    .textFieldStyle(.roundedBorder)
+            }
+            .foregroundColor(.secondary)
+        }
+        .padding()
+    }
+
+    private var sensitiveBanner: some View {
+        HStack {
+            sensitivePrompt
+            Spacer()
+        }
+        .frame(maxWidth: .infinity)
+        .background(Color.indigo.opacity(0.1))
+        .tint(.yellow)
     }
 
     private var visibilityPicker: some View {
@@ -207,21 +292,28 @@ struct AuthorView: View {
         case let chars where chars > 0 && chars <= 25:
             return Color.yellow
         default:
-            return Color.primary
+            return Color.secondary
         }
     }
 
     /// Returns a localized version of the navigation subtitle on macOS, which displays the number of characters
     /// remaining.
     private func makeSubtitle() -> String {
-        String(
-            format: NSLocalizedString("status.charsremain", comment: ""),
-            charactersRemaining
+        guard let reply = prompt else {
+            return ""
+        }
+        return String(
+            format: NSLocalizedString("status.replysubtitle", comment: "reply"),
+            reply.account.getAccountName()
         )
     }
 
     /// Submits the status to Gopherdon as a POST request, then attempts to close the window.
     private func submit() async {
+        if charactersRemaining < 0 {
+            return
+        }
+
         var params = [
             "status" : text,
             "visibility": visibility.rawValue,
@@ -230,6 +322,11 @@ struct AuthorView: View {
 
         if let reply = prompt {
             params["in_reply_to_id"] = reply.id
+        }
+
+        if sensitive {
+            params["sensitive"] = "true"
+            params["spoiler_text"] = sensitiveText
         }
 
         do {

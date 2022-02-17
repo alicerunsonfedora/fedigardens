@@ -71,6 +71,9 @@ struct StatusView: View {
     /// The square size of the author's profile image.
     @State fileprivate var profileImageSize: CGFloat
 
+    /// Whether to show like and boot statistics.
+    @State fileprivate var showStatistics: Bool
+
     @State private var renderedContent: String = "status"
 
     init(status: Status) {
@@ -79,7 +82,8 @@ struct StatusView: View {
             truncateLines: nil,
             datePlacement: .automatic,
             profileImagePlacement: .byAuthorName,
-            profileImageSize: 48
+            profileImageSize: 48,
+            showStatistics: false
         )
     }
 
@@ -88,13 +92,15 @@ struct StatusView: View {
         truncateLines: Int?,
         datePlacement: DatePlacement,
         profileImagePlacement: ProfileImagePlacement,
-        profileImageSize: CGFloat
+        profileImageSize: CGFloat,
+        showStatistics: Bool
     ) {
         self.status = status
         self.truncateLines = truncateLines
         self.datePlacement = datePlacement
         self.profileImagePlacement = profileImagePlacement
         self.profileImageSize = profileImageSize
+        self.showStatistics = showStatistics
     }
 
     var body: some View {
@@ -130,6 +136,16 @@ struct StatusView: View {
                 }
                 Text(renderedContent)
                     .lineLimit(truncateLines)
+                if showStatistics {
+                    HStack(spacing: 16) {
+                        Label("\(status.favouritesCount)", systemImage: "star")
+                        Label("\(status.reblogsCount)", systemImage: "arrow.2.squarepath")
+                        Label("\(status.repliesCount)", systemImage: "text.bubble")
+                    }
+                    .foregroundColor(.secondary)
+                    .font(.system(.callout))
+                    .padding(.top, 8)
+                }
                 if (datePlacement == .automatic && truncateLines == nil) || datePlacement == .underContent {
                     HStack {
                         Spacer()
@@ -181,7 +197,8 @@ extension StatusView {
             datePlacement: self.datePlacement,
             profileImagePlacement:
                 self.profileImagePlacement,
-            profileImageSize: self.profileImageSize
+            profileImageSize: self.profileImageSize,
+            showStatistics: self.showStatistics
         )
     }
 
@@ -192,7 +209,8 @@ extension StatusView {
             truncateLines: self.truncateLines,
             datePlacement: self.datePlacement,
             profileImagePlacement: profilePlacement,
-            profileImageSize: self.profileImageSize
+            profileImageSize: self.profileImageSize,
+            showStatistics: self.showStatistics
         )
     }
 
@@ -202,7 +220,8 @@ extension StatusView {
             truncateLines: self.truncateLines,
             datePlacement: self.datePlacement,
             profileImagePlacement: self.profileImagePlacement,
-            profileImageSize: profileSize
+            profileImageSize: profileSize,
+            showStatistics: self.showStatistics
         )
     }
 
@@ -213,7 +232,20 @@ extension StatusView {
             truncateLines: self.truncateLines,
             datePlacement: datePlacement,
             profileImagePlacement: self.profileImagePlacement,
-            profileImageSize: self.profileImageSize
+            profileImageSize: self.profileImageSize,
+            showStatistics: self.showStatistics
+        )
+    }
+
+    /// Whether to show the likes and boosts for this status.
+    func statistics(_ show: Bool) -> StatusView {
+        StatusView(
+            status: self.status,
+            truncateLines: self.truncateLines,
+            datePlacement: self.datePlacement,
+            profileImagePlacement: self.profileImagePlacement,
+            profileImageSize: self.profileImageSize,
+            showStatistics: show
         )
     }
 }
@@ -222,9 +254,9 @@ extension StatusView {
 struct StatusView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-
             StatusView(status: MockData.status!)
                 .datePlacement(.underUsername)
+                .statistics(true)
                 .padding()
                 .frame(maxWidth: 550)
 

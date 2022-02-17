@@ -41,6 +41,11 @@
 		95667E7E27B86273009D2251 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 95667E7D27B86273009D2251 /* Localizable.stringsdict */; };
 		95667E7F27B86273009D2251 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 95667E7D27B86273009D2251 /* Localizable.stringsdict */; };
 		95667E8027B86273009D2251 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 95667E7D27B86273009D2251 /* Localizable.stringsdict */; };
+		958C0C9727BE930D00ED6C23 /* AccountExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* AccountExtension.swift */; };
+		958C0C9827BE930D00ED6C23 /* AccountExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* AccountExtension.swift */; };
+		958C0C9927BE930D00ED6C23 /* AccountExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* AccountExtension.swift */; };
+		958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */; };
+		958C0C9D27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */; };
 		95ADADE427B6A6BB0011FD83 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* StringExtension.swift */; };
 		95ADADE527B6A6BB0011FD83 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* StringExtension.swift */; };
 		95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE727B6A7F10011FD83 /* Statuses.swift */; };
@@ -101,6 +106,8 @@
 		95667E7527B85BD3009D2251 /* StatusDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailView.swift; sourceTree = "<group>"; };
 		95667E7927B85C3B009D2251 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		95667E7D27B86273009D2251 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
+		958C0C9627BE930D00ED6C23 /* AccountExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountExtension.swift; sourceTree = "<group>"; };
+		958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorReplySegment.swift; sourceTree = "<group>"; };
 		95ADADE327B6A6BB0011FD83 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		95ADADE727B6A7F10011FD83 /* Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
 		95ADADEB27B6A8E40011FD83 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
@@ -225,6 +232,15 @@
 			path = macOS;
 			sourceTree = "<group>";
 		};
+		958C0C9A27BE955E00ED6C23 /* Author */ = {
+			isa = PBXGroup;
+			children = (
+				95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */,
+				958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */,
+			);
+			path = Author;
+			sourceTree = "<group>";
+		};
 		95A3587027B2B18D00DBB76E /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,6 +257,7 @@
 				95ADAE0927B6B49A0011FD83 /* JSONExtension.swift */,
 				95ADAE1127B6CDC50011FD83 /* DateFormatterExtension.swift */,
 				95667E7927B85C3B009D2251 /* MockData.swift */,
+				958C0C9627BE930D00ED6C23 /* AccountExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -257,9 +274,9 @@
 		95ADAE0027B6B2D10011FD83 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				958C0C9A27BE955E00ED6C23 /* Author */,
 				95369B6927B8406B00F39531 /* Statuses */,
 				95ADAE1D27B6DB830011FD83 /* Layout */,
-				95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -467,9 +484,11 @@
 				9547230827A0094000D1BA89 /* ContentView.swift in Sources */,
 				95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */,
 				9547230627A0094000D1BA89 /* Shout.swift in Sources */,
+				958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */,
 				95369B6C27B8408A00F39531 /* StatusListScrollView.swift in Sources */,
 				95369B6627B8403A00F39531 /* CompactTimeline.swift in Sources */,
 				95ADAE1F27B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
+				958C0C9727BE930D00ED6C23 /* AccountExtension.swift in Sources */,
 				95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95ADAE1A27B6D9740011FD83 /* StatusListMDView.swift in Sources */,
 				95667E7A27B85C3B009D2251 /* MockData.swift in Sources */,
@@ -491,9 +510,11 @@
 				9547230927A0094000D1BA89 /* ContentView.swift in Sources */,
 				95667E7727B85BD3009D2251 /* StatusDetailView.swift in Sources */,
 				9547230727A0094000D1BA89 /* Shout.swift in Sources */,
+				958C0C9D27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */,
 				95369B6D27B8408A00F39531 /* StatusListScrollView.swift in Sources */,
 				95369B6727B8403A00F39531 /* CompactTimeline.swift in Sources */,
 				95ADAE2027B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
+				958C0C9827BE930D00ED6C23 /* AccountExtension.swift in Sources */,
 				95369B5E27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95ADAE1B27B6D9740011FD83 /* StatusListMDView.swift in Sources */,
 				95667E7B27B85C3B009D2251 /* MockData.swift in Sources */,
@@ -508,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95369B6427B837BD00F39531 /* CompactLayout.swift in Sources */,
+				958C0C9927BE930D00ED6C23 /* AccountExtension.swift in Sources */,
 				95ADADFE27B6A9730011FD83 /* Shared.swift in Sources */,
 				95ADAE0C27B6B49A0011FD83 /* JSONExtension.swift in Sources */,
 				95667E7C27B85C3B009D2251 /* MockData.swift in Sources */,
