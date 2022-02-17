@@ -46,7 +46,7 @@ struct StatusDetailView: View {
                 }
             }
         }
-        .navigationTitle("general.post")
+        .navigationTitle("general.status")
 #if os(macOS)
         .navigationSubtitle(makeSubtitle())
 #endif

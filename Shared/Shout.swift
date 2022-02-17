@@ -31,7 +31,7 @@ struct Shout: App {
         .handlesExternalEvents(matching: .init(arrayLiteral: "oauth"))
 
         #if os(macOS)
-        WindowGroup("general.post") {
+        WindowGroup("general.status") {
             AuthorView(promptId: $replyID)
                 .frame(minWidth: 500, idealWidth: 550, minHeight: 250, idealHeight: 300)
                 .onOpenURL { url in

@@ -11,7 +11,7 @@
 "general.feedback" = "Send Feedback";
 "general.cancel" = "Cancel";
 "general.togglesidebar" = "Toggle Sidebar";
-"general.post" = "Status";
+"general.status" = "Status";
 "general.nopage" = "No Page Selected";
 
 // MARK: - Endpoints
