@@ -31,10 +31,13 @@
 // MARK: - Statuses
 "status.commentary" = "status.commentary";
 "status.new" = "New Status";
+"status.newreply" = "New Reply";
 "status.postaction" = "Post";
+"status.replyaction" = "Reply";
 "status.visibility" = "Visible To";
 "status.charsremain" = "status.charsremain";
 "status.replytext" = "In reply to @%@'s status: ";
+"status.nocontext" = "No Replies";
 
 // MARK: - Status Visibility
 "status.visibility.public" = "Everyone";

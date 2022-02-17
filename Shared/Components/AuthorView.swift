@@ -52,7 +52,7 @@ struct AuthorView: View {
     private var charactersRemaining: Int { 500 - text.count }
 
     var body: some View {
-        VStack(alignment: .leading) {
+        VStack(alignment: .leading, spacing: 0) {
             #if os(iOS)
             List {
                 Section {
@@ -64,15 +64,27 @@ struct AuthorView: View {
                         charsRemainText
                     }
                 }
-                replySection
+                Section {
+                    replySection
+                }
             }
             .listStyle(.grouped)
             #else
+            HStack {
+                replySection
+                    .padding()
+                Spacer()
+            }
+                .frame(maxWidth: .infinity)
+                .background(Color.accentColor.opacity(0.1))
+                .tint(.accentColor)
             statusText
-            replySection
+                .padding(.top, 0)
             #endif
         }
-        .navigationTitle("status.new")
+        .navigationTitle(
+            prompt == nil ? "status.new" : "status.newreply"
+        )
 #if os(macOS)
         .navigationSubtitle(makeSubtitle())
 #endif
@@ -123,7 +135,9 @@ struct AuthorView: View {
     var replySection: some View {
         Group {
             if let reply = prompt {
-                Section {
+                HStack(alignment: .firstTextBaseline, spacing: 8) {
+                    Image(systemName: "text.bubble")
+                        .foregroundColor(.accentColor)
                     VStack(alignment: .leading, spacing: 4) {
                         Text(
                             String(
@@ -132,6 +146,7 @@ struct AuthorView: View {
                             )
                         )
                             .font(.system(.callout, design: .rounded))
+                            .foregroundColor(.accentColor)
                             .bold()
                         Text(promptContent)
                     }
@@ -154,7 +169,7 @@ struct AuthorView: View {
 
     private var statusText: some View {
         TextEditor(text: $text)
-            .font(.system(.body, design: .serif))
+            .font(.system(.title3, design: .serif))
             .lineSpacing(1.2)
     }
 
@@ -176,7 +191,10 @@ struct AuthorView: View {
     private func constructReplyText() async {
         guard let reply = prompt else { return }
         let respondent = "@\(reply.account.acct)"
-        let otherMembers = reply.mentions.map { mention in "@\(mention.acct)" }.joined(separator: " ")
+        let otherMembers = reply.mentions
+            .map { mention in "@\(mention.acct)" }
+            .filter { name in name != respondent }
+            .joined(separator: " ")
         text = "\(respondent) \(otherMembers) "
     }
 
@@ -233,10 +251,10 @@ struct AuthorView: View {
 struct AuthorView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            AuthorView()
-            NavigationView {
-                AuthorView(prompt: MockData.status)
-            }
+            AuthorView(text: "Enter your status here...")
+//            NavigationView {
+                AuthorView(prompt: MockData.status, text: "Enter your reply here...")
+//            }
 
         }
 

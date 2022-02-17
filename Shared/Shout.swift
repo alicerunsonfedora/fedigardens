@@ -32,7 +32,7 @@ struct Shout: App {
         #if os(macOS)
         WindowGroup("create") {
             AuthorView(promptId: $replyID)
-                .frame(minWidth: 500, minHeight: 250)
+                .frame(minWidth: 500, idealWidth: 550, minHeight: 250, idealHeight: 300)
                 .onOpenURL { url in
                     if let params = url.queryParameters {
                         replyID = params["reply_id"] ?? ""
