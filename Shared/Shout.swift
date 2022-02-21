@@ -23,30 +23,43 @@ struct Shout: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .handlesExternalEvents(preferring: .init(arrayLiteral: "oauth"), allowing: .init(arrayLiteral: "oauth"))
-                .onOpenURL { url in
-                    Chica.handleURL(url: url, actions: [:])
-                }
+                .handlesExternalEvents(preferring: ["home", "oauth"], allowing: ["home", "oauth"])
+            .onOpenURL { url in
+                print("You called me. URL: \(url.absoluteString)")
+                Chica.handleURL(url: url, actions: [:])
+            }
         }
-        .handlesExternalEvents(matching: .init(arrayLiteral: "oauth"))
+        .handlesExternalEvents(matching: ["home", "oauth"])
 
-        #if os(macOS)
-        WindowGroup("general.status") {
+        WindowGroup("general.status", id: "create") {
+            authorView
+                .handlesExternalEvents(preferring: ["create"], allowing: ["create"])
+        }
+        .handlesExternalEvents(
+            matching: .init(arrayLiteral: "create")
+        )
+        .commands { TextEditingCommands() }
+    }
+
+    private var authorView: some View {
+        Group {
+#if os(macOS)
             AuthorView(promptId: $replyID)
                 .frame(minWidth: 500, idealWidth: 550, minHeight: 250, idealHeight: 300)
-                .onOpenURL { url in
-                    if let params = url.queryParameters {
-                        replyID = params["reply_id"] ?? ""
-                    }
-                }
-                .onDisappear {
-                    replyID = ""
-                }
+#else
+            NavigationView {
+                AuthorView(promptId: $replyID)
+            }
+            .navigationViewStyle(.stack)
+#endif
         }
-        .handlesExternalEvents(matching: .init(arrayLiteral: "create"))
-        .commands {
-            TextEditingCommands()
+        .onOpenURL { url in
+            if let params = url.queryParameters {
+                replyID = params["reply_id"] ?? ""
+            }
         }
-        #endif
+        .onDisappear {
+            replyID = ""
+        }
     }
 }

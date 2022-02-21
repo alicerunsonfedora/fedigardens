@@ -16,6 +16,10 @@ import Foundation
 import SwiftUI
 import Chica
 
+#if iOS
+import UIKit
+#endif
+
 /// A view used to render a timeline in the widescreen layout.
 struct WidescreenTimeline: View, LayoutStateRepresentable {
 
@@ -70,7 +74,13 @@ struct WidescreenTimeline: View, LayoutStateRepresentable {
                         openURL(url)
                     }
 #else
-                    composeStatus.toggle()
+                    if UIDevice.current.userInterfaceIdiom == .phone {
+                        composeStatus.toggle()
+                    } else {
+                        if let url = URL(string: "starlight://create") {
+                            openURL(url)
+                        }
+                    }
 #endif
                 } label: {
                     Image(systemName: "square.and.pencil")
