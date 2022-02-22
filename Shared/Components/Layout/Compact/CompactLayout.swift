@@ -39,6 +39,12 @@ struct CompactLayout: View {
             .tabItem {
                 Label("endpoint.local", systemImage: "star")
             }
+            NavigationView {
+                SettingsView()
+                    .navigationTitle("general.settings")
+            }.tabItem {
+                Label("general.settings", systemImage: "gear")
+            }
         }
     }
 }

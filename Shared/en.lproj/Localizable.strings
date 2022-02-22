@@ -13,6 +13,7 @@
 "general.togglesidebar" = "Toggle Sidebar";
 "general.status" = "Status";
 "general.nopage" = "No Page Selected";
+"general.settings" = "Settings";
 
 // MARK: - Endpoints
 "endpoint.home" = "For You";
@@ -62,3 +63,7 @@
 "help.replystatus" = "Reply to this discussion.";
 "help.likestatus" = "Favorite this discussion.";
 "help.booststatus" = "Boost this discussion to your profile.";
+
+// MARK: - Settings
+"settings.passiveactivities.title" = "Passive Activities";
+"settings.passiveactivities.detail" = "Turning this feature on will allow you to passively interact with discussions, such as liking and reblogging.";

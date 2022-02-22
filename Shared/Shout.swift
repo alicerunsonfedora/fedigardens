@@ -39,6 +39,13 @@ struct Shout: App {
             matching: .init(arrayLiteral: "create")
         )
         .commands { TextEditingCommands() }
+
+        #if os(macOS)
+        Settings {
+            SettingsView()
+                .frame(maxWidth: 550, minHeight: 250)
+        }
+        #endif
     }
 
     private var authorView: some View {

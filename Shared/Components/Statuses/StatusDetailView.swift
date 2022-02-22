@@ -23,8 +23,10 @@ struct StatusDetailView: View {
 
     @State var status: Status
     @State private var statusCtx: Context? = nil
-
     @State private var composeReply: Bool = false
+
+    @AppStorage("experiments.shows-passive-activities", store: .standard)
+    private var showsPassiveActivities: Bool = true
 
     var body: some View {
         ScrollView {
@@ -56,31 +58,33 @@ struct StatusDetailView: View {
             }
 
             ToolbarItemGroup {
-                Button {
-                    Task {
-                        await toggleFavoriteStatus()
+                if showsPassiveActivities {
+                    Button {
+                        Task {
+                            await toggleFavoriteStatus()
+                        }
+                    } label: {
+                        Label(
+                            "status.likeaction",
+                            systemImage: status.favourited == true ? "star.fill" : "star"
+                        )
                     }
-                } label: {
-                    Label(
-                        "status.likeaction",
-                        systemImage: status.favourited == true ? "star.fill" : "star"
-                    )
-                }
-                .help("help.likestatus")
+                    .help("help.likestatus")
 
-                Button {
-                    Task {
-                        await toggleReblogStatus()
+                    Button {
+                        Task {
+                            await toggleReblogStatus()
+                        }
+                    } label: {
+                        Label(
+                            "status.reblogaction",
+                            systemImage: status.reblogged == true
+                            ? "arrow.triangle.2.circlepath.circle.fill"
+                            : "arrow.triangle.2.circlepath.circle"
+                        )
                     }
-                } label: {
-                    Label(
-                        "status.reblogaction",
-                        systemImage: status.reblogged == true
-                        ? "arrow.triangle.2.circlepath.circle.fill"
-                        : "arrow.triangle.2.circlepath.circle"
-                    )
+                    .help("help.booststatus")
                 }
-                .help("help.booststatus")
 
 //                Button {
 //

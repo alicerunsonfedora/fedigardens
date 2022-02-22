@@ -36,6 +36,9 @@ struct WidescreenLayout: View {
 
         /// The "Notifications" page, which displays notifications.
         case notifications
+
+        /// The Settings page (iOS-only).
+        case settings
     }
 
     /// The dummy timeline data used to render certain components.
@@ -60,6 +63,14 @@ struct WidescreenLayout: View {
                     } label: {
                         Label("endpoint.local", systemImage: "star")
                     }
+#if os(iOS)
+                    NavigationLink(tag: PageSelection.settings, selection: $currentPage) {
+                        SettingsView()
+                            .navigationViewStyle(.stack)
+                    } label: {
+                        Label("general.settings", systemImage: "gear")
+                    }
+#endif
                 } header: {
                     Text("Quick Places")
                 }
