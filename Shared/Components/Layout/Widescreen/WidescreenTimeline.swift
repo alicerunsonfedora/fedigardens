@@ -85,6 +85,7 @@ struct WidescreenTimeline: View, LayoutStateRepresentable {
                 } label: {
                     Image(systemName: "square.and.pencil")
                 }
+                .help("help.poststatus")
             }
             ToolbarItem {
                 Button {
@@ -92,6 +93,7 @@ struct WidescreenTimeline: View, LayoutStateRepresentable {
                 } label: {
                     Image(systemName: "arrow.clockwise")
                 }
+                .help("help.refresh")
             }
         }
         .sheet(isPresented: $composeStatus) {

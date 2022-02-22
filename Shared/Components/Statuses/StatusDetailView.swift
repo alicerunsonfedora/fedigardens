@@ -51,7 +51,44 @@ struct StatusDetailView: View {
         .navigationSubtitle(makeSubtitle())
 #endif
         .toolbar {
-            replyButton
+            ToolbarItemGroup {
+                replyButton
+            }
+
+            ToolbarItemGroup {
+                Button {
+                    Task {
+                        await toggleFavoriteStatus()
+                    }
+                } label: {
+                    Label(
+                        "status.likeaction",
+                        systemImage: status.favourited == true ? "star.fill" : "star"
+                    )
+                }
+                .help("help.likestatus")
+
+                Button {
+                    Task {
+                        await toggleReblogStatus()
+                    }
+                } label: {
+                    Label(
+                        "status.reblogaction",
+                        systemImage: status.reblogged == true
+                        ? "arrow.triangle.2.circlepath.circle.fill"
+                        : "arrow.triangle.2.circlepath.circle"
+                    )
+                }
+                .help("help.booststatus")
+
+//                Button {
+//
+//                } label: {
+//                    Text("Bookmark")
+//                }
+            }
+
         }
         .sheet(isPresented: $composeReply) {
             NavigationView {
@@ -117,6 +154,7 @@ struct StatusDetailView: View {
         } label: {
             Label("status.replyaction", systemImage: "arrowshape.turn.up.backward")
         }
+        .help("help.replystatus")
     }
 
     private func makeSubtitle() -> String {
@@ -124,6 +162,39 @@ struct StatusDetailView: View {
             format: NSLocalizedString("status.commentary", comment: ""),
             status.repliesCount
         )
+    }
+
+    // MARK: Status Actions
+
+    private func toggleFavoriteStatus() async {
+        await updateStatus { state in
+            try await Chica.shared.request(
+                .post, for: state.favourited == true ? .unfavorite(id: state.id) : .favourite(id: state.id)
+            )
+        }
+    }
+
+    private func toggleReblogStatus() async {
+        await updateStatus { state in
+            try await Chica.shared.request(
+                .post, for: state.reblogged == true ? .unreblog(id: state.id) : .reblog(id: state.id)
+            )
+        }
+    }
+
+    private func updateStatus(by means: (Status) async throws -> Status?) async {
+        var updated: Status? = nil
+
+        do {
+            updated = try await means(status)
+        } catch {
+            print("Error occured when updating status: \(error.localizedDescription)")
+            return
+        }
+
+        if let new = updated {
+            status = new
+        }
     }
 }
 

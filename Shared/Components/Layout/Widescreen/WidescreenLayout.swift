@@ -77,6 +77,7 @@ struct WidescreenLayout: View {
                     } label: {
                         Label("general.togglesidebar", systemImage: "sidebar.left")
                     }
+                    .help("help.sidebar")
                 }
 #endif
             }

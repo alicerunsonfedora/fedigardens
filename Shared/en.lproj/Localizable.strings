@@ -32,8 +32,6 @@
 "status.commentary" = "status.commentary";
 "status.new" = "New Status";
 "status.newreply" = "New Reply";
-"status.postaction" = "Post";
-"status.replyaction" = "Reply";
 "status.visibility" = "Visible To";
 "status.charsremain" = "status.charsremain";
 "status.replytext" = "In reply to %@'s status: ";
@@ -44,7 +42,23 @@
 "status.spoilerdetail" = "Please specify a reason for this action, or mark it as sensitive without context by leaving this field blank.";
 "status.spoilerplaceholder" = "Enter a Content Warning here...";
 
+// MARK: - Status Actions
+"status.postaction" = "Post";
+"status.replyaction" = "Reply";
+"status.likeaction" = "Favorite";
+"status.reblogaction" = "Boost";
+"status.saveaction" = "Save";
+
 // MARK: - Status Visibility
 "status.visibility.public" = "Everyone";
 "status.visibility.unlisted" = "Anyone with a link";
 "status.visibility.private" = "Followers only";
+
+
+// MARK: - Help Strings
+"help.sidebar" = "Show or hide the sidebar.";
+"help.refresh" = "Refresh the current view.";
+"help.poststatus" = "Start a new discussion or write a status.";
+"help.replystatus" = "Reply to this discussion.";
+"help.likestatus" = "Favorite this discussion.";
+"help.booststatus" = "Boost this discussion to your profile.";
