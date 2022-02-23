@@ -11,6 +11,8 @@
 		9503EFB027B4173C00ABB7B0 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */; };
 		9503EFB427B417DD00ABB7B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9503EFB727B417DD00ABB7B0 /* Localizable.strings */; };
 		9503EFB527B417DD00ABB7B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9503EFB727B417DD00ABB7B0 /* Localizable.strings */; };
+		952A011127C67F3F00F36B37 /* MessagePresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A011027C67F3F00F36B37 /* MessagePresentationView.swift */; };
+		952A011227C67F3F00F36B37 /* MessagePresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A011027C67F3F00F36B37 /* MessagePresentationView.swift */; };
 		95369B5927B82D4100F39531 /* WidescreenTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5827B82D4100F39531 /* WidescreenTimeline.swift */; };
 		95369B5A27B82D4100F39531 /* WidescreenTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5827B82D4100F39531 /* WidescreenTimeline.swift */; };
 		95369B5B27B82D4100F39531 /* WidescreenTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5827B82D4100F39531 /* WidescreenTimeline.swift */; };
@@ -98,6 +100,7 @@
 		95019DAB27A82233005DF870 /* Capstone--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Capstone--macOS--Info.plist"; sourceTree = "<group>"; };
 		9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		9503EFB627B417DD00ABB7B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		952A011027C67F3F00F36B37 /* MessagePresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagePresentationView.swift; sourceTree = "<group>"; };
 		95369B5827B82D4100F39531 /* WidescreenTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidescreenTimeline.swift; sourceTree = "<group>"; };
 		95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LayoutStateRepresentable.swift; path = Utilities/LayoutStateRepresentable.swift; sourceTree = "<group>"; };
 		95369B6127B837BD00F39531 /* CompactLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactLayout.swift; sourceTree = "<group>"; };
@@ -163,6 +166,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		952A010F27C67F1400F36B37 /* Messaging */ = {
+			isa = PBXGroup;
+			children = (
+				952A011027C67F3F00F36B37 /* MessagePresentationView.swift */,
+			);
+			path = Messaging;
+			sourceTree = "<group>";
+		};
 		95369B5727B82D2F00F39531 /* Widescreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,10 +302,11 @@
 		95ADAE0027B6B2D10011FD83 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				95645BD527C554FB00FB3426 /* Settings */,
 				958C0C9A27BE955E00ED6C23 /* Author */,
-				95369B6927B8406B00F39531 /* Statuses */,
 				95ADAE1D27B6DB830011FD83 /* Layout */,
+				952A010F27C67F1400F36B37 /* Messaging */,
+				95645BD527C554FB00FB3426 /* Settings */,
+				95369B6927B8406B00F39531 /* Statuses */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -514,6 +526,7 @@
 				95667E7A27B85C3B009D2251 /* MockData.swift in Sources */,
 				95D3EADD27BBE51F00AF33D9 /* AuthorView.swift in Sources */,
 				9503EFAF27B4173C00ABB7B0 /* AuthenticationView.swift in Sources */,
+				952A011127C67F3F00F36B37 /* MessagePresentationView.swift in Sources */,
 				95ADAE0227B6B2E10011FD83 /* StatusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +555,7 @@
 				95667E7B27B85C3B009D2251 /* MockData.swift in Sources */,
 				95D3EADE27BBE51F00AF33D9 /* AuthorView.swift in Sources */,
 				9503EFB027B4173C00ABB7B0 /* AuthenticationView.swift in Sources */,
+				952A011227C67F3F00F36B37 /* MessagePresentationView.swift in Sources */,
 				95ADAE0327B6B2E10011FD83 /* StatusView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
