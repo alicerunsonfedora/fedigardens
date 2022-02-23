@@ -18,6 +18,10 @@ import Chica
 /// A data structure that houses mock data used for the app.
 struct MockData {
 
+    /// Mock data for a status's context.
+    /// - Note: The `descendants` property of this mock context can be used for messaging as well.
+    static let context: Context? = try! JSONDecoder.decodeFromResource(from: "Context")
+
     /// Mock data for a single status.
     static let status: Status? = try! JSONDecoder.decodeFromResource(from: "Status")
 
