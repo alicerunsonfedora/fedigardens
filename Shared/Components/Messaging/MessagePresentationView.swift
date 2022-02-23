@@ -16,33 +16,34 @@ import Foundation
 import SwiftUI
 import Chica
 
+// MARK: - Message Presentation View
+
+/// A view that displays a list of messages from a specific context.
+///
+/// This is commonly used to display direct messages from the `lastStatus` property of a conversation.
 struct MessagePresentationView: View {
+
+    /// The context derived from the messages to render the conversation history from.
+    @State var messages: Context
+
+    /// The ID of the current user who acts as the "sender" of messages when typing into the text field.
+    @State var senderID = ""
+
     var body: some View {
         VStack {
-            HStack {
-                MessagePresentationBubble(message: MockData.status!)
-                    .presentationStyle(.recipient)
-                Spacer()
-            }
-            HStack {
-                Spacer()
-                MessagePresentationBubble(message: MockData.status!)
-                    .presentationStyle(.sender)
-            }
-            HStack {
-                MessagePresentationBubble(message: MockData.status!)
-                    .presentationStyle(.recipient)
-                Spacer()
-            }
-            HStack {
-                MessagePresentationBubble(message: MockData.status!)
-                    .presentationStyle(.recipient)
-                Spacer()
-            }
-            HStack {
-                Spacer()
-                MessagePresentationBubble(message: MockData.status!)
-                    .presentationStyle(.sender)
+            ForEach(messages.ancestors, id: \.id) { message in
+                HStack(spacing: 1) {
+                    if message.account.id == senderID {
+                        Spacer()
+                    }
+
+                    MessagePresentationBubble(message: message)
+                        .presentationStyle(message.account.id == senderID ? .sender : .recipient)
+
+                    if message.account.id != senderID {
+                        Spacer()
+                    }
+                }
             }
         }
         .padding()
@@ -50,16 +51,29 @@ struct MessagePresentationView: View {
     }
 }
 
+// MARK: - Message Presentation Bubble
+
+/// A view that shows an individual message bubble.
 fileprivate struct MessagePresentationBubble: View {
 
+    /// An enumeration for the various presentation styles of a message bubble.
     enum PresentationStyle {
+
+        /// The style applied to messages where the current user is the sender of the message.
         case sender
+
+        /// The style applied to messages where the current user is the recipient of the message.
         case recipient
     }
 
+    /// The message to render into the bubble.
     @State var message: Status
+
+    /// The presentation style for this message bubble.
     @State fileprivate var presentationStyle: PresentationStyle
-    @State private var content = "Hello, world!"
+
+    /// The text content of the message.
+    @State private var content = "Message content goes here."
 
     init(message: Status) {
         self.init(message: message, presentationStyle: .recipient)
@@ -71,7 +85,7 @@ fileprivate struct MessagePresentationBubble: View {
     }
 
     var body: some View {
-        HStack(alignment: .bottom) {
+        HStack(alignment: .bottom, spacing: 4) {
             if presentationStyle == .recipient {
                 AsyncImage(url: URL(string: message.account.avatarStatic)!) { image in
                     image
@@ -88,7 +102,7 @@ fileprivate struct MessagePresentationBubble: View {
                 switch presentationStyle {
                 case .sender:
                     baseTextView
-                        .background(Color.indigo)
+                        .background(Color.accentColor)
                         .foregroundColor(.white)
 
                 case .recipient:
@@ -96,10 +110,11 @@ fileprivate struct MessagePresentationBubble: View {
                         .background(Color.secondary.opacity(0.5))
                 }
             }
-            .clipShape(Capsule())
+            .cornerRadius(16)
         }
     }
 
+    /// The text view that renders the message contents.
     private var baseTextView: some View {
         Text(content)
             .padding()
@@ -112,16 +127,20 @@ fileprivate struct MessagePresentationBubble: View {
 }
 
 fileprivate extension MessagePresentationBubble {
+
+    /// Sets the presentation style of the message bubble.
     func presentationStyle(_ presentation: PresentationStyle) -> some View {
         MessagePresentationBubble(message: self.message, presentationStyle: presentation)
     }
 }
 
+// MARK: - Previews
+
 struct MessagePresentationView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MessagePresentationView()
-            MessagePresentationView()
+            MessagePresentationView(messages: MockData.context!, senderID: "2")
+            MessagePresentationView(messages: MockData.context!, senderID: "2")
                 .preferredColorScheme(.dark)
         }
 
