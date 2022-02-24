@@ -40,6 +40,13 @@ struct CompactLayout: View {
                 Label("endpoint.local", systemImage: "star")
             }
             NavigationView {
+                MessagingList()
+                    .listStyle(.plain)
+                    .navigationTitle("endpoint.directmessage")
+            }.tabItem {
+                Label("endpoint.directmessage", systemImage: "bubble.left.and.bubble.right")
+            }
+            NavigationView {
                 SettingsView()
                     .navigationTitle("general.settings")
             }.tabItem {

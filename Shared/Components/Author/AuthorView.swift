@@ -263,6 +263,7 @@ struct AuthorView: View {
             Text("status.visibility.public").tag(Visibility.public)
             Text("status.visibility.unlisted").tag(Visibility.unlisted)
             Text("status.visibility.private").tag(Visibility.private)
+            Text("status.visibility.direct").tag(Visibility.direct)
         }
         .font(.system(.body, design: .rounded))
     }

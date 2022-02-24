@@ -21,17 +21,21 @@ import Chica
 /// A view that displays a list of messages from a specific context.
 ///
 /// This is commonly used to display direct messages from the `lastStatus` property of a conversation.
-struct MessagePresentationView: View {
+struct MessagingPresentationView: View {
 
     /// The context derived from the messages to render the conversation history from.
     @State var messages: Context
+
+    @State var lastMessage: Status
+
+    @State var extras = [Status]()
 
     /// The ID of the current user who acts as the "sender" of messages when typing into the text field.
     @State var senderID = ""
 
     var body: some View {
         VStack {
-            ForEach(messages.ancestors, id: \.id) { message in
+            ForEach(allStatuses(), id: \.id) { message in
                 HStack(spacing: 1) {
                     if message.account.id == senderID {
                         Spacer()
@@ -48,6 +52,10 @@ struct MessagePresentationView: View {
         }
         .padding()
 
+    }
+
+    func allStatuses() -> [Status] {
+        messages.ancestors + [lastMessage] + extras
     }
 }
 
@@ -111,6 +119,18 @@ fileprivate struct MessagePresentationBubble: View {
                 }
             }
             .cornerRadius(16)
+            if presentationStyle == .sender {
+                AsyncImage(url: URL(string: message.account.avatarStatic)!) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                } placeholder: {
+                    Image(systemName: "person.circle")
+                        .imageScale(.large)
+                }
+                .frame(width: 32, height: 32)
+            }
         }
     }
 
@@ -139,8 +159,8 @@ fileprivate extension MessagePresentationBubble {
 struct MessagePresentationView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MessagePresentationView(messages: MockData.context!, senderID: "2")
-            MessagePresentationView(messages: MockData.context!, senderID: "2")
+            MessagingPresentationView(messages: MockData.context!, lastMessage: MockData.status!, senderID: "2")
+            MessagingPresentationView(messages: MockData.context!, lastMessage: MockData.status!, senderID: "2")
                 .preferredColorScheme(.dark)
         }
 

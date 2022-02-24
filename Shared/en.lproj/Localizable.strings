@@ -54,7 +54,10 @@
 "status.visibility.public" = "Everyone";
 "status.visibility.unlisted" = "Anyone with a link";
 "status.visibility.private" = "Followers only";
+"status.visibility.direct" = "Mentioned people only (direct)";
 
+// MARK: - Messaging
+"direct.grouptitle" = "direct.grouptitle";
 
 // MARK: - Help Strings
 "help.sidebar" = "Show or hide the sidebar.";

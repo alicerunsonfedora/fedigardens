@@ -63,6 +63,12 @@ struct WidescreenLayout: View {
                     } label: {
                         Label("endpoint.local", systemImage: "star")
                     }
+                    NavigationLink(tag: PageSelection.messages, selection: $currentPage) {
+                        MessagingList()
+                            .navigationTitle("endpoint.directmessage")
+                    } label: {
+                        Label("endpoint.directmessage", systemImage: "bubble.left.and.bubble.right")
+                    }
 #if os(iOS)
                     NavigationLink(tag: PageSelection.settings, selection: $currentPage) {
                         SettingsView()

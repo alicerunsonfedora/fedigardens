@@ -40,5 +40,21 @@
 			<string>%d discussion replies</string>
 		</dict>
 	</dict>
+	<key>direct.grouptitle</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@others@</string>
+		<key>others</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>and 1 other</string>
+			<key>other</key>
+			<string>and %d others</string>
+		</dict>
+	</dict>
 </dict>
 </plist>

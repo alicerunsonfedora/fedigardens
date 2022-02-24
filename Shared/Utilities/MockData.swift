@@ -22,6 +22,9 @@ struct MockData {
     /// - Note: The `descendants` property of this mock context can be used for messaging as well.
     static let context: Context? = try! JSONDecoder.decodeFromResource(from: "Context")
 
+    /// Mock data for a private conversation.
+    static let conversation: Conversation? = try! JSONDecoder.decodeFromResource(from: "Conversation")
+
     /// Mock data for a single status.
     static let status: Status? = try! JSONDecoder.decodeFromResource(from: "Status")
 

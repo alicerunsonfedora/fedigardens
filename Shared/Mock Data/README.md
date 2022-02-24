@@ -11,3 +11,6 @@ No data sample should be using data from another account unless written permissi
 - `Status.json`: Provides a data sample of a status in a timeline.
 - `Timeline.json`: Provides a data sample of a timeline.
 - `Context.json`: Provides a data sample of a status's context.
+- `Conversation.json`: Provides a data sample of a private conversation*.
+
+> *Note: This sample uses public statuses instead of private messages.
