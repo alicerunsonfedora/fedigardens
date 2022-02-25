@@ -15,11 +15,15 @@
 import Foundation
 import SwiftUI
 import Chica
+import enum Chica.Visibility
 
 struct MessagingList: View, LayoutStateRepresentable {
 
+    @Environment(\.openURL) var openURL
+
     @State private var conversations: [Conversation]?
     @State internal var state: LayoutState = .initial
+    @State private var composeStatus: Bool = false
     @State private var currentAcct: Account?
 
     var body: some View {
@@ -32,6 +36,7 @@ struct MessagingList: View, LayoutStateRepresentable {
                     }
                 }
                 .redacted(reason: .placeholder)
+                .frame(minWidth: 250, idealWidth: 300)
             case .loaded:
                 List {
                     if let convos = conversations {
@@ -41,13 +46,20 @@ struct MessagingList: View, LayoutStateRepresentable {
                                     conversation: conversation,
                                     currentSenderID: currentAcct?.id ?? "0"
                                 )
+                                    .navigationTitle(
+                                        conversation.getAuthors(excluding: currentAcct?.id ?? "0")
+                                    )
                             } label: {
-                                MessagingListCellView(conversation: conversation, currentUserID: currentAcct?.id ?? "0")
+                                MessagingListCellView(
+                                    conversation: conversation,
+                                    currentUserID: currentAcct?.id ?? "0"
+                                )
                             }
                             .padding(4)
                         }
                     }
                 }
+                .frame(minWidth: 250, idealWidth: 300)
             case .errored(let message):
                 Text("\(message)")
             }
@@ -64,8 +76,29 @@ struct MessagingList: View, LayoutStateRepresentable {
                 await getConversations(forcefully: true)
             }
         }
+        .sheet(isPresented: $composeStatus) {
+            NavigationView {
+                AuthorView(visibility: .direct)
+            }
+            .navigationViewStyle(.stack)
+
+        }
         #endif
         .toolbar {
+            ToolbarItem {
+                Button {
+#if os(macOS)
+                    if let url = URL(string: "starlight://create") {
+                        openURL(url)
+                    }
+#else
+                    composeStatus.toggle()
+#endif
+                } label: {
+                    Image(systemName: "square.and.pencil")
+                }
+                .help("help.poststatus")
+            }
             ToolbarItem {
                 Button {
                     Task { await getConversations(forcefully: true) }
@@ -78,7 +111,6 @@ struct MessagingList: View, LayoutStateRepresentable {
     }
 
     private func getConversations(forcefully: Bool = false) async {
-
         func makeRequest() async {
             do {
                 state = .loading

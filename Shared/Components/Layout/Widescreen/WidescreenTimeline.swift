@@ -74,13 +74,7 @@ struct WidescreenTimeline: View, LayoutStateRepresentable {
                         openURL(url)
                     }
 #else
-                    if UIDevice.current.userInterfaceIdiom == .phone {
-                        composeStatus.toggle()
-                    } else {
-                        if let url = URL(string: "starlight://create") {
-                            openURL(url)
-                        }
-                    }
+                    composeStatus.toggle()
 #endif
                 } label: {
                     Image(systemName: "square.and.pencil")

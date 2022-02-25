@@ -27,7 +27,7 @@ struct MessagingListCellView: View {
             conversationImage
             VStack(alignment: .leading) {
                 HStack {
-                    Text(getAuthors())
+                    Text(conversation.getAuthors(excluding: currentUserID))
                         .bold()
                         .lineLimit(1)
                     Spacer()
@@ -77,24 +77,6 @@ struct MessagingListCellView: View {
         }
         .clipShape(Circle())
         .frame(width: 40, height: 40)
-    }
-
-    private func getAuthors() -> String {
-        if conversation.accounts.count <= 2 {
-            return conversation.accounts.last { account in account.id != currentUserID }?.getAccountName() ?? "Person"
-        }
-
-        let firstTwoNames = Array(conversation.accounts.filter { account in account.id != currentUserID }[0..<2])
-        let firstAuthors = firstTwoNames.reduce("") { text, account in
-            text + "\(account.getAccountName()), "
-        }
-
-        let remainingText = String(
-            format: NSLocalizedString("direct.grouptitle", comment: "remains"),
-            conversation.accounts.count - 2
-        )
-
-        return firstAuthors + remainingText
     }
 
     private func loadStatus() async {

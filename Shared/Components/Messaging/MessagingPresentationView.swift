@@ -95,16 +95,7 @@ fileprivate struct MessagePresentationBubble: View {
     var body: some View {
         HStack(alignment: .bottom, spacing: 4) {
             if presentationStyle == .recipient {
-                AsyncImage(url: URL(string: message.account.avatarStatic)!) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .clipShape(Circle())
-                } placeholder: {
-                    Image(systemName: "person.circle")
-                        .imageScale(.large)
-                }
-                .frame(width: 32, height: 32)
+                avatar
             }
             Group {
                 switch presentationStyle {
@@ -120,16 +111,7 @@ fileprivate struct MessagePresentationBubble: View {
             }
             .cornerRadius(16)
             if presentationStyle == .sender {
-                AsyncImage(url: URL(string: message.account.avatarStatic)!) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                        .clipShape(Circle())
-                } placeholder: {
-                    Image(systemName: "person.circle")
-                        .imageScale(.large)
-                }
-                .frame(width: 32, height: 32)
+                avatar
             }
         }
     }
@@ -137,12 +119,26 @@ fileprivate struct MessagePresentationBubble: View {
     /// The text view that renders the message contents.
     private var baseTextView: some View {
         Text(content)
-            .padding()
+            .padding(.vertical, 8)
+            .padding(.horizontal, 12)
             .onAppear {
                 Task {
                     content = await message.content.toPlainText()
                 }
             }
+    }
+
+    private var avatar: some View {
+        AsyncImage(url: URL(string: message.account.avatarStatic)!) { image in
+            image
+                .resizable()
+                .scaledToFit()
+                .clipShape(Circle())
+        } placeholder: {
+            Image(systemName: "person.circle")
+                .imageScale(.large)
+        }
+        .frame(width: 24, height: 24)
     }
 }
 

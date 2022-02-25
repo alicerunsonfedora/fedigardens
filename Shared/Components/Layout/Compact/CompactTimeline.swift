@@ -77,6 +77,7 @@ struct CompactTimeline: View, LayoutStateRepresentable {
             NavigationView {
                 AuthorView()
             }
+            .navigationViewStyle(.stack)
         }
     }
 

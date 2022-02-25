@@ -98,6 +98,7 @@ struct StatusDetailView: View {
             NavigationView {
                 AuthorView(prompt: status, visibility: status.visibility)
             }
+            .navigationViewStyle(.stack)
         }
     }
 
@@ -148,13 +149,13 @@ struct StatusDetailView: View {
 
     private var replyButton: some View {
         Button {
-//#if os(macOS)
+#if os(macOS)
             if let url = URL(string: "starlight://create?reply_id=\(status.id)") {
                 openURL(url)
             }
-//#else
-//            composeReply.toggle()
-//#endif
+#else
+            composeReply.toggle()
+#endif
         } label: {
             Label("status.replyaction", systemImage: "arrowshape.turn.up.backward")
         }

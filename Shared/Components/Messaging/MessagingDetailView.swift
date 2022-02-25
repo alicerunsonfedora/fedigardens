@@ -37,6 +37,7 @@ struct MessagingDetailView: View, LayoutStateRepresentable {
                 }
             }
         }
+        .frame(minWidth: 300, minHeight: 200)
     }
 
     var conversationView: some View {
@@ -60,6 +61,8 @@ struct MessagingDetailView: View, LayoutStateRepresentable {
                                 extras: recentlyWritten,
                                 senderID: currentSenderID
                             )
+                            Spacer()
+                                .frame(height: 48)
                         } else {
                             Text("Start The Conversation")
                         }

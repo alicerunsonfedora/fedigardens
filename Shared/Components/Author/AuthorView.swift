@@ -132,17 +132,17 @@ struct AuthorView: View {
         .navigationSubtitle(makeSubtitle())
 #endif
         .toolbar {
-//#if os(iOS)
-//            ToolbarItem(placement: .navigationBarLeading) {
-//                Button {
-//                    dismiss()
-//                } label: {
-//                    Label("actions.cancel", systemImage: "xmark")
-//                }
-//                .keyboardShortcut(.cancelAction)
-//                .tint(.gray)
-//            }
-//#endif
+#if os(iOS)
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    Label("actions.cancel", systemImage: "xmark")
+                }
+                .keyboardShortcut(.cancelAction)
+                .tint(.gray)
+            }
+#endif
 
 #if os(macOS)
             ToolbarItem {

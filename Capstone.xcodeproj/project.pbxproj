@@ -54,6 +54,9 @@
 		958C0C9927BE930D00ED6C23 /* AccountExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* AccountExtension.swift */; };
 		958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */; };
 		958C0C9D27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */; };
+		9594DE3B27C927820036325A /* ConversationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594DE3A27C927820036325A /* ConversationExtension.swift */; };
+		9594DE3C27C927820036325A /* ConversationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594DE3A27C927820036325A /* ConversationExtension.swift */; };
+		9594DE3D27C927820036325A /* ConversationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594DE3A27C927820036325A /* ConversationExtension.swift */; };
 		95ADADE427B6A6BB0011FD83 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* StringExtension.swift */; };
 		95ADADE527B6A6BB0011FD83 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* StringExtension.swift */; };
 		95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE727B6A7F10011FD83 /* Statuses.swift */; };
@@ -134,6 +137,7 @@
 		95667E7D27B86273009D2251 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 		958C0C9627BE930D00ED6C23 /* AccountExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountExtension.swift; sourceTree = "<group>"; };
 		958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorReplySegment.swift; sourceTree = "<group>"; };
+		9594DE3A27C927820036325A /* ConversationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationExtension.swift; sourceTree = "<group>"; };
 		95ADADE327B6A6BB0011FD83 /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		95ADADE727B6A7F10011FD83 /* Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
 		95ADADEB27B6A8E40011FD83 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
@@ -311,6 +315,7 @@
 				95667E7927B85C3B009D2251 /* MockData.swift */,
 				95ADADE327B6A6BB0011FD83 /* StringExtension.swift */,
 				95645BD127C5546E00FB3426 /* UserDefaultsExtension.swift */,
+				9594DE3A27C927820036325A /* ConversationExtension.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -553,6 +558,7 @@
 				9547230627A0094000D1BA89 /* Shout.swift in Sources */,
 				958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */,
 				95369B6C27B8408A00F39531 /* StatusListScrollView.swift in Sources */,
+				9594DE3B27C927820036325A /* ConversationExtension.swift in Sources */,
 				95645BD227C5546E00FB3426 /* UserDefaultsExtension.swift in Sources */,
 				95369B6627B8403A00F39531 /* CompactTimeline.swift in Sources */,
 				95ADAE1F27B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
@@ -586,6 +592,7 @@
 				9547230727A0094000D1BA89 /* Shout.swift in Sources */,
 				958C0C9D27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */,
 				95369B6D27B8408A00F39531 /* StatusListScrollView.swift in Sources */,
+				9594DE3C27C927820036325A /* ConversationExtension.swift in Sources */,
 				95645BD327C5546E00FB3426 /* UserDefaultsExtension.swift in Sources */,
 				95369B6727B8403A00F39531 /* CompactTimeline.swift in Sources */,
 				95ADAE2027B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
@@ -619,6 +626,7 @@
 				95645BD427C5546E00FB3426 /* UserDefaultsExtension.swift in Sources */,
 				95369B6827B8403A00F39531 /* CompactTimeline.swift in Sources */,
 				95ADAE1C27B6D9740011FD83 /* StatusListMDView.swift in Sources */,
+				9594DE3D27C927820036325A /* ConversationExtension.swift in Sources */,
 				95ADAE1427B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */,
 				95C0AF4827C6B39E0007D1D0 /* MessagingDetailView.swift in Sources */,
 				95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */,
