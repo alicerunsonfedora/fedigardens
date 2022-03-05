@@ -74,6 +74,10 @@ struct StatusView: View {
     /// Whether to show like and boot statistics.
     @State fileprivate var showStatistics: Bool
 
+    /// The content of the status.
+    ///
+    /// While it is possible to access the status's content via `Status.content.toPlainText()`, this method must be
+    /// performed asynchronously, as the HTML renderer does not work in a background thread.
     @State private var renderedContent: String = "status"
 
     init(status: Status) {

@@ -16,8 +16,13 @@ import Foundation
 import SwiftUI
 import Chica
 
+// MARK: - Status List (Scroll View)
+/// A view that displays a list of statuses in a ScrollView.
+///
+/// Typically, this is used on iOS to display a list of statuses witout rendering the list lines.
 struct StatusListScrollView: View {
 
+    /// The list of statuses that will be rendered in the view.
     @State var statuses: [Status]
 
     var body: some View {
@@ -37,6 +42,7 @@ struct StatusListScrollView: View {
 
 }
 
+// MARK: - Previews
 struct StatusListScrollView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {

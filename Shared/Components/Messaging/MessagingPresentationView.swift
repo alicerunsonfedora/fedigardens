@@ -26,8 +26,10 @@ struct MessagingPresentationView: View {
     /// The context derived from the messages to render the conversation history from.
     @State var messages: Context
 
+    /// The last message in the message list.
     @State var lastMessage: Status
 
+    /// A list of extra statuses to be added to the message list.
     @State var extras = [Status]()
 
     /// The ID of the current user who acts as the "sender" of messages when typing into the text field.
@@ -54,6 +56,7 @@ struct MessagingPresentationView: View {
 
     }
 
+    /// Returns a list of the messages, last message, and extra statuses to be rendered.
     func allStatuses() -> [Status] {
         messages.ancestors + [lastMessage] + extras
     }

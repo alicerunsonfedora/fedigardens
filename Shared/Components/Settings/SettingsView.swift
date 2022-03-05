@@ -15,8 +15,15 @@
 import Foundation
 import SwiftUI
 
+// MARK: - Settings View
+
+/// A view that represents the Settings pane.
 struct SettingsView: View {
 
+    /// Whether to show passive activities.
+    ///
+    /// Passive activites are described as actions that the user can perform without actively engaging in the content.
+    /// These include liking, boosting, and/or bookmarking a post.
     @AppStorage("experiments.shows-passive-activities", store: .standard)
     var showsPassiveActivities: Bool = true
 
@@ -42,6 +49,7 @@ struct SettingsView: View {
     }
 }
 
+// MARK: - Previews
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()

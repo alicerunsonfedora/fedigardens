@@ -16,6 +16,9 @@ import Foundation
 import SwiftUI
 import Chica
 
+// MARK: - Authentication View
+
+/// A view that displays information prompting the user to authenticate and authorize the app to access Gopherdon.
 struct AuthenticationView: View {
 
 #if os(iOS)

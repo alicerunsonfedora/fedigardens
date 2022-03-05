@@ -16,9 +16,12 @@ import Foundation
 import SwiftUI
 import Chica
 
+/// A view that displays a status that will be replied to.
 struct AuthorReplySegment: View {
 
+    /// The status that the user will reply to.
     @State var reply: Status
+
     @State private var promptContent = ""
 
     var body: some View {

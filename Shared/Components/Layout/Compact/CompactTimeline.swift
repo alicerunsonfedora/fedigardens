@@ -28,6 +28,9 @@ struct CompactTimeline: View, LayoutStateRepresentable {
     /// A dummy timeline dataset used to render statuses into view.
     @State private var dummyTimeline: [Status]? = MockData.timeline
 
+    /// Whether the author view should be displayed as a sheet on iOS.
+    ///
+    /// Defaults to `false`, and is only marked `true` in iOS by a button press.
     @State private var composeStatus: Bool = false
 
     /// The internal state of the view.

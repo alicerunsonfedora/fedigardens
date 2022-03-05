@@ -20,14 +20,16 @@ import XCTest
 class ShoutTest_Status: XCTestCase {
 
     /// Test that a HTML-formatted string is stripped and converted to plain text.
-    func testStatusConversionToPlainText() throws {
+    func testStatusConversionToPlainText() async throws {
         let originalText = "<p>Hello, world!</p>"
         let expectedText = "Hello, world!"
-        XCTAssertEqual(originalText.toPlainText(), expectedText)
+
+        let performed = await originalText.toPlainText()
+        XCTAssertEqual(performed, expectedText)
     }
 
     /// Test that an HTML-formatted string is stripped, converted to plain text, and ignores any HTML formatting.
-    func testStatusConversionToPlainTextIgnoresFormatting() throws {
+    func testStatusConversionToPlainTextIgnoresFormatting() async throws {
         let originalText = """
         <p>
             Shout, shout, let it all out<br/>
@@ -36,7 +38,7 @@ class ShoutTest_Status: XCTestCase {
             <span class="roland">Come on</span>
         </p>
         """
-        let convertedText = originalText.toPlainText()
+        let convertedText = await originalText.toPlainText()
         for element in ["<p>", "</p>", "<br/>", "<b>", "</b>", "<span", "</span>"] {
             XCTAssertTrue(!convertedText.contains(element))
         }

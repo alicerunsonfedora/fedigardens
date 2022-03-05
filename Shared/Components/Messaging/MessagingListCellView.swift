@@ -16,10 +16,20 @@ import Foundation
 import SwiftUI
 import Chica
 
+// MARK: - Messaging List Cell
+
+/// A view that displays a single cell in a list of messages.
+///
+/// This is commonly used in a list of messages to determine what conversation is active.
 struct MessagingListCellView: View {
 
+    /// The conversation this cell corresponds to.
     @State var conversation: Conversation
+
+    /// The current user's ID.
     @State var currentUserID: String
+
+    /// The contents of the last message in the thread.
     @State private var message = "Message content goes here."
 
     var body: some View {
@@ -79,12 +89,16 @@ struct MessagingListCellView: View {
         .frame(width: 40, height: 40)
     }
 
+    /// Loads the last status in the conversation into the cell view.
+    ///
+    /// The last status typically indicates the most recent message in the conversation.
     private func loadStatus() async {
         guard let status = conversation.lastStatus else { return }
         message = await status.content.toPlainText()
     }
 }
 
+// MARK: - Previews
 struct MessagingListCellView_Previews: PreviewProvider {
     static var previews: some View {
         MessagingListCellView(conversation: MockData.conversation!, currentUserID: "0")

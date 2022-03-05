@@ -16,13 +16,30 @@ import Foundation
 import SwiftUI
 import Chica
 
+// MARK: - Messaging Detail View
+
+/// A view that represents the detail view of a master-detail view for messaging.
+///
+/// This is commonly used to display a message thread.
 struct MessagingDetailView: View, LayoutStateRepresentable {
 
+    /// The corresponding conversation the detail view will render.
     @State var conversation: Conversation
+
+    /// The ID of the current user.
     @State var currentSenderID: String = ""
+
+    /// The context corresponding to the conversation.
+    ///
+    /// This is used to load in all of the previous messages from the conversation thread.
     @State private var conversationCtx: Context? = nil
+
+    /// The current state of the view's layout.
     @State internal var state: LayoutState = .initial
+    
     @State private var text: String = ""
+
+    /// A list of messages that were recently written by the current user.
     @State private var recentlyWritten = [Status]()
 
     var body: some View {
@@ -103,6 +120,7 @@ struct MessagingDetailView: View, LayoutStateRepresentable {
     }
 }
 
+// MARK: - Previews
 struct MessagingDetailView_Previews: PreviewProvider {
     static var previews: some View {
         Group {

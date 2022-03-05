@@ -14,10 +14,17 @@
 import SwiftUI
 import Chica
 
+/// The main entry structure of the app.
 @main
 struct Shout: App {
 
     @Environment(\.openURL) var openURL
+
+    /// The ID of the status that the user will reply to in the author view.
+    ///
+    /// This is used internally to set up the state of ``AuthorView`` when the user clicks on a "link" that opens a URL
+    /// corresponding to a reply action, such as `starlight://create?reply_id=XXX` where `XXX` is the ID of the status
+    /// to reply to. This is typically used for macOS specifically.
     @State private var replyID: String = ""
 
     var body: some Scene {

@@ -17,14 +17,30 @@ import SwiftUI
 import Chica
 
 // MARK: - Status Detail View
+
+/// A view that displays the detail view for a master-detail view of statuses.
+///
+/// Typically, this will display a status and its replies. If no replies are available, a view is present to respond
+/// to the post. If passive activities are enabled, buttons for liking and boosting the status are present.
 struct StatusDetailView: View {
 
     @Environment(\.openURL) var openURL
 
+    /// The status that will be rendered in this view.
     @State var status: Status
+
+    /// The context for the current status, which contains its replies and preceding statuses.
     @State private var statusCtx: Context? = nil
+
+    /// Whether the author view should be presented.
+    ///
+    /// Defaults to `false`, and only becomes `true` on iOS via a button press.
     @State private var composeReply: Bool = false
 
+    /// Whether to show passive activities.
+    ///
+    /// Passive activites are described as actions that the user can perform without actively engaging in the content.
+    /// These include liking, boosting, and/or bookmarking a post.
     @AppStorage("experiments.shows-passive-activities", store: .standard)
     private var showsPassiveActivities: Bool = true
 
@@ -173,6 +189,7 @@ struct StatusDetailView: View {
 
     // MARK: Status Actions
 
+    // Toggles whether the user likes the status.
     private func toggleFavoriteStatus() async {
         await updateStatus { state in
             try await Chica.shared.request(
@@ -181,6 +198,7 @@ struct StatusDetailView: View {
         }
     }
 
+    // Toggles whether the user boosts the status.
     private func toggleReblogStatus() async {
         await updateStatus { state in
             try await Chica.shared.request(
@@ -189,6 +207,9 @@ struct StatusDetailView: View {
         }
     }
 
+    /// Make a request to update the current status.
+    /// - Parameter means: A closure that will be performed to update the status. Should return an optional status,
+    ///     which represents the newly modified status.
     private func updateStatus(by means: (Status) async throws -> Status?) async {
         var updated: Status? = nil
 

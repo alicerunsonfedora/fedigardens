@@ -14,6 +14,9 @@
 import SwiftUI
 import Chica
 
+// MARK: - Content View
+
+/// The primary content view of the app.
 struct ContentView: View {
 
 #if os(iOS)
@@ -92,6 +95,8 @@ struct ContentView: View {
         AuthenticationView()
     }
 }
+
+// MARK: - Previews
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

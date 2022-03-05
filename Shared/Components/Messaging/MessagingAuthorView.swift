@@ -1,30 +1,42 @@
 // 
 //  MessagingAuthorView.swift
-//  Capstone
+//  Codename Shout
 //
 //  Created by Marquis Kurt on 23/2/22.
 //
-//  This file is part of Capstone.
+//  This file is part of Codename Shout.
 //
-//  Capstone is non-violent software: you can use, redistribute, and/or modify it under the terms of the CNPLv7+
+//  Codename Shout is non-violent software: you can use, redistribute, and/or modify it under the terms of the CNPLv7+
 //  as found in the LICENSE file in the source code root directory or at <https://git.pixie.town/thufie/npl-builder>.
 //
-//  Capstone comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
+//  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
 import Foundation
 import SwiftUI
 import Chica
 
+// MARK: - Messaging Author View
+
+/// A view used to author messages to other people in a conversation.
+///
+/// This differs from ``AuthorView`` in that it uses other settings to write messages. Additionally, it displays no
+/// options to change visibilities or apply content warnings at the moment.
 struct MessagingAuthorView: View {
+
+    /// The status that the user will be responding to in the conversation.
     @State var replyStatus: Status
 
+    /// The current user's ID.
     @State var currentUserID = "0"
 
+    /// The text of the message that will be sent.
     @State private var text: String = ""
 
+    /// A closure that will be executed when the message was successfully sent.
     var onSubmit: (Status) -> Void
 
+    /// The number of characters remaining.
     private var charactersRemaining: Int { 500 - text.count }
 
     var body: some View {
@@ -61,6 +73,7 @@ struct MessagingAuthorView: View {
         }
     }
 
+    /// Inserts the message text into the text field. This will include all of the mentioned users.
     private func addMessageText() async {
         let respondent = "@\(replyStatus.account.acct)"
         let otherMembers = replyStatus.mentions
@@ -71,6 +84,7 @@ struct MessagingAuthorView: View {
         text = "\(respondent) \(otherMembers) "
     }
 
+    /// Attempt to submit a POST request to send the message.
     private func submit() async {
         if charactersRemaining < 0 {
             return
@@ -95,6 +109,8 @@ struct MessagingAuthorView: View {
         }
     }
 }
+
+// MARK: - Previews
 
 struct MessagingAuthorView_Previews: PreviewProvider {
     static var previews: some View {

@@ -15,18 +15,13 @@
 		952A011227C67F3F00F36B37 /* MessagingPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A011027C67F3F00F36B37 /* MessagingPresentationView.swift */; };
 		95369B5927B82D4100F39531 /* WidescreenTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5827B82D4100F39531 /* WidescreenTimeline.swift */; };
 		95369B5A27B82D4100F39531 /* WidescreenTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5827B82D4100F39531 /* WidescreenTimeline.swift */; };
-		95369B5B27B82D4100F39531 /* WidescreenTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5827B82D4100F39531 /* WidescreenTimeline.swift */; };
 		95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */; };
 		95369B5E27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */; };
-		95369B5F27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */; };
 		95369B6227B837BD00F39531 /* CompactLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6127B837BD00F39531 /* CompactLayout.swift */; };
 		95369B6327B837BD00F39531 /* CompactLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6127B837BD00F39531 /* CompactLayout.swift */; };
-		95369B6427B837BD00F39531 /* CompactLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6127B837BD00F39531 /* CompactLayout.swift */; };
 		95369B6627B8403A00F39531 /* CompactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6527B8403A00F39531 /* CompactTimeline.swift */; };
-		95369B6827B8403A00F39531 /* CompactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6527B8403A00F39531 /* CompactTimeline.swift */; };
 		95369B6C27B8408A00F39531 /* StatusListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6B27B8408A00F39531 /* StatusListScrollView.swift */; };
 		95369B6D27B8408A00F39531 /* StatusListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6B27B8408A00F39531 /* StatusListScrollView.swift */; };
-		95369B6E27B8408A00F39531 /* StatusListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6B27B8408A00F39531 /* StatusListScrollView.swift */; };
 		9547230627A0094000D1BA89 /* Shout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F627A0093F00D1BA89 /* Shout.swift */; };
 		9547230727A0094000D1BA89 /* Shout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F627A0093F00D1BA89 /* Shout.swift */; };
 		9547230827A0094000D1BA89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F727A0093F00D1BA89 /* ContentView.swift */; };
@@ -38,10 +33,8 @@
 		95645BD427C5546E00FB3426 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95645BD127C5546E00FB3426 /* UserDefaultsExtension.swift */; };
 		95645BD727C5550B00FB3426 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95645BD627C5550B00FB3426 /* SettingsView.swift */; };
 		95645BD827C5550B00FB3426 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95645BD627C5550B00FB3426 /* SettingsView.swift */; };
-		95645BD927C5550B00FB3426 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95645BD627C5550B00FB3426 /* SettingsView.swift */; };
 		95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7527B85BD3009D2251 /* StatusDetailView.swift */; };
 		95667E7727B85BD3009D2251 /* StatusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7527B85BD3009D2251 /* StatusDetailView.swift */; };
-		95667E7827B85BD3009D2251 /* StatusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7527B85BD3009D2251 /* StatusDetailView.swift */; };
 		95667E7A27B85C3B009D2251 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7927B85C3B009D2251 /* MockData.swift */; };
 		95667E7B27B85C3B009D2251 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7927B85C3B009D2251 /* MockData.swift */; };
 		95667E7C27B85C3B009D2251 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7927B85C3B009D2251 /* MockData.swift */; };
@@ -76,10 +69,8 @@
 		95ADAE1827B6D9140011FD83 /* Timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = 95ADAE1527B6D9140011FD83 /* Timeline.json */; };
 		95ADAE1A27B6D9740011FD83 /* StatusListMDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1927B6D9740011FD83 /* StatusListMDView.swift */; };
 		95ADAE1B27B6D9740011FD83 /* StatusListMDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1927B6D9740011FD83 /* StatusListMDView.swift */; };
-		95ADAE1C27B6D9740011FD83 /* StatusListMDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1927B6D9740011FD83 /* StatusListMDView.swift */; };
 		95ADAE1F27B6DC120011FD83 /* WidescreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1E27B6DC120011FD83 /* WidescreenLayout.swift */; };
 		95ADAE2027B6DC120011FD83 /* WidescreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1E27B6DC120011FD83 /* WidescreenLayout.swift */; };
-		95ADAE2127B6DC120011FD83 /* WidescreenLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1E27B6DC120011FD83 /* WidescreenLayout.swift */; };
 		95C0AF3E27C688170007D1D0 /* Context.json in Resources */ = {isa = PBXBuildFile; fileRef = 95C0AF3D27C688170007D1D0 /* Context.json */; };
 		95C0AF3F27C688170007D1D0 /* Context.json in Resources */ = {isa = PBXBuildFile; fileRef = 95C0AF3D27C688170007D1D0 /* Context.json */; };
 		95C0AF4027C688170007D1D0 /* Context.json in Resources */ = {isa = PBXBuildFile; fileRef = 95C0AF3D27C688170007D1D0 /* Context.json */; };
@@ -88,7 +79,6 @@
 		95C0AF4427C6B1AC0007D1D0 /* Conversation.json in Resources */ = {isa = PBXBuildFile; fileRef = 95C0AF4127C6B1AC0007D1D0 /* Conversation.json */; };
 		95C0AF4627C6B39E0007D1D0 /* MessagingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0AF4527C6B39E0007D1D0 /* MessagingDetailView.swift */; };
 		95C0AF4727C6B39E0007D1D0 /* MessagingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0AF4527C6B39E0007D1D0 /* MessagingDetailView.swift */; };
-		95C0AF4827C6B39E0007D1D0 /* MessagingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0AF4527C6B39E0007D1D0 /* MessagingDetailView.swift */; };
 		95C0AF4A27C6C7920007D1D0 /* MessagingAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0AF4927C6C7920007D1D0 /* MessagingAuthorView.swift */; };
 		95C0AF4B27C6C7920007D1D0 /* MessagingAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0AF4927C6C7920007D1D0 /* MessagingAuthorView.swift */; };
 		95D1036727A00AAB00B1EE3C /* Chica in Frameworks */ = {isa = PBXBuildFile; productRef = 95D1036627A00AAB00B1EE3C /* Chica */; };
@@ -612,23 +602,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95369B6427B837BD00F39531 /* CompactLayout.swift in Sources */,
 				958C0C9927BE930D00ED6C23 /* AccountExtension.swift in Sources */,
 				95ADADFE27B6A9730011FD83 /* Shared.swift in Sources */,
 				95ADAE0C27B6B49A0011FD83 /* JSONExtension.swift in Sources */,
 				95667E7C27B85C3B009D2251 /* MockData.swift in Sources */,
-				95667E7827B85BD3009D2251 /* StatusDetailView.swift in Sources */,
-				95369B5B27B82D4100F39531 /* WidescreenTimeline.swift in Sources */,
-				95ADAE2127B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
-				95369B5F27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
-				95645BD927C5550B00FB3426 /* SettingsView.swift in Sources */,
-				95369B6E27B8408A00F39531 /* StatusListScrollView.swift in Sources */,
 				95645BD427C5546E00FB3426 /* UserDefaultsExtension.swift in Sources */,
-				95369B6827B8403A00F39531 /* CompactTimeline.swift in Sources */,
-				95ADAE1C27B6D9740011FD83 /* StatusListMDView.swift in Sources */,
 				9594DE3D27C927820036325A /* ConversationExtension.swift in Sources */,
 				95ADAE1427B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */,
-				95C0AF4827C6B39E0007D1D0 /* MessagingDetailView.swift in Sources */,
 				95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

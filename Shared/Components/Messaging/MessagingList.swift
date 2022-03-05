@@ -17,13 +17,28 @@ import SwiftUI
 import Chica
 import enum Chica.Visibility
 
+// MARK: - Messaging List
+
+/// A view that represents a list of messages.
+///
+/// This is commonly used to display a conversation list in the "Messages" section of the app. The design is
+/// primarily inspired by Apple's Messages app.
 struct MessagingList: View, LayoutStateRepresentable {
 
     @Environment(\.openURL) var openURL
 
+    /// The list of conversations the user is a part of.
     @State private var conversations: [Conversation]?
+
+    /// The current state of the view's layout.
     @State internal var state: LayoutState = .initial
+
+    /// Whether the author view should be open to create a new message.
+    ///
+    /// This defaults to `false`, and will only be marked `true` on iOS with a button press.
     @State private var composeStatus: Bool = false
+
+    /// The current user that is logged into the app.
     @State private var currentAcct: Account?
 
     var body: some View {
@@ -110,6 +125,15 @@ struct MessagingList: View, LayoutStateRepresentable {
         }
     }
 
+    /// Load the list of conversations into the view.
+    /// - Parameter forcefully: Whether to forcefully reload the data, regardless if the conversation list is already
+    ///     loaded. Defaults to false.
+    ///
+    /// Typically, this method is called when rendering the view for the first time to fetch the conversations list.
+    /// Since the network call is asynchronous, this method has been made asynchronous.
+    ///
+    /// - Important: Only forcefully reload data when the user requests it. This call may be expensive on the network
+    ///     and may take time to re-fetch the data into memory.
     private func getConversations(forcefully: Bool = false) async {
         func makeRequest() async {
             do {
@@ -135,7 +159,9 @@ struct MessagingList: View, LayoutStateRepresentable {
         }
     }
 
+    /// Retrieves the current user account.
     private func getCurrentAccount() async {
+        if currentAcct != nil { return }
         do {
             currentAcct = try await Chica.shared.request(.get, for: .verifyAccountCredentials)
         } catch FetchError.message(let reason, let data) {
@@ -150,6 +176,7 @@ struct MessagingList: View, LayoutStateRepresentable {
 
 }
 
+// MARK: - Previews
 struct MessagingList_Previews: PreviewProvider {
     static var previews: some View {
         MessagingList()

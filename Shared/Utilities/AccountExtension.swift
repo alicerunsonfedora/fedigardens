@@ -16,6 +16,10 @@ import Foundation
 import Chica
 
 extension Account {
+
+    /// Returns the account name for this account.
+    ///
+    /// This will attempt to return the display name, username, or account name (in the order specified).
     func getAccountName() -> String {
         if !displayName.isEmpty { return displayName }
         if !username.isEmpty { return "@\(username)" }
