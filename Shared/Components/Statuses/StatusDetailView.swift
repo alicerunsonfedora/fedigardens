@@ -98,7 +98,9 @@ struct StatusDetailView: View {
             NavigationView {
                 AuthorView(prompt: status, visibility: status.visibility)
             }
+#if os(iOS)
             .navigationViewStyle(.stack)
+#endif
         }
     }
 

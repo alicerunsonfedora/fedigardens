@@ -23,7 +23,6 @@
 		95369B6327B837BD00F39531 /* CompactLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6127B837BD00F39531 /* CompactLayout.swift */; };
 		95369B6427B837BD00F39531 /* CompactLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6127B837BD00F39531 /* CompactLayout.swift */; };
 		95369B6627B8403A00F39531 /* CompactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6527B8403A00F39531 /* CompactTimeline.swift */; };
-		95369B6727B8403A00F39531 /* CompactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6527B8403A00F39531 /* CompactTimeline.swift */; };
 		95369B6827B8403A00F39531 /* CompactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6527B8403A00F39531 /* CompactTimeline.swift */; };
 		95369B6C27B8408A00F39531 /* StatusListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6B27B8408A00F39531 /* StatusListScrollView.swift */; };
 		95369B6D27B8408A00F39531 /* StatusListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6B27B8408A00F39531 /* StatusListScrollView.swift */; };
@@ -49,6 +48,7 @@
 		95667E7E27B86273009D2251 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 95667E7D27B86273009D2251 /* Localizable.stringsdict */; };
 		95667E7F27B86273009D2251 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 95667E7D27B86273009D2251 /* Localizable.stringsdict */; };
 		95667E8027B86273009D2251 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 95667E7D27B86273009D2251 /* Localizable.stringsdict */; };
+		9574203527D3E58A00AF71C7 /* CompactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6527B8403A00F39531 /* CompactTimeline.swift */; };
 		958C0C9727BE930D00ED6C23 /* AccountExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* AccountExtension.swift */; };
 		958C0C9827BE930D00ED6C23 /* AccountExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* AccountExtension.swift */; };
 		958C0C9927BE930D00ED6C23 /* AccountExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* AccountExtension.swift */; };
@@ -472,7 +472,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 954722F427A0093F00D1BA89 /* Build configuration list for PBXProject "Capstone" */;
+			buildConfigurationList = 954722F427A0093F00D1BA89 /* Build configuration list for PBXProject "Shout" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -579,6 +579,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95C0AF4B27C6C7920007D1D0 /* MessagingAuthorView.swift in Sources */,
+				9574203527D3E58A00AF71C7 /* CompactTimeline.swift in Sources */,
 				95C0AF4727C6B39E0007D1D0 /* MessagingDetailView.swift in Sources */,
 				95645BD827C5550B00FB3426 /* SettingsView.swift in Sources */,
 				95369B5A27B82D4100F39531 /* WidescreenTimeline.swift in Sources */,
@@ -594,7 +595,6 @@
 				95369B6D27B8408A00F39531 /* StatusListScrollView.swift in Sources */,
 				9594DE3C27C927820036325A /* ConversationExtension.swift in Sources */,
 				95645BD327C5546E00FB3426 /* UserDefaultsExtension.swift in Sources */,
-				95369B6727B8403A00F39531 /* CompactTimeline.swift in Sources */,
 				95ADAE2027B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
 				958C0C9827BE930D00ED6C23 /* AccountExtension.swift in Sources */,
 				95D2705227C6FEFA00805262 /* MessagingList.swift in Sources */,
@@ -932,7 +932,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		954722F427A0093F00D1BA89 /* Build configuration list for PBXProject "Capstone" */ = {
+		954722F427A0093F00D1BA89 /* Build configuration list for PBXProject "Shout" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9547230C27A0094000D1BA89 /* Debug */,
