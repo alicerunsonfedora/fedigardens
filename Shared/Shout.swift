@@ -32,11 +32,17 @@ struct Shout: App {
             ContentView()
                 .handlesExternalEvents(preferring: ["home", "oauth"], allowing: ["home", "oauth"])
             .onOpenURL { url in
-                print("You called me. URL: \(url.absoluteString)")
                 Chica.handleURL(url: url, actions: [:])
             }
         }
         .handlesExternalEvents(matching: ["home", "oauth"])
+#if os(macOS)
+        .commands {
+            CommandGroup(after: .appSettings) {
+                BetaYouTrackSubmitButton(presentationMode: .menuItem)
+            }
+        }
+#endif
 
         WindowGroup("general.status", id: "create") {
             authorView

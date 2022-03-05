@@ -9,6 +9,7 @@
 // MARK: - General Texts
 "general.appname" = "Shout";
 "general.feedback" = "Send Feedback";
+"general.feedbackmenu" = "Send Feedback...";
 "general.cancel" = "Cancel";
 "general.togglesidebar" = "Toggle Sidebar";
 "general.status" = "Status";
@@ -61,6 +62,7 @@
 
 // MARK: - Help Strings
 "help.sidebar" = "Show or hide the sidebar.";
+"help.feedback" = "Send user feedback through the YouTrack bug reporter.";
 "help.refresh" = "Refresh the current view.";
 "help.poststatus" = "Start a new discussion or write a status.";
 "help.replystatus" = "Reply to this discussion.";

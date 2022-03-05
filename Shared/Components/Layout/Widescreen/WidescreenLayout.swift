@@ -80,12 +80,15 @@ struct WidescreenLayout: View {
                 } header: {
                     Text("Quick Places")
                 }
+#if os(macOS)
+                .collapsible(false)
+#endif
             }
-            .frame(minWidth: 175, idealWidth: 225)
+            .frame(minWidth: 225, idealWidth: 275)
             .navigationTitle("general.appname")
             .toolbar {
 #if os(macOS)
-                ToolbarItem(placement: .navigation) {
+                ToolbarItem {
                     Button {
                         NSApp.keyWindow?.firstResponder?.tryToPerform(
                             #selector(NSSplitViewController.toggleSidebar(_:)),
@@ -95,6 +98,14 @@ struct WidescreenLayout: View {
                         Label("general.togglesidebar", systemImage: "sidebar.left")
                     }
                     .help("help.sidebar")
+                }
+
+                ToolbarItem {
+                    Spacer()
+                }
+
+                ToolbarItem {
+                    BetaYouTrackSubmitButton(presentationMode: .button)
                 }
 #endif
             }

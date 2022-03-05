@@ -45,6 +45,12 @@ struct SettingsView: View {
 #endif
             }
 
+#if os(iOS)
+            Section {
+                BetaYouTrackSubmitButton(presentationMode: .button)
+            }
+#endif
+
         }
     }
 }

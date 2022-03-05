@@ -85,11 +85,7 @@ struct AuthenticationView: View {
         }
         .toolbar {
             ToolbarItem {
-                Button {
-
-                } label: {
-                    Label("general.feedback", systemImage: "exclamationmark.bubble")
-                }
+                BetaYouTrackSubmitButton(presentationMode: .button)
             }
         }
     }
