@@ -30,7 +30,6 @@ struct Shout: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .handlesExternalEvents(preferring: ["home", "oauth"], allowing: ["home", "oauth"])
                 .onOpenURL { url in
                     Chica.handleURL(url: url, actions: [:])
                 }
@@ -40,7 +39,6 @@ struct Shout: App {
                     Chica.shared.setRequestPrefix(to: "shout://")
                 }
         }
-        .handlesExternalEvents(matching: ["home", "oauth"])
 #if os(macOS)
             .commands {
                 CommandGroup(after: .appSettings) {
