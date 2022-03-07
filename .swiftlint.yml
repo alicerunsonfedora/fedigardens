@@ -1,0 +1,57 @@
+disabled_rules:
+  - force_try
+  - duplicate_imports
+  - function_body_length
+
+opt_in_rules:
+  - file_header
+  - empty_count
+  - inclusive_language
+
+included:
+  - Shared
+  - Tests
+
+type_name:
+  allowed_symbols: ["_"]
+
+type_body_length:
+  warning: 250
+  error: 400
+
+file_length:
+  warning: 500
+  error: 1000
+
+file_header:
+  required_pattern: |
+    \/\/
+    \/\/  .*?\.swift
+    \/\/  Codename Shout
+    \/\/
+    \/\/  Created by .*? on \d{1,2}\/\d{1,2}\/\d{2}\.
+    \/\/
+    \/\/  This file is part of Codename Shout\.
+    \/\/
+    \/\/  Codename Shout is non-violent software: you can use, redistribute, and\/or modify it under the terms of the CNPLv7\+
+    \/\/  as found in the LICENSE file in the source code root directory or at \<https:\/\/git\.pixie\.town\/thufie\/npl-builder\>\.
+    \/\/
+    \/\/  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law\. See the CNPL for
+    \/\/  details\.
+
+custom_rules:
+  no_capstone_name:
+    name: "No Capstone Naming"
+    regex: "(Capstone)"
+    capture_group: 0
+    match_kinds:
+      - comment
+      - identifier
+      - string
+    message: "Refer to the project by its codename, Shout."
+    severity: warning
+  unneeded_filter:
+    name: "Possible Unneeded Filter"
+    regex: ".filter(\\s?)\\{(.+)\\}\\s+for (\\w+) in (\\w+) \\{\\s*(.+)\\s*\\}"
+    message: "Filter might be unneeded; try using the for-where clause to iterate over a filter."
+    severity: warning

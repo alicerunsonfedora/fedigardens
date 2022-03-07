@@ -13,9 +13,10 @@ CNPLv7+.
 ```swift
 //
 //  <Filename>.swift
-//  <Module>
+//  Codename Shout
 //
 //  Created by Marquis Kurt on 25/1/22.
+//
 //  This file is part of Codename Shout.
 //
 //  Codename Shout is non-violent software: you can use, redistribute, and/or modify it under the terms of the CNPLv7+
@@ -24,6 +25,9 @@ CNPLv7+.
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 ```
+
+> Note: This rule is automatically checked when running SwiftLint (rule: `file_header`).
+
 ## Commit messages
 
 Commit messages are formatted to inform other developers and contributors
