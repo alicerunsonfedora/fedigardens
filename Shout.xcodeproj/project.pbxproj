@@ -22,6 +22,8 @@
 		95369B6627B8403A00F39531 /* CompactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6527B8403A00F39531 /* CompactTimeline.swift */; };
 		95369B6C27B8408A00F39531 /* StatusListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6B27B8408A00F39531 /* StatusListScrollView.swift */; };
 		95369B6D27B8408A00F39531 /* StatusListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6B27B8408A00F39531 /* StatusListScrollView.swift */; };
+		953DE4D327D69C7D0043A357 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DE4D227D69C7D0043A357 /* BundleExtension.swift */; };
+		953DE4D427D69C7D0043A357 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DE4D227D69C7D0043A357 /* BundleExtension.swift */; };
 		9547230627A0094000D1BA89 /* Shout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F627A0093F00D1BA89 /* Shout.swift */; };
 		9547230727A0094000D1BA89 /* Shout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F627A0093F00D1BA89 /* Shout.swift */; };
 		9547230827A0094000D1BA89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F727A0093F00D1BA89 /* ContentView.swift */; };
@@ -119,6 +121,7 @@
 		953DE4CB27D662450043A357 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		953DE4CE27D66BEF0043A357 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		953DE4D127D66FB00043A357 /* CONSENT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CONSENT.md; path = docs/CONSENT.md; sourceTree = "<group>"; };
+		953DE4D227D69C7D0043A357 /* BundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
 		954722F627A0093F00D1BA89 /* Shout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shout.swift; sourceTree = "<group>"; };
 		954722F727A0093F00D1BA89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		954722F827A0094000D1BA89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -324,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				958C0C9627BE930D00ED6C23 /* AccountExtension.swift */,
+				953DE4D227D69C7D0043A357 /* BundleExtension.swift */,
 				95ADAE1127B6CDC50011FD83 /* DateFormatterExtension.swift */,
 				95ADAE0927B6B49A0011FD83 /* JSONExtension.swift */,
 				95667E7927B85C3B009D2251 /* MockData.swift */,
@@ -619,6 +623,7 @@
 				95645BD227C5546E00FB3426 /* UserDefaultsExtension.swift in Sources */,
 				95369B6627B8403A00F39531 /* CompactTimeline.swift in Sources */,
 				95ADAE1F27B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
+				953DE4D327D69C7D0043A357 /* BundleExtension.swift in Sources */,
 				958C0C9727BE930D00ED6C23 /* AccountExtension.swift in Sources */,
 				95D2705127C6FEFA00805262 /* MessagingList.swift in Sources */,
 				95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
@@ -654,6 +659,7 @@
 				9594DE3C27C927820036325A /* ConversationExtension.swift in Sources */,
 				95645BD327C5546E00FB3426 /* UserDefaultsExtension.swift in Sources */,
 				95ADAE2027B6DC120011FD83 /* WidescreenLayout.swift in Sources */,
+				953DE4D427D69C7D0043A357 /* BundleExtension.swift in Sources */,
 				958C0C9827BE930D00ED6C23 /* AccountExtension.swift in Sources */,
 				95D2705227C6FEFA00805262 /* MessagingList.swift in Sources */,
 				95369B5E27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,

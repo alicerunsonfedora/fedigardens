@@ -46,6 +46,15 @@ struct SettingsView: View {
 
 #if os(iOS)
             Section {
+                HStack {
+                    Text("App Version")
+                    Spacer()
+                    Text(Bundle.main.getAppVersion())
+                        .foregroundColor(.secondary)
+                }
+            }
+
+            Section {
                 BetaYouTrackSubmitButton(presentationMode: .button)
             }
 #endif
