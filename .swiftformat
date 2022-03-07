@@ -1,0 +1,11 @@
+--binarygrouping none
+--commas inline
+--decimalgrouping none
+--hexgrouping none
+--ifdef outdent
+--octalgrouping none
+--patternlet inline
+--semicolons never
+--wraparguments before-first
+--wrapcollections before-first
+--wrapparameters before-first

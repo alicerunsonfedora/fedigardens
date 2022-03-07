@@ -46,3 +46,13 @@ Gitmojis are used to describe changes quickly when viewing them in GitHub
 or summary lists. Please visit https://gitmoji.dev to view what each of
 the emojis mean, and what tools can be used to insert the appropriate one
 into your Git commit messages.
+
+## Formatting conventions
+
+It is recommended that you run the formatting tool `swiftformat` when you
+commit code. A .swiftformat file is provided at the root of the project to
+assist you in formatting your source changes to the format of the project.
+
+```
+swiftformat .
+```

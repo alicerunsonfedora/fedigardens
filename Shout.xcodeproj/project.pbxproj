@@ -116,6 +116,7 @@
 		95369B6127B837BD00F39531 /* CompactLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactLayout.swift; sourceTree = "<group>"; };
 		95369B6527B8403A00F39531 /* CompactTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactTimeline.swift; sourceTree = "<group>"; };
 		95369B6B27B8408A00F39531 /* StatusListScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListScrollView.swift; sourceTree = "<group>"; };
+		953DE4CB27D662450043A357 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		954722F627A0093F00D1BA89 /* Shout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shout.swift; sourceTree = "<group>"; };
 		954722F727A0093F00D1BA89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		954722F827A0094000D1BA89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -301,6 +302,7 @@
 		95A3587027B2B18D00DBB76E /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
+				953DE4CB27D662450043A357 /* .swiftformat */,
 				95019DAB27A82233005DF870 /* Capstone--macOS--Info.plist */,
 				95019DAA27A82124005DF870 /* Capstone--iOS--Info.plist */,
 			);
