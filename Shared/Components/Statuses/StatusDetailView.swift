@@ -29,7 +29,7 @@ struct StatusDetailView: View {
     @State var status: Status
 
     /// The context for the current status, which contains its replies and preceding statuses.
-    @State private var statusCtx: Context? = nil
+    @State private var statusCtx: Context?
 
     /// Whether the author view should be presented.
     ///

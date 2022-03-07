@@ -91,9 +91,9 @@ struct AuthenticationView: View {
 
     /// The background view used to render the pinstripes in the corner of the window.
     private var pinstripes: some View {
-        GeometryReader { g in
-            let halfWidth = g.size.width / 2
-            let halfHeight = g.size.height / 2
+        GeometryReader { proxy in
+            let halfWidth = proxy.size.width / 2
+            let halfHeight = proxy.size.height / 2
 
 #if os(iOS)
             let frameWidth = horizontalSizeClass == .compact ? halfWidth * 1.5 : halfWidth

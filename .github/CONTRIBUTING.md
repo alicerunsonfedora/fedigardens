@@ -47,6 +47,26 @@ or summary lists. Please visit https://gitmoji.dev to view what each of
 the emojis mean, and what tools can be used to insert the appropriate one
 into your Git commit messages.
 
+## Linting conventions
+
+This project includes support for SwiftLint, a utility that enforces
+recommended Swift styling practices. While it is not required to install
+SwiftLint to build the project, it is highly recommended. The project,
+during build, will do the following with SwiftLint:
+
+- Run the linter on all source files and present warnings/errors in Xcode
+  after running.
+  
+It is recommended that you ensure that your source code changes are
+compliant with the linting rules as specified.
+
+### Sepcial rules
+
+- Always refer to the project as "Codename Shout", and not "Capstone",
+  unless you are referring to the Swift module generated.
+- When possible, avoid making a filtered list and iterating over it; use
+  the `for x in x where y` format instead.
+
 ## Formatting conventions
 
 It is recommended that you run the formatting tool `swiftformat` when you

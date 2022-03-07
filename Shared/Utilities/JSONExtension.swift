@@ -39,7 +39,7 @@ extension JSONDecoder {
     ///
     /// - SeeAlso: ``JSONDecoder.decodeFromResource``
     static func safeDecodeFromResource<T: Decodable>(from resourcePath: String) -> T? {
-        var content: T? = nil
+        var content: T?
         do {
             content = try decodeFromResource(from: resourcePath)
         } catch {

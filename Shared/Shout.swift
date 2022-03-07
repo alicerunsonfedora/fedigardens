@@ -1,8 +1,9 @@
 //
 //  Shout.swift
-//  Shared
+//  Codename Shout
 //
 //  Created by Marquis Kurt on 25/1/22.
+//
 //  This file is part of Codename Shout.
 //
 //  Codename Shout is non-violent software: you can use, redistribute, and/or modify it under the terms of the CNPLv7+

@@ -31,7 +31,7 @@ struct MessagingDetailView: View, LayoutStateRepresentable {
     /// The context corresponding to the conversation.
     ///
     /// This is used to load in all of the previous messages from the conversation thread.
-    @State private var conversationCtx: Context? = nil
+    @State private var conversationCtx: Context?
 
     /// The current state of the view's layout.
     @State internal var state: LayoutState = .initial

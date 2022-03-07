@@ -12,6 +12,7 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+// swiftlint:disable:next no_capstone_name
 @testable import Capstone
 import Foundation
 import XCTest
