@@ -37,13 +37,6 @@ in the root directory.
 - To build for iOS/iPadOS, set the scheme to **Capstone (iOS)**.
 - To build for macOS, set the scheme to **Capstone (macOS)**.
 
-Press the Run button in the toolbar or go to **Product > Run** in the menu
-bar to run the project in the iOS Simulator or your Mac. To archive the
-project, change the device target to one of the following:
-
-- For iOS/iPadOS: _Any iOS Device (arm64)_
-- For macOS: _Any Mac (Apple Silicon, Intel)_
-
 > :information_source: To prevent collisions with the normal app available
 > in the App Store and/or TestFlight, it is recommended that you change
 > the URL scheme from `shout://` to your own URL scheme. Change this in
@@ -57,6 +50,15 @@ project, change the device target to one of the following:
 > 40    Chica.shared.setRequestPrefix(to: "<your-url-prefix-here>")
 > 41 }
 > ```
+
+Press the Run button in the toolbar or go to **Product > Run** in the menu
+bar to run the project in the iOS Simulator or your Mac.
+
+### Archiving the Project
+To archive the project, change the device target to one of the following:
+
+- For iOS/iPadOS: _Any iOS Device (arm64)_
+- For macOS: _Any Mac (Apple Silicon, Intel)_
 
 Then go to **Product > Archive** to create an archive of the app that can
 be distributed through TestFlight or the App Store.
