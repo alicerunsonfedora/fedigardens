@@ -118,7 +118,7 @@
 		95369B6B27B8408A00F39531 /* StatusListScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListScrollView.swift; sourceTree = "<group>"; };
 		953DE4CB27D662450043A357 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		953DE4CE27D66BEF0043A357 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
-		953DE4D127D66FB00043A357 /* CONSENT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CONSENT.md; sourceTree = "<group>"; };
+		953DE4D127D66FB00043A357 /* CONSENT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CONSENT.md; path = docs/CONSENT.md; sourceTree = "<group>"; };
 		954722F627A0093F00D1BA89 /* Shout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shout.swift; sourceTree = "<group>"; };
 		954722F727A0093F00D1BA89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		954722F827A0094000D1BA89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -153,7 +153,7 @@
 		95D1036B27A00AF000B1EE3C /* License.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = License.pdf; sourceTree = "<group>"; };
 		95D1037527A00FC400B1EE3C /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = CONTRIBUTING.md; path = .github/CONTRIBUTING.md; sourceTree = "<group>"; };
 		95D1037627A00FCA00B1EE3C /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		95D1037727A00FCA00B1EE3C /* OBJECTIVES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = OBJECTIVES.md; sourceTree = "<group>"; };
+		95D1037727A00FCA00B1EE3C /* OBJECTIVES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = OBJECTIVES.md; path = docs/OBJECTIVES.md; sourceTree = "<group>"; };
 		95D1037827A00FCA00B1EE3C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		95D2704D27C6F5A200805262 /* MessagingListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingListCellView.swift; sourceTree = "<group>"; };
 		95D2705027C6FEFA00805262 /* MessagingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingList.swift; sourceTree = "<group>"; };

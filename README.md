@@ -20,7 +20,7 @@ This project aims to experiment with the following:
   native with SwiftUI and other iOS/macOS technologies.
   
 More information on the objectives of this project can be discovered in
-the OBJECTIVES.md file, located in the root of the project's source code.
+the OBJECTIVES.md file, located in the docs of the project's source code.
 
 ## Building from Source
 
