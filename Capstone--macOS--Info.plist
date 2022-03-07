@@ -11,7 +11,7 @@
 			<string>net.marquiskurt.capstone</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>starlight</string>
+				<string>shout</string>
 			</array>
 		</dict>
 	</array>

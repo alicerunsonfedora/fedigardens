@@ -969,7 +969,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/hyperspacedev/chica";
 			requirement = {
-				branch = main;
+				branch = "feat/url-configuration";
 				kind = branch;
 			};
 		};

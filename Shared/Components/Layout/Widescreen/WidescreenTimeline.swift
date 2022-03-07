@@ -70,7 +70,7 @@ struct WidescreenTimeline: View, LayoutStateRepresentable {
             ToolbarItem {
                 Button {
 #if os(macOS)
-                    if let url = URL(string: "starlight://create") {
+                    if let url = URL(string: "shout://create") {
                         openURL(url)
                     }
 #else

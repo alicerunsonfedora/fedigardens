@@ -168,7 +168,7 @@ struct StatusDetailView: View {
     private var replyButton: some View {
         Button {
 #if os(macOS)
-            if let url = URL(string: "starlight://create?reply_id=\(status.id)") {
+            if let url = URL(string: "shout://create?reply_id=\(status.id)") {
                 openURL(url)
             }
 #else
