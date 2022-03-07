@@ -4,7 +4,7 @@ This repository contains source code to my capstone project, **Codename
 Shout**, an experimental social media client for Gopherdon aiming to make
 a more humane design to social networks.
 
-![Codename Shout running on iMac and iPhone](./.readme/devices.png)
+![Codename Shout running on iMac and iPhone](./.readme/screenshot.png)
 
 > :warning: This project is currently in a _prototype_ state. Designs and
 > features are not final and may change over the course of the project.
