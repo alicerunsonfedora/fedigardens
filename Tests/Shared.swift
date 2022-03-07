@@ -1,4 +1,4 @@
-// 
+//
 //  Shared.swift
 //  Codename Shout
 //

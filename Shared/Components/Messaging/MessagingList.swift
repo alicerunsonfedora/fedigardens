@@ -1,4 +1,4 @@
-// 
+//
 //  MessagingList.swift
 //  Codename Shout
 //
@@ -12,10 +12,10 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
-import SwiftUI
 import Chica
 import enum Chica.Visibility
+import Foundation
+import SwiftUI
 
 // MARK: - Messaging List
 
@@ -24,7 +24,6 @@ import enum Chica.Visibility
 /// This is commonly used to display a conversation list in the "Messages" section of the app. The design is
 /// primarily inspired by Apple's Messages app.
 struct MessagingList: View, LayoutStateRepresentable {
-
     @Environment(\.openURL) var openURL
 
     /// The list of conversations the user is a part of.
@@ -46,7 +45,7 @@ struct MessagingList: View, LayoutStateRepresentable {
             switch state {
             case .initial, .loading:
                 List {
-                    ForEach(0..<7) { _ in
+                    ForEach(0 ..< 7) { _ in
                         MessagingListCellView(conversation: MockData.conversation!, currentUserID: "0")
                     }
                 }
@@ -61,9 +60,9 @@ struct MessagingList: View, LayoutStateRepresentable {
                                     conversation: conversation,
                                     currentSenderID: currentAcct?.id ?? "0"
                                 )
-                                    .navigationTitle(
-                                        conversation.getAuthors(excluding: currentAcct?.id ?? "0")
-                                    )
+                                .navigationTitle(
+                                    conversation.getAuthors(excluding: currentAcct?.id ?? "0")
+                                )
                             } label: {
                                 MessagingListCellView(
                                     conversation: conversation,
@@ -85,7 +84,7 @@ struct MessagingList: View, LayoutStateRepresentable {
                 await getConversations()
             }
         }
-        #if os(iOS)
+#if os(iOS)
         .refreshable {
             Task {
                 await getConversations(forcefully: true)
@@ -96,9 +95,8 @@ struct MessagingList: View, LayoutStateRepresentable {
                 AuthorView(visibility: .direct)
             }
             .navigationViewStyle(.stack)
-
         }
-        #endif
+#endif
         .toolbar {
             ToolbarItem {
                 Button {
@@ -173,10 +171,10 @@ struct MessagingList: View, LayoutStateRepresentable {
             print(error.localizedDescription)
         }
     }
-
 }
 
 // MARK: - Previews
+
 struct MessagingList_Previews: PreviewProvider {
     static var previews: some View {
         MessagingList()

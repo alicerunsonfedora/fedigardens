@@ -1,4 +1,4 @@
-// 
+//
 //  YouTrackSubmitButton.swift
 //  Codename Shout
 //
@@ -19,7 +19,6 @@ import SwiftUI
 ///
 /// When clicked, the user will be redirected to the YouTrack bug reporter.
 struct BetaYouTrackSubmitButton: View {
-
     enum ButtonPresentationMode {
         case button
         case menuItem

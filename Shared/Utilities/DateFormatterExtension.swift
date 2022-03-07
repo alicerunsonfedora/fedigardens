@@ -1,4 +1,4 @@
-// 
+//
 //  DateFormatterExtension.swift
 //  Codename Shout
 //
@@ -15,7 +15,6 @@
 import Foundation
 
 extension DateFormatter {
-
     /// A date formatter that can parse dates written for Mastodon posts.
     ///
     /// Due to the unusual nature of Mastodon's date format (even though it follows ISO-8601), a new formatter must

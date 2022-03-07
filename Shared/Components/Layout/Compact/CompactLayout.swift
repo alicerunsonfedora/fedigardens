@@ -1,4 +1,4 @@
-// 
+//
 //  CompactLayout.swift
 //  Codename Shout
 //
@@ -12,15 +12,15 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 // MARK: - Compact Layout
+
 /// A view that represents the layout for compact devices.
 /// This is commonly used on iOS devices such as iPhone.
 struct CompactLayout: View {
-
     var body: some View {
         TabView {
             NavigationView {
@@ -57,6 +57,7 @@ struct CompactLayout: View {
 }
 
 // MARK: - Previews
+
 struct CompactLayout_Previews: PreviewProvider {
     static var previews: some View {
         CompactLayout()

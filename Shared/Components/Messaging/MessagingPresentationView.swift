@@ -1,4 +1,4 @@
-// 
+//
 //  MessagePresentationView.swift
 //  Codename Shout
 //
@@ -12,9 +12,9 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 // MARK: - Message Presentation View
 
@@ -22,7 +22,6 @@ import Chica
 ///
 /// This is commonly used to display direct messages from the `lastStatus` property of a conversation.
 struct MessagingPresentationView: View {
-
     /// The context derived from the messages to render the conversation history from.
     @State var messages: Context
 
@@ -53,7 +52,6 @@ struct MessagingPresentationView: View {
             }
         }
         .padding()
-
     }
 
     /// Returns a list of the messages, last message, and extra statuses to be rendered.
@@ -65,11 +63,9 @@ struct MessagingPresentationView: View {
 // MARK: - Message Presentation Bubble
 
 /// A view that shows an individual message bubble.
-fileprivate struct MessagePresentationBubble: View {
-
+private struct MessagePresentationBubble: View {
     /// An enumeration for the various presentation styles of a message bubble.
     enum PresentationStyle {
-
         /// The style applied to messages where the current user is the sender of the message.
         case sender
 
@@ -145,11 +141,10 @@ fileprivate struct MessagePresentationBubble: View {
     }
 }
 
-fileprivate extension MessagePresentationBubble {
-
+private extension MessagePresentationBubble {
     /// Sets the presentation style of the message bubble.
     func presentationStyle(_ presentation: PresentationStyle) -> some View {
-        MessagePresentationBubble(message: self.message, presentationStyle: presentation)
+        MessagePresentationBubble(message: message, presentationStyle: presentation)
     }
 }
 
@@ -162,6 +157,5 @@ struct MessagePresentationView_Previews: PreviewProvider {
             MessagingPresentationView(messages: MockData.context!, lastMessage: MockData.status!, senderID: "2")
                 .preferredColorScheme(.dark)
         }
-
     }
 }

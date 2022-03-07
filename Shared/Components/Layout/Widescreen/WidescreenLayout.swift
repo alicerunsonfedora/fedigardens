@@ -1,4 +1,4 @@
-// 
+//
 //  WidescreenLayout.swift
 //  Codename Shout
 //
@@ -12,19 +12,17 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 // MARK: - Widescreen Layout
 
 /// A view that represents the widescreen layout.
 /// This is commonly used on wider devices such as iPad or Mac.
 struct WidescreenLayout: View {
-
     /// An enumeration representing the various pages in the app.
     private enum PageSelection {
-
         /// The "For You" page, which displays the home timeline.
         case forYou
 
@@ -117,7 +115,6 @@ struct WidescreenLayout: View {
             }
             .font(.system(.largeTitle, design: .rounded))
             .foregroundColor(.secondary)
-
         }
         .onAppear {
             self.currentPage = .forYou
@@ -126,6 +123,7 @@ struct WidescreenLayout: View {
 }
 
 // MARK: - Previews
+
 struct WidescreenLayout_Previews: PreviewProvider {
     static var previews: some View {
         WidescreenLayout()

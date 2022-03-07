@@ -1,4 +1,4 @@
-// 
+//
 //  AuthorReplySegment.swift
 //  Codename Shout
 //
@@ -12,13 +12,12 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 /// A view that displays a status that will be replied to.
 struct AuthorReplySegment: View {
-
     /// The status that the user will reply to.
     @State var reply: Status
 
@@ -35,9 +34,9 @@ struct AuthorReplySegment: View {
                         reply.account.getAccountName() + " (@\(reply.account.acct))"
                     )
                 )
-                    .font(.system(.callout, design: .rounded))
-                    .foregroundColor(.accentColor)
-                    .bold()
+                .font(.system(.callout, design: .rounded))
+                .foregroundColor(.accentColor)
+                .bold()
                 Text(promptContent)
                     .lineLimit(3)
             }

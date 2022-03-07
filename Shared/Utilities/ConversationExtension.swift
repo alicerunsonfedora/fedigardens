@@ -1,4 +1,4 @@
-// 
+//
 //  ConversationExtension.swift
 //  Codename Shout
 //
@@ -12,11 +12,10 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
 import Chica
+import Foundation
 
 extension Conversation {
-
     /// Returns a localized string containing the names of the participants, excluding the specified member ID.
     /// - Parameter currentUserID: The ID of the account to exclude in the localized string generation.
     func getAuthors(excluding currentUserID: String) -> String {
@@ -24,7 +23,7 @@ extension Conversation {
             return accounts.last { account in account.id != currentUserID }?.getAccountName() ?? "Person"
         }
 
-        let firstTwoNames = Array(accounts.filter { account in account.id != currentUserID }[0..<2])
+        let firstTwoNames = Array(accounts.filter { account in account.id != currentUserID }[0 ..< 2])
         let firstAuthors = firstTwoNames.reduce("") { text, account in
             text + "\(account.getAccountName()), "
         }

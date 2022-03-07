@@ -1,4 +1,4 @@
-// 
+//
 //  MessagingListCellView.swift
 //  Codename Shout
 //
@@ -12,9 +12,9 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 // MARK: - Messaging List Cell
 
@@ -22,7 +22,6 @@ import Chica
 ///
 /// This is commonly used in a list of messages to determine what conversation is active.
 struct MessagingListCellView: View {
-
     /// The conversation this cell corresponds to.
     @State var conversation: Conversation
 
@@ -46,8 +45,8 @@ struct MessagingListCellView: View {
                             DateFormatter.mastodon.date(from: status.createdAt)!,
                             format: .relative(presentation: .named)
                         )
-                            .foregroundColor(.secondary)
-                            .font(.system(.footnote, design: .rounded))
+                        .foregroundColor(.secondary)
+                        .font(.system(.footnote, design: .rounded))
                     }
                 }
                 Text(message)
@@ -99,6 +98,7 @@ struct MessagingListCellView: View {
 }
 
 // MARK: - Previews
+
 struct MessagingListCellView_Previews: PreviewProvider {
     static var previews: some View {
         MessagingListCellView(conversation: MockData.conversation!, currentUserID: "0")

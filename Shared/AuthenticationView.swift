@@ -1,4 +1,4 @@
-// 
+//
 //  AuthenticationView.swift
 //  Codename Shout
 //
@@ -12,15 +12,14 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 // MARK: - Authentication View
 
 /// A view that displays information prompting the user to authenticate and authorize the app to access Gopherdon.
 struct AuthenticationView: View {
-
 #if os(iOS)
     /// Determines whether the device is compact or standard
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
@@ -29,7 +28,7 @@ struct AuthenticationView: View {
     /// The shared Chica authentication object.
     ///
     /// This is used to handle authentication to the Gopherdon server and watch for state changes.
-    @ObservedObject private var chicaAuth: Chica.OAuth = Chica.OAuth.shared
+    @ObservedObject private var chicaAuth: Chica.OAuth = .shared
 
     /// Whether to show the authentication dialog on iOS devices.
     @State private var showAuthDialog: Bool = false
@@ -64,7 +63,7 @@ struct AuthenticationView: View {
             }
             .onChange(of: chicaAuth.authState) { authState in
                 switch authState {
-                case .authenthicated(_):
+                case .authenthicated:
                     showAuthDialog = false
                 default:
                     break
@@ -158,7 +157,6 @@ struct AuthenticationView: View {
 #endif
         }
         .frame(maxWidth: .infinity)
-
     }
 
     /// The layout to use on iPads.

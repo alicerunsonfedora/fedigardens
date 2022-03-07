@@ -1,4 +1,4 @@
-// 
+//
 //  UserDefaultsExtension.swift
 //  Codename Shout
 //
@@ -15,17 +15,15 @@
 import Foundation
 
 extension UserDefaults {
-
     /// Whether to show options for passive activities such as likes and reblogs.
     ///
     /// This is intended as an experimental feature to determine if likes and reblogs contribute to the bigger problem
     /// of social media design.
     var showsPassiveActivities: Bool {
         get {
-            return self.bool(forKey: "experiments.shows-passive-activities")
+            bool(forKey: "experiments.shows-passive-activities")
         } set {
-            self.set(newValue, forKey: "experiments.shows-passive-activities")
+            set(newValue, forKey: "experiments.shows-passive-activities")
         }
     }
-
 }

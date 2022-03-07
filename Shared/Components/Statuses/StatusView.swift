@@ -1,4 +1,4 @@
-// 
+//
 //  StatusView.swift
 //  Codename Shout
 //
@@ -12,18 +12,16 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 // MARK: - Status View
 
 /// A view that displays a status created by a user.
 struct StatusView: View {
-
     /// An enumeration representing the different position options for the status creation date.
     public enum DatePlacement {
-
         /// Automatically determine the position of the date in the view.
         ///
         /// If there is no line limit for the status content, it is placed below the status content, right-aligned.
@@ -39,7 +37,6 @@ struct StatusView: View {
 
     /// An enumeration representing the different position options for the author's profile image.
     public enum ProfileImagePlacement {
-
         /// Next to the author's name, towards the left side.
         case byAuthorName
 
@@ -127,7 +124,7 @@ struct StatusView: View {
                                     .foregroundColor(.secondary)
                                     .font(.system(.callout, design: .rounded))
                             }
-                            if datePlacement == .automatic && truncateLines != nil {
+                            if datePlacement == .automatic, truncateLines != nil {
                                 Spacer()
                                 statusCreationDate
                             }
@@ -171,8 +168,8 @@ struct StatusView: View {
             DateFormatter.mastodon.date(from: status.createdAt)!,
             format: .relative(presentation: .named)
         )
-            .foregroundColor(.secondary)
-            .font(.system(.footnote, design: .rounded))
+        .foregroundColor(.secondary)
+        .font(.system(.footnote, design: .rounded))
     }
 
     private var authorImage: some View {
@@ -192,69 +189,69 @@ struct StatusView: View {
 // MARK: - Modifiers
 
 extension StatusView {
-
     /// Sets the maximum number of lines to display the status's content at.
     func lineLimit(_ lineLimit: Int) -> StatusView {
         StatusView(
-            status: self.status,
+            status: status,
             truncateLines: lineLimit,
-            datePlacement: self.datePlacement,
+            datePlacement: datePlacement,
             profileImagePlacement:
-                self.profileImagePlacement,
-            profileImageSize: self.profileImageSize,
-            showStatistics: self.showStatistics
+            profileImagePlacement,
+            profileImageSize: profileImageSize,
+            showStatistics: showStatistics
         )
     }
 
     /// Sets the placement for where the author's profile image will appear.
     func profilePlacement(_ profilePlacement: ProfileImagePlacement) -> StatusView {
         StatusView(
-            status: self.status,
-            truncateLines: self.truncateLines,
-            datePlacement: self.datePlacement,
+            status: status,
+            truncateLines: truncateLines,
+            datePlacement: datePlacement,
             profileImagePlacement: profilePlacement,
-            profileImageSize: self.profileImageSize,
-            showStatistics: self.showStatistics
+            profileImageSize: profileImageSize,
+            showStatistics: showStatistics
         )
     }
 
     func profileImageSize(_ profileSize: CGFloat) -> StatusView {
         StatusView(
-            status: self.status,
-            truncateLines: self.truncateLines,
-            datePlacement: self.datePlacement,
-            profileImagePlacement: self.profileImagePlacement,
+            status: status,
+            truncateLines: truncateLines,
+            datePlacement: datePlacement,
+            profileImagePlacement: profileImagePlacement,
             profileImageSize: profileSize,
-            showStatistics: self.showStatistics
+            showStatistics: showStatistics
         )
     }
 
     /// Sets the placement for where the status's creation date will appear.
     func datePlacement(_ datePlacement: DatePlacement) -> StatusView {
         StatusView(
-            status: self.status,
-            truncateLines: self.truncateLines,
+            status: status,
+            truncateLines: truncateLines,
             datePlacement: datePlacement,
-            profileImagePlacement: self.profileImagePlacement,
-            profileImageSize: self.profileImageSize,
-            showStatistics: self.showStatistics
+            profileImagePlacement: profileImagePlacement,
+            profileImageSize: profileImageSize,
+            showStatistics: showStatistics
         )
     }
 
     /// Whether to show the likes and boosts for this status.
     func statistics(_ show: Bool) -> StatusView {
         StatusView(
-            status: self.status,
-            truncateLines: self.truncateLines,
-            datePlacement: self.datePlacement,
-            profileImagePlacement: self.profileImagePlacement,
-            profileImageSize: self.profileImageSize,
+            status: status,
+            truncateLines: truncateLines,
+            datePlacement: datePlacement,
+            profileImagePlacement: profileImagePlacement,
+            profileImageSize: profileImageSize,
             showStatistics: show
         )
     }
 }
 
 // MARK: - Previews
+
 struct StatusView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -265,7 +262,7 @@ struct StatusView_Previews: PreviewProvider {
                 .frame(maxWidth: 550)
 
             List {
-                ForEach(1..<5) { _ in
+                ForEach(1 ..< 5) { _ in
                     StatusView(status: MockData.status!)
                         .lineLimit(2)
                         .profilePlacement(.byEntireView)
@@ -274,6 +271,5 @@ struct StatusView_Previews: PreviewProvider {
             }
             .frame(maxWidth: 400)
         }
-
     }
 }

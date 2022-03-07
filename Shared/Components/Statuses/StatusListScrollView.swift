@@ -1,4 +1,4 @@
-// 
+//
 //  StatusListScrollView.swift
 //  Codename Shout
 //
@@ -12,16 +12,16 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 // MARK: - Status List (Scroll View)
+
 /// A view that displays a list of statuses in a ScrollView.
 ///
 /// Typically, this is used on iOS to display a list of statuses witout rendering the list lines.
 struct StatusListScrollView: View {
-
     /// The list of statuses that will be rendered in the view.
     @State var statuses: [Status]
 
@@ -39,10 +39,10 @@ struct StatusListScrollView: View {
         }
         .padding(.horizontal)
     }
-
 }
 
 // MARK: - Previews
+
 struct StatusListScrollView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {

@@ -1,4 +1,4 @@
-// 
+//
 //  StatusDetailView.swift
 //  Codename Shout
 //
@@ -12,9 +12,9 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 // MARK: - Status Detail View
 
@@ -23,7 +23,6 @@ import Chica
 /// Typically, this will display a status and its replies. If no replies are available, a view is present to respond
 /// to the post. If passive activities are enabled, buttons for liking and boosting the status are present.
 struct StatusDetailView: View {
-
     @Environment(\.openURL) var openURL
 
     /// The status that will be rendered in this view.
@@ -59,65 +58,62 @@ struct StatusDetailView: View {
             Task {
                 do {
                     statusCtx = try await Chica.shared.request(.get, for: .context(id: status.id))
-                } catch {
-
-                }
+                } catch {}
             }
         }
         .navigationTitle("general.status")
 #if os(macOS)
-        .navigationSubtitle(makeSubtitle())
+            .navigationSubtitle(makeSubtitle())
 #endif
-        .toolbar {
-            ToolbarItemGroup {
-                replyButton
-            }
-
-            ToolbarItemGroup {
-                if showsPassiveActivities {
-                    Button {
-                        Task {
-                            await toggleFavoriteStatus()
-                        }
-                    } label: {
-                        Label(
-                            "status.likeaction",
-                            systemImage: status.favourited == true ? "star.fill" : "star"
-                        )
-                    }
-                    .help("help.likestatus")
-
-                    Button {
-                        Task {
-                            await toggleReblogStatus()
-                        }
-                    } label: {
-                        Label(
-                            "status.reblogaction",
-                            systemImage: status.reblogged == true
-                            ? "arrow.triangle.2.circlepath.circle.fill"
-                            : "arrow.triangle.2.circlepath.circle"
-                        )
-                    }
-                    .help("help.booststatus")
+            .toolbar {
+                ToolbarItemGroup {
+                    replyButton
                 }
+
+                ToolbarItemGroup {
+                    if showsPassiveActivities {
+                        Button {
+                            Task {
+                                await toggleFavoriteStatus()
+                            }
+                        } label: {
+                            Label(
+                                "status.likeaction",
+                                systemImage: status.favourited == true ? "star.fill" : "star"
+                            )
+                        }
+                        .help("help.likestatus")
+
+                        Button {
+                            Task {
+                                await toggleReblogStatus()
+                            }
+                        } label: {
+                            Label(
+                                "status.reblogaction",
+                                systemImage: status.reblogged == true
+                                    ? "arrow.triangle.2.circlepath.circle.fill"
+                                    : "arrow.triangle.2.circlepath.circle"
+                            )
+                        }
+                        .help("help.booststatus")
+                    }
 
 //                Button {
 //
 //                } label: {
 //                    Text("Bookmark")
 //                }
+                }
             }
-
-        }
-        .sheet(isPresented: $composeReply) {
-            NavigationView {
-                AuthorView(prompt: status, visibility: status.visibility)
-            }
+            .sheet(isPresented: $composeReply) {
+                NavigationView {
+                    AuthorView(prompt: status, visibility: status.visibility)
+                }
 #if os(iOS)
-            .navigationViewStyle(.stack)
+                .navigationViewStyle(.stack)
 #endif
-        }
+            }
     }
 
     private var context: some View {
@@ -211,7 +207,7 @@ struct StatusDetailView: View {
     /// - Parameter means: A closure that will be performed to update the status. Should return an optional status,
     ///     which represents the newly modified status.
     private func updateStatus(by means: (Status) async throws -> Status?) async {
-        var updated: Status? = nil
+        var updated: Status?
 
         do {
             updated = try await means(status)
@@ -227,6 +223,7 @@ struct StatusDetailView: View {
 }
 
 // MARK: - Previews
+
 struct StatusDetailView_Previews: PreviewProvider {
     static var previews: some View {
         StatusDetailView(status: MockData.status!)

@@ -1,4 +1,4 @@
-// 
+//
 //  AuthorView.swift
 //  Codename Shout
 //
@@ -12,10 +12,10 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
-import SwiftUI
 import Chica
 import enum Chica.Visibility
+import Foundation
+import SwiftUI
 
 #if os(iOS)
 import UIKit
@@ -25,11 +25,10 @@ import UIKit
 
 /// A view that displays a text editor used to make posts on Gopherdon.
 struct AuthorView: View {
-
-    #if os(iOS)
+#if os(iOS)
     /// An environment variable used to dismiss the view if this were displayed as a sheet.
     @Environment(\.dismiss) var dismiss
-    #endif
+#endif
 
     /// The status that the current status will respond to, if the user is replying.
     @State var prompt: Status?
@@ -59,7 +58,7 @@ struct AuthorView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            #if os(iOS)
+#if os(iOS)
             List {
                 Section {
                     visibilityPicker
@@ -92,10 +91,9 @@ struct AuthorView: View {
                     .animation(.spring(), value: sensitive)
                     .tint(.indigo)
                 }
-
             }
             .listStyle(.grouped)
-            #else
+#else
             replyBanner
                 .animation(.spring(), value: prompt)
             if sensitive {
@@ -117,13 +115,12 @@ struct AuthorView: View {
                             charsRemainText
                                 .animation(.default, value: charactersRemaining)
                         }
-
                     }
                 }
                 .padding()
             }
 
-            #endif
+#endif
         }
         .navigationTitle(
             prompt == nil ? "status.new" : "status.newreply"
@@ -156,9 +153,9 @@ struct AuthorView: View {
                     Label(
                         "status.marksensitive",
                         systemImage:
-                            sensitive
-                        ? "eye.trianglebadge.exclamationmark.fill"
-                        : "eye.trianglebadge.exclamationmark"
+                        sensitive
+                            ? "eye.trianglebadge.exclamationmark.fill"
+                            : "eye.trianglebadge.exclamationmark"
                     )
                 }
             }
@@ -175,13 +172,12 @@ struct AuthorView: View {
                 .tint(.accentColor)
                 .disabled(charactersRemaining < 0)
             }
-
         }
         .onAppear {
             Task {
                 if let unwrappedPrompt = promptId {
                     let trueId = unwrappedPrompt.wrappedValue
-                    if !trueId.isEmpty && prompt == nil {
+                    if !trueId.isEmpty, prompt == nil {
                         prompt = try! await Chica.shared.request(.get, for: .statuses(id: trueId))
                     }
                 }
@@ -223,8 +219,8 @@ struct AuthorView: View {
             .lineSpacing(1.2)
             .onChange(of: text) { newText in
                 text = newText.count < 600
-                ? newText
-                : String(newText[...newText.index(newText.startIndex, offsetBy: 600)])
+                    ? newText
+                    : String(newText[...newText.index(newText.startIndex, offsetBy: 600)])
             }
     }
 
@@ -316,7 +312,7 @@ struct AuthorView: View {
         }
 
         var params = [
-            "status" : text,
+            "status": text,
             "visibility": visibility.rawValue,
             "poll": "null"
         ]
@@ -346,15 +342,14 @@ struct AuthorView: View {
 }
 
 // MARK: - Previews
+
 struct AuthorView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             AuthorView(text: "Enter your status here...")
 //            NavigationView {
-                AuthorView(prompt: MockData.status, text: "Enter your reply here...")
+            AuthorView(prompt: MockData.status, text: "Enter your reply here...")
 //            }
-
         }
-
     }
 }

@@ -1,4 +1,4 @@
-// 
+//
 //  SettingsView.swift
 //  Codename Shout
 //
@@ -19,7 +19,6 @@ import SwiftUI
 
 /// A view that represents the Settings pane.
 struct SettingsView: View {
-
     /// Whether to show passive activities.
     ///
     /// Passive activites are described as actions that the user can perform without actively engaging in the content.
@@ -50,12 +49,12 @@ struct SettingsView: View {
                 BetaYouTrackSubmitButton(presentationMode: .button)
             }
 #endif
-
         }
     }
 }
 
 // MARK: - Previews
+
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
         SettingsView()

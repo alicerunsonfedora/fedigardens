@@ -1,4 +1,4 @@
-// 
+//
 //  AccountExtension.swift
 //  Codename Shout
 //
@@ -12,11 +12,10 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
 import Chica
+import Foundation
 
 extension Account {
-
     /// Returns the account name for this account.
     ///
     /// This will attempt to return the display name, username, or account name (in the order specified).

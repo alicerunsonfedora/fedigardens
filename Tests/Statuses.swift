@@ -1,4 +1,4 @@
-// 
+//
 //  Statuses.swift
 //  Codename Shout
 //
@@ -12,13 +12,12 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+@testable import Capstone
 import Foundation
 import XCTest
-@testable import Capstone
 
 /// Test cases for statuses/posts in Codename Shout.
 class ShoutTest_Status: XCTestCase {
-
     /// Test that a HTML-formatted string is stripped and converted to plain text.
     func testStatusConversionToPlainText() async throws {
         let originalText = "<p>Hello, world!</p>"
@@ -43,5 +42,4 @@ class ShoutTest_Status: XCTestCase {
             XCTAssertTrue(!convertedText.contains(element))
         }
     }
-
 }

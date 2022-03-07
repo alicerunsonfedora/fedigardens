@@ -11,14 +11,13 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Chica
+import SwiftUI
 
 // MARK: - Content View
 
 /// The primary content view of the app.
 struct ContentView: View {
-
 #if os(iOS)
     /// Determines whether the device is compact or standard
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
@@ -27,7 +26,7 @@ struct ContentView: View {
     /// The shared Chica authentication object.
     ///
     /// This is used to handle authentication to the Gopherdon server and watch for state changes.
-    @ObservedObject private var chicaAuth: Chica.OAuth = Chica.OAuth.shared
+    @ObservedObject private var chicaAuth: Chica.OAuth = .shared
 
     @State private var showAuthSheet: Bool = false
 
@@ -35,7 +34,7 @@ struct ContentView: View {
         VStack {
             Group {
                 switch chicaAuth.authState {
-                case .authenthicated(_):
+                case .authenthicated:
 #if os(macOS)
                     WidescreenLayout()
 #else
@@ -84,7 +83,6 @@ struct ContentView: View {
                         }
                         .keyboardShortcut(.defaultAction)
                     }
-
                 }
         }
 #endif

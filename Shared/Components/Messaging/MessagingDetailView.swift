@@ -1,4 +1,4 @@
-// 
+//
 //  MessageDetailView.swift
 //  Codename Shout
 //
@@ -12,9 +12,9 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 // MARK: - Messaging Detail View
 
@@ -22,7 +22,6 @@ import Chica
 ///
 /// This is commonly used to display a message thread.
 struct MessagingDetailView: View, LayoutStateRepresentable {
-
     /// The corresponding conversation the detail view will render.
     @State var conversation: Conversation
 
@@ -36,7 +35,7 @@ struct MessagingDetailView: View, LayoutStateRepresentable {
 
     /// The current state of the view's layout.
     @State internal var state: LayoutState = .initial
-    
+
     @State private var text: String = ""
 
     /// A list of messages that were recently written by the current user.
@@ -48,7 +47,7 @@ struct MessagingDetailView: View, LayoutStateRepresentable {
             if let status = conversation.lastStatus {
                 VStack {
                     Spacer()
-                    MessagingAuthorView(replyStatus: status, currentUserID: currentSenderID) { newStatus in
+                    MessagingAuthorView(replyStatus: status, currentUserID: currentSenderID) { _ in
                         recentlyWritten.append(status)
                     }
                 }
@@ -69,7 +68,7 @@ struct MessagingDetailView: View, LayoutStateRepresentable {
                             extras: [],
                             senderID: "0"
                         )
-                            .redacted(reason: .placeholder)
+                        .redacted(reason: .placeholder)
                     case .loaded:
                         if let ctx = conversationCtx {
                             MessagingPresentationView(
@@ -121,6 +120,7 @@ struct MessagingDetailView: View, LayoutStateRepresentable {
 }
 
 // MARK: - Previews
+
 struct MessagingDetailView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
@@ -128,6 +128,5 @@ struct MessagingDetailView_Previews: PreviewProvider {
             MessagingDetailView(conversation: MockData.conversation!)
                 .preferredColorScheme(.dark)
         }
-
     }
 }

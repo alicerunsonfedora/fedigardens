@@ -11,13 +11,12 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Chica
+import SwiftUI
 
 /// The main entry structure of the app.
 @main
 struct Shout: App {
-
     @Environment(\.openURL) var openURL
 
     /// The ID of the status that the user will reply to in the author view.
@@ -31,22 +30,22 @@ struct Shout: App {
         WindowGroup {
             ContentView()
                 .handlesExternalEvents(preferring: ["home", "oauth"], allowing: ["home", "oauth"])
-            .onOpenURL { url in
-                Chica.handleURL(url: url, actions: [:])
-            }
-            .onAppear {
-                // Set the app's URL prefix to match our URL scheme. This should prevent Codename Shout from
-                // intercepting URLs designed to go to Hyperspace Starlight.
-                Chica.shared.setRequestPrefix(to: "shout://")
-            }
+                .onOpenURL { url in
+                    Chica.handleURL(url: url, actions: [:])
+                }
+                .onAppear {
+                    // Set the app's URL prefix to match our URL scheme. This should prevent Codename Shout from
+                    // intercepting URLs designed to go to Hyperspace Starlight.
+                    Chica.shared.setRequestPrefix(to: "shout://")
+                }
         }
         .handlesExternalEvents(matching: ["home", "oauth"])
 #if os(macOS)
-        .commands {
-            CommandGroup(after: .appSettings) {
-                BetaYouTrackSubmitButton(presentationMode: .menuItem)
+            .commands {
+                CommandGroup(after: .appSettings) {
+                    BetaYouTrackSubmitButton(presentationMode: .menuItem)
+                }
             }
-        }
 #endif
 
         WindowGroup("general.status", id: "create") {
@@ -58,12 +57,12 @@ struct Shout: App {
         )
         .commands { TextEditingCommands() }
 
-        #if os(macOS)
+#if os(macOS)
         Settings {
             SettingsView()
                 .frame(maxWidth: 550, minHeight: 250)
         }
-        #endif
+#endif
     }
 
     private var authorView: some View {

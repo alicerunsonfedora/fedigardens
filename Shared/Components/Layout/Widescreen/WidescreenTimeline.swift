@@ -1,4 +1,4 @@
-// 
+//
 //  WidescreenHomeView.swift
 //  Codename Shout
 //
@@ -12,9 +12,9 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 #if iOS
 import UIKit
@@ -22,7 +22,6 @@ import UIKit
 
 /// A view used to render a timeline in the widescreen layout.
 struct WidescreenTimeline: View, LayoutStateRepresentable {
-
     @Environment(\.openURL) var openURL
 
     /// The timeline scope to render into view.
@@ -107,7 +106,7 @@ struct WidescreenTimeline: View, LayoutStateRepresentable {
     /// - Important: Only forcefully reload data when the user requests it. This call may be expensive on the network
     ///     and may take time to re-fetch the data into memory.
     func loadTimeline(forcefully: Bool = false) async {
-        if (!forcefully && timelineData?.isEmpty == false) {
+        if !forcefully, timelineData?.isEmpty == false {
             return
         }
         state = .loading

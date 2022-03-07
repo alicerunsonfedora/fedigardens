@@ -1,4 +1,4 @@
-// 
+//
 //  CompactTimeline.swift
 //  Codename Shout
 //
@@ -12,13 +12,12 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 /// A view used to render a timeline in the compact layout.
 struct CompactTimeline: View, LayoutStateRepresentable {
-
     /// The timeline scope to render into view.
     @State var timeline: TimelineScope
 
@@ -96,7 +95,7 @@ struct CompactTimeline: View, LayoutStateRepresentable {
     /// - Important: Only forcefully reload data when the user requests it. This call may be expensive on the network
     ///     and may take time to re-fetch the data into memory.
     func loadTimeline(forcefully: Bool = false) async {
-        if (!forcefully && timelineData?.isEmpty == false) {
+        if !forcefully, timelineData?.isEmpty == false {
             return
         }
         state = .loading

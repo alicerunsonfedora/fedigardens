@@ -1,4 +1,4 @@
-// 
+//
 //  JSONExtension.swift
 //  Codename Shout
 //
@@ -15,18 +15,16 @@
 import Foundation
 
 extension JSONDecoder {
-
     /// Decode a JSON file located in a bundle's resources to a specified `Decodable` struct.
     /// - Parameter resourcePath: The name of the resource to decode.
     static func decodeFromResource<T: Decodable>(from resourcePath: String) throws -> T? {
-        var content: T? = nil
-        
+        var content: T?
+
         if let bundleResourcePath = Bundle.main.path(forResource: resourcePath, ofType: "json") {
             let url = URL(fileURLWithPath: bundleResourcePath)
             let data = try Data(contentsOf: url, options: .mappedIfSafe)
             content = try JSONDecoder().decode(T.self, from: data)
-        }
-        else {
+        } else {
             content = nil
         }
 

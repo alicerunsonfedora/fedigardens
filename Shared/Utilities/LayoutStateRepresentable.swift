@@ -1,4 +1,4 @@
-// 
+//
 //  LayoutStateRepresentable.swift
 //  Codename Shout
 //
@@ -16,15 +16,12 @@ import Foundation
 
 /// A protocol used on views to determine that their state can change.
 protocol LayoutStateRepresentable {
-
     /// The current state of the view.
     var state: LayoutState { get set }
 }
 
-
 /// An enumeration representing the various states for a view to undergo.
 enum LayoutState {
-
     /// The view has been initialized, but no data has been loaded yet.
     case initial
 

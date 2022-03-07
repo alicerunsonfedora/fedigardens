@@ -1,4 +1,4 @@
-// 
+//
 //  MockData.swift
 //  Codename Shout
 //
@@ -12,12 +12,11 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
 import Chica
+import Foundation
 
 /// A data structure that houses mock data used for the app.
 struct MockData {
-
     /// Mock data for a status's context.
     /// - Note: The `descendants` property of this mock context can be used for messaging as well.
     static let context: Context? = try! JSONDecoder.decodeFromResource(from: "Context")
@@ -29,5 +28,5 @@ struct MockData {
     static let status: Status? = try! JSONDecoder.decodeFromResource(from: "Status")
 
     /// Mock data for a timeline (list of statuses).
-    static let timeline: [Status]?  = try! JSONDecoder.decodeFromResource(from: "Timeline")
+    static let timeline: [Status]? = try! JSONDecoder.decodeFromResource(from: "Timeline")
 }

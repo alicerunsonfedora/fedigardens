@@ -1,4 +1,4 @@
-// 
+//
 //  StatusListMDView.swift
 //  Codename Shout
 //
@@ -12,15 +12,15 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 // MARK: - Status List Master-Detail View
+
 /// A view used to display a list of statuses in a master-detail view.
 /// This is commonly used on iPadOS and macOS to show statuses on the left, and their context page on the right.
 struct StatusListMDView: View {
-
     /// The list of statuses to render in the master-detail view.
     @State var statuses: [Status]
 
@@ -44,6 +44,7 @@ struct StatusListMDView: View {
 }
 
 // MARK: - Previews
+
 struct StatusListMDView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {

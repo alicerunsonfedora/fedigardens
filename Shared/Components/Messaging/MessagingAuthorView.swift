@@ -1,4 +1,4 @@
-// 
+//
 //  MessagingAuthorView.swift
 //  Codename Shout
 //
@@ -12,9 +12,9 @@
 //  Codename Shout comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Chica
 import Foundation
 import SwiftUI
-import Chica
 
 // MARK: - Messaging Author View
 
@@ -23,7 +23,6 @@ import Chica
 /// This differs from ``AuthorView`` in that it uses other settings to write messages. Additionally, it displays no
 /// options to change visibilities or apply content warnings at the moment.
 struct MessagingAuthorView: View {
-
     /// The status that the user will be responding to in the conversation.
     @State var replyStatus: Status
 
@@ -91,7 +90,7 @@ struct MessagingAuthorView: View {
         }
 
         let params = [
-            "status" : text,
+            "status": text,
             "visibility": "direct",
             "poll": "null",
             "in_reply_to_id": replyStatus.id
@@ -119,6 +118,5 @@ struct MessagingAuthorView_Previews: PreviewProvider {
                 .edgesIgnoringSafeArea(.all)
             MessagingAuthorView(replyStatus: MockData.status!) { _ in }
         }
-
     }
 }

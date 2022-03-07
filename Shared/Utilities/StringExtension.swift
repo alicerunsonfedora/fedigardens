@@ -1,4 +1,4 @@
-// 
+//
 //  StringExtension.swift
 //  Codename Shout
 //
@@ -15,13 +15,12 @@
 import Foundation
 
 extension String {
-
     /// Returns a plain-text form of an HTML-formatted string.
     ///
     /// This method returns asynchronously due to the nature of how ``NSAttributedString`` renders HTML with respect
     /// to threads.
     func toPlainText() async -> String {
-        guard let strData = self.data(using: String.Encoding.utf8) else {
+        guard let strData = data(using: String.Encoding.utf8) else {
             return self
         }
 
@@ -29,8 +28,8 @@ extension String {
             var string = try NSAttributedString(
                 data: strData,
                 options: [
-                    .documentType : NSAttributedString.DocumentType.html,
-                    .characterEncoding : String.Encoding.utf8.rawValue
+                    .documentType: NSAttributedString.DocumentType.html,
+                    .characterEncoding: String.Encoding.utf8.rawValue
                 ],
                 documentAttributes: nil
             ).string
