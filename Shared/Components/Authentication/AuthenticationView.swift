@@ -33,6 +33,9 @@ struct AuthenticationView: View {
     /// Whether to show the authentication dialog on iOS devices.
     @State private var showAuthDialog: Bool = false
 
+    /// The authentication URL to open in the Safari view controller.
+    @State private var authenticationUrl: URL?
+
     // MARK: - Auth View Components
 
     var body: some View {
@@ -53,39 +56,16 @@ struct AuthenticationView: View {
             .font(.system(.body, design: .rounded))
         }
         .sheet(isPresented: $showAuthDialog) {
-            NavigationView {
-                authSheet
-            }
-            .onAppear {
-                Task {
-                    await chicaAuth.startOauthFlow(for: "mastodon.goucher.edu")
+            AuthenticationBrowserWindow(url: $authenticationUrl)
+                .edgesIgnoringSafeArea(.all)
+                .onChange(of: chicaAuth.authState) { authState in
+                    switch authState {
+                    case .authenthicated:
+                        showAuthDialog = false
+                    default:
+                        break
+                    }
                 }
-            }
-            .onChange(of: chicaAuth.authState) { authState in
-                switch authState {
-                case .authenthicated:
-                    showAuthDialog = false
-                default:
-                    break
-                }
-            }
-        }
-    }
-
-    /// The view displayed in the authentication sheet.
-    var authSheet: some View {
-        VStack(spacing: 8) {
-            Text("🎸")
-                .font(.system(size: 76))
-            Text("auth.progress")
-                .textCase(.uppercase)
-                .foregroundColor(.secondary)
-            ProgressView()
-        }
-        .toolbar {
-            ToolbarItem {
-                BetaYouTrackSubmitButton(presentationMode: .button)
-            }
         }
     }
 
@@ -118,7 +98,12 @@ struct AuthenticationView: View {
     private var authButton: some View {
         VStack(spacing: 8) {
             Button {
-                showAuthDialog.toggle()
+                Task {
+                    await chicaAuth.startOauthFlow(for: "mastodon.goucher.edu") { authUrl in
+                        authenticationUrl = authUrl
+                        showAuthDialog.toggle()
+                    }
+                }
             } label: {
                 Text("auth.login.button")
                     .font(.title3)
@@ -206,9 +191,6 @@ struct AuthenticationView_Previews: PreviewProvider {
             AuthenticationView()
                 .previewDevice("iPad mini (6th generation)")
                 .previewInterfaceOrientation(.landscapeLeft)
-            NavigationView {
-                AuthenticationView().authSheet
-            }
         }
     }
 }
