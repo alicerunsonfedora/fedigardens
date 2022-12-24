@@ -16,7 +16,7 @@
 		95369B6627B8403A00F39531 /* CompactTimeline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6527B8403A00F39531 /* CompactTimeline.swift */; };
 		95369B6C27B8408A00F39531 /* StatusListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B6B27B8408A00F39531 /* StatusListScrollView.swift */; };
 		953DE4D327D69C7D0043A357 /* BundleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DE4D227D69C7D0043A357 /* BundleExtension.swift */; };
-		9547230627A0094000D1BA89 /* Shout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F627A0093F00D1BA89 /* Shout.swift */; };
+		9547230627A0094000D1BA89 /* Gardens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F627A0093F00D1BA89 /* Gardens.swift */; };
 		9547230827A0094000D1BA89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F727A0093F00D1BA89 /* ContentView.swift */; };
 		9547230A27A0094000D1BA89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 954722F827A0094000D1BA89 /* Assets.xcassets */; };
 		9558C7E52957711A001B30C7 /* SafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 9558C7E42957711A001B30C7 /* SafariView */; };
@@ -67,17 +67,17 @@
 		9503EFB627B417DD00ABB7B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		952A011027C67F3F00F36B37 /* MessagingPresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingPresentationView.swift; sourceTree = "<group>"; };
 		95369B5827B82D4100F39531 /* WidescreenTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidescreenTimeline.swift; sourceTree = "<group>"; };
-		95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LayoutStateRepresentable.swift; path = Utilities/LayoutStateRepresentable.swift; sourceTree = "<group>"; };
+		95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutStateRepresentable.swift; sourceTree = "<group>"; };
 		95369B6127B837BD00F39531 /* CompactLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactLayout.swift; sourceTree = "<group>"; };
 		95369B6527B8403A00F39531 /* CompactTimeline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactTimeline.swift; sourceTree = "<group>"; };
 		95369B6B27B8408A00F39531 /* StatusListScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusListScrollView.swift; sourceTree = "<group>"; };
 		953DE4CB27D662450043A357 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 		953DE4CE27D66BEF0043A357 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		953DE4D227D69C7D0043A357 /* BundleExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BundleExtension.swift; sourceTree = "<group>"; };
-		954722F627A0093F00D1BA89 /* Shout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shout.swift; sourceTree = "<group>"; };
+		954722F627A0093F00D1BA89 /* Gardens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gardens.swift; sourceTree = "<group>"; };
 		954722F727A0093F00D1BA89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		954722F827A0094000D1BA89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		954722FD27A0094000D1BA89 /* Capstone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Capstone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		954722FD27A0094000D1BA89 /* Gardens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gardens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95645BD127C5546E00FB3426 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
 		95645BD627C5550B00FB3426 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		95667E7527B85BD3009D2251 /* StatusDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailView.swift; sourceTree = "<group>"; };
@@ -197,16 +197,10 @@
 		954722F527A0093F00D1BA89 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				95E4531E27D7B49C00572758 /* AuthenticationBrowserWindow.swift */,
-				95667E7D27B86273009D2251 /* Localizable.stringsdict */,
-				9503EFB727B417DD00ABB7B0 /* Localizable.strings */,
 				95ADAE0427B6B3770011FD83 /* Mock Data */,
-				95ADAE0027B6B2D10011FD83 /* Components */,
+				95ADAE0027B6B2D10011FD83 /* Modules */,
 				95ADADE227B6A6AB0011FD83 /* Utilities */,
 				95D1036E27A00AF400B1EE3C /* Resources */,
-				954722F627A0093F00D1BA89 /* Shout.swift */,
-				954722F727A0093F00D1BA89 /* ContentView.swift */,
-				95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -214,10 +208,28 @@
 		954722FE27A0094000D1BA89 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				954722FD27A0094000D1BA89 /* Capstone.app */,
+				954722FD27A0094000D1BA89 /* Gardens.app */,
 				95ADADF327B6A9630011FD83 /* Tests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		9558C7E829577365001B30C7 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				95667E7D27B86273009D2251 /* Localizable.stringsdict */,
+				9503EFB727B417DD00ABB7B0 /* Localizable.strings */,
+			);
+			path = Localizations;
+			sourceTree = "<group>";
+		};
+		9558C7E9295775E9001B30C7 /* Bootstrapping */ = {
+			isa = PBXGroup;
+			children = (
+				954722F627A0093F00D1BA89 /* Gardens.swift */,
+				954722F727A0093F00D1BA89 /* ContentView.swift */,
+			);
+			path = Bootstrapping;
 			sourceTree = "<group>";
 		};
 		95645BD527C554FB00FB3426 /* Settings */ = {
@@ -279,9 +291,10 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		95ADAE0027B6B2D10011FD83 /* Components */ = {
+		95ADAE0027B6B2D10011FD83 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9558C7E9295775E9001B30C7 /* Bootstrapping */,
 				95E4531D27D7B48800572758 /* Authentication */,
 				958C0C9A27BE955E00ED6C23 /* Author */,
 				956F30BB27D3FCFA00896169 /* Beta */,
@@ -290,7 +303,7 @@
 				95645BD527C554FB00FB3426 /* Settings */,
 				95369B6927B8406B00F39531 /* Statuses */,
 			);
-			path = Components;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		95ADAE0427B6B3770011FD83 /* Mock Data */ = {
@@ -308,6 +321,7 @@
 		95ADAE1D27B6DB830011FD83 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */,
 				95369B6027B837B100F39531 /* Compact */,
 				95369B5727B82D2F00F39531 /* Widescreen */,
 			);
@@ -324,6 +338,7 @@
 		95D1036E27A00AF400B1EE3C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9558C7E829577365001B30C7 /* Localizations */,
 				954722F827A0094000D1BA89 /* Assets.xcassets */,
 				95D1036B27A00AF000B1EE3C /* License.pdf */,
 			);
@@ -343,6 +358,7 @@
 		95E4531D27D7B48800572758 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				95E4531E27D7B49C00572758 /* AuthenticationBrowserWindow.swift */,
 				9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */,
 			);
 			path = Authentication;
@@ -370,7 +386,7 @@
 				9558C7E629577187001B30C7 /* Chica */,
 			);
 			productName = "Capstone (iOS)";
-			productReference = 954722FD27A0094000D1BA89 /* Capstone.app */;
+			productReference = 954722FD27A0094000D1BA89 /* Gardens.app */;
 			productType = "com.apple.product-type.application";
 		};
 		95ADADF227B6A9630011FD83 /* Tests */ = {
@@ -464,6 +480,7 @@
 /* Begin PBXShellScriptBuildPhase section */
 		953DE4CC27D664210043A357 /* Run SwiftLint (if available) */ = {
 			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
@@ -499,7 +516,7 @@
 				95ADAE1227B6CDC50011FD83 /* DateFormatterExtension.swift in Sources */,
 				9547230827A0094000D1BA89 /* ContentView.swift in Sources */,
 				95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */,
-				9547230627A0094000D1BA89 /* Shout.swift in Sources */,
+				9547230627A0094000D1BA89 /* Gardens.swift in Sources */,
 				958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */,
 				95369B6C27B8408A00F39531 /* StatusListScrollView.swift in Sources */,
 				9594DE3B27C927820036325A /* ConversationExtension.swift in Sources */,
@@ -685,7 +702,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.marquiskurt.shout;
-				PRODUCT_NAME = Capstone;
+				PRODUCT_NAME = Gardens;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -716,7 +733,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = net.marquiskurt.shout;
-				PRODUCT_NAME = Capstone;
+				PRODUCT_NAME = Gardens;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -1,10 +1,12 @@
-# Codename Shout (Capstone)
+# Gardens
 
-This repository contains source code to my capstone project, **Codename
-Shout**, an experimental social media client for Gopherdon aiming to make
-a more humane design to social networks.
+**Gardens** is a small, personal client for the Mastodon social network
+(along with any Mastodon API-compatible networks in the fediverse). The
+app stems from a [capstone][capstone-link] project I completed in college
+about humane social media design, and it aims to further this concept
+while providing a native Apple-like app experience.
 
-![Codename Shout running on iMac and iPhone](./.readme/screenshot.png)
+![Gardens running on iMac and iPhone](./.readme/screenshot.png)
 
 > :warning: This project is currently in a _prototype_ state. Designs and
 > features are not final and may change over the course of the project.
@@ -34,32 +36,25 @@ the OBJECTIVES.md file, located in the docs of the project's source code.
 Clone the repository via `git clone`, then open the Shout.xcodeproj file
 in the root directory.
 
-- To build for iOS/iPadOS, set the scheme to **Capstone (iOS)**.
-- To build for macOS, set the scheme to **Capstone (macOS)**.
-
 > :information_source: To prevent collisions with the normal app available
 > in the App Store and/or TestFlight, it is recommended that you change
-> the URL scheme from `shout://` to your own URL scheme. Change this in
+> the URL scheme from `gardens://` to your own URL scheme. Change this in
 > the URL Types section of each target, then change line 40 in
-> Shout.swift to match:
+> Gardens.swift to match:
 >
 > ```swift
 > 37 .onAppear {
-> 38    // Set the app's URL prefix to match our URL scheme. This should prevent Codename Shout from
+> 38    // Set the app's URL prefix to match our URL scheme. This should prevent Gardens from
 > 39    // intercepting URLs designed to go to Hyperspace Starlight.
 > 40    Chica.shared.setRequestPrefix(to: "<your-url-prefix-here>")
 > 41 }
 > ```
 
 Press the Run button in the toolbar or go to **Product > Run** in the menu
-bar to run the project in the iOS Simulator or your Mac.
+bar to run the project in the iOS Simulator.
 
 ### Archiving the Project
-To archive the project, change the device target to one of the following:
-
-- For iOS/iPadOS: _Any iOS Device (arm64)_
-- For macOS: _Any Mac (Apple Silicon, Intel)_
-
+To archive the project, change the device target to _Any iOS Device (arm64)_.
 Then go to **Product > Archive** to create an archive of the app that can
 be distributed through TestFlight or the App Store.
 
@@ -70,12 +65,8 @@ be distributed through TestFlight or the App Store.
 ## Bug Reporting
 
 If you have found a bug or would like to make a feature request, please
-file a bug report on this project's YouTrack page, which can be found at
-https://youtrack.marquiskurt.net/youtrack/newIssue?project=SHU.
-
-A link to this page will also be available in the app as soon as it in
-testing phases. This will likely be located in several places throughout
-the app as needed.
+reach out to me on my Discord at (https://chatwith.marquiskurt.net) or
+send me an email at `software @ marquiskurt.net`.
 
 ## Licensing
 
