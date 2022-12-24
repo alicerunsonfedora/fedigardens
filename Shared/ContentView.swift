@@ -19,10 +19,8 @@ import SwiftUI
 
 /// The primary content view of the app.
 struct ContentView: View {
-#if os(iOS)
     /// Determines whether the device is compact or standard
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-#endif
 
     /// The shared Chica authentication object.
     ///
@@ -36,57 +34,16 @@ struct ContentView: View {
             Group {
                 switch chicaAuth.authState {
                 case .authenthicated:
-#if os(macOS)
-                    WidescreenLayout()
-#else
                     if horizontalSizeClass == .compact {
                         CompactLayout()
                     } else {
                         WidescreenLayout()
                     }
-#endif
                 default:
-#if os(macOS)
-                    Image("Cliffs")
-                        .resizable()
-                        .scaledToFill()
-#else
                     authDialog
-#endif
                 }
             }
         }
-#if os(macOS)
-        .frame(minWidth: 800, minHeight: 600)
-        .onAppear {
-            if chicaAuth.authState == .signedOut {
-                showAuthSheet = true
-            }
-        }
-        .sheet(isPresented: $showAuthSheet) {
-            authDialog
-                .frame(width: 500, height: 400)
-                .toolbar {
-                    ToolbarItem {
-                        Button {
-                            showAuthSheet.toggle()
-                        } label: {
-                            Text("general.cancel")
-                        }
-                        .keyboardShortcut(.cancelAction)
-                    }
-
-                    ToolbarItem(placement: .confirmationAction) {
-                        Button {
-                            authDialog.startAuthentication()
-                        } label: {
-                            Text("auth.login.button")
-                        }
-                        .keyboardShortcut(.defaultAction)
-                    }
-                }
-        }
-#endif
         .animation(.spring(), value: chicaAuth.authState)
     }
 

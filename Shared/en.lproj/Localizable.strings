@@ -7,7 +7,7 @@
 */
 
 // MARK: - General Texts
-"general.appname" = "Shout";
+"general.appname" = "Gardens";
 "general.feedback" = "Send Feedback";
 "general.feedbackmenu" = "Send Feedback...";
 "general.cancel" = "Cancel";
@@ -26,8 +26,8 @@
 "auth.welcome" = "Welcome to";
 "auth.login.button" = "Get Started";
 "auth.progress" = "Signing In...";
-"auth.startinfo" = "Welcome to a different kind of social media powered by Gopherdon, designed by Goucher students and for the Goucher community.";
-"auth.footnote" = "Don't have a Gopherdon account?";
+"auth.startinfo" = "Welcome to a simplified Mastodon experience. Sign in or create an account to get started.";
+"auth.footnote" = "Don't have a Mastodon account?";
 "auth.footnote.create" = "Sign Up &rsaquo;";
 
 // MARK: - Statuses

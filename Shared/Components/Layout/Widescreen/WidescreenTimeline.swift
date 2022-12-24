@@ -58,23 +58,15 @@ struct WidescreenTimeline: View, LayoutStateRepresentable {
                 await loadTimeline()
             }
         }
-#if os(iOS)
         .refreshable {
             Task {
                 await loadTimeline(forcefully: true)
             }
         }
-#endif
         .toolbar {
             ToolbarItem {
                 Button {
-#if os(macOS)
-                    if let url = URL(string: "shout://create") {
-                        openURL(url)
-                    }
-#else
                     composeStatus.toggle()
-#endif
                 } label: {
                     Image(systemName: "square.and.pencil")
                 }

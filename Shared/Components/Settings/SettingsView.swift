@@ -32,19 +32,11 @@ struct SettingsView: View {
                 Toggle(isOn: $showsPassiveActivities) {
                     VStack(alignment: .leading) {
                         Text("settings.passiveactivities.title")
-#if os(macOS)
-                        Text("settings.passiveactivities.detail")
-                            .foregroundColor(.secondary)
-#endif
                     }
                 }
             } footer: {
-#if os(iOS)
                 Text("settings.passiveactivities.detail")
-#endif
             }
-
-#if os(iOS)
             Section {
                 HStack {
                     Text("App Version")
@@ -57,7 +49,6 @@ struct SettingsView: View {
             Section {
                 BetaYouTrackSubmitButton(presentationMode: .button)
             }
-#endif
         }
     }
 }

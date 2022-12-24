@@ -20,10 +20,8 @@ import SwiftUI
 
 /// A view that displays information prompting the user to authenticate and authorize the app to access Gopherdon.
 struct AuthenticationView: View {
-#if os(iOS)
     /// Determines whether the device is compact or standard
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
-#endif
 
     /// The shared Chica authentication object.
     ///
@@ -43,15 +41,11 @@ struct AuthenticationView: View {
             pinstripes
                 .edgesIgnoringSafeArea(.all)
             Group {
-#if os(iOS)
                 if horizontalSizeClass == .compact {
                     compactModalLayout
                 } else {
                     widescreenLayout
                 }
-#else
-                compactModalLayout
-#endif
             }
             .font(.system(.body, design: .rounded))
         }
@@ -75,17 +69,10 @@ struct AuthenticationView: View {
             let halfWidth = proxy.size.width / 2
             let halfHeight = proxy.size.height / 2
 
-#if os(iOS)
             let frameWidth = horizontalSizeClass == .compact ? halfWidth * 1.5 : halfWidth
             let frameHeight = horizontalSizeClass == .compact ? halfWidth * 1.5 : halfWidth
             let xOffset = horizontalSizeClass == .compact ? halfWidth / 2 : halfWidth
             let yOffset = horizontalSizeClass == .compact ? 0 : -halfHeight / 2
-#else
-            let frameWidth = halfWidth
-            let frameHeight = halfWidth
-            let xOffset = halfWidth
-            let yOffset = -halfHeight / 2
-#endif
 
             Image("Pinstripes")
                 .resizable()
@@ -137,9 +124,7 @@ struct AuthenticationView: View {
             }
             .padding()
             Spacer()
-#if os(iOS)
             authButton
-#endif
         }
         .frame(maxWidth: .infinity)
     }

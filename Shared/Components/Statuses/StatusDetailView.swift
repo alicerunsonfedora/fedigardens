@@ -62,9 +62,6 @@ struct StatusDetailView: View {
             }
         }
         .navigationTitle("general.status")
-#if os(macOS)
-            .navigationSubtitle(makeSubtitle())
-#endif
             .toolbar {
                 ToolbarItemGroup {
                     replyButton
@@ -110,9 +107,7 @@ struct StatusDetailView: View {
                 NavigationView {
                     AuthorView(prompt: status, visibility: status.visibility)
                 }
-#if os(iOS)
                 .navigationViewStyle(.stack)
-#endif
             }
     }
 
@@ -163,13 +158,7 @@ struct StatusDetailView: View {
 
     private var replyButton: some View {
         Button {
-#if os(macOS)
-            if let url = URL(string: "shout://create?reply_id=\(status.id)") {
-                openURL(url)
-            }
-#else
             composeReply.toggle()
-#endif
         } label: {
             Label("status.replyaction", systemImage: "arrowshape.turn.up.backward")
         }

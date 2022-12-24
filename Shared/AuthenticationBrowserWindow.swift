@@ -14,6 +14,7 @@
 
 import Foundation
 import SwiftUI
+import SafariView
 
 /// A browser window used in the authentication view for rendering OAuth webpages in Gopherdon.
 ///
@@ -28,18 +29,9 @@ struct AuthenticationBrowserWindow: View {
 
     var body: some View {
         Group {
-            if let authUrl = url {
-                SafariView(authUrl)
-                    .prefersReaderMode(.constant(false))
-                    .collapsible(.constant(false))
-            } else {
-                VStack(spacing: 8) {
-                    Image(systemName: "safari")
-                    Text("Cannot Load Safari Link")
-                }
-                .font(.largeTitle)
-                .foregroundColor(.secondary)
-            }
+            SafariView(url: $url)
+                .prefersReaderMode(.constant(false))
+                .collapsible(.constant(false))
         }
     }
 }

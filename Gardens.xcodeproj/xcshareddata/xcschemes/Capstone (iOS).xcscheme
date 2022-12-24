@@ -16,8 +16,8 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "954722FC27A0094000D1BA89"
                BuildableName = "Capstone.app"
-               BlueprintName = "Capstone (iOS)"
-               ReferencedContainer = "container:Shout.xcodeproj">
+               BlueprintName = "Gardens"
+               ReferencedContainer = "container:Gardens.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,8 +46,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "954722FC27A0094000D1BA89"
             BuildableName = "Capstone.app"
-            BlueprintName = "Capstone (iOS)"
-            ReferencedContainer = "container:Shout.xcodeproj">
+            BlueprintName = "Gardens"
+            ReferencedContainer = "container:Gardens.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,8 +63,8 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "954722FC27A0094000D1BA89"
             BuildableName = "Capstone.app"
-            BlueprintName = "Capstone (iOS)"
-            ReferencedContainer = "container:Shout.xcodeproj">
+            BlueprintName = "Gardens"
+            ReferencedContainer = "container:Gardens.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -67,47 +67,19 @@ struct WidescreenLayout: View {
                     } label: {
                         Label("endpoint.directmessage", systemImage: "bubble.left.and.bubble.right")
                     }
-#if os(iOS)
                     NavigationLink(tag: PageSelection.settings, selection: $currentPage) {
                         SettingsView()
                             .navigationViewStyle(.stack)
                     } label: {
                         Label("general.settings", systemImage: "gear")
                     }
-#endif
                 } header: {
                     Text("Quick Places")
                 }
-#if os(macOS)
-                .collapsible(false)
-#endif
             }
             .frame(minWidth: 225, idealWidth: 275)
             .navigationTitle("general.appname")
-            .toolbar {
-#if os(macOS)
-                ToolbarItem {
-                    Button {
-                        NSApp.keyWindow?.firstResponder?.tryToPerform(
-                            #selector(NSSplitViewController.toggleSidebar(_:)),
-                            with: nil
-                        )
-                    } label: {
-                        Label("general.togglesidebar", systemImage: "sidebar.left")
-                    }
-                    .help("help.sidebar")
-                }
-
-                ToolbarItem {
-                    Spacer()
-                }
-
-                ToolbarItem {
-                    BetaYouTrackSubmitButton(presentationMode: .button)
-                }
-#endif
-            }
-
+            
             EmptyView()
             VStack(spacing: 8) {
                 Image(systemName: "list.bullet.rectangle")

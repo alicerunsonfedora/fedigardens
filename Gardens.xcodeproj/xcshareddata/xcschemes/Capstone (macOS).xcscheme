@@ -17,7 +17,7 @@
                BlueprintIdentifier = "9547230227A0094000D1BA89"
                BuildableName = "Capstone.app"
                BlueprintName = "Capstone (macOS)"
-               ReferencedContainer = "container:Shout.xcodeproj">
+               ReferencedContainer = "container:Gardens.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -35,7 +35,7 @@
                BlueprintIdentifier = "95ADADF227B6A9630011FD83"
                BuildableName = "Tests.xctest"
                BlueprintName = "Tests"
-               ReferencedContainer = "container:Shout.xcodeproj">
+               ReferencedContainer = "container:Gardens.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,7 +57,7 @@
             BlueprintIdentifier = "9547230227A0094000D1BA89"
             BuildableName = "Capstone.app"
             BlueprintName = "Capstone (macOS)"
-            ReferencedContainer = "container:Shout.xcodeproj">
+            ReferencedContainer = "container:Gardens.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -74,7 +74,7 @@
             BlueprintIdentifier = "9547230227A0094000D1BA89"
             BuildableName = "Capstone.app"
             BlueprintName = "Capstone (macOS)"
-            ReferencedContainer = "container:Shout.xcodeproj">
+            ReferencedContainer = "container:Gardens.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

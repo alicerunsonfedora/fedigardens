@@ -16,19 +16,14 @@ import Chica
 import enum Chica.Visibility
 import Foundation
 import SwiftUI
-
-#if os(iOS)
 import UIKit
-#endif
 
 // MARK: - Author View
 
 /// A view that displays a text editor used to make posts on Gopherdon.
 struct AuthorView: View {
-#if os(iOS)
     /// An environment variable used to dismiss the view if this were displayed as a sheet.
     @Environment(\.dismiss) var dismiss
-#endif
 
     /// The status that the current status will respond to, if the user is replying.
     @State var prompt: Status?
@@ -58,7 +53,6 @@ struct AuthorView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-#if os(iOS)
             List {
                 Section {
                     visibilityPicker
@@ -93,43 +87,11 @@ struct AuthorView: View {
                 }
             }
             .listStyle(.grouped)
-#else
-            replyBanner
-                .animation(.spring(), value: prompt)
-            if sensitive {
-                sensitiveBanner
-                    .animation(.spring(), value: sensitive)
-            }
-            ZStack {
-                statusText
-                    .padding(.top, 0)
-                VStack(alignment: .trailing) {
-                    Spacer()
-                    HStack {
-                        Spacer()
-                        ZStack {
-                            Circle()
-                                .fill(.thinMaterial)
-                                .tint(getColorForChars())
-                                .frame(width: 48, height: 48)
-                            charsRemainText
-                                .animation(.default, value: charactersRemaining)
-                        }
-                    }
-                }
-                .padding()
-            }
-
-#endif
         }
         .navigationTitle(
             prompt == nil ? "status.new" : "status.newreply"
         )
-#if os(macOS)
-        .navigationSubtitle(makeSubtitle())
-#endif
         .toolbar {
-#if os(iOS)
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {
                     dismiss()
@@ -139,27 +101,6 @@ struct AuthorView: View {
                 .keyboardShortcut(.cancelAction)
                 .tint(.gray)
             }
-#endif
-
-#if os(macOS)
-            ToolbarItem {
-                visibilityPicker
-            }
-
-            ToolbarItem {
-                Button {
-                    sensitive.toggle()
-                } label: {
-                    Label(
-                        "status.marksensitive",
-                        systemImage:
-                        sensitive
-                            ? "eye.trianglebadge.exclamationmark.fill"
-                            : "eye.trianglebadge.exclamationmark"
-                    )
-                }
-            }
-#endif
             ToolbarItem {
                 Button {
                     Task {
@@ -329,11 +270,7 @@ struct AuthorView: View {
         do {
             let _: Status? = try await Chica.shared
                 .request(.post, for: .statuses(id: nil), params: params)
-#if os(macOS)
-            await NSApplication.shared.keyWindow?.close()
-#else
             dismiss()
-#endif
         } catch {
             print("Some other error occurred here.")
             print(error.localizedDescription)
