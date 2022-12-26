@@ -49,6 +49,7 @@ struct StatusNavigationList<Extras: View>: View {
             .profilePlacement(.hidden)
             .datePlacement(.automatic)
             .profileImageSize(44)
+            .verifiedNoticePlacement(.byAuthorName)
             .tint(.secondary)
             .swipeActions(edge: .leading) {
                 Button {

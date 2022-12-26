@@ -36,40 +36,22 @@ struct StatusDetailView: View {
             List {
                 if let quote = viewModel.quote {
                     NavigationLink(value: viewModel.contextCaller(for: quote)) {
-                        VStack(alignment: .leading) {
-                            Label(
-                                String(
-                                    format: NSLocalizedString("status.quotedetect.title", comment: "Quote detected"),
-                                    status.account.getAccountName()
-                                ),
-                                systemImage: "quote.bubble"
-                            )
-                                .font(.headline)
-                                .tint(.accentColor)
-                            Text(
-                                String(
-                                    format: NSLocalizedString("status.quotedetect.detail", comment: "Quote detected"),
-                                    status.account.getAccountName(),
-                                    quote.originalAuthor().getAccountName()
-                                )
-                            )
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                            StatusView(status: quote)
-                                .lineLimit(3)
-                                .profileImageSize(24)
-                                .reblogNoticePlacement(.hidden)
-                                .showsDisclosedContent($displayUndisclosedContent)
-                        }
+                        StatusDetailQuote(
+                            displayUndisclosedContent: $displayUndisclosedContent,
+                            status: status,
+                            quote: quote
+                        )
                     }.listRowBackground(Color.accentColor.opacity(0.1))
                 }
                 StatusView(status: status)
                     .profileImageSize(48)
                     .reblogNoticePlacement(.aboveOriginalAuthor)
                     .showsDisclosedContent($displayUndisclosedContent)
+                    .verifiedNoticePlacement(.underAuthorLabel)
                     .listRowInsets(.init(top: 12, leading: 16, bottom: 12, trailing: 16))
-
-                context
+                if let context = viewModel.context {
+                    StatusContextProvider(viewModel: viewModel, context: context)
+                }
             }
             .listStyle(.plain)
         }
@@ -104,53 +86,6 @@ struct StatusDetailView: View {
             Task { await viewModel.getContext() }
         }
     }
-
-    private var context: some View {
-        Section {
-            if let replies = viewModel.context?.descendants, !replies.isEmpty {
-                ForEach(replies, id: \.id) { reply in
-                    NavigationLink(value: viewModel.contextCaller(for: reply)) {
-                        HStack(alignment: .top, spacing: 16) {
-                            Image(systemName: "text.bubble")
-                                .imageScale(.large)
-                            StatusView(status: reply)
-                                .profilePlacement(.byAuthorName)
-                                .profileImageSize(32)
-                                .datePlacement(.underContent)
-                        }
-                        .listRowInsets(.init(top: 8, leading: 32, bottom: 8, trailing: 16))
-                        .listRowSeparator(.hidden, edges: .all)
-                    }
-                }
-            } else { repliesEmpty }
-        }
-        .listRowSeparator(.hidden)
-    }
-
-    private var repliesEmpty: some View {
-        HStack {
-            Spacer()
-            VStack {
-                Image(systemName: "ellipsis.bubble")
-                    .imageScale(.large)
-                    .font(.system(.title, design: .rounded))
-                    .foregroundColor(.secondary)
-
-                Text("status.nocontext")
-                    .font(.system(.title, design: .rounded))
-                    .foregroundColor(.secondary)
-
-                replyButton
-                    .controlSize(.regular)
-                    .tint(.accentColor)
-                    .buttonStyle(.bordered)
-            }
-            .padding()
-            Spacer()
-        }
-        .listRowSeparator(.hidden)
-    }
-
     private var replyButton: some View {
         Button {
             let context = AuthoringContext(replyingToID: status.id)

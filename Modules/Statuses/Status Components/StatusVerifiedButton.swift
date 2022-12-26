@@ -41,6 +41,7 @@ struct StatusVerifiedButton: View {
                 Text(
                     String(
                         format: NSLocalizedString("status.verified.detail", comment: "Verified domain"),
+                        status.originalAuthor().getAccountName(),
                         verifiedAccountDomain ?? ""
                     ).attributedHTML()
                 )

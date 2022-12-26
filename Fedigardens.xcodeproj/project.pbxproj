@@ -80,6 +80,9 @@
 		95CEFDE92959637400EEE96C /* StatusVerifiedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */; };
 		95CEFDEB295A031E00EEE96C /* Chica+CustomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDEA295A031E00EEE96C /* Chica+CustomRequest.swift */; };
 		95CEFDEC295A031E00EEE96C /* Chica+CustomRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDEA295A031E00EEE96C /* Chica+CustomRequest.swift */; };
+		95CEFDEE295A388100EEE96C /* StatusDetailQuote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDED295A388100EEE96C /* StatusDetailQuote.swift */; };
+		95CEFDF0295A38E500EEE96C /* StatusContextProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDEF295A38E500EEE96C /* StatusContextProvider.swift */; };
+		95CEFDF2295A3B4900EEE96C /* StatusAuthorExtendedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDF1295A3B4900EEE96C /* StatusAuthorExtendedLabel.swift */; };
 		95D1036C27A00AF000B1EE3C /* License.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 95D1036B27A00AF000B1EE3C /* License.pdf */; };
 		95D2704E27C6F5A200805262 /* MessagingListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D2704D27C6F5A200805262 /* MessagingListCellView.swift */; };
 		95D2705127C6FEFA00805262 /* MessagingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D2705027C6FEFA00805262 /* MessagingList.swift */; };
@@ -145,6 +148,9 @@
 		95C0AF4927C6C7920007D1D0 /* MessagingAuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingAuthorView.swift; sourceTree = "<group>"; };
 		95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusVerifiedButton.swift; sourceTree = "<group>"; };
 		95CEFDEA295A031E00EEE96C /* Chica+CustomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chica+CustomRequest.swift"; sourceTree = "<group>"; };
+		95CEFDED295A388100EEE96C /* StatusDetailQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailQuote.swift; sourceTree = "<group>"; };
+		95CEFDEF295A38E500EEE96C /* StatusContextProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusContextProvider.swift; sourceTree = "<group>"; };
+		95CEFDF1295A3B4900EEE96C /* StatusAuthorExtendedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAuthorExtendedLabel.swift; sourceTree = "<group>"; };
 		95D1036B27A00AF000B1EE3C /* License.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = License.pdf; sourceTree = "<group>"; };
 		95D1037627A00FCA00B1EE3C /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		95D1037827A00FCA00B1EE3C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -278,6 +284,7 @@
 				953BC7CD2957FD94005C7F2A /* StatusMediaDrawer.swift */,
 				957AF84E29591B44000370E6 /* StatusPollView.swift */,
 				95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */,
+				95CEFDF1295A3B4900EEE96C /* StatusAuthorExtendedLabel.swift */,
 			);
 			path = "Status Components";
 			sourceTree = "<group>";
@@ -288,6 +295,8 @@
 				95667E7527B85BD3009D2251 /* StatusDetailView.swift */,
 				953BC7C42957C73E005C7F2A /* StatusDetailViewModel.swift */,
 				956714242958D2D300BFF76A /* StatusDetailToolbar.swift */,
+				95CEFDED295A388100EEE96C /* StatusDetailQuote.swift */,
+				95CEFDEF295A38E500EEE96C /* StatusContextProvider.swift */,
 			);
 			path = "Status Detail View";
 			sourceTree = "<group>";
@@ -597,6 +606,7 @@
 				956714162958C1BF00BFF76A /* AuthoringScene.swift in Sources */,
 				953BC7CB2957EC27005C7F2A /* HashableType.swift in Sources */,
 				95C0AF4A27C6C7920007D1D0 /* MessagingAuthorView.swift in Sources */,
+				95CEFDEE295A388100EEE96C /* StatusDetailQuote.swift in Sources */,
 				95C0AF4627C6B39E0007D1D0 /* MessagingDetailView.swift in Sources */,
 				95645BD727C5550B00FB3426 /* SettingsView.swift in Sources */,
 				95CEFDEB295A031E00EEE96C /* Chica+CustomRequest.swift in Sources */,
@@ -614,6 +624,7 @@
 				9547230627A0094000D1BA89 /* Gardens.swift in Sources */,
 				9558C7EE29578B59001B30C7 /* AccountImage.swift in Sources */,
 				953BC7BF2957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */,
+				95CEFDF0295A38E500EEE96C /* StatusContextProvider.swift in Sources */,
 				958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */,
 				9594DE3B27C927820036325A /* Conversation+Authors.swift in Sources */,
 				956714252958D2D300BFF76A /* StatusDetailToolbar.swift in Sources */,
@@ -624,6 +635,7 @@
 				958C0C9727BE930D00ED6C23 /* Account+AccountName.swift in Sources */,
 				95D2705127C6FEFA00805262 /* MessagingList.swift in Sources */,
 				95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
+				95CEFDF2295A3B4900EEE96C /* StatusAuthorExtendedLabel.swift in Sources */,
 				953BC7C82957E156005C7F2A /* RecursiveNavigationView.swift in Sources */,
 				953BC7CE2957FD94005C7F2A /* StatusMediaDrawer.swift in Sources */,
 				95ADAE1A27B6D9740011FD83 /* StatusNavigationList.swift in Sources */,

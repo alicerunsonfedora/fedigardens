@@ -18,7 +18,6 @@ import SwiftUI
 /// The main entry structure of the app.
 @main
 struct Shout: App {
-    @Environment(\.openURL) var openURL
     @State private var userProfile: Account?
 
     var body: some Scene {
@@ -39,8 +38,11 @@ struct Shout: App {
         WindowGroup(for: Status.self) { status in
             NavigationStack {
                 StatusDetailView(status: status.wrappedValue!, level: .parent)
-            }
+            }.handlesExternalEvents(preferring: ["statusdetail"], allowing: ["statusdetail"])
         }
+        .handlesExternalEvents(
+            matching: .init(arrayLiteral: "statusdetail")
+        )
 
         AuthoringScene()
     }

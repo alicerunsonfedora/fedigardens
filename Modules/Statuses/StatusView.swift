@@ -47,12 +47,9 @@ struct StatusView: View {
     @State fileprivate var profileImagePlacement: ProfileImagePlacement
     @State fileprivate var profileImageSize: CGFloat
     @State fileprivate var reblogNoticePlacement: ReblogNoticePlacement
+    @State fileprivate var verifiedNoticePlacement: StatusAuthorExtendedLabel.VerificationPlacementPolicy
     
     fileprivate var displayDisclosedContent: Bool
-
-    private var hasVerifiedAccount: Bool {
-        status.reblog?.account.verified() == true || status.account.verified()
-    }
 
     init(status: Status) {
         self.init(
@@ -62,7 +59,8 @@ struct StatusView: View {
             profileImagePlacement: .byAuthorName,
             profileImageSize: 48,
             reblogNoticePlacement: .underContent,
-            displayDisclosedContent: status.spoilerText.isEmpty
+            displayDisclosedContent: status.spoilerText.isEmpty,
+            verifiedNoticePlacement: .hidden
         )
     }
 
@@ -73,7 +71,8 @@ struct StatusView: View {
         profileImagePlacement: ProfileImagePlacement,
         profileImageSize: CGFloat,
         reblogNoticePlacement: ReblogNoticePlacement,
-        displayDisclosedContent: Bool
+        displayDisclosedContent: Bool,
+        verifiedNoticePlacement: StatusAuthorExtendedLabel.VerificationPlacementPolicy
     ) {
         self.status = status
         self.truncateLines = truncateLines
@@ -82,6 +81,7 @@ struct StatusView: View {
         self.profileImageSize = profileImageSize
         self.reblogNoticePlacement = reblogNoticePlacement
         self.displayDisclosedContent = displayDisclosedContent
+        self.verifiedNoticePlacement = verifiedNoticePlacement
     }
 
     var body: some View {
@@ -99,21 +99,7 @@ struct StatusView: View {
                     if profileImagePlacement == .byAuthorName { authorImage }
                     VStack(alignment: .leading) {
                         HStack(alignment: .top) {
-                            VStack(alignment: .leading) {
-                                HStack {
-                                    Text(status.reblog?.account.getAccountName() ?? status.account.getAccountName())
-                                        .font(.system(.callout, design: .rounded))
-                                        .bold()
-                                        .lineLimit(1)
-                                    if hasVerifiedAccount {
-                                        StatusVerifiedButton(status: status)
-                                    }
-                                }
-                                Text("(@\(status.reblog?.account.acct ?? status.account.acct))")
-                                    .foregroundColor(.secondary)
-                                    .font(.system(.callout, design: .rounded))
-                                    .lineLimit(1)
-                            }
+                            StatusAuthorExtendedLabel(status: status, placementPolicy: verifiedNoticePlacement)
                             if truncateLines != nil {
                                 if datePlacement == .automatic {
                                     Spacer()
@@ -230,7 +216,8 @@ extension StatusView {
             profileImagePlacement,
             profileImageSize: profileImageSize,
             reblogNoticePlacement: reblogNoticePlacement,
-            displayDisclosedContent: displayDisclosedContent
+            displayDisclosedContent: displayDisclosedContent,
+            verifiedNoticePlacement: verifiedNoticePlacement
         )
     }
 
@@ -243,7 +230,8 @@ extension StatusView {
             profileImagePlacement: profilePlacement,
             profileImageSize: profileImageSize,
             reblogNoticePlacement: reblogNoticePlacement,
-            displayDisclosedContent: displayDisclosedContent
+            displayDisclosedContent: displayDisclosedContent,
+            verifiedNoticePlacement: verifiedNoticePlacement
         )
     }
 
@@ -255,7 +243,8 @@ extension StatusView {
             profileImagePlacement: profileImagePlacement,
             profileImageSize: profileSize,
             reblogNoticePlacement: reblogNoticePlacement,
-            displayDisclosedContent: displayDisclosedContent
+            displayDisclosedContent: displayDisclosedContent,
+            verifiedNoticePlacement: verifiedNoticePlacement
         )
     }
 
@@ -268,7 +257,8 @@ extension StatusView {
             profileImagePlacement: profileImagePlacement,
             profileImageSize: profileImageSize,
             reblogNoticePlacement: reblogNoticePlacement,
-            displayDisclosedContent: displayDisclosedContent
+            displayDisclosedContent: displayDisclosedContent,
+            verifiedNoticePlacement: verifiedNoticePlacement
         )
     }
 
@@ -282,7 +272,8 @@ extension StatusView {
             profileImagePlacement: profileImagePlacement,
             profileImageSize: profileImageSize,
             reblogNoticePlacement: reblogNoticePlacement,
-            displayDisclosedContent: displayDisclosedContent
+            displayDisclosedContent: displayDisclosedContent,
+            verifiedNoticePlacement: verifiedNoticePlacement
         )
     }
 
@@ -294,7 +285,8 @@ extension StatusView {
             profileImagePlacement: profileImagePlacement,
             profileImageSize: profileImageSize,
             reblogNoticePlacement: placement,
-            displayDisclosedContent: displayDisclosedContent
+            displayDisclosedContent: displayDisclosedContent,
+            verifiedNoticePlacement: verifiedNoticePlacement
         )
     }
 
@@ -306,7 +298,21 @@ extension StatusView {
             profileImagePlacement: profileImagePlacement,
             profileImageSize: profileImageSize,
             reblogNoticePlacement: reblogNoticePlacement,
-            displayDisclosedContent: disclosure.wrappedValue
+            displayDisclosedContent: disclosure.wrappedValue,
+            verifiedNoticePlacement: verifiedNoticePlacement
+        )
+    }
+
+    func verifiedNoticePlacement(_ policy: StatusAuthorExtendedLabel.VerificationPlacementPolicy) -> StatusView {
+        return StatusView(
+            status: status,
+            truncateLines: truncateLines,
+            datePlacement: datePlacement,
+            profileImagePlacement: profileImagePlacement,
+            profileImageSize: profileImageSize,
+            reblogNoticePlacement: reblogNoticePlacement,
+            displayDisclosedContent: displayDisclosedContent,
+            verifiedNoticePlacement: policy
         )
     }
 }
