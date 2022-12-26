@@ -1,6 +1,6 @@
-# Gardens
+# Fedigardens
 
-**Gardens** is a small, personal client for the Mastodon social network
+**Fediardens** is a small, personal client for the Mastodon social network
 (along with any Mastodon API-compatible networks in the fediverse). The
 app stems from a [capstone][capstone-link] project I completed in college
 about humane social media design, and it aims to further this concept
@@ -39,15 +39,13 @@ in the root directory.
 > :information_source: To prevent collisions with the normal app available
 > in the App Store and/or TestFlight, it is recommended that you change
 > the URL scheme from `gardens://` to your own URL scheme. Change this in
-> the URL Types section of each target, then change line 40 in
-> Gardens.swift to match:
+> the URL Types section of each target, then change the corresponding line
+> inGardens.swift to match your URL prefix:
 >
 > ```swift
 > 37 .onAppear {
-> 38    // Set the app's URL prefix to match our URL scheme. This should prevent Gardens from
-> 39    // intercepting URLs designed to go to Hyperspace Starlight.
-> 40    Chica.shared.setRequestPrefix(to: "<your-url-prefix-here>")
-> 41 }
+> 38    Chica.shared.setRequestPrefix(to: "<your-url-prefix-here>")
+> 39 }
 > ```
 
 Press the Run button in the toolbar or go to **Product > Run** in the menu
