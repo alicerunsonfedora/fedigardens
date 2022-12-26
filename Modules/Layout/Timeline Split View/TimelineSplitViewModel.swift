@@ -58,14 +58,14 @@ class TimelineSplitViewModel: ObservableObject {
                 let statuses: [Status]? = try await Chica.shared.request(
                     .get,
                     for: .timeline(scope: scope),
-                    params: createRequestParameters(locally: localScoped)
+                    params: createRequestParameters(locally: localScoped, using: policy)
                 )
                 insertStatuses(statuses: statuses, with: policy)
             case .profile(let id):
                 let statuses: [Status]? = try await Chica.shared.request(
                     .get,
                     for: .accountStatuses(id: id),
-                    params: createRequestParameters()
+                    params: createRequestParameters(using: policy)
                 )
                 insertStatuses(statuses: statuses, with: policy)
             }
@@ -86,10 +86,13 @@ class TimelineSplitViewModel: ObservableObject {
         }
     }
 
-    private func createRequestParameters(locally local: Bool = false) -> [String: String] {
+    private func createRequestParameters(
+        locally local: Bool = false,
+        using policy: TimelineReloadPolicy
+    ) -> [String: String] {
         var parameters = ["limit": String(UserDefaults.standard.loadLimit)]
         if local { parameters["local"] = "true" }
-        if case .scopedTimeline = scope, let lastPost = timelineData?.last {
+        if case .scopedTimeline = scope, policy == .preloadNextBatch, let lastPost = timelineData?.last {
             parameters["max_id"] = lastPost.id
         }
         return parameters
