@@ -34,11 +34,41 @@ struct StatusDetailView: View {
     var body: some View {
         RecursiveNavigationStack(level: level) {
             List {
+                if let quote = viewModel.quote {
+                    NavigationLink(value: viewModel.contextCaller(for: quote)) {
+                        VStack(alignment: .leading) {
+                            Label(
+                                String(
+                                    format: NSLocalizedString("status.quotedetect.title", comment: "Quote detected"),
+                                    status.account.getAccountName()
+                                ),
+                                systemImage: "quote.bubble"
+                            )
+                                .font(.headline)
+                                .tint(.accentColor)
+                            Text(
+                                String(
+                                    format: NSLocalizedString("status.quotedetect.detail", comment: "Quote detected"),
+                                    status.account.getAccountName(),
+                                    quote.originalAuthor().getAccountName()
+                                )
+                            )
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                            StatusView(status: quote)
+                                .lineLimit(3)
+                                .profileImageSize(24)
+                                .reblogNoticePlacement(.hidden)
+                                .showsDisclosedContent($displayUndisclosedContent)
+                        }
+                    }.listRowBackground(Color.accentColor.opacity(0.1))
+                }
                 StatusView(status: status)
                     .profileImageSize(48)
                     .reblogNoticePlacement(.aboveOriginalAuthor)
                     .showsDisclosedContent($displayUndisclosedContent)
                     .listRowInsets(.init(top: 12, leading: 16, bottom: 12, trailing: 16))
+
                 context
             }
             .listStyle(.plain)

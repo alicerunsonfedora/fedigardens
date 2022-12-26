@@ -16,11 +16,26 @@ import Foundation
 import Chica
 
 extension Status {
+    
+    func originalAuthor() -> Account {
+        return reblog?.account ?? account
+    }
+
     func uriToURL() -> URL? {
         let modifiedURL = uri
             .replacingOccurrences(of: "/users/", with: "/@")
             .replacingOccurrences(of: "/statuses", with: "")
             .replacingOccurrences(of: "/activity", with: "")
         return URL(string: modifiedURL)
+    }
+
+    /// Returns the ID of a quoted reply using the custom quote format.
+    func quotedReply() -> (String, String)? {
+        let regex = /(💬)\: (https\:\/\/[a-zA-Z.0-9\-\_]+)\/@[a-zA-Z0-9]+\/(\d+)/
+        if let match = content.plainTextContents().firstMatch(of: regex) {
+            let (_, _, requestURL, requestID) = match.output
+            return (String(requestURL), String(requestID))
+        }
+        return nil
     }
 }

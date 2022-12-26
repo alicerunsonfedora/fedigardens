@@ -23,6 +23,7 @@ class StatusDetailViewModel: ObservableObject {
     }
 
     @Published var status: Status?
+    @Published var quote: Status?
     @Published var context: Context?
 
     var containsUndisclosedContent: Bool {
@@ -37,8 +38,12 @@ class StatusDetailViewModel: ObservableObject {
     }
 
     func replace(status: Status) async {
-        DispatchQueue.main.async { self.status = status }
+        DispatchQueue.main.async {
+            self.clear()
+            self.status = status
+        }
         await getContext(for: status)
+        await getQuote(for: status)
     }
 
     func getContext(for status: Status? = nil) async {
@@ -48,7 +53,18 @@ class StatusDetailViewModel: ObservableObject {
             let newContext: Context? = try await Chica.shared.request(.get, for: .context(id: realStatus.id))
             DispatchQueue.main.async { self.context = newContext }
         } catch {
-            print("Couldn't fetch context")
+            print("Couldn't fetch context: \(error)")
+        }
+    }
+
+    func getQuote(for status: Status? = nil) async {
+        let realStatus = status ?? self.status
+        guard let realStatus, realStatus.quotedReply() != nil else { return }
+        do {
+            let quotedReply: Status? = try await Chica.shared.requestQuote(of: realStatus)
+            DispatchQueue.main.async { self.quote = quotedReply }
+        } catch {
+            print("Couldn't fetch quoted reply: \(error)")
         }
     }
 
@@ -79,6 +95,12 @@ class StatusDetailViewModel: ObservableObject {
                 .post, for: state.reblogged == true ? .unreblog(id: state.id) : .reblog(id: state.id)
             )
         }
+    }
+
+    private func clear() {
+        self.status = nil
+        self.context = nil
+        self.quote = nil
     }
 
     /// Make a request to update the current status.

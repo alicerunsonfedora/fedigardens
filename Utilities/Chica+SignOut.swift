@@ -17,7 +17,6 @@ import Chica
 import KeychainAccess
 
 extension Chica.OAuth {
-
     func signOut() {
         let keychain = Keychain(service: Chica.OAuth.keychainService)
         do {

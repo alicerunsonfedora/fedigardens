@@ -21,6 +21,7 @@ extension String {
     ///
     /// This method returns asynchronously due to the nature of how ``NSAttributedString`` renders HTML with respect
     /// to threads.
+    @available(*, deprecated, message: "Use plainTextContents instead.")
     func toPlainText() async -> String {
         guard let strData = data(using: String.Encoding.utf8) else {
             return self
@@ -57,6 +58,20 @@ extension String {
         } catch {
             print("Error converting: \(error)")
             return dumbSelf
+        }
+    }
+
+    func plainTextContents() -> String {
+        do {
+            let htmlDOM = try HTMLParser().parse(html: self)
+            let markdown = htmlDOM.toMarkdown()
+            let markdownStr = try NSAttributedString(
+                markdown: markdown,
+                options: .init(interpretedSyntax: .inlineOnlyPreservingWhitespace)
+            )
+            return markdownStr.string
+        } catch {
+            return self
         }
     }
 }

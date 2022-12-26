@@ -53,6 +53,8 @@
 "status.spoilermessage" = "%@ has collapsed this status and has provided the warning '%@'.";
 "status.spoilermessage-cta" = "Collapsed content may contain long form text and/or sensitive content, and Fedigardens cannot guarantee that this content is safe to view. You can tap the eye icon to view the content.";
 "status.voted" = "You have voted on this poll.";
+"status.quotedetect.title" = "%@ is linking to a status.";
+"status.quotedetect.detail" = "%@ may be providing additional context or quoting %@. Tap on this status to view the original conversation.";
 "status.quoted.title" = "You are quoting this status.";
 "status.quoted.detail" = "A link to the status has been added automatically to maintain compatibility. Remember to follow your instance's rules.";
 "status.verified.title" = "Verified Domain";

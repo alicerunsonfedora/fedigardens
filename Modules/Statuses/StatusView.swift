@@ -35,6 +35,7 @@ struct StatusView: View {
         case underContent
         case aboveContent
         case aboveOriginalAuthor
+        case hidden
     }
 
     @AppStorage("status.show-statistics") var showsStatistics: Bool = true
