@@ -76,6 +76,8 @@
 		95C0AF4427C6B1AC0007D1D0 /* Conversation.json in Resources */ = {isa = PBXBuildFile; fileRef = 95C0AF4127C6B1AC0007D1D0 /* Conversation.json */; };
 		95C0AF4627C6B39E0007D1D0 /* MessagingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0AF4527C6B39E0007D1D0 /* MessagingDetailView.swift */; };
 		95C0AF4A27C6C7920007D1D0 /* MessagingAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0AF4927C6C7920007D1D0 /* MessagingAuthorView.swift */; };
+		95CEFDE82959637400EEE96C /* StatusVerifiedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */; };
+		95CEFDE92959637400EEE96C /* StatusVerifiedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */; };
 		95D1036C27A00AF000B1EE3C /* License.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 95D1036B27A00AF000B1EE3C /* License.pdf */; };
 		95D2704E27C6F5A200805262 /* MessagingListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D2704D27C6F5A200805262 /* MessagingListCellView.swift */; };
 		95D2705127C6FEFA00805262 /* MessagingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D2705027C6FEFA00805262 /* MessagingList.swift */; };
@@ -139,6 +141,7 @@
 		95C0AF4127C6B1AC0007D1D0 /* Conversation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Conversation.json; sourceTree = "<group>"; };
 		95C0AF4527C6B39E0007D1D0 /* MessagingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingDetailView.swift; sourceTree = "<group>"; };
 		95C0AF4927C6C7920007D1D0 /* MessagingAuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingAuthorView.swift; sourceTree = "<group>"; };
+		95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusVerifiedButton.swift; sourceTree = "<group>"; };
 		95D1036B27A00AF000B1EE3C /* License.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = License.pdf; sourceTree = "<group>"; };
 		95D1037627A00FCA00B1EE3C /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		95D1037727A00FCA00B1EE3C /* OBJECTIVES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = OBJECTIVES.md; path = docs/OBJECTIVES.md; sourceTree = "<group>"; };
@@ -272,6 +275,7 @@
 				956714132958B69D00BFF76A /* StatusDisclosedContent.swift */,
 				953BC7CD2957FD94005C7F2A /* StatusMediaDrawer.swift */,
 				957AF84E29591B44000370E6 /* StatusPollView.swift */,
+				95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */,
 			);
 			path = "Status Components";
 			sourceTree = "<group>";
@@ -625,6 +629,7 @@
 				956714122958A9D000BFF76A /* StatusNavigationListViewModel.swift in Sources */,
 				95D3EADD27BBE51F00AF33D9 /* AuthorView.swift in Sources */,
 				957AF84F29591B44000370E6 /* StatusPollView.swift in Sources */,
+				95CEFDE82959637400EEE96C /* StatusVerifiedButton.swift in Sources */,
 				9503EFAF27B4173C00ABB7B0 /* AuthenticationView.swift in Sources */,
 				952A011127C67F3F00F36B37 /* MessagingPresentationView.swift in Sources */,
 				95ADAE0227B6B2E10011FD83 /* StatusView.swift in Sources */,
@@ -639,6 +644,7 @@
 				953BC7CF2957FD94005C7F2A /* StatusMediaDrawer.swift in Sources */,
 				957AF85329592DD1000370E6 /* AuthoringContext.swift in Sources */,
 				953BC7CC2957EC27005C7F2A /* HashableType.swift in Sources */,
+				95CEFDE92959637400EEE96C /* StatusVerifiedButton.swift in Sources */,
 				957AF85029591B44000370E6 /* StatusPollView.swift in Sources */,
 				958C0C9927BE930D00ED6C23 /* Account+AccountName.swift in Sources */,
 				956714222958CE7900BFF76A /* MockData.swift in Sources */,

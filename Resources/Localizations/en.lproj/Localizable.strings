@@ -55,6 +55,8 @@
 "status.voted" = "You have voted on this poll.";
 "status.quoted.title" = "You are quoting this status.";
 "status.quoted.detail" = "A link to the status has been added automatically to maintain compatibility. Remember to follow your instance's rules.";
+"status.verified.title" = "Verified Domain";
+"status.verified.detail" = "This account has verified that they control the domain %@.";
 
 // MARK: - Status Actions
 "status.compose" = "New Status";

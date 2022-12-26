@@ -45,10 +45,13 @@ struct StatusView: View {
     @State fileprivate var datePlacement: DatePlacement
     @State fileprivate var profileImagePlacement: ProfileImagePlacement
     @State fileprivate var profileImageSize: CGFloat
-
-    @State private var reblogNoticePlacement: ReblogNoticePlacement
-
+    @State fileprivate var reblogNoticePlacement: ReblogNoticePlacement
+    
     fileprivate var displayDisclosedContent: Bool
+
+    private var hasVerifiedAccount: Bool {
+        status.reblog?.account.verified() == true || status.account.verified()
+    }
 
     init(status: Status) {
         self.init(
@@ -92,16 +95,19 @@ struct StatusView: View {
                         .padding(.vertical, 8)
                 }
                 HStack {
-                    if profileImagePlacement == .byAuthorName {
-                        authorImage
-                    }
+                    if profileImagePlacement == .byAuthorName { authorImage }
                     VStack(alignment: .leading) {
                         HStack(alignment: .top) {
                             VStack(alignment: .leading) {
-                                Text(status.reblog?.account.getAccountName() ?? status.account.getAccountName())
-                                    .font(.system(.callout, design: .rounded))
-                                    .bold()
-                                    .lineLimit(1)
+                                HStack {
+                                    Text(status.reblog?.account.getAccountName() ?? status.account.getAccountName())
+                                        .font(.system(.callout, design: .rounded))
+                                        .bold()
+                                        .lineLimit(1)
+                                    if hasVerifiedAccount {
+                                        StatusVerifiedButton(status: status)
+                                    }
+                                }
                                 Text("(@\(status.reblog?.account.acct ?? status.account.acct))")
                                     .foregroundColor(.secondary)
                                     .font(.system(.callout, design: .rounded))

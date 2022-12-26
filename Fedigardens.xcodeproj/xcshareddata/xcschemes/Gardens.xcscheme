@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "954722FC27A0094000D1BA89"
-               BuildableName = "Gardens.app"
+               BuildableName = "Fedigardens.app"
                BlueprintName = "Fedigardens"
                ReferencedContainer = "container:Fedigardens.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "954722FC27A0094000D1BA89"
-            BuildableName = "Gardens.app"
+            BuildableName = "Fedigardens.app"
             BlueprintName = "Fedigardens"
             ReferencedContainer = "container:Fedigardens.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "954722FC27A0094000D1BA89"
-            BuildableName = "Gardens.app"
+            BuildableName = "Fedigardens.app"
             BlueprintName = "Fedigardens"
             ReferencedContainer = "container:Fedigardens.xcodeproj">
          </BuildableReference>

@@ -24,4 +24,12 @@ extension Account {
         if !username.isEmpty { return "@\(username)" }
         return "@\(acct)"
     }
+
+    func verified() -> Bool {
+        return fields.contains { field in field.verifiedAt != nil }
+    }
+
+    func verifiedDomain() -> String? {
+        return fields.first { field in field.verifiedAt != nil }?.value
+    }
 }
