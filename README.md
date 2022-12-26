@@ -1,12 +1,17 @@
+<div align="center">
+
+![Fedigardens Icon](./.readme/GardensIcon.png)
+
 # Fedigardens
+
+</div>
+
 
 **Fediardens** is a small, personal client for the Mastodon social network
 (along with any Mastodon API-compatible networks in the fediverse). The
 app stems from a [capstone][capstone-link] project I completed in college
 about humane social media design, and it aims to further this concept
 while providing a native Apple-like app experience.
-
-![Gardens running on iMac and iPhone](./.readme/screenshot.png)
 
 > :warning: This project is currently in a _prototype_ state. Designs and
 > features are not final and may change over the course of the project.

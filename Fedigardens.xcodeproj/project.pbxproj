@@ -147,7 +147,6 @@
 		95CEFDEA295A031E00EEE96C /* Chica+CustomRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Chica+CustomRequest.swift"; sourceTree = "<group>"; };
 		95D1036B27A00AF000B1EE3C /* License.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = License.pdf; sourceTree = "<group>"; };
 		95D1037627A00FCA00B1EE3C /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
-		95D1037727A00FCA00B1EE3C /* OBJECTIVES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = OBJECTIVES.md; path = docs/OBJECTIVES.md; sourceTree = "<group>"; };
 		95D1037827A00FCA00B1EE3C /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		95D2704D27C6F5A200805262 /* MessagingListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingListCellView.swift; sourceTree = "<group>"; };
 		95D2705027C6FEFA00805262 /* MessagingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingList.swift; sourceTree = "<group>"; };
@@ -436,7 +435,6 @@
 			children = (
 				95D1037827A00FCA00B1EE3C /* README.md */,
 				95D1037627A00FCA00B1EE3C /* LICENSE.md */,
-				95D1037727A00FCA00B1EE3C /* OBJECTIVES.md */,
 			);
 			name = Documentation;
 			path = ..;
