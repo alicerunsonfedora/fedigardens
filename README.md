@@ -81,4 +81,7 @@ applicable. You may view the terms for these licenses on their respective
 projects:
 
 - Chica: Non-Violent Public License v4+
-- Cliffs image: Unsplash License (Paula Sotomayor)
+- SafariView: Mozilla Public License v2
+- HTML2Markdown: MIT License
+
+[capstone-link]: https://github.com/alicerunsonfedora/capstone
