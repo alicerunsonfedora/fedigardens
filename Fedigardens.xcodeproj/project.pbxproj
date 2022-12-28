@@ -313,14 +313,11 @@
 		956714212958CE6800BFF76A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */,
+				959349F1295A94ED0073D000 /* Chica */,
 				953DE4D227D69C7D0043A357 /* Bundle+AppVersion.swift */,
 				95ADAE1127B6CDC50011FD83 /* DateFormatter+Mastodon.swift */,
 				95ADAE0927B6B49A0011FD83 /* JSONDecoder+Resources.swift */,
 				95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */,
-				9594DE3A27C927820036325A /* Conversation+Authors.swift */,
-				953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */,
-				95CEFDEA295A031E00EEE96C /* Chica+CustomRequest.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -349,6 +346,18 @@
 			path = Author;
 			sourceTree = "<group>";
 		};
+		959349F1295A94ED0073D000 /* Chica */ = {
+			isa = PBXGroup;
+			children = (
+				958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */,
+				9594DE3A27C927820036325A /* Conversation+Authors.swift */,
+				953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */,
+				95CEFDEA295A031E00EEE96C /* Chica+CustomRequest.swift */,
+				957AF84C2958F451000370E6 /* Chica+SignOut.swift */,
+			);
+			path = Chica;
+			sourceTree = "<group>";
+		};
 		95A3587027B2B18D00DBB76E /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,7 +376,6 @@
 				953BC7CA2957EC27005C7F2A /* HashableType.swift */,
 				95667E7927B85C3B009D2251 /* MockData.swift */,
 				95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */,
-				957AF84C2958F451000370E6 /* Chica+SignOut.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";

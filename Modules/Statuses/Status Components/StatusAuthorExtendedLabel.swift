@@ -26,7 +26,10 @@ struct StatusAuthorExtendedLabel: View {
     var placementPolicy: VerificationPlacementPolicy
 
     private var hasVerifiedAccount: Bool {
-        status.reblog?.account.verified() == true || status.account.verified()
+        if let reblog = status.reblog {
+            return reblog.account.verified()
+        }
+        return status.account.verified()
     }
 
     var verifiedAccountDomain: String? {

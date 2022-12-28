@@ -16,7 +16,6 @@ import Foundation
 import Chica
 
 extension Status {
-    
     func originalAuthor() -> Account {
         return reblog?.account ?? account
     }
