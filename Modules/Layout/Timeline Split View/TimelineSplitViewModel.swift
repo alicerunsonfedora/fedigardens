@@ -27,8 +27,8 @@ class TimelineSplitViewModel: ObservableObject {
         case preloadNextBatch
     }
 
-    @Published var timelineData: [Status]? = []
-    @Published var dummyTimeline: [Status]? = MockData.timeline
+    @Published var timelineData: [Status] = []
+    @Published var dummyTimeline: [Status] = MockData.timeline!
     @Published var state: LayoutState = .initial
     @Published var scope: TimelineType = .scopedTimeline(scope: .home, local: false)
 
@@ -37,62 +37,67 @@ class TimelineSplitViewModel: ObservableObject {
     }
 
     /// Load the timeline into the view.
-    /// - Parameter forcefully: Whether to forcefully reload the data, regardless if the timeline is already loaded.
-    ///     Defaults to false.
+    /// - Parameter forcefully: Whether to forcefully reload the data, regardless if the timeline is already
+    /// loaded. Defaults to false.
     ///
-    /// Typically, this method is called when rendering the view for the first time to fetch the timeline contents.
-    /// Since the network call is asynchronous, this method has been made asynchronous.
+    /// Typically, this method is called when rendering the view for the first time to fetch the timeline
+    /// contents. Since the network call is asynchronous, this method has been made asynchronous.
     ///
-    /// - Important: Only forcefully reload data when the user requests it. This call may be expensive on the network
-    ///     and may take time to re-fetch the data into memory.
+    /// - Important: Only forcefully reload data when the user requests it. This call may be expensive on the
+    /// network and may take time to re-fetch the data into memory.
     func loadTimeline(
         forcefully userInitiated: Bool = false,
         policy: TimelineReloadPolicy
     ) async -> LayoutState {
-        if !userInitiated, timelineData?.isEmpty == false {
+        if !userInitiated, timelineData.isEmpty == false {
             return .loaded
         }
-        do {
-            switch scope {
-            case .scopedTimeline(let scope, let localScoped):
-                let statuses: [Status]? = try await Chica.shared.request(
-                    .get,
-                    for: .timeline(scope: scope),
-                    params: createRequestParameters(locally: localScoped, using: policy)
-                )
-                insertStatuses(statuses: statuses, with: policy)
-            case .profile(let id):
-                let statuses: [Status]? = try await Chica.shared.request(
-                    .get,
-                    for: .accountStatuses(id: id),
-                    params: createRequestParameters(using: policy)
-                )
-                insertStatuses(statuses: statuses, with: policy)
-            }
+
+        var callInLocalScope = false
+        if case .scopedTimeline(_, let local) = scope { callInLocalScope = local }
+
+        let response = await callChica(local: callInLocalScope, policy: policy)
+        switch response {
+        case .success(let statuses):
+            insertStatuses(statuses: statuses, with: policy)
             return .loaded
-        } catch {
-            print(error)
+        case .failure(let error):
+            print("Failed to load timeline: \(error)")
             return .errored(message: error.localizedDescription)
         }
     }
 
-    private func insertStatuses(statuses: [Status]?, with policy: TimelineReloadPolicy) {
+    private func callChica(local: Bool, policy: TimelineReloadPolicy) async -> Chica.Response<[Status]> {
+        return await Chica.shared.request(
+            .get,
+            for: endpoint(),
+            params: requestParams(locally: local, using: policy)
+        )
+    }
+
+    private func endpoint() -> Endpoint {
+        switch scope {
+        case .profile(let id):
+            return .accountStatuses(id: id)
+        case .scopedTimeline(let scope, _):
+            return .timeline(scope: scope)
+        }
+    }
+
+    private func insertStatuses(statuses: [Status], with policy: TimelineReloadPolicy) {
         DispatchQueue.main.async {
-            if let previous = self.timelineData, !previous.isEmpty, policy == .preloadNextBatch {
-                self.timelineData = previous + (statuses ?? [])
+            if !self.timelineData.isEmpty, policy == .preloadNextBatch {
+                self.timelineData.append(contentsOf: statuses)
             } else {
                 self.timelineData = statuses
             }
         }
     }
 
-    private func createRequestParameters(
-        locally local: Bool = false,
-        using policy: TimelineReloadPolicy
-    ) -> [String: String] {
+    private func requestParams(locally local: Bool = false, using policy: TimelineReloadPolicy) -> [String: String] {
         var parameters = ["limit": String(UserDefaults.standard.loadLimit)]
         if local { parameters["local"] = "true" }
-        if case .scopedTimeline = scope, policy == .preloadNextBatch, let lastPost = timelineData?.last {
+        if case .scopedTimeline = scope, policy == .preloadNextBatch, let lastPost = timelineData.last {
             parameters["max_id"] = lastPost.id
         }
         return parameters

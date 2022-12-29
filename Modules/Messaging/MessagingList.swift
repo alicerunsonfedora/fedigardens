@@ -24,7 +24,7 @@ import SwiftUI
 /// This is commonly used to display a conversation list in the "Messages" section of the app. The design is
 /// primarily inspired by Apple's Messages app.
 struct MessagingList: View, LayoutStateRepresentable {
-    @Environment(\.openURL) var openURL
+    @Environment(\.userProfile) private var currentAcct: Account
 
     /// The list of conversations the user is a part of.
     @State private var conversations: [Conversation]?
@@ -32,59 +32,40 @@ struct MessagingList: View, LayoutStateRepresentable {
     /// The current state of the view's layout.
     @State internal var state: LayoutState = .initial
 
-    /// The current user that is logged into the app.
-    @State private var currentAcct: Account?
-
     var body: some View {
         Group {
             switch state {
             case .initial, .loading:
                 List {
+                    messagesDisclaimerNotice
                     ForEach(0 ..< 7) { _ in
-                        MessagingListCellView(conversation: MockData.conversation!, currentUserID: "0")
+                        MessagingListCellView(conversation: MockData.conversation!)
                     }
+                    .redacted(reason: .placeholder)
                 }
-                .redacted(reason: .placeholder)
-                .frame(minWidth: 250, idealWidth: 300)
             case .loaded:
                 List {
-                    VStack(alignment: .leading) {
-                        Label("direct.nonencrypt.title", systemImage: "info.circle")
-                            .bold()
-                        Text("direct.nonencrypt.detail")
-                            .foregroundColor(.secondary)
-                            .font(.subheadline)
-                    }
-
+                    messagesDisclaimerNotice
                     if let convos = conversations {
                         ForEach(convos, id: \.id) { conversation in
                             NavigationLink {
-                                MessagingDetailView(
-                                    conversation: conversation,
-                                    currentSenderID: currentAcct?.id ?? "0"
-                                )
-                                .navigationTitle(
-                                    conversation.getAuthors(excluding: currentAcct?.id ?? "0")
-                                )
+                                MessagingDetailView(conversation: conversation)
+                                .navigationTitle(conversation.getAuthors(excluding: currentAcct.id))
                             } label: {
-                                MessagingListCellView(
-                                    conversation: conversation,
-                                    currentUserID: currentAcct?.id ?? "0"
-                                )
+                                MessagingListCellView(conversation: conversation)
                             }
                             .padding(4)
                         }
                     }
                 }
-                .listStyle(.inset)
             case .errored(let message):
                 Text("\(message)")
             }
         }
+        .listStyle(.inset)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             Task {
-                await getCurrentAccount()
                 await getConversations()
             }
         }
@@ -92,6 +73,16 @@ struct MessagingList: View, LayoutStateRepresentable {
             Task {
                 await getConversations(forcefully: true)
             }
+        }
+    }
+
+    private var messagesDisclaimerNotice: some View {
+        VStack(alignment: .leading) {
+            Label("direct.nonencrypt.title", systemImage: "info.circle")
+                .bold()
+            Text("direct.nonencrypt.detail")
+                .foregroundColor(.secondary)
+                .font(.subheadline)
         }
     }
 
@@ -106,13 +97,19 @@ struct MessagingList: View, LayoutStateRepresentable {
     ///     and may take time to re-fetch the data into memory.
     private func getConversations(forcefully: Bool = false) async {
         func makeRequest() async {
-            do {
-                state = .loading
-                conversations = try await Chica.shared.request(.get, for: .timeline(scope: .messages))
+            state = .loading
+            let response: Chica.Response<[Conversation]> = await Chica.shared.request(.get, for: .timeline(scope: .messages))
+            switch response {
+            case .success(let conversations):
+                DispatchQueue.main.async {
+                    self.conversations = conversations
+                }
                 state = .loaded
-            } catch FetchError.message(let reason, _) {
-                state = .errored(message: reason)
-            } catch {
+            case .failure(let error):
+                if case FetchError.message(let reason, _) = error {
+                    state = .errored(message: reason)
+                    return
+                }
                 state = .errored(message: error.localizedDescription)
             }
         }
@@ -126,21 +123,6 @@ struct MessagingList: View, LayoutStateRepresentable {
             return
         default:
             await makeRequest()
-        }
-    }
-
-    /// Retrieves the current user account.
-    private func getCurrentAccount() async {
-        if currentAcct != nil { return }
-        do {
-            currentAcct = try await Chica.shared.request(.get, for: .verifyAccountCredentials)
-        } catch FetchError.message(let reason, let data) {
-            print("Error: \(reason)")
-            print(String(data: data, encoding: .utf8) ?? "")
-        } catch FetchError.unknown(let data) {
-            print(String(data: data, encoding: .utf8) ?? "")
-        } catch {
-            print(error.localizedDescription)
         }
     }
 }

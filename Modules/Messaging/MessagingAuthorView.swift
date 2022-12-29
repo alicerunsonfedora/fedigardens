@@ -23,17 +23,15 @@ import SwiftUI
 /// This differs from ``AuthorView`` in that it uses other settings to write messages. Additionally, it displays no
 /// options to change visibilities or apply content warnings at the moment.
 struct MessagingAuthorView: View {
+    @Environment(\.userProfile) var currentUserProfile: Account
+
     /// The status that the user will be responding to in the conversation.
     @State var replyStatus: Status
-
-    /// The current user's ID.
-    @State var currentUserID = "0"
 
     /// The text of the message that will be sent.
     @State private var text: String = ""
 
-    /// A closure that will be executed when the message was successfully sent.
-    var onSubmit: (Status) -> Void
+    @Binding var writtenMessages: [Status]
 
     /// The number of characters remaining.
     private var charactersRemaining: Int { 500 - text.count }
@@ -76,7 +74,7 @@ struct MessagingAuthorView: View {
     private func addMessageText() async {
         let respondent = "@\(replyStatus.account.acct)"
         let otherMembers = replyStatus.mentions
-            .filter { account in account.id != currentUserID }
+            .filter { account in account.id != currentUserProfile.id }
             .map { mention in "@\(mention.acct)" }
             .filter { name in name != respondent }
             .joined(separator: " ")
@@ -96,15 +94,12 @@ struct MessagingAuthorView: View {
             "in_reply_to_id": replyStatus.id
         ]
 
-        do {
-            let composed: Status? = try await Chica.shared
-                .request(.post, for: .statuses(id: nil), params: params)
-            if let finished = composed {
-                onSubmit(finished)
-            }
-        } catch {
-            print("Some other error occurred here.")
-            print(error.localizedDescription)
+        let response: Chica.Response<Status> = await Chica.shared.request(.post, for: .statuses(), params: params)
+        switch response {
+        case .success(let message):
+            writtenMessages.append(message)
+        case .failure(let error):
+            print("Failed to send message: \(error.localizedDescription)")
         }
     }
 }
@@ -116,7 +111,7 @@ struct MessagingAuthorView_Previews: PreviewProvider {
         ZStack {
             Color.red
                 .edgesIgnoringSafeArea(.all)
-            MessagingAuthorView(replyStatus: MockData.status!) { _ in }
+            MessagingAuthorView(replyStatus: MockData.status!, writtenMessages: .constant([]))
         }
     }
 }

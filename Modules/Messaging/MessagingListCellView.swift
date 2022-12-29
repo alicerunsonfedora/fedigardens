@@ -22,21 +22,17 @@ import SwiftUI
 ///
 /// This is commonly used in a list of messages to determine what conversation is active.
 struct MessagingListCellView: View {
+    @Environment(\.userProfile) var currentProfile: Account
+
     /// The conversation this cell corresponds to.
-    @State var conversation: Conversation
-
-    /// The current user's ID.
-    @State var currentUserID: String
-
-    /// The contents of the last message in the thread.
-    @State private var message = "Message content goes here."
+    var conversation: Conversation
 
     var body: some View {
         HStack(alignment: .top, spacing: 8) {
             conversationImage
             VStack(alignment: .leading) {
                 HStack {
-                    Text(conversation.getAuthors(excluding: currentUserID))
+                    Text(conversation.getAuthors(excluding: currentProfile.id))
                         .bold()
                         .lineLimit(1)
                     Spacer()
@@ -49,14 +45,10 @@ struct MessagingListCellView: View {
                         .font(.system(.footnote, design: .rounded))
                     }
                 }
-                Text(message)
+                Text(conversation.lastStatus?.content.attributedHTML() ?? "")
                     .foregroundColor(.secondary)
                     .lineLimit(2)
-            }
-        }
-        .onAppear {
-            Task {
-                await loadStatus()
+                    .tint(Color(uiColor: .tertiaryLabel))
             }
         }
     }
@@ -87,21 +79,13 @@ struct MessagingListCellView: View {
         .clipShape(Circle())
         .frame(width: 40, height: 40)
     }
-
-    /// Loads the last status in the conversation into the cell view.
-    ///
-    /// The last status typically indicates the most recent message in the conversation.
-    private func loadStatus() async {
-        guard let status = conversation.lastStatus else { return }
-        message = await status.content.toPlainText()
-    }
 }
 
 // MARK: - Previews
 
 struct MessagingListCellView_Previews: PreviewProvider {
     static var previews: some View {
-        MessagingListCellView(conversation: MockData.conversation!, currentUserID: "0")
+        MessagingListCellView(conversation: MockData.conversation!)
             .frame(width: 360, height: 120)
     }
 }

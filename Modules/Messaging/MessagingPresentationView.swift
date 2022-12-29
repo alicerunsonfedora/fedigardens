@@ -22,30 +22,29 @@ import SwiftUI
 ///
 /// This is commonly used to display direct messages from the `lastStatus` property of a conversation.
 struct MessagingPresentationView: View {
+    @Environment(\.userProfile) var currentUserProfile: Account
+
     /// The context derived from the messages to render the conversation history from.
-    @State var messages: Context
+    var messages: Context
 
     /// The last message in the message list.
-    @State var lastMessage: Status
+    var lastMessage: Status
 
     /// A list of extra statuses to be added to the message list.
-    @State var extras = [Status]()
-
-    /// The ID of the current user who acts as the "sender" of messages when typing into the text field.
-    @State var senderID = ""
+    var extras = [Status]()
 
     var body: some View {
         VStack {
             ForEach(allStatuses(), id: \.id) { message in
                 HStack(spacing: 1) {
-                    if message.account.id == senderID {
+                    if message.account.id == currentUserProfile.id {
                         Spacer()
                     }
 
                     MessagePresentationBubble(message: message)
-                        .presentationStyle(message.account.id == senderID ? .sender : .recipient)
+                        .presentationStyle(message.account.id == currentUserProfile.id ? .sender : .recipient)
 
-                    if message.account.id != senderID {
+                    if message.account.id != currentUserProfile.id {
                         Spacer()
                     }
                 }
@@ -74,13 +73,10 @@ private struct MessagePresentationBubble: View {
     }
 
     /// The message to render into the bubble.
-    @State var message: Status
+    var message: Status
 
     /// The presentation style for this message bubble.
-    @State fileprivate var presentationStyle: PresentationStyle
-
-    /// The text content of the message.
-    @State private var content = "Message content goes here."
+    fileprivate var presentationStyle: PresentationStyle
 
     init(message: Status) {
         self.init(message: message, presentationStyle: .recipient)
@@ -100,12 +96,13 @@ private struct MessagePresentationBubble: View {
                 switch presentationStyle {
                 case .sender:
                     baseTextView
-                        .background(Color.accentColor)
+                        .background(Color.accentColor.gradient)
                         .foregroundColor(.white)
+                        .tint(.white)
 
                 case .recipient:
                     baseTextView
-                        .background(Color.secondary.opacity(0.5))
+                        .background(Color(uiColor: .tertiarySystemFill).gradient)
                 }
             }
             .cornerRadius(16)
@@ -117,14 +114,9 @@ private struct MessagePresentationBubble: View {
 
     /// The text view that renders the message contents.
     private var baseTextView: some View {
-        Text(content)
+        Text(message.content.attributedHTML())
             .padding(.vertical, 8)
             .padding(.horizontal, 12)
-            .onAppear {
-                Task {
-                    content = await message.content.toPlainText()
-                }
-            }
     }
 
     private var avatar: some View {
@@ -153,8 +145,8 @@ private extension MessagePresentationBubble {
 struct MessagePresentationView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            MessagingPresentationView(messages: MockData.context!, lastMessage: MockData.status!, senderID: "2")
-            MessagingPresentationView(messages: MockData.context!, lastMessage: MockData.status!, senderID: "2")
+            MessagingPresentationView(messages: MockData.context!, lastMessage: MockData.status!)
+            MessagingPresentationView(messages: MockData.context!, lastMessage: MockData.status!)
                 .preferredColorScheme(.dark)
         }
     }

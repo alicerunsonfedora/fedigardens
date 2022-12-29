@@ -49,21 +49,26 @@ class StatusDetailViewModel: ObservableObject {
     func getContext(for status: Status? = nil) async {
         let realStatus = status ?? self.status
         guard let realStatus else { return }
-        do {
-            let newContext: Context? = try await Chica.shared.request(.get, for: .context(id: realStatus.id))
-            DispatchQueue.main.async { self.context = newContext }
-        } catch {
-            print("Couldn't fetch context: \(error)")
+
+        let response: Chica.Response<Context> = await Chica.shared.request(.get, for: .context(id: realStatus.id))
+        switch response {
+        case .success(let arrivingContext):
+            DispatchQueue.main.async { self.context = arrivingContext }
+        case .failure(let error):
+            print("Couldn't fetch context: \(error.localizedDescription)")
         }
     }
 
     func getQuote(for status: Status? = nil) async {
         let realStatus = status ?? self.status
         guard let realStatus, realStatus.quotedReply() != nil else { return }
-        do {
-            let quotedReply: Status? = try await Chica.shared.requestQuote(of: realStatus)
-            DispatchQueue.main.async { self.quote = quotedReply }
-        } catch {
+        let response: GlamrockChica.Response<Status> = await GlamrockChica.shared.requestQuote(of: realStatus)
+        switch response {
+        case .success(let quotedReply):
+            DispatchQueue.main.async {
+                self.quote = quotedReply
+            }
+        case .failure(let error):
             print("Couldn't fetch quoted reply: \(error)")
         }
     }
@@ -82,7 +87,7 @@ class StatusDetailViewModel: ObservableObject {
     // Toggles whether the user likes the status.
     func toggleFavoriteStatus() async {
         await updateStatus { state in
-            try await Chica.shared.request(
+            await Chica.shared.request(
                 .post, for: state.favourited == true ? .unfavorite(id: state.id) : .favourite(id: state.id)
             )
         }
@@ -91,7 +96,7 @@ class StatusDetailViewModel: ObservableObject {
     // Toggles whether the user boosts the status.
     func toggleReblogStatus() async {
         await updateStatus { state in
-            try await Chica.shared.request(
+            await Chica.shared.request(
                 .post, for: state.reblogged == true ? .unreblog(id: state.id) : .reblog(id: state.id)
             )
         }
@@ -106,20 +111,14 @@ class StatusDetailViewModel: ObservableObject {
     /// Make a request to update the current status.
     /// - Parameter means: A closure that will be performed to update the status. Should return an optional status,
     ///     which represents the newly modified status.
-    private func updateStatus(by means: (Status) async throws -> Status?) async {
+    private func updateStatus(by means: (Status) async -> Chica.Response<Status>) async {
         guard let status else { return }
-        var updated: Status?
-        do {
-            updated = try await means(status)
-        } catch {
+        let response = await means(status)
+        switch response {
+        case .success(let updated):
+            DispatchQueue.main.async { self.status = updated }
+        case .failure(let error):
             print("Error occured when updating status: \(error.localizedDescription)")
-            return
-        }
-
-        if let new = updated {
-            DispatchQueue.main.async { [self] in
-                self.status = new
-            }
         }
     }
 }

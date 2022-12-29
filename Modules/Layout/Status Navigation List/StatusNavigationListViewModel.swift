@@ -33,7 +33,7 @@ class StatusNavigationListViewModel: ObservableObject {
 
     func toggleFavorite(status: Status) async {
         await update(status: status) { changed in
-            try await Chica.shared.request(
+            await Chica.shared.request(
                 .post, for: changed.favourited == true ? .unfavorite(id: changed.id) : .favourite(id: changed.id)
             )
         }
@@ -42,20 +42,16 @@ class StatusNavigationListViewModel: ObservableObject {
     /// Make a request to update the current status.
     /// - Parameter means: A closure that will be performed to update the status. Should return an optional status,
     ///     which represents the newly modified status.
-    private func update(status: Status, by means: (Status) async throws -> Status?) async {
-        var updated: Status?
-
-        do {
-            updated = try await means(status)
-        } catch {
-            print("Error occured when updating status: \(error.localizedDescription)")
-            return
-        }
-
-        if let new = updated {
+    private func update(status: Status, by means: (Status) async -> Chica.Response<Status>) async {
+        let response = await means(status)
+        switch response {
+        case .success(let updated):
             DispatchQueue.main.async { [self] in
-                replaceInList(status: new)
+                replaceInList(status: updated)
             }
+        case .failure(let error):
+            print("Error occured when updating status: \(error.localizedDescription)")
+
         }
     }
 

@@ -3,10 +3,10 @@
     {
       "identity" : "chica",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/hyperspacedev/chica",
+      "location" : "http://github.com/alicerunsonfedora/chica",
       "state" : {
         "branch" : "main",
-        "revision" : "72f399c147cf20862eea361278ff9e5c124ffc69"
+        "revision" : "6e7eaca244029dc694e139077c66bf84cba47e0a"
       }
     },
     {

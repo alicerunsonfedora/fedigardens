@@ -39,17 +39,10 @@ class AuthorViewModel: ObservableObject {
     var charactersRemaining: Int { 500 - text.count }
 
     func setupTextContents(with context: AuthoringContext) async {
-        if !context.replyingToID.isEmpty, prompt == nil {
-            let newPrompt: Status? = try? await Chica.shared.request(.get, for: .statuses(id: context.replyingToID))
-            DispatchQueue.main.async {
-                self.prompt = newPrompt
-            }
-        }
-        
+        await self.fetchPromptIfUninitalized(in: context)
         DispatchQueue.main.async {
             self.constructReplyText()
             self.visibility = context.visibility
-
             if !context.forwardingURI.isEmpty {
                 self.text.append("💬: \(context.forwardingURI)")
             }
@@ -65,22 +58,19 @@ class AuthorViewModel: ObservableObject {
     func submitStatus(completion: @escaping () -> Void) async {
         guard charactersRemaining > 0 else { return }
         var params = ["status": text, "visibility": visibility.rawValue, "poll": "null"]
-        if let reply = prompt {
-            params["in_reply_to_id"] = reply.id
-        }
+        if let reply = prompt { params["in_reply_to_id"] = reply.id }
 
         if sensitive {
             params["sensitive"] = "true"
             params["spoiler_text"] = sensitiveText
         }
 
-        do {
-            let _: Status? = try await Chica.shared
-                .request(.post, for: .statuses(id: nil), params: params)
+        let response: Chica.Response<Status> = await Chica.shared.request(.post, for: .statuses(), params: params)
+        switch response {
+        case .success:
             completion()
-        } catch {
-            print("Some other error occurred here.")
-            print(error.localizedDescription)
+        case .failure(let error):
+            print("Post error: \(error.localizedDescription)")
         }
     }
 
@@ -90,17 +80,28 @@ class AuthorViewModel: ObservableObject {
     /// clients do, to maintain consistency and clarity in the conversation thread.
     private func constructReplyText() {
         guard let reply = prompt else { return }
-        let respondent = "@\(reply.account.acct)"
-        var otherMembers = reply.mentions
+        var allMentions = reply.mentions
+        if let reblogged = reply.reblog { allMentions.append(contentsOf: reblogged.mentions) }
+        let otherMembers = memberString(from: allMentions, excluding: reply.account.acct)
+        text = "@\(reply.account.acct) \(otherMembers) "
+    }
+
+    private func memberString(from members: [Mention], excluding respondentAccount: String) -> String {
+        members.filter { member in member.acct != respondentAccount }
             .map { mention in "@\(mention.acct)" }
-            .filter { name in name != respondent }
             .joined(separator: " ")
-        if let reblogged = reply.reblog {
-            otherMembers += " " + reblogged.mentions
-                .map { mention in "@\(mention.acct)" }
-                .filter { name in name != respondent }
-                .joined(separator: " ")
+    }
+
+    private func fetchPromptIfUninitalized(in context: AuthoringContext) async {
+        guard !context.replyingToID.isEmpty, prompt == nil else { return }
+        let response: Chica.Response<Status> = await Chica.shared.request(.get, for: .statuses(id: context.replyingToID))
+        switch response {
+        case .success(let prompted):
+            DispatchQueue.main.async {
+                self.prompt = prompted
+            }
+        case .failure(let error):
+            print("Failed to get context: \(error.localizedDescription)")
         }
-        text = "\(respondent) \(otherMembers) "
     }
 }

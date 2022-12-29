@@ -35,17 +35,14 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
             switch state {
             case .initial, .loading:
                 StatusNavigationList(
-                    statuses: model.dummyTimeline!,
+                    statuses: model.dummyTimeline,
                     selectedStatus: $selectedStatus
                 ) {
                     EmptyView()
                 }
                 .redacted(reason: .privacy)
             case .loaded:
-                StatusNavigationList(
-                    statuses: model.timelineData ?? [],
-                    selectedStatus: $selectedStatus
-                ) {
+                StatusNavigationList(statuses: model.timelineData, selectedStatus: $selectedStatus) {
                     Group {
                         if case .scopedTimeline = model.scope {
                             loadNextButton

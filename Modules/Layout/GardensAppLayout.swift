@@ -178,9 +178,12 @@ struct GardensAppLayout: View {
     }
 
     private func fetchTags() async {
-        let fetchedTags: [Tag]? = try? await Chica.shared.request(.get, for: .trending)
-        if let fetchedTags {
-            self.tags = fetchedTags
+        let response: Chica.Response<[Tag]> = await Chica.shared.request(.get, for: .trending)
+        switch response {
+        case .success(let tags):
+            self.tags = tags
+        case .failure(let error):
+            print("Tag fetch error: \(error.localizedDescription)")
         }
     }
 }

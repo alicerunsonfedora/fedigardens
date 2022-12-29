@@ -55,8 +55,12 @@ struct Shout: App {
     }
 
     private func getUserProfile() async {
-        if let acct: Account? = try? await Chica.shared.request(.get, for: .verifyAccountCredentials) {
-            userProfile = acct
+        let response: Chica.Response<Account> = await Chica.shared.request(.get, for: .verifyAccountCredentials)
+        switch response {
+        case .success(let profile):
+            userProfile = profile
+        case .failure(let error):
+            print("Failed to fetch user: \(error.localizedDescription)")
         }
     }
 }

@@ -23,15 +23,7 @@ import SwiftUI
 /// This is commonly used to display a message thread.
 struct MessagingDetailView: View, LayoutStateRepresentable {
     /// The corresponding conversation the detail view will render.
-    @State var conversation: Conversation
-
-    /// The ID of the current user.
-    @State var currentSenderID: String = ""
-
-    /// The context corresponding to the conversation.
-    ///
-    /// This is used to load in all of the previous messages from the conversation thread.
-    @State private var conversationCtx: Context?
+    var conversation: Conversation
 
     /// The current state of the view's layout.
     @State internal var state: LayoutState = .initial
@@ -41,23 +33,47 @@ struct MessagingDetailView: View, LayoutStateRepresentable {
     /// A list of messages that were recently written by the current user.
     @State private var recentlyWritten = [Status]()
 
+    @StateObject var viewModel = MessagingDetailViewModel()
+
     var body: some View {
         ZStack {
             conversationView
             if let status = conversation.lastStatus {
                 VStack {
                     Spacer()
-                    MessagingAuthorView(replyStatus: status, currentUserID: currentSenderID) { _ in
-                        recentlyWritten.append(status)
-                    }
+                    MessagingAuthorView(
+                        replyStatus: status,
+                        writtenMessages: $recentlyWritten
+                    )
                 }
             }
         }
         .frame(minWidth: 300, minHeight: 200)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbarBackground(.visible, for: .navigationBar)
+        .onAppear {
+            Task {
+                state = await viewModel.replaceConversation(with: conversation)
+            }
+        }
+        .onChange(of: conversation) { newValue in
+            state = .loading
+            Task {
+                state = await viewModel.replaceConversation(with: newValue)
+                recentlyWritten.removeAll()
+            }
+        }
+        .refreshable {
+            state = .loading
+            Task {
+                state = await viewModel.fetchContext(of: nil)
+                recentlyWritten.removeAll()
+            }
+        }
     }
 
     var conversationView: some View {
-        ScrollView {
+        ScrollView(.vertical) {
             VStack {
                 Group {
                     switch state {
@@ -65,17 +81,15 @@ struct MessagingDetailView: View, LayoutStateRepresentable {
                         MessagingPresentationView(
                             messages: MockData.context!,
                             lastMessage: MockData.status!,
-                            extras: [],
-                            senderID: "0"
+                            extras: []
                         )
                         .redacted(reason: .placeholder)
                     case .loaded:
-                        if let ctx = conversationCtx {
+                        if let ctx = viewModel.context {
                             MessagingPresentationView(
                                 messages: ctx,
                                 lastMessage: conversation.lastStatus!,
-                                extras: recentlyWritten,
-                                senderID: currentSenderID
+                                extras: recentlyWritten
                             )
                             Spacer()
                                 .frame(height: 48)
@@ -84,37 +98,18 @@ struct MessagingDetailView: View, LayoutStateRepresentable {
                         }
                     case .errored(let message):
                         VStack {
+                            Spacer()
                             Image(systemName: "exclamationmark.triangle")
                                 .font(.largeTitle)
                                 .foregroundColor(.secondary)
                             Text(message)
+                            Spacer()
                         }
                     }
                 }
                 Spacer()
             }
             .frame(maxHeight: .infinity)
-        }
-        .onAppear {
-            Task {
-                await updateContext()
-            }
-        }
-    }
-
-    func updateContext() async {
-        guard let status = conversation.lastStatus else {
-            state = .loaded
-            return
-        }
-        state = .loading
-        do {
-            conversationCtx = try await Chica.shared.request(.get, for: .context(id: status.id))
-            state = .loaded
-        } catch FetchError.message(let message, _) {
-            state = .errored(message: message)
-        } catch {
-            state = .errored(message: error.localizedDescription)
         }
     }
 }

@@ -30,8 +30,19 @@ struct StatusNavigationList<Extras: View>: View {
         List(selection: $selectedStatus) {
             ForEach(viewModel.statuses, id: \.id) { status in
                 NavigationLink(value: status) {
-                    statusLink(for: status)
-                        .allowsHitTesting(false)
+                    HStack(alignment: .top) {
+                        if status.favourited == true {
+                            Image(systemName: "star.fill")
+                                .foregroundColor(.yellow)
+                                .font(.caption)
+                        } else {
+                            Image(systemName: "circle.fill")
+                                .opacity(0)
+                                .font(.caption)
+                        }
+                        statusLink(for: status)
+                            .allowsHitTesting(false)
+                    }
                 }
             }
             if let extras {

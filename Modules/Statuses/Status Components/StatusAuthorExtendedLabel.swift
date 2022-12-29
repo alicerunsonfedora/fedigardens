@@ -41,7 +41,7 @@ struct StatusAuthorExtendedLabel: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            HStack(alignment: .firstTextBaseline) {
+            HStack(alignment: .center) {
                 Text(status.reblog?.account.getAccountName() ?? status.account.getAccountName())
                     .font(.system(.callout, design: .rounded))
                     .bold()
