@@ -19,6 +19,7 @@
 "general.loadmore" = "Load More";
 "general.refresh" = "Refresh";
 "general.newwindow" = "Open in New Window";
+"general.emptytimeline" = "Timeline Is Empty";
 
 // MARK: - Endpoints
 "endpoint.home" = "For You";
@@ -28,6 +29,8 @@
 "endpoint.notifications" = "Notifications";
 "endpoint.selfposts" = "Your Statuses";
 "endpoint.trending" = "Trending Tags";
+"endpoint.lists" = "Lists";
+"endpoint.saved" = "Bookmarked";
 
 // MARK: - Authentication
 "auth.welcome" = "Welcome to";
@@ -67,7 +70,7 @@
 "status.forwardaction" = "Quote";
 "status.likeaction" = "Favorite";
 "status.reblogaction" = "Boost";
-"status.saveaction" = "Save";
+"status.saveaction" = "Bookmark";
 
 // MARK: - Status Visibility
 "status.visibility.public" = "Everyone";
@@ -90,6 +93,7 @@
 "help.booststatus" = "Boost this discussion to your profile.";
 "help.quotestatus" = "Write a new post by quoting the current status.";
 "help.visibleprompt" = "Why am I seeing this?";
+"help.bookmark" = "Save this status for later.";
 
 // MARK: - Settings
 "settings.show-statistics.title" = "Show Statistics";

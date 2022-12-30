@@ -102,6 +102,15 @@ class StatusDetailViewModel: ObservableObject {
         }
     }
 
+    // Toggles whether the user has saved the status.
+    func toggleBookmarkedStatus() async {
+        await updateStatus { state in
+            await Chica.shared.request(
+                .post, for: state.bookmarked == true ? .undoSave(id: state.id) : .save(id: state.id)
+            )
+        }
+    }
+
     private func clear() {
         self.status = nil
         self.context = nil

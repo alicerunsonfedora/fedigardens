@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		95009EF2295E711100F32F85 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95009EF1295E711100F32F85 /* AuthenticationViewModel.swift */; };
+		95009EF4295E780A00F32F85 /* GardensAppLayoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95009EF3295E780A00F32F85 /* GardensAppLayoutViewModel.swift */; };
 		9503EFAF27B4173C00ABB7B0 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */; };
 		9503EFB427B417DD00ABB7B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9503EFB727B417DD00ABB7B0 /* Localizable.strings */; };
 		952A011127C67F3F00F36B37 /* MessagingPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A011027C67F3F00F36B37 /* MessagingPresentationView.swift */; };
@@ -91,6 +93,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		95009EF0295D440B00F32F85 /* Fedigardens.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fedigardens.entitlements; sourceTree = "<group>"; };
+		95009EF1295E711100F32F85 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		95009EF3295E780A00F32F85 /* GardensAppLayoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppLayoutViewModel.swift; sourceTree = "<group>"; };
 		95019DAA27A82124005DF870 /* Capstone--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Capstone--iOS--Info.plist"; sourceTree = "<group>"; };
 		9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		9503EFB627B417DD00ABB7B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -214,6 +219,7 @@
 		954722F027A0093F00D1BA89 = {
 			isa = PBXGroup;
 			children = (
+				95009EF0295D440B00F32F85 /* Fedigardens.entitlements */,
 				95ADAE0027B6B2D10011FD83 /* Modules */,
 				95D1036E27A00AF400B1EE3C /* Resources */,
 				956714232958CEF500BFF76A /* Supporting Files */,
@@ -421,6 +427,7 @@
 			isa = PBXGroup;
 			children = (
 				95ADAE1E27B6DC120011FD83 /* GardensAppLayout.swift */,
+				95009EF3295E780A00F32F85 /* GardensAppLayoutViewModel.swift */,
 				9567141E2958CD9600BFF76A /* Status Detail View */,
 				9567141C2958CD5600BFF76A /* Status Navigation List */,
 				9567141B2958CD4C00BFF76A /* Timeline Split View */,
@@ -462,6 +469,7 @@
 			children = (
 				95E4531E27D7B49C00572758 /* AuthenticationBrowserWindow.swift */,
 				9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */,
+				95009EF1295E711100F32F85 /* AuthenticationViewModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -611,6 +619,7 @@
 			files = (
 				953BC7C52957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */,
 				9558C7F029579E66001B30C7 /* GardensComposeButton.swift in Sources */,
+				95009EF2295E711100F32F85 /* AuthenticationViewModel.swift in Sources */,
 				956714162958C1BF00BFF76A /* AuthoringScene.swift in Sources */,
 				953BC7CB2957EC27005C7F2A /* HashableType.swift in Sources */,
 				95C0AF4A27C6C7920007D1D0 /* MessagingAuthorView.swift in Sources */,
@@ -643,6 +652,7 @@
 				95D2705127C6FEFA00805262 /* MessagingList.swift in Sources */,
 				95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95CEFDF2295A3B4900EEE96C /* StatusAuthorExtendedLabel.swift in Sources */,
+				95009EF4295E780A00F32F85 /* GardensAppLayoutViewModel.swift in Sources */,
 				953BC7C82957E156005C7F2A /* RecursiveNavigationView.swift in Sources */,
 				953BC7CE2957FD94005C7F2A /* StatusMediaDrawer.swift in Sources */,
 				95ADAE1A27B6D9740011FD83 /* StatusNavigationList.swift in Sources */,
@@ -818,6 +828,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Fedigardens.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FQQXSP79X3;
@@ -838,9 +849,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.marquiskurt.shout;
 				PRODUCT_NAME = Fedigardens;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -849,6 +863,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Fedigardens.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FQQXSP79X3;
@@ -869,9 +884,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.marquiskurt.shout;
 				PRODUCT_NAME = Fedigardens;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

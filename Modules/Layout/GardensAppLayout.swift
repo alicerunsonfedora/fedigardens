@@ -20,46 +20,25 @@ import SwiftUI
 
 struct GardensAppLayout: View {
     /// An enumeration representing the various pages in the app.
-    private enum PageSelection: Hashable {
-        /// The "For You" page, which displays the home timeline.
+    enum PageSelection: Hashable {
         case forYou
-
-        /// The "Community" page, which displays the local timeline.
         case local
-
-        /// The "Latest" page, which displays the public timeline.
         case `public`
-
-        /// The "Messages" page, which displays direct messages.
         case messages
-
-        /// The "Your Posts" page, which displays posts created by the user.
         case selfPosts
-
-        /// The "Notifications" page, which displays notifications.
+        case saved
         case notifications
-
+        case list(id: String)
         case trending(id: String)
-
-        /// The Settings page (iOS-only).
         case settings
     }
 
     @Environment(\.userProfile) var userProfile: Account
-
-    /// The dummy timeline data used to render certain components.
-    @State private var dummyTimeline: [Status]? = MockData.timeline
-
-    /// The current selected page.
-    @State private var currentPage: PageSelection? = .forYou
-
-    @State private var selectedStatus: Status?
-
-    @State private var tags: [Tag] = []
+    @StateObject private var viewModel = GardensAppLayoutViewModel()
 
     var body: some View {
         NavigationSplitView {
-            List(selection: $currentPage) {
+            List(selection: $viewModel.currentPage) {
                 NavigationLink(value: PageSelection.forYou) {
                     Label("endpoint.home", systemImage: "house")
                 }
@@ -80,12 +59,25 @@ struct GardensAppLayout: View {
                             .profileSize(.medium)
                     }
                 }
+                NavigationLink(value: PageSelection.saved) {
+                    Label("endpoint.saved", systemImage: "bookmark")
+                }
                 NavigationLink(value: PageSelection.settings) {
                     Label("general.settings", systemImage: "gear")
                 }
 
                 Section {
-                    ForEach(tags) { tag in
+                    ForEach(viewModel.lists) { list in
+                        NavigationLink(value: PageSelection.list(id: list.id)) {
+                            Label(list.title, systemImage: "folder")
+                        }
+                    }
+                } header: {
+                    Text("endpoint.lists")
+                }
+
+                Section {
+                    ForEach(viewModel.tags) { tag in
                         NavigationLink(value: PageSelection.trending(id: tag.name)) {
                             Label(tag.name, systemImage: "tag")
                         }
@@ -105,7 +97,7 @@ struct GardensAppLayout: View {
                     }
                 }
         } detail: {
-            if let selectedStatus {
+            if let selectedStatus = viewModel.selectedStatus {
                 StatusDetailView(status: selectedStatus, level: .parent)
             } else {
                 VStack(spacing: 8) {
@@ -118,46 +110,56 @@ struct GardensAppLayout: View {
         }
         .navigationSplitViewStyle(.balanced)
         .onAppear {
-            Task { await fetchTags() }
+            Task { await viewModel.fetchTags() }
+            Task { await viewModel.fetchLists() }
         }
     }
 
     private var sidebarContent: some View {
         Group {
-            if let destination = currentPage {
+            if let destination = viewModel.currentPage {
                 Group {
                     switch destination {
                     case .forYou:
                         TimelineSplitView(
                             scope: .scopedTimeline(scope: .home, local: false),
-                            selectedStatus: $selectedStatus
+                            selectedStatus: $viewModel.selectedStatus
                         )
                             .navigationTitle("endpoint.home")
                     case .local:
                         TimelineSplitView(
                             scope: .scopedTimeline(scope: .network, local: true),
-                            selectedStatus: $selectedStatus
+                            selectedStatus: $viewModel.selectedStatus
                         )
                             .navigationTitle("endpoint.local")
                     case .public:
                         TimelineSplitView(
                             scope: .scopedTimeline(scope: .network, local: false),
-                            selectedStatus: $selectedStatus
+                            selectedStatus: $viewModel.selectedStatus
                         )
                         .navigationTitle("endpoint.latest")
                     case .messages:
                         MessagingList()
                             .navigationTitle("endpoint.directmessage")
+                    case .saved:
+                        TimelineSplitView(scope: .saved, selectedStatus: $viewModel.selectedStatus)
+                            .navigationTitle("endpoint.saved")
                     case .selfPosts:
                         TimelineSplitView(
                             scope: .profile(id: userProfile.id),
-                            selectedStatus: $selectedStatus
+                            selectedStatus: $viewModel.selectedStatus
                         )
                         .navigationTitle("endpoint.selfposts")
+                    case .list(let id):
+                        TimelineSplitView(
+                            scope: .scopedTimeline(scope: .list(id: id), local: false),
+                            selectedStatus: $viewModel.selectedStatus
+                        )
+                        .navigationBarTitleDisplayMode(.inline)
                     case .trending(let id):
                         TimelineSplitView(
                             scope: .scopedTimeline(scope: .tag(tag: id), local: false),
-                            selectedStatus: $selectedStatus
+                            selectedStatus: $viewModel.selectedStatus
                         )
                         .navigationTitle("#\(id)")
                     case .settings:
@@ -174,16 +176,6 @@ struct GardensAppLayout: View {
                 .font(.system(.largeTitle, design: .rounded))
                 .foregroundColor(.secondary)
             }
-        }
-    }
-
-    private func fetchTags() async {
-        let response: Chica.Response<[Tag]> = await Chica.shared.request(.get, for: .trending)
-        switch response {
-        case .success(let tags):
-            self.tags = tags
-        case .failure(let error):
-            print("Tag fetch error: \(error.localizedDescription)")
         }
     }
 }

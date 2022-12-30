@@ -28,7 +28,7 @@ struct StatusNavigationList<Extras: View>: View {
 
     var body: some View {
         List(selection: $selectedStatus) {
-            ForEach(viewModel.statuses, id: \.id) { status in
+            ForEach(viewModel.statuses, id: \.uuid) { status in
                 NavigationLink(value: status) {
                     HStack(alignment: .top) {
                         if status.favourited == true {
@@ -70,6 +70,13 @@ struct StatusNavigationList<Extras: View>: View {
                 } label: {
                     Label("status.likeaction", systemImage: "star")
                 }.tint(.yellow)
+                Button {
+                    Task {
+                        await viewModel.toggleBookmark(status: status)
+                    }
+                } label: {
+                    Label("status.saveaction", systemImage: "bookmark")
+                }.tint(.indigo)
             }
             .swipeActions {
                 Button {
@@ -98,12 +105,21 @@ struct StatusNavigationList<Extras: View>: View {
                 } label: {
                     Label("status.replyaction", systemImage: "arrowshape.turn.up.backward")
                 }
-
                 Button {
                     let context = AuthoringContext(forwardingURI: status.uriToURL()?.absoluteString ?? "")
                     openWindow(value: context)
                 } label: {
                     Label("status.forwardaction", systemImage: "quote.bubble")
+                }
+                Button {
+                    Task {
+                        await viewModel.toggleBookmark(status: status)
+                    }
+                } label: {
+                    Label("status.saveaction", systemImage: "bookmark")
+                }
+                if let url = status.uriToURL() {
+                    ShareLink(item: url)
                 }
             }
     }

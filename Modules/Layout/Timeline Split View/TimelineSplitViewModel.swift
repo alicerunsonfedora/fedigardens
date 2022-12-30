@@ -20,6 +20,7 @@ class TimelineSplitViewModel: ObservableObject {
     enum TimelineType {
         case scopedTimeline(scope: TimelineScope, local: Bool)
         case profile(id: String)
+        case saved
     }
 
     enum TimelineReloadPolicy {
@@ -81,6 +82,8 @@ class TimelineSplitViewModel: ObservableObject {
             return .accountStatuses(id: id)
         case .scopedTimeline(let scope, _):
             return .timeline(scope: scope)
+        case .saved:
+            return .bookmarks
         }
     }
 

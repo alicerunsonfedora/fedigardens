@@ -24,7 +24,6 @@ import UIKit
 struct TimelineSplitView: View, LayoutStateRepresentable {
     @Environment(\.openURL) var openURL
     @State var state: LayoutState = .initial
-
     @State var scope: TimelineSplitViewModel.TimelineType
 
     @StateObject var model: TimelineSplitViewModel = .init(scope: .scopedTimeline(scope: .home, local: false))
@@ -41,6 +40,18 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                     EmptyView()
                 }
                 .redacted(reason: .privacy)
+            case .loaded where model.timelineData.isEmpty:
+                HStack {
+                    Spacer()
+                    VStack {
+                        Image(systemName: "tray")
+                            .font(.largeTitle)
+                        Text("general.emptytimeline")
+                            .font(.title)
+
+                    }.foregroundColor(.secondary)
+                    Spacer()
+                }
             case .loaded:
                 StatusNavigationList(statuses: model.timelineData, selectedStatus: $selectedStatus) {
                     Group {

@@ -39,6 +39,14 @@ class StatusNavigationListViewModel: ObservableObject {
         }
     }
 
+    func toggleBookmark(status: Status) async {
+        await update(status: status) { state in
+            await Chica.shared.request(
+                .post, for: state.bookmarked == true ? .undoSave(id: state.id) : .save(id: state.id)
+            )
+        }
+    }
+
     /// Make a request to update the current status.
     /// - Parameter means: A closure that will be performed to update the status. Should return an optional status,
     ///     which represents the newly modified status.

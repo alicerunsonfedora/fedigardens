@@ -23,18 +23,7 @@ struct AuthenticationView: View {
     /// Determines whether the device is compact or standard
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
 
-    /// The shared Chica authentication object.
-    ///
-    /// This is used to handle authentication to the Gopherdon server and watch for state changes.
-    @ObservedObject private var chicaAuth: Chica.OAuth = .shared
-
-    /// Whether to show the authentication dialog on iOS devices.
-    @State private var showAuthDialog: Bool = false
-
-    /// The authentication URL to open in the Safari view controller.
-    @State private var authenticationUrl: URL?
-
-    @State private var authenticationDomainName = ""
+    @StateObject private var viewModel = AuthenticationViewModel()
 
     // MARK: - Auth View Components
 
@@ -49,13 +38,13 @@ struct AuthenticationView: View {
             }
             .font(.system(.body, design: .rounded))
         }
-        .sheet(isPresented: $showAuthDialog) {
-            AuthenticationBrowserWindow(url: $authenticationUrl)
+        .sheet(isPresented: $viewModel.displayAuthenticationDialog) {
+            AuthenticationBrowserWindow(url: $viewModel.authenticationAuthorizedURL)
                 .edgesIgnoringSafeArea(.all)
-                .onChange(of: chicaAuth.authState) { authState in
+                .onChange(of: viewModel.authenticationState) { authState in
                     switch authState {
                     case .authenthicated:
-                        showAuthDialog = false
+                        viewModel.displayAuthenticationDialog = false
                     default:
                         break
                     }
@@ -70,7 +59,7 @@ struct AuthenticationView: View {
                 HStack {
                     Text("https://")
                         .foregroundColor(.secondary)
-                    TextField("mastodon.example", text: $authenticationDomainName)
+                    TextField("mastodon.example", text: $viewModel.authenticationDomainName)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                 }
@@ -80,12 +69,7 @@ struct AuthenticationView: View {
                             .stroke(Color.secondary.opacity(0.5))
                     )
                 Button {
-                    Task {
-                        await chicaAuth.startOauthFlow(for: authenticationDomainName) { authUrl in
-                            authenticationUrl = authUrl
-                            showAuthDialog.toggle()
-                        }
-                    }
+                    Task { await viewModel.startAuthenticationWorkflow() }
                 } label: {
                     Text("auth.login.button")
                         .font(.title3)
@@ -157,13 +141,6 @@ struct AuthenticationView: View {
             Text("general.appname")
                 .font(.system(size: 56, weight: .bold, design: .rounded))
                 .foregroundColor(.accentColor)
-        }
-    }
-
-    /// Start authenticating the user with Gopherdon.
-    public func startAuthentication() {
-        Task {
-            await chicaAuth.startOauthFlow(for: "mastodon.goucher.edu")
         }
     }
 }

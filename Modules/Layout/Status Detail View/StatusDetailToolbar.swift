@@ -61,6 +61,17 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                 .help("help.refresh")
             }
             .defaultCustomization(.hidden)
+
+            ToolbarItem(id: "bookmark", placement: .secondaryAction) {
+                Button {
+                    Task { await viewModel.toggleBookmarkedStatus() }
+                } label: {
+                    Label(
+                        "status.saveaction",
+                        systemImage: viewModel.status?.bookmarked == true ? "bookmark.slash" : "bookmark"
+                    )
+                }.help("help.save")
+            }.defaultCustomization(.hidden)
         }
     }
 
