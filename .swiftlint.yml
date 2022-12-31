@@ -7,10 +7,10 @@ opt_in_rules:
   - file_header
   - empty_count
   - inclusive_language
+  - for_where
 
 included:
-  - Shared
-  - Tests
+  - Fedigardens
 
 type_name:
   allowed_symbols: ["_"]
@@ -27,31 +27,14 @@ file_header:
   required_pattern: |
     \/\/
     \/\/  .*?\.swift
-    \/\/  Gardens
+    \/\/  Fedigardens
     \/\/
     \/\/  Created by .*? on \d{1,2}\/\d{1,2}\/\d{2}\.
     \/\/
-    \/\/  This file is part of Gardens\.
+    \/\/  This file is part of Fedigardens\.
     \/\/
-    \/\/  Gardens is non-violent software: you can use, redistribute, and\/or modify it under the terms of the CNPLv7\+
+    \/\/  Fedigardens is non-violent software: you can use, redistribute, and\/or modify it under the terms of the CNPLv7\+
     \/\/  as found in the LICENSE file in the source code root directory or at \<https:\/\/git\.pixie\.town\/thufie\/npl-builder\>\.
     \/\/
-    \/\/  Gardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law\. See the CNPL for
+    \/\/  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law\. See the CNPL for
     \/\/  details\.
-
-custom_rules:
-  no_capstone_name:
-    name: "No Capstone Naming"
-    regex: "(Capstone)"
-    capture_group: 0
-    match_kinds:
-      - comment
-      - identifier
-      - string
-    message: "Refer to the project by its codename, Shout."
-    severity: warning
-  unneeded_filter:
-    name: "Possible Unneeded Filter"
-    regex: ".filter(\\s?)\\{(.+)\\}\\s+for (\\w+) in (\\w+) \\{\\s*(.+)\\s*\\}"
-    message: "Filter might be unneeded; try using the for-where clause to iterate over a filter."
-    severity: warning

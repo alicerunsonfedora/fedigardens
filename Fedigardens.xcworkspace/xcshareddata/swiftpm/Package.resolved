@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "HTML2Markdown",
+        "repositoryURL": "https://gitlab.com/mflint/HTML2Markdown/",
+        "state": {
+          "branch": null,
+          "revision": "00d7a9744bbd1e7762c587bbd248775e16345a65",
+          "version": "1.0.0"
+        }
+      },
+      {
+        "package": "KeychainAccess",
+        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess",
+        "state": {
+          "branch": null,
+          "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
+          "version": "4.2.2"
+        }
+      },
+      {
+        "package": "SafariView",
+        "repositoryURL": "https://github.com/alicerunsonfedora/SafariView",
+        "state": {
+          "branch": "root",
+          "revision": "3f58d7915d97a0e15bc53618e54cbfbbba1f1b8f",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}
