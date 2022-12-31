@@ -39,6 +39,10 @@ struct StatusAuthorExtendedLabel: View {
         return status.account.verifiedDomain()
     }
 
+    private var isDevelopmentMember: Bool {
+        return ["ubunturox104@vivaldi.net", "ubunturox104"].contains(status.originalAuthor().acct)
+    }
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
@@ -46,17 +50,25 @@ struct StatusAuthorExtendedLabel: View {
                     .font(.system(.callout, design: .rounded))
                     .bold()
                     .lineLimit(1)
+                    .foregroundColor(isDevelopmentMember ? .indigo : .primary)
                 if hasVerifiedAccount, placementPolicy == .byAuthorName {
                     StatusVerifiedButton(status: status)
+                }
+                if isDevelopmentMember, placementPolicy == .byAuthorName {
+                    Image(systemName: "camera.macro")
+                        .foregroundColor(.indigo)
                 }
             }
             Text("(@\(status.reblog?.account.acct ?? status.account.acct))")
                 .foregroundColor(.secondary)
                 .font(.system(.callout, design: .rounded))
                 .lineLimit(1)
-            if hasVerifiedAccount, placementPolicy == .underAuthorLabel {
+            if isDevelopmentMember, placementPolicy == .underAuthorLabel {
+                developerLabel
+            } else if hasVerifiedAccount, placementPolicy == .underAuthorLabel {
                 verifiedLabel
             }
+
         }
     }
 
@@ -78,6 +90,26 @@ struct StatusAuthorExtendedLabel: View {
             .font(.footnote)
             .bold()
             .tint(.green)
+        }
+    }
+
+    var developerLabel: some View {
+        VStack(alignment: .leading) {
+            Label {
+                Text(
+                    String(
+                        format: NSLocalizedString("status.developer.detail", comment: "Developer"),
+                        status.originalAuthor().getAccountName()
+                    )
+                )
+            } icon: {
+                Image(systemName: "camera.macro")
+                    .imageScale(.large)
+                    .foregroundColor(.indigo)
+            }
+            .font(.footnote)
+            .bold()
+            .tint(.indigo)
         }
     }
 }

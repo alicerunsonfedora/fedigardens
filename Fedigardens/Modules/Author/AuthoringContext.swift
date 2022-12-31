@@ -18,5 +18,6 @@ import Alice
 struct AuthoringContext: Codable, Hashable {
     var replyingToID: String = ""
     var forwardingURI: String = ""
+    var participants: String = ""
     var visibility: Visibility = .public
 }

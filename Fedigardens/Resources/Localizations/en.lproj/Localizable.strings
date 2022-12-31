@@ -65,6 +65,7 @@
 "status.quoted.detail" = "A link to the status has been added automatically to maintain compatibility. Remember to follow your instance's rules.";
 "status.verified.title" = "Verified Domain";
 "status.verified.detail" = "%@ has verified that they own the website %@.";
+"status.developer.detail" = "%@ is a Fedigardens developer.";
 
 // MARK: - Status Actions
 "status.compose" = "New Status";

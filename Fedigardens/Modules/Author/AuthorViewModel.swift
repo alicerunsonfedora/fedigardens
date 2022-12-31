@@ -41,7 +41,7 @@ class AuthorViewModel: ObservableObject {
     func setupTextContents(with context: AuthoringContext) async {
         await self.fetchPromptIfUninitalized(in: context)
         DispatchQueue.main.async {
-            self.constructReplyText()
+            self.constructReplyText(with: context.participants)
             self.visibility = context.visibility
             if !context.forwardingURI.isEmpty {
                 self.text.append("💬: \(context.forwardingURI)")
@@ -78,12 +78,15 @@ class AuthorViewModel: ObservableObject {
     ///
     /// This will attempt to load in the usernames of the mentioned people in the thread, like most Mastodon
     /// clients do, to maintain consistency and clarity in the conversation thread.
-    private func constructReplyText() {
-        guard let reply = prompt else { return }
-        var allMentions = reply.mentions
-        if let reblogged = reply.reblog { allMentions.append(contentsOf: reblogged.mentions) }
-        let otherMembers = memberString(from: allMentions, excluding: reply.account.acct)
-        text = "@\(reply.account.acct) \(otherMembers) "
+    private func constructReplyText(with existingParticipants: String = "") {
+        if let reply = prompt {
+            var allMentions = reply.mentions
+            if let reblogged = reply.reblog { allMentions.append(contentsOf: reblogged.mentions) }
+            let otherMembers = memberString(from: allMentions, excluding: reply.account.acct)
+            text = "@\(reply.account.acct) \(otherMembers) \(existingParticipants) "
+            return
+        }
+        text = "\(existingParticipants) "
     }
 
     private func memberString(from members: [Mention], excluding respondentAccount: String) -> String {

@@ -169,13 +169,9 @@ public class Alice: ObservableObject, CustomStringConvertible {
 
         /// Continues with the OAuth flow after obtaining the user authorization code from the redirect URI
         public func continueOauthFlow(_ url: URL) async {
-
             if let code = url.queryParameters?.first(where: { $0.key == "code" }) {
-
                 await continueOauthFlow(code.value)
-
             }
-
         }
 
         /// Continues with the OAuth flow after obtaining the user authorization code from the redirect URI
@@ -202,11 +198,27 @@ public class Alice: ObservableObject, CustomStringConvertible {
         }
 
         /// Removes the tokens in the keychain for this app, effectively signing a user out.
-        public func signOut() {
+        public func signOut() async {
             let keychain = Keychain(service: Alice.OAuth.keychainService)
+
+            let response: Alice.Response<EmptyNode> = await Alice.shared.request(.post, for: .revokeToken, params: [
+                "client_id": keychain["starlight_client_id"]!,
+                "client_secret": keychain["starlight_client_secret"]!,
+                "token": keychain["starlight_access_token"] ?? ""
+            ])
+
+            switch response {
+            case .success:
+                break
+            case .failure(let error):
+                print("Failed to revoke token: \(error)")
+            }
+
             do {
                 try keychain.removeAll()
-                self.authState = .signedOut
+                DispatchQueue.main.async {
+                    self.authState = .signedOut
+                }
             } catch {
                 print(error)
             }

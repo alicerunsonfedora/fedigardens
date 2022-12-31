@@ -18,6 +18,7 @@ import Alice
 // MARK: - Settings View
 
 struct SettingsView: View {
+    @Environment(\.openWindow) private var openWindow
     @AppStorage("status.show-statistics") var showsStatistics: Bool = true
     @AppStorage("network.load-limit") var loadLimit: Int = 10
 
@@ -47,6 +48,7 @@ struct SettingsView: View {
             } footer: {
                 Text("settings.show-statistics.detail")
             }
+
             Section {
                 HStack {
                     Text("App Version")
@@ -58,6 +60,12 @@ struct SettingsView: View {
 
             Section {
                 Button {
+                    let context = AuthoringContext(participants: "@ubunturox104@vivaldi.net", visibility: .unlisted)
+                    openWindow(value: context)
+                } label: {
+                    Label("general.feedbackmenu", systemImage: "exclamationmark.bubble")
+                }
+                Button(role: .destructive) {
                     promptSignOff.toggle()
                 } label: {
                     Label("settings.signout.prompt", systemImage: "door.right.hand.open")
@@ -67,7 +75,7 @@ struct SettingsView: View {
         .navigationTitle("general.settings")
         .alert("settings.signout.title", isPresented: $promptSignOff) {
             Button(role: .destructive) {
-                Alice.OAuth.shared.signOut()
+                Task { await Alice.OAuth.shared.signOut() }
             } label: {
                 Text("settings.signout.prompt")
             }
