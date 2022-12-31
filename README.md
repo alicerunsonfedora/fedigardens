@@ -1,6 +1,6 @@
 <div align="center">
 
-![Fedigardens Icon](./.readme/fedigardens.svg)
+<img src="./.readme/fedigardens.svg" width="128" alt="Fedigardens icon"/>
 
 # Fedigardens
 
