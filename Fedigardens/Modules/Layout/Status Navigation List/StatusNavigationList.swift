@@ -19,6 +19,7 @@ import SwiftUI
 // MARK: - Status Navigation List
 
 struct StatusNavigationList<Extras: View>: View {
+    @Environment(\.supportsMultipleWindows) private var supportsMultipleWindows
     @Environment(\.openWindow) private var openWindow
     @State var statuses: [Status]
     @Binding var selectedStatus: Status?
@@ -107,10 +108,12 @@ struct StatusNavigationList<Extras: View>: View {
 
     private func menu(for status: Status) -> some View {
         Group {
-            Button {
-                openWindow(value: status)
-            } label: {
-                Label("general.newwindow", systemImage: "rectangle.badge.plus")
+            if supportsMultipleWindows {
+                Button {
+                    openWindow(value: status)
+                } label: {
+                    Label("general.newwindow", systemImage: "rectangle.badge.plus")
+                }
             }
             GardensComposeButton(
                 shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
