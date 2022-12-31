@@ -95,6 +95,11 @@ struct SettingsView: View {
         } message: {
             Text("settings.signout.detail")
         }
+        .sheet(item: $shouldOpenFeedbackTool) { content in
+            NavigationStack {
+                AuthorView(authoringContext: content)
+            }
+        }
     }
 }
 

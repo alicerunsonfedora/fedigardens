@@ -50,12 +50,12 @@ struct StatusAuthorExtendedLabel: View {
                     .font(.system(.callout, design: .rounded))
                     .bold()
                     .lineLimit(1)
-                    .foregroundColor(isDevelopmentMember ? .indigo : .primary)
                 if hasVerifiedAccount, placementPolicy == .byAuthorName {
                     StatusVerifiedButton(status: status)
                 }
                 if isDevelopmentMember, placementPolicy == .byAuthorName {
                     Image(systemName: "camera.macro")
+                        .imageScale(.small)
                         .foregroundColor(.indigo)
                 }
             }
