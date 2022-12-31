@@ -14,8 +14,11 @@
 
 import SwiftUI
 import Alice
+import enum Alice.Visibility
 
 struct AuthoringScene: Scene {
+    @State var deeplinkedContext: AuthoringContext?
+
     var body: some Scene {
         WindowGroup("status.create", for: AuthoringContext.self) { authorContext in
             Group {
@@ -25,11 +28,35 @@ struct AuthoringScene: Scene {
                     }
                 }
             }
+        }
+        .commands { TextEditingCommands() }
+
+        WindowGroup("status.create") {
+            Group {
+                if let context = deeplinkedContext {
+                    NavigationStack {
+                        AuthorView(authoringContext: context)
+                    }
+                }
+            }
             .handlesExternalEvents(preferring: ["create"], allowing: ["create"])
+            .onOpenURL { url in
+                getContextFromDeeplink(of: url)
+            }
         }
         .handlesExternalEvents(
             matching: .init(arrayLiteral: "create")
         )
         .commands { TextEditingCommands() }
+    }
+
+    private func getContextFromDeeplink(of url: URL) {
+        guard let params = url.queryParameters else { return }
+        deeplinkedContext = AuthoringContext(
+            replyingToID: params["replyID"] ?? "",
+            forwardingURI: params["forwardURI"] ?? "",
+            participants: params["participants"] ?? "",
+            visibility: Visibility(rawValue: params["visibility"] ?? "public") ?? .public
+        )
     }
 }

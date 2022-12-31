@@ -15,16 +15,79 @@
 import SwiftUI
 
 struct GardensComposeButton: View {
+    enum ComposeStyle {
+        case new
+        case reply
+        case quote
+        case feedback
+    }
+
+    @Environment(\.supportsMultipleWindows) var supportsMultipleWindows
     @Environment(\.openWindow) private var openWindow
+    @Environment(\.openURL) private var openURL
+
+    var shouldInvokeParentSheet: Binding<AuthoringContext?>?
+
+    @State private var shouldOpenAsSheet = false
+
+    var context: AuthoringContext = .init()
+    var style: ComposeStyle
 
     var body: some View {
         Group {
             Button {
-                openWindow(value: AuthoringContext())
+                if supportsMultipleWindows {
+                    openWindow(value: context)
+                } else if let shouldInvokeParentSheet {
+                    shouldInvokeParentSheet.wrappedValue = context
+                } else {
+                    shouldOpenAsSheet.toggle()
+                }
             } label: {
-                Image(systemName: "square.and.pencil")
+                composeLabel
             }
             .help("help.poststatus")
         }
+        .sheet(isPresented: $shouldOpenAsSheet) {
+            NavigationStack {
+                AuthorView(authoringContext: context)
+            }
+        }
+    }
+
+    var composeLabel: some View {
+        Group {
+            switch style {
+            case .new:
+                Label("status.compose", systemImage: "square.and.pencil")
+            case .reply:
+                Label("status.replyaction", systemImage: "arrowshape.turn.up.backward")
+            case .quote:
+                Label("status.forwardaction", systemImage: "quote.bubble")
+            case .feedback:
+                Label("general.feedbackmenu", systemImage: "exclamationmark.bubble")
+            }
+        }
+    }
+
+    private func composeURL() -> URL? {
+        guard let url = URL(string: "gardens://create") else { return nil }
+        var query = [URLQueryItem]()
+
+        if context.replyingToID.isNotEmpty {
+            query.append(.init(name: "replyID", value: context.replyingToID))
+        }
+
+        if context.forwardingURI.isNotEmpty {
+            query.append(.init(name: "forwardURI", value: context.forwardingURI))
+        }
+
+        if context.participants.isNotEmpty {
+            query.append(.init(name: "participants", value: context.participants))
+        }
+
+        query.append(.init(name: "visibility", value: context.visibility.rawValue))
+
+        return url.appending(queryItems: query)
     }
 }

@@ -85,15 +85,11 @@ struct StatusDetailView: View {
         .refreshable {
             Task { await viewModel.getContext() }
         }
-    }
-    private var replyButton: some View {
-        Button {
-            let context = AuthoringContext(replyingToID: status.id)
-            openWindow(id: "create", value: context)
-        } label: {
-            Label("status.replyaction", systemImage: "arrowshape.turn.up.backward")
+        .sheet(item: $viewModel.shouldOpenCompositionTool) { context in
+            NavigationStack {
+                AuthorView(authoringContext: context)
+            }
         }
-        .help("help.replystatus")
     }
 }
 

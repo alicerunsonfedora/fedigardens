@@ -35,6 +35,7 @@ struct GardensAppLayout: View {
 
     @Environment(\.userProfile) var userProfile: Account
     @StateObject private var viewModel = GardensAppLayoutViewModel()
+    @State private var shouldDisplayComposeModal = false
 
     var body: some View {
         NavigationSplitView {
@@ -92,7 +93,7 @@ struct GardensAppLayout: View {
             sidebarContent
                 .toolbar {
                     ToolbarItem {
-                        GardensComposeButton()
+                        GardensComposeButton(style: .new)
                     }
                 }
         } detail: {
@@ -111,6 +112,9 @@ struct GardensAppLayout: View {
         .onAppear {
             Task { await viewModel.fetchTags() }
             Task { await viewModel.fetchLists() }
+        }
+        .sheet(isPresented: $shouldDisplayComposeModal) {
+            Text("Hi")
         }
     }
 

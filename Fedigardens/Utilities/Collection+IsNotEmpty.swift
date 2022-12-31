@@ -1,8 +1,8 @@
 //
-//  AuthorViewContext.swift
+//  Collection+IsNotEmpty.swift
 //  Fedigardens
 //
-//  Created by Marquis Kurt on 12/25/22.
+//  Created by Marquis Kurt on 12/31/22.
 //
 //  This file is part of Fedigardens.
 //
@@ -13,12 +13,9 @@
 //  details.
 
 import Foundation
-import Alice
 
-struct AuthoringContext: Codable, Hashable, Identifiable {
-    var id = UUID()
-    var replyingToID: String = ""
-    var forwardingURI: String = ""
-    var participants: String = ""
-    var visibility: Visibility = .public
+extension Collection {
+    var isNotEmpty: Bool {
+        !isEmpty
+    }
 }

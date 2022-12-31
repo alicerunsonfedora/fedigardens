@@ -18,6 +18,7 @@ import Alice
 
 class StatusNavigationListViewModel: ObservableObject {
     @Published var statuses: [Status]
+    @Published var shouldOpenCompositionTool: AuthoringContext?
 
     init(statuses: [Status]) {
         self.statuses = statuses

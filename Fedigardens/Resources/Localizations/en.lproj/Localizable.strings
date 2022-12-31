@@ -108,3 +108,8 @@
 "settings.signout.title" = "Are you sure you want to sign out?";
 "settings.signout.detail" = "You'll need to sign in again and reauthorize Fedigardens to access your Mastodon account.";
 "settings.signout.cancel" = "Cancel";
+
+// MARK: - Acknowledgements
+"acknowledge.title" = "Acknowledgements";
+"acknowledge.libraries" = "Libraries";
+"acknowledge.assets" = "Assets";

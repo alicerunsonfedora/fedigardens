@@ -18,57 +18,65 @@ import Alice
 // MARK: - Settings View
 
 struct SettingsView: View {
-    @Environment(\.openWindow) private var openWindow
     @AppStorage("status.show-statistics") var showsStatistics: Bool = true
     @AppStorage("network.load-limit") var loadLimit: Int = 10
-
+    @State private var shouldOpenFeedbackTool: AuthoringContext?
     @State private var promptSignOff = false
 
     var body: some View {
-        Form {
-            Section {
-                Stepper(
-                    String(format:
-                            NSLocalizedString("settings.loadlimit.text", comment: "load limit"),
-                            String(loadLimit)
-                          ),
-                    value: $loadLimit,
-                    step: 5
-                )
-            } footer: {
-                Text("settings.loadlimit.detail")
-            }
+        NavigationStack {
+            Form {
+                Section {
+                    Stepper(
+                        String(format:
+                                NSLocalizedString("settings.loadlimit.text", comment: "load limit"),
+                               String(loadLimit)
+                              ),
+                        value: $loadLimit,
+                        step: 5
+                    )
+                } footer: {
+                    Text("settings.loadlimit.detail")
+                }
 
-            Section {
-                Toggle(isOn: $showsStatistics) {
-                    VStack(alignment: .leading) {
-                        Text("settings.show-statistics.title")
+                Section {
+                    Toggle(isOn: $showsStatistics) {
+                        VStack(alignment: .leading) {
+                            Text("settings.show-statistics.title")
+                        }
                     }
+                } footer: {
+                    Text("settings.show-statistics.detail")
                 }
-            } footer: {
-                Text("settings.show-statistics.detail")
-            }
 
-            Section {
-                HStack {
-                    Text("App Version")
-                    Spacer()
-                    Text(Bundle.main.getAppVersion())
-                        .foregroundColor(.secondary)
-                }
-            }
+                Section {
+                    HStack {
+                        Text("App Version")
+                        Spacer()
+                        Text(Bundle.main.getAppVersion())
+                            .foregroundColor(.secondary)
+                    }
+                    NavigationLink {
+                        NavigationStack {
+                            SettingsAcknowledgementList()
+                        }
+                    } label: {
+                        Text("acknowledge.title")
+                    }
 
-            Section {
-                Button {
-                    let context = AuthoringContext(participants: "@ubunturox104@vivaldi.net", visibility: .unlisted)
-                    openWindow(value: context)
-                } label: {
-                    Label("general.feedbackmenu", systemImage: "exclamationmark.bubble")
                 }
-                Button(role: .destructive) {
-                    promptSignOff.toggle()
-                } label: {
-                    Label("settings.signout.prompt", systemImage: "door.right.hand.open")
+
+                Section {
+                    GardensComposeButton(
+                        shouldInvokeParentSheet: $shouldOpenFeedbackTool,
+                        context: .init(participants: "@ubunturox104@vivaldi.net", visibility: .unlisted),
+                        style: .feedback
+                    )
+                    Button(role: .destructive) {
+                        promptSignOff.toggle()
+                    } label: {
+                        Label("settings.signout.prompt", systemImage: "door.right.hand.open")
+                    }
                 }
             }
         }

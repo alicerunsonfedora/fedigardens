@@ -1,8 +1,8 @@
 //
-//  AuthorViewContext.swift
+//  Acknowledgement+License.swift
 //  Fedigardens
 //
-//  Created by Marquis Kurt on 12/25/22.
+//  Created by Marquis Kurt on 12/31/22.
 //
 //  This file is part of Fedigardens.
 //
@@ -13,12 +13,15 @@
 //  details.
 
 import Foundation
-import Alice
+import AckGen
 
-struct AuthoringContext: Codable, Hashable, Identifiable {
-    var id = UUID()
-    var replyingToID: String = ""
-    var forwardingURI: String = ""
-    var participants: String = ""
-    var visibility: Visibility = .public
+extension Acknowledgement {
+    static func license(named name: String, ofType type: String = "txt") -> String {
+        guard let path = Bundle.main.path(forResource: name, ofType: type) else { return "" }
+        do {
+            return try String(contentsOfFile: path)
+        } catch {
+            return ""
+        }
+    }
 }

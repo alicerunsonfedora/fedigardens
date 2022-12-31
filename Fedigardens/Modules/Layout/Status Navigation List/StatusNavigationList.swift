@@ -56,6 +56,11 @@ struct StatusNavigationList<Extras: View>: View {
         .onAppear {
             viewModel.insert(statuses: statuses)
         }
+        .sheet(item: $viewModel.shouldOpenCompositionTool) { context in
+            NavigationStack {
+                AuthorView(authoringContext: context)
+            }
+        }
     }
 
     private func statusLink(for status: Status) -> some View {
@@ -83,19 +88,17 @@ struct StatusNavigationList<Extras: View>: View {
                 }.tint(.indigo)
             }
             .swipeActions {
-                Button {
-                    let context = AuthoringContext(replyingToID: status.id)
-                    openWindow(value: context)
-                } label: {
-                    Label("status.replyaction", systemImage: "arrowshape.turn.up.backward")
-                }.tint(.accentColor)
+                GardensComposeButton(
+                    shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
+                    context: AuthoringContext(replyingToID: status.id),
+                    style: .reply)
+                    .tint(.accentColor)
 
-                Button {
-                    let context = AuthoringContext(forwardingURI: status.uriToURL()?.absoluteString ?? "")
-                    openWindow(value: context)
-                } label: {
-                    Label("status.forwardaction", systemImage: "quote.bubble")
-                }.tint(.indigo)
+                GardensComposeButton(
+                    shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
+                    context: AuthoringContext(forwardingURI: status.uriToURL()?.absoluteString ?? ""),
+                    style: .quote
+                ).tint(.indigo)
             }
             .contextMenu {
                 menu(for: status)
@@ -109,18 +112,16 @@ struct StatusNavigationList<Extras: View>: View {
             } label: {
                 Label("general.newwindow", systemImage: "rectangle.badge.plus")
             }
-            Button {
-                let context = AuthoringContext(replyingToID: status.id)
-                openWindow(value: context)
-            } label: {
-                Label("status.replyaction", systemImage: "arrowshape.turn.up.backward")
-            }
-            Button {
-                let context = AuthoringContext(forwardingURI: status.uriToURL()?.absoluteString ?? "")
-                openWindow(value: context)
-            } label: {
-                Label("status.forwardaction", systemImage: "quote.bubble")
-            }
+            GardensComposeButton(
+                shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
+                context: AuthoringContext(replyingToID: status.id),
+                style: .reply
+            )
+            GardensComposeButton(
+                shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
+                context: AuthoringContext(forwardingURI: status.uriToURL()?.absoluteString ?? ""),
+                style: .quote
+            )
             Button {
                 Task {
                     await viewModel.toggleBookmark(status: status)

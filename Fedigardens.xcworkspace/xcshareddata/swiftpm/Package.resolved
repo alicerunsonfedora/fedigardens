@@ -2,6 +2,15 @@
   "object": {
     "pins": [
       {
+        "package": "AckGen",
+        "repositoryURL": "https://github.com/MartinP7r/AckGen",
+        "state": {
+          "branch": null,
+          "revision": "dc155629c4bcb8eae87407967d4cc777a3b9e438",
+          "version": "0.1.5"
+        }
+      },
+      {
         "package": "HTML2Markdown",
         "repositoryURL": "https://gitlab.com/mflint/HTML2Markdown/",
         "state": {

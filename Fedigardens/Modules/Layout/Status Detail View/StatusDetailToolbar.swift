@@ -95,15 +95,14 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
     private var commonToolbarButtons: some CustomizableToolbarContent {
         Group {
             ToolbarItem(id: "reply", placement: .secondaryAction) {
-                Button {
-                    let context = AuthoringContext(
+                GardensComposeButton(
+                    shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
+                    context: AuthoringContext(
                         replyingToID: viewModel.status?.id ?? "",
                         visibility: viewModel.status?.visibility ?? .public
-                    )
-                    openWindow(value: context)
-                } label: {
-                    Label("status.replyaction", systemImage: "arrowshape.turn.up.backward")
-                }
+                    ),
+                    style: .reply
+                )
                 .help("help.replystatus")
             }
 
@@ -124,15 +123,14 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
             }
 
             ToolbarItem(id: "forward", placement: .secondaryAction) {
-                Button {
-                    let context = AuthoringContext(
+                GardensComposeButton(
+                    shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
+                    context: .init(
                         forwardingURI: viewModel.status?.uriToURL()?.absoluteString ?? "",
                         visibility: viewModel.status?.visibility ?? .public
-                    )
-                    openWindow(value: context)
-                } label: {
-                    Label("status.forwardaction", systemImage: "quote.bubble")
-                }
+                    ),
+                    style: .quote
+                )
                 .help("help.quotestatus")
             }
         }

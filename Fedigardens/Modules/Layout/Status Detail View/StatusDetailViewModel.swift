@@ -25,6 +25,7 @@ class StatusDetailViewModel: ObservableObject {
     @Published var status: Status?
     @Published var quote: Status?
     @Published var context: Context?
+    @Published var shouldOpenCompositionTool: AuthoringContext?
 
     var containsUndisclosedContent: Bool {
         guard let status else { return false }
