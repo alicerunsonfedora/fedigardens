@@ -1,6 +1,6 @@
 <div align="center">
 
-![Fedigardens Icon](./.readme/GardensIcon.png)
+![Fedigardens Icon](./.readme/fedigardens.svg)
 
 # Fedigardens
 
