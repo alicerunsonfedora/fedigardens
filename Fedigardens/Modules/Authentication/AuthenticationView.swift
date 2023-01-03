@@ -52,7 +52,7 @@ struct AuthenticationView: View {
         }
         .alert(viewModel.authenticationRejectionTitle, isPresented: $viewModel.authenticationDomainRejected) {
             Button {
-                if let url = URL(string: "https://mastonaut.app/support") {
+                if let url = URL(string: "https://fedigardens.app/support") {
                     openURL(url)
                 }
             } label: {
