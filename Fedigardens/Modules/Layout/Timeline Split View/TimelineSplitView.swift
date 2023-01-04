@@ -22,7 +22,9 @@ import UIKit
 
 /// A view used to render a timeline in the widescreen layout.
 struct TimelineSplitView: View, LayoutStateRepresentable {
+    @Environment(\.interventionAuthorization) var interventionAuthorzation: InterventionAuthorizationContext
     @Environment(\.openURL) var openURL
+
     @State var state: LayoutState = .initial
     var scope: TimelineSplitViewModel.TimelineType
 
@@ -71,7 +73,10 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                     Button {
                         Task {
                             state = .loading
-                            state = await model.loadTimeline(policy: .refreshEntireContents)
+                            state = await model.loadTimeline(
+                                policy: .refreshEntireContents,
+                                intervening: interventionAuthorzation.allowedTimeInterval
+                            )
                         }
                     } label: {
                         Text("Try Again")
@@ -84,7 +89,10 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
             withAnimation {
                 model.scope = scope
                 Task {
-                    state = await model.loadTimeline(policy: .refreshEntireContents)
+                    state = await model.loadTimeline(
+                        policy: .refreshEntireContents,
+                        intervening: interventionAuthorzation.allowedTimeInterval
+                    )
                 }
             }
         }
@@ -92,16 +100,47 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
             model.scope = newValue
             state = .initial
             Task {
-                state = await model.loadTimeline(forcefully: true, policy: .refreshEntireContents)
+                state = await model.loadTimeline(
+                    forcefully: true,
+                    policy: .refreshEntireContents,
+                    intervening: interventionAuthorzation.allowedTimeInterval
+                )
             }
         }
         .refreshable {
             withAnimation {
                 state = .loading
                 Task {
-                    state = await model.loadTimeline(forcefully: true, policy: .refreshEntireContents)
+                    state = await model.loadTimeline(
+                        forcefully: true,
+                        policy: .refreshEntireContents,
+                        intervening: interventionAuthorzation.allowedTimeInterval
+                    )
                 }
             }
+        }
+        .alert("interventions.missing.title", isPresented: $model.displayOneSecNotInstalledWarning) {
+            Button {
+                if let url = URL(
+                    string: "https://apps.apple.com/app/apple-store/id1532875441?pt=120233067&ct=fedigardens"
+                ) {
+                    openURL(url)
+                }
+            } label: {
+                Text("interventions.cta.install")
+            }
+            Button {
+                UserDefaults.standard.allowsInterventions = false
+            } label: {
+                Text("interventions.cta.disable")
+            }
+            Button {
+
+            } label: {
+                Text("interventions.cta.dismiss")
+            }.keyboardShortcut(.defaultAction)
+        } message: {
+            Text("interventions.missing.detail")
         }
     }
 
@@ -112,7 +151,11 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                 withAnimation {
                     state = .loading
                     Task {
-                        state = await model.loadTimeline(forcefully: true, policy: .preloadNextBatch)
+                        state = await model.loadTimeline(
+                            forcefully: true,
+                            policy: .preloadNextBatch,
+                            intervening: interventionAuthorzation.allowedTimeInterval
+                        )
                     }
                 }
             } label: {

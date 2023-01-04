@@ -16,18 +16,17 @@ import Foundation
 
 extension UserDefaults {
     var showsStatistics: Bool {
-        get {
-            bool(forKey: "status.show-statistics")
-        } set {
-            set(newValue, forKey: "status.show-statistics")
-        }
+        get { bool(forKey: "status.show-statistics") }
+        set { set(newValue, forKey: "status.show-statistics") }
+    }
+
+    var allowsInterventions: Bool {
+        get { bool(forKey: "health.interventions") }
+        set { set(newValue, forKey: "health.interventions") }
     }
 
     var loadLimit: Int {
-        get {
-            max(10, integer(forKey: "network.load-limit"))
-        } set {
-            set(newValue, forKey: "network.load-limit")
-        }
+        get { max(10, integer(forKey: "network.load-limit")) }
+        set { set(newValue, forKey: "network.load-limit") }
     }
 }

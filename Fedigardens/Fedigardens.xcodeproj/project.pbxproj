@@ -81,6 +81,7 @@
 		95ADAE1827B6D9140011FD83 /* Timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = 95ADAE1527B6D9140011FD83 /* Timeline.json */; };
 		95ADAE1A27B6D9740011FD83 /* StatusNavigationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1927B6D9740011FD83 /* StatusNavigationList.swift */; };
 		95ADAE1F27B6DC120011FD83 /* GardensAppLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1E27B6DC120011FD83 /* GardensAppLayout.swift */; };
+		95B368A12965106C00336284 /* URL+CustomInits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B368A02965106C00336284 /* URL+CustomInits.swift */; };
 		95C0AF3E27C688170007D1D0 /* Context.json in Resources */ = {isa = PBXBuildFile; fileRef = 95C0AF3D27C688170007D1D0 /* Context.json */; };
 		95C0AF4027C688170007D1D0 /* Context.json in Resources */ = {isa = PBXBuildFile; fileRef = 95C0AF3D27C688170007D1D0 /* Context.json */; };
 		95C0AF4227C6B1AC0007D1D0 /* Conversation.json in Resources */ = {isa = PBXBuildFile; fileRef = 95C0AF4127C6B1AC0007D1D0 /* Conversation.json */; };
@@ -88,6 +89,8 @@
 		95C0AF4627C6B39E0007D1D0 /* MessagingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0AF4527C6B39E0007D1D0 /* MessagingDetailView.swift */; };
 		95C0AF4A27C6C7920007D1D0 /* MessagingAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0AF4927C6C7920007D1D0 /* MessagingAuthorView.swift */; };
 		95CC7593295BEBC600629798 /* MessagingDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CC7592295BEBC600629798 /* MessagingDetailViewModel.swift */; };
+		95CD3C4D296509470043CDB2 /* InterventionAuthorizationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD3C4C296509470043CDB2 /* InterventionAuthorizationContext.swift */; };
+		95CD3C4F29650A600043CDB2 /* GardensViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD3C4E29650A600043CDB2 /* GardensViewModel.swift */; };
 		95CEFDE82959637400EEE96C /* StatusVerifiedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */; };
 		95CEFDE92959637400EEE96C /* StatusVerifiedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */; };
 		95CEFDEB295A031E00EEE96C /* Pip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDEA295A031E00EEE96C /* Pip.swift */; };
@@ -166,11 +169,14 @@
 		95ADAE1527B6D9140011FD83 /* Timeline.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Timeline.json; sourceTree = "<group>"; };
 		95ADAE1927B6D9740011FD83 /* StatusNavigationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNavigationList.swift; sourceTree = "<group>"; };
 		95ADAE1E27B6DC120011FD83 /* GardensAppLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppLayout.swift; sourceTree = "<group>"; };
+		95B368A02965106C00336284 /* URL+CustomInits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+CustomInits.swift"; sourceTree = "<group>"; };
 		95C0AF3D27C688170007D1D0 /* Context.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Context.json; sourceTree = "<group>"; };
 		95C0AF4127C6B1AC0007D1D0 /* Conversation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Conversation.json; sourceTree = "<group>"; };
 		95C0AF4527C6B39E0007D1D0 /* MessagingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingDetailView.swift; sourceTree = "<group>"; };
 		95C0AF4927C6C7920007D1D0 /* MessagingAuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingAuthorView.swift; sourceTree = "<group>"; };
 		95CC7592295BEBC600629798 /* MessagingDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingDetailViewModel.swift; sourceTree = "<group>"; };
+		95CD3C4C296509470043CDB2 /* InterventionAuthorizationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterventionAuthorizationContext.swift; sourceTree = "<group>"; };
+		95CD3C4E29650A600043CDB2 /* GardensViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensViewModel.swift; sourceTree = "<group>"; };
 		95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusVerifiedButton.swift; sourceTree = "<group>"; };
 		95CEFDEA295A031E00EEE96C /* Pip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pip.swift; sourceTree = "<group>"; };
 		95CEFDED295A388100EEE96C /* StatusDetailQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailQuote.swift; sourceTree = "<group>"; };
@@ -287,6 +293,7 @@
 				954722F627A0093F00D1BA89 /* Gardens.swift */,
 				954722F727A0093F00D1BA89 /* ContentView.swift */,
 				956714172958C7BF00BFF76A /* UserProfileEnvironmentKey.swift */,
+				95CD3C4E29650A600043CDB2 /* GardensViewModel.swift */,
 			);
 			path = Bootstrapping;
 			sourceTree = "<group>";
@@ -434,6 +441,7 @@
 				95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */,
 				95555FBA2960B9F7005BEF45 /* Acknowledgement+License.swift */,
 				95555FC72960C864005BEF45 /* Collection+IsNotEmpty.swift */,
+				95B368A02965106C00336284 /* URL+CustomInits.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -454,6 +462,7 @@
 				958C0C9A27BE955E00ED6C23 /* Author */,
 				9558C7E9295775E9001B30C7 /* Bootstrapping */,
 				956714202958CDC300BFF76A /* Components */,
+				95CD3C4B296509260043CDB2 /* Intervention */,
 				95ADAE1D27B6DB830011FD83 /* Layout */,
 				952A010F27C67F1400F36B37 /* Messaging */,
 				95645BD527C554FB00FB3426 /* Settings */,
@@ -485,6 +494,14 @@
 				9567141B2958CD4C00BFF76A /* Timeline Split View */,
 			);
 			path = Layout;
+			sourceTree = "<group>";
+		};
+		95CD3C4B296509260043CDB2 /* Intervention */ = {
+			isa = PBXGroup;
+			children = (
+				95CD3C4C296509470043CDB2 /* InterventionAuthorizationContext.swift */,
+			);
+			path = Intervention;
 			sourceTree = "<group>";
 		};
 		95D1036E27A00AF400B1EE3C /* Resources */ = {
@@ -683,6 +700,7 @@
 			files = (
 				953BC7C52957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */,
 				9558C7F029579E66001B30C7 /* GardensComposeButton.swift in Sources */,
+				95CD3C4F29650A600043CDB2 /* GardensViewModel.swift in Sources */,
 				95009EF2295E711100F32F85 /* AuthenticationViewModel.swift in Sources */,
 				956714162958C1BF00BFF76A /* AuthoringScene.swift in Sources */,
 				953BC7CB2957EC27005C7F2A /* HashableType.swift in Sources */,
@@ -696,6 +714,7 @@
 				956714142958B69D00BFF76A /* StatusDisclosedContent.swift in Sources */,
 				95E4531F27D7B49C00572758 /* AuthenticationBrowserWindow.swift in Sources */,
 				95ADADE427B6A6BB0011FD83 /* String+AttributedContent.swift in Sources */,
+				95B368A12965106C00336284 /* URL+CustomInits.swift in Sources */,
 				95ADAE0A27B6B49A0011FD83 /* JSONDecoder+Resources.swift in Sources */,
 				95D2704E27C6F5A200805262 /* MessagingListCellView.swift in Sources */,
 				95ADAE1227B6CDC50011FD83 /* DateFormatter+Mastodon.swift in Sources */,
@@ -707,6 +726,7 @@
 				9558C7EE29578B59001B30C7 /* AccountImage.swift in Sources */,
 				953BC7BF2957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */,
 				95CEFDF0295A38E500EEE96C /* StatusContextProvider.swift in Sources */,
+				95CD3C4D296509470043CDB2 /* InterventionAuthorizationContext.swift in Sources */,
 				958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */,
 				9594DE3B27C927820036325A /* Conversation+Authors.swift in Sources */,
 				956714252958D2D300BFF76A /* StatusDetailToolbar.swift in Sources */,
@@ -897,7 +917,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Fedigardens.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FQQXSP79X3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -930,7 +950,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Fedigardens.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = FQQXSP79X3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

@@ -18,6 +18,7 @@ import Alice
 // MARK: - Settings View
 
 struct SettingsView: View {
+    @AppStorage("health.interventions") var allowInterventions: Bool = true
     @AppStorage("status.show-statistics") var showsStatistics: Bool = true
     @AppStorage("network.load-limit") var loadLimit: Int = 10
     @State private var shouldOpenFeedbackTool: AuthoringContext?
@@ -47,6 +48,16 @@ struct SettingsView: View {
                     }
                 } footer: {
                     Text("settings.show-statistics.detail")
+                }
+
+                Section {
+                    Toggle(isOn: $allowInterventions) {
+                        VStack(alignment: .leading) {
+                            Text("settings.interventions.title")
+                        }
+                    }
+                } footer: {
+                    Text("settings.interventions.detail")
                 }
 
                 Section {

@@ -18,19 +18,21 @@ import SwiftUI
 /// The main entry structure of the app.
 @main
 struct Shout: App {
-    @State private var userProfile: Account?
+    @StateObject private var globalStore = GardensViewModel()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.userProfile, userProfile ?? MockData.profile!)
+                .environment(\.userProfile, globalStore.userProfile ?? MockData.profile!)
+                .environment(\.interventionAuthorization, globalStore.interventionAuthorization ?? .default)
                 .onOpenURL { url in
-                    checkAuthorizationToken(from: url)
+                    globalStore.checkAuthorizationToken(from: url)
+                    globalStore.createInterventionContext(from: url)
                 }
                 .onAppear {
                     Alice.shared.setRequestPrefix(to: "gardens://")
                     Task {
-                        await getUserProfile()
+                        await globalStore.getUserProfile()
                     }
                 }
         }
@@ -45,22 +47,5 @@ struct Shout: App {
         )
 
         AuthoringScene()
-    }
-
-    private func checkAuthorizationToken(from url: URL) {
-        guard url.absoluteString.contains("gardens://oauth") else { return }
-        Task {
-            await Alice.OAuth.shared.continueOauthFlow(url)
-        }
-    }
-
-    private func getUserProfile() async {
-        let response: Alice.Response<Account> = await Alice.shared.request(.get, for: .verifyAccountCredentials)
-        switch response {
-        case .success(let profile):
-            userProfile = profile
-        case .failure(let error):
-            print("Failed to fetch user: \(error.localizedDescription)")
-        }
     }
 }

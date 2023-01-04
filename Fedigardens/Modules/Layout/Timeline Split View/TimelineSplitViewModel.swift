@@ -12,7 +12,7 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
+import UIKit
 import Combine
 import Alice
 
@@ -27,7 +27,7 @@ class TimelineSplitViewModel: ObservableObject {
         }
     }
 
-    enum TimelineReloadPolicy {
+    enum ReloadPolicy {
         case refreshEntireContents
         case preloadNextBatch
     }
@@ -36,6 +36,8 @@ class TimelineSplitViewModel: ObservableObject {
     @Published var dummyTimeline: [Status] = MockData.timeline!
     @Published var state: LayoutState = .initial
     @Published var scope: TimelineType = .scopedTimeline(scope: .home, local: false)
+    @Published var interventionTimeout: Date?
+    @Published var displayOneSecNotInstalledWarning = false
 
     init(scope: TimelineType) {
         self.scope = scope
@@ -52,10 +54,35 @@ class TimelineSplitViewModel: ObservableObject {
     /// network and may take time to re-fetch the data into memory.
     func loadTimeline(
         forcefully userInitiated: Bool = false,
-        policy: TimelineReloadPolicy
+        policy: ReloadPolicy,
+        intervening timeout: TimeInterval?
     ) async -> LayoutState {
         if !userInitiated, timelineData.isEmpty == false {
             return .loaded
+        }
+
+        if userInitiated && UserDefaults.standard.allowsInterventions, let timeout, let oneSec = URL.oneSec() {
+            guard let past = interventionTimeout else {
+                DispatchQueue.main.async {
+                    UIApplication.shared.open(oneSec) { didSucceed in
+                        if !didSucceed {
+                            self.displayOneSecNotInstalledWarning.toggle()
+                        }
+                    }
+                }
+                return .loaded
+            }
+            let timeDifference = Date.now.timeIntervalSince(past)
+            if timeDifference > timeout {
+                DispatchQueue.main.async {
+                    UIApplication.shared.open(oneSec) { didSucceed in
+                        if !didSucceed {
+                            self.displayOneSecNotInstalledWarning.toggle()
+                        }
+                    }
+                }
+                return .loaded
+            }
         }
 
         var callInLocalScope = false
@@ -72,7 +99,7 @@ class TimelineSplitViewModel: ObservableObject {
         }
     }
 
-    private func callChica(local: Bool, policy: TimelineReloadPolicy) async -> Alice.Response<[Status]> {
+    private func callChica(local: Bool, policy: ReloadPolicy) async -> Alice.Response<[Status]> {
         return await Alice.shared.request(
             .get,
             for: endpoint(),
@@ -91,7 +118,7 @@ class TimelineSplitViewModel: ObservableObject {
         }
     }
 
-    private func insertStatuses(statuses: [Status], with policy: TimelineReloadPolicy) {
+    private func insertStatuses(statuses: [Status], with policy: ReloadPolicy) {
         DispatchQueue.main.async {
             if !self.timelineData.isEmpty, policy == .preloadNextBatch {
                 self.timelineData.append(contentsOf: statuses)
@@ -101,7 +128,7 @@ class TimelineSplitViewModel: ObservableObject {
         }
     }
 
-    private func requestParams(locally local: Bool = false, using policy: TimelineReloadPolicy) -> [String: String] {
+    private func requestParams(locally local: Bool = false, using policy: ReloadPolicy) -> [String: String] {
         var parameters = ["limit": String(UserDefaults.standard.loadLimit)]
         if local { parameters["local"] = "true" }
         if case .scopedTimeline = scope, policy == .preloadNextBatch, let lastPost = timelineData.last {
