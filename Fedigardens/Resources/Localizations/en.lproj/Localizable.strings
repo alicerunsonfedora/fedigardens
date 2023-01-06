@@ -73,7 +73,7 @@
 "status.replyaction" = "Reply";
 "status.forwardaction" = "Quote";
 "status.likeaction" = "Favorite";
-"status.reblogaction" = "Boost";
+"status.reblogaction" = "Reblog";
 "status.saveaction" = "Bookmark";
 
 // MARK: - Status Visibility
@@ -94,7 +94,7 @@
 "help.poststatus" = "Start a new discussion or write a status.";
 "help.replystatus" = "Reply to this discussion.";
 "help.likestatus" = "Favorite this discussion.";
-"help.booststatus" = "Boost this discussion to your profile.";
+"help.booststatus" = "Reblog this discussion to your profile.";
 "help.quotestatus" = "Write a new post by quoting the current status.";
 "help.visibleprompt" = "Why am I seeing this?";
 "help.bookmark" = "Save this status for later.";
@@ -109,15 +109,15 @@
 "settings.signout.detail" = "You'll need to sign in again and reauthorize Fedigardens to access your Mastodon account.";
 "settings.signout.cancel" = "Cancel";
 "settings.interventions.title" = "Allow Interventions";
-"settings.interventions.detail" = "Allow One Sec to intervene with a breathing exercise when you want to refresh your timeline or load more posts.";
+"settings.interventions.detail" = "Allow one sec to intervene with a breathing exercise when you want to refresh your timeline or load more posts.";
 
 // MARK: - Acknowledgements
 "acknowledge.title" = "Acknowledgements";
 "acknowledge.libraries" = "Libraries";
 "acknowledge.assets" = "Assets";
 
-// MARK: - One Sec Intervention
-"interventions.missing.title" = "One Sec is Not Installed";
+// MARK: - one sec Intervention
+"interventions.missing.title" = "one sec is Not Installed";
 "interventions.missing.detail" = "You can install one sec from the App Store or disable interventions.";
 "interventions.cta.install" = "Install one sec...";
 "interventions.cta.disable" = "Turn Off Interventions";
