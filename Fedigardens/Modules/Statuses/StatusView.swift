@@ -192,14 +192,29 @@ struct StatusView: View {
     }
 
     private var reblogNotice: some View {
-        Label {
-            Text("\(status.account.getAccountName()) reblogged")
-                .bold()
-        } icon: {
-            AccountImage(author: status.account)
-                .profileSize(.small)
+        Group {
+            if truncateLines == nil {
+                Label {
+                    Text("\(status.account.getAccountName()) reblogged")
+                        .bold()
+                } icon: {
+                    AccountImage(author: status.account)
+                        .profileSize(.small)
+                }
+                .foregroundColor(.secondary)
+                .labelStyle(.titleAndIcon)
+            } else {
+                Label {
+                    Text("\(status.account.getAccountName()) reblogged")
+                        .bold()
+                } icon: {
+                    AccountImage(author: status.account)
+                        .profileSize(.small)
+                }
+                .foregroundColor(.secondary)
+                .labelStyle(.titleOnly)
+            }
         }
-        .foregroundColor(.secondary)
     }
 }
 
