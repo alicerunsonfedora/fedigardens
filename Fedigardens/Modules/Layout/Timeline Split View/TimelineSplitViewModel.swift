@@ -63,23 +63,23 @@ class TimelineSplitViewModel: ObservableObject {
 
         if userInitiated && UserDefaults.standard.allowsInterventions, let timeout, let oneSec = URL.oneSec() {
             guard let past = interventionTimeout else {
+                if await !UIApplication.shared.canOpenURL(oneSec) {
+                    self.displayOneSecNotInstalledWarning.toggle()
+                    return .loaded
+                }
                 DispatchQueue.main.async {
-                    UIApplication.shared.open(oneSec) { didSucceed in
-                        if !didSucceed {
-                            self.displayOneSecNotInstalledWarning.toggle()
-                        }
-                    }
+                    UIApplication.shared.open(oneSec)
                 }
                 return .loaded
             }
             let timeDifference = Date.now.timeIntervalSince(past)
             if timeDifference > timeout {
+                if await !UIApplication.shared.canOpenURL(oneSec) {
+                    self.displayOneSecNotInstalledWarning.toggle()
+                    return .loaded
+                }
                 DispatchQueue.main.async {
-                    UIApplication.shared.open(oneSec) { didSucceed in
-                        if !didSucceed {
-                            self.displayOneSecNotInstalledWarning.toggle()
-                        }
-                    }
+                    UIApplication.shared.open(oneSec)
                 }
                 return .loaded
             }
