@@ -26,4 +26,13 @@ public enum NotificationType: String, Codable {
 
     /// When an account is requesting to follow the user
     case followRequest = "follow_request"
+
+    /// Someone you enabled notifications for has posted a status
+    case status
+
+    /// A poll you have voted in or created has ended
+    case poll
+
+    /// A status you interacted with has ended
+    case update
 }

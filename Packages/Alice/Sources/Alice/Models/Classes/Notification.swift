@@ -11,8 +11,9 @@ import Foundation
  A class representation of a notification.
  */
 public class Notification: Codable, Identifiable {
-
     // MARK: - STORED PROPERTIES
+
+    public let uuid = UUID()
 
     /// The ID of the notification from the server.
     // swiftlint:disable:next identifier_name

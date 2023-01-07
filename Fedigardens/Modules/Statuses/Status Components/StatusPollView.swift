@@ -25,17 +25,21 @@ struct StatusPollView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             ForEach(poll.options) { option in
-                HStack(spacing: 16) {
+                VStack(alignment: .leading, spacing: 2) {
                     Text(option.title)
+                        .font(.subheadline)
                         .bold()
-                    ProgressView(value: Float(option.votesCount ?? 0), total: totalPercentage)
-                        .progressViewStyle(.linear)
-                        .frame(minWidth: 256, maxWidth: 600)
-                    Spacer()
-                    Text(
-                        getPercentage(from: option.votesCount ?? 0),
-                        format: .percent.precision(.fractionLength(0..<1))
-                    )
+                    HStack {
+                        ProgressView(value: Float(option.votesCount ?? 0), total: totalPercentage)
+                            .progressViewStyle(.linear)
+                        Text(
+                            getPercentage(from: option.votesCount ?? 0),
+                            format: .percent.precision(.fractionLength(0..<1))
+                        )
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                    }
+                    .frame(minWidth: 256, maxWidth: 600)
                 }
             }
             if poll.voted == true {

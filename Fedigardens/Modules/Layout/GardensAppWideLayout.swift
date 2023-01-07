@@ -25,28 +25,14 @@ struct GardensAppWideLayout: View {
     var body: some View {
         NavigationSplitView {
             List(selection: $viewModel.currentPage) {
-                NavigationLink(value: GardensAppPage.forYou) {
-                    Label("endpoint.home", systemImage: "house")
-                }
-                NavigationLink(value: GardensAppPage.local) {
-                    Label("endpoint.local", systemImage: "building.2")
-                }
-                NavigationLink(value: GardensAppPage.public) {
-                    Label("endpoint.latest", systemImage: "sparkles")
-                }
-                NavigationLink(value: GardensAppPage.messages) {
-                    Label("endpoint.directmessage", systemImage: "bubble.left.and.bubble.right")
-                }
-                NavigationLink(value: GardensAppPage.selfPosts) {
-                    Label("endpoint.selfposts", systemImage: "person.circle")
-
-                }
-                NavigationLink(value: GardensAppPage.saved) {
-                    Label("endpoint.saved", systemImage: "bookmark")
-                }
-                NavigationLink(value: GardensAppPage.settings) {
-                    Label("general.settings", systemImage: "gear")
-                }
+                GardensPageLink(page: .forYou)
+                GardensPageLink(page: .local)
+                GardensPageLink(page: .public)
+                GardensPageLink(page: .messages)
+                GardensPageLink(page: .selfPosts)
+                GardensPageLink(page: .mentions)
+                GardensPageLink(page: .saved)
+                GardensPageLink(page: .settings)
 
                 if !viewModel.lists.isEmpty {
                     Section {
@@ -56,7 +42,7 @@ struct GardensAppWideLayout: View {
                             }
                         }
                     } header: {
-                        Text("endpoint.lists")
+                        Text(GardensAppPage.list(id: "0").localizedTitle)
                     }
                 }
 
@@ -68,7 +54,7 @@ struct GardensAppWideLayout: View {
                             }
                         }
                     } header: {
-                        Text("endpoint.trending")
+                        Text(GardensAppPage.trending(id: "0").localizedTitle)
                     }
                 }
             }
@@ -112,31 +98,34 @@ struct GardensAppWideLayout: View {
                             scope: .scopedTimeline(scope: .home, local: false),
                             selectedStatus: $viewModel.selectedStatus
                         )
-                            .navigationTitle("endpoint.home")
+                        .navigationTitle(GardensAppPage.forYou.localizedTitle)
                     case .local:
                         TimelineSplitView(
                             scope: .scopedTimeline(scope: .network, local: true),
                             selectedStatus: $viewModel.selectedStatus
                         )
-                            .navigationTitle("endpoint.local")
+                        .navigationTitle(GardensAppPage.local.localizedTitle)
                     case .public:
                         TimelineSplitView(
                             scope: .scopedTimeline(scope: .network, local: false),
                             selectedStatus: $viewModel.selectedStatus
                         )
-                        .navigationTitle("endpoint.latest")
+                        .navigationTitle(GardensAppPage.public.localizedTitle)
                     case .messages:
                         MessagingList()
-                            .navigationTitle("endpoint.directmessage")
+                            .navigationTitle(GardensAppPage.messages.localizedTitle)
                     case .saved:
                         TimelineSplitView(scope: .saved, selectedStatus: $viewModel.selectedStatus)
-                            .navigationTitle("endpoint.saved")
+                            .navigationTitle(GardensAppPage.saved.localizedTitle)
                     case .selfPosts:
                         TimelineSplitView(
                             scope: .profile(id: userProfile.id),
                             selectedStatus: $viewModel.selectedStatus
                         )
-                        .navigationTitle("endpoint.selfposts")
+                        .navigationTitle(GardensAppPage.selfPosts.localizedTitle)
+                    case .mentions:
+                        InteractionsListView(selectedStatus: $viewModel.selectedStatus)
+                            .navigationTitle(GardensAppPage.mentions.localizedTitle)
                     case .list(let id):
                         TimelineSplitView(
                             scope: .scopedTimeline(scope: .list(id: id), local: false),

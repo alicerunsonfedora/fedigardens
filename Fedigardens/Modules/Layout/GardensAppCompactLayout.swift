@@ -23,18 +23,24 @@ struct GardensAppCompactLayout: View {
 
     var body: some View {
         TabView {
-            rootTab(for: .scopedTimeline(scope: .home, local: false), named: "endpoint.home", systemImage: "house")
-            rootTab(
-                for: .scopedTimeline(scope: .network, local: true),
-                named: "endpoint.local",
-                systemImage: "building.2"
-            )
+            rootTab(for: .scopedTimeline(scope: .home, local: false), page: .forYou)
+            rootTab(for: .scopedTimeline(scope: .network, local: true), page: .local)
+            NavigationSplitView {
+                InteractionsListView(selectedStatus: $viewModel.selectedStatus)
+                    .navigationTitle(GardensAppPage.mentions.localizedTitle)
+                    .listStyle(.inset)
+            } detail: {
+                navigationDetailView
+            }
+                .tabItem {
+                Label(page: .mentions)
+            }
             NavigationStack {
                 MessagingList()
-                    .navigationTitle("endpoint.directmessage")
+                    .navigationTitle(GardensAppPage.messages.localizedTitle)
             }
             .tabItem {
-                Label("endpoint.directmessage", systemImage: "bubble.left.and.bubble.right")
+                Label(page: .messages)
             }
             moreView
                 .tabItem { Label("general.more", systemImage: "ellipsis.circle") }
@@ -48,13 +54,12 @@ struct GardensAppCompactLayout: View {
 
     private func rootTab(
         for scope: TimelineSplitViewModel.TimelineType,
-        named name: LocalizedStringKey,
-        systemImage: String
+        page: GardensAppPage
     ) -> some View {
         NavigationSplitView {
             TimelineSplitView(scope: scope, selectedStatus: $viewModel.selectedStatus)
             .listStyle(.inset)
-            .navigationTitle(name)
+            .navigationTitle(page.localizedTitle)
             .toolbar {
                 ToolbarItem {
                     GardensComposeButton(style: .new)
@@ -64,7 +69,7 @@ struct GardensAppCompactLayout: View {
             navigationDetailView
         }
         .tabItem {
-            Label(name, systemImage: systemImage)
+            Label(page: page)
         }
     }
 
@@ -86,20 +91,11 @@ struct GardensAppCompactLayout: View {
     private var moreView: some View {
         NavigationSplitView {
             List(selection: $viewModel.currentPage) {
-                NavigationLink(value: GardensAppPage.public) {
-                    Label("endpoint.latest", systemImage: "sparkles")
-                }
-                NavigationLink(value: GardensAppPage.selfPosts) {
-                    Label("endpoint.selfposts", systemImage: "person.circle")
-
-                }
-                NavigationLink(value: GardensAppPage.saved) {
-                    Label("endpoint.saved", systemImage: "bookmark")
-                }
-                NavigationLink(value: GardensAppPage.settings) {
-                    Label("general.settings", systemImage: "gear")
-                }
-
+                GardensPageLink(page: .local)
+                GardensPageLink(page: .public)
+                GardensPageLink(page: .selfPosts)
+                GardensPageLink(page: .saved)
+                GardensPageLink(page: .settings)
                 if !viewModel.lists.isEmpty {
                     Section {
                         ForEach(viewModel.lists) { list in
@@ -108,7 +104,7 @@ struct GardensAppCompactLayout: View {
                             }
                         }
                     } header: {
-                        Text("endpoint.lists")
+                        Text(GardensAppPage.list(id: "0").localizedTitle)
                     }
                 }
 
@@ -120,7 +116,7 @@ struct GardensAppCompactLayout: View {
                             }
                         }
                     } header: {
-                        Text("endpoint.trending")
+                        Text(GardensAppPage.trending(id: "0").localizedTitle)
                     }
                 }
             }

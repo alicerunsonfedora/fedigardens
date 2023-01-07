@@ -61,12 +61,7 @@ struct SettingsView: View {
                 }
 
                 Section {
-                    HStack {
-                        Text("App Version")
-                        Spacer()
-                        Text(Bundle.main.getAppVersion())
-                            .foregroundColor(.secondary)
-                    }
+                    LabeledContent("App Version", value: Bundle.main.getAppVersion())
                     NavigationLink {
                         NavigationStack {
                             SettingsAcknowledgementList()
@@ -80,7 +75,7 @@ struct SettingsView: View {
                 Section {
                     GardensComposeButton(
                         shouldInvokeParentSheet: $shouldOpenFeedbackTool,
-                        context: .init(participants: "@ubunturox104@vivaldi.net", visibility: .unlisted),
+                        context: .init(participants: "@fedigardens@indieapps.space", visibility: .direct),
                         style: .feedback
                     )
                     Button(role: .destructive) {

@@ -29,6 +29,7 @@
 "endpoint.latest" = "Latest";
 "endpoint.directmessage" = "Messages";
 "endpoint.notifications" = "Notifications";
+"endpoint.mentions" = "Interactions";
 "endpoint.selfposts" = "Your Statuses";
 "endpoint.trending" = "Trending Tags";
 "endpoint.lists" = "Lists";

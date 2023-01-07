@@ -342,35 +342,6 @@ public class Alice: ObservableObject, CustomStringConvertible {
 
     }
 
-    @available(*, deprecated, message: "Use request with the Result return type instead.")
-    public func request<T: Decodable>(
-        _ method: Method,
-        for endpoint: Endpoint,
-        params: [String: String]? = nil
-    ) async throws -> T? {
-        var content: T? = nil
-
-        let url = Self.API_URL.appendingPathComponent(endpoint.path)
-        do {
-            let (data, response) = try await self.session.data(for: Self.makeRequest(method, url: url, params: params))
-
-            guard let response = response as? HTTPURLResponse, (200..<300).contains(response.statusCode) else {
-                throw FetchError.message(
-                    reason: "Request returned with error code: \(String(describing: (response as? HTTPURLResponse)?.statusCode))",
-                    data: data
-                )
-            }
-            do {
-                content = try JSONDecoder().decode(T.self, from: data)
-            } catch {
-                throw FetchError.parseError(reason: error)
-            }
-        } catch {
-            throw FetchError.unknownError(error: error)
-        }
-        return content
-    }
-
     public func request<T: Decodable>(
         _ method: Method,
         for endpoint: Endpoint,
@@ -395,6 +366,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
                 let content = try JSONDecoder().decode(T.self, from: data)
                 return .success(content)
             } catch {
+                print(error)
                 return .failure(.parseError(reason: error))
             }
         } catch {

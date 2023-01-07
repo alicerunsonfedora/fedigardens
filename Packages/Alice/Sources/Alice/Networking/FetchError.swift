@@ -64,3 +64,22 @@ extension FetchError: CustomStringConvertible {
         }
     }
 }
+
+extension FetchError: LocalizedError {
+    public var localizedDescription: String {
+        switch self {
+        case .mastodonAPIError(let error, _):
+            return "Mastodon returned an error: \(error.error)"
+        case .message(let reason, _):
+            return reason
+        case .parseError(let reason):
+            return "A decoding error occurred: \(reason.localizedDescription)"
+        case .unknownError(let error):
+            return "An unknown error occurred: \(error.localizedDescription)"
+        case .unknownResponseError(let response):
+            return "Received an unknown response type: \(type(of: response))"
+        default:
+            return "Unknown error case: \(self). Use \"FetchError.processResponse()\" to get more information."
+        }
+    }
+}
