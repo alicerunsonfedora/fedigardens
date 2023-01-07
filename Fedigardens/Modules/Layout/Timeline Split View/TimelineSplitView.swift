@@ -57,13 +57,11 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
             case .loaded:
                 StatusNavigationList(statuses: model.timelineData, selectedStatus: $selectedStatus) {
                     EmptyView()
-//                    Group {
-//                        if case .scopedTimeline = model.scope {
-//                            loadNextButton
-//                        }
-//                    }
                 }
                     .animation(.easeInOut, value: model.timelineData)
+                    .navigationDestination(for: Status.self) { status in
+                        StatusDetailView(status: status, level: .parent)
+                    }
             case .errored(let message):
                 VStack(spacing: 4) {
                     Image(systemName: "exclamationmark.triangle")

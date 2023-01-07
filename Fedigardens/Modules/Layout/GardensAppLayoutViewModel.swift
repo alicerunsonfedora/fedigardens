@@ -17,9 +17,8 @@ import Combine
 import Alice
 
 class GardensAppLayoutViewModel: ObservableObject {
-    typealias PageSelection = GardensAppLayout.PageSelection
     @Published var dummyTimeline: [Status] = MockData.timeline!
-    @Published var currentPage: PageSelection? = .forYou
+    @Published var currentPage: GardensAppPage? = .forYou
     @Published var selectedStatus: Status?
     @Published var tags: [Tag] = []
     @Published var lists: [MastodonList] = []

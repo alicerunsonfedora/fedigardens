@@ -19,8 +19,7 @@ import SwiftUI
 
 /// The primary content view of the app.
 struct ContentView: View {
-    /// Determines whether the device is compact or standard
-    @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+    @Environment(\.deviceModel) private var deviceModel
 
     /// The shared Chica authentication object.
     ///
@@ -34,13 +33,18 @@ struct ContentView: View {
             Group {
                 switch chicaAuth.authState {
                 case .authenthicated:
-                    GardensAppLayout()
+                    if deviceModel.starts(with: "iPad") {
+                        GardensAppWideLayout()
+                    } else {
+                        GardensAppCompactLayout()
+                    }
                 default:
                     authDialog
                 }
             }
         }
         .animation(.spring(), value: chicaAuth.authState)
+        .onAppear { print(deviceModel) }
     }
 
     var authDialog: AuthenticationView {

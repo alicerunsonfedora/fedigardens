@@ -13,26 +13,11 @@
 //  details.
 
 import Alice
-import Foundation
 import SwiftUI
 
 // MARK: - Widescreen Layout
 
-struct GardensAppLayout: View {
-    /// An enumeration representing the various pages in the app.
-    enum PageSelection: Hashable {
-        case forYou
-        case local
-        case `public`
-        case messages
-        case selfPosts
-        case saved
-        case notifications
-        case list(id: String)
-        case trending(id: String)
-        case settings
-    }
-
+struct GardensAppWideLayout: View {
     @Environment(\.userProfile) var userProfile: Account
     @StateObject private var viewModel = GardensAppLayoutViewModel()
     @State private var shouldDisplayComposeModal = false
@@ -40,33 +25,33 @@ struct GardensAppLayout: View {
     var body: some View {
         NavigationSplitView {
             List(selection: $viewModel.currentPage) {
-                NavigationLink(value: PageSelection.forYou) {
+                NavigationLink(value: GardensAppPage.forYou) {
                     Label("endpoint.home", systemImage: "house")
                 }
-                NavigationLink(value: PageSelection.local) {
+                NavigationLink(value: GardensAppPage.local) {
                     Label("endpoint.local", systemImage: "building.2")
                 }
-                NavigationLink(value: PageSelection.public) {
+                NavigationLink(value: GardensAppPage.public) {
                     Label("endpoint.latest", systemImage: "sparkles")
                 }
-                NavigationLink(value: PageSelection.messages) {
+                NavigationLink(value: GardensAppPage.messages) {
                     Label("endpoint.directmessage", systemImage: "bubble.left.and.bubble.right")
                 }
-                NavigationLink(value: PageSelection.selfPosts) {
+                NavigationLink(value: GardensAppPage.selfPosts) {
                     Label("endpoint.selfposts", systemImage: "person.circle")
 
                 }
-                NavigationLink(value: PageSelection.saved) {
+                NavigationLink(value: GardensAppPage.saved) {
                     Label("endpoint.saved", systemImage: "bookmark")
                 }
-                NavigationLink(value: PageSelection.settings) {
+                NavigationLink(value: GardensAppPage.settings) {
                     Label("general.settings", systemImage: "gear")
                 }
 
                 if !viewModel.lists.isEmpty {
                     Section {
                         ForEach(viewModel.lists) { list in
-                            NavigationLink(value: PageSelection.list(id: list.id)) {
+                            NavigationLink(value: GardensAppPage.list(id: list.id)) {
                                 Label(list.title, systemImage: "folder")
                             }
                         }
@@ -78,7 +63,7 @@ struct GardensAppLayout: View {
                 if !viewModel.tags.isEmpty {
                     Section {
                         ForEach(viewModel.tags) { tag in
-                            NavigationLink(value: PageSelection.trending(id: tag.name)) {
+                            NavigationLink(value: GardensAppPage.trending(id: tag.name)) {
                                 Label(tag.name, systemImage: "tag")
                             }
                         }
@@ -108,7 +93,6 @@ struct GardensAppLayout: View {
                 .foregroundColor(.secondary)
             }
         }
-        .navigationSplitViewStyle(.balanced)
         .onAppear {
             Task { await viewModel.fetchTags() }
             Task { await viewModel.fetchLists() }
@@ -187,7 +171,7 @@ struct GardensAppLayout: View {
 
 struct WidescreenLayout_Previews: PreviewProvider {
     static var previews: some View {
-        GardensAppLayout()
+        GardensAppWideLayout()
             .frame(minWidth: 900, minHeight: 500)
     }
 }

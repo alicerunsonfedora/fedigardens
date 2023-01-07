@@ -21,6 +21,7 @@
 "general.newwindow" = "Open in New Window";
 "general.emptytimeline" = "Timeline Is Empty";
 "general.learnmore" = "Learn More...";
+"general.more" = "More";
 
 // MARK: - Endpoints
 "endpoint.home" = "For You";

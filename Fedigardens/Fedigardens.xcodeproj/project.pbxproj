@@ -12,6 +12,9 @@
 		9503EFAF27B4173C00ABB7B0 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */; };
 		9503EFB427B417DD00ABB7B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9503EFB727B417DD00ABB7B0 /* Localizable.strings */; };
 		952A011127C67F3F00F36B37 /* MessagingPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A011027C67F3F00F36B37 /* MessagingPresentationView.swift */; };
+		952A06E129691B95008340A4 /* GardensAppCompactLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A06E029691B95008340A4 /* GardensAppCompactLayout.swift */; };
+		952A06E329691C3D008340A4 /* GardensAppPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A06E229691C3D008340A4 /* GardensAppPage.swift */; };
+		952A06E529692E95008340A4 /* UIDevice+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A06E429692E95008340A4 /* UIDevice+Model.swift */; };
 		95369B5927B82D4100F39531 /* TimelineSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5827B82D4100F39531 /* TimelineSplitView.swift */; };
 		95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */; };
 		953BC7BF2957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */; };
@@ -80,7 +83,7 @@
 		95ADAE1627B6D9140011FD83 /* Timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = 95ADAE1527B6D9140011FD83 /* Timeline.json */; };
 		95ADAE1827B6D9140011FD83 /* Timeline.json in Resources */ = {isa = PBXBuildFile; fileRef = 95ADAE1527B6D9140011FD83 /* Timeline.json */; };
 		95ADAE1A27B6D9740011FD83 /* StatusNavigationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1927B6D9740011FD83 /* StatusNavigationList.swift */; };
-		95ADAE1F27B6DC120011FD83 /* GardensAppLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1E27B6DC120011FD83 /* GardensAppLayout.swift */; };
+		95ADAE1F27B6DC120011FD83 /* GardensAppWideLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADAE1E27B6DC120011FD83 /* GardensAppWideLayout.swift */; };
 		95B368A12965106C00336284 /* URL+CustomInits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B368A02965106C00336284 /* URL+CustomInits.swift */; };
 		95C0AF3E27C688170007D1D0 /* Context.json in Resources */ = {isa = PBXBuildFile; fileRef = 95C0AF3D27C688170007D1D0 /* Context.json */; };
 		95C0AF4027C688170007D1D0 /* Context.json in Resources */ = {isa = PBXBuildFile; fileRef = 95C0AF3D27C688170007D1D0 /* Context.json */; };
@@ -114,6 +117,9 @@
 		9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		9503EFB627B417DD00ABB7B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		952A011027C67F3F00F36B37 /* MessagingPresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingPresentationView.swift; sourceTree = "<group>"; };
+		952A06E029691B95008340A4 /* GardensAppCompactLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppCompactLayout.swift; sourceTree = "<group>"; };
+		952A06E229691C3D008340A4 /* GardensAppPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppPage.swift; sourceTree = "<group>"; };
+		952A06E429692E95008340A4 /* UIDevice+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Model.swift"; sourceTree = "<group>"; };
 		95369B5827B82D4100F39531 /* TimelineSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineSplitView.swift; sourceTree = "<group>"; };
 		95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutStateRepresentable.swift; sourceTree = "<group>"; };
 		953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Status+URIToUrl.swift"; sourceTree = "<group>"; };
@@ -168,7 +174,7 @@
 		95ADAE1127B6CDC50011FD83 /* DateFormatter+Mastodon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Mastodon.swift"; sourceTree = "<group>"; };
 		95ADAE1527B6D9140011FD83 /* Timeline.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Timeline.json; sourceTree = "<group>"; };
 		95ADAE1927B6D9740011FD83 /* StatusNavigationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusNavigationList.swift; sourceTree = "<group>"; };
-		95ADAE1E27B6DC120011FD83 /* GardensAppLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppLayout.swift; sourceTree = "<group>"; };
+		95ADAE1E27B6DC120011FD83 /* GardensAppWideLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppWideLayout.swift; sourceTree = "<group>"; };
 		95B368A02965106C00336284 /* URL+CustomInits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+CustomInits.swift"; sourceTree = "<group>"; };
 		95C0AF3D27C688170007D1D0 /* Context.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Context.json; sourceTree = "<group>"; };
 		95C0AF4127C6B1AC0007D1D0 /* Conversation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Conversation.json; sourceTree = "<group>"; };
@@ -442,6 +448,7 @@
 				95555FBA2960B9F7005BEF45 /* Acknowledgement+License.swift */,
 				95555FC72960C864005BEF45 /* Collection+IsNotEmpty.swift */,
 				95B368A02965106C00336284 /* URL+CustomInits.swift */,
+				952A06E429692E95008340A4 /* UIDevice+Model.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -487,7 +494,9 @@
 		95ADAE1D27B6DB830011FD83 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
-				95ADAE1E27B6DC120011FD83 /* GardensAppLayout.swift */,
+				952A06E029691B95008340A4 /* GardensAppCompactLayout.swift */,
+				95ADAE1E27B6DC120011FD83 /* GardensAppWideLayout.swift */,
+				952A06E229691C3D008340A4 /* GardensAppPage.swift */,
 				95009EF3295E780A00F32F85 /* GardensAppLayoutViewModel.swift */,
 				9567141E2958CD9600BFF76A /* Status Detail View */,
 				9567141C2958CD5600BFF76A /* Status Navigation List */,
@@ -698,9 +707,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				952A06E529692E95008340A4 /* UIDevice+Model.swift in Sources */,
 				953BC7C52957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */,
 				9558C7F029579E66001B30C7 /* GardensComposeButton.swift in Sources */,
 				95CD3C4F29650A600043CDB2 /* GardensViewModel.swift in Sources */,
+				952A06E129691B95008340A4 /* GardensAppCompactLayout.swift in Sources */,
 				95009EF2295E711100F32F85 /* AuthenticationViewModel.swift in Sources */,
 				956714162958C1BF00BFF76A /* AuthoringScene.swift in Sources */,
 				953BC7CB2957EC27005C7F2A /* HashableType.swift in Sources */,
@@ -731,7 +742,7 @@
 				9594DE3B27C927820036325A /* Conversation+Authors.swift in Sources */,
 				956714252958D2D300BFF76A /* StatusDetailToolbar.swift in Sources */,
 				95645BD227C5546E00FB3426 /* UserDefaults+Settings.swift in Sources */,
-				95ADAE1F27B6DC120011FD83 /* GardensAppLayout.swift in Sources */,
+				95ADAE1F27B6DC120011FD83 /* GardensAppWideLayout.swift in Sources */,
 				953DE4D327D69C7D0043A357 /* Bundle+AppVersion.swift in Sources */,
 				958C0C9727BE930D00ED6C23 /* Account+AccountName.swift in Sources */,
 				95D2705127C6FEFA00805262 /* MessagingList.swift in Sources */,
@@ -740,6 +751,7 @@
 				95009EF4295E780A00F32F85 /* GardensAppLayoutViewModel.swift in Sources */,
 				953BC7C82957E156005C7F2A /* RecursiveNavigationView.swift in Sources */,
 				953BC7CE2957FD94005C7F2A /* StatusMediaDrawer.swift in Sources */,
+				952A06E329691C3D008340A4 /* GardensAppPage.swift in Sources */,
 				95ADAE1A27B6D9740011FD83 /* StatusNavigationList.swift in Sources */,
 				957AF855295937CF000370E6 /* AuthorViewModel.swift in Sources */,
 				95667E7A27B85C3B009D2251 /* MockData.swift in Sources */,
@@ -917,7 +929,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Fedigardens.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = FQQXSP79X3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -950,7 +962,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Fedigardens.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = FQQXSP79X3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;

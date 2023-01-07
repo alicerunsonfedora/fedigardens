@@ -23,7 +23,7 @@ struct StatusNavigationList<Extras: View>: View {
     @Environment(\.openWindow) private var openWindow
     @State var statuses: [Status]
     @Binding var selectedStatus: Status?
-    @StateObject private var viewModel: StatusNavigationListViewModel = .init()
+    @StateObject private var viewModel = StatusNavigationListViewModel()
 
     var extras: (() -> Extras)?
 
