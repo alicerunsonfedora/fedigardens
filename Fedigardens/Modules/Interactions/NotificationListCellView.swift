@@ -20,16 +20,20 @@ struct NotificationListCellView: View {
     var notification: Notification
 
     var body: some View {
-        VStack {
+        VStack(alignment: .trailing) {
             if let reply = notification.status {
-                StatusView(status: reply)
-                    .lineLimit(2)
-                    .profilePlacement(.hidden)
-                    .datePlacement(.automatic)
-                    .profileImageSize(44)
-                    .verifiedNoticePlacement(.byAuthorName)
-                    .tint(.secondary)
+                Group {
+                    StatusView(status: reply)
+                        .lineLimit(2)
+                        .profilePlacement(.hidden)
+                        .datePlacement(.automatic)
+                        .profileImageSize(44)
+                        .verifiedNoticePlacement(.byAuthorName)
+                        .tint(.secondary)
+                    StatusQuickGlanceView(status: reply)
+                }
             }
+
         }
     }
 }

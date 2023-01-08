@@ -75,6 +75,7 @@
 		9594DE3B27C927820036325A /* Conversation+Authors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594DE3A27C927820036325A /* Conversation+Authors.swift */; };
 		9594DE3D27C927820036325A /* Conversation+Authors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594DE3A27C927820036325A /* Conversation+Authors.swift */; };
 		95A02A6F295FE94F0013EF7C /* Alice in Frameworks */ = {isa = PBXBuildFile; productRef = 95A02A6E295FE94F0013EF7C /* Alice */; };
+		95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */; };
 		95ADADE427B6A6BB0011FD83 /* String+AttributedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */; };
 		95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE727B6A7F10011FD83 /* Statuses.swift */; };
 		95ADADFE27B6A9730011FD83 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADEB27B6A8E40011FD83 /* Shared.swift */; };
@@ -171,6 +172,7 @@
 		958E2095296A0671008AE63F /* GardensPageLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensPageLink.swift; sourceTree = "<group>"; };
 		9594DE3A27C927820036325A /* Conversation+Authors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Conversation+Authors.swift"; sourceTree = "<group>"; };
 		95A02A70295FE98B0013EF7C /* Alice */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Alice; path = ../Packages/Alice; sourceTree = "<group>"; };
+		95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusQuickGlanceView.swift; sourceTree = "<group>"; };
 		95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AttributedContent.swift"; sourceTree = "<group>"; };
 		95ADADE727B6A7F10011FD83 /* Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
 		95ADADEB27B6A8E40011FD83 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			children = (
 				9567141D2958CD6400BFF76A /* Status Components */,
 				95ADAE0127B6B2E10011FD83 /* StatusView.swift */,
+				95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */,
 			);
 			path = Statuses;
 			sourceTree = "<group>";
@@ -755,6 +758,7 @@
 				9547230827A0094000D1BA89 /* ContentView.swift in Sources */,
 				95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */,
 				9547230627A0094000D1BA89 /* Gardens.swift in Sources */,
+				95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */,
 				95555FBB2960B9F7005BEF45 /* Acknowledgement+License.swift in Sources */,
 				9558C7EE29578B59001B30C7 /* AccountImage.swift in Sources */,
 				953BC7BF2957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */,

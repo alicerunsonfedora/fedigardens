@@ -31,22 +31,10 @@ struct StatusNavigationList<Extras: View>: View {
         List(selection: $selectedStatus) {
             ForEach(viewModel.statuses, id: \.uuid) { status in
                 NavigationLink(value: status) {
-                    HStack(alignment: .top) {
-                        if status.bookmarked == true {
-                            Image(systemName: "bookmark.fill")
-                                .foregroundColor(.indigo)
-                                .font(.caption)
-                        } else if status.favourited == true {
-                            Image(systemName: "star.fill")
-                                .foregroundColor(.yellow)
-                                .font(.caption)
-                        } else {
-                            Image(systemName: "circle.fill")
-                                .opacity(0)
-                                .font(.caption)
-                        }
+                    VStack(alignment: .trailing) {
                         statusLink(for: status)
                             .allowsHitTesting(false)
+                        StatusQuickGlanceView(status: status)
                     }
                 }
             }
