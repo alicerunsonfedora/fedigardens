@@ -16,17 +16,22 @@ import SwiftUI
 import Alice
 
 struct StatusDetailToolbar: CustomizableToolbarContent {
+    @Environment(\.deviceModel) var deviceModel
     @Environment(\.openURL) var openURL
     @Environment(\.openWindow) var openWindow
     @StateObject var viewModel: StatusDetailViewModel
     @Binding var displayUndisclosedContent: Bool
+
+    private var shouldDisplayItem: Bool {
+        !deviceModel.starts(with: "iPad")
+    }
 
     var body: some CustomizableToolbarContent {
         Group {
             primaryToolbarButtons
             commonToolbarButtons
 
-            ToolbarItem(id: "favorite", placement: .secondaryAction) {
+            ToolbarItem(id: "favorite", placement: .secondaryAction, showsByDefault: shouldDisplayItem) {
                 Button {
                     Task {
                         await viewModel.toggleFavoriteStatus()
@@ -38,9 +43,10 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                     )
                 }
                 .help("help.likestatus")
-            }.defaultCustomization(.hidden)
+            }
+            .defaultCustomization(options: .alwaysAvailable)
 
-            ToolbarItem(id: "safari", placement: .secondaryAction) {
+            ToolbarItem(id: "safari", placement: .secondaryAction, showsByDefault: shouldDisplayItem) {
                 Button {
                     if let url = viewModel.status?.uriToURL() {
                         openURL(url)
@@ -48,9 +54,10 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                 } label: {
                     Label("Open in Safari", systemImage: "safari")
                 }
-            }.defaultCustomization(.hidden)
+            }
+            .defaultCustomization(options: .alwaysAvailable)
 
-            ToolbarItem(id: "refresh-context", placement: .secondaryAction) {
+            ToolbarItem(id: "refresh-context", placement: .secondaryAction, showsByDefault: false) {
                 Button {
                     Task {
                         await viewModel.getContext()
@@ -60,9 +67,8 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                 }
                 .help("help.refresh")
             }
-            .defaultCustomization(.hidden)
 
-            ToolbarItem(id: "bookmark", placement: .secondaryAction) {
+            ToolbarItem(id: "bookmark", placement: .secondaryAction, showsByDefault: shouldDisplayItem) {
                 Button {
                     Task { await viewModel.toggleBookmarkedStatus() }
                 } label: {
@@ -71,7 +77,8 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                         systemImage: viewModel.status?.bookmarked == true ? "bookmark.slash" : "bookmark"
                     )
                 }.help("help.save")
-            }.defaultCustomization(.hidden)
+            }
+            .defaultCustomization(options: .alwaysAvailable)
         }
     }
 
