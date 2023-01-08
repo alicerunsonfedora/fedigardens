@@ -26,6 +26,7 @@ class StatusDetailViewModel: ObservableObject {
     @Published var quote: Status?
     @Published var context: Context?
     @Published var shouldOpenCompositionTool: AuthoringContext?
+    @Published var state = LayoutState.initial
 
     var containsUndisclosedContent: Bool {
         guard let status else { return false }
@@ -40,6 +41,7 @@ class StatusDetailViewModel: ObservableObject {
 
     func replace(status: Status) async {
         DispatchQueue.main.async {
+            self.state = .loading
             self.clear()
             self.status = status
         }
@@ -51,26 +53,34 @@ class StatusDetailViewModel: ObservableObject {
         let realStatus = status ?? self.status
         guard let realStatus else { return }
 
+        DispatchQueue.main.async { self.state = .loading }
         let response: Alice.Response<Context> = await Alice.shared.request(.get, for: .context(id: realStatus.id))
         switch response {
         case .success(let arrivingContext):
-            DispatchQueue.main.async { self.context = arrivingContext }
+            DispatchQueue.main.async {
+                self.context = arrivingContext
+                self.state = .loaded
+            }
         case .failure(let error):
             print("Couldn't fetch context: \(error.localizedDescription)")
+            DispatchQueue.main.async { self.state = .errored(message: error.localizedDescription) }
         }
     }
 
     func getQuote(for status: Status? = nil) async {
         let realStatus = status ?? self.status
         guard let realStatus, realStatus.quotedReply() != nil else { return }
+        DispatchQueue.main.async { self.state = .loading }
         let response: Pip.Response<Status> = await Pip.shared.requestQuote(of: realStatus)
         switch response {
         case .success(let quotedReply):
             DispatchQueue.main.async {
                 self.quote = quotedReply
+                self.state = .loaded
             }
         case .failure(let error):
             print("Couldn't fetch quoted reply: \(error)")
+            DispatchQueue.main.async { self.state = .errored(message: error.localizedDescription) }
         }
     }
 
@@ -119,8 +129,8 @@ class StatusDetailViewModel: ObservableObject {
     }
 
     /// Make a request to update the current status.
-    /// - Parameter means: A closure that will be performed to update the status. Should return an optional status,
-    ///     which represents the newly modified status.
+    /// - Parameter means: A closure that will be performed to update the status. Should return an optional
+    /// status which represents the newly modified status.
     private func updateStatus(by means: (Status) async -> Alice.Response<Status>) async {
         guard let status else { return }
         let response = await means(status)

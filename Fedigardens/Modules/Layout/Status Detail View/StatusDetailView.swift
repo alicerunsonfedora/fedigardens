@@ -26,34 +26,62 @@ struct StatusDetailView: View {
     @Environment(\.openURL) var openURL
     @Environment(\.openWindow) var openWindow
     @State private var displayUndisclosedContent: Bool = false
-    @StateObject var viewModel: StatusDetailViewModel = .init()
+    @StateObject var viewModel = StatusDetailViewModel()
 
     var status: Status
     var level: RecursiveNavigationLevel
 
     var body: some View {
         RecursiveNavigationStack(level: level) {
-            List {
-                if let quote = viewModel.quote {
-                    NavigationLink(value: viewModel.contextCaller(for: quote)) {
-                        StatusDetailQuote(
-                            displayUndisclosedContent: $displayUndisclosedContent,
-                            status: status,
-                            quote: quote
-                        )
-                    }.listRowBackground(Color.accentColor.opacity(0.1))
-                }
-                StatusView(status: status)
-                    .profileImageSize(48)
-                    .reblogNoticePlacement(.aboveOriginalAuthor)
-                    .showsDisclosedContent($displayUndisclosedContent)
-                    .verifiedNoticePlacement(.underAuthorLabel)
-                    .listRowInsets(.init(top: 12, leading: 16, bottom: 12, trailing: 16))
-                if let context = viewModel.context {
-                    StatusContextProvider(viewModel: viewModel, context: context)
+            Group {
+                switch viewModel.state {
+                case .initial:
+                    List {
+                        StatusView(status: MockData.status!)
+                            .profileImageSize(48)
+                            .reblogNoticePlacement(.aboveOriginalAuthor)
+                            .showsDisclosedContent($displayUndisclosedContent)
+                            .verifiedNoticePlacement(.underAuthorLabel)
+                            .listRowInsets(.init(top: 12, leading: 16, bottom: 12, trailing: 16))
+                        ProgressView()
+                    }
+                    .listStyle(.plain)
+                    .redacted(reason: .placeholder)
+                case .loading:
+                    ProgressView()
+                        .font(.largeTitle)
+                case .loaded:
+                    List {
+                        if let quote = viewModel.quote {
+                            NavigationLink(value: viewModel.contextCaller(for: quote)) {
+                                StatusDetailQuote(
+                                    displayUndisclosedContent: $displayUndisclosedContent,
+                                    status: status,
+                                    quote: quote
+                                )
+                            }.listRowBackground(Color.accentColor.opacity(0.1))
+                        }
+                        StatusView(status: status)
+                            .profileImageSize(48)
+                            .reblogNoticePlacement(.aboveOriginalAuthor)
+                            .showsDisclosedContent($displayUndisclosedContent)
+                            .verifiedNoticePlacement(.underAuthorLabel)
+                            .listRowInsets(.init(top: 12, leading: 16, bottom: 12, trailing: 16))
+                        if let context = viewModel.context {
+                            StatusContextProvider(viewModel: viewModel, context: context)
+                        }
+                    }
+                    .listStyle(.plain)
+                case .errored(let reason):
+                    VStack(spacing: 8) {
+                        Image(systemName: "exclamationmark.triangle")
+                            .font(.system(.largeTitle, design: .rounded))
+                            .foregroundColor(.secondary)
+                        Text(reason)
+                            .font(.title3)
+                    }
                 }
             }
-            .listStyle(.plain)
         }
         .recursiveDestination(of: StatusDetailViewModel.ContextCaller.self) { ctx in
             StatusDetailView(status: ctx.status, level: .child)
@@ -82,6 +110,7 @@ struct StatusDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .animation(.easeInOut, value: displayUndisclosedContent)
         .animation(.easeInOut, value: viewModel.context)
+        .animation(.easeInOut, value: viewModel.state)
         .refreshable {
             Task { await viewModel.getContext() }
         }
