@@ -26,6 +26,7 @@ class StatusDetailViewModel: ObservableObject {
     @Published var quote: Status?
     @Published var context: Context?
     @Published var shouldOpenCompositionTool: AuthoringContext?
+    @Published var expandAncestors = false
     @Published var state = LayoutState.initial
 
     var containsUndisclosedContent: Bool {

@@ -16,13 +16,27 @@ import SwiftUI
 import Alice
 
 struct StatusContextProvider: View {
+    enum ContextDisplayMode {
+        case ancestors
+        case descendants
+    }
     @ObservedObject var viewModel: StatusDetailViewModel
     var context: Context
+    var displayMode: ContextDisplayMode = .descendants
+
+    var statuses: [Status]? {
+        switch displayMode {
+        case .descendants:
+            return context.descendants
+        case .ancestors:
+            return context.ancestors
+        }
+    }
 
     var body: some View {
         Section {
-            if let replies = context.descendants, !replies.isEmpty {
-                ForEach(replies, id: \.id) { reply in
+            if let replies = statuses, !replies.isEmpty {
+                ForEach(replies, id: \.uuid) { reply in
                     contextLink(for: reply)
                 }
             }

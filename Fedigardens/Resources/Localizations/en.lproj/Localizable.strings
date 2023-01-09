@@ -54,6 +54,7 @@
 "status.replytext" = "In reply to: ";
 "status.replysubtitle" = "Replying to %@";
 "status.nocontext" = "No Replies";
+"status.prevcontext" = "Show previous conversation...";
 "status.marksensitive" = "Mark as Sensitive";
 "status.spoilerprompt" = "You have marked this status as sensitive to some followers.";
 "status.spoilerdetail" = "Please specify a reason for this action, or mark it as sensitive without context by leaving this field blank.";

@@ -33,7 +33,7 @@ struct StatusDetailView: View {
 
     var body: some View {
         RecursiveNavigationStack(level: level) {
-            Group {
+            ScrollViewReader { scrollProxy in
                 switch viewModel.state {
                 case .initial:
                     List {
@@ -61,12 +61,35 @@ struct StatusDetailView: View {
                                 )
                             }.listRowBackground(Color.accentColor.opacity(0.1))
                         }
+                        if let context = viewModel.context, context.ancestors.isNotEmpty == true {
+                            if viewModel.expandAncestors {
+                                StatusContextProvider(
+                                    viewModel: viewModel,
+                                    context: context,
+                                    displayMode: .ancestors
+                                )
+                            } else {
+                                Button {
+                                    withAnimation {
+                                        viewModel.expandAncestors.toggle()
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        withAnimation {
+                                            scrollProxy.scrollTo(viewModel.status?.uuid, anchor: .top)
+                                        }
+                                    }
+                                } label: {
+                                    Label("status.prevcontext", systemImage: "ellipsis")
+                                }
+                            }
+                        }
                         StatusView(status: status)
                             .profileImageSize(48)
                             .reblogNoticePlacement(.aboveOriginalAuthor)
                             .showsDisclosedContent($displayUndisclosedContent)
                             .verifiedNoticePlacement(.underAuthorLabel)
                             .listRowInsets(.init(top: 12, leading: 16, bottom: 12, trailing: 16))
+                            .id(viewModel.status?.uuid)
                         if let context = viewModel.context {
                             StatusContextProvider(viewModel: viewModel, context: context)
                         }
