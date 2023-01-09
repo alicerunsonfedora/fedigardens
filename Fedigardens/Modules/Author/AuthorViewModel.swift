@@ -36,7 +36,9 @@ class AuthorViewModel: ObservableObject {
     @Published var sensitiveText = ""
 
     /// The number of characters remaining that the user can utilize.
-    var charactersRemaining: Int { 500 - text.count }
+    var charactersRemaining: Int {
+        return calculateCharactersRemaining()
+    }
 
     func setupTextContents(with context: AuthoringContext) async {
         await self.fetchPromptIfUninitalized(in: context)
@@ -87,6 +89,25 @@ class AuthorViewModel: ObservableObject {
             return
         }
         text = "\(existingParticipants) "
+    }
+
+    private func calculateCharactersRemaining() -> Int {
+        do {
+            var removedTextString = text
+            let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
+            let matches = detector.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count))
+
+            for match in matches {
+                guard let range = Range(match.range, in: text) else { continue }
+                removedTextString = removedTextString.replacingOccurrences(of: text[range], with: "")
+            }
+
+            let expectancy = removedTextString.count + (matches.count * 23)
+            return 500 - expectancy
+        } catch {
+            print("Err: couldn't make detector: \(error.localizedDescription). Using naive approach instead.")
+            return 500 - text.count
+        }
     }
 
     private func memberString(from members: [Mention], excluding respondentAccount: String) -> String {

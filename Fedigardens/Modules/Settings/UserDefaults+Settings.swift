@@ -21,7 +21,12 @@ extension UserDefaults {
     }
 
     var allowsInterventions: Bool {
-        get { bool(forKey: "health.interventions") }
+        get {
+            if UserDefaults.standard.value(forKey: "health.interventions") == nil {
+                return true
+            }
+            return bool(forKey: "health.interventions")
+        }
         set { set(newValue, forKey: "health.interventions") }
     }
 
