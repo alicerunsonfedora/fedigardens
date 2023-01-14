@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Drops",
+        "repositoryURL": "https://github.com/omaralbeik/Drops.git",
+        "state": {
+          "branch": null,
+          "revision": "f4eabe3e4e5da69e5205a69a5ddc0effd4a90519",
+          "version": "1.6.1"
+        }
+      },
+      {
         "package": "HTML2Markdown",
         "repositoryURL": "https://gitlab.com/mflint/HTML2Markdown/",
         "state": {

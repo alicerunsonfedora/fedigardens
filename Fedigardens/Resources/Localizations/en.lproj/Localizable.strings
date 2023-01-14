@@ -79,6 +79,15 @@
 "status.reblogaction" = "Reblog";
 "status.saveaction" = "Bookmark";
 
+// MARK: - Drops
+"drop.favorite" = "Favorited";
+"drop.unfavorite" = "Unfavorited";
+"drop.reblog" = "Reblogged";
+"drop.unreblog" = "Removed Reblog";
+"drop.reply" = "Reply Posted";
+"drop.save" = "Added to Bookmarks";
+"drop.unsave" = "Removed from Bookmarks";
+
 // MARK: - Status Visibility
 "status.visibility.public" = "Everyone";
 "status.visibility.unlisted" = "Anyone with a link";

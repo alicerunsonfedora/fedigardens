@@ -20,13 +20,15 @@ struct SettingsAcknowledgementList: View {
         Acknowledgement.all() + [
             .init(title: "Alice (Chica fork)", license: Acknowledgement.license(named: "NPL")),
             .init(title: "HTML2Markdown", license: Acknowledgement.license(named: "MIT-HTML2Markdown", ofType: "md")),
-            .init(title: "SafariView", license: Acknowledgement.license(named: "MPLv2"))
+            .init(title: "SafariView", license: Acknowledgement.license(named: "MPLv2")),
+//            .init(title: "Drops", license: Acknowledgement.license(named: "MIT-Drops", ofType: "md"))
         ]
     }
 
     var assets: [Acknowledgement] {
         [
-            .init(title: "App Icon", license: "Icon created by VegasOs.")
+            .init(title: "App Icon", license: "Icon created by VegasOs."),
+            .init(title: "one sec Icon", license: "Icon created for one sec by Frederik Reidel. All rights reserved.")
         ]
     }
 

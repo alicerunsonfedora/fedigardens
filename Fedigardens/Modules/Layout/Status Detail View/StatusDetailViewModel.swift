@@ -15,6 +15,8 @@
 import Foundation
 import Combine
 import Alice
+import Drops
+import UIKit
 
 class StatusDetailViewModel: ObservableObject {
     struct ContextCaller: Hashable {
@@ -98,7 +100,15 @@ class StatusDetailViewModel: ObservableObject {
 
     // Toggles whether the user likes the status.
     func toggleFavoriteStatus() async {
-        await updateStatus { state in
+        await updateStatus(
+            drop: .init(
+                title: NSLocalizedString(
+                    status?.favourited == true ? "drop.unfavorite" : "drop.favorite",
+                    comment: "Favorite drop"
+                ),
+                icon: UIImage(systemName: "star.fill")
+            )
+        ) { state in
             await Alice.shared.request(
                 .post, for: state.favourited == true ? .unfavorite(id: state.id) : .favourite(id: state.id)
             )
@@ -107,7 +117,15 @@ class StatusDetailViewModel: ObservableObject {
 
     // Toggles whether the user boosts the status.
     func toggleReblogStatus() async {
-        await updateStatus { state in
+        await updateStatus(
+            drop: .init(
+                title: NSLocalizedString(
+                    status?.reblogged == true ? "drop.unreblog" : "drop.reblog",
+                    comment: "Reblog drop"
+                ),
+                icon: UIImage(systemName: "arrow.triangle.2.circlepath.circle.fill")
+            )
+        ) { state in
             await Alice.shared.request(
                 .post, for: state.reblogged == true ? .unreblog(id: state.id) : .reblog(id: state.id)
             )
@@ -116,7 +134,15 @@ class StatusDetailViewModel: ObservableObject {
 
     // Toggles whether the user has saved the status.
     func toggleBookmarkedStatus() async {
-        await updateStatus { state in
+        await updateStatus(
+            drop: .init(
+                title: NSLocalizedString(
+                    status?.bookmarked == true ? "drop.unsave" : "drop.save",
+                    comment: "Save drop"
+                ),
+                icon: UIImage(systemName: "bookmark.fill")
+            )
+        ) { state in
             await Alice.shared.request(
                 .post, for: state.bookmarked == true ? .undoSave(id: state.id) : .save(id: state.id)
             )
@@ -132,12 +158,17 @@ class StatusDetailViewModel: ObservableObject {
     /// Make a request to update the current status.
     /// - Parameter means: A closure that will be performed to update the status. Should return an optional
     /// status which represents the newly modified status.
-    private func updateStatus(by means: (Status) async -> Alice.Response<Status>) async {
+    private func updateStatus(drop: Drop? = nil, by means: (Status) async -> Alice.Response<Status>) async {
         guard let status else { return }
         let response = await means(status)
         switch response {
         case .success(let updated):
-            DispatchQueue.main.async { self.status = updated }
+            DispatchQueue.main.async {
+                self.status = updated
+                if let drop {
+                    Drops.show(drop)
+                }
+            }
         case .failure(let error):
             print("Error occured when updating status: \(error.localizedDescription)")
         }

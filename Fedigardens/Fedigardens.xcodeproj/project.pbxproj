@@ -115,6 +115,7 @@
 		95F2DE22297253FD00553937 /* Label+SettingsStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */; };
 		95F2DE2429725C6100553937 /* BetaBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE2329725C6100553937 /* BetaBadge.swift */; };
 		95F2DE26297262D700553937 /* SettingsInterventionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE25297262D700553937 /* SettingsInterventionPage.swift */; };
+		95F2DE2929726A7E00553937 /* Drops in Frameworks */ = {isa = PBXBuildFile; productRef = 95F2DE2829726A7E00553937 /* Drops */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -220,6 +221,7 @@
 				95A02A6F295FE94F0013EF7C /* Alice in Frameworks */,
 				95555FB52960B7A2005BEF45 /* AckGenUI in Frameworks */,
 				9558C7EC29578503001B30C7 /* HTML2Markdown in Frameworks */,
+				95F2DE2929726A7E00553937 /* Drops in Frameworks */,
 				9558C7E52957711A001B30C7 /* SafariView in Frameworks */,
 				95555FB32960B7A2005BEF45 /* AckGen in Frameworks */,
 			);
@@ -591,6 +593,7 @@
 				95A02A6E295FE94F0013EF7C /* Alice */,
 				95555FB22960B7A2005BEF45 /* AckGen */,
 				95555FB42960B7A2005BEF45 /* AckGenUI */,
+				95F2DE2829726A7E00553937 /* Drops */,
 			);
 			productName = "Capstone (iOS)";
 			productReference = 954722FD27A0094000D1BA89 /* Fedigardens.app */;
@@ -645,6 +648,7 @@
 				9558C7E32957711A001B30C7 /* XCRemoteSwiftPackageReference "SafariView" */,
 				9558C7EA29578503001B30C7 /* XCRemoteSwiftPackageReference "HTML2Markdown" */,
 				95555FB12960B7A1005BEF45 /* XCRemoteSwiftPackageReference "AckGen" */,
+				95F2DE2729726A7E00553937 /* XCRemoteSwiftPackageReference "Drops" */,
 			);
 			productRefGroup = 954722FE27A0094000D1BA89 /* Products */;
 			projectDirPath = "";
@@ -730,7 +734,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "DIR=$PROJECT_TEMP_DIR/../../../SourcePackages/checkouts/AckGen\nif [ -d \"$DIR\" ]; then\n  cd $DIR\n  SDKROOT=(xcrun --sdk macosx --show-sdk-path)\n  swift run ackgen\nelse\n  echo \"warning: AckGen not found. Please install the package via SPM (https://github.com/MartinP7r/AckGen#installation)\"\nfi\n";
+			shellScript = "DIR=$PROJECT_TEMP_DIR/../../../SourcePackages/checkouts/AckGen\nif [ -d \"$DIR\" ]; then\n  cd $DIR\n  SDKROOT=(xcrun --sdk macosx --show-sdk-path)\n  swift run ackgen \"$SRCROOT/Supporting Files/Acknowledgements.plist\"\nelse\n  echo \"warning: AckGen not found. Please install the package via SPM (https://github.com/MartinP7r/AckGen#installation)\"\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1126,6 +1130,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		95F2DE2729726A7E00553937 /* XCRemoteSwiftPackageReference "Drops" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/omaralbeik/Drops.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1152,6 +1164,11 @@
 		95A02A6E295FE94F0013EF7C /* Alice */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Alice;
+		};
+		95F2DE2829726A7E00553937 /* Drops */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 95F2DE2729726A7E00553937 /* XCRemoteSwiftPackageReference "Drops" */;
+			productName = Drops;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
