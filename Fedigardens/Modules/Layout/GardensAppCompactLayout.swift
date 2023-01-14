@@ -91,7 +91,6 @@ struct GardensAppCompactLayout: View {
     private var moreView: some View {
         NavigationSplitView {
             List(selection: $viewModel.currentPage) {
-                GardensPageLink(page: .local)
                 GardensPageLink(page: .public)
                 GardensPageLink(page: .selfPosts)
                 GardensPageLink(page: .saved)

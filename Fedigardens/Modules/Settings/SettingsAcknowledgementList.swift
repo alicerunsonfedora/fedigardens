@@ -27,7 +27,7 @@ struct SettingsAcknowledgementList: View {
     var assets: [Acknowledgement] {
         [
             .init(title: "App Icon", license: "Icon created by VegasOs."),
-            .init(title: "one sec Icon", license: "Icon created for one sec by Frederik Reidel. All rights reserved.")
+            .init(title: "one sec Icon", license: "Icon created for one sec by Frederik Riedel. All rights reserved.")
         ]
     }
 
