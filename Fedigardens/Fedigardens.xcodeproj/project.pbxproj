@@ -112,6 +112,9 @@
 		95D3E521295FD36800800FE6 /* Disallow.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95D3E520295FD36800800FE6 /* Disallow.plist */; };
 		95D3EADD27BBE51F00AF33D9 /* AuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */; };
 		95E4531F27D7B49C00572758 /* AuthenticationBrowserWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E4531E27D7B49C00572758 /* AuthenticationBrowserWindow.swift */; };
+		95F2DE22297253FD00553937 /* Label+SettingsStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */; };
+		95F2DE2429725C6100553937 /* BetaBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE2329725C6100553937 /* BetaBadge.swift */; };
+		95F2DE26297262D700553937 /* SettingsInterventionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE25297262D700553937 /* SettingsInterventionPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -204,6 +207,9 @@
 		95D3E520295FD36800800FE6 /* Disallow.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Disallow.plist; sourceTree = "<group>"; };
 		95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorView.swift; sourceTree = "<group>"; };
 		95E4531E27D7B49C00572758 /* AuthenticationBrowserWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationBrowserWindow.swift; sourceTree = "<group>"; };
+		95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+SettingsStyle.swift"; sourceTree = "<group>"; };
+		95F2DE2329725C6100553937 /* BetaBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetaBadge.swift; sourceTree = "<group>"; };
+		95F2DE25297262D700553937 /* SettingsInterventionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInterventionPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -321,6 +327,8 @@
 				95645BD127C5546E00FB3426 /* UserDefaults+Settings.swift */,
 				95645BD627C5550B00FB3426 /* SettingsView.swift */,
 				95555FB82960B8DA005BEF45 /* SettingsAcknowledgementList.swift */,
+				95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */,
+				95F2DE25297262D700553937 /* SettingsInterventionPage.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -372,6 +380,7 @@
 			children = (
 				9558C7ED29578B59001B30C7 /* AccountImage.swift */,
 				953BC7C72957E156005C7F2A /* RecursiveNavigationView.swift */,
+				95F2DE2329725C6100553937 /* BetaBadge.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -736,6 +745,7 @@
 				95CD3C4F29650A600043CDB2 /* GardensViewModel.swift in Sources */,
 				952A06E129691B95008340A4 /* GardensAppCompactLayout.swift in Sources */,
 				95009EF2295E711100F32F85 /* AuthenticationViewModel.swift in Sources */,
+				95F2DE26297262D700553937 /* SettingsInterventionPage.swift in Sources */,
 				956714162958C1BF00BFF76A /* AuthoringScene.swift in Sources */,
 				953BC7CB2957EC27005C7F2A /* HashableType.swift in Sources */,
 				95C0AF4A27C6C7920007D1D0 /* MessagingAuthorView.swift in Sources */,
@@ -757,6 +767,7 @@
 				958E20902969F7F2008AE63F /* InteractionsListView.swift in Sources */,
 				9547230827A0094000D1BA89 /* ContentView.swift in Sources */,
 				95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */,
+				95F2DE2429725C6100553937 /* BetaBadge.swift in Sources */,
 				9547230627A0094000D1BA89 /* Gardens.swift in Sources */,
 				95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */,
 				95555FBB2960B9F7005BEF45 /* Acknowledgement+License.swift in Sources */,
@@ -787,6 +798,7 @@
 				956714122958A9D000BFF76A /* StatusNavigationListViewModel.swift in Sources */,
 				95555FB92960B8DA005BEF45 /* SettingsAcknowledgementList.swift in Sources */,
 				95D3EADD27BBE51F00AF33D9 /* AuthorView.swift in Sources */,
+				95F2DE22297253FD00553937 /* Label+SettingsStyle.swift in Sources */,
 				957AF84F29591B44000370E6 /* StatusPollView.swift in Sources */,
 				95CEFDE82959637400EEE96C /* StatusVerifiedButton.swift in Sources */,
 				9503EFAF27B4173C00ABB7B0 /* AuthenticationView.swift in Sources */,

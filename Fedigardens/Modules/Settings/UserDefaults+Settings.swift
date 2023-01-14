@@ -30,6 +30,26 @@ extension UserDefaults {
         set { set(newValue, forKey: "health.interventions") }
     }
 
+    var intervenesOnRefresh: Bool {
+        get {
+            if UserDefaults.standard.value(forKey: "health.interventions.refresh") == nil {
+                return true
+            }
+            return bool(forKey: "health.interventions.refresh")
+        }
+        set { set(newValue, forKey: "health.interventions.refresh") }
+    }
+
+    var intervenesOnFetch: Bool {
+        get {
+            if UserDefaults.standard.value(forKey: "health.interventions.fetch") == nil {
+                return true
+            }
+            return bool(forKey: "health.interventions.fetch")
+        }
+        set { set(newValue, forKey: "health.interventions.fetch") }
+    }
+
     var loadLimit: Int {
         get { max(10, integer(forKey: "network.load-limit")) }
         set { set(newValue, forKey: "network.load-limit") }

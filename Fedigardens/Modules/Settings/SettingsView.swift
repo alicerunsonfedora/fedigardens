@@ -18,70 +18,61 @@ import Alice
 // MARK: - Settings View
 
 struct SettingsView: View {
-    @AppStorage("health.interventions") var allowInterventions: Bool = true
     @AppStorage("status.show-statistics") var showsStatistics: Bool = true
     @AppStorage("network.load-limit") var loadLimit: Int = 10
     @State private var shouldOpenFeedbackTool: AuthoringContext?
     @State private var promptSignOff = false
+    @ScaledMetric private var size = 1.0
 
     var body: some View {
         NavigationStack {
             Form {
                 Section {
-                    Stepper(
-                        String(format:
-                                NSLocalizedString("settings.loadlimit.text", comment: "load limit"),
-                               String(loadLimit)
-                              ),
-                        value: $loadLimit,
-                        step: 5
-                    )
+                    Stepper(value: $loadLimit, step: 5) {
+                        Label(
+                            String(format:
+                                    NSLocalizedString("settings.loadlimit.text", comment: "load limit"),
+                                   String(loadLimit)),
+                            systemImage: "tray.and.arrow.down.fill"
+                        )
+                        .labelStyle(.settings(color: .accentColor, size: size))
+                    }
                 } footer: {
                     Text("settings.loadlimit.detail")
                 }
 
                 Section {
                     Toggle(isOn: $showsStatistics) {
-                        VStack(alignment: .leading) {
-                            Text("settings.show-statistics.title")
-                        }
+                        Label("settings.show-statistics.title", systemImage: "star.fill")
+                            .labelStyle(.settings(color: .yellow, size: size))
                     }
                 } footer: {
                     Text("settings.show-statistics.detail")
                 }
 
                 Section {
-                    Toggle(isOn: $allowInterventions) {
-                        VStack(alignment: .leading) {
-                            Text("settings.interventions.title")
-                        }
-                    }
-                } footer: {
-                    Text("settings.interventions.detail")
-                }
-
-                Section {
-                    LabeledContent("App Version", value: Bundle.main.getAppVersion())
                     NavigationLink {
-                        NavigationStack {
-                            SettingsAcknowledgementList()
-                        }
+                        SettingsInterventionPage()
                     } label: {
-                        Text("acknowledge.title")
+                        Label("settings.section.interventions", systemImage: "hand.raised.fingers.spread.fill")
+                            .labelStyle(.settings(color: .green, size: size))
                     }
-
+                }
+                Section {
+                    NavigationLink {
+                        aboutSettings
+                    } label: {
+                        Label("settings.section.about", systemImage: "info.circle.fill")
+                            .labelStyle(.settings(color: .blue, size: size))
+                    }
                 }
 
                 Section {
-                    GardensComposeButton(
-                        shouldInvokeParentSheet: $shouldOpenFeedbackTool,
-                        context: .init(participants: "@fedigardens@indieapps.space", visibility: .direct),
-                        style: .feedback
-                    )
                     Button(role: .destructive) {
                         promptSignOff.toggle()
                     } label: {
-                        Label("settings.signout.prompt", systemImage: "door.right.hand.open")
+                        Label("settings.signout.link", systemImage: "door.right.hand.open")
+                            .labelStyle(.settings(color: .red, size: size))
                     }
                 }
             }
@@ -101,6 +92,29 @@ struct SettingsView: View {
         } message: {
             Text("settings.signout.detail")
         }
+    }
+
+    private var aboutSettings: some View {
+        Form {
+            Section {
+                LabeledContent("App Version", value: Bundle.main.getAppVersion())
+                NavigationLink {
+                    SettingsAcknowledgementList()
+                } label: {
+                    Text("acknowledge.title")
+                }
+            }
+
+            Section {
+                GardensComposeButton(
+                    shouldInvokeParentSheet: $shouldOpenFeedbackTool,
+                    context: .init(participants: "@fedigardens@indieapps.space", visibility: .direct),
+                    style: .feedback
+                )
+                .labelStyle(.settings(color: .accentColor, size: size))
+            }
+        }
+        .navigationTitle("settings.section.about")
         .sheet(item: $shouldOpenFeedbackTool) { content in
             NavigationStack {
                 AuthorView(authoringContext: content)
@@ -113,7 +127,8 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView()
-            .frame(maxWidth: 500)
+        NavigationStack {
+            SettingsView()
+        }
     }
 }

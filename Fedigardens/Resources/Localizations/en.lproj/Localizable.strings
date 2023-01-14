@@ -103,16 +103,24 @@
 "help.bookmark" = "Save this status for later.";
 
 // MARK: - Settings
+"settings.section.interventions" = "Interventions";
+"settings.section.about" = "About";
 "settings.show-statistics.title" = "Show Statistics";
-"settings.show-statistics.detail" = "Statuses will display the number of likes and reblogs on the detail view.";
+"settings.show-statistics.detail" = "Show the number of favorites and reblogs when viewing a status in detail.";
 "settings.loadlimit.text" = "Fetch Batch Size: %@";
 "settings.loadlimit.detail" = "When fetching statuses from Mastodon, batches will be limited to this size.";
+"settings.signout.link" = "Sign Out...";
 "settings.signout.prompt" = "Sign Out";
 "settings.signout.title" = "Are you sure you want to sign out?";
 "settings.signout.detail" = "You'll need to sign in again and reauthorize Fedigardens to access your Mastodon account.";
 "settings.signout.cancel" = "Cancel";
-"settings.interventions.title" = "Allow Interventions";
-"settings.interventions.detail" = "Allow one sec to intervene with a breathing exercise when you want to refresh your timeline or load more posts.";
+"settings.interventions.title" = "Interventions with one sec";
+"settings.interventions.info" = "Fedigardens has collaborated with **one sec** to provide more healthy ways of interacting with Mastodon. Have a moment to reflect whenever you refresh your feeds, load more statuses, or stay in the app for longer periods of time.";
+"settings.interventions.allow" = "Allow Interventions";
+"settings.interventions.detail" = "Allow one sec to intervene with a breathing exercise when you want to refresh your timeline or load more statuses. [Learn more...](https://one-sec.app)";
+"settings.interventions.grain" = "Intervene when I do the following: ";
+"settings.interventions.refresh" = "Refresh Timeline";
+"settings.interventions.fetch" = "Fetch More Statuses";
 
 // MARK: - Acknowledgements
 "acknowledge.title" = "Acknowledgements";

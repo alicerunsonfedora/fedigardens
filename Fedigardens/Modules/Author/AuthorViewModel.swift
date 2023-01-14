@@ -52,9 +52,9 @@ class AuthorViewModel: ObservableObject {
     }
 
     func reformatText(with newText: String) {
-        text = newText.count < 600
+        text = newText.count <= 500
             ? newText
-            : String(newText[...newText.index(newText.startIndex, offsetBy: 600)])
+            : String(newText[...newText.index(newText.startIndex, offsetBy: 500)])
     }
 
     func submitStatus(completion: @escaping () -> Void) async {
@@ -88,7 +88,7 @@ class AuthorViewModel: ObservableObject {
             text = "@\(reply.account.acct) \(otherMembers) \(existingParticipants) "
             return
         }
-        text = "\(existingParticipants) "
+        text = "\(existingParticipants)"
     }
 
     private func calculateCharactersRemaining() -> Int {
