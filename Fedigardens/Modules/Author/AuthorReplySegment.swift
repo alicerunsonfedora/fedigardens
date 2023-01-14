@@ -22,26 +22,22 @@ struct AuthorReplySegment: View {
     @State var reply: Status
 
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 8) {
-            Image(systemName: "text.bubble")
-                .foregroundColor(.accentColor)
-            VStack(alignment: .leading, spacing: 4) {
-                Text(
-                    String(
-                        format: NSLocalizedString("status.replytext", comment: "reply"),
-                        reply.account.getAccountName() + " (@\(reply.account.acct))"
-                    )
-                )
-                .font(.system(.callout, design: .rounded))
-                .foregroundColor(.accentColor)
-                .bold()
-                StatusView(status: reply)
-                    .datePlacement(.underContent)
-                    .showsDisclosedContent(.constant(true))
-                    .profilePlacement(.hidden)
-                    .lineLimit(3)
-            }
-            .foregroundColor(.secondary)
+        VStack(alignment: .leading, spacing: 8) {
+            Label(String(
+                format: "status.replytext".localized(comment: "Reply"),
+                reply.originalAuthor().getAccountName()
+            ), systemImage: "arrowshape.turn.up.left.fill")
+            .font(.system(.callout, design: .rounded))
+            .bold()
+
+            StatusView(status: reply)
+                .datePlacement(.underContent)
+                .showsDisclosedContent(.constant(true))
+                .profilePlacement(.hidden)
+                .lineLimit(3)
+                .foregroundColor(.secondary)
+                .allowsHitTesting(false)
         }
+        .padding(.leading, 10)
     }
 }

@@ -102,7 +102,23 @@ struct StatusNavigationList<Extras: View>: View {
                 } label: {
                     Label("general.newwindow", systemImage: "rectangle.badge.plus")
                 }
+                Divider()
             }
+            Button {
+                Task {
+                    await viewModel.toggleFavorite(status: status)
+                }
+            } label: {
+                Label("status.likeaction", systemImage: "star")
+            }
+            Button {
+                Task {
+                    await viewModel.toggleBookmark(status: status)
+                }
+            } label: {
+                Label("status.saveaction", systemImage: "bookmark")
+            }
+            Divider()
             GardensComposeButton(
                 shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
                 context: AuthoringContext(replyingToID: status.id),
@@ -113,14 +129,11 @@ struct StatusNavigationList<Extras: View>: View {
                 context: AuthoringContext(forwardingURI: status.uriToURL()?.absoluteString ?? ""),
                 style: .quote
             )
-            Button {
-                Task {
-                    await viewModel.toggleBookmark(status: status)
-                }
-            } label: {
-                Label("status.saveaction", systemImage: "bookmark")
-            }
             if let url = status.uriToURL() {
+                Divider()
+                Link(destination: url) {
+                    Label("status.webaction", systemImage: "safari")
+                }
                 ShareLink(item: url)
             }
         }

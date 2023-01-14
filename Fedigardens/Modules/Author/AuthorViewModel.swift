@@ -12,9 +12,10 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
-import Combine
 import Alice
+import Combine
+import Drops
+import UIKit
 
 class AuthorViewModel: ObservableObject {
     /// The status that the current status will respond to, if the user is replying.
@@ -35,9 +36,24 @@ class AuthorViewModel: ObservableObject {
     /// Associated warning text with a sensitive status context.
     @Published var sensitiveText = ""
 
+    @Published var mentionString = ""
+
+    var userProfile: Account?
+
     /// The number of characters remaining that the user can utilize.
     var charactersRemaining: Int {
         return calculateCharactersRemaining()
+    }
+
+    var textContainsHashtagInReply: Bool {
+        let regex = /\#[a-zA-Z0-9]+/
+        return prompt != nil && text.matches(of: regex).isNotEmpty
+    }
+
+    private var drop: Drop?
+
+    func setAuthor(to account: Account) {
+        self.userProfile = account
     }
 
     func setupTextContents(with context: AuthoringContext) async {
@@ -45,21 +61,29 @@ class AuthorViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.constructReplyText(with: context.participants)
             self.visibility = context.visibility
+            self.drop = self.makeDrop(from: context)
             if !context.forwardingURI.isEmpty {
                 self.text.append("💬: \(context.forwardingURI)")
+            }
+            if context.replyingToID.isNotEmpty {
+                self.visibility = .unlisted
             }
         }
     }
 
     func reformatText(with newText: String) {
-        text = newText.count <= 500
+        text = newText.count < 600
             ? newText
-            : String(newText[...newText.index(newText.startIndex, offsetBy: 500)])
+            : String(newText[...newText.index(newText.startIndex, offsetBy: 600)])
     }
 
     func submitStatus(completion: @escaping () -> Void) async {
         guard charactersRemaining > 0 else { return }
-        var params = ["status": text, "visibility": visibility.rawValue, "poll": "null"]
+        var params = [
+            "status": mentionString.isNotEmpty ? "\(mentionString) \(text)" : text,
+            "visibility": visibility.rawValue,
+            "poll": "null"
+        ]
         if let reply = prompt { params["in_reply_to_id"] = reply.id }
 
         if sensitive {
@@ -70,9 +94,23 @@ class AuthorViewModel: ObservableObject {
         let response: Alice.Response<Status> = await Alice.shared.request(.post, for: .statuses(), params: params)
         switch response {
         case .success:
-            completion()
+            DispatchQueue.main.async {
+                if let drop = self.drop {
+                    Drops.show(drop)
+                }
+                completion()
+            }
         case .failure(let error):
             print("Post error: \(error.localizedDescription)")
+            DispatchQueue.main.async {
+                Drops.show(
+                    .init(
+                        title: "drop.postfailure".localized(comment: "Couldn't post status drop"),
+                        subtitle: error.localizedDescription,
+                        icon: UIImage(systemName: "exclamationmark.circle")
+                    )
+                )
+            }
         }
     }
 
@@ -81,14 +119,28 @@ class AuthorViewModel: ObservableObject {
     /// This will attempt to load in the usernames of the mentioned people in the thread, like most Mastodon
     /// clients do, to maintain consistency and clarity in the conversation thread.
     private func constructReplyText(with existingParticipants: String = "") {
-        if let reply = prompt {
-            var allMentions = reply.mentions
-            if let reblogged = reply.reblog { allMentions.append(contentsOf: reblogged.mentions) }
-            let otherMembers = memberString(from: allMentions, excluding: reply.account.acct)
-            text = "@\(reply.account.acct) \(otherMembers) \(existingParticipants) "
+        guard let reply = prompt else {
+            mentionString = "\(existingParticipants)"
             return
         }
-        text = "\(existingParticipants)"
+
+        var allMentions = reply.mentions
+        if let reblogged = reply.reblog { allMentions.append(contentsOf: reblogged.mentions) }
+
+        let otherMembers = memberString(from: allMentions, excluding: reply.account.acct)
+        mentionString = reply.account != userProfile ? "@\(reply.account.acct)" : ""
+        if otherMembers.isNotEmpty {
+            mentionString += " \(otherMembers)"
+        }
+        if existingParticipants.isNotEmpty {
+            mentionString += " \(existingParticipants)"
+        }
+
+        // Second pass to add the reblogged author if not included for a given reason.
+        if let reblogged = reply.reblog, !allMentions.map(\.acct).contains(reblogged.account.acct),
+           reblogged.account != userProfile {
+            mentionString += " @\(reblogged.account.acct)"
+        }
     }
 
     private func calculateCharactersRemaining() -> Int {
@@ -102,8 +154,12 @@ class AuthorViewModel: ObservableObject {
                 removedTextString = removedTextString.replacingOccurrences(of: text[range], with: "")
             }
 
+            let mentionRegex = /\@([a-zA-Z0-9\_]+)\@([a-zA-Z0-9\_\-.]+)/
+            let usernameCount = mentionString.matches(of: mentionRegex).map { match in match.1.count }
+                .reduce(0, +)
+
             let expectancy = removedTextString.count + (matches.count * 23)
-            return 500 - expectancy
+            return 500 - expectancy - usernameCount
         } catch {
             print("Err: couldn't make detector: \(error.localizedDescription). Using naive approach instead.")
             return 500 - text.count
@@ -111,7 +167,8 @@ class AuthorViewModel: ObservableObject {
     }
 
     private func memberString(from members: [Mention], excluding respondentAccount: String) -> String {
-        members.filter { member in member.acct != respondentAccount }
+        let excluded = [respondentAccount, (userProfile?.acct ?? "")]
+        return members.filter { member in !excluded.contains(member.acct) }
             .map { mention in "@\(mention.acct)" }
             .joined(separator: " ")
     }
@@ -129,5 +186,15 @@ class AuthorViewModel: ObservableObject {
         case .failure(let error):
             print("Failed to get context: \(error.localizedDescription)")
         }
+    }
+
+    private func makeDrop(from context: AuthoringContext) -> Drop {
+        if context.replyingToID.isNotEmpty {
+            return Drop(
+                title: "drop.reply".localized(comment: "Reply drop"),
+                icon: UIImage(systemName: "arrowshape.turn.up.left.fill")
+            )
+        }
+        return Drop(title: "drop.post".localized(comment: "Post drop"), icon: UIImage(systemName: "paperplane.fill"))
     }
 }

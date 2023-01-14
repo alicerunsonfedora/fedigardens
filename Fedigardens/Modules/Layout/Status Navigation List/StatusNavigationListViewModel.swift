@@ -12,9 +12,10 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
 import Combine
 import Alice
+import Drops
+import UIKit
 
 class StatusNavigationListViewModel: ObservableObject {
     @Published var statuses: [Status]
@@ -33,7 +34,16 @@ class StatusNavigationListViewModel: ObservableObject {
     }
 
     func toggleFavorite(status: Status) async {
-        await update(status: status) { changed in
+        await update(
+            status: status,
+            drop: .init(
+                title: NSLocalizedString(
+                    status.favourited == true ? "drop.unfavorite" : "drop.favorite",
+                    comment: "Favorite drop"
+                ),
+                icon: UIImage(systemName: "star.fill")
+            )
+        ) { changed in
             await Alice.shared.request(
                 .post, for: changed.favourited == true ? .unfavorite(id: changed.id) : .favourite(id: changed.id)
             )
@@ -41,7 +51,16 @@ class StatusNavigationListViewModel: ObservableObject {
     }
 
     func toggleBookmark(status: Status) async {
-        await update(status: status) { state in
+        await update(
+            status: status,
+            drop: .init(
+                title: NSLocalizedString(
+                    status.bookmarked == true ? "drop.unsave" : "drop.save",
+                    comment: "Save drop"
+                ),
+                icon: UIImage(systemName: "bookmark.fill")
+            )
+        ) { state in
             await Alice.shared.request(
                 .post, for: state.bookmarked == true ? .undoSave(id: state.id) : .save(id: state.id)
             )
@@ -51,12 +70,15 @@ class StatusNavigationListViewModel: ObservableObject {
     /// Make a request to update the current status.
     /// - Parameter means: A closure that will be performed to update the status. Should return an optional status,
     ///     which represents the newly modified status.
-    private func update(status: Status, by means: (Status) async -> Alice.Response<Status>) async {
+    private func update(status: Status, drop: Drop? = nil, by means: (Status) async -> Alice.Response<Status>) async {
         let response = await means(status)
         switch response {
         case .success(let updated):
             DispatchQueue.main.async { [self] in
                 replaceInList(status: updated)
+                if let drop {
+                    Drops.show(drop)
+                }
             }
         case .failure(let error):
             print("Error occured when updating status: \(error.localizedDescription)")

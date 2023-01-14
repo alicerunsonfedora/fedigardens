@@ -9,7 +9,7 @@
 // MARK: - General Texts
 "general.appname" = "Fedigardens";
 "general.feedback" = "Send Feedback";
-"general.feedbackmenu" = "Send Feedback...";
+"general.feedbackmenu" = "Send Feedback…";
 "general.cancel" = "Cancel";
 "general.togglesidebar" = "Toggle Sidebar";
 "general.status" = "Status";
@@ -20,7 +20,7 @@
 "general.refresh" = "Refresh";
 "general.newwindow" = "Open in New Window";
 "general.emptytimeline" = "Timeline Is Empty";
-"general.learnmore" = "Learn More...";
+"general.learnmore" = "Learn More…";
 "general.more" = "More";
 
 // MARK: - Endpoints
@@ -38,7 +38,7 @@
 // MARK: - Authentication
 "auth.welcome" = "Welcome to";
 "auth.login.button" = "Get Started";
-"auth.progress" = "Signing In...";
+"auth.progress" = "Signing In…";
 "auth.startinfo" = "Welcome to a simplified, discussion-oriented Mastodon experience. Sign in with your Mastodon account or create one to get started.";
 "auth.footnote" = "Don't have a Mastodon account?";
 "auth.footnote.create" = "Find an Instance &rsaquo;";
@@ -49,26 +49,28 @@
 "status.commentary" = "status.commentary";
 "status.new" = "New Status";
 "status.newreply" = "New Reply";
-"status.visibility" = "Visible To";
+"status.visibility" = "Visible to: ";
 "status.charsremain" = "status.charsremain";
-"status.replytext" = "In reply to: ";
-"status.replysubtitle" = "Replying to %@";
+"status.replytext" = "Replying to %@";
 "status.nocontext" = "No Replies";
-"status.prevcontext" = "Show previous conversation...";
+"status.prevcontext" = "Show previous conversation…";
 "status.marksensitive" = "Mark as Sensitive";
 "status.spoilerprompt" = "You have marked this status as sensitive to some followers.";
-"status.spoilerdetail" = "Please specify a reason for this action, or mark it as sensitive without context by leaving this field blank.";
-"status.spoilerplaceholder" = "Enter a Content Warning here...";
+"status.spoilerdetail" = "This status will require readers to acknowledge your warning before reading the contents. [Learn more…](https://docs.joinmastodon.org/user/posting/#cw)";
+"status.spoilerplaceholder" = "Write your warning here…";
 "status.spoilermessage" = "%@ has collapsed this status and has provided the warning '%@'.";
 "status.spoilermessage-cta" = "Collapsed content may contain long form text and/or sensitive content, and Fedigardens cannot guarantee that this content is safe to view. You can tap the eye icon to view the content.";
 "status.voted" = "You have voted on this poll.";
 "status.quotedetect.title" = "%@ is linking to a status.";
 "status.quotedetect.detail" = "%@ may be providing additional context or quoting %@. Tap on this status to view the original conversation.";
 "status.quoted.title" = "You are quoting this status.";
-"status.quoted.detail" = "A link to the status has been added automatically to maintain compatibility. Remember to follow your instance's rules.";
+"status.quoted.detail" = "A link to the status has been added automatically to maintain compatibility. Remember to follow your instance's rules, and refrain from \"dunking\". [Learn more…](https://fedigardens.app/support/#quoting)";
 "status.verified.title" = "Verified Domain";
 "status.verified.detail" = "%@ has verified that they own the website %@.";
 "status.developer.detail" = "%@ is a Fedigardens developer.";
+"status.tagandreply.title" = "You have hashtags in your reply.";
+"status.tagandreply.detail" = "Remember to respect the person you are replying to, and refrain from adding hashtags for reach without consent. [Learn more…](https://fedigardens.app/support/#tags-in-replies)";
+"status.participants.empty" = "No participants";
 
 // MARK: - Status Actions
 "status.compose" = "New Status";
@@ -78,6 +80,7 @@
 "status.likeaction" = "Favorite";
 "status.reblogaction" = "Reblog";
 "status.saveaction" = "Bookmark";
+"status.webaction" = "Open in Safari";
 
 // MARK: - Drops
 "drop.favorite" = "Favorited";
@@ -87,12 +90,14 @@
 "drop.reply" = "Reply Posted";
 "drop.save" = "Added to Bookmarks";
 "drop.unsave" = "Removed from Bookmarks";
+"drop.post" = "Posted Status";
+"drop.postfailure" = "Couldn't Post Status";
 
 // MARK: - Status Visibility
 "status.visibility.public" = "Everyone";
-"status.visibility.unlisted" = "Anyone with a link";
+"status.visibility.unlisted" = "Anyone with a link (unlisted)";
 "status.visibility.private" = "Followers only";
-"status.visibility.direct" = "Mentioned people only (direct)";
+"status.visibility.direct" = "Mentions only (direct)";
 
 // MARK: - Messaging
 "direct.grouptitle" = "direct.grouptitle";
@@ -118,7 +123,7 @@
 "settings.show-statistics.detail" = "Show the number of favorites and reblogs when viewing a status in detail.";
 "settings.loadlimit.text" = "Fetch Batch Size: %@";
 "settings.loadlimit.detail" = "When fetching statuses from Mastodon, batches will be limited to this size.";
-"settings.signout.link" = "Sign Out...";
+"settings.signout.link" = "Sign Out…";
 "settings.signout.prompt" = "Sign Out";
 "settings.signout.title" = "Are you sure you want to sign out?";
 "settings.signout.detail" = "You'll need to sign in again and reauthorize Fedigardens to access your Mastodon account.";
@@ -126,7 +131,7 @@
 "settings.interventions.title" = "Interventions with one sec";
 "settings.interventions.info" = "Fedigardens has collaborated with **one sec** to provide more healthy ways of interacting with Mastodon. Have a moment to reflect whenever you refresh your feeds, load more statuses, or stay in the app for longer periods of time.";
 "settings.interventions.allow" = "Allow Interventions";
-"settings.interventions.detail" = "Allow one sec to intervene with a breathing exercise when you want to refresh your timeline or load more statuses. [Learn more...](https://one-sec.app)";
+"settings.interventions.detail" = "Allow one sec to intervene with a breathing exercise when you want to refresh your timeline or load more statuses. [Learn more…](https://one-sec.app)";
 "settings.interventions.grain" = "Intervene when I do the following: ";
 "settings.interventions.refresh" = "Refresh Timeline";
 "settings.interventions.fetch" = "Fetch More Statuses";
@@ -139,6 +144,6 @@
 // MARK: - one sec Intervention
 "interventions.missing.title" = "one sec is Not Installed";
 "interventions.missing.detail" = "You can install one sec from the App Store or disable interventions.";
-"interventions.cta.install" = "Install one sec...";
+"interventions.cta.install" = "Install one sec…";
 "interventions.cta.disable" = "Turn Off Interventions";
 "interventions.cta.dismiss" = "Not Now";

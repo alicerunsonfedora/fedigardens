@@ -25,6 +25,8 @@ struct AuthorView: View {
     /// An environment variable used to dismiss the view if this were displayed as a sheet.
     @Environment(\.dismiss) var dismiss
 
+    @Environment(\.userProfile) var userProfile
+
     /// The ID of the status that the current status will respond to, if the user is replying.
     ///
     /// Typically, this is used on macOS variants where a deep link is used to display the window.
@@ -37,68 +39,68 @@ struct AuthorView: View {
             List {
                 Section {
                     visibilityPicker
-                    Toggle("status.marksensitive", isOn: $viewModel.sensitive)
-                    replySection
-                }
-
-                if let context = authoringContext, !context.forwardingURI.isEmpty {
-                    Section {
-                        VStack(alignment: .leading) {
-                            Label("status.quoted.title", systemImage: "quote.bubble")
-                                .font(.headline)
-                            Text("status.quoted.detail")
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
+                    HStack {
+                        Text(viewModel.visibility == .direct ? "To: " : "Cc: ")
+                        TextField("status.participants.empty", text: $viewModel.mentionString, axis: .vertical)
+                            .lineLimit(1...3)
+                            .textInputAutocapitalization(.none)
+                            .multilineTextAlignment(.trailing)
+                            .autocorrectionDisabled()
+                            .foregroundColor(.accentColor)
+                            .keyboardType(.emailAddress)
+                        if viewModel.mentionString.isNotEmpty {
+                            Button {
+                                viewModel.mentionString = ""
+                            } label: {
+                                Label("Clear", systemImage: "xmark.circle.fill")
+                                    .labelStyle(.iconOnly)
+                                    .foregroundColor(.secondary)
+                            }
                         }
                     }
-                }
-
-                Section {
-                    statusText
-                        .frame(minHeight: 250)
-                    HStack {
-                        Spacer()
-                        charsRemainText
-                    }
-                    .listRowSeparator(.hidden)
-                }
-
-                if viewModel.sensitive {
-                    Section {
-                        TextField("status.spoilerplaceholder", text: $viewModel.sensitiveText)
-                    } footer: {
-                        Label {
-                            VStack(alignment: .leading) {
-                                Text("status.spoilerprompt")
-                                    .bold()
-                                    .foregroundColor(.indigo)
-                                Text("status.spoilerdetail")
-                            }
-                        } icon: {
+                    Toggle("status.marksensitive", isOn: $viewModel.sensitive)
+                    if viewModel.sensitive {
+                        HStack {
                             Image(systemName: "eye.trianglebadge.exclamationmark")
                                 .foregroundColor(.indigo)
+                            TextField("status.spoilerplaceholder", text: $viewModel.sensitiveText)
                         }
                     }
-                    .animation(.spring(), value: viewModel.sensitive)
-                    .tint(.indigo)
+                } footer: {
+                    if viewModel.sensitive {
+                        Text("status.spoilerdetail")
+                            .font(.footnote)
+                    }
                 }
+                Section {
+                    statusText
+                    charsRemainText
+                    .listRowSeparator(.hidden)
+                    quoteSection
+                    replyAndTagSection
+                }
+                replySection
             }
-            .listStyle(.insetGrouped)
+            .listStyle(.inset)
         }
         .navigationTitle(
             viewModel.prompt == nil ? "status.new" : "status.newreply"
         )
+        .animation(.spring(), value: viewModel.textContainsHashtagInReply)
+        .animation(.spring(), value: viewModel.prompt)
+        .animation(.spring(), value: viewModel.sensitive)
+        .animation(.spring(), value: viewModel.charactersRemaining)
         .toolbar {
-            ToolbarItem(placement: .navigationBarLeading) {
+            ToolbarItem(placement: .cancellationAction) {
                 Button {
                     dismiss()
                 } label: {
-                    Label("actions.cancel", systemImage: "xmark")
+                    Label("general.cancel", systemImage: "xmark")
                 }
                 .keyboardShortcut(.cancelAction)
-                .tint(.gray)
+                .labelStyle(.titleOnly)
             }
-            ToolbarItem {
+            ToolbarItem(placement: .confirmationAction) {
                 Button {
                     Task {
                         await viewModel.submitStatus {
@@ -106,8 +108,9 @@ struct AuthorView: View {
                         }
                     }
                 } label: {
-                    Label("status.postaction", systemImage: "paperplane")
+                    Label("status.postaction", systemImage: "arrow.up.circle.fill")
                 }
+                .font(.title)
                 .keyboardShortcut(.init(.return, modifiers: [.command]))
                 .tint(.accentColor)
                 .disabled(viewModel.charactersRemaining < 0)
@@ -116,6 +119,7 @@ struct AuthorView: View {
         .onAppear {
             Task {
                 if let context = authoringContext {
+                    viewModel.setAuthor(to: userProfile)
                     await viewModel.setupTextContents(with: context)
                 }
             }
@@ -143,16 +147,51 @@ struct AuthorView: View {
         }
     }
 
+    var replyAndTagSection: some View {
+        Group {
+            if viewModel.textContainsHashtagInReply {
+                VStack(alignment: .leading) {
+                    Label("status.tagandreply.title", systemImage: "tag")
+                        .font(.headline)
+                    Text("status.tagandreply.detail")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+            }
+        }
+    }
+
+    var quoteSection: some View {
+        Group {
+            if let context = authoringContext, !context.forwardingURI.isEmpty {
+                VStack(alignment: .leading) {
+                    Label("status.quoted.title", systemImage: "quote.bubble")
+                        .font(.headline)
+                    Text("status.quoted.detail")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+            }
+        }
+    }
+
     private var charsRemainText: some View {
-        Text("\(viewModel.charactersRemaining)")
-            .font(.system(.body, design: .monospaced))
+        Text(
+            String(
+                format: "status.charsremain".localized(comment: "Characters remaining"),
+                viewModel.charactersRemaining
+            )
+        )
+            .font(.system(.footnote, design: .rounded))
+            .monospacedDigit()
             .foregroundColor(getColorForChars())
     }
 
     private var statusText: some View {
         TextEditor(text: $viewModel.text)
-            .font(.system(.title3, design: .serif))
-            .lineSpacing(1.2)
+            .font(.system(.body, design: .rounded))
+            .lineLimit(5, reservesSpace: true)
+            .lineSpacing(1.1)
             .onChange(of: viewModel.text) { newText in
                 viewModel.reformatText(with: newText)
             }
@@ -178,16 +217,6 @@ struct AuthorView: View {
         .padding()
     }
 
-    private var sensitiveBanner: some View {
-        HStack {
-            sensitivePrompt
-            Spacer()
-        }
-        .frame(maxWidth: .infinity)
-        .background(Color.indigo.opacity(0.1))
-        .tint(.yellow)
-    }
-
     private var visibilityPicker: some View {
         Picker("status.visibility", selection: $viewModel.visibility) {
             Text("status.visibility.public").tag(Visibility.public)
@@ -196,6 +225,7 @@ struct AuthorView: View {
             Text("status.visibility.direct").tag(Visibility.direct)
         }
         .font(.system(.body, design: .rounded))
+
     }
 
     // MARK: - Author View Methods
@@ -218,8 +248,8 @@ struct AuthorView: View {
 
 struct AuthorView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            AuthorView()
+        NavigationStack {
+            AuthorView(authoringContext: .init(participants: "@test@mastodon.example"))
         }
     }
 }
