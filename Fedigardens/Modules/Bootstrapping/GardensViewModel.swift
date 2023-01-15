@@ -15,10 +15,12 @@
 import Foundation
 import Combine
 import Alice
+import EmojiText
 
 class GardensViewModel: ObservableObject {
     @Published var userProfile: Account?
     @Published var interventionAuthorization: InterventionAuthorizationContext?
+    @Published var emojis: [RemoteEmoji] = []
 
     func checkAuthorizationToken(from url: URL) {
         guard url.absoluteString.contains("gardens://oauth") else { return }
@@ -46,6 +48,18 @@ class GardensViewModel: ObservableObject {
             }
         case .failure(let error):
             print("Failed to fetch user: \(error.localizedDescription)")
+        }
+    }
+
+    func getInstanceEmojis() async {
+        let response: Alice.Response<[Emoji]> = await Alice.shared.request(.get, for: .customEmojis)
+        switch response {
+        case .success(let newEmojis):
+            DispatchQueue.main.async {
+                self.emojis = newEmojis.map { emoji in emoji.remote() }
+            }
+        case .failure(let error):
+            print("Failed to fetch emojis: \(error.localizedDescription)")
         }
     }
 }

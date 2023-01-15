@@ -14,8 +14,10 @@
 
 import SwiftUI
 import Alice
+import EmojiText
 
 struct StatusDisclosedContent: View {
+    @Environment(\.customEmojis) var emojis
     var discloseContent: Bool
 
     var status: Status
@@ -31,14 +33,19 @@ struct StatusDisclosedContent: View {
         }
     }
 
+    private var allEmojis: [RemoteEmoji] {
+        let emojisFromStatus = status.account.emojis + (status.reblog?.account.emojis ?? [])
+        return emojis + emojisFromStatus.map { emoji in emoji.remote() }
+    }
+
     private var mainContent: some View {
         VStack(alignment: .leading) {
             if let rebloggedContent = status.reblog?.content {
-                Text(rebloggedContent.attributedHTML())
+                EmojiText(markdown: rebloggedContent.markdown(), emojis: allEmojis)
                     .lineLimit(truncateLines)
                     .textSelection(.enabled)
             } else {
-                Text(status.content.attributedHTML())
+                EmojiText(markdown: status.content.markdown(), emojis: allEmojis)
                     .lineLimit(truncateLines)
                     .textSelection(.enabled)
             }

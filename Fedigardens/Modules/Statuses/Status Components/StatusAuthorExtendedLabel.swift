@@ -14,8 +14,11 @@
 
 import SwiftUI
 import Alice
+import EmojiText
 
 struct StatusAuthorExtendedLabel: View {
+    @Environment(\.customEmojis) var emojis
+
     enum VerificationPlacementPolicy {
         case byAuthorName
         case underAuthorLabel
@@ -44,13 +47,21 @@ struct StatusAuthorExtendedLabel: View {
             .contains(status.originalAuthor().acct)
     }
 
+    private var allEmojis: [RemoteEmoji] {
+        let emojisFromStatus = status.account.emojis + (status.reblog?.account.emojis ?? [])
+        return emojis + emojisFromStatus.map { emoji in emoji.remote() }
+    }
+
     var body: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .center) {
-                Text(status.reblog?.account.getAccountName() ?? status.account.getAccountName())
-                    .font(.system(.callout, design: .rounded))
-                    .bold()
-                    .lineLimit(1)
+                EmojiText(
+                    markdown: status.reblog?.account.getAccountName() ?? status.account.getAccountName(),
+                    emojis: allEmojis
+                )
+                .font(.system(.callout, design: .rounded))
+                .bold()
+                .lineLimit(1)
                 if hasVerifiedAccount, placementPolicy == .byAuthorName {
                     StatusVerifiedButton(status: status)
                 }
@@ -76,12 +87,13 @@ struct StatusAuthorExtendedLabel: View {
     var verifiedLabel: some View {
         VStack(alignment: .leading) {
             Label {
-                Text(
-                    String(
+                EmojiText(
+                    markdown: String(
                         format: NSLocalizedString("status.verified.detail", comment: "Verified domain"),
                         status.originalAuthor().getAccountName(),
                         verifiedAccountDomain ?? ""
-                    ).attributedHTML()
+                    ).markdown(),
+                    emojis: allEmojis
                 )
             } icon: {
                 Image(systemName: "checkmark.seal.fill")
@@ -97,11 +109,12 @@ struct StatusAuthorExtendedLabel: View {
     var developerLabel: some View {
         VStack(alignment: .leading) {
             Label {
-                Text(
-                    String(
+                EmojiText(
+                    markdown: String(
                         format: NSLocalizedString("status.developer.detail", comment: "Developer"),
                         status.originalAuthor().getAccountName()
-                    )
+                    ).markdown(),
+                    emojis: allEmojis
                 )
             } icon: {
                 Image(systemName: "camera.macro")

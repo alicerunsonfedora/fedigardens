@@ -78,12 +78,15 @@
 "status.postaction" = "Post";
 "status.replyaction" = "Reply";
 "status.forwardaction" = "Quote";
+"status.mentionaction" = "Mention";
+"status.messageaction" = "Message";
 "status.likeaction" = "Favorite";
 "status.reblogaction" = "Reblog";
 "status.saveaction" = "Bookmark";
 "status.webaction" = "Open in Safari";
-"status.profileaction.generic" = "View Profiles";
+"status.profileaction.generic" = "View Profile";
 "status.profileaction" = "View %@'s Profile";
+"status.profileaction.name" = "Profiles";
 
 // MARK: - User Profiles
 "profile.activity" = "Recent Activity";

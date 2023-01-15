@@ -14,11 +14,17 @@
 
 import SwiftUI
 import Alice
+import EmojiText
 
 struct ProfileSheetView: View {
+    @Environment(\.customEmojis) var emojis
     @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel = ProfileSheetViewModel()
     var profile: Account
+
+    private var allEmojis: [any CustomEmoji] {
+        emojis + profile.emojis.map { emoji in emoji.remote() }
+    }
 
     var body: some View {
         NavigationStack {
@@ -29,7 +35,7 @@ struct ProfileSheetView: View {
                         VStack(spacing: 4) {
                             AccountImage(author: profile)
                                 .profileSize(.xlarge)
-                            Text(profile.getAccountName())
+                            EmojiText(markdown: profile.getAccountName(), emojis: allEmojis)
                                 .font(.system(.largeTitle, design: .rounded))
                                 .bold()
                             Text("@\(profile.acct)")
@@ -55,7 +61,7 @@ struct ProfileSheetView: View {
                             value: "\(profile.statusesCount)"
                         )
                     }
-                    Text(profile.note.attributedHTML())
+                    EmojiText(markdown: profile.note.markdown(), emojis: allEmojis)
                         .font(.subheadline)
                 }
                 .listRowSeparator(.hidden)

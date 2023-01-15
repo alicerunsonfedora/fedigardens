@@ -20,6 +20,8 @@ struct GardensComposeButton: View {
         case reply
         case quote
         case feedback
+        case mention
+        case message
     }
 
     @Environment(\.supportsMultipleWindows) var supportsMultipleWindows
@@ -66,6 +68,10 @@ struct GardensComposeButton: View {
                 Label("status.forwardaction", systemImage: "quote.bubble")
             case .feedback:
                 Label("general.feedbackmenu", systemImage: "exclamationmark.bubble")
+            case .mention:
+                Label("status.mentionaction", systemImage: "at.badge.plus")
+            case .message:
+                Label("status.messageaction", systemImage: "text.bubble")
             }
         }
     }

@@ -13,8 +13,8 @@
 //  details.
 
 import Alice
-import Foundation
 import SwiftUI
+import EmojiText
 
 // MARK: - Status View
 
@@ -38,6 +38,7 @@ struct StatusView: View {
         case hidden
     }
 
+    @Environment(\.customEmojis) var emojis
     @AppStorage("status.show-statistics") var showsStatistics: Bool = true
 
     var status: Status
@@ -50,6 +51,11 @@ struct StatusView: View {
     @State fileprivate var verifiedNoticePlacement: StatusAuthorExtendedLabel.VerificationPlacementPolicy
 
     fileprivate var displayDisclosedContent: Bool
+
+    private var allEmojis: [any CustomEmoji] {
+        let emojisFromStatus = status.account.emojis + (status.reblog?.account.emojis ?? [])
+        return emojis + emojisFromStatus.map { emoji in emoji.remote() }
+    }
 
     init(status: Status) {
         self.init(
@@ -195,7 +201,7 @@ struct StatusView: View {
         Group {
             if truncateLines == nil {
                 Label {
-                    Text("\(status.account.getAccountName()) reblogged")
+                    EmojiText(markdown: "\(status.account.getAccountName()) reblogged".markdown(), emojis: allEmojis)
                         .bold()
                 } icon: {
                     AccountImage(author: status.account)
@@ -205,7 +211,7 @@ struct StatusView: View {
                 .labelStyle(.titleAndIcon)
             } else {
                 Label {
-                    Text("\(status.account.getAccountName()) reblogged")
+                    EmojiText(markdown: "\(status.account.getAccountName()) reblogged".markdown(), emojis: allEmojis)
                         .bold()
                 } icon: {
                     AccountImage(author: status.account)

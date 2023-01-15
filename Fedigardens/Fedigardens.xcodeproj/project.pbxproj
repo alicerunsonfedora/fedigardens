@@ -78,6 +78,8 @@
 		95A1BF95297327B3002C88B6 /* String+Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF94297327B3002C88B6 /* String+Localizations.swift */; };
 		95A1BF9829738A75002C88B6 /* ProfileSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF9729738A75002C88B6 /* ProfileSheetView.swift */; };
 		95A1BF9A29738D33002C88B6 /* ProfileSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF9929738D33002C88B6 /* ProfileSheetViewModel.swift */; };
+		95A1BF9D2973B83C002C88B6 /* EmojiText in Frameworks */ = {isa = PBXBuildFile; productRef = 95A1BF9C2973B83C002C88B6 /* EmojiText */; };
+		95A1BF9F2973B8B2002C88B6 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF9E2973B8B2002C88B6 /* Emojis.swift */; };
 		95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */; };
 		95ADADE427B6A6BB0011FD83 /* String+AttributedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */; };
 		95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE727B6A7F10011FD83 /* Statuses.swift */; };
@@ -182,6 +184,7 @@
 		95A1BF94297327B3002C88B6 /* String+Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizations.swift"; sourceTree = "<group>"; };
 		95A1BF9729738A75002C88B6 /* ProfileSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetView.swift; sourceTree = "<group>"; };
 		95A1BF9929738D33002C88B6 /* ProfileSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetViewModel.swift; sourceTree = "<group>"; };
+		95A1BF9E2973B8B2002C88B6 /* Emojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojis.swift; sourceTree = "<group>"; };
 		95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusQuickGlanceView.swift; sourceTree = "<group>"; };
 		95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AttributedContent.swift"; sourceTree = "<group>"; };
 		95ADADE727B6A7F10011FD83 /* Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
@@ -226,6 +229,7 @@
 			files = (
 				95A02A6F295FE94F0013EF7C /* Alice in Frameworks */,
 				95555FB52960B7A2005BEF45 /* AckGenUI in Frameworks */,
+				95A1BF9D2973B83C002C88B6 /* EmojiText in Frameworks */,
 				9558C7EC29578503001B30C7 /* HTML2Markdown in Frameworks */,
 				95F2DE2929726A7E00553937 /* Drops in Frameworks */,
 				9558C7E52957711A001B30C7 /* SafariView in Frameworks */,
@@ -321,6 +325,7 @@
 		9558C7E9295775E9001B30C7 /* Bootstrapping */ = {
 			isa = PBXGroup;
 			children = (
+				95A1BF9E2973B8B2002C88B6 /* Emojis.swift */,
 				954722F627A0093F00D1BA89 /* Gardens.swift */,
 				954722F727A0093F00D1BA89 /* ContentView.swift */,
 				956714172958C7BF00BFF76A /* UserProfileEnvironmentKey.swift */,
@@ -611,6 +616,7 @@
 				95555FB22960B7A2005BEF45 /* AckGen */,
 				95555FB42960B7A2005BEF45 /* AckGenUI */,
 				95F2DE2829726A7E00553937 /* Drops */,
+				95A1BF9C2973B83C002C88B6 /* EmojiText */,
 			);
 			productName = "Capstone (iOS)";
 			productReference = 954722FD27A0094000D1BA89 /* Fedigardens.app */;
@@ -666,6 +672,7 @@
 				9558C7EA29578503001B30C7 /* XCRemoteSwiftPackageReference "HTML2Markdown" */,
 				95555FB12960B7A1005BEF45 /* XCRemoteSwiftPackageReference "AckGen" */,
 				95F2DE2729726A7E00553937 /* XCRemoteSwiftPackageReference "Drops" */,
+				95A1BF9B2973B83C002C88B6 /* XCRemoteSwiftPackageReference "EmojiText" */,
 			);
 			productRefGroup = 954722FE27A0094000D1BA89 /* Products */;
 			projectDirPath = "";
@@ -830,6 +837,7 @@
 				95ADAE0227B6B2E10011FD83 /* StatusView.swift in Sources */,
 				9558C7F229579FC9001B30C7 /* TimelineSplitViewModel.swift in Sources */,
 				95555FC82960C864005BEF45 /* Collection+IsNotEmpty.swift in Sources */,
+				95A1BF9F2973B8B2002C88B6 /* Emojis.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1150,6 +1158,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		95A1BF9B2973B83C002C88B6 /* XCRemoteSwiftPackageReference "EmojiText" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/divadretlaw/EmojiText";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		95F2DE2729726A7E00553937 /* XCRemoteSwiftPackageReference "Drops" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/omaralbeik/Drops.git";
@@ -1184,6 +1200,11 @@
 		95A02A6E295FE94F0013EF7C /* Alice */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Alice;
+		};
+		95A1BF9C2973B83C002C88B6 /* EmojiText */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 95A1BF9B2973B83C002C88B6 /* XCRemoteSwiftPackageReference "EmojiText" */;
+			productName = EmojiText;
 		};
 		95F2DE2829726A7E00553937 /* Drops */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -61,6 +61,17 @@ extension String {
         }
     }
 
+    func markdown() -> String {
+        let dumbSelf = self
+        do {
+            let htmlDOM = try HTMLParser().parse(html: self)
+            return htmlDOM.toMarkdown()
+        } catch {
+            print("Error converting: \(error)")
+            return dumbSelf
+        }
+    }
+
     func plainTextContents() -> String {
         do {
             let htmlDOM = try HTMLParser().parse(html: self)

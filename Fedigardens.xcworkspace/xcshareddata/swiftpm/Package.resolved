@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "EmojiText",
+        "repositoryURL": "https://github.com/divadretlaw/EmojiText",
+        "state": {
+          "branch": "main",
+          "revision": "3d8f6196de59634352ed317cf6ab4e292eeaaf44",
+          "version": null
+        }
+      },
+      {
         "package": "HTML2Markdown",
         "repositoryURL": "https://gitlab.com/mflint/HTML2Markdown/",
         "state": {
@@ -35,6 +44,15 @@
           "branch": null,
           "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
           "version": "4.2.2"
+        }
+      },
+      {
+        "package": "Nuke",
+        "repositoryURL": "https://github.com/kean/Nuke",
+        "state": {
+          "branch": null,
+          "revision": "2e9337168d08acccf72c039bf9324be24a1cf7d7",
+          "version": "11.5.3"
         }
       },
       {

@@ -25,6 +25,7 @@ struct Shout: App {
             ContentView()
                 .environment(\.userProfile, globalStore.userProfile ?? MockData.profile!)
                 .environment(\.interventionAuthorization, globalStore.interventionAuthorization ?? .default)
+                .environment(\.customEmojis, globalStore.emojis)
                 .onOpenURL { url in
                     globalStore.checkAuthorizationToken(from: url)
                     globalStore.createInterventionContext(from: url)
@@ -33,6 +34,7 @@ struct Shout: App {
                     Alice.shared.setRequestPrefix(to: "gardens://")
                     Task {
                         await globalStore.getUserProfile()
+                        await globalStore.getInstanceEmojis()
                     }
                 }
         }
