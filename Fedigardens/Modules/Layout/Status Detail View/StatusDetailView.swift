@@ -142,6 +142,11 @@ struct StatusDetailView: View {
                 AuthorView(authoringContext: context)
             }
         }
+        .sheet(item: $viewModel.displayedProfile) { profile in
+            if let profile {
+                ProfileSheetView(profile: profile)
+            }
+        }
     }
 }
 

@@ -30,6 +30,7 @@ class StatusDetailViewModel: ObservableObject {
     @Published var shouldOpenCompositionTool: AuthoringContext?
     @Published var expandAncestors = false
     @Published var state = LayoutState.initial
+    @Published var displayedProfile: Account?
 
     var containsUndisclosedContent: Bool {
         guard let status else { return false }

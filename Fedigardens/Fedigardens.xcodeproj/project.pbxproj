@@ -76,6 +76,8 @@
 		9594DE3D27C927820036325A /* Conversation+Authors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594DE3A27C927820036325A /* Conversation+Authors.swift */; };
 		95A02A6F295FE94F0013EF7C /* Alice in Frameworks */ = {isa = PBXBuildFile; productRef = 95A02A6E295FE94F0013EF7C /* Alice */; };
 		95A1BF95297327B3002C88B6 /* String+Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF94297327B3002C88B6 /* String+Localizations.swift */; };
+		95A1BF9829738A75002C88B6 /* ProfileSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF9729738A75002C88B6 /* ProfileSheetView.swift */; };
+		95A1BF9A29738D33002C88B6 /* ProfileSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF9929738D33002C88B6 /* ProfileSheetViewModel.swift */; };
 		95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */; };
 		95ADADE427B6A6BB0011FD83 /* String+AttributedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */; };
 		95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE727B6A7F10011FD83 /* Statuses.swift */; };
@@ -178,6 +180,8 @@
 		9594DE3A27C927820036325A /* Conversation+Authors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Conversation+Authors.swift"; sourceTree = "<group>"; };
 		95A02A70295FE98B0013EF7C /* Alice */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Alice; path = ../Packages/Alice; sourceTree = "<group>"; };
 		95A1BF94297327B3002C88B6 /* String+Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizations.swift"; sourceTree = "<group>"; };
+		95A1BF9729738A75002C88B6 /* ProfileSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetView.swift; sourceTree = "<group>"; };
+		95A1BF9929738D33002C88B6 /* ProfileSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetViewModel.swift; sourceTree = "<group>"; };
 		95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusQuickGlanceView.swift; sourceTree = "<group>"; };
 		95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AttributedContent.swift"; sourceTree = "<group>"; };
 		95ADADE727B6A7F10011FD83 /* Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
@@ -461,6 +465,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		95A1BF9629738A61002C88B6 /* Profiles */ = {
+			isa = PBXGroup;
+			children = (
+				95A1BF9729738A75002C88B6 /* ProfileSheetView.swift */,
+				95A1BF9929738D33002C88B6 /* ProfileSheetViewModel.swift */,
+			);
+			path = Profiles;
+			sourceTree = "<group>";
+		};
 		95A3587027B2B18D00DBB76E /* Metadata */ = {
 			isa = PBXGroup;
 			children = (
@@ -508,6 +521,7 @@
 				95CD3C4B296509260043CDB2 /* Intervention */,
 				95ADAE1D27B6DB830011FD83 /* Layout */,
 				952A010F27C67F1400F36B37 /* Messaging */,
+				95A1BF9629738A61002C88B6 /* Profiles */,
 				95645BD527C554FB00FB3426 /* Settings */,
 				95369B6927B8406B00F39531 /* Statuses */,
 			);
@@ -749,6 +763,7 @@
 				952A06E529692E95008340A4 /* UIDevice+Model.swift in Sources */,
 				953BC7C52957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */,
 				95A1BF95297327B3002C88B6 /* String+Localizations.swift in Sources */,
+				95A1BF9829738A75002C88B6 /* ProfileSheetView.swift in Sources */,
 				9558C7F029579E66001B30C7 /* GardensComposeButton.swift in Sources */,
 				95CD3C4F29650A600043CDB2 /* GardensViewModel.swift in Sources */,
 				952A06E129691B95008340A4 /* GardensAppCompactLayout.swift in Sources */,
@@ -775,6 +790,7 @@
 				958E20902969F7F2008AE63F /* InteractionsListView.swift in Sources */,
 				9547230827A0094000D1BA89 /* ContentView.swift in Sources */,
 				95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */,
+				95A1BF9A29738D33002C88B6 /* ProfileSheetViewModel.swift in Sources */,
 				95F2DE2429725C6100553937 /* BetaBadge.swift in Sources */,
 				9547230627A0094000D1BA89 /* Gardens.swift in Sources */,
 				95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */,

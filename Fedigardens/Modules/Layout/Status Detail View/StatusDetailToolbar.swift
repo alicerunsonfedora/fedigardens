@@ -79,6 +79,34 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                 }.help("help.save")
             }
             .defaultCustomization(options: .alwaysAvailable)
+
+            ToolbarItem(id: "profiles", placement: .secondaryAction, showsByDefault: shouldDisplayItem) {
+                Menu {
+                    Group {
+                        if let account = viewModel.status?.account {
+                            Button {
+                                viewModel.displayedProfile = account
+                            } label: {
+                                Label(account.getAccountName(), systemImage: "person.circle")
+                            }
+                        }
+                    }
+
+                    Group {
+                        if let account = viewModel.status?.reblog?.account, account != viewModel.status?.account {
+                            Button {
+                                viewModel.displayedProfile = account
+                            } label: {
+                                Label(account.getAccountName(), systemImage: "person.circle")
+                            }
+                        }
+                    }
+
+                } label: {
+                    Label("status.profileaction.generic", image: "person.circle")
+                }
+            }
+            .defaultCustomization(options: .alwaysAvailable)
         }
     }
 

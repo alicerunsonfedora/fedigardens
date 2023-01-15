@@ -22,6 +22,7 @@
 "general.emptytimeline" = "Timeline Is Empty";
 "general.learnmore" = "Learn More…";
 "general.more" = "More";
+"general.done" = "Done";
 
 // MARK: - Endpoints
 "endpoint.home" = "For You";
@@ -81,6 +82,14 @@
 "status.reblogaction" = "Reblog";
 "status.saveaction" = "Bookmark";
 "status.webaction" = "Open in Safari";
+"status.profileaction.generic" = "View Profiles";
+"status.profileaction" = "View %@'s Profile";
+
+// MARK: - User Profiles
+"profile.activity" = "Recent Activity";
+"profile.followers" = "Followers";
+"profile.following" = "Following";
+"profile.statusescount" = "Statuses";
 
 // MARK: - Drops
 "drop.favorite" = "Favorited";
