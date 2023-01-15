@@ -45,7 +45,9 @@ class ProfileSheetViewModel: ObservableObject {
     func toggleFollow() async {
         await updateRelationship(
             drop: Drop(
-                title: relationship?.following == true ? "drop.unfollow" : "drop.follow",
+                title: relationship?.following == true
+                    ? "drop.unfollow".localized(comment: "Unfollow drop")
+                    : "drop.follow".localized(comment: "Follow drop"),
                 icon: UIImage(
                     systemName: relationship?.following == true ? "person.badge.minus" : "person.badge.plus"
                 )
@@ -58,7 +60,9 @@ class ProfileSheetViewModel: ObservableObject {
     func toggleMute() async {
         await updateRelationship(
             drop: Drop(
-                title: relationship?.muting == true ? "drop.unmute" : "drop.mute",
+                title: relationship?.muting == true
+                    ? "drop.unmute".localized(comment: "Unmute drop")
+                    : "drop.mute".localized(comment: "Mute drop"),
                 icon: UIImage(
                     systemName: relationship?.muting == true
                         ? "person.crop.circle.fill.badge.checkmark" : "person.crop.circle.badge.moon.fill"
