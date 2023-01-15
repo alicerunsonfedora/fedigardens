@@ -43,7 +43,7 @@ class ProfileSheetViewModel: ObservableObject {
     }
 
     func toggleFollow() async {
-        await update(
+        await updateRelationship(
             drop: Drop(
                 title: relationship?.following == true ? "drop.unfollow" : "drop.follow",
                 icon: UIImage(
@@ -56,7 +56,7 @@ class ProfileSheetViewModel: ObservableObject {
     }
 
     func toggleMute() async {
-        await update(
+        await updateRelationship(
             drop: Drop(
                 title: relationship?.muting == true ? "drop.unmute" : "drop.mute",
                 icon: UIImage(
@@ -71,18 +71,20 @@ class ProfileSheetViewModel: ObservableObject {
         }
     }
 
-    private func update(drop: Drop? = nil, by means: (Account) async -> Alice.Response<Account>) async {
+    private func updateRelationship(
+        drop: Drop? = nil,
+        by means: (Account) async -> Alice.Response<Relationship>
+    ) async {
         guard let profile else { return }
         let response = await means(profile)
         switch response {
-        case .success(let newProfile):
+        case .success(let newRelationship):
             DispatchQueue.main.async {
-                self.profile = newProfile
+                self.relationship = newRelationship
                 if let drop {
                     Drops.show(drop)
                 }
             }
-            await fetchRelationships()
         case .failure(let error):
             print("Update failed: \(error.localizedDescription)")
             DispatchQueue.main.async {

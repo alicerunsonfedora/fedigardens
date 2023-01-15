@@ -218,6 +218,18 @@ public enum Endpoint {
             return "/api/v1/bookmarks"
         case .generalRelationships:
             return "/api/v1/accounts/relationships"
+        case .followAccount(let accountId):
+            return "/api/v1/accounts/\(accountId)/follow"
+        case .unfollowAccount(let accountId):
+            return "/api/v1/accounts/\(accountId)/unfollow"
+        case .muteAccount(let accountId):
+            return "/api/v1/accounts/\(accountId)/mute"
+        case .unmuteAccount(let accountId):
+            return "/api/v1/accounts/\(accountId)/unmute"
+        case .blockAccount(let accountId):
+            return "/api/v1/accounts/\(accountId)/block"
+        case .unblockAccount(let accountId):
+            return "/api/v1/accounts/\(accountId)/unblock"
         default: return ""
         }
     }
