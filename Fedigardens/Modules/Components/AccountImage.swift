@@ -21,6 +21,7 @@ struct AccountImage: View {
         case medium = 32
         case large = 48
         case xlarge = 64
+        case xxlarge = 84
     }
 
     var author: Account

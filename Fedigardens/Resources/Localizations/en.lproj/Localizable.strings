@@ -93,6 +93,13 @@
 "profile.followers" = "Followers";
 "profile.following" = "Following";
 "profile.statusescount" = "Statuses";
+"profile.followsyou" = "Follows You";
+
+// MARK: - Profile Actions
+"profile.followaction" = "Follow";
+"profile.unfollowaction" = "Unfollow";
+"profile.muteaction" = "Mute";
+"profile.unmuteaction" = "Unmute";
 
 // MARK: - Drops
 "drop.favorite" = "Favorited";
@@ -103,7 +110,12 @@
 "drop.save" = "Added to Bookmarks";
 "drop.unsave" = "Removed from Bookmarks";
 "drop.post" = "Posted Status";
+"drop.follow" = "Followed";
+"drop.unfollow" = "Unfollowed";
+"drop.mute" = "Muted";
+"drop.block" = "Blocked";
 "drop.postfailure" = "Couldn't Post Status";
+"drop.profilefailure" = "Couldn't Update Profile";
 
 // MARK: - Status Visibility
 "status.visibility.public" = "Everyone";

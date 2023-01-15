@@ -29,74 +29,14 @@ struct ProfileSheetView: View {
     var body: some View {
         NavigationStack {
             List {
-                VStack(spacing: 16) {
-                    HStack {
-                        Spacer()
-                        VStack(spacing: 4) {
-                            AccountImage(author: profile)
-                                .profileSize(.xlarge)
-                            EmojiText(markdown: profile.getAccountName(), emojis: allEmojis)
-                                .font(.system(.largeTitle, design: .rounded))
-                                .bold()
-                            Text("@\(profile.acct)")
-                                .font(.headline)
-                                .foregroundColor(.secondary)
-                        }
-                        Spacer()
-                    }
-                    HStack {
-                        cell(
-                            systemName: "person.2.fill",
-                            key: "profile.followers",
-                            value: "\(profile.followersCount)"
-                        )
-                        cell(
-                            systemName: "person.3.fill",
-                            key: "profile.following",
-                            value: "\(profile.followingCount)"
-                        )
-                        cell(
-                            systemName: "square.and.pencil",
-                            key: "profile.statusescount",
-                            value: "\(profile.statusesCount)"
-                        )
-                    }
-                    EmojiText(markdown: profile.note.markdown(), emojis: allEmojis)
-                        .font(.subheadline)
-                }
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.clear)
-                .listRowInsets(.init(top: 2, leading: 0, bottom: 2, trailing: 0))
-
-                Section {
-                    ForEach(profile.fields) { field in
-                        LabeledContent(field.name) {
-                            Text(field.value.attributedHTML())
-                        }
-                        .listRowBackground(
-                            field.value == profile.verifiedDomain()
-                                ? Color.green.opacity(0.2)
-                                : Color(uiColor: .systemBackground)
-                        )
-                        .tint(
-                            field.value == profile.verifiedDomain()
-                            ? Color.green
-                            : Color.accentColor
-                        )
-                    }
-                }
-
-                statusArea
-
+                ProfileSheetHeaderView(profile: profile)
+                    .environmentObject(viewModel)
+                ProfileSheetRecentActivityView()
+                    .environmentObject(viewModel)
             }
             .listStyle(.insetGrouped)
             .toolbar {
-                Button {
-                    dismiss()
-                } label: {
-                    Label("general.done", systemImage: "xmark")
-                }
-                .labelStyle(.titleOnly)
+                ProfileSheetToolbar(viewModel: viewModel)
             }
         }
         .animation(.spring(), value: viewModel.layoutState)
@@ -104,60 +44,7 @@ struct ProfileSheetView: View {
             Task {
                 viewModel.profile = profile
                 await viewModel.fetchStatuses()
-            }
-        }
-    }
-
-    private func cell(systemName: String, key: LocalizedStringKey, value: String) -> some View {
-        VStack(spacing: 4) {
-            Image(systemName: systemName)
-                .foregroundColor(.accentColor)
-            VStack {
-                Text(value)
-                    .font(.headline)
-                Text(key)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-            }
-        }
-        .padding()
-        .frame(maxWidth: .infinity)
-        .background(
-            Color(uiColor: .systemBackground)
-                .cornerRadius(10)
-        )
-    }
-
-    private var statusArea: some View {
-        Group {
-            switch viewModel.layoutState {
-            case .initial, .loading:
-                HStack {
-                    Spacer()
-                    ProgressView()
-                    Spacer()
-                }
-                .listRowBackground(Color.clear)
-                .listRowSeparator(.hidden)
-            case .loaded:
-                Section {
-                    ForEach(viewModel.statuses, id: \.uuid) { status in
-                        StatusView(status: status)
-                            .lineLimit(3)
-                            .profilePlacement(.hidden)
-                            .datePlacement(.automatic)
-                    }
-                } header: {
-                    Text("profile.activity")
-                }
-            case .errored(let message):
-                VStack(spacing: 8) {
-                    Image(systemName: "exclamationmark.triangle")
-                        .font(.system(.largeTitle, design: .rounded))
-                        .foregroundColor(.secondary)
-                    Text(message)
-                        .font(.title3)
-                }
+                await viewModel.fetchRelationships()
             }
         }
     }

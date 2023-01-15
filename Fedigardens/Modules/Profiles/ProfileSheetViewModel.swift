@@ -12,25 +12,106 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
 import Combine
 import Alice
+import Drops
+import UIKit
 
 class ProfileSheetViewModel: ObservableObject {
     @Published var profile: Account?
     @Published var statuses = [Status]()
     @Published var layoutState = LayoutState.initial
+    @Published var relationship: Relationship?
 
     func fetchStatuses() async {
         guard let profile else { return }
+        await fetch(method: .get, for: .accountStatuses(id: profile.id), as: [Status].self) { statuses in
+            self.statuses = statuses
+        }
+    }
+
+    func fetchRelationships() async {
+        guard let profile else { return }
+        await fetch(
+            method: .get,
+            for: .generalRelationships,
+            with: ["id[]": profile.id],
+            as: [Relationship].self
+        ) { relationships in
+            self.relationship = relationships.first
+        }
+    }
+
+    func toggleFollow() async {
+        await update(
+            drop: Drop(
+                title: relationship?.following == true ? "drop.unfollow" : "drop.follow",
+                icon: UIImage(
+                    systemName: relationship?.following == true ? "person.badge.minus" : "person.badge.plus"
+                )
+            )
+        ) { account in
+            return await Alice.shared.request(.post, for: .followAccount(id: account.id))
+        }
+    }
+
+    func toggleMute() async {
+        await update(
+            drop: Drop(
+                title: relationship?.muting == true ? "drop.unmute" : "drop.mute",
+                icon: UIImage(
+                    systemName: relationship?.muting == true
+                        ? "person.crop.circle.fill.badge.checkmark" : "person.crop.circle.badge.moon.fill"
+                )
+            )
+        ) { account in
+            return await Alice.shared.request(
+                .post, for: relationship?.muting == true ? .unmuteAccount(id: account.id) : .muteAccount(id: account.id)
+            )
+        }
+    }
+
+    private func update(drop: Drop? = nil, by means: (Account) async -> Alice.Response<Account>) async {
+        guard let profile else { return }
+        let response = await means(profile)
+        switch response {
+        case .success(let newProfile):
+            DispatchQueue.main.async {
+                self.profile = newProfile
+                if let drop {
+                    Drops.show(drop)
+                }
+            }
+            await fetchRelationships()
+        case .failure(let error):
+            print("Update failed: \(error.localizedDescription)")
+            DispatchQueue.main.async {
+                Drops.show(
+                    .init(
+                        title: "drop.profilefailure".localized(comment: "Couldn't update profile"),
+                        subtitle: error.localizedDescription,
+                        icon: UIImage(systemName: "xmark.circle")
+                    )
+                )
+            }
+        }
+    }
+
+    private func fetch<T: Decodable>(
+        method: Alice.Method,
+        for endpoint: Endpoint,
+        with parameters: [String: String]? = nil,
+        as type: T.Type,
+        completion: @escaping (T) -> Void
+    ) async {
         DispatchQueue.main.async {
             self.layoutState = .loading
         }
-        let response: Alice.Response<[Status]> = await Alice.shared.request(.get, for: .accountStatuses(id: profile.id))
+        let response: Alice.Response<T> = await Alice.shared.request(method, for: endpoint, params: parameters)
         switch response {
-        case .success(let statuses):
+        case .success(let data):
             DispatchQueue.main.async {
-                self.statuses = statuses
+                completion(data)
                 self.layoutState = .loaded
             }
         case .failure(let error):

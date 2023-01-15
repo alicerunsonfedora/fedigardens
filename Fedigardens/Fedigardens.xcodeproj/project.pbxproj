@@ -80,6 +80,10 @@
 		95A1BF9A29738D33002C88B6 /* ProfileSheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF9929738D33002C88B6 /* ProfileSheetViewModel.swift */; };
 		95A1BF9D2973B83C002C88B6 /* EmojiText in Frameworks */ = {isa = PBXBuildFile; productRef = 95A1BF9C2973B83C002C88B6 /* EmojiText */; };
 		95A1BF9F2973B8B2002C88B6 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF9E2973B8B2002C88B6 /* Emojis.swift */; };
+		95A1BFA2297460F8002C88B6 /* ProfileSheetToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BFA1297460F8002C88B6 /* ProfileSheetToolbar.swift */; };
+		95A1BFA4297463B9002C88B6 /* ProfileSheetStatisticCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BFA3297463B9002C88B6 /* ProfileSheetStatisticCellView.swift */; };
+		95A1BFA6297464B0002C88B6 /* ProfileSheetRecentActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BFA5297464B0002C88B6 /* ProfileSheetRecentActivityView.swift */; };
+		95A1BFA8297465EE002C88B6 /* ProfileSheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BFA7297465EE002C88B6 /* ProfileSheetHeaderView.swift */; };
 		95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */; };
 		95ADADE427B6A6BB0011FD83 /* String+AttributedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */; };
 		95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE727B6A7F10011FD83 /* Statuses.swift */; };
@@ -185,6 +189,10 @@
 		95A1BF9729738A75002C88B6 /* ProfileSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetView.swift; sourceTree = "<group>"; };
 		95A1BF9929738D33002C88B6 /* ProfileSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetViewModel.swift; sourceTree = "<group>"; };
 		95A1BF9E2973B8B2002C88B6 /* Emojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojis.swift; sourceTree = "<group>"; };
+		95A1BFA1297460F8002C88B6 /* ProfileSheetToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetToolbar.swift; sourceTree = "<group>"; };
+		95A1BFA3297463B9002C88B6 /* ProfileSheetStatisticCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetStatisticCellView.swift; sourceTree = "<group>"; };
+		95A1BFA5297464B0002C88B6 /* ProfileSheetRecentActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetRecentActivityView.swift; sourceTree = "<group>"; };
+		95A1BFA7297465EE002C88B6 /* ProfileSheetHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetHeaderView.swift; sourceTree = "<group>"; };
 		95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusQuickGlanceView.swift; sourceTree = "<group>"; };
 		95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AttributedContent.swift"; sourceTree = "<group>"; };
 		95ADADE727B6A7F10011FD83 /* Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
@@ -379,10 +387,9 @@
 		9567141E2958CD9600BFF76A /* Status Detail View */ = {
 			isa = PBXGroup;
 			children = (
+				95A1BFA029745C88002C88B6 /* Components */,
 				95667E7527B85BD3009D2251 /* StatusDetailView.swift */,
 				953BC7C42957C73E005C7F2A /* StatusDetailViewModel.swift */,
-				956714242958D2D300BFF76A /* StatusDetailToolbar.swift */,
-				95CEFDED295A388100EEE96C /* StatusDetailQuote.swift */,
 				95CEFDEF295A38E500EEE96C /* StatusContextProvider.swift */,
 			);
 			path = "Status Detail View";
@@ -473,10 +480,31 @@
 		95A1BF9629738A61002C88B6 /* Profiles */ = {
 			isa = PBXGroup;
 			children = (
+				95A1BFA929747219002C88B6 /* Components */,
 				95A1BF9729738A75002C88B6 /* ProfileSheetView.swift */,
 				95A1BF9929738D33002C88B6 /* ProfileSheetViewModel.swift */,
 			);
 			path = Profiles;
+			sourceTree = "<group>";
+		};
+		95A1BFA029745C88002C88B6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				956714242958D2D300BFF76A /* StatusDetailToolbar.swift */,
+				95CEFDED295A388100EEE96C /* StatusDetailQuote.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		95A1BFA929747219002C88B6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				95A1BFA1297460F8002C88B6 /* ProfileSheetToolbar.swift */,
+				95A1BFA7297465EE002C88B6 /* ProfileSheetHeaderView.swift */,
+				95A1BFA5297464B0002C88B6 /* ProfileSheetRecentActivityView.swift */,
+				95A1BFA3297463B9002C88B6 /* ProfileSheetStatisticCellView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		95A3587027B2B18D00DBB76E /* Metadata */ = {
@@ -805,6 +833,7 @@
 				9558C7EE29578B59001B30C7 /* AccountImage.swift in Sources */,
 				953BC7BF2957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */,
 				95CEFDF0295A38E500EEE96C /* StatusContextProvider.swift in Sources */,
+				95A1BFA8297465EE002C88B6 /* ProfileSheetHeaderView.swift in Sources */,
 				95CD3C4D296509470043CDB2 /* InterventionAuthorizationContext.swift in Sources */,
 				958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */,
 				9594DE3B27C927820036325A /* Conversation+Authors.swift in Sources */,
@@ -816,6 +845,7 @@
 				953DE4D327D69C7D0043A357 /* Bundle+AppVersion.swift in Sources */,
 				958C0C9727BE930D00ED6C23 /* Account+AccountName.swift in Sources */,
 				95D2705127C6FEFA00805262 /* MessagingList.swift in Sources */,
+				95A1BFA2297460F8002C88B6 /* ProfileSheetToolbar.swift in Sources */,
 				95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95CEFDF2295A3B4900EEE96C /* StatusAuthorExtendedLabel.swift in Sources */,
 				95009EF4295E780A00F32F85 /* GardensAppLayoutViewModel.swift in Sources */,
@@ -832,9 +862,11 @@
 				95F2DE22297253FD00553937 /* Label+SettingsStyle.swift in Sources */,
 				957AF84F29591B44000370E6 /* StatusPollView.swift in Sources */,
 				95CEFDE82959637400EEE96C /* StatusVerifiedButton.swift in Sources */,
+				95A1BFA4297463B9002C88B6 /* ProfileSheetStatisticCellView.swift in Sources */,
 				9503EFAF27B4173C00ABB7B0 /* AuthenticationView.swift in Sources */,
 				952A011127C67F3F00F36B37 /* MessagingPresentationView.swift in Sources */,
 				95ADAE0227B6B2E10011FD83 /* StatusView.swift in Sources */,
+				95A1BFA6297464B0002C88B6 /* ProfileSheetRecentActivityView.swift in Sources */,
 				9558C7F229579FC9001B30C7 /* TimelineSplitViewModel.swift in Sources */,
 				95555FC82960C864005BEF45 /* Collection+IsNotEmpty.swift in Sources */,
 				95A1BF9F2973B8B2002C88B6 /* Emojis.swift in Sources */,

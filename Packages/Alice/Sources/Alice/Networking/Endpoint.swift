@@ -216,6 +216,8 @@ public enum Endpoint {
             return "/api/v1/lists"
         case .bookmarks:
             return "/api/v1/bookmarks"
+        case .generalRelationships:
+            return "/api/v1/accounts/relationships"
         default: return ""
         }
     }
