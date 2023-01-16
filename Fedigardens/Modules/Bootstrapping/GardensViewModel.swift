@@ -40,6 +40,7 @@ class GardensViewModel: ObservableObject {
     }
 
     func getUserProfile() async {
+        guard Alice.OAuth.shared.canMakeAuthenticatedRequests else { return }
         let response: Alice.Response<Account> = await Alice.shared.request(.get, for: .verifyAccountCredentials)
         switch response {
         case .success(let profile):
@@ -52,6 +53,7 @@ class GardensViewModel: ObservableObject {
     }
 
     func getInstanceEmojis() async {
+        guard Alice.OAuth.shared.canMakeAuthenticatedRequests else { return }
         let response: Alice.Response<[Emoji]> = await Alice.shared.request(.get, for: .customEmojis)
         switch response {
         case .success(let newEmojis):

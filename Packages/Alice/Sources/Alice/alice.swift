@@ -68,6 +68,15 @@ public class Alice: ObservableObject, CustomStringConvertible {
 
         static public let shared = OAuth()
 
+        public var canMakeAuthenticatedRequests: Bool {
+            switch authState {
+            case .authenthicated(_):
+                return true
+            default:
+                return false
+            }
+        }
+
         /// An EnvironmentValue that allows us to open a URL using the appropriate system service.
         ///
         /// Can be used as follows:
