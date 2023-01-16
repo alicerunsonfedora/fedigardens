@@ -26,6 +26,7 @@ class StatusDetailViewModel: ObservableObject {
 
     @Published var status: Status?
     @Published var quote: Status?
+    @Published var quoteSource: Status.QuoteSource?
     @Published var context: Context?
     @Published var shouldOpenCompositionTool: AuthoringContext?
     @Published var expandAncestors = false
@@ -80,6 +81,7 @@ class StatusDetailViewModel: ObservableObject {
         case .success(let quotedReply):
             DispatchQueue.main.async {
                 self.quote = quotedReply
+                self.quoteSource = status?.quotedReply()?.0
                 self.state = .loaded
             }
         case .failure(let error):

@@ -63,7 +63,8 @@
 "status.spoilermessage-cta" = "Collapsed content may contain long form text and/or sensitive content, and Fedigardens cannot guarantee that this content is safe to view. You can tap the eye icon to view the content.";
 "status.voted" = "You have voted on this poll.";
 "status.quotedetect.title" = "%@ is linking to a status.";
-"status.quotedetect.detail" = "%@ may be providing additional context or quoting %@. Tap on this status to view the original conversation.";
+"status.quotedetect.detail" = "%@ may be providing additional context or quoting %@. You can tap this notice to show/hide the original status.";
+"status.quotedetect.source" = "Quote Agent: %@";
 "status.quoted.title" = "You are quoting this status.";
 "status.quoted.detail" = "A link to the status has been added automatically to maintain compatibility. Remember to follow your instance's rules, and refrain from \"dunking\". [Learn more…](https://fedigardens.app/support/#quoting)";
 "status.verified.title" = "Verified Domain";
@@ -79,7 +80,7 @@
 "status.replyaction" = "Reply";
 "status.forwardaction" = "Quote";
 "status.mentionaction" = "Mention";
-"status.messageaction" = "Message";
+"status.messageaction" = "Send Message";
 "status.likeaction" = "Favorite";
 "status.reblogaction" = "Reblog";
 "status.saveaction" = "Bookmark";

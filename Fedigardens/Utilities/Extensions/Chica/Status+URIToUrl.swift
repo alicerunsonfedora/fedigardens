@@ -16,6 +16,18 @@ import Foundation
 import Alice
 
 extension Status {
+    enum QuoteSource: String {
+        case fedigardens = "Fedigardens"
+        case icecubes = "Ice Cubes"
+        case retoot = "Re: Toot"
+        case fallback = "Generic link"
+    }
+
+    static let standardQuoteRegex = /(💬)\: (https\:\/\/[a-zA-Z.0-9\-\_]+)\/@[a-zA-Z0-9]+\/(\d+)/
+    static let icecubesQuoteRegex = /From\: @([a-zA-Z0-9]+)\n(https\:\/\/[a-zA-Z.0-9\-\_]+)\/@[a-zA-Z0-9]+\/(\d+)/
+    static let retootQuoteRegex = /Quoting @([a-zA-Z0-9]+)\: (https\:\/\/[a-zA-Z.0-9\-\_]+)\/@[a-zA-Z0-9]+\/(\d+)/
+    static let fallbackQuoteRegex = /(https\:\/\/[a-zA-Z.0-9\-\_]+)\/@[a-zA-Z0-9]+\/(\d+)/
+
     func originalAuthor() -> Account {
         return reblog?.account ?? account
     }
@@ -29,11 +41,22 @@ extension Status {
     }
 
     /// Returns the ID of a quoted reply using the custom quote format.
-    func quotedReply() -> (String, String)? {
-        let regex = /(💬)\: (https\:\/\/[a-zA-Z.0-9\-\_]+)\/@[a-zA-Z0-9]+\/(\d+)/
-        if let match = content.plainTextContents().firstMatch(of: regex) {
+    func quotedReply() -> (QuoteSource, String, String)? {
+        if let match = content.plainTextContents().firstMatch(of: Status.standardQuoteRegex) {
             let (_, _, requestURL, requestID) = match.output
-            return (String(requestURL), String(requestID))
+            return (.fedigardens, String(requestURL), String(requestID))
+        }
+        if let match = content.plainTextContents().firstMatch(of: Status.icecubesQuoteRegex) {
+            let (_, _, requestURL, requestID) = match.output
+            return (.icecubes, String(requestURL), String(requestID))
+        }
+        if let match = content.plainTextContents().firstMatch(of: Status.retootQuoteRegex) {
+            let (_, _, requestURL, requestID) = match.output
+            return (.retoot, String(requestURL), String(requestID))
+        }
+        if let match = content.plainTextContents().firstMatch(of: Status.fallbackQuoteRegex) {
+            let (_, requestURL, requestID) = match.output
+            return (.fallback, String(requestURL), String(requestID))
         }
         return nil
     }

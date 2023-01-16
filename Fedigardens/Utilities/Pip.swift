@@ -25,32 +25,8 @@ public class Pip {
         case fetchError(FetchError)
     }
 
-    func requestQuote(of status: Status) async throws -> Status? {
-        guard let (quoteDomain, quoteID) = status.quotedReply() else { return nil }
-        let requestString = "\(quoteDomain)/api/v1/statuses/\(quoteID)"
-        guard let quoteURL = URL(string: requestString) else { return nil }
-
-        do {
-            let (data, response) = try await URLSession.shared.data(for: URLRequest(url: quoteURL))
-            guard let response = response as? HTTPURLResponse, (200..<300).contains(response.statusCode) else {
-                throw FetchError.message(
-                    reason: "Request returned with error code: " +
-                    (String(describing: (response as? HTTPURLResponse)?.statusCode)),
-                    data: data
-                )
-            }
-            do {
-                return try JSONDecoder().decode(Status.self, from: data)
-            } catch {
-                throw FetchError.parseError(reason: error)
-            }
-        } catch {
-            throw FetchError.unknownError(error: error)
-        }
-    }
-
     func requestQuote(of status: Status) async -> Response<Status> {
-        guard let (quoteDomain, quoteID) = status.quotedReply() else {
+        guard let (_, quoteDomain, quoteID) = status.quotedReply() else {
             return .failure(.quoteNotFound)
         }
         let requestString = "\(quoteDomain)/api/v1/statuses/\(quoteID)"

@@ -84,6 +84,7 @@
 		95A1BFA4297463B9002C88B6 /* ProfileSheetStatisticCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BFA3297463B9002C88B6 /* ProfileSheetStatisticCellView.swift */; };
 		95A1BFA6297464B0002C88B6 /* ProfileSheetRecentActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BFA5297464B0002C88B6 /* ProfileSheetRecentActivityView.swift */; };
 		95A1BFA8297465EE002C88B6 /* ProfileSheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BFA7297465EE002C88B6 /* ProfileSheetHeaderView.swift */; };
+		95A1BFAB2974D2C5002C88B6 /* StatusDetailProfileMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BFAA2974D2C5002C88B6 /* StatusDetailProfileMenu.swift */; };
 		95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */; };
 		95ADADE427B6A6BB0011FD83 /* String+AttributedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */; };
 		95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE727B6A7F10011FD83 /* Statuses.swift */; };
@@ -193,6 +194,7 @@
 		95A1BFA3297463B9002C88B6 /* ProfileSheetStatisticCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetStatisticCellView.swift; sourceTree = "<group>"; };
 		95A1BFA5297464B0002C88B6 /* ProfileSheetRecentActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetRecentActivityView.swift; sourceTree = "<group>"; };
 		95A1BFA7297465EE002C88B6 /* ProfileSheetHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetHeaderView.swift; sourceTree = "<group>"; };
+		95A1BFAA2974D2C5002C88B6 /* StatusDetailProfileMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailProfileMenu.swift; sourceTree = "<group>"; };
 		95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusQuickGlanceView.swift; sourceTree = "<group>"; };
 		95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AttributedContent.swift"; sourceTree = "<group>"; };
 		95ADADE727B6A7F10011FD83 /* Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
@@ -492,6 +494,7 @@
 			children = (
 				956714242958D2D300BFF76A /* StatusDetailToolbar.swift */,
 				95CEFDED295A388100EEE96C /* StatusDetailQuote.swift */,
+				95A1BFAA2974D2C5002C88B6 /* StatusDetailProfileMenu.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -577,6 +580,7 @@
 		95ADAE1D27B6DB830011FD83 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				958E2095296A0671008AE63F /* GardensPageLink.swift */,
 				952A06E229691C3D008340A4 /* GardensAppPage.swift */,
 				952A06E029691B95008340A4 /* GardensAppCompactLayout.swift */,
 				95ADAE1E27B6DC120011FD83 /* GardensAppWideLayout.swift */,
@@ -584,7 +588,6 @@
 				9567141E2958CD9600BFF76A /* Status Detail View */,
 				9567141C2958CD5600BFF76A /* Status Navigation List */,
 				9567141B2958CD4C00BFF76A /* Timeline Split View */,
-				958E2095296A0671008AE63F /* GardensPageLink.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 				95ADAE1F27B6DC120011FD83 /* GardensAppWideLayout.swift in Sources */,
 				953DE4D327D69C7D0043A357 /* Bundle+AppVersion.swift in Sources */,
 				958C0C9727BE930D00ED6C23 /* Account+AccountName.swift in Sources */,
+				95A1BFAB2974D2C5002C88B6 /* StatusDetailProfileMenu.swift in Sources */,
 				95D2705127C6FEFA00805262 /* MessagingList.swift in Sources */,
 				95A1BFA2297460F8002C88B6 /* ProfileSheetToolbar.swift in Sources */,
 				95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,

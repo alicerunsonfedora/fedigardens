@@ -16,15 +16,17 @@ import SwiftUI
 import Alice
 
 struct StatusDetailQuote: View {
+    @State private var expandQuote = false
     @Binding var displayUndisclosedContent: Bool
     var status: Status
     var quote: Status
+    var source: Status.QuoteSource
 
     var body: some View {
         VStack(alignment: .leading) {
             Label(
                 String(
-                    format: NSLocalizedString("status.quotedetect.title", comment: "Quote detected"),
+                    format: "status.quotedetect.title".localized(comment: "Quote detected"),
                     status.account.getAccountName()
                 ),
                 systemImage: "quote.bubble"
@@ -33,18 +35,30 @@ struct StatusDetailQuote: View {
             .tint(.accentColor)
             Text(
                 String(
-                    format: NSLocalizedString("status.quotedetect.detail", comment: "Quote detected"),
+                    format: "status.quotedetect.detail".localized(comment: "Quote detected"),
                     status.account.getAccountName(),
                     quote.originalAuthor().getAccountName()
                 )
             )
             .font(.subheadline)
             .foregroundColor(.secondary)
-            StatusView(status: quote)
-                .lineLimit(3)
-                .profileImageSize(24)
-                .reblogNoticePlacement(.hidden)
-                .showsDisclosedContent($displayUndisclosedContent)
+            if expandQuote {
+                StatusView(status: quote)
+                    .verifiedNoticePlacement(.byAuthorName)
+                    .profileImageSize(32)
+                    .reblogNoticePlacement(.hidden)
+                    .showsDisclosedContent($displayUndisclosedContent)
+            }
+            Text(String(format: "status.quotedetect.source".localized(), source.rawValue))
+                .font(.footnote)
+                .bold()
+                .foregroundColor(.secondary)
+                .padding(.top, 2)
+        }.onTapGesture {
+            withAnimation {
+                expandQuote.toggle()
+            }
         }
+        .animation(.easeInOut, value: expandQuote)
     }
 }

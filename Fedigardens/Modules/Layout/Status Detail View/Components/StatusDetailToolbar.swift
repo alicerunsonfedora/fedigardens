@@ -84,53 +84,40 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                 Menu {
                     Group {
                         if let account = viewModel.status?.account {
-                            Text(account.acct)
-                            Button {
-                                viewModel.displayedProfile = account
-                            } label: {
-                                Label("status.profileaction.generic", systemImage: "person.circle")
-                            }
-                            GardensComposeButton(
-                                shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
-                                context: AuthoringContext(
-                                    participants: "@\(account.acct)"
-                                ),
-                                style: .mention
-                            )
-                            GardensComposeButton(
-                                shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
-                                context: AuthoringContext(
-                                    participants: "@\(account.acct)",
-                                    visibility: .direct
-                                ),
-                                style: .message
+                            StatusDetailProfileMenu(
+                                displayedProfile: $viewModel.displayedProfile,
+                                composer: $viewModel.shouldOpenCompositionTool,
+                                account: account
                             )
                         }
                     }
 
                     Group {
                         if let account = viewModel.status?.reblog?.account, account != viewModel.status?.account {
-                            Divider()
-                            Text(account.acct)
-                            Button {
-                                viewModel.displayedProfile = account
-                            } label: {
-                                Label("status.profileaction.generic", systemImage: "person.circle")
-                            }
-                            GardensComposeButton(
-                                shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
-                                context: AuthoringContext(
-                                    participants: "@\(account.acct)"
-                                ),
-                                style: .mention
+                            StatusDetailProfileMenu(
+                                displayedProfile: $viewModel.displayedProfile,
+                                composer: $viewModel.shouldOpenCompositionTool,
+                                account: account
                             )
-                            GardensComposeButton(
-                                shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
-                                context: AuthoringContext(
-                                    participants: "@\(account.acct)",
-                                    visibility: .direct
-                                ),
-                                style: .message
+                        }
+                    }
+
+                    Group {
+                        if let account = viewModel.quote?.account, account != viewModel.status?.account {
+                            StatusDetailProfileMenu(
+                                displayedProfile: $viewModel.displayedProfile,
+                                composer: $viewModel.shouldOpenCompositionTool,
+                                account: account
+                            )
+                        }
+                    }
+
+                    Group {
+                        if let account = viewModel.quote?.reblog?.account, account != viewModel.status?.account {
+                            StatusDetailProfileMenu(
+                                displayedProfile: $viewModel.displayedProfile,
+                                composer: $viewModel.shouldOpenCompositionTool,
+                                account: account
                             )
                         }
                     }

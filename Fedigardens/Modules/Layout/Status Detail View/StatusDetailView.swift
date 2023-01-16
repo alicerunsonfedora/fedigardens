@@ -52,14 +52,16 @@ struct StatusDetailView: View {
                         .font(.largeTitle)
                 case .loaded:
                     List {
-                        if let quote = viewModel.quote {
-                            NavigationLink(value: viewModel.contextCaller(for: quote)) {
+                        if let quote = viewModel.quote, let source = viewModel.quoteSource {
+                            VStack(alignment: .leading) {
                                 StatusDetailQuote(
                                     displayUndisclosedContent: $displayUndisclosedContent,
                                     status: status,
-                                    quote: quote
+                                    quote: quote,
+                                    source: source
                                 )
-                            }.listRowBackground(Color.accentColor.opacity(0.1))
+                            }
+                            .listRowBackground(Color.accentColor.opacity(0.1))
                         }
                         if let context = viewModel.context, context.ancestors.isNotEmpty == true {
                             if viewModel.expandAncestors {
