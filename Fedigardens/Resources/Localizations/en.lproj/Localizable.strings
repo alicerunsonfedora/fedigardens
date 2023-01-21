@@ -142,7 +142,6 @@
 "help.bookmark" = "Save this status for later.";
 
 // MARK: - Settings
-"settings.section.interventions" = "Interventions";
 "settings.section.about" = "About";
 "settings.show-statistics.title" = "Show Statistics";
 "settings.show-statistics.detail" = "Show the number of favorites and reblogs when viewing a status in detail.";
@@ -153,6 +152,15 @@
 "settings.signout.title" = "Are you sure you want to sign out?";
 "settings.signout.detail" = "You'll need to sign in again and reauthorize Fedigardens to access your Mastodon account.";
 "settings.signout.cancel" = "Cancel";
+
+// MARK: - Settings: Composer -
+"settings.section.author" = "Composing";
+"settings.author.enforcelimit.text" = "Enforce Character Limit";
+"settings.author.characterlimit.text" = "Character Limit";
+"settings.author.characterlimit.detail" = "Mastodon uses 500 characters as the default limit. You can change this value to match your instance's character limit or your own personal limit.";
+
+// MARK: - Settings: Interventions -
+"settings.section.interventions" = "Interventions";
 "settings.interventions.title" = "Interventions with one sec";
 "settings.interventions.info" = "Fedigardens has collaborated with **one sec** to provide more healthy ways of interacting with Mastodon. Have a moment to reflect whenever you refresh your feeds, load more statuses, or stay in the app for longer periods of time.";
 "settings.interventions.allow" = "Allow Interventions";

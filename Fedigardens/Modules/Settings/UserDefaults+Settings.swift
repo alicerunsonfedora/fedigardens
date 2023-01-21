@@ -15,43 +15,45 @@
 import Foundation
 
 extension UserDefaults {
+    func getValue<T: Decodable>(forKey key: String, default defaultValue: T) -> T {
+        if let value = UserDefaults.standard.value(forKey: key) as? T {
+            return value
+        }
+        return defaultValue
+    }
+
     var showsStatistics: Bool {
         get { bool(forKey: "status.show-statistics") }
         set { set(newValue, forKey: "status.show-statistics") }
     }
 
     var allowsInterventions: Bool {
-        get {
-            if UserDefaults.standard.value(forKey: "health.interventions") == nil {
-                return true
-            }
-            return bool(forKey: "health.interventions")
-        }
+        get { getValue(forKey: "health.interventions", default: true) }
         set { set(newValue, forKey: "health.interventions") }
     }
 
     var intervenesOnRefresh: Bool {
-        get {
-            if UserDefaults.standard.value(forKey: "health.interventions.refresh") == nil {
-                return true
-            }
-            return bool(forKey: "health.interventions.refresh")
-        }
+        get { getValue(forKey: "health.interventions.refresh", default: true) }
         set { set(newValue, forKey: "health.interventions.refresh") }
     }
 
     var intervenesOnFetch: Bool {
-        get {
-            if UserDefaults.standard.value(forKey: "health.interventions.fetch") == nil {
-                return true
-            }
-            return bool(forKey: "health.interventions.fetch")
-        }
+        get { getValue(forKey: "health.interventions.fetch", default: true) }
         set { set(newValue, forKey: "health.interventions.fetch") }
     }
 
     var loadLimit: Int {
         get { max(10, integer(forKey: "network.load-limit")) }
         set { set(newValue, forKey: "network.load-limit") }
+    }
+
+    var characterLimit: Int {
+        get { getValue(forKey: "author.characterlimit", default: 500) }
+        set { set(newValue, forKey: "author.characterlimit") }
+    }
+
+    var enforceCharacterLimit: Bool {
+        get { getValue(forKey: "author.enforcelimit", default: true) }
+        set { set(newValue, forKey: "author.enforcelimit") }
     }
 }

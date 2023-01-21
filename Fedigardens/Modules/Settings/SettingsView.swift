@@ -20,6 +20,8 @@ import Alice
 struct SettingsView: View {
     @AppStorage("status.show-statistics") var showsStatistics: Bool = true
     @AppStorage("network.load-limit") var loadLimit: Int = 10
+    @AppStorage("author.characterlimit") var characterLimit: Int = 500
+    @State private var characterLimitString = "500"
     @State private var shouldOpenFeedbackTool: AuthoringContext?
     @State private var promptSignOff = false
     @ScaledMetric private var size = 1.0
@@ -52,12 +54,19 @@ struct SettingsView: View {
 
                 Section {
                     NavigationLink {
+                        SettingsAuthorPage()
+                    } label: {
+                        Label("settings.section.author", systemImage: "square.and.pencil")
+                            .labelStyle(.settings(color: .indigo, size: size))
+                    }
+                    NavigationLink {
                         SettingsInterventionPage()
                     } label: {
                         Label("settings.section.interventions", systemImage: "hand.raised.fingers.spread.fill")
                             .labelStyle(.settings(color: .green, size: size))
                     }
                 }
+
                 Section {
                     NavigationLink {
                         aboutSettings

@@ -22,3 +22,42 @@ struct AuthoringContext: Codable, Hashable, Identifiable {
     var participants: String = ""
     var visibility: Visibility = .public
 }
+
+extension AuthoringContext {
+    init?(from url: URL) {
+        guard url.absoluteString.starts(with: "gardens://create"), let params = url.queryParameters else { return nil }
+        self = AuthoringContext(
+            replyingToID: params["replyID"] ?? "",
+            forwardingURI: params["forwardURI"] ?? "",
+            participants: params["participants"] ?? "",
+            visibility: Visibility(rawValue: params["visibility"] ?? "public") ?? .public
+        )
+    }
+
+    func constructURL() -> URL? {
+        guard let url = URL(string: "gardens://create") else { return nil }
+        var query = [URLQueryItem]()
+
+        if replyingToID.isNotEmpty {
+            query.append(.init(name: "replyID", value: replyingToID))
+        }
+
+        if forwardingURI.isNotEmpty {
+            query.append(.init(name: "forwardURI", value: forwardingURI))
+        }
+
+        if participants.isNotEmpty {
+            query.append(.init(name: "participants", value: participants))
+        }
+
+        query.append(.init(name: "visibility", value: visibility.rawValue))
+        return url.appending(queryItems: query)
+    }
+}
+
+extension URL {
+    init?(from context: AuthoringContext) {
+        guard let url = context.constructURL() else { return nil }
+        self = url
+    }
+}

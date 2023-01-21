@@ -102,26 +102,13 @@ public class Alice: ObservableObject, CustomStringConvertible {
         private let URL_SUFFIX = "oauth"
 
         init() {
-
             _ = isOnMainThread(named: "OAUTH CLIENT STARTED")
-
-//            //  First, we are trying to see if there is a Tokens.plist file that we will use for our application.
-//            if let path = Bundle.path(forResource: "Tokens", ofType: "plist", inDirectory: "Tokens"),
-//               let secrets = NSDictionary(contentsOfFile: path) as? [String: AnyObject] {
-//                self.secrets = secrets
-//            } else {
-//                self.secrets = nil
-//                print("Error: We no secrets were found which means that you won't be able to use Starlight.")
-//            }
-
-            //  Now, we check whether the user is signed in or not.
             let keychain = Keychain(service: Alice.OAuth.keychainService)
             if let accessToken = keychain["starlight_acess_token"] {
                 authState = .authenthicated(authToken: accessToken)
             } else {
                 authState = .signedOut
             }
-
         }
 
         /// Returns the URL that needs to be opened in the browser to allow the user to complete registration.
@@ -274,7 +261,6 @@ public class Alice: ObservableObject, CustomStringConvertible {
     //  MARK: - INITIALIZERS
 
     public init() {
-
         _ = isOnMainThread(named: "CLIENT STARTED")
         urlPrefix = Alice.DEFAULT_URL_PREFIX
 
@@ -348,7 +334,6 @@ public class Alice: ObservableObject, CustomStringConvertible {
         }
 
         return request
-
     }
 
     public func request<T: Decodable>(
@@ -382,5 +367,4 @@ public class Alice: ObservableObject, CustomStringConvertible {
             return .failure(.unknownError(error: error))
         }
     }
-
 }

@@ -51,12 +51,6 @@ struct AuthoringScene: Scene {
     }
 
     private func getContextFromDeeplink(of url: URL) {
-        guard let params = url.queryParameters else { return }
-        deeplinkedContext = AuthoringContext(
-            replyingToID: params["replyID"] ?? "",
-            forwardingURI: params["forwardURI"] ?? "",
-            participants: params["participants"] ?? "",
-            visibility: Visibility(rawValue: params["visibility"] ?? "public") ?? .public
-        )
+        deeplinkedContext = AuthoringContext(from: url)
     }
 }

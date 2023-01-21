@@ -192,9 +192,6 @@ struct AuthorView: View {
             .font(.system(.body, design: .rounded))
             .lineLimit(5, reservesSpace: true)
             .lineSpacing(1.1)
-            .onChange(of: viewModel.text) { newText in
-                viewModel.reformatText(with: newText)
-            }
     }
 
     private var sensitivePrompt: some View {

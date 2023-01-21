@@ -71,14 +71,8 @@ class AuthorViewModel: ObservableObject {
         }
     }
 
-    func reformatText(with newText: String) {
-        text = newText.count < 600
-            ? newText
-            : String(newText[...newText.index(newText.startIndex, offsetBy: 600)])
-    }
-
     func submitStatus(completion: @escaping () -> Void) async {
-        guard charactersRemaining > 0 else { return }
+        if UserDefaults.standard.enforceCharacterLimit, charactersRemaining < 0 { return }
         var params = [
             "status": mentionString.isNotEmpty ? "\(mentionString) \(text)" : text,
             "visibility": visibility.rawValue,
@@ -145,24 +139,27 @@ class AuthorViewModel: ObservableObject {
 
     private func calculateCharactersRemaining() -> Int {
         do {
-            var removedTextString = text
             let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
-            let matches = detector.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count))
-
+            var textStrippedFromUrls = text + mentionString
+            let matches = detector.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf8.count))
+                .filter { match in
+                    match.text(in: text)?.firstMatch(of: URL.schemeWithAuthorityRegex) != nil
+                }
             for match in matches {
                 guard let range = Range(match.range, in: text) else { continue }
-                removedTextString = removedTextString.replacingOccurrences(of: text[range], with: "")
+                textStrippedFromUrls = textStrippedFromUrls.replacingCharacters(in: range, with: "")
             }
 
-            let mentionRegex = /\@([a-zA-Z0-9\_]+)\@([a-zA-Z0-9\_\-.]+)/
-            let usernameCount = mentionString.matches(of: mentionRegex).map { match in match.1.count }
-                .reduce(0, +)
-
-            let expectancy = removedTextString.count + (matches.count * 23)
-            return 500 - expectancy - usernameCount
+            var mentions = mentionString.matches(of: Status.mentionRegex)
+            mentions += text.matches(of: Status.mentionRegex)
+            mentions.map(\.output).forEach { output in
+                textStrippedFromUrls = textStrippedFromUrls.replacingOccurrences(of: output.0, with: "@\(output.1)")
+            }
+            let charactersWithoutLinks = textStrippedFromUrls.count + (matches.count * 23)
+            return UserDefaults.standard.characterLimit - (charactersWithoutLinks)
         } catch {
             print("Err: couldn't make detector: \(error.localizedDescription). Using naive approach instead.")
-            return 500 - text.count
+            return UserDefaults.standard.characterLimit - text.count
         }
     }
 

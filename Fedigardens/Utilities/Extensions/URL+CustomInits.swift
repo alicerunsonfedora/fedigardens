@@ -15,6 +15,8 @@
 import Foundation
 
 extension URL {
+    static let schemeWithAuthorityRegex = /[a-zA-Z0-9\_\-]+\:\/\//
+
     static func oneSec() -> URL? {
         return URL(string: "onesec://reintervene?appId=fedigardens")
     }

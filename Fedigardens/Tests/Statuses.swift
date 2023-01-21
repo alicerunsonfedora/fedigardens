@@ -12,23 +12,23 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-@testable import Capstone
+@testable import Fedigardens
 import Foundation
 import XCTest
 
 /// Test cases for statuses/posts in Gardens.
 class ShoutTestStatus: XCTestCase {
     /// Test that a HTML-formatted string is stripped and converted to plain text.
-    func testStatusConversionToPlainText() async throws {
+    func testStatusConversionToPlainText() throws {
         let originalText = "<p>Hello, world!</p>"
         let expectedText = "Hello, world!"
 
-        let performed = await originalText.toPlainText()
+        let performed = originalText.plainTextContents()
         XCTAssertEqual(performed, expectedText)
     }
 
     /// Test that an HTML-formatted string is stripped, converted to plain text, and ignores any HTML formatting.
-    func testStatusConversionToPlainTextIgnoresFormatting() async throws {
+    func testStatusConversionToPlainTextIgnoresFormatting() throws {
         let originalText = """
         <p>
             Shout, shout, let it all out<br/>
@@ -37,7 +37,7 @@ class ShoutTestStatus: XCTestCase {
             <span class="roland">Come on</span>
         </p>
         """
-        let convertedText = await originalText.toPlainText()
+        let convertedText = originalText.plainTextContents()
         for element in ["<p>", "</p>", "<br/>", "<b>", "</b>", "<span", "</span>"] {
             XCTAssertTrue(!convertedText.contains(element))
         }

@@ -65,6 +65,19 @@
 		957AF85329592DD1000370E6 /* AuthoringContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957AF85129592DD1000370E6 /* AuthoringContext.swift */; };
 		957AF855295937CF000370E6 /* AuthorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957AF854295937CF000370E6 /* AuthorViewModel.swift */; };
 		957AF856295937CF000370E6 /* AuthorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957AF854295937CF000370E6 /* AuthorViewModel.swift */; };
+		95801D1F297C6B3800FE8D83 /* SettingsAuthorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */; };
+		95801D21297C71F000FE8D83 /* AuthorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95801D20297C71F000FE8D83 /* AuthorViewModelTests.swift */; };
+		95801D25297C751900FE8D83 /* String+Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF94297327B3002C88B6 /* String+Localizations.swift */; };
+		95801D26297C751C00FE8D83 /* String+AttributedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */; };
+		95801D27297C752000FE8D83 /* Bundle+AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DE4D227D69C7D0043A357 /* Bundle+AppVersion.swift */; };
+		95801D28297C752E00FE8D83 /* RecursiveNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7C72957E156005C7F2A /* RecursiveNavigationView.swift */; };
+		95801D29297C753C00FE8D83 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF9E2973B8B2002C88B6 /* Emojis.swift */; };
+		95801D2A297C755200FE8D83 /* LayoutStateRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */; };
+		95801D2B297C756200FE8D83 /* Collection+IsNotEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95555FC72960C864005BEF45 /* Collection+IsNotEmpty.swift */; };
+		95801D2C297C756F00FE8D83 /* UserDefaults+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95645BD127C5546E00FB3426 /* UserDefaults+Settings.swift */; };
+		95801D2E297C852100FE8D83 /* NSTextCheckingResult+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95801D2D297C852100FE8D83 /* NSTextCheckingResult+Substring.swift */; };
+		95801D2F297C859900FE8D83 /* NSTextCheckingResult+Substring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95801D2D297C852100FE8D83 /* NSTextCheckingResult+Substring.swift */; };
+		95801D30297C861700FE8D83 /* URL+CustomInits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B368A02965106C00336284 /* URL+CustomInits.swift */; };
 		958C0C9727BE930D00ED6C23 /* Account+AccountName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */; };
 		958C0C9927BE930D00ED6C23 /* Account+AccountName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */; };
 		958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */; };
@@ -128,6 +141,16 @@
 		95F2DE2929726A7E00553937 /* Drops in Frameworks */ = {isa = PBXBuildFile; productRef = 95F2DE2829726A7E00553937 /* Drops */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		95801D22297C72EB00FE8D83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 954722F127A0093F00D1BA89 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 954722FC27A0094000D1BA89;
+			remoteInfo = Fedigardens;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		95009EF0295D440B00F32F85 /* Fedigardens.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fedigardens.entitlements; sourceTree = "<group>"; };
 		95009EF1295E711100F32F85 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -178,6 +201,10 @@
 		957AF84E29591B44000370E6 /* StatusPollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPollView.swift; sourceTree = "<group>"; };
 		957AF85129592DD1000370E6 /* AuthoringContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthoringContext.swift; sourceTree = "<group>"; };
 		957AF854295937CF000370E6 /* AuthorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewModel.swift; sourceTree = "<group>"; };
+		95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAuthorPage.swift; sourceTree = "<group>"; };
+		95801D20297C71F000FE8D83 /* AuthorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewModelTests.swift; sourceTree = "<group>"; };
+		95801D24297C738A00FE8D83 /* Fedigardens Test Plan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Fedigardens Test Plan.xctestplan"; sourceTree = "<group>"; };
+		95801D2D297C852100FE8D83 /* NSTextCheckingResult+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextCheckingResult+Substring.swift"; sourceTree = "<group>"; };
 		958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+AccountName.swift"; sourceTree = "<group>"; };
 		958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorReplySegment.swift; sourceTree = "<group>"; };
 		958E208F2969F7F2008AE63F /* InteractionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsListView.swift; sourceTree = "<group>"; };
@@ -199,7 +226,7 @@
 		95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AttributedContent.swift"; sourceTree = "<group>"; };
 		95ADADE727B6A7F10011FD83 /* Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
 		95ADADEB27B6A8E40011FD83 /* Shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shared.swift; sourceTree = "<group>"; };
-		95ADADF327B6A9630011FD83 /* Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		95ADADF327B6A9630011FD83 /* FedigardensTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FedigardensTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95ADAE0127B6B2E10011FD83 /* StatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusView.swift; sourceTree = "<group>"; };
 		95ADAE0527B6B3900011FD83 /* Status.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Status.json; sourceTree = "<group>"; };
 		95ADAE0827B6B3BA0011FD83 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -306,7 +333,7 @@
 			isa = PBXGroup;
 			children = (
 				954722FD27A0094000D1BA89 /* Fedigardens.app */,
-				95ADADF327B6A9630011FD83 /* Tests.xctest */,
+				95ADADF327B6A9630011FD83 /* FedigardensTests.xctest */,
 			);
 			name = Products;
 			path = ..;
@@ -352,6 +379,7 @@
 				95555FB82960B8DA005BEF45 /* SettingsAcknowledgementList.swift */,
 				95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */,
 				95F2DE25297262D700553937 /* SettingsInterventionPage.swift */,
+				95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -416,6 +444,9 @@
 				95ADAE0927B6B49A0011FD83 /* JSONDecoder+Resources.swift */,
 				95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */,
 				95A1BF94297327B3002C88B6 /* String+Localizations.swift */,
+				952A06E429692E95008340A4 /* UIDevice+Model.swift */,
+				95B368A02965106C00336284 /* URL+CustomInits.swift */,
+				95801D2D297C852100FE8D83 /* NSTextCheckingResult+Substring.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -423,6 +454,7 @@
 		956714232958CEF500BFF76A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				95801D24297C738A00FE8D83 /* Fedigardens Test Plan.xctestplan */,
 				95555FC02960BDDD005BEF45 /* Licenses */,
 				95555FB62960B7F0005BEF45 /* Acknowledgements.plist */,
 				95A3587027B2B18D00DBB76E /* Metadata */,
@@ -531,8 +563,6 @@
 				95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */,
 				95555FBA2960B9F7005BEF45 /* Acknowledgement+License.swift */,
 				95555FC72960C864005BEF45 /* Collection+IsNotEmpty.swift */,
-				95B368A02965106C00336284 /* URL+CustomInits.swift */,
-				952A06E429692E95008340A4 /* UIDevice+Model.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -542,6 +572,7 @@
 			children = (
 				95ADADE727B6A7F10011FD83 /* Statuses.swift */,
 				95ADADEB27B6A8E40011FD83 /* Shared.swift */,
+				95801D20297C71F000FE8D83 /* AuthorViewModelTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -653,9 +684,9 @@
 			productReference = 954722FD27A0094000D1BA89 /* Fedigardens.app */;
 			productType = "com.apple.product-type.application";
 		};
-		95ADADF227B6A9630011FD83 /* Tests */ = {
+		95ADADF227B6A9630011FD83 /* FedigardensTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 95ADADF927B6A9630011FD83 /* Build configuration list for PBXNativeTarget "Tests" */;
+			buildConfigurationList = 95ADADF927B6A9630011FD83 /* Build configuration list for PBXNativeTarget "FedigardensTests" */;
 			buildPhases = (
 				95ADADEF27B6A9630011FD83 /* Sources */,
 				95ADADF027B6A9630011FD83 /* Frameworks */,
@@ -664,10 +695,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				95801D23297C72EB00FE8D83 /* PBXTargetDependency */,
 			);
-			name = Tests;
+			name = FedigardensTests;
 			productName = Tests;
-			productReference = 95ADADF327B6A9630011FD83 /* Tests.xctest */;
+			productReference = 95ADADF327B6A9630011FD83 /* FedigardensTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -685,7 +717,7 @@
 					};
 					95ADADF227B6A9630011FD83 = {
 						CreatedOnToolsVersion = 13.2.1;
-						TestTargetID = 9547230227A0094000D1BA89;
+						TestTargetID = 954722FC27A0094000D1BA89;
 					};
 				};
 			};
@@ -710,7 +742,7 @@
 			projectRoot = "";
 			targets = (
 				954722FC27A0094000D1BA89 /* Fedigardens */,
-				95ADADF227B6A9630011FD83 /* Tests */,
+				95ADADF227B6A9630011FD83 /* FedigardensTests */,
 			);
 		};
 /* End PBXProject section */
@@ -834,6 +866,7 @@
 				95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */,
 				95555FBB2960B9F7005BEF45 /* Acknowledgement+License.swift in Sources */,
 				9558C7EE29578B59001B30C7 /* AccountImage.swift in Sources */,
+				95801D2F297C859900FE8D83 /* NSTextCheckingResult+Substring.swift in Sources */,
 				953BC7BF2957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */,
 				95CEFDF0295A38E500EEE96C /* StatusContextProvider.swift in Sources */,
 				95A1BFA8297465EE002C88B6 /* ProfileSheetHeaderView.swift in Sources */,
@@ -841,6 +874,7 @@
 				958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */,
 				9594DE3B27C927820036325A /* Conversation+Authors.swift in Sources */,
 				958E2096296A0671008AE63F /* GardensPageLink.swift in Sources */,
+				95801D1F297C6B3800FE8D83 /* SettingsAuthorPage.swift in Sources */,
 				956714252958D2D300BFF76A /* StatusDetailToolbar.swift in Sources */,
 				95645BD227C5546E00FB3426 /* UserDefaults+Settings.swift in Sources */,
 				958E20942969FF24008AE63F /* NotificationListCellView.swift in Sources */,
@@ -881,27 +915,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95801D29297C753C00FE8D83 /* Emojis.swift in Sources */,
 				953BC7CF2957FD94005C7F2A /* StatusMediaDrawer.swift in Sources */,
 				957AF85329592DD1000370E6 /* AuthoringContext.swift in Sources */,
+				95801D2E297C852100FE8D83 /* NSTextCheckingResult+Substring.swift in Sources */,
 				953BC7CC2957EC27005C7F2A /* HashableType.swift in Sources */,
 				95CEFDE92959637400EEE96C /* StatusVerifiedButton.swift in Sources */,
 				957AF85029591B44000370E6 /* StatusPollView.swift in Sources */,
 				958C0C9927BE930D00ED6C23 /* Account+AccountName.swift in Sources */,
+				95801D26297C751C00FE8D83 /* String+AttributedContent.swift in Sources */,
 				956714222958CE7900BFF76A /* MockData.swift in Sources */,
+				95801D25297C751900FE8D83 /* String+Localizations.swift in Sources */,
 				95ADADFE27B6A9730011FD83 /* Shared.swift in Sources */,
 				95ADAE0C27B6B49A0011FD83 /* JSONDecoder+Resources.swift in Sources */,
+				95801D2A297C755200FE8D83 /* LayoutStateRepresentable.swift in Sources */,
 				9567141F2958CDAB00BFF76A /* StatusDisclosedContent.swift in Sources */,
 				957AF856295937CF000370E6 /* AuthorViewModel.swift in Sources */,
+				95801D30297C861700FE8D83 /* URL+CustomInits.swift in Sources */,
 				9594DE3D27C927820036325A /* Conversation+Authors.swift in Sources */,
 				95ADAE1427B6CDC50011FD83 /* DateFormatter+Mastodon.swift in Sources */,
 				95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */,
 				95CEFDEC295A031E00EEE96C /* Pip.swift in Sources */,
+				95801D21297C71F000FE8D83 /* AuthorViewModelTests.swift in Sources */,
+				95801D2B297C756200FE8D83 /* Collection+IsNotEmpty.swift in Sources */,
+				95801D27297C752000FE8D83 /* Bundle+AppVersion.swift in Sources */,
 				953BC7C02957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */,
+				95801D2C297C756F00FE8D83 /* UserDefaults+Settings.swift in Sources */,
 				953BC7C62957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */,
+				95801D28297C752E00FE8D83 /* RecursiveNavigationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		95801D23297C72EB00FE8D83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 954722FC27A0094000D1BA89 /* Fedigardens */;
+			targetProxy = 95801D22297C72EB00FE8D83 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9503EFB727B417DD00ABB7B0 /* Localizable.strings */ = {
@@ -1111,9 +1164,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.marquiskurt.capstone.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Capstone.app/Contents/MacOS/Capstone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fedigardens.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Fedigardens";
 			};
 			name = Debug;
 		};
@@ -1131,9 +1188,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.marquiskurt.capstone.Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Capstone.app/Contents/MacOS/Capstone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Fedigardens.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Fedigardens";
 			};
 			name = Release;
 		};
@@ -1158,7 +1219,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		95ADADF927B6A9630011FD83 /* Build configuration list for PBXNativeTarget "Tests" */ = {
+		95ADADF927B6A9630011FD83 /* Build configuration list for PBXNativeTarget "FedigardensTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				95ADADFA27B6A9630011FD83 /* Debug */,

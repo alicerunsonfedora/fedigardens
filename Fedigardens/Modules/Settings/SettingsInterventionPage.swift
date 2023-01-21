@@ -80,3 +80,11 @@ struct SettingsInterventionPage: View {
         }
     }
 }
+
+struct SettingsInterventionPage_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationStack {
+            SettingsInterventionPage()
+        }
+    }
+}

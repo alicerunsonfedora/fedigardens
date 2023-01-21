@@ -17,9 +17,7 @@ final class chicaTests: XCTestCase {
     @Environment(\.openURL) private var openURL
 
     func testOauth() async throws {
-
-        await Chica.OAuth.shared.startOauthFlow(for: "mastodon.online")
-
+        await Alice.OAuth.shared.startOauthFlow(for: "mastodon.online")
     }
 
     func doWhatever(_ parameters: [String : String]?) {
@@ -35,9 +33,9 @@ final class chicaTests: XCTestCase {
 
         let account = try! await getAccount(id: "1")
 
-        if Chica.INSTANCE_DOMAIN == "mastodon.social" {
+        if Alice.INSTANCE_DOMAIN == "mastodon.social" {
             XCTAssertEqual(account!.username, "Gargron")
-        } else if Chica.INSTANCE_DOMAIN == "mastodon.technology" {
+        } else if Alice.INSTANCE_DOMAIN == "mastodon.technology" {
             XCTAssertEqual(account!.username, "ashfurrow")
         }
         
@@ -49,6 +47,12 @@ final class chicaTests: XCTestCase {
 }
 
 func getAccount(id: String) async throws -> Account? {
-    return try await Chica().request(.get, for: .account(id: id))
+    let response: Alice.Response<Account> = await Alice().request(.get, for: .account(id: id))
+    switch response {
+    case .success(let account):
+        return account
+    case .failure:
+        return nil
+    }
 }
 

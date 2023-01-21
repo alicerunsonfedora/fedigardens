@@ -75,25 +75,4 @@ struct GardensComposeButton: View {
             }
         }
     }
-
-    private func composeURL() -> URL? {
-        guard let url = URL(string: "gardens://create") else { return nil }
-        var query = [URLQueryItem]()
-
-        if context.replyingToID.isNotEmpty {
-            query.append(.init(name: "replyID", value: context.replyingToID))
-        }
-
-        if context.forwardingURI.isNotEmpty {
-            query.append(.init(name: "forwardURI", value: context.forwardingURI))
-        }
-
-        if context.participants.isNotEmpty {
-            query.append(.init(name: "participants", value: context.participants))
-        }
-
-        query.append(.init(name: "visibility", value: context.visibility.rawValue))
-
-        return url.appending(queryItems: query)
-    }
 }

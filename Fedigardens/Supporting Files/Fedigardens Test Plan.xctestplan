@@ -1,0 +1,33 @@
+{
+  "configurations" : [
+    {
+      "id" : "57020C65-72B4-46A2-AB95-8C90B6F72F8A",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/Packages\/Alice",
+        "identifier" : "ChicaTests",
+        "name" : "ChicaTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Fedigardens.xcodeproj",
+        "identifier" : "95ADADF227B6A9630011FD83",
+        "name" : "FedigardensTests"
+      }
+    }
+  ],
+  "version" : 1
+}

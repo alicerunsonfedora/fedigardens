@@ -23,6 +23,8 @@ extension Status {
         case fallback = "Generic link"
     }
 
+    static let mentionRegex = /\@([a-zA-Z0-9\_]+)\@([a-zA-Z0-9\_\-.]+)/
+
     static let standardQuoteRegex = /(💬)\: (https\:\/\/[a-zA-Z.0-9\-\_]+)\/@[a-zA-Z0-9]+\/(\d+)/
     static let icecubesQuoteRegex = /From\: @([a-zA-Z0-9]+)\n(https\:\/\/[a-zA-Z.0-9\-\_]+)\/@[a-zA-Z0-9]+\/(\d+)/
     static let retootQuoteRegex = /Quoting @([a-zA-Z0-9]+)\: (https\:\/\/[a-zA-Z.0-9\-\_]+)\/@[a-zA-Z0-9]+\/(\d+)/
@@ -41,7 +43,7 @@ extension Status {
     }
 
     /// Returns the ID of a quoted reply using the custom quote format.
-    func quotedReply() -> (QuoteSource, String, String)? {
+    func quotedReply() -> (QuoteSource, String, String)? { // swiftlint:disable:this large_tuple
         if let match = content.plainTextContents().firstMatch(of: Status.standardQuoteRegex) {
             let (_, _, requestURL, requestID) = match.output
             return (.fedigardens, String(requestURL), String(requestID))
