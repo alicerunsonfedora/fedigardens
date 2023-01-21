@@ -1,0 +1,26 @@
+name: Run Unit Tests
+
+on:
+  push:
+    branches: [ root, devel ]
+  pull_request:
+    branches: [ root, devel ]
+  workflow_dispatch:
+
+
+jobs:
+  test:
+    name: Test
+    runs-on: macos-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Setup Xcode version
+      uses: maxim-lobanov/setup-xcode@v1.4.1
+      with:
+        xcode-version: latest-stable
+    - name: Install dependencies
+      run: bundle install
+    - name: Run tests in Fastlane
+      run: bundle exec fastlane unit_tests
