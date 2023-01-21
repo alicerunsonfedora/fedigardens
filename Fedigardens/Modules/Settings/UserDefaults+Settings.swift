@@ -13,47 +13,75 @@
 //  details.
 
 import Foundation
+import enum Alice.Visibility
 
 extension UserDefaults {
-    func getValue<T: Decodable>(forKey key: String, default defaultValue: T) -> T {
-        if let value = UserDefaults.standard.value(forKey: key) as? T {
-            return value
-        }
-        return defaultValue
+    var loadLimit: Int {
+        get { max(10, getValue(forKey: .loadLimit, default: 10)) }
+        set { setValue(newValue, forKey: .loadLimit) }
     }
 
     var showsStatistics: Bool {
-        get { bool(forKey: "status.show-statistics") }
-        set { set(newValue, forKey: "status.show-statistics") }
+        get { getValue(forKey: .showsStatistics, default: false) }
+        set { setValue(newValue, forKey: .showsStatistics) }
     }
 
+    // MARK: - Intervention Settings
     var allowsInterventions: Bool {
-        get { getValue(forKey: "health.interventions", default: true) }
-        set { set(newValue, forKey: "health.interventions") }
+        get { getValue(forKey: .allowsInterventions, default: true) }
+        set { setValue(newValue, forKey: .allowsInterventions) }
     }
 
     var intervenesOnRefresh: Bool {
-        get { getValue(forKey: "health.interventions.refresh", default: true) }
-        set { set(newValue, forKey: "health.interventions.refresh") }
+        get { getValue(forKey: .intervenesOnRefresh, default: true) }
+        set { setValue(newValue, forKey: .intervenesOnRefresh) }
     }
 
     var intervenesOnFetch: Bool {
-        get { getValue(forKey: "health.interventions.fetch", default: true) }
-        set { set(newValue, forKey: "health.interventions.fetch") }
+        get { getValue(forKey: .intervenesOnFetch, default: true) }
+        set { setValue(newValue, forKey: .intervenesOnFetch) }
     }
 
-    var loadLimit: Int {
-        get { max(10, integer(forKey: "network.load-limit")) }
-        set { set(newValue, forKey: "network.load-limit") }
-    }
-
+    // MARK: - Composer Settings
     var characterLimit: Int {
-        get { getValue(forKey: "author.characterlimit", default: 500) }
-        set { set(newValue, forKey: "author.characterlimit") }
+        get { getValue(forKey: .characterLimit, default: 500) }
+        set { setValue(newValue, forKey: .characterLimit) }
     }
 
     var enforceCharacterLimit: Bool {
-        get { getValue(forKey: "author.enforcelimit", default: true) }
-        set { set(newValue, forKey: "author.enforcelimit") }
+        get { getValue(forKey: .enforceCharacterLimit, default: true) }
+        set { setValue(newValue, forKey: .enforceCharacterLimit) }
+    }
+
+    var defaultVisibility: Visibility {
+        get {
+            let reflectedValue = getValue(forKey: .defaultVisibility, default: "public")
+            return Visibility(rawValue: reflectedValue) ?? .public
+        }
+        set { setValue(newValue.rawValue, forKey: .defaultVisibility) }
+    }
+
+    var defaultReplyVisibility: Visibility {
+        get {
+            let reflectedValue = getValue(forKey: .defaultReplyVisibility, default: "unlisted")
+            return Visibility(rawValue: reflectedValue) ?? .unlisted
+        }
+        set { setValue(newValue.rawValue, forKey: .defaultReplyVisibility) }
+    }
+
+    var defaultQuoteVisibility: Visibility {
+        get {
+            let reflectedValue = getValue(forKey: .defaultQuoteVisibility, default: "public")
+            return Visibility(rawValue: reflectedValue) ?? .public
+        }
+        set { setValue(newValue.rawValue, forKey: .defaultQuoteVisibility) }
+    }
+
+    var defaultFeedbackVisibility: Visibility {
+        get {
+            let reflectedValue = getValue(forKey: .defaultFeedbackVisibility, default: "direct")
+            return Visibility(rawValue: reflectedValue) ?? .direct
+        }
+        set { setValue(newValue.rawValue, forKey: .defaultFeedbackVisibility) }
     }
 }

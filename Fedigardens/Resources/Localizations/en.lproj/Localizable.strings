@@ -120,9 +120,9 @@
 
 // MARK: - Status Visibility
 "status.visibility.public" = "Everyone";
-"status.visibility.unlisted" = "Anyone with a link (unlisted)";
+"status.visibility.unlisted" = "Anyone with a link";
 "status.visibility.private" = "Followers only";
-"status.visibility.direct" = "Mentions only (direct)";
+"status.visibility.direct" = "Directly mentioned";
 
 // MARK: - Messaging
 "direct.grouptitle" = "direct.grouptitle";
@@ -155,9 +155,16 @@
 
 // MARK: - Settings: Composer -
 "settings.section.author" = "Composing";
+"settings.author.characterlimitsection" = "Character Limits";
 "settings.author.enforcelimit.text" = "Enforce Character Limit";
 "settings.author.characterlimit.text" = "Character Limit";
 "settings.author.characterlimit.detail" = "Mastodon uses 500 characters as the default limit. You can change this value to match your instance's character limit or your own personal limit.";
+"settings.author.visibilitysection" = "Default Privacy Levels";
+"settings.author.defaultvisibility.text" = "New statuses: ";
+"settings.author.replyvisibility.text" = "Replies: ";
+"settings.author.quotevisibility.text" = "Quotes: ";
+"settings.author.feedbackvisibility.text" = "Sending feedback: ";
+"settings.author.visibilityfooter" = "Privacy levels are stored on-device and may not reflect your settings in your Mastodon web client.";
 
 // MARK: - Settings: Interventions -
 "settings.section.interventions" = "Interventions";

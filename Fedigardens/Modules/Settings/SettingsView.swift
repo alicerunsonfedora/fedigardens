@@ -18,11 +18,8 @@ import Alice
 // MARK: - Settings View
 
 struct SettingsView: View {
-    @AppStorage("status.show-statistics") var showsStatistics: Bool = true
-    @AppStorage("network.load-limit") var loadLimit: Int = 10
-    @AppStorage("author.characterlimit") var characterLimit: Int = 500
-    @State private var characterLimitString = "500"
-    @State private var shouldOpenFeedbackTool: AuthoringContext?
+    @AppStorage(.showsStatistics) var showsStatistics: Bool = true
+    @AppStorage(.loadLimit) var loadLimit: Int = 10
     @State private var promptSignOff = false
     @ScaledMetric private var size = 1.0
 
@@ -69,7 +66,7 @@ struct SettingsView: View {
 
                 Section {
                     NavigationLink {
-                        aboutSettings
+                        SettingsAboutPage()
                     } label: {
                         Label("settings.section.about", systemImage: "info.circle.fill")
                             .labelStyle(.settings(color: .blue, size: size))
@@ -100,34 +97,6 @@ struct SettingsView: View {
             }
         } message: {
             Text("settings.signout.detail")
-        }
-    }
-
-    private var aboutSettings: some View {
-        Form {
-            Section {
-                LabeledContent("App Version", value: Bundle.main.getAppVersion())
-                NavigationLink {
-                    SettingsAcknowledgementList()
-                } label: {
-                    Text("acknowledge.title")
-                }
-            }
-
-            Section {
-                GardensComposeButton(
-                    shouldInvokeParentSheet: $shouldOpenFeedbackTool,
-                    context: .init(participants: "@fedigardens@indieapps.space", visibility: .direct),
-                    style: .feedback
-                )
-                .labelStyle(.settings(color: .accentColor, size: size))
-            }
-        }
-        .navigationTitle("settings.section.about")
-        .sheet(item: $shouldOpenFeedbackTool) { content in
-            NavigationStack {
-                AuthorView(authoringContext: content)
-            }
         }
     }
 }

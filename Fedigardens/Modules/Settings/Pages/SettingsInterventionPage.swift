@@ -15,9 +15,9 @@
 import SwiftUI
 
 struct SettingsInterventionPage: View {
-    @AppStorage("health.interventions") var allowInterventions: Bool = true
-    @AppStorage("health.interventions.refresh") var refreshIntervention: Bool = true
-    @AppStorage("health.interventions.fetch") var fetchMoreIntervention: Bool = true
+    @AppStorage(.allowsInterventions) var allowInterventions: Bool = true
+    @AppStorage(.intervenesOnRefresh) var refreshIntervention: Bool = true
+    @AppStorage(.intervenesOnFetch) var fetchMoreIntervention: Bool = true
 
     var body: some View {
         Form {

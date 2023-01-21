@@ -13,11 +13,17 @@
 //  details.
 
 import SwiftUI
+import enum Alice.Visibility
 
 struct SettingsAuthorPage: View {
-    @AppStorage("author.characterlimit") var characterLimit: Int = 500
-    @AppStorage("author.enforcelimit") var enforceLimit: Bool = true
+    @AppStorage(.characterLimit) var characterLimit: Int = 500
+    @AppStorage(.enforceCharacterLimit) var enforceLimit: Bool = true
+    @AppStorage(.defaultVisibility) var defaultVisibility = Visibility.public
+    @AppStorage(.defaultReplyVisibility) var defaultReplyVisibility = Visibility.unlisted
+    @AppStorage(.defaultQuoteVisibility) var defaultQuoteVisibility = Visibility.public
+    @AppStorage(.defaultFeedbackVisibility) var defaultFeedbackVisibility = Visibility.direct
     @State private var characterLimitString = "500"
+
     var body: some View {
         Form {
             Section {
@@ -38,13 +44,44 @@ struct SettingsAuthorPage: View {
                     Text("settings.author.characterlimit.text")
                         .layoutPriority(1)
                 }
+            } header: {
+                Text("settings.author.characterlimitsection")
             } footer: {
                 Text("settings.author.characterlimit.detail")
+            }
+
+            Section {
+                picker(for: $defaultVisibility, title: "settings.author.defaultvisibility.text")
+                picker(for: $defaultReplyVisibility, title: "settings.author.replyvisibility.text")
+                picker(for: $defaultQuoteVisibility, title: "settings.author.quotevisibility.text")
+                picker(for: $defaultFeedbackVisibility, title: "settings.author.feedbackvisibility.text")
+            } header: {
+                Text("settings.author.visibilitysection")
+            } footer: {
+                Text("settings.author.visibilityfooter")
             }
         }
         .navigationTitle("settings.section.author")
         .onAppear {
             characterLimitString = String(characterLimit)
+        }
+    }
+
+    private func picker(for target: Binding<Visibility>, title: LocalizedStringKey) -> some View {
+        LabeledContent {
+            Menu(target.wrappedValue.localizedDescription) {
+                Picker("", selection: target) {
+                    ForEach(Visibility.allCases, id: \.hashValue) { visibility in
+                        Text(visibility.localizedDescription)
+                            .tag(visibility)
+                    }
+                }
+                .pickerStyle(.inline)
+                .layoutPriority(1)
+            }
+        } label: {
+            Text(title)
+                .layoutPriority(-1)
         }
     }
 }

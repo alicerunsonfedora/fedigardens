@@ -25,7 +25,7 @@ class AuthorViewModel: ObservableObject {
     @Published var text: String = ""
 
     /// The visibility of the status. Defaults to public.
-    @Published var visibility: Visibility = .public
+    @Published var visibility: Visibility = UserDefaults.standard.defaultVisibility
 
     /// Whether the post should be marked as sensitive. Defaults to false.
     @Published var sensitive: Bool = false
@@ -62,11 +62,12 @@ class AuthorViewModel: ObservableObject {
             self.constructReplyText(with: context.participants)
             self.visibility = context.visibility
             self.drop = self.makeDrop(from: context)
-            if !context.forwardingURI.isEmpty {
+            if context.forwardingURI.isNotEmpty {
                 self.text.append("💬: \(context.forwardingURI)")
+                self.visibility = UserDefaults.standard.defaultQuoteVisibility
             }
             if context.replyingToID.isNotEmpty {
-                self.visibility = .unlisted
+                self.visibility = UserDefaults.standard.defaultReplyVisibility
             }
         }
     }
