@@ -85,7 +85,11 @@ struct StatusNavigationList<Extras: View>: View {
 
                 GardensComposeButton(
                     shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
-                    context: AuthoringContext(forwardingURI: status.uriToURL()?.absoluteString ?? ""),
+                    context: AuthoringContext(
+                        forwardingURI: status.uriToURL()?.absoluteString ?? "",
+                        participants: UserDefaults.standard.addQuoteParticipant
+                        ? "@\(status.originalAuthor().acct)" : ""
+                    ),
                     style: .quote
                 ).tint(.indigo)
             }
@@ -126,7 +130,11 @@ struct StatusNavigationList<Extras: View>: View {
             )
             GardensComposeButton(
                 shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
-                context: AuthoringContext(forwardingURI: status.uriToURL()?.absoluteString ?? ""),
+                context: AuthoringContext(
+                    forwardingURI: status.uriToURL()?.absoluteString ?? "",
+                    participants: UserDefaults.standard.addQuoteParticipant
+                    ? "@\(status.originalAuthor().acct)" : ""
+                ),
                 style: .quote
             )
             if let url = status.uriToURL() {

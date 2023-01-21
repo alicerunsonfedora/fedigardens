@@ -28,6 +28,7 @@ enum GardensSettingsKey: String {
     case defaultReplyVisibility = "author.replyvisibility"
     case defaultQuoteVisibility = "author.quotevisibility"
     case defaultFeedbackVisibility = "author.feedbackvisibility"
+    case addQuoteParticipant = "author.quoteparticipant"
 }
 
 extension UserDefaults {

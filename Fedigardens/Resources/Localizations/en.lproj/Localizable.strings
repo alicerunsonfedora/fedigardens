@@ -165,6 +165,8 @@
 "settings.author.quotevisibility.text" = "Quotes: ";
 "settings.author.feedbackvisibility.text" = "Sending feedback: ";
 "settings.author.visibilityfooter" = "Privacy levels are stored on-device and may not reflect your settings in your Mastodon web client.";
+"settings.author.quotesection" = "Quoting";
+"settings.author.quoteparticipant" = "Mention Original Author";
 
 // MARK: - Settings: Interventions -
 "settings.section.interventions" = "Interventions";

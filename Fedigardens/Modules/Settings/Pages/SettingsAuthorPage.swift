@@ -18,6 +18,7 @@ import enum Alice.Visibility
 struct SettingsAuthorPage: View {
     @AppStorage(.characterLimit) var characterLimit: Int = 500
     @AppStorage(.enforceCharacterLimit) var enforceLimit: Bool = true
+    @AppStorage(.addQuoteParticipant) var addQuoteParticipant: Bool = true
     @AppStorage(.defaultVisibility) var defaultVisibility = Visibility.public
     @AppStorage(.defaultReplyVisibility) var defaultReplyVisibility = Visibility.unlisted
     @AppStorage(.defaultQuoteVisibility) var defaultQuoteVisibility = Visibility.public
@@ -60,8 +61,17 @@ struct SettingsAuthorPage: View {
             } footer: {
                 Text("settings.author.visibilityfooter")
             }
+
+            Section {
+                Toggle(isOn: $addQuoteParticipant) {
+                    Text("settings.author.quoteparticipant")
+                }
+            } header: {
+                Text("settings.author.quotesection")
+            }
         }
         .navigationTitle("settings.section.author")
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             characterLimitString = String(characterLimit)
         }

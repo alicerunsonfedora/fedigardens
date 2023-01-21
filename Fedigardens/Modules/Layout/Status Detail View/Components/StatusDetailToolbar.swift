@@ -182,6 +182,8 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                     shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
                     context: .init(
                         forwardingURI: viewModel.status?.uriToURL()?.absoluteString ?? "",
+                        participants: UserDefaults.standard.addQuoteParticipant
+                        ? "@" + (viewModel.status?.originalAuthor().acct ?? "") : "",
                         visibility: viewModel.status?.visibility ?? .public
                     ),
                     style: .quote

@@ -53,6 +53,11 @@ extension UserDefaults {
         set { setValue(newValue, forKey: .enforceCharacterLimit) }
     }
 
+    var addQuoteParticipant: Bool {
+        get { getValue(forKey: .addQuoteParticipant, default: true) }
+        set { setValue(newValue, forKey: .addQuoteParticipant) }
+    }
+
     var defaultVisibility: Visibility {
         get {
             let reflectedValue = getValue(forKey: .defaultVisibility, default: "public")

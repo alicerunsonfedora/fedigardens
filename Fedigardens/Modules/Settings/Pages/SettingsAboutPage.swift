@@ -43,6 +43,7 @@ struct SettingsAboutPage: View {
             }
         }
         .navigationTitle("settings.section.about")
+        .navigationBarTitleDisplayMode(.inline)
         .sheet(item: $shouldOpenFeedbackTool) { content in
             NavigationStack {
                 AuthorView(authoringContext: content)

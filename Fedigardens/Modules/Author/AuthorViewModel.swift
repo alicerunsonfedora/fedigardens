@@ -142,7 +142,7 @@ class AuthorViewModel: ObservableObject {
         do {
             let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
             var textStrippedFromUrls = text + mentionString
-            let matches = detector.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf8.count))
+            let matches = detector.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count))
                 .filter { match in
                     match.text(in: text)?.firstMatch(of: URL.schemeWithAuthorityRegex) != nil
                 }
