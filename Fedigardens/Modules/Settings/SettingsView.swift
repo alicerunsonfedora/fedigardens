@@ -56,12 +56,23 @@ struct SettingsView: View {
                         Label("settings.section.author", systemImage: "square.and.pencil")
                             .labelStyle(.settings(color: .indigo, size: size))
                     }
+                }
+
+                Section {
                     NavigationLink {
                         SettingsInterventionPage()
                     } label: {
-                        Label("settings.section.interventions", systemImage: "hand.raised.fingers.spread.fill")
+                        Label("settings.section.interventions", systemImage: "pause")
                             .labelStyle(.settings(color: .green, size: size))
                     }
+                    NavigationLink {
+                        SettingsBlocklistPage()
+                    } label: {
+                        Label("settings.section.blocklist", systemImage: "hand.raised.fill")
+                            .labelStyle(.settings(color: .red, size: size))
+                    }
+                } header: {
+                    Text("settings.section.safety")
                 }
 
                 Section {

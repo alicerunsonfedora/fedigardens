@@ -17,6 +17,7 @@ And list your changes under that.
 - Introduces the ability to follow/unfollow hashtags in Fedigardens through the _Subscribed Tags_ feature.
 - Introduces new settings for the composer, including privacy levels for writing various statuses, character limit options, and mentioning the original author when creating a quote status.
 - Improves the character counting algorithm in the composer.
+- Adds new blocked servers page to Settings.
 
 ## [1.0-14 (beta)] - 15/1/2023
 

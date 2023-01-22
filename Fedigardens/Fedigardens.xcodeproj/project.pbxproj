@@ -17,6 +17,10 @@
 		952A06E529692E95008340A4 /* UIDevice+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A06E429692E95008340A4 /* UIDevice+Model.swift */; };
 		95369B5927B82D4100F39531 /* TimelineSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5827B82D4100F39531 /* TimelineSplitView.swift */; };
 		95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */; };
+		9537C6D3297DB8C30039F3C4 /* SettingsBlocklistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6D2297DB8C30039F3C4 /* SettingsBlocklistPage.swift */; };
+		9537C6D4297DB8C30039F3C4 /* SettingsBlocklistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6D2297DB8C30039F3C4 /* SettingsBlocklistPage.swift */; };
+		9537C6D6297DBB510039F3C4 /* SettingsBlocklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6D5297DBB510039F3C4 /* SettingsBlocklistViewModel.swift */; };
+		9537C6D7297DBB510039F3C4 /* SettingsBlocklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6D5297DBB510039F3C4 /* SettingsBlocklistViewModel.swift */; };
 		953BC7BF2957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */; };
 		953BC7C02957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */; };
 		953BC7C52957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7C42957C73E005C7F2A /* StatusDetailViewModel.swift */; };
@@ -235,6 +239,8 @@
 		952A06E429692E95008340A4 /* UIDevice+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Model.swift"; sourceTree = "<group>"; };
 		95369B5827B82D4100F39531 /* TimelineSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineSplitView.swift; sourceTree = "<group>"; };
 		95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutStateRepresentable.swift; sourceTree = "<group>"; };
+		9537C6D2297DB8C30039F3C4 /* SettingsBlocklistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBlocklistPage.swift; sourceTree = "<group>"; };
+		9537C6D5297DBB510039F3C4 /* SettingsBlocklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBlocklistViewModel.swift; sourceTree = "<group>"; };
 		953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Status+URIToUrl.swift"; sourceTree = "<group>"; };
 		953BC7C42957C73E005C7F2A /* StatusDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailViewModel.swift; sourceTree = "<group>"; };
 		953BC7C72957E156005C7F2A /* RecursiveNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveNavigationView.swift; sourceTree = "<group>"; };
@@ -460,6 +466,7 @@
 				95555FB82960B8DA005BEF45 /* SettingsAcknowledgementList.swift */,
 				95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */,
 				95801D35297C9D2600FE8D83 /* GardensSettingsKey.swift */,
+				9537C6D5297DBB510039F3C4 /* SettingsBlocklistViewModel.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -549,6 +556,7 @@
 				95F2DE25297262D700553937 /* SettingsInterventionPage.swift */,
 				95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */,
 				95801D38297CAC8B00FE8D83 /* SettingsAboutPage.swift */,
+				9537C6D2297DB8C30039F3C4 /* SettingsBlocklistPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -952,6 +960,7 @@
 				95CD3C4F29650A600043CDB2 /* GardensViewModel.swift in Sources */,
 				952A06E129691B95008340A4 /* GardensAppCompactLayout.swift in Sources */,
 				95009EF2295E711100F32F85 /* AuthenticationViewModel.swift in Sources */,
+				9537C6D6297DBB510039F3C4 /* SettingsBlocklistViewModel.swift in Sources */,
 				95F2DE26297262D700553937 /* SettingsInterventionPage.swift in Sources */,
 				956714162958C1BF00BFF76A /* AuthoringScene.swift in Sources */,
 				953BC7CB2957EC27005C7F2A /* HashableType.swift in Sources */,
@@ -978,6 +987,7 @@
 				958E20902969F7F2008AE63F /* InteractionsListView.swift in Sources */,
 				9547230827A0094000D1BA89 /* ContentView.swift in Sources */,
 				95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */,
+				9537C6D3297DB8C30039F3C4 /* SettingsBlocklistPage.swift in Sources */,
 				95A1BF9A29738D33002C88B6 /* ProfileSheetViewModel.swift in Sources */,
 				95F2DE2429725C6100553937 /* BetaBadge.swift in Sources */,
 				9547230627A0094000D1BA89 /* Gardens.swift in Sources */,
@@ -1039,6 +1049,7 @@
 			files = (
 				95A36E8F297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift in Sources */,
 				95A36E86297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift in Sources */,
+				9537C6D7297DBB510039F3C4 /* SettingsBlocklistViewModel.swift in Sources */,
 				95801D45297CC0F200FE8D83 /* AuthenticationBrowserWindow.swift in Sources */,
 				95801D65297CC14200FE8D83 /* ProfileSheetToolbar.swift in Sources */,
 				95801D29297C753C00FE8D83 /* Emojis.swift in Sources */,
@@ -1069,6 +1080,7 @@
 				95801D25297C751900FE8D83 /* String+Localizations.swift in Sources */,
 				95801D46297CC0F200FE8D83 /* AuthoringScene.swift in Sources */,
 				95801D48297CC10700FE8D83 /* GardensViewModel.swift in Sources */,
+				9537C6D4297DB8C30039F3C4 /* SettingsBlocklistPage.swift in Sources */,
 				95801D6C297CC14E00FE8D83 /* StatusAuthorExtendedLabel.swift in Sources */,
 				95ADADFE27B6A9730011FD83 /* Shared.swift in Sources */,
 				95801D6F297CC15900FE8D83 /* Acknowledgement+License.swift in Sources */,

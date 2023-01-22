@@ -77,6 +77,10 @@ public enum Endpoint {
     /// Returns an array of IdentityProof
     case accountIdentityProofs(id: String)
 
+    /// The list of servers the user has blocked. This is also used to block or unblock a given server domain.
+    /// - Note: To unblock, use the `DELETE` HTTP request method.
+    case blockedServers
+
    
     //  MARK: – ACTIONS
     // Methods concerning performing actions on accounts.
@@ -101,7 +105,7 @@ public enum Endpoint {
 
     /// Sets a private note on a user.
     case noteOnAccount(id: String)
-    
+
     // MARK: - COMMUNITY INFORMATION
     // Methods pertaining to information about the current instance (community) they reside in.
     
@@ -247,6 +251,8 @@ public enum Endpoint {
             return "/api/v1/tags/\(tag)/unfollow"
         case .followedTags:
             return "/api/v1/followed_tags"
+        case .blockedServers:
+            return "/api/v1/domain_blocks"
         default: return ""
         }
     }

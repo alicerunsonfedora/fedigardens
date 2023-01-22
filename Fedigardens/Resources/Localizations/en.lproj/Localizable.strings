@@ -163,6 +163,7 @@
 "settings.signout.title" = "Are you sure you want to sign out?";
 "settings.signout.detail" = "You'll need to sign in again and reauthorize Fedigardens to access your Mastodon account.";
 "settings.signout.cancel" = "Cancel";
+"settings.section.safety" = "Health and Safety";
 
 // MARK: - Settings: Composer -
 "settings.section.author" = "Composing";
@@ -188,6 +189,16 @@
 "settings.interventions.grain" = "Intervene when I do the following: ";
 "settings.interventions.refresh" = "Refresh Timeline";
 "settings.interventions.fetch" = "Fetch More Statuses";
+
+// MARK: - Settings: Blocklists -
+"settings.section.blocklist" = "Blocked Instances";
+"settings.blocklist.blockaction" = "Add Blocked Instance";
+"settings.blocklist.blockmessage" = "Enter the instance domain to block. Posts originating from this instance will not be displayed in your timelines.";
+"settings.blocklist.block" = "Block";
+"settings.blocklist.empty" = "No Blocked Instances";
+"settings.blocklist.emptydetail" = "To add an instance to your blocklist, tap the 'Add Blocked Instance' button in the toolbar.";
+"settings.blocklist.admin" = "Your instance administrator may also include instance-wide federation blocks. Consult your administrator for more information.";
+"settings.blocklist.fetcherror" = "Couldn't Get Blocked Instances";
 
 // MARK: - Acknowledgements
 "acknowledge.title" = "Acknowledgements";
