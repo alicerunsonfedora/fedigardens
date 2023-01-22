@@ -36,7 +36,6 @@ class TimelineSplitViewModel: ObservableObject {
     @Published var dummyTimeline: [Status] = MockData.timeline!
     @Published var state: LayoutState = .initial
     @Published var scope: TimelineType = .scopedTimeline(scope: .home, local: false)
-    @Published var interventionTimeout: Date?
     @Published var displayOneSecNotInstalledWarning = false
 
     init(scope: TimelineType) {
@@ -55,7 +54,6 @@ class TimelineSplitViewModel: ObservableObject {
     func loadTimeline(
         forcefully userInitiated: Bool = false,
         policy: ReloadPolicy,
-        intervening timeout: TimeInterval? = nil,
         using handler: InterventionHandler? = nil
     ) async -> LayoutState {
         if !userInitiated, timelineData.isEmpty == false {
