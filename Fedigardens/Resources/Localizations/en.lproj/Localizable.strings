@@ -33,8 +33,19 @@
 "endpoint.mentions" = "Interactions";
 "endpoint.selfposts" = "Your Statuses";
 "endpoint.trending" = "Trending Tags";
+"endpoint.followedtags" = "Subscribed Tags";
 "endpoint.lists" = "Lists";
 "endpoint.saved" = "Bookmarked";
+
+// MARK: - Sidebar Actions
+"sidebar.followedtags.action" = "New Subscribed Tag…";
+"sidebar.list.action" = "New List…";
+
+// MARK: - Subscribed Tags
+"followedtags.alert.title" = "Subscribe To Tag";
+"followedtags.alert.detail" = "Enter the hashtag without the hashtag sign to follow statuses tagged with it in your timeline. You can also view them in Subscribed Tags.";
+"followedtags.subscribeaction" = "Subscribe";
+"followedtags.textfield.placeholder" = "hashtag";
 
 // MARK: - Authentication
 "auth.welcome" = "Welcome to";

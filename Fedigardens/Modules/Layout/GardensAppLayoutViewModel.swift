@@ -20,8 +20,11 @@ class GardensAppLayoutViewModel: ObservableObject {
     @Published var dummyTimeline: [Status] = MockData.timeline!
     @Published var currentPage: GardensAppPage? = .forYou
     @Published var selectedStatus: Status?
+    @Published var subscribedTags: [Tag] = []
     @Published var tags: [Tag] = []
     @Published var lists: [MastodonList] = []
+    @Published var shouldShowSubscriptionAlert = false
+    @Published var subscribedTagRequestedText = ""
 
     init() {}
 
@@ -35,6 +38,16 @@ class GardensAppLayoutViewModel: ObservableObject {
         }
     }
 
+    func fetchSubscriptions() async {
+        let response: Alice.Response<[Tag]> = await Alice.shared.request(.get, for: .followedTags)
+        switch response {
+        case .success(let subscriptions):
+            DispatchQueue.main.async { self.subscribedTags = subscriptions }
+        case .failure(let error):
+            print("Followed tag fetch error: \(error.localizedDescription)")
+        }
+    }
+
     func fetchLists() async {
         let response: Alice.Response<[MastodonList]> = await Alice.shared.request(.get, for: .lists)
         switch response {
@@ -42,6 +55,41 @@ class GardensAppLayoutViewModel: ObservableObject {
             DispatchQueue.main.async { self.lists = lists }
         case .failure(let error):
             print("List fetch error: \(error.localizedDescription)")
+        }
+    }
+
+    func subscribeToCurrentTag() async {
+        let response: Alice.Response<Tag> = await Alice.shared.request(
+            .post,
+            for: .followTag(id: subscribedTagRequestedText)
+        )
+        switch response {
+        case .success(let newTag):
+            DispatchQueue.main.async {
+                self.subscribedTags.append(newTag)
+                self.subscribedTagRequestedText = ""
+            }
+        case .failure(let error):
+            print("Follow tag error: \(error.localizedDescription)")
+        }
+    }
+
+    func deleteSubscribedTags(at offsets: IndexSet) {
+        offsets.forEach { offset in
+            let tag = subscribedTags.remove(at: offset)
+            Task {
+                await self.unsubscribeToTag(named: tag.name)
+            }
+        }
+    }
+
+    private func unsubscribeToTag(named name: String) async {
+        let response: Alice.Response<EmptyNode> = await Alice.shared.request(.post, for: .unfollowTag(id: name))
+        switch response {
+        case .success:
+            break
+        case .failure(let error):
+            print("Unfollow tag error: \(error.localizedDescription)")
         }
     }
 

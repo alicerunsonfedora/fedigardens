@@ -157,6 +157,18 @@
 		95A1BFA6297464B0002C88B6 /* ProfileSheetRecentActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BFA5297464B0002C88B6 /* ProfileSheetRecentActivityView.swift */; };
 		95A1BFA8297465EE002C88B6 /* ProfileSheetHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BFA7297465EE002C88B6 /* ProfileSheetHeaderView.swift */; };
 		95A1BFAB2974D2C5002C88B6 /* StatusDetailProfileMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BFAA2974D2C5002C88B6 /* StatusDetailProfileMenu.swift */; };
+		95A36E85297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E84297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift */; };
+		95A36E86297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E84297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift */; };
+		95A36E88297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E87297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift */; };
+		95A36E89297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E87297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift */; };
+		95A36E8B297CE39C00DA11D3 /* GardensAppSidebarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E8A297CE39C00DA11D3 /* GardensAppSidebarContent.swift */; };
+		95A36E8C297CE39C00DA11D3 /* GardensAppSidebarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E8A297CE39C00DA11D3 /* GardensAppSidebarContent.swift */; };
+		95A36E8E297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E8D297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift */; };
+		95A36E8F297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E8D297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift */; };
+		95A36E93297CEDB900DA11D3 /* GardensAppCompactMorePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E92297CEDB900DA11D3 /* GardensAppCompactMorePage.swift */; };
+		95A36E94297CEDB900DA11D3 /* GardensAppCompactMorePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E92297CEDB900DA11D3 /* GardensAppCompactMorePage.swift */; };
+		95A36E96297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E95297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift */; };
+		95A36E97297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E95297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift */; };
 		95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */; };
 		95ADADE427B6A6BB0011FD83 /* String+AttributedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */; };
 		95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE727B6A7F10011FD83 /* Statuses.swift */; };
@@ -284,6 +296,12 @@
 		95A1BFA5297464B0002C88B6 /* ProfileSheetRecentActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetRecentActivityView.swift; sourceTree = "<group>"; };
 		95A1BFA7297465EE002C88B6 /* ProfileSheetHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetHeaderView.swift; sourceTree = "<group>"; };
 		95A1BFAA2974D2C5002C88B6 /* StatusDetailProfileMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailProfileMenu.swift; sourceTree = "<group>"; };
+		95A36E84297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppWideCommonDestinationsGroup.swift; sourceTree = "<group>"; };
+		95A36E87297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppTrendingTagsDestination.swift; sourceTree = "<group>"; };
+		95A36E8A297CE39C00DA11D3 /* GardensAppSidebarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppSidebarContent.swift; sourceTree = "<group>"; };
+		95A36E8D297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppSubscribedTagsDestination.swift; sourceTree = "<group>"; };
+		95A36E92297CEDB900DA11D3 /* GardensAppCompactMorePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppCompactMorePage.swift; sourceTree = "<group>"; };
+		95A36E95297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppCompactSidebarContent.swift; sourceTree = "<group>"; };
 		95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusQuickGlanceView.swift; sourceTree = "<group>"; };
 		95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AttributedContent.swift"; sourceTree = "<group>"; };
 		95ADADE727B6A7F10011FD83 /* Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
@@ -626,6 +644,26 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		95A36E90297CED8B00DA11D3 /* Wide Layout */ = {
+			isa = PBXGroup;
+			children = (
+				95A36E8A297CE39C00DA11D3 /* GardensAppSidebarContent.swift */,
+				95A36E84297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift */,
+				95ADAE1E27B6DC120011FD83 /* GardensAppWideLayout.swift */,
+			);
+			path = "Wide Layout";
+			sourceTree = "<group>";
+		};
+		95A36E91297CED9100DA11D3 /* Compact Layout */ = {
+			isa = PBXGroup;
+			children = (
+				952A06E029691B95008340A4 /* GardensAppCompactLayout.swift */,
+				95A36E92297CEDB900DA11D3 /* GardensAppCompactMorePage.swift */,
+				95A36E95297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift */,
+			);
+			path = "Compact Layout";
+			sourceTree = "<group>";
+		};
 		95ADADE227B6A6AB0011FD83 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -684,14 +722,16 @@
 		95ADAE1D27B6DB830011FD83 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				95A36E91297CED9100DA11D3 /* Compact Layout */,
+				95A36E90297CED8B00DA11D3 /* Wide Layout */,
 				958E2095296A0671008AE63F /* GardensPageLink.swift */,
 				952A06E229691C3D008340A4 /* GardensAppPage.swift */,
-				952A06E029691B95008340A4 /* GardensAppCompactLayout.swift */,
-				95ADAE1E27B6DC120011FD83 /* GardensAppWideLayout.swift */,
 				95009EF3295E780A00F32F85 /* GardensAppLayoutViewModel.swift */,
 				9567141E2958CD9600BFF76A /* Status Detail View */,
 				9567141C2958CD5600BFF76A /* Status Navigation List */,
 				9567141B2958CD4C00BFF76A /* Timeline Split View */,
+				95A36E87297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift */,
+				95A36E8D297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -903,6 +943,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95A36E93297CEDB900DA11D3 /* GardensAppCompactMorePage.swift in Sources */,
 				952A06E529692E95008340A4 /* UIDevice+Model.swift in Sources */,
 				953BC7C52957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */,
 				95A1BF95297327B3002C88B6 /* String+Localizations.swift in Sources */,
@@ -921,7 +962,9 @@
 				958E20922969F9FC008AE63F /* InteractionsListViewModel.swift in Sources */,
 				95801D33297C9B6E00FE8D83 /* Visibility+Localization.swift in Sources */,
 				95CEFDEB295A031E00EEE96C /* Pip.swift in Sources */,
+				95A36E96297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */,
 				956714182958C7BF00BFF76A /* UserProfileEnvironmentKey.swift in Sources */,
+				95A36E85297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift in Sources */,
 				95369B5927B82D4100F39531 /* TimelineSplitView.swift in Sources */,
 				956714142958B69D00BFF76A /* StatusDisclosedContent.swift in Sources */,
 				95E4531F27D7B49C00572758 /* AuthenticationBrowserWindow.swift in Sources */,
@@ -929,6 +972,7 @@
 				95B368A12965106C00336284 /* URL+CustomInits.swift in Sources */,
 				95ADAE0A27B6B49A0011FD83 /* JSONDecoder+Resources.swift in Sources */,
 				95D2704E27C6F5A200805262 /* MessagingListCellView.swift in Sources */,
+				95A36E88297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift in Sources */,
 				95ADAE1227B6CDC50011FD83 /* DateFormatter+Mastodon.swift in Sources */,
 				957AF85229592DD1000370E6 /* AuthoringContext.swift in Sources */,
 				958E20902969F7F2008AE63F /* InteractionsListView.swift in Sources */,
@@ -948,6 +992,8 @@
 				958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */,
 				9594DE3B27C927820036325A /* Conversation+Authors.swift in Sources */,
 				958E2096296A0671008AE63F /* GardensPageLink.swift in Sources */,
+				95A36E8B297CE39C00DA11D3 /* GardensAppSidebarContent.swift in Sources */,
+				95A36E8E297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift in Sources */,
 				95801D1F297C6B3800FE8D83 /* SettingsAuthorPage.swift in Sources */,
 				956714252958D2D300BFF76A /* StatusDetailToolbar.swift in Sources */,
 				95645BD227C5546E00FB3426 /* UserDefaults+Settings.swift in Sources */,
@@ -991,9 +1037,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95A36E8F297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift in Sources */,
+				95A36E86297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift in Sources */,
 				95801D45297CC0F200FE8D83 /* AuthenticationBrowserWindow.swift in Sources */,
 				95801D65297CC14200FE8D83 /* ProfileSheetToolbar.swift in Sources */,
 				95801D29297C753C00FE8D83 /* Emojis.swift in Sources */,
+				95A36E94297CEDB900DA11D3 /* GardensAppCompactMorePage.swift in Sources */,
 				95801D53297CC10700FE8D83 /* ContentView.swift in Sources */,
 				953BC7CF2957FD94005C7F2A /* StatusMediaDrawer.swift in Sources */,
 				957AF85329592DD1000370E6 /* AuthoringContext.swift in Sources */,
@@ -1004,6 +1053,7 @@
 				95801D3B297CC0A000FE8D83 /* SettingsAcknowledgementList.swift in Sources */,
 				95801D2E297C852100FE8D83 /* NSTextCheckingResult+Substring.swift in Sources */,
 				95801D40297CC0DA00FE8D83 /* GardensComposeButton.swift in Sources */,
+				95A36E8C297CE39C00DA11D3 /* GardensAppSidebarContent.swift in Sources */,
 				95801D3D297CC0A500FE8D83 /* Label+SettingsStyle.swift in Sources */,
 				95801D49297CC10700FE8D83 /* AccountImage.swift in Sources */,
 				95801D5A297CC13400FE8D83 /* TimelineSplitView.swift in Sources */,
@@ -1030,6 +1080,7 @@
 				95801D44297CC0F200FE8D83 /* AuthenticationViewModel.swift in Sources */,
 				95801D5B297CC13400FE8D83 /* StatusDetailToolbar.swift in Sources */,
 				95801D61297CC13C00FE8D83 /* MessagingPresentationView.swift in Sources */,
+				95A36E97297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */,
 				95801D4D297CC10700FE8D83 /* GardensAppPage.swift in Sources */,
 				95801D68297CC14200FE8D83 /* ProfileSheetViewModel.swift in Sources */,
 				95801D34297C9B6E00FE8D83 /* Visibility+Localization.swift in Sources */,
@@ -1041,6 +1092,7 @@
 				95801D63297CC13C00FE8D83 /* MessagingDetailView.swift in Sources */,
 				95801D30297C861700FE8D83 /* URL+CustomInits.swift in Sources */,
 				95801D52297CC10700FE8D83 /* NotificationListCellView.swift in Sources */,
+				95A36E89297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift in Sources */,
 				95801D5D297CC13400FE8D83 /* StatusDetailView.swift in Sources */,
 				95801D62297CC13C00FE8D83 /* MessagingDetailViewModel.swift in Sources */,
 				9594DE3D27C927820036325A /* Conversation+Authors.swift in Sources */,
