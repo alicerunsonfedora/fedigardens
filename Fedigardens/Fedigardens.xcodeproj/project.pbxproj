@@ -21,6 +21,8 @@
 		9537C6D4297DB8C30039F3C4 /* SettingsBlocklistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6D2297DB8C30039F3C4 /* SettingsBlocklistPage.swift */; };
 		9537C6D6297DBB510039F3C4 /* SettingsBlocklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6D5297DBB510039F3C4 /* SettingsBlocklistViewModel.swift */; };
 		9537C6D7297DBB510039F3C4 /* SettingsBlocklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6D5297DBB510039F3C4 /* SettingsBlocklistViewModel.swift */; };
+		9537C6D9297DC71C0039F3C4 /* SettingsReadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6D8297DC71C0039F3C4 /* SettingsReadingPage.swift */; };
+		9537C6DA297DC71C0039F3C4 /* SettingsReadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6D8297DC71C0039F3C4 /* SettingsReadingPage.swift */; };
 		953BC7BF2957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */; };
 		953BC7C02957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */; };
 		953BC7C52957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7C42957C73E005C7F2A /* StatusDetailViewModel.swift */; };
@@ -241,6 +243,7 @@
 		95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutStateRepresentable.swift; sourceTree = "<group>"; };
 		9537C6D2297DB8C30039F3C4 /* SettingsBlocklistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBlocklistPage.swift; sourceTree = "<group>"; };
 		9537C6D5297DBB510039F3C4 /* SettingsBlocklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBlocklistViewModel.swift; sourceTree = "<group>"; };
+		9537C6D8297DC71C0039F3C4 /* SettingsReadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReadingPage.swift; sourceTree = "<group>"; };
 		953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Status+URIToUrl.swift"; sourceTree = "<group>"; };
 		953BC7C42957C73E005C7F2A /* StatusDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailViewModel.swift; sourceTree = "<group>"; };
 		953BC7C72957E156005C7F2A /* RecursiveNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveNavigationView.swift; sourceTree = "<group>"; };
@@ -557,6 +560,7 @@
 				95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */,
 				95801D38297CAC8B00FE8D83 /* SettingsAboutPage.swift */,
 				9537C6D2297DB8C30039F3C4 /* SettingsBlocklistPage.swift */,
+				9537C6D8297DC71C0039F3C4 /* SettingsReadingPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -993,6 +997,7 @@
 				9547230627A0094000D1BA89 /* Gardens.swift in Sources */,
 				95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */,
 				95555FBB2960B9F7005BEF45 /* Acknowledgement+License.swift in Sources */,
+				9537C6D9297DC71C0039F3C4 /* SettingsReadingPage.swift in Sources */,
 				9558C7EE29578B59001B30C7 /* AccountImage.swift in Sources */,
 				95801D2F297C859900FE8D83 /* NSTextCheckingResult+Substring.swift in Sources */,
 				953BC7BF2957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */,
@@ -1095,6 +1100,7 @@
 				95A36E97297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */,
 				95801D4D297CC10700FE8D83 /* GardensAppPage.swift in Sources */,
 				95801D68297CC14200FE8D83 /* ProfileSheetViewModel.swift in Sources */,
+				9537C6DA297DC71C0039F3C4 /* SettingsReadingPage.swift in Sources */,
 				95801D34297C9B6E00FE8D83 /* Visibility+Localization.swift in Sources */,
 				95801D2A297C755200FE8D83 /* LayoutStateRepresentable.swift in Sources */,
 				9567141F2958CDAB00BFF76A /* StatusDisclosedContent.swift in Sources */,

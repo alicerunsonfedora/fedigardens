@@ -18,8 +18,6 @@ import Alice
 // MARK: - Settings View
 
 struct SettingsView: View {
-    @AppStorage(.showsStatistics) var showsStatistics: Bool = true
-    @AppStorage(.loadLimit) var loadLimit: Int = 10
     @State private var promptSignOff = false
     @ScaledMetric private var size = 1.0
 
@@ -27,35 +25,20 @@ struct SettingsView: View {
         NavigationStack {
             Form {
                 Section {
-                    Stepper(value: $loadLimit, step: 5) {
-                        Label(
-                            String(format:
-                                    NSLocalizedString("settings.loadlimit.text", comment: "load limit"),
-                                   String(loadLimit)),
-                            systemImage: "tray.and.arrow.down.fill"
-                        )
-                        .labelStyle(.settings(color: .accentColor, size: size))
+                    NavigationLink {
+                        SettingsReadingPage()
+                    } label: {
+                        Label("settings.section.reading", systemImage: "eyeglasses")
+                            .labelStyle(.settings(color: .blue, size: size))
                     }
-                } footer: {
-                    Text("settings.loadlimit.detail")
-                }
-
-                Section {
-                    Toggle(isOn: $showsStatistics) {
-                        Label("settings.show-statistics.title", systemImage: "star.fill")
-                            .labelStyle(.settings(color: .yellow, size: size))
-                    }
-                } footer: {
-                    Text("settings.show-statistics.detail")
-                }
-
-                Section {
                     NavigationLink {
                         SettingsAuthorPage()
                     } label: {
                         Label("settings.section.author", systemImage: "square.and.pencil")
                             .labelStyle(.settings(color: .indigo, size: size))
                     }
+                } header: {
+                    Text("settings.section.core")
                 }
 
                 Section {

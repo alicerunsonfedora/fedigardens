@@ -154,6 +154,9 @@
 
 // MARK: - Settings
 "settings.section.about" = "About";
+"settings.section.reading" = "Viewing";
+"settings.section.safety" = "Health and Safety";
+"settings.section.core" = "Core Experience";
 "settings.show-statistics.title" = "Show Statistics";
 "settings.show-statistics.detail" = "Show the number of favorites and reblogs when viewing a status in detail.";
 "settings.loadlimit.text" = "Fetch Batch Size: %@";
@@ -163,7 +166,6 @@
 "settings.signout.title" = "Are you sure you want to sign out?";
 "settings.signout.detail" = "You'll need to sign in again and reauthorize Fedigardens to access your Mastodon account.";
 "settings.signout.cancel" = "Cancel";
-"settings.section.safety" = "Health and Safety";
 
 // MARK: - Settings: Composer -
 "settings.section.author" = "Composing";

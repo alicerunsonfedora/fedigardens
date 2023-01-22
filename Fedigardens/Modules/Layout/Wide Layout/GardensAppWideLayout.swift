@@ -58,6 +58,7 @@ struct GardensAppWideLayout: View {
                 } label: {
                     Label("Add", systemImage: "plus.circle")
                 }
+                EditButton()
             }
         } content: {
             GardensAppSidebarContent(viewModel: viewModel)

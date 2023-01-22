@@ -61,6 +61,7 @@ struct GardensAppCompactMorePage<Detail: View>: View {
                 } label: {
                     Label("Add", systemImage: "plus.circle")
                 }
+                EditButton()
             }
         } content: {
             GardensAppCompactSidebarContent(viewModel: viewModel)
