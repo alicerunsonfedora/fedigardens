@@ -56,6 +56,7 @@ struct SettingsBlocklistPage: View {
             }
         }
         .navigationTitle("settings.section.blocklist")
+        .navigationBarTitleDisplayMode(.inline)
         .animation(.spring(), value: viewModel.blockedServers)
         .animation(.spring(), value: viewModel.layoutState)
         .onAppear {

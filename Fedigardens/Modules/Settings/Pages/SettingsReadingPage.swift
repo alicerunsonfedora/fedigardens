@@ -41,7 +41,9 @@ struct SettingsReadingPage: View {
                 Text("settings.show-statistics.detail")
             }
 
-        }.navigationTitle("settings.section.reading")
+        }
+        .navigationTitle("settings.section.reading")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
