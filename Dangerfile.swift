@@ -30,8 +30,16 @@ if editedFiles.count > PR_FILE_THRESHOLD {
     suggestsChanges = true
 }
 
+// MARK: - Deleted file count
 if danger.git.deletedFiles.count > PR_FILE_THRESHOLD {
     warn("This PR contains \(danger.git.deletedFiles.count) files that were deleted.")
+    suggestsChanges = true
+}
+
+// MARK: - Changelog update missing
+if editedFiles.count > 1, !editedFiles.contains("CHANGELOG.md") {
+    warn("This PR does not have an update in the CHANGELOG.")
+    markdown("If the changelog doesn't have a section for the latest unreleased version, you may create one.")
     suggestsChanges = true
 }
 
