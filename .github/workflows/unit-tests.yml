@@ -3,6 +3,9 @@ name: Run Unit Tests
 on:
   push:
     branches: [ root, devel ]
+    paths:
+      - 'Fedigardens/**'
+      - 'Packages/**'
   pull_request:
     branches: [ root, devel ]
   workflow_dispatch:
