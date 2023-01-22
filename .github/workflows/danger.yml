@@ -9,7 +9,7 @@ jobs:
     name: Danger
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/realm/swiftlint:5.7-latest
+      image: ghcr.io/realm/swiftlint:latest
 
     steps:
     - name: Checkout
