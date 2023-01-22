@@ -25,17 +25,7 @@ struct GardensAppWideLayout: View {
     var body: some View {
         NavigationSplitView {
             List(selection: $viewModel.currentPage) {
-                Group {
-                    GardensPageLink(page: .forYou)
-                    GardensPageLink(page: .local)
-                    GardensPageLink(page: .public)
-                    GardensPageLink(page: .messages)
-                    GardensPageLink(page: .selfPosts)
-                    GardensPageLink(page: .mentions)
-                    GardensPageLink(page: .saved)
-                    GardensPageLink(page: .settings)
-                }
-
+                GardensAppWideCommonDestinationsGroup()
                 if viewModel.lists.isNotEmpty {
                     Section {
                         ForEach(viewModel.lists) { list in
@@ -61,21 +51,24 @@ struct GardensAppWideLayout: View {
                 }
 
                 if viewModel.tags.isNotEmpty {
-                    Section {
-                        ForEach(viewModel.tags) { tag in
-                            NavigationLink(value: GardensAppPage.trending(id: tag.name)) {
-                                Label(tag.name, systemImage: "tag")
-                            }
-                        }
-                    } header: {
-                        Text(GardensAppPage.trending(id: "0").localizedTitle)
-                    }
+                    GardensAppTrendingTagsDestination(viewModel: viewModel)
                 }
             }
             .navigationTitle("general.appname")
             .listStyle(.sidebar)
+            .toolbar {
+                Menu {
+                    Button {
+                        viewModel.shouldShowSubscriptionAlert.toggle()
+                    } label: {
+                        Label("sidebar.followedtags.action", systemImage: "dot.radiowaves.up.forward")
+                    }
+                } label: {
+                    Label("FUCK", systemImage: "plus.circle")
+                }
+            }
         } content: {
-            sidebarContent
+            GardensAppSidebarContent(viewModel: viewModel)
                 .toolbar {
                     ToolbarItem {
                         GardensComposeButton(style: .new)
@@ -94,85 +87,35 @@ struct GardensAppWideLayout: View {
             }
         }
         .onAppear {
-            Task { await viewModel.fetchSubscriptions() }
-            Task { await viewModel.fetchTags() }
-            Task { await viewModel.fetchLists() }
+            loadSidebar()
         }
         .refreshable {
-            Task { await viewModel.fetchSubscriptions() }
-            Task { await viewModel.fetchTags() }
-            Task { await viewModel.fetchLists() }
+            loadSidebar()
         }
         .sheet(isPresented: $shouldDisplayComposeModal) {
             Text("Hi")
         }
+        .alert("followedtags.alert.title", isPresented: $viewModel.shouldShowSubscriptionAlert) {
+            TextField("followedtags.textfield.placeholder", text: $viewModel.subscribedTagRequestedText)
+            Button {
+                Task { await viewModel.subscribeToCurrentTag() }
+            } label: {
+                Text("followedtags.subscribeaction")
+            }
+            Button(role: .cancel) {
+                viewModel.shouldShowSubscriptionAlert.toggle()
+            } label: {
+                Text("general.cancel")
+            }
+        } message: {
+            Text("followedtags.alert.detail")
+        }
     }
 
-    private var sidebarContent: some View {
-        Group {
-            if let destination = viewModel.currentPage {
-                Group {
-                    switch destination {
-                    case .forYou:
-                        TimelineSplitView(
-                            scope: .scopedTimeline(scope: .home, local: false),
-                            selectedStatus: $viewModel.selectedStatus
-                        )
-                        .navigationTitle(GardensAppPage.forYou.localizedTitle)
-                    case .local:
-                        TimelineSplitView(
-                            scope: .scopedTimeline(scope: .network, local: true),
-                            selectedStatus: $viewModel.selectedStatus
-                        )
-                        .navigationTitle(GardensAppPage.local.localizedTitle)
-                    case .public:
-                        TimelineSplitView(
-                            scope: .scopedTimeline(scope: .network, local: false),
-                            selectedStatus: $viewModel.selectedStatus
-                        )
-                        .navigationTitle(GardensAppPage.public.localizedTitle)
-                    case .messages:
-                        MessagingList()
-                            .navigationTitle(GardensAppPage.messages.localizedTitle)
-                    case .saved:
-                        TimelineSplitView(scope: .saved, selectedStatus: $viewModel.selectedStatus)
-                            .navigationTitle(GardensAppPage.saved.localizedTitle)
-                    case .selfPosts:
-                        TimelineSplitView(
-                            scope: .profile(id: userProfile.id),
-                            selectedStatus: $viewModel.selectedStatus
-                        )
-                        .navigationTitle(GardensAppPage.selfPosts.localizedTitle)
-                    case .mentions:
-                        InteractionsListView(selectedStatus: $viewModel.selectedStatus)
-                            .navigationTitle(GardensAppPage.mentions.localizedTitle)
-                    case .list(let id):
-                        TimelineSplitView(
-                            scope: .scopedTimeline(scope: .list(id: id), local: false),
-                            selectedStatus: $viewModel.selectedStatus
-                        )
-                        .navigationBarTitleDisplayMode(.inline)
-                    case .trending(let id):
-                        TimelineSplitView(
-                            scope: .scopedTimeline(scope: .tag(tag: id), local: false),
-                            selectedStatus: $viewModel.selectedStatus
-                        )
-                        .navigationTitle("#\(id)")
-                    case .settings:
-                        SettingsView()
-                    default:
-                        EmptyView()
-                    }
-                }
-            } else {
-                VStack(spacing: 8) {
-                    Image(systemName: "list.bullet.rectangle")
-                    Text("general.nopage")
-                }
-                .font(.system(.largeTitle, design: .rounded))
-                .foregroundColor(.secondary)
-            }
-        }
+    private func loadSidebar() {
+        Task { await viewModel.fetchSubscriptions() }
+        Task { await viewModel.fetchTags() }
+        Task { await viewModel.fetchLists() }
     }
 }
 

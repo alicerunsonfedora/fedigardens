@@ -23,6 +23,8 @@ class GardensAppLayoutViewModel: ObservableObject {
     @Published var subscribedTags: [Tag] = []
     @Published var tags: [Tag] = []
     @Published var lists: [MastodonList] = []
+    @Published var shouldShowSubscriptionAlert = false
+    @Published var subscribedTagRequestedText = ""
 
     init() {}
 
@@ -53,6 +55,22 @@ class GardensAppLayoutViewModel: ObservableObject {
             DispatchQueue.main.async { self.lists = lists }
         case .failure(let error):
             print("List fetch error: \(error.localizedDescription)")
+        }
+    }
+
+    func subscribeToCurrentTag() async {
+        let response: Alice.Response<Tag> = await Alice.shared.request(
+            .post,
+            for: .followTag(id: subscribedTagRequestedText)
+        )
+        switch response {
+        case .success(let newTag):
+            DispatchQueue.main.async {
+                self.subscribedTags.append(newTag)
+                self.subscribedTagRequestedText = ""
+            }
+        case .failure(let error):
+            print("Follow tag error: \(error.localizedDescription)")
         }
     }
 
