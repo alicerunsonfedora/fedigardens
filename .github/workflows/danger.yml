@@ -1,12 +1,12 @@
-name: Run Unit Tests
+name: Danger
 
 on:
   pull_request:
     branches: [ root, devel ]
 
 jobs:
-  test:
-    name: Test
+  danger:
+    name: Danger
     runs-on: macos-latest
 
     steps:
