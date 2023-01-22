@@ -10,6 +10,7 @@
 "general.appname" = "Fedigardens";
 "general.feedback" = "Send Feedback";
 "general.feedbackmenu" = "Send Feedback…";
+"general.bugreport" = "Report a Bug…";
 "general.cancel" = "Cancel";
 "general.togglesidebar" = "Toggle Sidebar";
 "general.status" = "Status";

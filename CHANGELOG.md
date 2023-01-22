@@ -18,6 +18,7 @@ And list your changes under that.
 - Introduces new settings for the composer, including privacy levels for writing various statuses, character limit options, and mentioning the original author when creating a quote status.
 - Improves the character counting algorithm in the composer.
 - Adds new blocked servers page to Settings.
+- Adds new "Report a Bug..." link in Settings > About.
 
 ## [1.0-14 (beta)] - 15/1/2023
 

@@ -64,7 +64,7 @@ class TimelineSplitViewModel: ObservableObject {
         let wantsIntervention = UserDefaults.standard.allowsInterventions &&
             (UserDefaults.standard.intervenesOnFetch || UserDefaults.standard.intervenesOnRefresh)
 
-        if userInitiated && wantsIntervention, let timeout, let oneSec = URL.oneSec() {
+        if userInitiated && wantsIntervention, let timeout, let oneSec = URL(destination: .oneSec) {
             guard let past = interventionTimeout else {
                 if await !UIApplication.shared.canOpenURL(oneSec) {
                     DispatchQueue.main.async {

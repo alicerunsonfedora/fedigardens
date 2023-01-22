@@ -40,7 +40,14 @@ struct SettingsAboutPage: View {
                     style: .feedback
                 )
                 .labelStyle(.settings(color: .accentColor, size: size))
+                if let url = URL(destination: .bugs) {
+                    Link(destination: url) {
+                        Label("general.bugreport", systemImage: "ant")
+                            .labelStyle(.settings(color: .red, size: size))
+                    }
+                }
             }
+            .tint(.primary)
         }
         .navigationTitle("settings.section.about")
         .navigationBarTitleDisplayMode(.inline)

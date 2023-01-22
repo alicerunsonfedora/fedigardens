@@ -15,8 +15,35 @@
 import Foundation
 
 extension URL {
+    enum AppDestination {
+        case oneSec
+        case bugs
+        case github
+        case orion(String)
+
+        private var ghLink: String { "https://github.com/alicerunsonfedora/fedigardens" }
+
+        var absoluteString: String {
+            switch self {
+            case .oneSec:
+                return "onesec://reintervene?appId=fedigardens"
+            case .github:
+                return ghLink
+            case .bugs:
+                return ghLink + "/issues/new?assignees=alicerunsonfedora&labels=Bug&template=bug_report.md"
+            case .orion(let realURL):
+                return "orion://open-url?url=" + realURL
+            }
+        }
+    }
+
     static let schemeWithAuthorityRegex = /[a-zA-Z0-9\_\-]+\:\/\//
 
+    init?(destination: AppDestination) {
+        self.init(string: destination.absoluteString)
+    }
+
+    @available(*, deprecated, message: "Use URL.init(destination:) instead.")
     static func oneSec() -> URL? {
         return URL(string: "onesec://reintervene?appId=fedigardens")
     }
