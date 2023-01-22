@@ -25,16 +25,18 @@ struct GardensAppWideLayout: View {
     var body: some View {
         NavigationSplitView {
             List(selection: $viewModel.currentPage) {
-                GardensPageLink(page: .forYou)
-                GardensPageLink(page: .local)
-                GardensPageLink(page: .public)
-                GardensPageLink(page: .messages)
-                GardensPageLink(page: .selfPosts)
-                GardensPageLink(page: .mentions)
-                GardensPageLink(page: .saved)
-                GardensPageLink(page: .settings)
+                Group {
+                    GardensPageLink(page: .forYou)
+                    GardensPageLink(page: .local)
+                    GardensPageLink(page: .public)
+                    GardensPageLink(page: .messages)
+                    GardensPageLink(page: .selfPosts)
+                    GardensPageLink(page: .mentions)
+                    GardensPageLink(page: .saved)
+                    GardensPageLink(page: .settings)
+                }
 
-                if !viewModel.lists.isEmpty {
+                if viewModel.lists.isNotEmpty {
                     Section {
                         ForEach(viewModel.lists) { list in
                             NavigationLink(value: GardensAppPage.list(id: list.id)) {
@@ -46,7 +48,19 @@ struct GardensAppWideLayout: View {
                     }
                 }
 
-                if !viewModel.tags.isEmpty {
+                if viewModel.subscribedTags.isNotEmpty {
+                    Section {
+                        ForEach(viewModel.subscribedTags) { tag in
+                            NavigationLink(value: GardensAppPage.trending(id: tag.name)) {
+                                Label(tag.name, systemImage: "dot.radiowaves.up.forward")
+                            }
+                        }
+                    } header: {
+                        Text("endpoint.followedtags")
+                    }
+                }
+
+                if viewModel.tags.isNotEmpty {
                     Section {
                         ForEach(viewModel.tags) { tag in
                             NavigationLink(value: GardensAppPage.trending(id: tag.name)) {
@@ -80,6 +94,12 @@ struct GardensAppWideLayout: View {
             }
         }
         .onAppear {
+            Task { await viewModel.fetchSubscriptions() }
+            Task { await viewModel.fetchTags() }
+            Task { await viewModel.fetchLists() }
+        }
+        .refreshable {
+            Task { await viewModel.fetchSubscriptions() }
             Task { await viewModel.fetchTags() }
             Task { await viewModel.fetchLists() }
         }

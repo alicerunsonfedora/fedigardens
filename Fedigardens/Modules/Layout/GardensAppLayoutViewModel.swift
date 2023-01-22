@@ -20,6 +20,7 @@ class GardensAppLayoutViewModel: ObservableObject {
     @Published var dummyTimeline: [Status] = MockData.timeline!
     @Published var currentPage: GardensAppPage? = .forYou
     @Published var selectedStatus: Status?
+    @Published var subscribedTags: [Tag] = []
     @Published var tags: [Tag] = []
     @Published var lists: [MastodonList] = []
 
@@ -32,6 +33,16 @@ class GardensAppLayoutViewModel: ObservableObject {
             DispatchQueue.main.async { self.tags = tags }
         case .failure(let error):
             print("Tag fetch error: \(error.localizedDescription)")
+        }
+    }
+
+    func fetchSubscriptions() async {
+        let response: Alice.Response<[Tag]> = await Alice.shared.request(.get, for: .followedTags)
+        switch response {
+        case .success(let subscriptions):
+            DispatchQueue.main.async { self.subscribedTags = subscriptions }
+        case .failure(let error):
+            print("Followed tag fetch error: \(error.localizedDescription)")
         }
     }
 

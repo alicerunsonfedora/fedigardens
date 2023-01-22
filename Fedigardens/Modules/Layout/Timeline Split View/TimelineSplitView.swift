@@ -101,7 +101,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                 state = await model.loadTimeline(
                     forcefully: true,
                     policy: .refreshEntireContents,
-                    intervening: interventionAuthorzation.allowedTimeInterval
+                    intervening: nil
                 )
             }
         }

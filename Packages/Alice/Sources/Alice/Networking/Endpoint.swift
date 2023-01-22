@@ -25,7 +25,10 @@ public enum Endpoint {
     /// Confirm that the app's OAuth2 credentials work.
     case verifyAppCredentials
 
-    /// Displays an authorization form to the user. If approved, it will create and return an authorization code, then redirect to the desired redirect_uri, or show the authorization code if urn:ietf:wg:oauth:2.0:oob was requested. The authorization code can be used while requesting a token to obtain access to user-level methods.
+    /// Displays an authorization form to the user. If approved, it will create and return an authorization
+    /// code, then redirect to the desired redirect\_uri, or show the authorization code if
+    /// `urn:ietf:wg:oauth:2.0:oob` was requested. The authorization code can be used while requesting a
+    /// token to obtain access to user-level methods.
     case authorizeUser
 
     /// Obtain or revoke an access token, to be used during API calls that are not public.
@@ -39,7 +42,9 @@ public enum Endpoint {
     //  MARK: – CREDENTIALS
     // Methods concerning working with an account's credentials
 
-    /// Creates a user and account records. Returns an account access token for the app that initiated the request. The app should save this token for later, and should wait for the user to confirm their account by clicking a link in their email inbox.
+    /// Creates a user and account records. Returns an account access token for the app that initiated the
+    /// request. The app should save this token for later, and should wait for the user to confirm their
+    /// account by clicking a link in their email inbox.
     case registerAccount
 
     /// Test the token of an account works.
@@ -143,6 +148,12 @@ public enum Endpoint {
     /// The user's saved statuses.
     case bookmarks
 
+    /// Retrieves the hashtags a user is following.
+    case followedTags
+
+    /// Follow or unfollow tags, respectively.
+    case followTag(id: String), unfollowTag(id: String)
+
     // MARK: - ACTIONS
     // Methods pertaining to actions that can be performed on statuses.
 
@@ -230,6 +241,12 @@ public enum Endpoint {
             return "/api/v1/accounts/\(accountId)/block"
         case .unblockAccount(let accountId):
             return "/api/v1/accounts/\(accountId)/unblock"
+        case .followTag(let tag):
+            return "/api/v1/tags/\(tag)/follow"
+        case .unfollowTag(let tag):
+            return "/api/v1/tags/\(tag)/unfollow"
+        case .followedTags:
+            return "/api/v1/followed_tags"
         default: return ""
         }
     }
