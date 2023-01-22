@@ -97,7 +97,7 @@ struct AuthorView: View {
                 } label: {
                     Label("general.cancel", systemImage: "xmark")
                 }
-                .keyboardShortcut(.cancelAction)
+                .keyboardShortcut(.init(.escape, modifiers: .command))
                 .labelStyle(.titleOnly)
             }
             ToolbarItem(placement: .confirmationAction) {

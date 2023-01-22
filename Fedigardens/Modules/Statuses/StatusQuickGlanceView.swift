@@ -20,15 +20,15 @@ struct StatusQuickGlanceView: View {
 
     var body: some View {
         HStack {
-            if status.bookmarked == true {
+            if status.bookmarked == true || status.reblog?.bookmarked == true {
                 Image(systemName: "bookmark.fill")
                     .foregroundColor(.indigo)
             }
-            if status.favourited == true {
+            if status.favourited == true || status.reblog?.favourited == true {
                 Image(systemName: "star.fill")
                     .foregroundColor(.yellow)
             }
-            if status.reblogged == true {
+            if status.reblogged == true || status.reblog?.reblogged == true {
                 Image(systemName: "arrow.triangle.2.circlepath.circle.fill")
                     .foregroundColor(.blue)
             }
