@@ -12,7 +12,7 @@ import Foundation
  
  Posts can be restricted to a certain selection of people or used as a direct message.
  */
-public enum Visibility: String, Codable {
+public enum Visibility: String, Codable, CaseIterable {
     /// When a post is meant for everyone to see.
     case `public`
 

@@ -29,9 +29,3 @@ extension Visibility {
         }
     }
 }
-
-extension Visibility: CaseIterable {
-    public static var allCases: [Visibility] {
-        [.public, .unlisted, .private, .direct]
-    }
-}
