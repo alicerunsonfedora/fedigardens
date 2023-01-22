@@ -74,4 +74,23 @@ class GardensAppLayoutViewModel: ObservableObject {
         }
     }
 
+    func deleteSubscribedTags(at offsets: IndexSet) {
+        offsets.forEach { offset in
+            let tag = subscribedTags.remove(at: offset)
+            Task {
+                await self.unsubscribeToTag(named: tag.name)
+            }
+        }
+    }
+
+    private func unsubscribeToTag(named name: String) async {
+        let response: Alice.Response<EmptyNode> = await Alice.shared.request(.post, for: .unfollowTag(id: name))
+        switch response {
+        case .success:
+            break
+        case .failure(let error):
+            print("Unfollow tag error: \(error.localizedDescription)")
+        }
+    }
+
 }

@@ -163,6 +163,8 @@
 		95A36E89297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E87297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift */; };
 		95A36E8B297CE39C00DA11D3 /* GardensAppSidebarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E8A297CE39C00DA11D3 /* GardensAppSidebarContent.swift */; };
 		95A36E8C297CE39C00DA11D3 /* GardensAppSidebarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E8A297CE39C00DA11D3 /* GardensAppSidebarContent.swift */; };
+		95A36E8E297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E8D297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift */; };
+		95A36E8F297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E8D297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift */; };
 		95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */; };
 		95ADADE427B6A6BB0011FD83 /* String+AttributedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */; };
 		95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE727B6A7F10011FD83 /* Statuses.swift */; };
@@ -293,6 +295,7 @@
 		95A36E84297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppWideCommonDestinationsGroup.swift; sourceTree = "<group>"; };
 		95A36E87297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppTrendingTagsDestination.swift; sourceTree = "<group>"; };
 		95A36E8A297CE39C00DA11D3 /* GardensAppSidebarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppSidebarContent.swift; sourceTree = "<group>"; };
+		95A36E8D297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppSubscribedTagsDestination.swift; sourceTree = "<group>"; };
 		95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusQuickGlanceView.swift; sourceTree = "<group>"; };
 		95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AttributedContent.swift"; sourceTree = "<group>"; };
 		95ADADE727B6A7F10011FD83 /* Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
@@ -704,6 +707,7 @@
 				95A36E84297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift */,
 				95A36E87297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift */,
 				95A36E8A297CE39C00DA11D3 /* GardensAppSidebarContent.swift */,
+				95A36E8D297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift */,
 			);
 			path = Layout;
 			sourceTree = "<group>";
@@ -963,6 +967,7 @@
 				9594DE3B27C927820036325A /* Conversation+Authors.swift in Sources */,
 				958E2096296A0671008AE63F /* GardensPageLink.swift in Sources */,
 				95A36E8B297CE39C00DA11D3 /* GardensAppSidebarContent.swift in Sources */,
+				95A36E8E297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift in Sources */,
 				95801D1F297C6B3800FE8D83 /* SettingsAuthorPage.swift in Sources */,
 				956714252958D2D300BFF76A /* StatusDetailToolbar.swift in Sources */,
 				95645BD227C5546E00FB3426 /* UserDefaults+Settings.swift in Sources */,
@@ -1006,6 +1011,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95A36E8F297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift in Sources */,
 				95A36E86297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift in Sources */,
 				95801D45297CC0F200FE8D83 /* AuthenticationBrowserWindow.swift in Sources */,
 				95801D65297CC14200FE8D83 /* ProfileSheetToolbar.swift in Sources */,

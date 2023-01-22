@@ -39,23 +39,15 @@ struct GardensAppWideLayout: View {
                 }
 
                 if viewModel.subscribedTags.isNotEmpty {
-                    Section {
-                        ForEach(viewModel.subscribedTags) { tag in
-                            NavigationLink(value: GardensAppPage.trending(id: tag.name)) {
-                                Label(tag.name, systemImage: "dot.radiowaves.up.forward")
-                            }
-                        }
-                    } header: {
-                        Text("endpoint.followedtags")
-                    }
+                    GardensAppSubscribedTagsDestination(viewModel: viewModel)
                 }
 
                 if viewModel.tags.isNotEmpty {
                     GardensAppTrendingTagsDestination(viewModel: viewModel)
                 }
             }
-            .navigationTitle("general.appname")
             .listStyle(.sidebar)
+            .navigationTitle("general.appname")
             .toolbar {
                 Menu {
                     Button {

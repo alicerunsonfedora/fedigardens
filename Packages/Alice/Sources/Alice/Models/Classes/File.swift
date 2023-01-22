@@ -7,4 +7,4 @@
 
 import Foundation
 
-struct EmptyNode: Decodable {}
+public struct EmptyNode: Decodable {}
