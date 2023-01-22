@@ -61,23 +61,20 @@ class TimelineSplitViewModel: ObservableObject {
         if !userInitiated, timelineData.isEmpty == false {
             return .loaded
         }
-
-        let wantsIntervention = UserDefaults.standard.allowsInterventions &&
-            (UserDefaults.standard.intervenesOnFetch || UserDefaults.standard.intervenesOnRefresh)
-
-        if userInitiated && wantsIntervention {
-            let eventualState = await handler?.startIntervention {
+        let expectedMechanism: InterventionAllowedMechanisms = policy == .refreshEntireContents ? .refresh : .fetchMore
+        if userInitiated, let handler, handler.allowedMechanisms.contains(expectedMechanism) {
+            let eventualState = await handler.startIntervention {
                 DispatchQueue.main.async {
                     self.displayOneSecNotInstalledWarning.toggle()
                 }
             }
-            return eventualState ?? .loaded
+            return eventualState
         }
 
         var callInLocalScope = false
         if case .scopedTimeline(_, let local) = scope { callInLocalScope = local }
 
-        let response = await callChica(local: callInLocalScope, policy: policy)
+        let response = await callAlice(local: callInLocalScope, policy: policy)
         switch response {
         case .success(let statuses):
             insertStatuses(statuses: statuses, with: policy)
@@ -88,7 +85,7 @@ class TimelineSplitViewModel: ObservableObject {
         }
     }
 
-    private func callChica(local: Bool, policy: ReloadPolicy) async -> Alice.Response<[Status]> {
+    private func callAlice(local: Bool, policy: ReloadPolicy) async -> Alice.Response<[Status]> {
         return await Alice.shared.request(
             .get,
             for: endpoint(),

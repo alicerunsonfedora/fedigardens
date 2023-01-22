@@ -25,6 +25,8 @@
 		9537C6DA297DC71C0039F3C4 /* SettingsReadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6D8297DC71C0039F3C4 /* SettingsReadingPage.swift */; };
 		9537C6DC297DE7C50039F3C4 /* InterventionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6DB297DE7C50039F3C4 /* InterventionHandler.swift */; };
 		9537C6DD297DE7C50039F3C4 /* InterventionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6DB297DE7C50039F3C4 /* InterventionHandler.swift */; };
+		9537C6DF297DED820039F3C4 /* InterventionAllowedMechanisms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6DE297DED820039F3C4 /* InterventionAllowedMechanisms.swift */; };
+		9537C6E0297DED820039F3C4 /* InterventionAllowedMechanisms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6DE297DED820039F3C4 /* InterventionAllowedMechanisms.swift */; };
 		953BC7BF2957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */; };
 		953BC7C02957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */; };
 		953BC7C52957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7C42957C73E005C7F2A /* StatusDetailViewModel.swift */; };
@@ -247,6 +249,7 @@
 		9537C6D5297DBB510039F3C4 /* SettingsBlocklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBlocklistViewModel.swift; sourceTree = "<group>"; };
 		9537C6D8297DC71C0039F3C4 /* SettingsReadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReadingPage.swift; sourceTree = "<group>"; };
 		9537C6DB297DE7C50039F3C4 /* InterventionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterventionHandler.swift; sourceTree = "<group>"; };
+		9537C6DE297DED820039F3C4 /* InterventionAllowedMechanisms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterventionAllowedMechanisms.swift; sourceTree = "<group>"; };
 		953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Status+URIToUrl.swift"; sourceTree = "<group>"; };
 		953BC7C42957C73E005C7F2A /* StatusDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailViewModel.swift; sourceTree = "<group>"; };
 		953BC7C72957E156005C7F2A /* RecursiveNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveNavigationView.swift; sourceTree = "<group>"; };
@@ -756,6 +759,7 @@
 			children = (
 				95CD3C4C296509470043CDB2 /* InterventionAuthorizationContext.swift */,
 				9537C6DB297DE7C50039F3C4 /* InterventionHandler.swift */,
+				9537C6DE297DED820039F3C4 /* InterventionAllowedMechanisms.swift */,
 			);
 			path = Intervention;
 			sourceTree = "<group>";
@@ -982,6 +986,7 @@
 				95A36E96297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */,
 				956714182958C7BF00BFF76A /* UserProfileEnvironmentKey.swift in Sources */,
 				95A36E85297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift in Sources */,
+				9537C6DF297DED820039F3C4 /* InterventionAllowedMechanisms.swift in Sources */,
 				95369B5927B82D4100F39531 /* TimelineSplitView.swift in Sources */,
 				9537C6DC297DE7C50039F3C4 /* InterventionHandler.swift in Sources */,
 				956714142958B69D00BFF76A /* StatusDisclosedContent.swift in Sources */,
@@ -1137,6 +1142,7 @@
 				95801D57297CC13400FE8D83 /* StatusContextProvider.swift in Sources */,
 				95801D27297C752000FE8D83 /* Bundle+AppVersion.swift in Sources */,
 				95801D3E297CC0B600FE8D83 /* SettingsInterventionPage.swift in Sources */,
+				9537C6E0297DED820039F3C4 /* InterventionAllowedMechanisms.swift in Sources */,
 				953BC7C02957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */,
 				95801D2C297C756F00FE8D83 /* UserDefaults+Settings.swift in Sources */,
 				953BC7C62957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */,

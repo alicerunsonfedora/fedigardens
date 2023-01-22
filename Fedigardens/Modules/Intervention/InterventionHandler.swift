@@ -20,6 +20,10 @@ class InterventionHandler: ObservableObject {
     @Published var lastInterventionTimeoutDate: Date?
     @Published var currentInterventionContext: Context
 
+    var allowedMechanisms: InterventionAllowedMechanisms {
+        InterventionAllowedMechanisms.fromDefaults()
+    }
+
     init(context: InterventionAuthorizationContext = .default) {
         self.currentInterventionContext = context
     }
@@ -30,18 +34,18 @@ class InterventionHandler: ObservableObject {
     }
 
     @discardableResult
-    func startIntervention(error: @escaping () -> Void) async -> LayoutState {
+    func startIntervention(notInstalledErrorHandler: @escaping () -> Void) async -> LayoutState {
         guard let past = lastInterventionTimeoutDate else {
-            return await openOneSecIntervention(error: error)
+            return await callOneSec(error: notInstalledErrorHandler)
         }
         let timeDifference = Date.now.timeIntervalSince(past)
         if timeDifference > currentInterventionContext.allowedTimeInterval {
-            return await openOneSecIntervention(error: error)
+            return await callOneSec(error: notInstalledErrorHandler)
         }
         return .loaded
     }
 
-    private func openOneSecIntervention(error: @escaping () -> Void) async -> LayoutState {
+    private func callOneSec(error: @escaping () -> Void) async -> LayoutState {
         guard let oneSec = URL(destination: .oneSec) else { return .loaded }
         if await !UIApplication.shared.canOpenURL(oneSec) {
             DispatchQueue.main.async {
