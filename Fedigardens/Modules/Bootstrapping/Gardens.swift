@@ -19,16 +19,20 @@ import SwiftUI
 @main
 struct Shout: App {
     @StateObject private var globalStore = GardensViewModel()
+    @StateObject private var interventionHandler = InterventionHandler()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.userProfile, globalStore.userProfile ?? MockData.profile!)
                 .environment(\.interventionAuthorization, globalStore.interventionAuthorization ?? .default)
+                .environmentObject(interventionHandler)
                 .environment(\.customEmojis, globalStore.emojis)
                 .onOpenURL { url in
                     globalStore.checkAuthorizationToken(from: url)
-                    globalStore.createInterventionContext(from: url)
+                    if let newContext = globalStore.createInterventionContext(from: url) {
+                        interventionHandler.assignNewContext(newContext)
+                    }
                 }
                 .onAppear {
                     Alice.shared.setRequestPrefix(to: "gardens://")

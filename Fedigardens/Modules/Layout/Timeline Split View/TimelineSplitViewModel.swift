@@ -55,7 +55,8 @@ class TimelineSplitViewModel: ObservableObject {
     func loadTimeline(
         forcefully userInitiated: Bool = false,
         policy: ReloadPolicy,
-        intervening timeout: TimeInterval?
+        intervening timeout: TimeInterval? = nil,
+        using handler: InterventionHandler? = nil
     ) async -> LayoutState {
         if !userInitiated, timelineData.isEmpty == false {
             return .loaded
@@ -64,32 +65,13 @@ class TimelineSplitViewModel: ObservableObject {
         let wantsIntervention = UserDefaults.standard.allowsInterventions &&
             (UserDefaults.standard.intervenesOnFetch || UserDefaults.standard.intervenesOnRefresh)
 
-        if userInitiated && wantsIntervention, let timeout, let oneSec = URL(destination: .oneSec) {
-            guard let past = interventionTimeout else {
-                if await !UIApplication.shared.canOpenURL(oneSec) {
-                    DispatchQueue.main.async {
-                        self.displayOneSecNotInstalledWarning.toggle()
-                    }
-                    return .loaded
-                }
+        if userInitiated && wantsIntervention {
+            let eventualState = await handler?.startIntervention {
                 DispatchQueue.main.async {
-                    UIApplication.shared.open(oneSec)
+                    self.displayOneSecNotInstalledWarning.toggle()
                 }
-                return .loaded
             }
-            let timeDifference = Date.now.timeIntervalSince(past)
-            if timeDifference > timeout {
-                if await !UIApplication.shared.canOpenURL(oneSec) {
-                    DispatchQueue.main.async {
-                        self.displayOneSecNotInstalledWarning.toggle()
-                    }
-                    return .loaded
-                }
-                DispatchQueue.main.async {
-                    UIApplication.shared.open(oneSec)
-                }
-                return .loaded
-            }
+            return eventualState ?? .loaded
         }
 
         var callInLocalScope = false
