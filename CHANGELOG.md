@@ -19,6 +19,7 @@ And list your changes under that.
 - Improves the character counting algorithm in the composer.
 - Adds new blocked servers page to Settings.
 - Adds new "Report a Bug..." link in Settings > About.
+- Fixes a bug where interventions were too persistent and ignored the user's preferences in one sec.
 
 ## [1.0-14 (beta)] - 15/1/2023
 
