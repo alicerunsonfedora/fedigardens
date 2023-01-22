@@ -165,6 +165,10 @@
 		95A36E8C297CE39C00DA11D3 /* GardensAppSidebarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E8A297CE39C00DA11D3 /* GardensAppSidebarContent.swift */; };
 		95A36E8E297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E8D297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift */; };
 		95A36E8F297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E8D297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift */; };
+		95A36E93297CEDB900DA11D3 /* GardensAppCompactMorePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E92297CEDB900DA11D3 /* GardensAppCompactMorePage.swift */; };
+		95A36E94297CEDB900DA11D3 /* GardensAppCompactMorePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E92297CEDB900DA11D3 /* GardensAppCompactMorePage.swift */; };
+		95A36E96297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E95297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift */; };
+		95A36E97297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E95297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift */; };
 		95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */; };
 		95ADADE427B6A6BB0011FD83 /* String+AttributedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */; };
 		95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE727B6A7F10011FD83 /* Statuses.swift */; };
@@ -296,6 +300,8 @@
 		95A36E87297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppTrendingTagsDestination.swift; sourceTree = "<group>"; };
 		95A36E8A297CE39C00DA11D3 /* GardensAppSidebarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppSidebarContent.swift; sourceTree = "<group>"; };
 		95A36E8D297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppSubscribedTagsDestination.swift; sourceTree = "<group>"; };
+		95A36E92297CEDB900DA11D3 /* GardensAppCompactMorePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppCompactMorePage.swift; sourceTree = "<group>"; };
+		95A36E95297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppCompactSidebarContent.swift; sourceTree = "<group>"; };
 		95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusQuickGlanceView.swift; sourceTree = "<group>"; };
 		95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+AttributedContent.swift"; sourceTree = "<group>"; };
 		95ADADE727B6A7F10011FD83 /* Statuses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Statuses.swift; sourceTree = "<group>"; };
@@ -638,6 +644,26 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		95A36E90297CED8B00DA11D3 /* Wide Layout */ = {
+			isa = PBXGroup;
+			children = (
+				95A36E8A297CE39C00DA11D3 /* GardensAppSidebarContent.swift */,
+				95A36E84297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift */,
+				95ADAE1E27B6DC120011FD83 /* GardensAppWideLayout.swift */,
+			);
+			path = "Wide Layout";
+			sourceTree = "<group>";
+		};
+		95A36E91297CED9100DA11D3 /* Compact Layout */ = {
+			isa = PBXGroup;
+			children = (
+				952A06E029691B95008340A4 /* GardensAppCompactLayout.swift */,
+				95A36E92297CEDB900DA11D3 /* GardensAppCompactMorePage.swift */,
+				95A36E95297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift */,
+			);
+			path = "Compact Layout";
+			sourceTree = "<group>";
+		};
 		95ADADE227B6A6AB0011FD83 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -696,17 +722,15 @@
 		95ADAE1D27B6DB830011FD83 /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				95A36E91297CED9100DA11D3 /* Compact Layout */,
+				95A36E90297CED8B00DA11D3 /* Wide Layout */,
 				958E2095296A0671008AE63F /* GardensPageLink.swift */,
 				952A06E229691C3D008340A4 /* GardensAppPage.swift */,
-				952A06E029691B95008340A4 /* GardensAppCompactLayout.swift */,
-				95ADAE1E27B6DC120011FD83 /* GardensAppWideLayout.swift */,
 				95009EF3295E780A00F32F85 /* GardensAppLayoutViewModel.swift */,
 				9567141E2958CD9600BFF76A /* Status Detail View */,
 				9567141C2958CD5600BFF76A /* Status Navigation List */,
 				9567141B2958CD4C00BFF76A /* Timeline Split View */,
-				95A36E84297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift */,
 				95A36E87297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift */,
-				95A36E8A297CE39C00DA11D3 /* GardensAppSidebarContent.swift */,
 				95A36E8D297CE97800DA11D3 /* GardensAppSubscribedTagsDestination.swift */,
 			);
 			path = Layout;
@@ -919,6 +943,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95A36E93297CEDB900DA11D3 /* GardensAppCompactMorePage.swift in Sources */,
 				952A06E529692E95008340A4 /* UIDevice+Model.swift in Sources */,
 				953BC7C52957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */,
 				95A1BF95297327B3002C88B6 /* String+Localizations.swift in Sources */,
@@ -937,6 +962,7 @@
 				958E20922969F9FC008AE63F /* InteractionsListViewModel.swift in Sources */,
 				95801D33297C9B6E00FE8D83 /* Visibility+Localization.swift in Sources */,
 				95CEFDEB295A031E00EEE96C /* Pip.swift in Sources */,
+				95A36E96297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */,
 				956714182958C7BF00BFF76A /* UserProfileEnvironmentKey.swift in Sources */,
 				95A36E85297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift in Sources */,
 				95369B5927B82D4100F39531 /* TimelineSplitView.swift in Sources */,
@@ -1016,6 +1042,7 @@
 				95801D45297CC0F200FE8D83 /* AuthenticationBrowserWindow.swift in Sources */,
 				95801D65297CC14200FE8D83 /* ProfileSheetToolbar.swift in Sources */,
 				95801D29297C753C00FE8D83 /* Emojis.swift in Sources */,
+				95A36E94297CEDB900DA11D3 /* GardensAppCompactMorePage.swift in Sources */,
 				95801D53297CC10700FE8D83 /* ContentView.swift in Sources */,
 				953BC7CF2957FD94005C7F2A /* StatusMediaDrawer.swift in Sources */,
 				957AF85329592DD1000370E6 /* AuthoringContext.swift in Sources */,
@@ -1053,6 +1080,7 @@
 				95801D44297CC0F200FE8D83 /* AuthenticationViewModel.swift in Sources */,
 				95801D5B297CC13400FE8D83 /* StatusDetailToolbar.swift in Sources */,
 				95801D61297CC13C00FE8D83 /* MessagingPresentationView.swift in Sources */,
+				95A36E97297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */,
 				95801D4D297CC10700FE8D83 /* GardensAppPage.swift in Sources */,
 				95801D68297CC14200FE8D83 /* ProfileSheetViewModel.swift in Sources */,
 				95801D34297C9B6E00FE8D83 /* Visibility+Localization.swift in Sources */,

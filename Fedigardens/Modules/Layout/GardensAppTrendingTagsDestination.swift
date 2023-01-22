@@ -17,7 +17,7 @@ import Alice
 
 struct GardensAppTrendingTagsDestination: View {
     @StateObject var viewModel: GardensAppLayoutViewModel
-    
+
     var body: some View {
         Section {
             ForEach(viewModel.tags) { tag in

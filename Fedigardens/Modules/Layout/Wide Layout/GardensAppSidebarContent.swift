@@ -18,7 +18,7 @@ import Alice
 struct GardensAppSidebarContent: View {
     @Environment(\.userProfile) var userProfile
     @StateObject var viewModel: GardensAppLayoutViewModel
-    
+
     var body: some View {
         Group {
             if let destination = viewModel.currentPage {

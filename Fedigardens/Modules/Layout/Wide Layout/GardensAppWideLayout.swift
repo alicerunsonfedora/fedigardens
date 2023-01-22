@@ -56,7 +56,7 @@ struct GardensAppWideLayout: View {
                         Label("sidebar.followedtags.action", systemImage: "dot.radiowaves.up.forward")
                     }
                 } label: {
-                    Label("FUCK", systemImage: "plus.circle")
+                    Label("Add", systemImage: "plus.circle")
                 }
             }
         } content: {
@@ -84,6 +84,9 @@ struct GardensAppWideLayout: View {
         .refreshable {
             loadSidebar()
         }
+        .animation(.spring(), value: viewModel.subscribedTags)
+        .animation(.spring(), value: viewModel.tags)
+        .animation(.spring(), value: viewModel.lists)
         .sheet(isPresented: $shouldDisplayComposeModal) {
             Text("Hi")
         }
