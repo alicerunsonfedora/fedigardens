@@ -13,17 +13,14 @@
 //  details.
 
 import Alice
-import Foundation
 import SwiftUI
-
-#if iOS
 import UIKit
-#endif
 
 /// A view used to render a timeline in the widescreen layout.
 struct TimelineSplitView: View, LayoutStateRepresentable {
-    @Environment(\.interventionAuthorization) var interventionAuthorzation: InterventionAuthorizationContext
     @Environment(\.openURL) var openURL
+
+    @EnvironmentObject var interventionHandler: InterventionHandler
 
     @State var state: LayoutState = .initial
     var scope: TimelineSplitViewModel.TimelineType
@@ -73,7 +70,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                             state = .loading
                             state = await model.loadTimeline(
                                 policy: .refreshEntireContents,
-                                intervening: interventionAuthorzation.allowedTimeInterval
+                                using: interventionHandler
                             )
                         }
                     } label: {
@@ -89,7 +86,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                 Task {
                     state = await model.loadTimeline(
                         policy: .refreshEntireContents,
-                        intervening: interventionAuthorzation.allowedTimeInterval
+                        using: interventionHandler
                     )
                 }
             }
@@ -100,8 +97,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
             Task {
                 state = await model.loadTimeline(
                     forcefully: true,
-                    policy: .refreshEntireContents,
-                    intervening: nil
+                    policy: .refreshEntireContents
                 )
             }
         }
@@ -112,7 +108,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                     state = await model.loadTimeline(
                         forcefully: true,
                         policy: .refreshEntireContents,
-                        intervening: interventionAuthorzation.allowedTimeInterval
+                        using: interventionHandler
                     )
                 }
             }
@@ -152,7 +148,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                         state = await model.loadTimeline(
                             forcefully: true,
                             policy: .preloadNextBatch,
-                            intervening: interventionAuthorzation.allowedTimeInterval
+                            using: interventionHandler
                         )
                     }
                 }

@@ -36,7 +36,6 @@ class TimelineSplitViewModel: ObservableObject {
     @Published var dummyTimeline: [Status] = MockData.timeline!
     @Published var state: LayoutState = .initial
     @Published var scope: TimelineType = .scopedTimeline(scope: .home, local: false)
-    @Published var interventionTimeout: Date?
     @Published var displayOneSecNotInstalledWarning = false
 
     init(scope: TimelineType) {
@@ -55,47 +54,25 @@ class TimelineSplitViewModel: ObservableObject {
     func loadTimeline(
         forcefully userInitiated: Bool = false,
         policy: ReloadPolicy,
-        intervening timeout: TimeInterval?
+        using handler: InterventionHandler? = nil
     ) async -> LayoutState {
         if !userInitiated, timelineData.isEmpty == false {
             return .loaded
         }
-
-        let wantsIntervention = UserDefaults.standard.allowsInterventions &&
-            (UserDefaults.standard.intervenesOnFetch || UserDefaults.standard.intervenesOnRefresh)
-
-        if userInitiated && wantsIntervention, let timeout, let oneSec = URL(destination: .oneSec) {
-            guard let past = interventionTimeout else {
-                if await !UIApplication.shared.canOpenURL(oneSec) {
-                    DispatchQueue.main.async {
-                        self.displayOneSecNotInstalledWarning.toggle()
-                    }
-                    return .loaded
-                }
+        let expectedMechanism: InterventionAllowedMechanisms = policy == .refreshEntireContents ? .refresh : .fetchMore
+        if userInitiated, let handler, handler.allowedMechanisms.contains(expectedMechanism) {
+            let eventualState = await handler.startIntervention {
                 DispatchQueue.main.async {
-                    UIApplication.shared.open(oneSec)
+                    self.displayOneSecNotInstalledWarning.toggle()
                 }
-                return .loaded
             }
-            let timeDifference = Date.now.timeIntervalSince(past)
-            if timeDifference > timeout {
-                if await !UIApplication.shared.canOpenURL(oneSec) {
-                    DispatchQueue.main.async {
-                        self.displayOneSecNotInstalledWarning.toggle()
-                    }
-                    return .loaded
-                }
-                DispatchQueue.main.async {
-                    UIApplication.shared.open(oneSec)
-                }
-                return .loaded
-            }
+            return eventualState
         }
 
         var callInLocalScope = false
         if case .scopedTimeline(_, let local) = scope { callInLocalScope = local }
 
-        let response = await callChica(local: callInLocalScope, policy: policy)
+        let response = await callAlice(local: callInLocalScope, policy: policy)
         switch response {
         case .success(let statuses):
             insertStatuses(statuses: statuses, with: policy)
@@ -106,7 +83,7 @@ class TimelineSplitViewModel: ObservableObject {
         }
     }
 
-    private func callChica(local: Bool, policy: ReloadPolicy) async -> Alice.Response<[Status]> {
+    private func callAlice(local: Bool, policy: ReloadPolicy) async -> Alice.Response<[Status]> {
         return await Alice.shared.request(
             .get,
             for: endpoint(),

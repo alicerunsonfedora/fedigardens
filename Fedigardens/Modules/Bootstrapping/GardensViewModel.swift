@@ -29,14 +29,15 @@ class GardensViewModel: ObservableObject {
         }
     }
 
-    func createInterventionContext(from url: URL) {
+    func createInterventionContext(from url: URL) -> InterventionAuthorizationContext? {
         guard let parameters = url.queryParameters else {
             interventionAuthorization = nil
-            return
+            return nil
         }
         let allowedTimeInterval = TimeInterval(parameters["allowedTimeInterval"] ?? "0") ?? 0
         let allowedFetchSize = Int(parameters["allowedPostsCount"] ?? "10") ?? 10
         interventionAuthorization = .init(allowedTimeInterval: allowedTimeInterval, allowedFetchSize: allowedFetchSize)
+        return interventionAuthorization
     }
 
     func getUserProfile() async {
