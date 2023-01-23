@@ -31,6 +31,18 @@ struct SettingsAboutPage: View {
             }
 
             Section {
+                if let url = URL(destination: .github) {
+                    Link(destination: url) {
+                        Label("settings.about.source", systemImage: "hammer.fill")
+                            .labelStyle(.settings(color: .blue, size: size))
+                    }
+                }
+                if let url = URL(destination: .changelog) {
+                    Link(destination: url) {
+                        Label("settings.about.changelog", systemImage: "sparkles")
+                            .labelStyle(.settings(color: .yellow, size: size))
+                    }
+                }
                 GardensComposeButton(
                     shouldInvokeParentSheet: $shouldOpenFeedbackTool,
                     context: .init(
@@ -40,12 +52,61 @@ struct SettingsAboutPage: View {
                     style: .feedback
                 )
                 .labelStyle(.settings(color: .accentColor, size: size))
-                if let url = URL(destination: .bugs) {
+            }
+            .tint(.primary)
+
+            Section {
+                if let url = URL(destination: .feedback) {
                     Link(destination: url) {
-                        Label("general.bugreport", systemImage: "ant")
-                            .labelStyle(.settings(color: .red, size: size))
+                        Label {
+                            VStack(alignment: .leading) {
+                                Text("settings.feedback.personal")
+                                    .bold()
+                                Text("settings.feedback.personaldetail")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                    .multilineTextAlignment(.leading)
+                                Text("general.recommend")
+                                    .font(.caption2)
+                                    .textCase(.uppercase)
+                                    .foregroundColor(.green)
+                                    .padding(.top, 1)
+                                    .padding(.horizontal, 6)
+                                    .overlay {
+                                        RoundedRectangle(cornerRadius: 24)
+                                            .strokeBorder()
+                                            .foregroundColor(.green)
+                                    }
+                            }
+                        } icon: {
+                            Image(systemName: "bubble.left.and.exclamationmark.bubble.right.fill")
+                        }
+                        .labelStyle(.settings(color: .green, size: size))
+                        .padding(.top, 2)
                     }
                 }
+                if let url = URL(destination: .ghBugs) {
+                    Link(destination: url) {
+                        Link(destination: url) {
+                            Label {
+                                VStack(alignment: .leading) {
+                                    Text("general.bugreport")
+                                        .bold()
+                                    Text("settings.feedback.bugreportdetail")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                        .multilineTextAlignment(.leading)
+                                }
+                            } icon: {
+                                Image(systemName: "ant.fill")
+                            }
+                            .labelStyle(.settings(color: .red, size: size))
+                            .padding(.top, 2)
+                        }
+                    }
+                }
+            } header: {
+                Label("general.feedback", systemImage: "exclamationmark.bubble")
             }
             .tint(.primary)
         }

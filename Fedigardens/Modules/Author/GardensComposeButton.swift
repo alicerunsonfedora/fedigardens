@@ -67,7 +67,7 @@ struct GardensComposeButton: View {
             case .quote:
                 Label("status.forwardaction", systemImage: "quote.bubble")
             case .feedback:
-                Label("general.feedbackmenu", systemImage: "exclamationmark.bubble")
+                Label("settings.feedback.message", systemImage: "bubble.left")
             case .mention:
                 Label("status.mentionaction", systemImage: "at.badge.plus")
             case .message:

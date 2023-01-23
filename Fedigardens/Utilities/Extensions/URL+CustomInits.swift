@@ -17,8 +17,10 @@ import Foundation
 extension URL {
     enum AppDestination {
         case oneSec
-        case bugs
+        case ghBugs
         case github
+        case feedback
+        case changelog
         case orion(String)
 
         private var ghLink: String { "https://github.com/alicerunsonfedora/fedigardens" }
@@ -29,7 +31,11 @@ extension URL {
                 return "onesec://reintervene?appId=fedigardens"
             case .github:
                 return ghLink
-            case .bugs:
+            case .feedback:
+                return "https://feedback.marquiskurt.net/composer?primary_tag=fedigardens"
+            case .changelog:
+                return "https://fedigardens.app/changelog"
+            case .ghBugs:
                 return ghLink + "/issues/new?assignees=alicerunsonfedora&labels=Bug&template=bug_report.md"
             case .orion(let realURL):
                 return "orion://open-url?url=" + realURL

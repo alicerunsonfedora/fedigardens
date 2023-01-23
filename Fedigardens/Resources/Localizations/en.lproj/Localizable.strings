@@ -24,6 +24,7 @@
 "general.learnmore" = "Learn More…";
 "general.more" = "More";
 "general.done" = "Done";
+"general.recommend" = "Recommended";
 
 // MARK: - Endpoints
 "endpoint.home" = "For You";
@@ -167,6 +168,8 @@
 "settings.signout.title" = "Are you sure you want to sign out?";
 "settings.signout.detail" = "You'll need to sign in again and reauthorize Fedigardens to access your Mastodon account.";
 "settings.signout.cancel" = "Cancel";
+"settings.about.source" = "View Source Code…";
+"settings.about.changelog" = "See What's New…";
 
 // MARK: - Settings: Composer -
 "settings.section.author" = "Composing";
@@ -202,6 +205,12 @@
 "settings.blocklist.emptydetail" = "To add an instance to your blocklist, tap the 'Add Blocked Instance' button in the toolbar.";
 "settings.blocklist.admin" = "Your instance administrator may also include instance-wide federation blocks. Consult your administrator for more information.";
 "settings.blocklist.fetcherror" = "Couldn't Get Blocked Instances";
+
+// MARK: - Settings: Feedback -
+"settings.feedback.message" = "Message Fedigardens…";
+"settings.feedback.personal" = "Start a Discussion…";
+"settings.feedback.personaldetail" = "Send a bug report or suggest a feature at feedback.marquiskurt.net.";
+"settings.feedback.bugreportdetail" = "Submit a traditional bug report through GitHub Issues.";
 
 // MARK: - Acknowledgements
 "acknowledge.title" = "Acknowledgements";
