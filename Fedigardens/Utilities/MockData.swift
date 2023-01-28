@@ -33,4 +33,6 @@ struct MockData {
     static let timeline: [Status]? = try! JSONDecoder.decodeFromResource(from: "Timeline")
 
     static let profile: Account? = try! JSONDecoder.decodeFromResource(from: "Profile")
+
+    static let searchResults: SearchResult? = try! JSONDecoder.decodeFromResource(from: "SearchResult")
 }
