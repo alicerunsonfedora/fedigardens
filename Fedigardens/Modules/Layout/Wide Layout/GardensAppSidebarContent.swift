@@ -71,6 +71,8 @@ struct GardensAppSidebarContent: View {
                         .navigationTitle("#\(id)")
                     case .settings:
                         SettingsView()
+                    case .search:
+                        SearchView(selectedStatus: $viewModel.selectedStatus)
                     default:
                         EmptyView()
                     }

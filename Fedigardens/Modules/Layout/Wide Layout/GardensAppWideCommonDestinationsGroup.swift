@@ -25,6 +25,7 @@ struct GardensAppWideCommonDestinationsGroup: View {
             GardensPageLink(page: .mentions)
             GardensPageLink(page: .saved)
             GardensPageLink(page: .settings)
+            GardensPageLink(page: .search)
         }
     }
 }

@@ -25,6 +25,7 @@
 "general.more" = "More";
 "general.done" = "Done";
 "general.recommend" = "Recommended";
+"general.search" = "Search";
 
 // MARK: - Endpoints
 "endpoint.home" = "For You";
@@ -38,6 +39,7 @@
 "endpoint.followedtags" = "Subscribed Tags";
 "endpoint.lists" = "Lists";
 "endpoint.saved" = "Bookmarked";
+"endpoint.search" = "Search";
 
 // MARK: - Sidebar Actions
 "sidebar.followedtags.action" = "New Subscribed Tag…";
@@ -141,6 +143,15 @@
 "direct.grouptitle" = "direct.grouptitle";
 "direct.nonencrypt.title" = "Direct messages are not encrypted.";
 "direct.nonencrypt.detail" = "Messages may be visible by your instance administrator. Do not use direct messages to send personally identifying and/or sensitive information.";
+
+// MARK: - Search
+"search.placeholder" = "Search people, statuses, and tags...";
+"search.directory" = "Recommended";
+"search.explore" = "Trending Activity";
+"search.filter.users" = "People";
+"search.filter.tags" = "Tags";
+"search.filter.posts" = "Statuses";
+"search.filter.all" = "All";
 
 // MARK: - Help Strings
 "help.sidebar" = "Show or hide the sidebar.";
