@@ -1,0 +1,40 @@
+//
+//  ProfileSheetFields.swift
+//  Fedigardens
+//
+//  Created by Marquis Kurt on 1/28/23.
+//
+//  This file is part of Fedigardens.
+//
+//  Fedigardens is non-violent software: you can use, redistribute, and/or modify it under the terms of the CNPLv7+
+//  as found in the LICENSE file in the source code root directory or at <https://git.pixie.town/thufie/npl-builder>.
+//
+//  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
+//  details.
+
+import SwiftUI
+import Alice
+
+struct ProfileSheetFields: View {
+    var profile: Account
+
+    var body: some View {
+        Group {
+            ForEach(profile.fields) { (field: Field) in
+                LabeledContent(field.name) {
+                    Text(field.value.markdown())
+                }
+                .listRowBackground(
+                    field.value == profile.verifiedDomain()
+                    ? Color.green.opacity(0.2)
+                    : Color(uiColor: .secondarySystemGroupedBackground)
+                )
+                .tint(
+                    field.value == profile.verifiedDomain()
+                    ? Color.green
+                    : Color.accentColor
+                )
+            }
+        }
+    }
+}
