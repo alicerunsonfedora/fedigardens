@@ -16,7 +16,7 @@ import SwiftUI
 
 struct SettingsFeedbackSection: View {
     @ScaledMetric private var size = 1.0
-    
+
     var body: some View {
         Section {
             if let url = URL(destination: .feedback) {
