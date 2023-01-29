@@ -246,6 +246,10 @@ public class Alice: ObservableObject, CustomStringConvertible {
     static var INSTANCE_DOMAIN: String = Keychain(service: OAuth.keychainService)["starlight_instance_domain"] ?? "mastodon.online"
 
     static public var API_URL: URL {
+        if INSTANCE_DOMAIN.isEmpty {
+            INSTANCE_DOMAIN = "mastodon.online"
+            return URL(string: "https://mastodon.online")!
+        }
         return URL(string: "https://\(INSTANCE_DOMAIN)")!
     }
 
