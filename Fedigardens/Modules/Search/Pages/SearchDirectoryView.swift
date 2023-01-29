@@ -32,7 +32,7 @@ struct SearchDirectoryView: View {
                                 .profileSize(.xlarge)
                             EmojiText(
                                 markdown: account.getAccountName(),
-                                emojis: account.emojis.map { $0.remote() }
+                                emojis: account.emojis.map(\.remoteEmoji)
                             )
                             .font(.headline)
                             Text("@\(account.acct)")

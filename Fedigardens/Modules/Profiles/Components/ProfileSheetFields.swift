@@ -23,7 +23,7 @@ struct ProfileSheetFields: View {
         Group {
             ForEach(profile.fields) { (field: Field) in
                 LabeledContent(field.name) {
-                    EmojiText(markdown: field.value.markdown(), emojis: profile.emojis.map { $0.remote() })
+                    EmojiText(markdown: field.value.markdown(), emojis: profile.emojis.map(\.remoteEmoji))
                         .multilineTextAlignment(.trailing)
                 }
                 .listRowBackground(

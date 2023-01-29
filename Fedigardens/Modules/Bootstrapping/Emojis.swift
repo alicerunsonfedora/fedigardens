@@ -20,6 +20,10 @@ extension Emoji {
     func remote() -> RemoteEmoji {
         return RemoteEmoji(shortcode: self.shortcode, url: self.url)
     }
+
+    var remoteEmoji: RemoteEmoji {
+        remote()
+    }
 }
 
 private struct CustomEmojisEnvironmentKey: EnvironmentKey {

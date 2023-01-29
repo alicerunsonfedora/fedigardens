@@ -14,6 +14,7 @@
 
 import SwiftUI
 import Alice
+import EmojiText
 
 struct StatusDetailQuote: View {
     @State private var expandQuote = false
@@ -24,21 +25,27 @@ struct StatusDetailQuote: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Label(
-                String(
-                    format: "status.quotedetect.title".localized(comment: "Quote detected"),
-                    status.account.getAccountName()
-                ),
-                systemImage: "quote.bubble"
-            )
+            Label {
+                EmojiText(
+                    markdown: String(
+                        format: "status.quotedetect.title".localized(comment: "Quote detected"),
+                        status.account.getAccountName()
+                    ),
+                    emojis: status.emojis.map(\.remoteEmoji) + status.account.emojis.map(\.remoteEmoji)
+                )
+
+            } icon: {
+                Image(systemName: "quote.bubble")
+            }
             .font(.headline)
             .tint(.accentColor)
-            Text(
-                String(
+            EmojiText(
+                markdown: String(
                     format: "status.quotedetect.detail".localized(comment: "Quote detected"),
                     status.account.getAccountName(),
                     quote.originalAuthor().getAccountName()
-                )
+                ).markdown(),
+                emojis: status.emojis.map(\.remoteEmoji) + status.account.emojis.map(\.remoteEmoji)
             )
             .font(.subheadline)
             .foregroundColor(.secondary)

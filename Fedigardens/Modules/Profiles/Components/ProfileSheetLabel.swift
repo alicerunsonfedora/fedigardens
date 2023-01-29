@@ -23,7 +23,7 @@ struct ProfileSheetLabel: View {
         VStack(spacing: 4) {
             AccountImage(author: profile)
                 .profileSize(.xxlarge)
-            EmojiText(markdown: profile.getAccountName(), emojis: profile.emojis.map { $0.remote() })
+            EmojiText(markdown: profile.getAccountName(), emojis: profile.emojis.map(\.remoteEmoji))
                 .font(.system(.largeTitle, design: .rounded))
                 .multilineTextAlignment(.center)
                 .bold()

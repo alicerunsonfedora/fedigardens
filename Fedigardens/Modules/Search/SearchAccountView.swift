@@ -27,7 +27,7 @@ struct SearchAccountView: View {
                 HStack {
                     EmojiText(
                         markdown: account.getAccountName(),
-                        emojis: account.emojis.map { $0.remote() }
+                        emojis: account.emojis.map(\.remoteEmoji)
                     )
                     .font(.headline)
                     Text("@\(account.acct)")
@@ -36,7 +36,7 @@ struct SearchAccountView: View {
                 }
                 .lineLimit(1)
 
-                EmojiText(markdown: account.note.markdown(), emojis: account.emojis.map { $0.remote() })
+                EmojiText(markdown: account.note.markdown(), emojis: account.emojis.map(\.remoteEmoji))
                     .lineLimit(2)
                     .font(.footnote)
             }
