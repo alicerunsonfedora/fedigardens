@@ -15,10 +15,10 @@
 import SwiftUI
 
 struct BadgedText: View {
-    var text: AttributedString
+    var text: LocalizedStringKey
     var color: Color
 
-    init(_ text: AttributedString, color: Color) {
+    init(_ text: LocalizedStringKey, color: Color) {
         self.text = text
         self.color = color
     }

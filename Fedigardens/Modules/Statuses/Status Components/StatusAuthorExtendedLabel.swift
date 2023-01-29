@@ -43,7 +43,7 @@ struct StatusAuthorExtendedLabel: View {
     }
 
     private var isDevelopmentMember: Bool {
-        return ["ubunturox104@vivaldi.net", "ubunturox104", "fedigardens@indieapps.space", "fedigardens"]
+        return ["marquiskurt@iosdev.space", "marquiskurt", "fedigardens@indieapps.space", "fedigardens"]
             .contains(status.originalAuthor().acct)
     }
 
