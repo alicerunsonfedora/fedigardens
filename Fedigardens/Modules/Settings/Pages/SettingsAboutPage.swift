@@ -13,7 +13,6 @@
 //  details.
 
 import SwiftUI
-import AckGen
 
 struct SettingsAboutPage: View {
     @State private var shouldOpenFeedbackTool: AuthoringContext?
@@ -22,11 +21,19 @@ struct SettingsAboutPage: View {
     var body: some View {
         Form {
             Section {
-                LabeledContent("App Version", value: Bundle.main.getAppVersion())
+                SettingsVersionBlock()
+                    .listRowSeparator(.hidden)
+                NavigationLink {
+                    SettingsLicensePage()
+                } label: {
+                    Label("settings.about.license", systemImage: "scroll.fill")
+                        .labelStyle(.settings(color: .gray, size: size))
+                }
                 NavigationLink {
                     SettingsAcknowledgementList()
                 } label: {
-                    Text("acknowledge.title")
+                    Label("acknowledge.title", systemImage: "hands.clap.fill")
+                        .labelStyle(.settings(color: .gray, size: size))
                 }
             }
 
@@ -55,60 +62,7 @@ struct SettingsAboutPage: View {
             }
             .tint(.primary)
 
-            Section {
-                if let url = URL(destination: .feedback) {
-                    Link(destination: url) {
-                        Label {
-                            VStack(alignment: .leading) {
-                                Text("settings.feedback.personal")
-                                    .bold()
-                                Text("settings.feedback.personaldetail")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                                    .multilineTextAlignment(.leading)
-                                Text("general.recommend")
-                                    .font(.caption2)
-                                    .textCase(.uppercase)
-                                    .foregroundColor(.green)
-                                    .padding(.top, 1)
-                                    .padding(.horizontal, 6)
-                                    .overlay {
-                                        RoundedRectangle(cornerRadius: 24)
-                                            .strokeBorder()
-                                            .foregroundColor(.green)
-                                    }
-                            }
-                        } icon: {
-                            Image(systemName: "bubble.left.and.exclamationmark.bubble.right.fill")
-                        }
-                        .labelStyle(.settings(color: .green, size: size))
-                        .padding(.top, 2)
-                    }
-                }
-                if let url = URL(destination: .ghBugs) {
-                    Link(destination: url) {
-                        Link(destination: url) {
-                            Label {
-                                VStack(alignment: .leading) {
-                                    Text("general.bugreport")
-                                        .bold()
-                                    Text("settings.feedback.bugreportdetail")
-                                        .font(.caption)
-                                        .foregroundColor(.secondary)
-                                        .multilineTextAlignment(.leading)
-                                }
-                            } icon: {
-                                Image(systemName: "ant.fill")
-                            }
-                            .labelStyle(.settings(color: .red, size: size))
-                            .padding(.top, 2)
-                        }
-                    }
-                }
-            } header: {
-                Label("general.feedback", systemImage: "exclamationmark.bubble")
-            }
-            .tint(.primary)
+            SettingsFeedbackSection()
         }
         .navigationTitle("settings.section.about")
         .navigationBarTitleDisplayMode(.inline)

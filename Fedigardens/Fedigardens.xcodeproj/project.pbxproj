@@ -87,6 +87,12 @@
 		955F1B552985FD1500702BE8 /* BadgedText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F1B532985FD1500702BE8 /* BadgedText.swift */; };
 		955F1B572985FE0100702BE8 /* ProfileSheetFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F1B562985FE0100702BE8 /* ProfileSheetFields.swift */; };
 		955F1B582985FE0100702BE8 /* ProfileSheetFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F1B562985FE0100702BE8 /* ProfileSheetFields.swift */; };
+		955F1B5D2986FB0A00702BE8 /* SettingsVersionBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F1B5C2986FB0A00702BE8 /* SettingsVersionBlock.swift */; };
+		955F1B5E2986FB0A00702BE8 /* SettingsVersionBlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F1B5C2986FB0A00702BE8 /* SettingsVersionBlock.swift */; };
+		955F1B602986FB4800702BE8 /* SettingsFeedbackSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F1B5F2986FB4800702BE8 /* SettingsFeedbackSection.swift */; };
+		955F1B612986FB4800702BE8 /* SettingsFeedbackSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F1B5F2986FB4800702BE8 /* SettingsFeedbackSection.swift */; };
+		955F1B632986FBBE00702BE8 /* SettingsLicensePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F1B622986FBBE00702BE8 /* SettingsLicensePage.swift */; };
+		955F1B642986FBBE00702BE8 /* SettingsLicensePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F1B622986FBBE00702BE8 /* SettingsLicensePage.swift */; };
 		95645BD227C5546E00FB3426 /* UserDefaults+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95645BD127C5546E00FB3426 /* UserDefaults+Settings.swift */; };
 		95645BD727C5550B00FB3426 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95645BD627C5550B00FB3426 /* SettingsView.swift */; };
 		95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7527B85BD3009D2251 /* StatusDetailView.swift */; };
@@ -321,6 +327,9 @@
 		955F1B502985FBE100702BE8 /* ProfileSheetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetLabel.swift; sourceTree = "<group>"; };
 		955F1B532985FD1500702BE8 /* BadgedText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgedText.swift; sourceTree = "<group>"; };
 		955F1B562985FE0100702BE8 /* ProfileSheetFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetFields.swift; sourceTree = "<group>"; };
+		955F1B5C2986FB0A00702BE8 /* SettingsVersionBlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVersionBlock.swift; sourceTree = "<group>"; };
+		955F1B5F2986FB4800702BE8 /* SettingsFeedbackSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsFeedbackSection.swift; sourceTree = "<group>"; };
+		955F1B622986FBBE00702BE8 /* SettingsLicensePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLicensePage.swift; sourceTree = "<group>"; };
 		95645BD127C5546E00FB3426 /* UserDefaults+Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Settings.swift"; sourceTree = "<group>"; };
 		95645BD627C5550B00FB3426 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		95667E7527B85BD3009D2251 /* StatusDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailView.swift; sourceTree = "<group>"; };
@@ -553,10 +562,11 @@
 				95801D31297C8EF200FE8D83 /* Pages */,
 				95645BD127C5546E00FB3426 /* UserDefaults+Settings.swift */,
 				95645BD627C5550B00FB3426 /* SettingsView.swift */,
-				95555FB82960B8DA005BEF45 /* SettingsAcknowledgementList.swift */,
 				95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */,
 				95801D35297C9D2600FE8D83 /* GardensSettingsKey.swift */,
 				9537C6D5297DBB510039F3C4 /* SettingsBlocklistViewModel.swift */,
+				955F1B5C2986FB0A00702BE8 /* SettingsVersionBlock.swift */,
+				955F1B5F2986FB4800702BE8 /* SettingsFeedbackSection.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -644,10 +654,12 @@
 		95801D31297C8EF200FE8D83 /* Pages */ = {
 			isa = PBXGroup;
 			children = (
-				95F2DE25297262D700553937 /* SettingsInterventionPage.swift */,
-				95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */,
 				95801D38297CAC8B00FE8D83 /* SettingsAboutPage.swift */,
+				95555FB82960B8DA005BEF45 /* SettingsAcknowledgementList.swift */,
+				95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */,
 				9537C6D2297DB8C30039F3C4 /* SettingsBlocklistPage.swift */,
+				95F2DE25297262D700553937 /* SettingsInterventionPage.swift */,
+				955F1B622986FBBE00702BE8 /* SettingsLicensePage.swift */,
 				9537C6D8297DC71C0039F3C4 /* SettingsReadingPage.swift */,
 			);
 			path = Pages;
@@ -1086,11 +1098,13 @@
 				9537C6DC297DE7C50039F3C4 /* InterventionHandler.swift in Sources */,
 				955F1B2E2985B31600702BE8 /* SearchDirectoryView.swift in Sources */,
 				956714142958B69D00BFF76A /* StatusDisclosedContent.swift in Sources */,
+				955F1B602986FB4800702BE8 /* SettingsFeedbackSection.swift in Sources */,
 				95E4531F27D7B49C00572758 /* AuthenticationBrowserWindow.swift in Sources */,
 				955F1B2B29859FA300702BE8 /* SearchViewModel.swift in Sources */,
 				95ADADE427B6A6BB0011FD83 /* String+AttributedContent.swift in Sources */,
 				95B368A12965106C00336284 /* URL+CustomInits.swift in Sources */,
 				95ADAE0A27B6B49A0011FD83 /* JSONDecoder+Resources.swift in Sources */,
+				955F1B632986FBBE00702BE8 /* SettingsLicensePage.swift in Sources */,
 				95D2704E27C6F5A200805262 /* MessagingListCellView.swift in Sources */,
 				95A36E88297CE24D00DA11D3 /* GardensAppTrendingTagsDestination.swift in Sources */,
 				95ADAE1227B6CDC50011FD83 /* DateFormatter+Mastodon.swift in Sources */,
@@ -1104,6 +1118,7 @@
 				95F2DE2429725C6100553937 /* BetaBadge.swift in Sources */,
 				9547230627A0094000D1BA89 /* Gardens.swift in Sources */,
 				95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */,
+				955F1B5D2986FB0A00702BE8 /* SettingsVersionBlock.swift in Sources */,
 				95555FBB2960B9F7005BEF45 /* Acknowledgement+License.swift in Sources */,
 				9537C6D9297DC71C0039F3C4 /* SettingsReadingPage.swift in Sources */,
 				9558C7EE29578B59001B30C7 /* AccountImage.swift in Sources */,
@@ -1172,6 +1187,7 @@
 				95A36E86297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift in Sources */,
 				9537C6D7297DBB510039F3C4 /* SettingsBlocklistViewModel.swift in Sources */,
 				955F1B552985FD1500702BE8 /* BadgedText.swift in Sources */,
+				955F1B642986FBBE00702BE8 /* SettingsLicensePage.swift in Sources */,
 				955F1B4C2985F3A300702BE8 /* TagHistoryChart.swift in Sources */,
 				95801D45297CC0F200FE8D83 /* AuthenticationBrowserWindow.swift in Sources */,
 				95801D65297CC14200FE8D83 /* ProfileSheetToolbar.swift in Sources */,
@@ -1202,6 +1218,7 @@
 				95801D60297CC13C00FE8D83 /* MessagingAuthorView.swift in Sources */,
 				958C0C9927BE930D00ED6C23 /* Account+AccountName.swift in Sources */,
 				955F1B2929859E0600702BE8 /* SearchView.swift in Sources */,
+				955F1B612986FB4800702BE8 /* SettingsFeedbackSection.swift in Sources */,
 				95801D26297C751C00FE8D83 /* String+AttributedContent.swift in Sources */,
 				956714222958CE7900BFF76A /* MockData.swift in Sources */,
 				95801D5E297CC13400FE8D83 /* StatusNavigationList.swift in Sources */,
@@ -1272,6 +1289,7 @@
 				955F1B522985FBE100702BE8 /* ProfileSheetLabel.swift in Sources */,
 				95801D6B297CC14E00FE8D83 /* StatusView.swift in Sources */,
 				95801D6D297CC14E00FE8D83 /* StatusQuickGlanceView.swift in Sources */,
+				955F1B5E2986FB0A00702BE8 /* SettingsVersionBlock.swift in Sources */,
 				95801D41297CC0DE00FE8D83 /* AuthorView.swift in Sources */,
 				95801D4E297CC10700FE8D83 /* BetaBadge.swift in Sources */,
 				95801D28297C752E00FE8D83 /* RecursiveNavigationView.swift in Sources */,

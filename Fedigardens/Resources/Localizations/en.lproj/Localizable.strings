@@ -192,6 +192,7 @@
 "settings.signout.cancel" = "Cancel";
 "settings.about.source" = "View Source Code…";
 "settings.about.changelog" = "See What's New…";
+"settings.about.license" = "License";
 
 // MARK: - Settings: Composer -
 "settings.section.author" = "Composing";
