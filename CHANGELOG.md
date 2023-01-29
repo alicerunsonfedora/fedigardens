@@ -21,6 +21,7 @@ And list your changes under that.
 - Adds new "Report a Bug..." link in Settings > About.
 - Fixes a bug where interventions were too persistent and ignored the user's preferences in one sec.
 - Adds a brand new search page that lets you search for users, statuses, and tags.
+- Introduces a new Focused Timeline setting to split timeline lists between "original" content and replies/reblogs.
 
 ## [1.0-14 (beta)] - 15/1/2023
 

@@ -61,6 +61,10 @@
 "auth.disallowed.title" = "Cannot Sign In to '%@'";
 "auth.disallowed.message" = "Fedigardens cannot sign in to this instance because the developers cannot verify that this server moderates the content posted by its users.";
 
+// MARK: - Timelines
+"timeline.inbox.focused" = "Focused";
+"timeline.inbox.other" = "Other Statuses";
+
 // MARK: - Statuses
 "status.commentary" = "status.commentary";
 "status.new" = "New Status";
@@ -179,6 +183,8 @@
 "settings.show-statistics.detail" = "Show the number of favorites and reblogs when viewing a status in detail.";
 "settings.loadlimit.text" = "Fetch Batch Size: %@";
 "settings.loadlimit.detail" = "When fetching statuses from Mastodon, batches will be limited to this size.";
+"settings.showoriginal.title" = "Use Focused Timeline";
+"settings.showoriginal.detail" = "Focused Timeline splits your timeline to filter out reblogged content and replies.";
 "settings.signout.link" = "Sign Out…";
 "settings.signout.prompt" = "Sign Out";
 "settings.signout.title" = "Are you sure you want to sign out?";

@@ -17,18 +17,32 @@ import Foundation
 import SwiftUI
 
 // MARK: - Status Navigation List
-
 struct StatusNavigationList<Extras: View>: View {
+    typealias ViewModel = StatusNavigationListViewModel
     @Environment(\.supportsMultipleWindows) private var supportsMultipleWindows
     @Environment(\.openWindow) private var openWindow
+    @AppStorage(.useFocusedInbox) private var useFocusedInbox: Bool = false
     @State var statuses: [Status]
     @Binding var selectedStatus: Status?
-    @StateObject private var viewModel = StatusNavigationListViewModel()
+    @StateObject private var viewModel = ViewModel()
 
     var extras: (() -> Extras)?
 
     var body: some View {
         List(selection: $selectedStatus) {
+            Group {
+                if useFocusedInbox {
+                    Picker("inbox", selection: $viewModel.inbox) {
+                        ForEach(ViewModel.InboxPage.allCases, id: \.hashValue) { inbox in
+                            Label(inbox.rawValue.localized(), systemImage: inbox.icon)
+                                .tag(inbox)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                    .listRowSeparator(.hidden)
+                }
+            }
+
             ForEach(viewModel.statuses, id: \.uuid) { status in
                 NavigationLink(value: status) {
                     VStack(alignment: .trailing) {
@@ -42,6 +56,7 @@ struct StatusNavigationList<Extras: View>: View {
                 extras()
             }
         }
+        .animation(.spring(), value: viewModel.inbox)
         .onAppear {
             viewModel.insert(statuses: statuses)
         }
@@ -152,12 +167,10 @@ struct StatusNavigationList<Extras: View>: View {
 
 struct StatusListMDView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationView {
-            StatusNavigationList(
-                statuses: MockData.timeline!,
-                selectedStatus: .constant(nil)
-            ) { EmptyView() }
+        NavigationStack {
+            StatusNavigationList(statuses: MockData.timeline!, selectedStatus: .constant(nil)) { EmptyView() }
+                .listStyle(.plain)
+                .navigationTitle("Inbox")
         }
-        .frame(minWidth: 700)
     }
 }

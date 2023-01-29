@@ -18,19 +18,41 @@ import Drops
 import UIKit
 
 class StatusNavigationListViewModel: ObservableObject {
-    @Published var statuses: [Status]
+    enum InboxPage: String, CaseIterable {
+        case focused = "timeline.inbox.focused"
+        case other = "timeline.inbox.other"
+
+        var icon: String {
+            switch self {
+            case .focused: return "tray"
+            case .other: return "square"
+            }
+        }
+    }
+    @Published private var internalStatuses: [Status]
     @Published var shouldOpenCompositionTool: AuthoringContext?
+    @Published var inbox: InboxPage = .focused
+
+    var statuses: [Status] {
+        if !UserDefaults.standard.showOriginalPostsOnly { return internalStatuses }
+        switch inbox {
+        case .focused:
+            return internalStatuses.filter { post in post.reblog == nil && post.inReplyToID == nil }
+        case .other:
+            return internalStatuses.filter { post in post.reblog != nil || post.inReplyToID != nil }
+        }
+    }
 
     init(statuses: [Status]) {
-        self.statuses = statuses
+        self.internalStatuses = statuses
     }
 
     init() {
-        self.statuses = []
+        self.internalStatuses = []
     }
 
     func insert(statuses: [Status]) {
-        self.statuses.append(contentsOf: statuses)
+        self.internalStatuses = statuses
     }
 
     func toggleFavorite(status: Status) async {
@@ -87,8 +109,8 @@ class StatusNavigationListViewModel: ObservableObject {
     }
 
     private func replaceInList(status: Status) {
-        if let firstIdx = statuses.firstIndex(where: { $0.id == status.id }) {
-            statuses[firstIdx] = status
+        if let firstIdx = internalStatuses.firstIndex(where: { $0.id == status.id }) {
+            internalStatuses[firstIdx] = status
         }
     }
 }

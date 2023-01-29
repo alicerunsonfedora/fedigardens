@@ -104,9 +104,10 @@ class TimelineSplitViewModel: ObservableObject {
 
     private func insertStatuses(statuses: [Status], with policy: ReloadPolicy) {
         DispatchQueue.main.async {
-            if !self.timelineData.isEmpty, policy == .preloadNextBatch {
+            if self.timelineData.isNotEmpty, policy == .preloadNextBatch {
                 self.timelineData.append(contentsOf: statuses)
             } else {
+                self.timelineData.removeAll()
                 self.timelineData = statuses
             }
         }

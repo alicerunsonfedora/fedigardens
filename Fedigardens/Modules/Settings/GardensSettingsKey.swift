@@ -19,6 +19,7 @@ import enum Alice.Visibility
 enum GardensSettingsKey: String {
     case loadLimit = "network.load-limit"
     case showsStatistics = "status.shows-statistics"
+    case useFocusedInbox = "timeline.original-filter"
     case allowsInterventions = "health.interventions"
     case intervenesOnRefresh = "health.interventions.refresh"
     case intervenesOnFetch = "health.interventions.fetch"

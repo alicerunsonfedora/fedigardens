@@ -26,6 +26,11 @@ extension UserDefaults {
         set { setValue(newValue, forKey: .showsStatistics) }
     }
 
+    var showOriginalPostsOnly: Bool {
+        get { getValue(forKey: .useFocusedInbox, default: false) }
+        set { setValue(newValue, forKey: .useFocusedInbox) }
+    }
+
     // MARK: - Intervention Settings
     var allowsInterventions: Bool {
         get { getValue(forKey: .allowsInterventions, default: true) }

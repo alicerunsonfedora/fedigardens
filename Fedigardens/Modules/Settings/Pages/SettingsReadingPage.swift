@@ -15,6 +15,7 @@
 import SwiftUI
 
 struct SettingsReadingPage: View {
+    @AppStorage(.useFocusedInbox) var hidesReblogsAndReplies = false
     @AppStorage(.showsStatistics) var showsStatistics: Bool = true
     @AppStorage(.loadLimit) var loadLimit: Int = 10
     @ScaledMetric private var size = 1.0
@@ -39,6 +40,14 @@ struct SettingsReadingPage: View {
                 }
             } footer: {
                 Text("settings.show-statistics.detail")
+            }
+
+            Section {
+                Toggle(isOn: $hidesReblogsAndReplies) {
+                    Text("settings.showoriginal.title")
+                }
+            } footer: {
+                Text("settings.showoriginal.detail")
             }
 
         }
