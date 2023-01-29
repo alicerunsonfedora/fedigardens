@@ -33,7 +33,6 @@ class SearchViewModel: ObservableObject {
         let response: Alice.Response<SearchResult> = await Alice.shared.request(.get, for: .search, params: params())
         switch response {
         case .success(let result):
-            print(result)
             DispatchQueue.main.async {
                 self.searchResult = result
             }

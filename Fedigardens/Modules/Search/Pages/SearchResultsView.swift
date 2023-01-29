@@ -27,7 +27,7 @@ struct SearchResultsView: View {
     }
 
     var results: SearchResult
-    @State private var filter: Filter = .all
+    @State private var filter: Filter = .tags
 
     var body: some View {
         List {
@@ -55,30 +55,54 @@ struct SearchResultsView: View {
                 if let accounts = results.accounts, accounts.isNotEmpty, filterAccepts(.people) {
                     Section {
                         ForEach(accounts, id: \.id) { account in
-                            Text(account.getAccountName())
+                            Button {
+                                viewModel.currentPresentedAccount = account
+                            } label: {
+                                SearchAccountView(account: account)
+                            }
                         }
                     } header: {
                         Text("search.filter.users")
                     }
                     .headerProminence(.increased)
+                    .listRowSeparator(.hidden)
                 }
             }
             Group {
                 if let statuses = results.statuses, statuses.isNotEmpty, filterAccepts(.statuses) {
                     Section {
                         ForEach(statuses, id: \.id) { status in
-                            StatusView(status: status)
-                                .lineLimit(2)
-                                .profilePlacement(.hidden)
-                                .datePlacement(.automatic)
-                                .profileImageSize(44)
-                                .verifiedNoticePlacement(.byAuthorName)
-                                .tint(.secondary)
+                            NavigationLink(value: status) {
+                                StatusView(status: status)
+                                    .lineLimit(2)
+                                    .profilePlacement(.hidden)
+                                    .datePlacement(.automatic)
+                                    .profileImageSize(44)
+                                    .verifiedNoticePlacement(.byAuthorName)
+                                    .tint(.secondary)
+                            }
                         }
                     } header: {
                         Text("search.filter.posts")
                     }
                     .headerProminence(.increased)
+                    .listRowSeparator(.hidden)
+                }
+            }
+
+            Group {
+                if let tags = results.hashtags, tags.isNotEmpty, filterAccepts(.tags) {
+                    Section {
+                        ForEach(tags, id: \.name) { tag in
+                            NavigationLink(value: tag) {
+                                SearchTagView(tag: tag)
+                            }
+                        }
+                    } header: {
+                        Text("search.filter.tags")
+                    }
+                    .headerProminence(.increased)
+                    .listRowSeparator(.hidden)
                 }
             }
         }
@@ -100,6 +124,9 @@ struct SearchResultsView_Previews: PreviewProvider {
                 viewModel: .init(),
                 results: MockData.searchResults!
             )
+            .navigationDestination(for: Tag.self) { tag in
+                SearchTagResultPage(tag: tag)
+            }
         }
     }
 }

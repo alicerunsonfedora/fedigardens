@@ -25,12 +25,15 @@ public class Tag: Codable, Identifiable {
     /// The weekly history of this tag.
     public let history: [History]?
 
+    public let following: Bool?
+
     // MARK: - COMPUTED PROPERTIES
 
     enum CodingKeys: String, CodingKey {
         case name
         case url
         case history
+        case following
     }
 }
 

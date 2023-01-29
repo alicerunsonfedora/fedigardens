@@ -152,6 +152,11 @@
 "search.filter.tags" = "Tags";
 "search.filter.posts" = "Statuses";
 "search.filter.all" = "All";
+"search.tagspeople" = "search.tagspeople";
+"search.tag.subscribe" = "Subscribe";
+"search.tag.history" = "Recent History";
+"search.tag.chartuse" = "Statuses Written";
+"search.tag.chartacct" = "Accounts Using Tag";
 
 // MARK: - Help Strings
 "help.sidebar" = "Show or hide the sidebar.";

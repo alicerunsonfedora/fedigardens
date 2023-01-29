@@ -52,6 +52,9 @@ struct SearchView: View {
         .sheet(item: $viewModel.currentPresentedAccount) { account in
             ProfileSheetView(profile: account)
         }
+        .navigationDestination(for: Tag.self) { tag in
+            SearchTagResultPage(tag: tag)
+        }
     }
 }
 
