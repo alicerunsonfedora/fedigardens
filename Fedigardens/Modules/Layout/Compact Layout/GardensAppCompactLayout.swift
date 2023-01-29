@@ -36,12 +36,13 @@ struct GardensAppCompactLayout: View {
                 .tabItem {
                 Label(page: .mentions)
             }
-            NavigationStack {
-                MessagingList()
-                    .navigationTitle(GardensAppPage.messages.localizedTitle)
+            NavigationSplitView {
+                SearchView(selectedStatus: $viewModel.selectedStatus)
+            } detail: {
+                navigationDetailView
             }
             .tabItem {
-                Label(page: .messages)
+                Label(page: .search)
             }
             GardensAppCompactMorePage(viewModel: viewModel) {
                 navigationDetailView

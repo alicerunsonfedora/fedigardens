@@ -30,49 +30,15 @@ struct ProfileSheetHeaderView: View {
             HStack {
                 Spacer()
                 VStack(spacing: 4) {
-                    AccountImage(author: profile)
-                        .profileSize(.xxlarge)
-                    EmojiText(markdown: profile.getAccountName(), emojis: allEmojis)
-                        .font(.system(.largeTitle, design: .rounded))
-                        .multilineTextAlignment(.center)
-                        .bold()
-                    Text("@\(profile.acct)")
-                        .font(.headline)
-                        .foregroundColor(.secondary)
-
+                    ProfileSheetLabel(profile: profile)
                     if viewModel.relationship?.followedBy == true {
-                        Text("profile.followsyou")
-                            .textCase(.uppercase)
+                        BadgedText("profile.followsyou", color: .secondary)
                             .font(.system(.footnote, design: .rounded))
-                            .bold()
-                            .padding(.horizontal, 6)
-                            .foregroundColor(.secondary)
-                            .overlay {
-                                RoundedRectangle(cornerRadius: 24)
-                                    .strokeBorder()
-                                    .foregroundColor(.secondary)
-                            }
                     }
                 }
                 Spacer()
             }
-            HStack {
-                ProfileSheetStatisticCellView(
-                    key: "profile.followers",
-                    value: "\(profile.followersCount)",
-                    systemName: "person.2.fill"
-                )
-                ProfileSheetStatisticCellView(
-                    key: "profile.following",
-                    value: "\(profile.followingCount)",
-                    systemName: "person.3.fill"
-                )
-                ProfileSheetStatisticCellView(
-                    key: "profile.statusescount",
-                    value: "\(profile.statusesCount)",
-                    systemName: "square.and.pencil"
-                )
-            }
+            ProfileSheetStatistics(profile: profile)
             EmojiText(markdown: profile.note.markdown(), emojis: allEmojis)
                 .font(.subheadline)
         }
@@ -81,21 +47,7 @@ struct ProfileSheetHeaderView: View {
         .listRowInsets(.init(top: 2, leading: 0, bottom: 2, trailing: 0))
 
         Section {
-            ForEach(profile.fields) { field in
-                LabeledContent(field.name) {
-                    Text(field.value.attributedHTML())
-                }
-                .listRowBackground(
-                    field.value == profile.verifiedDomain()
-                    ? Color.green.opacity(0.2)
-                    : Color(uiColor: .secondarySystemGroupedBackground)
-                )
-                .tint(
-                    field.value == profile.verifiedDomain()
-                    ? Color.green
-                    : Color.accentColor
-                )
-            }
+            ProfileSheetFields(profile: profile)
         }
     }
 }

@@ -26,6 +26,7 @@ struct GardensAppCompactMorePage<Detail: View>: View {
             List(selection: $viewModel.currentPage) {
                 Group {
                     GardensPageLink(page: .public)
+                    GardensPageLink(page: .messages)
                     GardensPageLink(page: .selfPosts)
                     GardensPageLink(page: .saved)
                     GardensPageLink(page: .settings)

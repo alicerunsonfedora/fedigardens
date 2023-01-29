@@ -20,6 +20,7 @@ And list your changes under that.
 - Adds new blocked servers page to Settings.
 - Adds new "Report a Bug..." link in Settings > About.
 - Fixes a bug where interventions were too persistent and ignored the user's preferences in one sec.
+- Adds a brand new search page that lets you search for users, statuses, and tags.
 
 ## [1.0-14 (beta)] - 15/1/2023
 

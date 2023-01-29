@@ -27,6 +27,7 @@ enum GardensAppPage: Hashable {
     case list(id: String)
     case trending(id: String)
     case settings
+    case search
 
     var localizedTitle: LocalizedStringKey {
         switch self {
@@ -52,6 +53,8 @@ enum GardensAppPage: Hashable {
             return "endpoint.saved"
         case .settings:
             return "general.settings"
+        case .search:
+            return "endpoint.search"
         }
     }
 
@@ -79,6 +82,8 @@ enum GardensAppPage: Hashable {
             return "tag"
         case .settings:
             return "gear"
+        case .search:
+            return "magnifyingglass"
         }
     }
 }

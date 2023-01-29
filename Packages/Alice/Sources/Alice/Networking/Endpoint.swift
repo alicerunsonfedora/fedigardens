@@ -121,6 +121,9 @@ public enum Endpoint {
     /// A list of accounts that are visible in the instance's directory.
     case directory
 
+    /// Fetches trending statuses.
+    case trendingStatuses
+
 
     //  MARK: – GENERAL
     // Methods concerning performing general actions or retrieving general information from accounts.
@@ -128,7 +131,7 @@ public enum Endpoint {
     /// Find out whether a given account is followed, blocked, muted, etc.
     case generalRelationships
 
-    /// Search for matching accounts by username or display name.
+    /// Search for users, posts, and tags.
     case search
 
     /// Retrieves lists that the user has created.
@@ -253,6 +256,10 @@ public enum Endpoint {
             return "/api/v1/followed_tags"
         case .blockedServers:
             return "/api/v1/domain_blocks"
+        case .search:
+            return "/api/v2/search"
+        case .trendingStatuses:
+            return "/api/v1/trends/statuses"
         default: return ""
         }
     }
