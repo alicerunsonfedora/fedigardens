@@ -30,7 +30,7 @@ class SearchViewModel: ObservableObject {
     }
 
     func requestSearchResults() async {
-        let response: Alice.Response<SearchResult> = await Alice.shared.request(.get, for: .search, params: params())
+        let response: Alice.Response<SearchResult> = await Alice.shared.get(.search, params: params())
         switch response {
         case .success(let result):
             DispatchQueue.main.async {
@@ -42,9 +42,8 @@ class SearchViewModel: ObservableObject {
     }
 
     func fetchDirectory() async {
-        let response: Alice.Response<[Account]> = await Alice.shared.request(
-            .get,
-            for: .directory,
+        let response: Alice.Response<[Account]> = await Alice.shared.get(
+            .directory,
             params: ["order": "active", "limit": "10"]
         )
         switch response {
@@ -58,7 +57,7 @@ class SearchViewModel: ObservableObject {
     }
 
     func fetchTrendingStatuses() async {
-        let response: Alice.Response<[Status]> = await Alice.shared.request(.get, for: .trendingStatuses)
+        let response: Alice.Response<[Status]> = await Alice.shared.get(.trendingStatuses)
         switch response {
         case .success(let trending):
             DispatchQueue.main.async {

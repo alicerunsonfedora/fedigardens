@@ -59,7 +59,7 @@ class StatusDetailViewModel: ObservableObject {
         guard let realStatus else { return }
 
         DispatchQueue.main.async { self.state = .loading }
-        let response: Alice.Response<Context> = await Alice.shared.request(.get, for: .context(id: realStatus.id))
+        let response: Alice.Response<Context> = await Alice.shared.get(.context(id: realStatus.id))
         switch response {
         case .success(let arrivingContext):
             DispatchQueue.main.async {
@@ -112,8 +112,8 @@ class StatusDetailViewModel: ObservableObject {
                 icon: UIImage(systemName: "star.fill")
             )
         ) { state in
-            await Alice.shared.request(
-                .post, for: state.favourited == true ? .unfavorite(id: state.id) : .favourite(id: state.id)
+            await Alice.shared.post(
+                state.favourited == true ? .unfavorite(id: state.id) : .favourite(id: state.id)
             )
         }
     }
@@ -129,8 +129,8 @@ class StatusDetailViewModel: ObservableObject {
                 icon: UIImage(systemName: "arrow.triangle.2.circlepath.circle.fill")
             )
         ) { state in
-            await Alice.shared.request(
-                .post, for: state.reblogged == true ? .unreblog(id: state.id) : .reblog(id: state.id)
+            await Alice.shared.post(
+               state.reblogged == true ? .unreblog(id: state.id) : .reblog(id: state.id)
             )
         }
     }
@@ -146,8 +146,8 @@ class StatusDetailViewModel: ObservableObject {
                 icon: UIImage(systemName: "bookmark.fill")
             )
         ) { state in
-            await Alice.shared.request(
-                .post, for: state.bookmarked == true ? .undoSave(id: state.id) : .save(id: state.id)
+            await Alice.shared.post(
+                state.bookmarked == true ? .undoSave(id: state.id) : .save(id: state.id)
             )
         }
     }

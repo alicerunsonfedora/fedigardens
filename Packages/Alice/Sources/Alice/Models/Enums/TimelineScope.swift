@@ -14,7 +14,7 @@ public enum TimelineScope {
     ///
     /// This uses the same endpoint to fetch timeline data. To specify local data, include the `local` parameter in your request.
     /// - Example:
-    ///     `try await Alice.shared.request(.get, for: .network, params: ["local": "true"])`
+    ///     `try await Alice.shared.get(.network, params: ["local": "true"])`
     case network
     
     /// The user's timeline.

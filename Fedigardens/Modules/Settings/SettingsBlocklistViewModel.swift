@@ -26,7 +26,7 @@ class SettingsBlocklistViewModel: ObservableObject {
 
     func getBlockedServers() async {
         DispatchQueue.main.async { self.layoutState = .loading }
-        let response: Alice.Response<[String]> = await Alice.shared.request(.get, for: .blockedServers)
+        let response: Alice.Response<[String]> = await Alice.shared.get(.blockedServers)
         switch response {
         case .success(let blocked):
             DispatchQueue.main.async {
@@ -49,9 +49,8 @@ class SettingsBlocklistViewModel: ObservableObject {
     }
 
     func insertBlockedServer() async {
-        let response: Alice.Response<EmptyNode> = await Alice.shared.request(
-            .post,
-            for: .blockedServers,
+        let response: Alice.Response<EmptyNode> = await Alice.shared.post(
+            .blockedServers,
             params: ["domain": requestedDomainInsertionText]
         )
         switch response {
@@ -66,9 +65,8 @@ class SettingsBlocklistViewModel: ObservableObject {
     }
 
     private func deleteBlockedServer(with domain: String) async {
-        let response: Alice.Response<EmptyNode> = await Alice.shared.request(
-            .delete,
-            for: .blockedServers,
+        let response: Alice.Response<EmptyNode> = await Alice.shared.delete(
+            .blockedServers,
             params: ["domain": domain]
         )
 

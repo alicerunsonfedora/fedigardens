@@ -29,7 +29,7 @@ class GardensAppLayoutViewModel: ObservableObject {
     init() {}
 
     func fetchTags() async {
-        let response: Alice.Response<[Tag]> = await Alice.shared.request(.get, for: .trending)
+        let response: Alice.Response<[Tag]> = await Alice.shared.get(.trending)
         switch response {
         case .success(let tags):
             DispatchQueue.main.async { self.tags = tags }
@@ -39,7 +39,7 @@ class GardensAppLayoutViewModel: ObservableObject {
     }
 
     func fetchSubscriptions() async {
-        let response: Alice.Response<[Tag]> = await Alice.shared.request(.get, for: .followedTags)
+        let response: Alice.Response<[Tag]> = await Alice.shared.get(.followedTags)
         switch response {
         case .success(let subscriptions):
             DispatchQueue.main.async { self.subscribedTags = subscriptions }
@@ -49,7 +49,7 @@ class GardensAppLayoutViewModel: ObservableObject {
     }
 
     func fetchLists() async {
-        let response: Alice.Response<[MastodonList]> = await Alice.shared.request(.get, for: .lists)
+        let response: Alice.Response<[MastodonList]> = await Alice.shared.get(.lists)
         switch response {
         case .success(let lists):
             DispatchQueue.main.async { self.lists = lists }
@@ -59,10 +59,7 @@ class GardensAppLayoutViewModel: ObservableObject {
     }
 
     func subscribeToCurrentTag() async {
-        let response: Alice.Response<Tag> = await Alice.shared.request(
-            .post,
-            for: .followTag(id: subscribedTagRequestedText)
-        )
+        let response: Alice.Response<Tag> = await Alice.shared.post(.followTag(id: subscribedTagRequestedText))
         switch response {
         case .success(let newTag):
             DispatchQueue.main.async {
@@ -84,7 +81,7 @@ class GardensAppLayoutViewModel: ObservableObject {
     }
 
     private func unsubscribeToTag(named name: String) async {
-        let response: Alice.Response<EmptyNode> = await Alice.shared.request(.post, for: .unfollowTag(id: name))
+        let response: Alice.Response<EmptyNode> = await Alice.shared.post(.unfollowTag(id: name))
         switch response {
         case .success:
             break

@@ -84,11 +84,7 @@ class TimelineSplitViewModel: ObservableObject {
     }
 
     private func callAlice(local: Bool, policy: ReloadPolicy) async -> Alice.Response<[Status]> {
-        return await Alice.shared.request(
-            .get,
-            for: endpoint(),
-            params: requestParams(locally: local, using: policy)
-        )
+        return await Alice.shared.get(endpoint(), params: requestParams(locally: local, using: policy))
     }
 
     private func endpoint() -> Endpoint {

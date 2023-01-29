@@ -53,7 +53,7 @@ class ProfileSheetViewModel: ObservableObject {
                 )
             )
         ) { account in
-            return await Alice.shared.request(.post, for: .followAccount(id: account.id))
+            return await Alice.shared.post(.followAccount(id: account.id))
         }
     }
 
@@ -69,8 +69,8 @@ class ProfileSheetViewModel: ObservableObject {
                 )
             )
         ) { account in
-            return await Alice.shared.request(
-                .post, for: relationship?.muting == true ? .unmuteAccount(id: account.id) : .muteAccount(id: account.id)
+            return await Alice.shared.post(
+                relationship?.muting == true ? .unmuteAccount(id: account.id) : .muteAccount(id: account.id)
             )
         }
     }

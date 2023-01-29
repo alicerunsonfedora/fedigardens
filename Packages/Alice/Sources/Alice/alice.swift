@@ -71,7 +71,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
     /// Allows us to decode top-level values of the given type from the given JSON representation.
     private let decoder: JSONDecoder
 
-    private var session: URLSession
+    private var session: AliceSession
 
     public var urlPrefix: String
 
@@ -79,7 +79,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
 
     //  MARK: - INITIALIZERS
 
-    public init() {
+    public init<Session: AliceSession>(using sessionType: Session.Type = URLSession.self) {
         _ = isOnMainThread(named: "CLIENT STARTED")
         urlPrefix = Alice.DEFAULT_URL_PREFIX
 
@@ -110,8 +110,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
         configuration.timeoutIntervalForRequest = 60
         configuration.timeoutIntervalForResource = 120
 
-        self.session = URLSession(configuration: configuration)
-
+        self.session = Session(configuration: configuration)
     }
 
     /// Sets the URL prefix of the Chica client when making requests.
@@ -162,7 +161,9 @@ public class Alice: ObservableObject, CustomStringConvertible {
     ) async -> Response<T> {
         let url = Self.API_URL.appendingPathComponent(endpoint.path)
         do {
-            let (data, response) = try await self.session.data(for: Self.makeRequest(method, url: url, params: params))
+            let request = Self.makeRequest(method, url: url, params: params)
+            let (data, response) = try await self.session.request(request, delegate: nil)
+
             guard let response = response as? HTTPURLResponse else {
                 return .failure(.unknownResponseError(response: response))
             }
@@ -185,5 +186,21 @@ public class Alice: ObservableObject, CustomStringConvertible {
         } catch {
             return .failure(.unknownError(error: error))
         }
+    }
+
+    public func get<T: Decodable>(_ endpoint: Endpoint, params: [String: String]? = nil) async -> Response<T> {
+        return await request(.get, for: endpoint, params: params)
+    }
+
+    public func post<T: Decodable>(_ endpoint: Endpoint, params: [String: String]? = nil) async -> Response<T> {
+        return await request(.post, for: endpoint, params: params)
+    }
+
+    public func put<T: Decodable>(_ endpoint: Endpoint, params: [String: String]? = nil) async -> Response<T> {
+        return await request(.put, for: endpoint, params: params)
+    }
+
+    public func delete<T: Decodable>(_ endpoint: Endpoint, params: [String: String]? = nil) async -> Response<T> {
+        return await request(.delete, for: endpoint, params: params)
     }
 }

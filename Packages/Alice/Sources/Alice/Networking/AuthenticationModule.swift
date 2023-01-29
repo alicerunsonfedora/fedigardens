@@ -104,7 +104,7 @@ public class AuthenticationModule: ObservableObject {
             self.authState = .signinInProgress
         }
 
-        let response: Alice.Response<Application> = await Alice.shared.request(.post, for: .apps, params: [
+        let response: Alice.Response<Application> = await Alice.shared.post(.apps, params: [
             "client_name": app.name,
             "redirect_uris": "\(Alice.shared.urlPrefix)://\(URL_SUFFIX)",
             "scopes": scopes.joined(separator: " "),
@@ -144,7 +144,7 @@ public class AuthenticationModule: ObservableObject {
     /// Continues with the OAuth flow after obtaining the user authorization code from the redirect URI
     public func continueOauthFlow(_ code: String) async {
         let keychain = Keychain(service: Alice.OAuth.keychainService)
-        let response: Alice.Response<Token> = await Alice.shared.request(.post, for: .token, params: [
+        let response: Alice.Response<Token> = await Alice.shared.post(.token, params: [
             "client_id": keychain["starlight_client_id"]!,
             "client_secret": keychain["starlight_client_secret"]!,
             "redirect_uri": "\(Alice.shared.urlPrefix)://\(URL_SUFFIX)",
@@ -168,7 +168,7 @@ public class AuthenticationModule: ObservableObject {
     public func signOut() async {
         let keychain = Keychain(service: Alice.OAuth.keychainService)
 
-        let response: Alice.Response<EmptyNode> = await Alice.shared.request(.post, for: .revokeToken, params: [
+        let response: Alice.Response<EmptyNode> = await Alice.shared.post(.revokeToken, params: [
             "client_id": keychain["starlight_client_id"]!,
             "client_secret": keychain["starlight_client_secret"]!,
             "token": keychain["starlight_access_token"] ?? ""

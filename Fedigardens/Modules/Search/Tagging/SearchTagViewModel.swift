@@ -23,7 +23,7 @@ class SearchTagViewModel: ObservableObject {
     func fetchTimeline() async {
         guard let tag else { return }
         let scope: TimelineScope = .tag(tag: tag.name)
-        let response: Alice.Response<[Status]> = await Alice.shared.request(.get, for: .timeline(scope: scope))
+        let response: Alice.Response<[Status]> = await Alice.shared.get(.timeline(scope: scope))
         switch response {
         case .success(let statuses):
             DispatchQueue.main.async {
@@ -36,7 +36,7 @@ class SearchTagViewModel: ObservableObject {
 
     func subscribeToTag() async {
         guard let tag else { return }
-        let response: Alice.Response<Tag> = await Alice.shared.request(.post, for: .followTag(id: tag.name))
+        let response: Alice.Response<Tag> = await Alice.shared.post(.followTag(id: tag.name))
         switch response {
         case .success(let newTag):
             DispatchQueue.main.async {

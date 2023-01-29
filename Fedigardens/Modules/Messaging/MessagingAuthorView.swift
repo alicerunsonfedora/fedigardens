@@ -94,7 +94,7 @@ struct MessagingAuthorView: View {
             "in_reply_to_id": replyStatus.id
         ]
 
-        let response: Alice.Response<Status> = await Alice.shared.request(.post, for: .statuses(), params: params)
+        let response: Alice.Response<Status> = await Alice.shared.post(.statuses(), params: params)
         switch response {
         case .success(let message):
             writtenMessages.append(message)

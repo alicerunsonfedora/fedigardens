@@ -40,7 +40,7 @@ class MessagingDetailViewModel: ObservableObject {
     func fetchContext(of newConversation: Conversation?) async -> LayoutState {
         let fetchContextRequest = newConversation ?? conversation
         guard let request = fetchContextRequest?.lastStatus?.id else { return .loaded }
-        let response: Alice.Response<Context> = await Alice.shared.request(.get, for: .context(id: request))
+        let response: Alice.Response<Context> = await Alice.shared.get(.context(id: request))
         switch response {
         case .success(let context):
             DispatchQueue.main.async {

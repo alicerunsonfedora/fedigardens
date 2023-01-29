@@ -25,9 +25,8 @@ class InteractionsListViewModel: ObservableObject {
 
     func fetchNotifications() async {
         DispatchQueue.main.async { self.state = .loading }
-        let response: Alice.Response<[Notification]> = await Alice.shared.request(
-            .get,
-            for: .notifications,
+        let response: Alice.Response<[Notification]> = await Alice.shared.get(
+            .notifications,
             params: [
                 "types[]": NotificationType.mention.rawValue,
                 "limit": String(UserDefaults.standard.loadLimit)

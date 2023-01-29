@@ -98,10 +98,7 @@ struct MessagingList: View, LayoutStateRepresentable {
     private func getConversations(forcefully: Bool = false) async {
         func makeRequest() async {
             state = .loading
-            let response: Alice.Response<[Conversation]> = await Alice.shared.request(
-                .get,
-                for: .timeline(scope: .messages)
-            )
+            let response: Alice.Response<[Conversation]> = await Alice.shared.get(.timeline(scope: .messages))
             switch response {
             case .success(let conversations):
                 DispatchQueue.main.async {

@@ -66,8 +66,8 @@ class StatusNavigationListViewModel: ObservableObject {
                 icon: UIImage(systemName: "star.fill")
             )
         ) { changed in
-            await Alice.shared.request(
-                .post, for: changed.favourited == true ? .unfavorite(id: changed.id) : .favourite(id: changed.id)
+            await Alice.shared.post(
+                changed.favourited == true ? .unfavorite(id: changed.id) : .favourite(id: changed.id)
             )
         }
     }
@@ -83,9 +83,7 @@ class StatusNavigationListViewModel: ObservableObject {
                 icon: UIImage(systemName: "bookmark.fill")
             )
         ) { state in
-            await Alice.shared.request(
-                .post, for: state.bookmarked == true ? .undoSave(id: state.id) : .save(id: state.id)
-            )
+            await Alice.shared.post(state.bookmarked == true ? .undoSave(id: state.id) : .save(id: state.id))
         }
     }
 

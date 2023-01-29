@@ -86,7 +86,7 @@ class AuthorViewModel: ObservableObject {
             params["spoiler_text"] = sensitiveText
         }
 
-        let response: Alice.Response<Status> = await Alice.shared.request(.post, for: .statuses(), params: params)
+        let response: Alice.Response<Status> = await Alice.shared.post(.statuses(), params: params)
         switch response {
         case .success:
             DispatchQueue.main.async {
@@ -173,9 +173,7 @@ class AuthorViewModel: ObservableObject {
 
     private func fetchPromptIfUninitalized(in context: AuthoringContext) async {
         guard !context.replyingToID.isEmpty, prompt == nil else { return }
-        let response: Alice.Response<Status> = await Alice.shared.request(
-            .get, for: .statuses(id: context.replyingToID)
-        )
+        let response: Alice.Response<Status> = await Alice.shared.get(.statuses(id: context.replyingToID))
         switch response {
         case .success(let prompted):
             DispatchQueue.main.async {
