@@ -19,13 +19,18 @@ struct GardensAppWideCommonDestinationsGroup: View {
         Group {
             GardensPageLink(page: .forYou)
             GardensPageLink(page: .local)
-            GardensPageLink(page: .public)
-            GardensPageLink(page: .messages)
-            GardensPageLink(page: .selfPosts)
             GardensPageLink(page: .mentions)
-            GardensPageLink(page: .saved)
-            GardensPageLink(page: .settings)
             GardensPageLink(page: .search)
+            GardensPageLink(page: .settings)
+
+            Section {
+                GardensPageLink(page: .public)
+                GardensPageLink(page: .messages)
+                GardensPageLink(page: .selfPosts)
+                GardensPageLink(page: .saved)
+            } header: {
+                Text("general.more")
+            }
         }
     }
 }
