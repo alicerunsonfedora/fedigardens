@@ -1,4 +1,4 @@
-// 
+//
 //  SearchTagViewModel.swift
 //  Fedigardens
 //
