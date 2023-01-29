@@ -27,7 +27,7 @@ struct SearchResultsView: View {
     }
 
     var results: SearchResult
-    @State private var filter: Filter = .tags
+    @State private var filter: Filter = .all
 
     var body: some View {
         List {
