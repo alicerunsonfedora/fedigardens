@@ -22,10 +22,8 @@ struct AuthoringScene: Scene {
     var body: some Scene {
         WindowGroup("status.create", for: AuthoringContext.self) { authorContext in
             Group {
-                if let context = authorContext.wrappedValue {
-                    NavigationStack {
-                        AuthorView(authoringContext: context)
-                    }
+                NavigationStack {
+                    AuthorView(authoringContext: authorContext.wrappedValue ?? AuthoringContext())
                 }
             }
         }
@@ -33,19 +31,20 @@ struct AuthoringScene: Scene {
 
         WindowGroup("status.create") {
             Group {
-                if let context = deeplinkedContext {
-                    NavigationStack {
-                        AuthorView(authoringContext: context)
-                    }
+                NavigationStack {
+                    AuthorView(authoringContext: deeplinkedContext ?? AuthoringContext())
                 }
             }
-            .handlesExternalEvents(preferring: ["create"], allowing: ["create"])
+            .handlesExternalEvents(
+                preferring: ["create", "app.fedigardens.mail.authorscene"],
+                allowing: ["create", "app.fedigardens.mail.authorscene"]
+            )
             .onOpenURL { url in
                 getContextFromDeeplink(of: url)
             }
         }
         .handlesExternalEvents(
-            matching: .init(arrayLiteral: "create")
+            matching: ["create", "app.fedigardens.mail.authorscene"]
         )
         .commands { TextEditingCommands() }
     }

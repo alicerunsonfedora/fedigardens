@@ -13,6 +13,7 @@
 //  details.
 
 import SwiftUI
+import UIKit
 
 struct GardensComposeButton: View {
     enum ComposeStyle {
@@ -25,7 +26,6 @@ struct GardensComposeButton: View {
     }
 
     @Environment(\.supportsMultipleWindows) var supportsMultipleWindows
-    @Environment(\.openWindow) private var openWindow
     @Environment(\.openURL) private var openURL
 
     var shouldInvokeParentSheet: Binding<AuthoringContext?>?
@@ -39,7 +39,7 @@ struct GardensComposeButton: View {
         Group {
             Button {
                 if supportsMultipleWindows {
-                    openWindow(value: context)
+                    requestProminentWindowActivation()
                 } else if let shouldInvokeParentSheet {
                     shouldInvokeParentSheet.wrappedValue = context
                 } else {
@@ -74,5 +74,21 @@ struct GardensComposeButton: View {
                 Label("status.messageaction", systemImage: "text.bubble")
             }
         }
+    }
+
+    private func requestProminentWindowActivation() {
+        let options = UIWindowScene.ActivationRequestOptions()
+        options.preferredPresentationStyle = .prominent
+
+        let activity = NSUserActivity(activityType: "app.fedigardens.mail.authorscene")
+        activity.targetContentIdentifier = "app.fedigardens.mail.authorscene"
+        activity.userInfo = [
+            "AuthoringContextDetails": context.constructURL()?.absoluteString ?? "gardens://create"
+        ]
+        UIApplication.shared.requestSceneSessionActivation(
+            nil,
+            userActivity: activity,
+            options: options
+        )
     }
 }

@@ -116,9 +116,18 @@ struct AuthorView: View {
                 .disabled(viewModel.charactersRemaining < 0)
             }
         }
+        .onContinueUserActivity("app.fedigardens.mail.authorscene", perform: continueActivity)
         .onAppear {
             Task {
                 if let context = authoringContext {
+                    viewModel.setAuthor(to: userProfile)
+                    await viewModel.setupTextContents(with: context)
+                }
+            }
+        }
+        .onChange(of: authoringContext) { newValue in
+            Task {
+                if let context = newValue {
                     viewModel.setAuthor(to: userProfile)
                     await viewModel.setupTextContents(with: context)
                 }
@@ -237,6 +246,12 @@ struct AuthorView: View {
             return Color.yellow
         default:
             return Color.secondary
+        }
+    }
+
+    private func continueActivity(_ activity: NSUserActivity) {
+        if let data = activity.userInfo?["AuthoringContextDetails"] as? String, let url = URL(string: data) {
+            authoringContext = AuthoringContext(from: url)
         }
     }
 }
