@@ -12,17 +12,26 @@ If you need to list changes to this changelog but there isn't an entry for it, c
 And list your changes under that.
 -->
 
-## [Unreleased] - Date Pending
+## [1.0-24 (beta)] - 30/1/2023
 
-- Introduces the ability to follow/unfollow hashtags in Fedigardens through the _Subscribed Tags_ feature.
-- Introduces new settings for the composer, including privacy levels for writing various statuses, character limit options, and mentioning the original author when creating a quote status.
-- Improves the character counting algorithm in the composer.
-- Adds new blocked servers page to Settings.
-- Adds new "Report a Bug..." link in Settings > About.
+### Subscribed Tags
+Ever want to catch up on statuses tagged with a specific hashtag? Subscribed Tags is the feature you're looking for! Easily follow and unfollow tags right from the sidebar or in the More tab on iPhone; just tap the plus icon and select "New Subscribed Tag..."
+
+### Settings Overhaul
+Settings has been completely overhauled this release with some brand-new settings!
+- **Character Limits**: Change the character limit to match your instance, or turn it off altogether.
+- **Focused Timeline**: Streamline any of your timelines with Focused Timelines. Focused Timelines will automatically place reblogged content or replies to existing statuses in a separate column for you, letting you see the content that matters most to you.
+- **Privacy Levels**: Set the default visibility levels for when you write a new status, reply to someone else, or even quote a status.
+- **Blocked Instances**: Add or remove instances you'd like to block easily with a quick and easy-to-use interface.
+
+### Search
+Trying to look for a fellow friend or colleague? Want to see what's trending on your instance? Look no further than the new Search page! Easily search for people, statuses, and tags, and get recommendations right on the search page. When searching for tags, you can even see the activity history and subscribe to that tag.
+
+### Other general changes
 - Fixes a bug where interventions were too persistent and ignored the user's preferences in one sec.
-- Adds a brand new search page that lets you search for users, statuses, and tags.
-- Introduces a new Focused Timeline setting to split timeline lists between "original" content and replies/reblogs.
 - Updates composer window activation to be more consistent with the Mail app.
+- Improves the character counting algorithm in the composer.
+
 
 ## [1.0-14 (beta)] - 15/1/2023
 
