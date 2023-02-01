@@ -92,6 +92,7 @@
 "status.tagandreply.title" = "You have hashtags in your reply.";
 "status.tagandreply.detail" = "Remember to respect the person you are replying to, and refrain from adding hashtags for reach without consent. [Learn more…](https://fedigardens.app/support/#tags-in-replies)";
 "status.participants.empty" = "No participants";
+"status.languagecode" = "Select a Language";
 
 // MARK: - Status Actions
 "status.compose" = "New Status";

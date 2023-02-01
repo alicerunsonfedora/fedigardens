@@ -12,6 +12,9 @@ If you need to list changes to this changelog but there isn't an entry for it, c
 And list your changes under that.
 -->
 
+## [Unreleased] - Date Pending
+- (FGD-31) Adds a language picker to the composer for filtering/automatic translation purposes.
+
 ## [1.0-24 (beta)] - 30/1/2023
 
 ### Subscribed Tags

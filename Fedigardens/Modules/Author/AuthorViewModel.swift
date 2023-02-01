@@ -36,6 +36,8 @@ class AuthorViewModel: ObservableObject {
     /// Associated warning text with a sensitive status context.
     @Published var sensitiveText = ""
 
+    @Published var selectedLanguage = "en"
+
     @Published var mentionString = ""
 
     var userProfile: Account?
@@ -77,7 +79,8 @@ class AuthorViewModel: ObservableObject {
         var params = [
             "status": mentionString.isNotEmpty ? "\(mentionString) \(text)" : text,
             "visibility": visibility.rawValue,
-            "poll": "null"
+            "poll": "null",
+            "language": selectedLanguage
         ]
         if let reply = prompt { params["in_reply_to_id"] = reply.id }
 
