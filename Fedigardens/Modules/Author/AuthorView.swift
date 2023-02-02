@@ -26,6 +26,7 @@ struct AuthorView: View {
     @Environment(\.dismiss) var dismiss
 
     @Environment(\.userProfile) var userProfile
+    @Environment(\.locale) var locale
 
     /// The ID of the status that the current status will respond to, if the user is replying.
     ///
@@ -100,6 +101,7 @@ struct AuthorView: View {
                 .keyboardShortcut(.init(.escape, modifiers: .command))
                 .labelStyle(.titleOnly)
             }
+
             ToolbarItem(placement: .confirmationAction) {
                 Button {
                     Task {
@@ -114,6 +116,17 @@ struct AuthorView: View {
                 .keyboardShortcut(.init(.return, modifiers: [.command]))
                 .tint(.accentColor)
                 .disabled(viewModel.charactersRemaining < 0)
+            }
+
+            ToolbarItem(placement: .bottomBar) {
+                Picker(selection: $viewModel.selectedLanguage) {
+                    ForEach(NSLocale.isoLanguageCodes, id: \.hashValue) { code in
+                        Text(locale.localizedString(forLanguageCode: code) ?? "?")
+                            .tag(code)
+                    }
+                } label: {
+                    Label("status.languagecode", systemImage: "globe")
+                }
             }
         }
         .onContinueUserActivity("app.fedigardens.mail.authorscene", perform: continueActivity)
