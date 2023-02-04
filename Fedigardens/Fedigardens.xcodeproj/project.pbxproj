@@ -11,6 +11,8 @@
 		95009EF4295E780A00F32F85 /* GardensAppLayoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95009EF3295E780A00F32F85 /* GardensAppLayoutViewModel.swift */; };
 		9503EFAF27B4173C00ABB7B0 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */; };
 		9503EFB427B417DD00ABB7B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9503EFB727B417DD00ABB7B0 /* Localizable.strings */; };
+		951365AB298ED3B8008F6D47 /* AuthorViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951365AA298ED3B8008F6D47 /* AuthorViewToolbar.swift */; };
+		951365AC298ED3B8008F6D47 /* AuthorViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951365AA298ED3B8008F6D47 /* AuthorViewToolbar.swift */; };
 		952A011127C67F3F00F36B37 /* MessagingPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A011027C67F3F00F36B37 /* MessagingPresentationView.swift */; };
 		952A06E129691B95008340A4 /* GardensAppCompactLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A06E029691B95008340A4 /* GardensAppCompactLayout.swift */; };
 		952A06E329691C3D008340A4 /* GardensAppPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A06E229691C3D008340A4 /* GardensAppPage.swift */; };
@@ -277,6 +279,7 @@
 		95019DAA27A82124005DF870 /* Capstone--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Capstone--iOS--Info.plist"; sourceTree = "<group>"; };
 		9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		9503EFB627B417DD00ABB7B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		951365AA298ED3B8008F6D47 /* AuthorViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewToolbar.swift; sourceTree = "<group>"; };
 		952A011027C67F3F00F36B37 /* MessagingPresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingPresentationView.swift; sourceTree = "<group>"; };
 		952A06E029691B95008340A4 /* GardensAppCompactLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppCompactLayout.swift; sourceTree = "<group>"; };
 		952A06E229691C3D008340A4 /* GardensAppPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppPage.swift; sourceTree = "<group>"; };
@@ -674,6 +677,7 @@
 				9558C7EF29579E66001B30C7 /* GardensComposeButton.swift */,
 				957AF85129592DD1000370E6 /* AuthoringContext.swift */,
 				957AF854295937CF000370E6 /* AuthorViewModel.swift */,
+				951365AA298ED3B8008F6D47 /* AuthorViewToolbar.swift */,
 			);
 			path = Author;
 			sourceTree = "<group>";
@@ -1112,6 +1116,7 @@
 				958E20902969F7F2008AE63F /* InteractionsListView.swift in Sources */,
 				955F1B482985EDB300702BE8 /* Tag+Chartable.swift in Sources */,
 				9547230827A0094000D1BA89 /* ContentView.swift in Sources */,
+				951365AB298ED3B8008F6D47 /* AuthorViewToolbar.swift in Sources */,
 				95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */,
 				9537C6D3297DB8C30039F3C4 /* SettingsBlocklistPage.swift in Sources */,
 				95A1BF9A29738D33002C88B6 /* ProfileSheetViewModel.swift in Sources */,
@@ -1289,6 +1294,7 @@
 				955F1B522985FBE100702BE8 /* ProfileSheetLabel.swift in Sources */,
 				95801D6B297CC14E00FE8D83 /* StatusView.swift in Sources */,
 				95801D6D297CC14E00FE8D83 /* StatusQuickGlanceView.swift in Sources */,
+				951365AC298ED3B8008F6D47 /* AuthorViewToolbar.swift in Sources */,
 				955F1B5E2986FB0A00702BE8 /* SettingsVersionBlock.swift in Sources */,
 				95801D41297CC0DE00FE8D83 /* AuthorView.swift in Sources */,
 				95801D4E297CC10700FE8D83 /* BetaBadge.swift in Sources */,

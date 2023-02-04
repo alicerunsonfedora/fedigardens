@@ -26,7 +26,6 @@ struct AuthorView: View {
     @Environment(\.dismiss) var dismiss
 
     @Environment(\.userProfile) var userProfile
-    @Environment(\.locale) var locale
 
     /// The ID of the status that the current status will respond to, if the user is replying.
     ///
@@ -59,7 +58,6 @@ struct AuthorView: View {
                             }
                         }
                     }
-                    Toggle("status.marksensitive", isOn: $viewModel.sensitive)
                     if viewModel.sensitive {
                         HStack {
                             Image(systemName: "eye.trianglebadge.exclamationmark")
@@ -91,43 +89,9 @@ struct AuthorView: View {
         .animation(.spring(), value: viewModel.prompt)
         .animation(.spring(), value: viewModel.sensitive)
         .animation(.spring(), value: viewModel.charactersRemaining)
+        .toolbarBackground(.visible, for: .bottomBar)
         .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button {
-                    dismiss()
-                } label: {
-                    Label("general.cancel", systemImage: "xmark")
-                }
-                .keyboardShortcut(.init(.escape, modifiers: .command))
-                .labelStyle(.titleOnly)
-            }
-
-            ToolbarItem(placement: .confirmationAction) {
-                Button {
-                    Task {
-                        await viewModel.submitStatus {
-                            dismiss()
-                        }
-                    }
-                } label: {
-                    Label("status.postaction", systemImage: "arrow.up.circle.fill")
-                }
-                .font(.title)
-                .keyboardShortcut(.init(.return, modifiers: [.command]))
-                .tint(.accentColor)
-                .disabled(viewModel.charactersRemaining < 0)
-            }
-
-            ToolbarItem(placement: .bottomBar) {
-                Picker(selection: $viewModel.selectedLanguage) {
-                    ForEach(NSLocale.isoLanguageCodes, id: \.hashValue) { code in
-                        Text(locale.localizedString(forLanguageCode: code) ?? "?")
-                            .tag(code)
-                    }
-                } label: {
-                    Label("status.languagecode", systemImage: "globe")
-                }
-            }
+            AuthorViewToolbar(viewModel: viewModel)
         }
         .onContinueUserActivity("app.fedigardens.mail.authorscene", perform: continueActivity)
         .onAppear {

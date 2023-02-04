@@ -42,6 +42,12 @@ class AuthorViewModel: ObservableObject {
 
     var userProfile: Account?
 
+    var availableLanguageCodes: [String] {
+        Locale.LanguageCode.isoLanguageCodes.filter { code in
+            code.identifier.count == 2
+        }.map(\.identifier)
+    }
+
     /// The number of characters remaining that the user can utilize.
     var charactersRemaining: Int {
         return calculateCharactersRemaining()
@@ -50,6 +56,10 @@ class AuthorViewModel: ObservableObject {
     var textContainsHashtagInReply: Bool {
         let regex = /\#[a-zA-Z0-9]+/
         return prompt != nil && text.matches(of: regex).isNotEmpty
+    }
+
+    var shouldDisableSubmission: Bool {
+        UserDefaults.standard.enforceCharacterLimit && charactersRemaining < 0
     }
 
     private var drop: Drop?
@@ -76,8 +86,9 @@ class AuthorViewModel: ObservableObject {
 
     func submitStatus(completion: @escaping () -> Void) async {
         if UserDefaults.standard.enforceCharacterLimit, charactersRemaining < 0 { return }
+        let fullStatus = mentionString.isNotEmpty ? [mentionString, text].joined(separator: " ") : text
         var params = [
-            "status": mentionString.isNotEmpty ? "\(mentionString) \(text)" : text,
+            "status": fullStatus,
             "visibility": visibility.rawValue,
             "poll": "null",
             "language": selectedLanguage
@@ -88,6 +99,8 @@ class AuthorViewModel: ObservableObject {
             params["sensitive"] = "true"
             params["spoiler_text"] = sensitiveText
         }
+
+        guard params["status", default: ""] == fullStatus else { return }
 
         let response: Alice.Response<Status> = await Alice.shared.post(.statuses(), params: params)
         switch response {
