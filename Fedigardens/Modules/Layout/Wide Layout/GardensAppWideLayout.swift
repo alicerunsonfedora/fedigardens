@@ -64,7 +64,12 @@ struct GardensAppWideLayout: View {
             GardensAppSidebarContent(viewModel: viewModel)
                 .toolbar {
                     ToolbarItem {
-                        GardensComposeButton(style: .new)
+                        ZStack {
+                            Text("status.compose")
+                                .frame(width: 0, height: 0)
+                            GardensComposeButton(style: .new)
+                        }
+                            .keyboardShortcut("n", modifiers: .command)
                     }
                 }
         } detail: {

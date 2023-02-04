@@ -18,10 +18,15 @@ struct GardensAppWideCommonDestinationsGroup: View {
     var body: some View {
         Group {
             GardensPageLink(page: .forYou)
+                .keyboardShortcut("h", modifiers: [.command, .shift])
             GardensPageLink(page: .local)
+                .keyboardShortcut("l", modifiers: [.command, .shift])
             GardensPageLink(page: .mentions)
+                .keyboardShortcut("i", modifiers: [.command, .shift])
             GardensPageLink(page: .search)
+                .keyboardShortcut(.space, modifiers: [.command, .shift])
             GardensPageLink(page: .settings)
+                .keyboardShortcut(",", modifiers: .command)
 
             Section {
                 GardensPageLink(page: .public)
