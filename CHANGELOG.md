@@ -14,6 +14,8 @@ And list your changes under that.
 
 ## [Unreleased] - Date Pending
 - (FGD-31) Adds a language picker to the composer for filtering/automatic translation purposes.
+- Moves the Mark as Sensitive toggle into the bottom toolbar in the composer.
+- Adds more keyboard shortcuts in the composer.
 
 ## [1.0-24 (beta)] - 30/1/2023
 
