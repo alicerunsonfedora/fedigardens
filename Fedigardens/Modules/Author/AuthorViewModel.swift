@@ -13,9 +13,11 @@
 //  details.
 
 import Alice
+import enum Alice.Visibility
 import Combine
 import Drops
 import UIKit
+import SwiftUI
 
 class AuthorViewModel: ObservableObject {
     @Published var editMode = false
@@ -43,6 +45,16 @@ class AuthorViewModel: ObservableObject {
 
     var submittableText: String {
         mentionString.isNotEmpty ? [mentionString, text].joined(separator: " ") : text
+    }
+
+    var proposedNavigationTitle: LocalizedStringKey {
+        if editMode {
+            return "status.edit"
+        }
+        if prompt != nil {
+            return "status.newreply"
+        }
+        return "status.new"
     }
 
     var textContainsHashtagInReply: Bool {
@@ -200,8 +212,11 @@ class AuthorViewModel: ObservableObject {
         if context.replyingToID.isNotEmpty {
             return Drop(
                 title: "drop.reply".localized(comment: "Reply drop"),
-                icon: UIImage(systemName: "arrowshape.turn.up.left.fill")
+                icon: .init(systemName: "arrowshape.turn.up.left.fill")
             )
+        }
+        if editMode {
+            return Drop(title: "drop.edit".localized(comment: "Edit drop"), icon: .init(systemName: "pencil"))
         }
         return Drop(title: "drop.post".localized(comment: "Post drop"), icon: UIImage(systemName: "paperplane.fill"))
     }

@@ -69,6 +69,7 @@
 "status.commentary" = "status.commentary";
 "status.new" = "New Status";
 "status.newreply" = "New Reply";
+"status.edit" = "Edit Status";
 "status.visibility" = "Visible to: ";
 "status.charsremain" = "status.charsremain";
 "status.replytext" = "Replying to %@";
@@ -93,6 +94,8 @@
 "status.tagandreply.detail" = "Remember to respect the person you are replying to, and refrain from adding hashtags for reach without consent. [Learn more…](https://fedigardens.app/support/#tags-in-replies)";
 "status.participants.empty" = "No participants";
 "status.languagecode" = "Select a Language";
+"status.editmode.title" = "You are editing this status.";
+"status.editmode.detail" = "Some composition features such as setting the visibility may not be available.";
 
 // MARK: - Status Actions
 "status.compose" = "New Status";
@@ -132,6 +135,7 @@
 "drop.save" = "Added to Bookmarks";
 "drop.unsave" = "Removed from Bookmarks";
 "drop.post" = "Posted Status";
+"drop.edit" = "Edited Status";
 "drop.follow" = "Followed";
 "drop.unfollow" = "Unfollowed";
 "drop.mute" = "Muted";
