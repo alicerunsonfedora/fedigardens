@@ -107,20 +107,32 @@ struct AttachmentViewer: View {
                         .font(.footnote)
                 }
             }
+            .padding()
         }
-        .alert("attachments.share.title", isPresented: $viewModel.shouldDisplayConsentAcknowledgementAlert) {
+        .giantAlert(
+            isPresented: $viewModel.shouldDisplayConsentAcknowledgementAlert,
+            title: "attachments.share.title"
+        ) {
+            Image(systemName: "square.and.arrow.up.trianglebadge.exclamationmark")
+        } actions: {
             Button {
                 viewModel.didAcknowledgeConsent = true
+                viewModel.shouldDisplayConsentAcknowledgementAlert = false
             } label: {
                 Text("attachments.share.acknowledge")
+                    .frame(maxWidth: .infinity)
             }
+            .buttonStyle(.bordered)
             Button(role: .cancel) {
-
+                viewModel.shouldDisplayConsentAcknowledgementAlert = false
             } label: {
-                Text("general.cancel")
+                Text("attachments.share.cancel")
+                    .bold()
+                    .frame(maxWidth: .infinity)
             }
+            .buttonStyle(.borderedProminent)
         } message: {
-             Text("attachments.share.detail")
+            Text("attachments.share.detail")
         }
         .toolbar {
             AttachmentViewerToolbar(viewModel: viewModel)

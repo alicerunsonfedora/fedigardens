@@ -249,6 +249,7 @@
 		95CDCD252990297E002BD37A /* AttachmentViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D28C74299024FE0051D31E /* AttachmentViewer.swift */; };
 		95CDCD262990297E002BD37A /* AttachmentMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CDCD2129902968002BD37A /* AttachmentMedia.swift */; };
 		95CDCD2829904E19002BD37A /* AttachmentViewerToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CDCD2729904E19002BD37A /* AttachmentViewerToolbar.swift */; };
+		95CDCD2A29905085002BD37A /* GiantAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CDCD2929905085002BD37A /* GiantAlert.swift */; };
 		95CEFDE82959637400EEE96C /* StatusVerifiedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */; };
 		95CEFDE92959637400EEE96C /* StatusVerifiedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */; };
 		95CEFDEB295A031E00EEE96C /* Pip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDEA295A031E00EEE96C /* Pip.swift */; };
@@ -410,6 +411,7 @@
 		95CDCD1F299027FC002BD37A /* AttachmentViewerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentViewerViewModel.swift; sourceTree = "<group>"; };
 		95CDCD2129902968002BD37A /* AttachmentMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentMedia.swift; sourceTree = "<group>"; };
 		95CDCD2729904E19002BD37A /* AttachmentViewerToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentViewerToolbar.swift; sourceTree = "<group>"; };
+		95CDCD2929905085002BD37A /* GiantAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiantAlert.swift; sourceTree = "<group>"; };
 		95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusVerifiedButton.swift; sourceTree = "<group>"; };
 		95CEFDEA295A031E00EEE96C /* Pip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pip.swift; sourceTree = "<group>"; };
 		95CEFDED295A388100EEE96C /* StatusDetailQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailQuote.swift; sourceTree = "<group>"; };
@@ -635,6 +637,7 @@
 				953BC7C72957E156005C7F2A /* RecursiveNavigationView.swift */,
 				95F2DE2329725C6100553937 /* BetaBadge.swift */,
 				955F1B532985FD1500702BE8 /* BadgedText.swift */,
+				95CDCD2929905085002BD37A /* GiantAlert.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1184,6 +1187,7 @@
 				955F1B4B2985F3A300702BE8 /* TagHistoryChart.swift in Sources */,
 				95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95CEFDF2295A3B4900EEE96C /* StatusAuthorExtendedLabel.swift in Sources */,
+				95CDCD2A29905085002BD37A /* GiantAlert.swift in Sources */,
 				95009EF4295E780A00F32F85 /* GardensAppLayoutViewModel.swift in Sources */,
 				953BC7C82957E156005C7F2A /* RecursiveNavigationView.swift in Sources */,
 				953BC7CE2957FD94005C7F2A /* AttachmentMediaGroup.swift in Sources */,

@@ -18,7 +18,7 @@ import Alice
 struct AttachmentViewerToolbar: ToolbarContent {
     @Environment(\.dismiss) private var dismiss
     @StateObject var viewModel: AttachmentViewerViewModel
-    
+
     var body: some ToolbarContent {
         Group {
             ToolbarItem(placement: .cancellationAction) {
