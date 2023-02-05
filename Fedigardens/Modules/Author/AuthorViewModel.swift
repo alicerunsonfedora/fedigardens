@@ -13,32 +13,23 @@
 //  details.
 
 import Alice
+import enum Alice.Visibility
 import Combine
 import Drops
 import UIKit
+import SwiftUI
 
 class AuthorViewModel: ObservableObject {
-    /// The status that the current status will respond to, if the user is replying.
-    @Published var prompt: Status?
-
-    /// The body of the status that's being authored.
-    @Published var text: String = ""
-
-    /// The visibility of the status. Defaults to public.
-    @Published var visibility: Visibility = UserDefaults.standard.defaultVisibility
-
-    /// Whether the post should be marked as sensitive. Defaults to false.
-    @Published var sensitive: Bool = false
-
-    /// A prompt content variable used to render the status's text asynchronously.
-    @Published var promptContent = "Content goes here."
-
-    /// Associated warning text with a sensitive status context.
-    @Published var sensitiveText = ""
-
-    @Published var selectedLanguage = "en"
-
+    @Published var editMode = false
     @Published var mentionString = ""
+    @Published var prompt: Status?
+    @Published var promptContent = "Content goes here."
+    @Published var selectedLanguage = "en"
+    @Published var sensitive: Bool = false
+    @Published var sensitiveText = ""
+    @Published var statusID = ""
+    @Published var text: String = ""
+    @Published var visibility: Visibility = UserDefaults.standard.defaultVisibility
 
     var userProfile: Account?
 
@@ -48,9 +39,22 @@ class AuthorViewModel: ObservableObject {
         }.map(\.identifier)
     }
 
-    /// The number of characters remaining that the user can utilize.
     var charactersRemaining: Int {
         return calculateCharactersRemaining()
+    }
+
+    var submittableText: String {
+        mentionString.isNotEmpty ? [mentionString, text].joined(separator: " ") : text
+    }
+
+    var proposedNavigationTitle: LocalizedStringKey {
+        if editMode {
+            return "status.edit"
+        }
+        if prompt != nil {
+            return "status.newreply"
+        }
+        return "status.new"
     }
 
     var textContainsHashtagInReply: Bool {
@@ -71,6 +75,9 @@ class AuthorViewModel: ObservableObject {
     func setupTextContents(with context: AuthoringContext) async {
         await self.fetchPromptIfUninitalized(in: context)
         DispatchQueue.main.async {
+            if context.prefilledText.isNotEmpty {
+                self.text = context.prefilledText
+            }
             self.constructReplyText(with: context.participants)
             self.visibility = context.visibility
             self.drop = self.makeDrop(from: context)
@@ -81,28 +88,21 @@ class AuthorViewModel: ObservableObject {
             if context.replyingToID.isNotEmpty {
                 self.visibility = UserDefaults.standard.defaultReplyVisibility
             }
+            if context.editablePostID.isNotEmpty {
+                self.editMode = true
+                self.statusID = context.editablePostID
+            }
         }
     }
 
     func submitStatus(completion: @escaping () -> Void) async {
         if UserDefaults.standard.enforceCharacterLimit, charactersRemaining < 0 { return }
-        let fullStatus = mentionString.isNotEmpty ? [mentionString, text].joined(separator: " ") : text
-        var params = [
-            "status": fullStatus,
-            "visibility": visibility.rawValue,
-            "poll": "null",
-            "language": selectedLanguage
-        ]
-        if let reply = prompt { params["in_reply_to_id"] = reply.id }
+        let params = constructParameters()
+        guard params["status", default: ""] == submittableText else { return }
+        let requestMethod: Alice.Method = editMode ? .put : .post
+        let endpoint: Endpoint = .statuses(id: editMode ? statusID : nil)
 
-        if sensitive {
-            params["sensitive"] = "true"
-            params["spoiler_text"] = sensitiveText
-        }
-
-        guard params["status", default: ""] == fullStatus else { return }
-
-        let response: Alice.Response<Status> = await Alice.shared.post(.statuses(), params: params)
+        let response: Alice.Response<Status> = await Alice.shared.request(requestMethod, for: endpoint, params: params)
         switch response {
         case .success:
             DispatchQueue.main.async {
@@ -125,10 +125,18 @@ class AuthorViewModel: ObservableObject {
         }
     }
 
-    /// Initialized the reply text if there is a prompted status to reply to.
-    ///
-    /// This will attempt to load in the usernames of the mentioned people in the thread, like most Mastodon
-    /// clients do, to maintain consistency and clarity in the conversation thread.
+    private func constructParameters() -> [String: String] {
+        let fullStatus = mentionString.isNotEmpty ? [mentionString, text].joined(separator: " ") : text
+        var params = ["status": fullStatus, "poll": "null", "language": selectedLanguage]
+        if !editMode { params["visibility"] = visibility.rawValue }
+        if let reply = prompt { params["in_reply_to_id"] = reply.id }
+        if sensitive {
+            params["sensitive"] = "true"
+            params["spoiler_text"] = sensitiveText
+        }
+        return params
+    }
+
     private func constructReplyText(with existingParticipants: String = "") {
         guard let reply = prompt else {
             mentionString = "\(existingParticipants)"
@@ -204,8 +212,11 @@ class AuthorViewModel: ObservableObject {
         if context.replyingToID.isNotEmpty {
             return Drop(
                 title: "drop.reply".localized(comment: "Reply drop"),
-                icon: UIImage(systemName: "arrowshape.turn.up.left.fill")
+                icon: .init(systemName: "arrowshape.turn.up.left.fill")
             )
+        }
+        if editMode {
+            return Drop(title: "drop.edit".localized(comment: "Edit drop"), icon: .init(systemName: "pencil"))
         }
         return Drop(title: "drop.post".localized(comment: "Post drop"), icon: UIImage(systemName: "paperplane.fill"))
     }

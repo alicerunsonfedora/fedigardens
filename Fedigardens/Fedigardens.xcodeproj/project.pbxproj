@@ -260,6 +260,8 @@
 		95F2DE2429725C6100553937 /* BetaBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE2329725C6100553937 /* BetaBadge.swift */; };
 		95F2DE26297262D700553937 /* SettingsInterventionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE25297262D700553937 /* SettingsInterventionPage.swift */; };
 		95F2DE2929726A7E00553937 /* Drops in Frameworks */ = {isa = PBXBuildFile; productRef = 95F2DE2829726A7E00553937 /* Drops */; };
+		95FEC3B3298F37F700F628C3 /* AuthorViewParticipantsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FEC3B2298F37F700F628C3 /* AuthorViewParticipantsField.swift */; };
+		95FEC3B4298F37F700F628C3 /* AuthorViewParticipantsField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95FEC3B2298F37F700F628C3 /* AuthorViewParticipantsField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -412,6 +414,7 @@
 		95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+SettingsStyle.swift"; sourceTree = "<group>"; };
 		95F2DE2329725C6100553937 /* BetaBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetaBadge.swift; sourceTree = "<group>"; };
 		95F2DE25297262D700553937 /* SettingsInterventionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInterventionPage.swift; sourceTree = "<group>"; };
+		95FEC3B2298F37F700F628C3 /* AuthorViewParticipantsField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewParticipantsField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -678,6 +681,7 @@
 				957AF85129592DD1000370E6 /* AuthoringContext.swift */,
 				957AF854295937CF000370E6 /* AuthorViewModel.swift */,
 				951365AA298ED3B8008F6D47 /* AuthorViewToolbar.swift */,
+				95FEC3B2298F37F700F628C3 /* AuthorViewParticipantsField.swift */,
 			);
 			path = Author;
 			sourceTree = "<group>";
@@ -1133,6 +1137,7 @@
 				95CEFDF0295A38E500EEE96C /* StatusContextProvider.swift in Sources */,
 				95A1BFA8297465EE002C88B6 /* ProfileSheetHeaderView.swift in Sources */,
 				95CD3C4D296509470043CDB2 /* InterventionAuthorizationContext.swift in Sources */,
+				95FEC3B3298F37F700F628C3 /* AuthorViewParticipantsField.swift in Sources */,
 				958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */,
 				9594DE3B27C927820036325A /* Conversation+Authors.swift in Sources */,
 				958E2096296A0671008AE63F /* GardensPageLink.swift in Sources */,
@@ -1267,6 +1272,7 @@
 				95801D3C297CC0A300FE8D83 /* SettingsView.swift in Sources */,
 				95801D6E297CC15900FE8D83 /* UIDevice+Model.swift in Sources */,
 				95801D64297CC13C00FE8D83 /* MessagingListCellView.swift in Sources */,
+				95FEC3B4298F37F700F628C3 /* AuthorViewParticipantsField.swift in Sources */,
 				95ADAE1427B6CDC50011FD83 /* DateFormatter+Mastodon.swift in Sources */,
 				95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */,
 				95801D51297CC10700FE8D83 /* Gardens.swift in Sources */,

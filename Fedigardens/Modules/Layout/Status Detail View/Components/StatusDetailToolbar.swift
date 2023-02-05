@@ -19,6 +19,7 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
     @Environment(\.deviceModel) var deviceModel
     @Environment(\.openURL) var openURL
     @Environment(\.openWindow) var openWindow
+    @Environment(\.userProfile) var currentUser
     @StateObject var viewModel: StatusDetailViewModel
     @Binding var displayUndisclosedContent: Bool
 
@@ -149,6 +150,20 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
 
     private var commonToolbarButtons: some CustomizableToolbarContent {
         Group {
+            ToolbarItem(id: "edit", placement: .secondaryAction) {
+                if let status = viewModel.status, status.account == currentUser {
+                    GardensComposeButton(
+                        shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
+                        context: AuthoringContext(
+                            editablePostID: status.id,
+                            prefilledText: status.text ?? status.content.plainTextContents()
+                        ),
+                        style: .edit
+                    )
+                }
+            }
+            .defaultCustomization(options: .alwaysAvailable)
+
             ToolbarItem(id: "reply", placement: .secondaryAction) {
                 GardensComposeButton(
                     shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,

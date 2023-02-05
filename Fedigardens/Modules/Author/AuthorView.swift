@@ -38,25 +38,10 @@ struct AuthorView: View {
         VStack(alignment: .leading, spacing: 0) {
             List {
                 Section {
+                    editingNotice
                     visibilityPicker
-                    HStack {
-                        Text(viewModel.visibility == .direct ? "To: " : "Cc: ")
-                        TextField("status.participants.empty", text: $viewModel.mentionString, axis: .vertical)
-                            .lineLimit(1...3)
-                            .textInputAutocapitalization(.none)
-                            .multilineTextAlignment(.trailing)
-                            .autocorrectionDisabled()
-                            .foregroundColor(.accentColor)
-                            .keyboardType(.emailAddress)
-                        if viewModel.mentionString.isNotEmpty {
-                            Button {
-                                viewModel.mentionString = ""
-                            } label: {
-                                Label("Clear", systemImage: "xmark.circle.fill")
-                                    .labelStyle(.iconOnly)
-                                    .foregroundColor(.secondary)
-                            }
-                        }
+                    if !viewModel.editMode {
+                        AuthorViewParticipantsField(viewModel: viewModel)
                     }
                     if viewModel.sensitive {
                         HStack {
@@ -82,9 +67,7 @@ struct AuthorView: View {
             }
             .listStyle(.inset)
         }
-        .navigationTitle(
-            viewModel.prompt == nil ? "status.new" : "status.newreply"
-        )
+        .navigationTitle(viewModel.proposedNavigationTitle)
         .animation(.spring(), value: viewModel.textContainsHashtagInReply)
         .animation(.spring(), value: viewModel.prompt)
         .animation(.spring(), value: viewModel.sensitive)
@@ -147,6 +130,20 @@ struct AuthorView: View {
         }
     }
 
+    var editingNotice: some View {
+        Group {
+            if viewModel.editMode {
+                VStack(alignment: .leading) {
+                    Label("status.editmode.title", systemImage: "pencil")
+                        .font(.headline)
+                    Text("status.editmode.detail")
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+            }
+        }
+    }
+
     var quoteSection: some View {
         Group {
             if let context = authoringContext, !context.forwardingURI.isEmpty {
@@ -202,12 +199,12 @@ struct AuthorView: View {
 
     private var visibilityPicker: some View {
         Picker("status.visibility", selection: $viewModel.visibility) {
-            Text("status.visibility.public").tag(Visibility.public)
-            Text("status.visibility.unlisted").tag(Visibility.unlisted)
-            Text("status.visibility.private").tag(Visibility.private)
-            Text("status.visibility.direct").tag(Visibility.direct)
+            ForEach(Visibility.allCases, id: \.hashValue) { visibilityCase in
+                Text(visibilityCase.localizedDescription).tag(visibilityCase)
+            }
         }
         .font(.system(.body, design: .rounded))
+        .disabled(viewModel.editMode)
 
     }
 
