@@ -97,6 +97,7 @@
 // MARK: - Status Actions
 "status.compose" = "New Status";
 "status.postaction" = "Post";
+"status.editaction" = "Edit";
 "status.replyaction" = "Reply";
 "status.forwardaction" = "Quote";
 "status.mentionaction" = "Mention";

@@ -17,9 +17,11 @@ import Alice
 
 struct AuthoringContext: Codable, Hashable, Identifiable {
     var id = UUID()
-    var replyingToID: String = ""
+    var editablePostID: String = ""
     var forwardingURI: String = ""
     var participants: String = ""
+    var prefilledText: String = ""
+    var replyingToID: String = ""
     var visibility: Visibility = .public
 }
 
@@ -27,10 +29,12 @@ extension AuthoringContext {
     init?(from url: URL) {
         guard url.absoluteString.starts(with: "gardens://create"), let params = url.queryParameters else { return nil }
         self = AuthoringContext(
-            replyingToID: params["replyID"] ?? "",
-            forwardingURI: params["forwardURI"] ?? "",
-            participants: params["participants"] ?? "",
-            visibility: Visibility(rawValue: params["visibility"] ?? "public") ?? .public
+            editablePostID: params["statusID", default: ""],
+            forwardingURI: params["forwardURI", default: ""],
+            participants: params["participants", default: ""],
+            prefilledText: params["status", default: ""],
+            replyingToID: params["replyID", default: ""],
+            visibility: Visibility(rawValue: params["visibility", default: "public"]) ?? .public
         )
     }
 
@@ -48,6 +52,14 @@ extension AuthoringContext {
 
         if participants.isNotEmpty {
             query.append(.init(name: "participants", value: participants))
+        }
+
+        if editablePostID.isNotEmpty {
+            query.append(.init(name: "statusID", value: editablePostID))
+        }
+
+        if prefilledText.isNotEmpty {
+            query.append(.init(name: "status", value: prefilledText))
         }
 
         query.append(.init(name: "visibility", value: visibility.rawValue))

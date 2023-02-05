@@ -18,6 +18,7 @@ import UIKit
 struct GardensComposeButton: View {
     enum ComposeStyle {
         case new
+        case edit
         case reply
         case quote
         case feedback
@@ -62,6 +63,8 @@ struct GardensComposeButton: View {
             switch style {
             case .new:
                 Label("status.compose", systemImage: "square.and.pencil")
+            case .edit:
+                Label("status.editaction", systemImage: "pencil")
             case .reply:
                 Label("status.replyaction", systemImage: "arrowshape.turn.up.backward")
             case .quote:
