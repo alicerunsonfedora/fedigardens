@@ -82,7 +82,9 @@ struct AttachmentViewer: View {
                 }
                 .padding()
                 .onAppear {
-                    viewModel.currentAttachment = attachment
+                    withAnimation(.easeInOut) {
+                        viewModel.currentAttachment = attachment
+                    }
                 }
             }
             .preferredColorScheme(.dark)
@@ -131,13 +133,16 @@ struct AttachmentViewer: View {
     private func preview(for attachment: Attachment) -> some View {
         Group {
             if let path = attachment.previewURL, let url = URL(string: path) {
-                AsyncImage(url: url) { image in
-                    image
-                        .resizable()
-                        .scaledToFill()
-                        .opacity(0.3)
-                } placeholder: {
-                    Color.black
+                AsyncImage(url: url, transaction: .init(animation: .easeInOut)) { (phase: AsyncImagePhase) in
+                    switch phase {
+                    case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .opacity(0.3)
+                    default:
+                        Color.black
+                    }
                 }
             }
         }
