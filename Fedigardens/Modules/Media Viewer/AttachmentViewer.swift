@@ -18,65 +18,131 @@ import Alice
 struct AttachmentViewer: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = AttachmentViewerViewModel()
-    @GestureState private var scaleEffect = 1.0
 
     var attachments: [Attachment]
 
     private var zoomGesture: some Gesture {
         MagnificationGesture()
-            .updating($scaleEffect) { currentState, gestureState, transaction in
-                withAnimation(transaction.animation) {
-                    gestureState = currentState
+            .onChanged { changedValue in
+                withAnimation {
+                    viewModel.magnification = changedValue
+                }
+            }
+            .onEnded { finalValue in
+                withAnimation {
+                    viewModel.magnification = max(1.0, finalValue)
                 }
             }
     }
 
     var body: some View {
         NavigationStack {
-            TabView {
-                ForEach(attachments, id: \.id) { attachment in
+            Group {
+                if attachments.isEmpty {
+                    emptyView
+                } else {
+                    viewer
+                }
+            }
+        }
+            .animation(.spring(), value: viewModel.contentMode)
+            .onAppear {
+                viewModel.attachments = attachments
+            }
+    }
+
+    private var emptyView: some View {
+        VStack {
+            Image(systemName: "paperclip")
+                .font(.largeTitle)
+                .imageScale(.large)
+            Text("attachments.empty.warning")
+                .font(.title2)
+                .bold()
+        }
+        .foregroundColor(.secondary)
+        .toolbar {
+            ToolbarItem {
+                Button(action: dismiss.callAsFunction) {
+                    Text("general.done")
+                        .bold()
+                }
+            }
+        }
+    }
+
+    private var viewer: some View {
+        TabView {
+            ForEach(attachments, id: \.id) { attachment in
+                VStack {
                     AttachmentMedia(attachment: attachment)
                         .aspectRatio(contentMode: viewModel.contentMode)
-                        .scaleEffect(scaleEffect)
+                        .scaleEffect(viewModel.magnification)
                         .gesture(zoomGesture)
-                        .safeAreaInset(edge: .bottom) {
-                            Text(attachment.description ?? "No description provided.")
-                                .font(.footnote)
-                        }
-                        .onAppear {
-                            viewModel.currentAttachment = attachment
-                        }
                 }
-                .preferredColorScheme(.dark)
+                .padding()
+                .onAppear {
+                    viewModel.currentAttachment = attachment
+                }
             }
-            .tabViewStyle(.page)
-            .background(Color.black)
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button(action: viewModel.toggleContentMode) {
-                        Label("", systemImage: viewModel.systemImageForContentMode())
-                    }
+            .preferredColorScheme(.dark)
+        }
+        .tabViewStyle(.page)
+        .background(
+            Group {
+                if let attachment = viewModel.currentAttachment {
+                    preview(for: attachment)
+                } else {
+                    Color.black
                 }
-                ToolbarItem {
-                    Group {
-                        if let url = viewModel.currentAttachment?.url {
-                            ShareLink(item: url)
-                        }
-                    }
-                }
-                ToolbarItem {
-                    Button(action: dismiss.callAsFunction) {
-                        Text("general.done")
-                            .bold()
-                    }
+            }
+        )
+        .navigationBarTitleDisplayMode(.inline)
+        .safeAreaInset(edge: .bottom) {
+            Group {
+                if let attachment = viewModel.currentAttachment {
+                    Text(attachment.description ?? "attachments.description.missing".localized())
+                        .font(.footnote)
                 }
             }
         }
-        .animation(.spring(), value: viewModel.contentMode)
-        .onAppear {
-            viewModel.attachments = attachments
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button(action: viewModel.toggleContentMode) {
+                    Label("", systemImage: viewModel.systemImageForContentMode())
+                }
+            }
+            ToolbarItem {
+                Group {
+                    if let url = viewModel.currentAttachment?.url {
+                        ShareLink(item: url)
+                    }
+                }
+            }
+            ToolbarItem {
+                Button(action: dismiss.callAsFunction) {
+                    Text("general.done")
+                        .bold()
+                }
+            }
         }
+    }
+
+    private func preview(for attachment: Attachment) -> some View {
+        Group {
+            if let path = attachment.previewURL, let url = URL(string: path) {
+                AsyncImage(url: url) { image in
+                    image
+                        .resizable()
+                        .scaledToFill()
+                        .opacity(0.3)
+                } placeholder: {
+                    Color.black
+                }
+            }
+        }
+        .ignoresSafeArea()
+        .blur(radius: 16)
     }
 }
 

@@ -20,6 +20,7 @@ class AttachmentViewerViewModel: ObservableObject {
     @Published var currentAttachment: Attachment?
     @Published var attachments = [Attachment]()
     @Published var contentMode = ContentMode.fit
+    @Published var magnification = 1.0
 
     func toggleContentMode() {
         contentMode = (contentMode == .fit) ? .fill : .fit
@@ -27,9 +28,9 @@ class AttachmentViewerViewModel: ObservableObject {
 
     func systemImageForContentMode() -> String {
         switch contentMode {
-        case .fit:
-            return "arrow.down.right.and.arrow.up.left"
         case .fill:
+            return "arrow.down.right.and.arrow.up.left"
+        case .fit:
             return "arrow.up.left.and.arrow.down.right"
         }
     }

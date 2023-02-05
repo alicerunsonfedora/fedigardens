@@ -149,6 +149,11 @@ struct StatusDetailView: View {
                 ProfileSheetView(profile: profile)
             }
         }
+        .fullScreenCover(item: $viewModel.displayAttachments) {
+            viewModel.displayAttachments = nil
+        } content: { context in
+            AttachmentViewer(attachments: context.attachments)
+        }
     }
 }
 

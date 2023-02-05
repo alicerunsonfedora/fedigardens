@@ -109,6 +109,7 @@
 "status.reblogaction" = "Reblog";
 "status.saveaction" = "Bookmark";
 "status.webaction" = "Open in Safari";
+"status.attachmentaction" = "View Attachments";
 "status.profileaction.generic" = "View Profile";
 "status.profileaction" = "View %@'s Profile";
 "status.profileaction.name" = "Profiles";
@@ -179,6 +180,10 @@
 "help.quotestatus" = "Write a new post by quoting the current status.";
 "help.visibleprompt" = "Why am I seeing this?";
 "help.bookmark" = "Save this status for later.";
+
+// MARK: - Attachments
+"attachments.description.missing" = "No description provided.";
+"attachments.empty.warning" = "No Attachments Available";
 
 // MARK: - Settings
 "settings.section.about" = "About";
