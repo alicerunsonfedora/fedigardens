@@ -233,6 +233,7 @@
 "settings.interventions.grain" = "Intervene when I do the following: ";
 "settings.interventions.refresh" = "Refresh Timeline";
 "settings.interventions.fetch" = "Fetch More Statuses";
+"settings.interventions.configure" = "Configure More in one sec…";
 
 // MARK: - Settings: Blocklists -
 "settings.section.blocklist" = "Blocked Instances";

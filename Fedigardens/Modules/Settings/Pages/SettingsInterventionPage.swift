@@ -18,6 +18,7 @@ struct SettingsInterventionPage: View {
     @AppStorage(.allowsInterventions) var allowInterventions: Bool = true
     @AppStorage(.intervenesOnRefresh) var refreshIntervention: Bool = true
     @AppStorage(.intervenesOnFetch) var fetchMoreIntervention: Bool = true
+    @ScaledMetric private var size = 1
 
     var body: some View {
         Form {
@@ -43,6 +44,14 @@ struct SettingsInterventionPage: View {
                     }
                 } header: {
                     Text("settings.interventions.grain")
+                }
+
+                Section {
+                    if let link = URL(destination: .oneSecSettings) {
+                        Link(destination: link) {
+                            Text("settings.interventions.configure")
+                        }
+                    }
                 }
             }
         }

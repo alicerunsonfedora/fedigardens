@@ -17,6 +17,7 @@ import Foundation
 extension URL {
     enum AppDestination {
         case oneSec
+        case oneSecSettings
         case ghBugs
         case github
         case feedback
@@ -29,6 +30,8 @@ extension URL {
             switch self {
             case .oneSec:
                 return "onesec://reintervene?appId=fedigardens"
+            case .oneSecSettings:
+                return "onesec://integrationsettings?appId=fedigardens"
             case .github:
                 return ghLink
             case .feedback:
