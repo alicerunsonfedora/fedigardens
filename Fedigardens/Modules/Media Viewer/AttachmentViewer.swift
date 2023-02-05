@@ -108,25 +108,22 @@ struct AttachmentViewer: View {
                 }
             }
         }
+        .alert("attachments.share.title", isPresented: $viewModel.shouldDisplayConsentAcknowledgementAlert) {
+            Button {
+                viewModel.didAcknowledgeConsent = true
+            } label: {
+                Text("attachments.share.acknowledge")
+            }
+            Button(role: .cancel) {
+
+            } label: {
+                Text("general.cancel")
+            }
+        } message: {
+             Text("attachments.share.detail")
+        }
         .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button(action: viewModel.toggleContentMode) {
-                    Label("", systemImage: viewModel.systemImageForContentMode())
-                }
-            }
-            ToolbarItem {
-                Group {
-                    if let url = viewModel.currentAttachment?.url {
-                        ShareLink(item: url)
-                    }
-                }
-            }
-            ToolbarItem {
-                Button(action: dismiss.callAsFunction) {
-                    Text("general.done")
-                        .bold()
-                }
-            }
+            AttachmentViewerToolbar(viewModel: viewModel)
         }
     }
 

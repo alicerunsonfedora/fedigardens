@@ -17,10 +17,12 @@ import Combine
 import Alice
 
 class AttachmentViewerViewModel: ObservableObject {
-    @Published var currentAttachment: Attachment?
     @Published var attachments = [Attachment]()
     @Published var contentMode = ContentMode.fit
+    @Published var currentAttachment: Attachment?
+    @Published var didAcknowledgeConsent = false
     @Published var magnification = 1.0
+    @Published var shouldDisplayConsentAcknowledgementAlert = false
 
     func toggleContentMode() {
         contentMode = (contentMode == .fit) ? .fill : .fit

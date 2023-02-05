@@ -248,6 +248,7 @@
 		95CDCD242990297E002BD37A /* AttachmentMediaGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7CD2957FD94005C7F2A /* AttachmentMediaGroup.swift */; };
 		95CDCD252990297E002BD37A /* AttachmentViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D28C74299024FE0051D31E /* AttachmentViewer.swift */; };
 		95CDCD262990297E002BD37A /* AttachmentMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CDCD2129902968002BD37A /* AttachmentMedia.swift */; };
+		95CDCD2829904E19002BD37A /* AttachmentViewerToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CDCD2729904E19002BD37A /* AttachmentViewerToolbar.swift */; };
 		95CEFDE82959637400EEE96C /* StatusVerifiedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */; };
 		95CEFDE92959637400EEE96C /* StatusVerifiedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */; };
 		95CEFDEB295A031E00EEE96C /* Pip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDEA295A031E00EEE96C /* Pip.swift */; };
@@ -408,6 +409,7 @@
 		95CD3C4E29650A600043CDB2 /* GardensViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensViewModel.swift; sourceTree = "<group>"; };
 		95CDCD1F299027FC002BD37A /* AttachmentViewerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentViewerViewModel.swift; sourceTree = "<group>"; };
 		95CDCD2129902968002BD37A /* AttachmentMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentMedia.swift; sourceTree = "<group>"; };
+		95CDCD2729904E19002BD37A /* AttachmentViewerToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentViewerToolbar.swift; sourceTree = "<group>"; };
 		95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusVerifiedButton.swift; sourceTree = "<group>"; };
 		95CEFDEA295A031E00EEE96C /* Pip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pip.swift; sourceTree = "<group>"; };
 		95CEFDED295A388100EEE96C /* StatusDetailQuote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailQuote.swift; sourceTree = "<group>"; };
@@ -900,6 +902,7 @@
 				95D28C74299024FE0051D31E /* AttachmentViewer.swift */,
 				95CDCD1F299027FC002BD37A /* AttachmentViewerViewModel.swift */,
 				95CDCD2129902968002BD37A /* AttachmentMedia.swift */,
+				95CDCD2729904E19002BD37A /* AttachmentViewerToolbar.swift */,
 			);
 			path = "Media Viewer";
 			sourceTree = "<group>";
@@ -1107,6 +1110,7 @@
 				95009EF2295E711100F32F85 /* AuthenticationViewModel.swift in Sources */,
 				9537C6D6297DBB510039F3C4 /* SettingsBlocklistViewModel.swift in Sources */,
 				95F2DE26297262D700553937 /* SettingsInterventionPage.swift in Sources */,
+				95CDCD2829904E19002BD37A /* AttachmentViewerToolbar.swift in Sources */,
 				956714162958C1BF00BFF76A /* AuthoringScene.swift in Sources */,
 				953BC7CB2957EC27005C7F2A /* HashableType.swift in Sources */,
 				955F1B342985C1D600702BE8 /* SearchResultsView.swift in Sources */,

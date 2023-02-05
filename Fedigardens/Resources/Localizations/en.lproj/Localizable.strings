@@ -184,6 +184,9 @@
 // MARK: - Attachments
 "attachments.description.missing" = "No description provided.";
 "attachments.empty.warning" = "No Attachments Available";
+"attachments.share.title" = "Share Responsibly";
+"attachments.share.detail" = "Some attachments may be held under copyright or may not be shareable without the author's consent. Remember to check with the author before sharing attachments elsewhere. Your instance administrator may also have additional rules regarding sharing attachments from your instance.";
+"attachments.share.acknowledge" = "Share Anyway";
 
 // MARK: - Settings
 "settings.section.about" = "About";
