@@ -150,7 +150,7 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
 
     private var commonToolbarButtons: some CustomizableToolbarContent {
         Group {
-            ToolbarItem(id: "edit", placement: .secondaryAction, showsByDefault: shouldDisplayItem) {
+            ToolbarItem(id: "edit", placement: .secondaryAction) {
                 if let status = viewModel.status, status.account == currentUser {
                     GardensComposeButton(
                         shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
@@ -163,6 +163,7 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                 }
             }
             .defaultCustomization(options: .alwaysAvailable)
+
             ToolbarItem(id: "reply", placement: .secondaryAction) {
                 GardensComposeButton(
                     shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
