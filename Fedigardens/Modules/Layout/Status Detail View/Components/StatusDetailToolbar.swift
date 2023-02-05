@@ -145,6 +145,18 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                     }
                 }
             }
+            ToolbarItem(id: "view-attachments", placement: .primaryAction) {
+                Group {
+                    let allAttached = viewModel.status?.reblog?.mediaAttachments ?? viewModel.status?.mediaAttachments
+                    Button {
+                        if let attachments = allAttached, let id = viewModel.status?.id {
+                            viewModel.displayAttachments = .init(id: id, attachments: attachments)
+                        }
+                    } label: {
+                        Label("status.attachmentaction", systemImage: "paperclip")
+                    }.disabled(allAttached == nil || allAttached?.isEmpty == true)
+                }
+            }
         }
     }
 

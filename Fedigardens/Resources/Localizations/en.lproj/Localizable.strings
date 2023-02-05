@@ -109,6 +109,7 @@
 "status.reblogaction" = "Reblog";
 "status.saveaction" = "Bookmark";
 "status.webaction" = "Open in Safari";
+"status.attachmentaction" = "View Attachments";
 "status.profileaction.generic" = "View Profile";
 "status.profileaction" = "View %@'s Profile";
 "status.profileaction.name" = "Profiles";
@@ -179,6 +180,14 @@
 "help.quotestatus" = "Write a new post by quoting the current status.";
 "help.visibleprompt" = "Why am I seeing this?";
 "help.bookmark" = "Save this status for later.";
+
+// MARK: - Attachments
+"attachments.description.missing" = "No description provided.";
+"attachments.empty.warning" = "No Attachments Available";
+"attachments.share.title" = "Share Responsibly";
+"attachments.share.detail" = "Some attachments may be held under copyright or may not be shareable without the author's consent. Remember to check with the author before sharing attachments elsewhere. Your instance administrator may also have additional rules regarding sharing attachments from your instance.";
+"attachments.share.acknowledge" = "Share Anyway";
+"attachments.share.cancel" = "Don't Share";
 
 // MARK: - Settings
 "settings.section.about" = "About";

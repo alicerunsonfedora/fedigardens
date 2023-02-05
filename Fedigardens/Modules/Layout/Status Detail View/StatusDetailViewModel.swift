@@ -24,12 +24,18 @@ class StatusDetailViewModel: ObservableObject {
         var status: Status
     }
 
+    struct AttachmentContextCaller: Hashable, Identifiable {
+        var id: String
+        var attachments: [Attachment]
+    }
+
     @Published var status: Status?
     @Published var quote: Status?
     @Published var quoteSource: Status.QuoteSource?
     @Published var context: Context?
     @Published var shouldOpenCompositionTool: AuthoringContext?
     @Published var expandAncestors = false
+    @Published var displayAttachments: AttachmentContextCaller?
     @Published var state = LayoutState.initial
     @Published var displayedProfile: Account?
 

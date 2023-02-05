@@ -17,6 +17,7 @@ And list your changes under that.
 - Moves the Mark as Sensitive toggle into the bottom toolbar in the composer.
 - Adds more keyboard shortcuts in the composer and other places of the app.
 - (FGD-20) Adds the ability to edit existing statuses in the composer.
+- (FGD-8) Adds attachment viewer to view images, videos, and other attachments.
 
 ## [1.0-24 (beta)] - 30/1/2023
 
