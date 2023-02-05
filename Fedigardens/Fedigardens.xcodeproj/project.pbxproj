@@ -251,6 +251,7 @@
 		95CDCD2829904E19002BD37A /* AttachmentViewerToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CDCD2729904E19002BD37A /* AttachmentViewerToolbar.swift */; };
 		95CDCD2A29905085002BD37A /* GiantAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CDCD2929905085002BD37A /* GiantAlert.swift */; };
 		95CDCD2B29906548002BD37A /* AttachmentViewerToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CDCD2729904E19002BD37A /* AttachmentViewerToolbar.swift */; };
+		95CDCD2C299066B5002BD37A /* GiantAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CDCD2929905085002BD37A /* GiantAlert.swift */; };
 		95CEFDE82959637400EEE96C /* StatusVerifiedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */; };
 		95CEFDE92959637400EEE96C /* StatusVerifiedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */; };
 		95CEFDEB295A031E00EEE96C /* Pip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CEFDEA295A031E00EEE96C /* Pip.swift */; };
@@ -1318,6 +1319,7 @@
 				95801D5F297CC13C00FE8D83 /* MessagingList.swift in Sources */,
 				95801D2B297C756200FE8D83 /* Collection+IsNotEmpty.swift in Sources */,
 				95801D57297CC13400FE8D83 /* StatusContextProvider.swift in Sources */,
+				95CDCD2C299066B5002BD37A /* GiantAlert.swift in Sources */,
 				95801D27297C752000FE8D83 /* Bundle+AppVersion.swift in Sources */,
 				95801D3E297CC0B600FE8D83 /* SettingsInterventionPage.swift in Sources */,
 				9537C6E0297DED820039F3C4 /* InterventionAllowedMechanisms.swift in Sources */,
