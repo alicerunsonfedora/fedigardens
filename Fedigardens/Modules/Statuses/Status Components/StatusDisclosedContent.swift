@@ -50,7 +50,7 @@ struct StatusDisclosedContent: View {
                     .textSelection(.enabled)
             }
             if truncateLines == nil {
-                StatusMediaDrawer(status: status)
+                AttachmentMediaGroup(status: status)
                 if let poll = status.poll {
                     StatusPollView(poll: poll)
                 }

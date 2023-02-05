@@ -16,7 +16,7 @@ import SwiftUI
 import Alice
 import AVKit
 
-struct StatusMediaDrawer: View {
+struct AttachmentMediaGroup: View {
     var status: Status
 
     private var mediaAttachments: [Attachment] {
