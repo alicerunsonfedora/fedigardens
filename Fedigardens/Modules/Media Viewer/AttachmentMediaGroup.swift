@@ -31,59 +31,22 @@ struct AttachmentMediaGroup: View {
     var body: some View {
         LazyVGrid(columns: columns, spacing: 10) {
             ForEach(mediaAttachments) { (attachment: Attachment) in
-                Group {
-                    switch attachment.type {
-                    case .image:
-                        image(of: attachment)
-                    case .video, .gifv:
-                        VideoPlayer(player: videoPlayer(for: attachment.url)) {
-                            VStack {
-                                HStack {
-                                    Image(systemName: "play.fill")
-                                        .imageScale(.large)
-                                    Spacer()
-                                }
-                                .foregroundColor(.white)
-                                Spacer()
-                            }.padding()
-                        }
-                            .aspectRatio(3/2, contentMode: .fill)
-                    default:
-                        Label("Unidentified attachments", systemImage: "questionmark.circle")
-                            .font(.callout)
-                            .foregroundColor(.secondary)
-                            .bold()
-                    }
-                }
+                AttachmentMedia(attachment: attachment)
             }
         }
         .padding(.vertical)
     }
+}
 
-    private func image(of attachment: Attachment) -> some View {
-        AsyncImage(url: .init(string: attachment.url)!) { image in
-            ZStack {
-                RoundedRectangle(cornerRadius: 10)
-                    .fill(Color.black)
-                image
-                    .resizable()
-                    .scaledToFit()
-                    .aspectRatio(3/2, contentMode: .fill)
-            }
-                .cornerRadius(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.secondary.opacity(0.5))
-                )
-        } placeholder: {
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.secondary.opacity(0.2))
-                .aspectRatio(3/2, contentMode: .fill)
+struct AttachmentMediaGroup_Previews: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            StatusView(status: MockData.status!)
+                .lineLimit(6)
+                .redacted(reason: .privacy)
+            AttachmentMediaGroup(status: MockData.status!)
+            Spacer()
         }
-    }
-
-    private func videoPlayer(for resource: String) -> AVPlayer? {
-        guard let url = URL(string: resource) else { return nil }
-        return AVPlayer(url: url)
+        .padding()
     }
 }
