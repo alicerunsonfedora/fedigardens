@@ -103,8 +103,13 @@
 "status.poll.expirydetail" = "This poll will no longer accept submissions %@.";
 "status.poll.voteaction" = "Vote";
 "status.poll.votetitle" = "Select an Option";
+"status.poll.configure" = "Configure Poll...";
+"status.poll.authorexpiry" = "End Poll At: ";
+"status.poll.optionplaceholder" = "Write an option...";
+"status.poll.optionssection" = "Poll Choices";
+"status.poll.addoption" = "Add Option";
 
-// MARK: - Status Actions
+// MARK: - Status Actions -
 "status.compose" = "New Status";
 "status.postaction" = "Post";
 "status.editaction" = "Edit";

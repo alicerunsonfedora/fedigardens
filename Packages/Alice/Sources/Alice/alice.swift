@@ -138,8 +138,16 @@ public class Alice: ObservableObject, CustomStringConvertible {
         var url = url
 
         if let params = params {
-            for (_, value) in params.enumerated() {
-                url = url.queryItem(value.key, value: value.value)
+            for (_, parameter) in params.enumerated() {
+                if parameter.key.contains("[]") {
+                    let values = parameter.value.split(separator: ",").map { String($0) }
+                    values.forEach { value in
+                        url = url.queryItem(parameter.key, value: value)
+                    }
+                    continue
+                }
+
+                url = url.queryItem(parameter.key, value: parameter.value)
             }
         }
 

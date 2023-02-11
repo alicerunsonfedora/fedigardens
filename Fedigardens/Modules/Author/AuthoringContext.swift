@@ -23,6 +23,8 @@ struct AuthoringContext: Codable, Hashable, Identifiable {
     var prefilledText: String = ""
     var replyingToID: String = ""
     var visibility: Visibility = .public
+    var pollExpiration: String = ""
+    var pollOptions: String = ""
 }
 
 extension AuthoringContext {
@@ -34,7 +36,9 @@ extension AuthoringContext {
             participants: params["participants", default: ""],
             prefilledText: params["status", default: ""],
             replyingToID: params["replyID", default: ""],
-            visibility: Visibility(rawValue: params["visibility", default: "public"]) ?? .public
+            visibility: Visibility(rawValue: params["visibility", default: "public"]) ?? .public,
+            pollExpiration: params["poll[expires_in]", default: ""],
+            pollOptions: params["poll[options][]", default: ""]
         )
     }
 
@@ -60,6 +64,14 @@ extension AuthoringContext {
 
         if prefilledText.isNotEmpty {
             query.append(.init(name: "status", value: prefilledText))
+        }
+
+        if pollExpiration.isNotEmpty {
+            query.append(.init(name: "poll[expires_in]", value: pollExpiration))
+        }
+
+        if pollOptions.isNotEmpty {
+            query.append(.init(name: "poll[options][]", value: pollOptions))
         }
 
         query.append(.init(name: "visibility", value: visibility.rawValue))

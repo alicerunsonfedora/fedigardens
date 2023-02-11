@@ -18,6 +18,7 @@ And list your changes under that.
 - Adds more keyboard shortcuts in the composer and other places of the app.
 - (FGD-20) Adds the ability to edit existing statuses in the composer.
 - (FGD-8) Adds attachment viewer to view images, videos, and other attachments.
+- (FGD-33) Adds the ability to vote on and create/edit polls.
 
 ## [1.0-24 (beta)] - 30/1/2023
 

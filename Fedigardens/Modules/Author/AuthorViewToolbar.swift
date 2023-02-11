@@ -31,6 +31,11 @@ struct AuthorViewToolbar: ToolbarContent {
             .labelStyle(.titleOnly)
         }
 
+        ToolbarItem(placement: .primaryAction) {
+            EditButton()
+                .disabled(!viewModel.includesPoll)
+        }
+
         ToolbarItem(placement: .confirmationAction) {
             Button(action: startSubmission) {
                 ZStack {
@@ -55,6 +60,27 @@ struct AuthorViewToolbar: ToolbarContent {
                 }
             }
             .keyboardShortcut("w", modifiers: [.command, .control])
+        }
+
+        ToolbarItem(placement: .bottomBar) {
+            Toggle(isOn: $viewModel.includesPoll) {
+                Label("status.poll.create", systemImage: "checklist")
+            }
+            .onChange(of: viewModel.includesPoll) { updated in
+                if updated {
+                    viewModel.pollExpirationDate = .now.advanced(by: 300)
+                }
+            }
+        }
+
+        ToolbarItem(placement: .bottomBar) {
+            Button {
+                viewModel.pollOptions.append("")
+            } label: {
+                Label("status.poll.addoption", systemImage: "plus.circle")
+            }
+            .disabled(!viewModel.includesPoll || viewModel.pollOptions.count >= 4)
+            .tint(.accentColor)
         }
 
         ToolbarItem(placement: .bottomBar) {
