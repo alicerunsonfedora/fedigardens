@@ -62,4 +62,15 @@ extension Status {
         }
         return nil
     }
+
+    func getPollExpirationInterval() -> String? {
+        guard let poll, let expiry = poll.expiresAt else { return nil }
+        let date = DateFormatter.mastodon.date(from: expiry)
+        return String(date?.timeIntervalSinceNow ?? 300)
+    }
+
+    func getPollOptions() -> String? {
+        guard let poll else { return nil }
+        return poll.options.map(\.title).joined(separator: ",")
+    }
 }

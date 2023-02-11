@@ -21,7 +21,10 @@ import SwiftUI
 
 class AuthorViewModel: ObservableObject {
     @Published var editMode = false
+    @Published var includesPoll = false
     @Published var mentionString = ""
+    @Published var pollExpirationDate: Date = .now.advanced(by: 300)
+    @Published var pollOptions = ["", ""]
     @Published var prompt: Status?
     @Published var promptContent = "Content goes here."
     @Published var selectedLanguage = "en"
@@ -92,6 +95,13 @@ class AuthorViewModel: ObservableObject {
                 self.editMode = true
                 self.statusID = context.editablePostID
             }
+
+            if context.pollExpiration.isNotEmpty, context.pollOptions.isNotEmpty {
+                self.includesPoll = true
+                let expirationDate = TimeInterval(context.pollExpiration)
+                self.pollExpirationDate = Date.now.advanced(by: expirationDate ?? 300)
+                self.pollOptions = context.pollOptions.split(separator: ",").map { String($0) }
+            }
         }
     }
 
@@ -127,13 +137,22 @@ class AuthorViewModel: ObservableObject {
 
     private func constructParameters() -> [String: String] {
         let fullStatus = mentionString.isNotEmpty ? [mentionString, text].joined(separator: " ") : text
-        var params = ["status": fullStatus, "poll": "null", "language": selectedLanguage]
+
+        var params = ["status": fullStatus, "language": selectedLanguage]
         if !editMode { params["visibility"] = visibility.rawValue }
         if let reply = prompt { params["in_reply_to_id"] = reply.id }
         if sensitive {
             params["sensitive"] = "true"
             params["spoiler_text"] = sensitiveText
         }
+
+        if includesPoll {
+            params["poll[options][]"] = pollOptions.joined(separator: ",")
+            params["poll[expires_in]"] = String(pollExpirationDate.timeIntervalSinceNow.rounded())
+        } else {
+            params["poll"] = "null"
+        }
+
         return params
     }
 

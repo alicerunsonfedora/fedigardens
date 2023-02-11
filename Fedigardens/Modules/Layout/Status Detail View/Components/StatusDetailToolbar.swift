@@ -157,18 +157,30 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                     }.disabled(allAttached == nil || allAttached?.isEmpty == true)
                 }
             }
+            ToolbarItem(id: "vote-poll", placement: .primaryAction) {
+                if let poll = viewModel.status?.poll {
+                    Button {
+                        viewModel.shouldVote = poll
+                    } label: {
+                        Label("Vote", systemImage: "text.badge.checkmark")
+                    }
+                    .disabled(poll.expired == true || poll.voted == true)
+                }
+            }
         }
     }
 
     private var commonToolbarButtons: some CustomizableToolbarContent {
         Group {
             ToolbarItem(id: "edit", placement: .secondaryAction) {
-                if let status = viewModel.status, status.account == currentUser {
+                if let status = viewModel.status, status.account == currentUser, status.reblog == nil {
                     GardensComposeButton(
                         shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
                         context: AuthoringContext(
                             editablePostID: status.id,
-                            prefilledText: status.text ?? status.content.plainTextContents()
+                            prefilledText: status.text ?? status.content.plainTextContents(),
+                            pollExpiration: status.getPollExpirationInterval() ?? "",
+                            pollOptions: status.getPollOptions() ?? ""
                         ),
                         style: .edit
                     )

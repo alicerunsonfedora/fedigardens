@@ -38,6 +38,7 @@ class StatusDetailViewModel: ObservableObject {
     @Published var displayAttachments: AttachmentContextCaller?
     @Published var state = LayoutState.initial
     @Published var displayedProfile: Account?
+    @Published var shouldVote: Poll?
 
     var containsUndisclosedContent: Bool {
         guard let status else { return false }

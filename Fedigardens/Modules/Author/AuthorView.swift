@@ -63,6 +63,21 @@ struct AuthorView: View {
                     quoteSection
                     replyAndTagSection
                 }
+
+                if viewModel.includesPoll {
+                    Section {
+                        ForEach(0..<viewModel.pollOptions.count, id: \.self) { index in
+                            TextField("status.poll.optionplaceholder", text: $viewModel.pollOptions[index])
+                        }
+                        .onDelete { indexSet in
+                            guard viewModel.pollOptions.count >= 2 else { return }
+                            viewModel.pollOptions.remove(atOffsets: indexSet)
+                        }
+                    } header: {
+                        Text("status.poll.optionssection")
+                    }
+                    DatePicker("status.poll.authorexpiry", selection: $viewModel.pollExpirationDate)
+                }
                 replySection
             }
             .listStyle(.inset)
@@ -72,6 +87,7 @@ struct AuthorView: View {
         .animation(.spring(), value: viewModel.prompt)
         .animation(.spring(), value: viewModel.sensitive)
         .animation(.spring(), value: viewModel.charactersRemaining)
+        .animation(.spring(), value: viewModel.includesPoll)
         .toolbarBackground(.visible, for: .bottomBar)
         .toolbar {
             AuthorViewToolbar(viewModel: viewModel)

@@ -81,7 +81,6 @@
 "status.spoilerplaceholder" = "Write your warning here…";
 "status.spoilermessage" = "%@ has collapsed this status and has provided the warning '%@'.";
 "status.spoilermessage-cta" = "Collapsed content may contain long form text and/or sensitive content, and Fedigardens cannot guarantee that this content is safe to view. You can tap the eye icon to view the content.";
-"status.voted" = "You have voted on this poll.";
 "status.quotedetect.title" = "%@ is linking to a status.";
 "status.quotedetect.detail" = "%@ may be providing additional context or quoting %@. You can tap this notice to show/hide the original status.";
 "status.quotedetect.source" = "Quote Agent: %@";
@@ -97,7 +96,20 @@
 "status.editmode.title" = "You are editing this status.";
 "status.editmode.detail" = "Some composition features such as setting the visibility may not be available.";
 
-// MARK: - Status Actions
+// MARK: - Status: Polls -
+"status.poll.voted" = "You have voted on this poll.";
+"status.poll.expired" = "This poll is no longer accepting submissions.";
+"status.poll.expirytitle" = "This poll will expire soon.";
+"status.poll.expirydetail" = "This poll will no longer accept submissions %@.";
+"status.poll.voteaction" = "Vote";
+"status.poll.votetitle" = "Select an Option";
+"status.poll.configure" = "Configure Poll...";
+"status.poll.authorexpiry" = "End Poll At: ";
+"status.poll.optionplaceholder" = "Write an option...";
+"status.poll.optionssection" = "Poll Choices";
+"status.poll.addoption" = "Add Option";
+
+// MARK: - Status Actions -
 "status.compose" = "New Status";
 "status.postaction" = "Post";
 "status.editaction" = "Edit";
