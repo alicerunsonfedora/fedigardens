@@ -13,5 +13,6 @@ No data sample should be using data from another account unless written permissi
 - `Context.json`: Provides a data sample of a status's context.
 - `Conversation.json`: Provides a data sample of a private conversation*.
 - `Profile.json`: Provides a data sample of a profile.
+- `Poll.json`: Provides a data sample of a poll.
 
 > *Note: This sample uses public statuses instead of private messages.

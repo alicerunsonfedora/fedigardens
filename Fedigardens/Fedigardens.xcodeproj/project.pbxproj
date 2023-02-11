@@ -186,6 +186,8 @@
 		95801D6D297CC14E00FE8D83 /* StatusQuickGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */; };
 		95801D6E297CC15900FE8D83 /* UIDevice+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A06E429692E95008340A4 /* UIDevice+Model.swift */; };
 		95801D6F297CC15900FE8D83 /* Acknowledgement+License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95555FBA2960B9F7005BEF45 /* Acknowledgement+License.swift */; };
+		95860C592998164300068425 /* Poll.json in Resources */ = {isa = PBXBuildFile; fileRef = 95860C582998164300068425 /* Poll.json */; };
+		95860C5A2998164300068425 /* Poll.json in Resources */ = {isa = PBXBuildFile; fileRef = 95860C582998164300068425 /* Poll.json */; };
 		958C0C9727BE930D00ED6C23 /* Account+AccountName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */; };
 		958C0C9927BE930D00ED6C23 /* Account+AccountName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */; };
 		958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */; };
@@ -366,6 +368,7 @@
 		95801D32297C9B6E00FE8D83 /* Visibility+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Visibility+Localization.swift"; sourceTree = "<group>"; };
 		95801D35297C9D2600FE8D83 /* GardensSettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensSettingsKey.swift; sourceTree = "<group>"; };
 		95801D38297CAC8B00FE8D83 /* SettingsAboutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutPage.swift; sourceTree = "<group>"; };
+		95860C582998164300068425 /* Poll.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Poll.json; sourceTree = "<group>"; };
 		958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+AccountName.swift"; sourceTree = "<group>"; };
 		958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorReplySegment.swift; sourceTree = "<group>"; };
 		958E208F2969F7F2008AE63F /* InteractionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsListView.swift; sourceTree = "<group>"; };
@@ -614,7 +617,6 @@
 			isa = PBXGroup;
 			children = (
 				956714132958B69D00BFF76A /* StatusDisclosedContent.swift */,
-				957AF84E29591B44000370E6 /* StatusPollView.swift */,
 				95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */,
 				95CEFDF1295A3B4900EEE96C /* StatusAuthorExtendedLabel.swift */,
 			);
@@ -684,6 +686,14 @@
 				9537C6D8297DC71C0039F3C4 /* SettingsReadingPage.swift */,
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		95860C57299815A100068425 /* Polling */ = {
+			isa = PBXGroup;
+			children = (
+				957AF84E29591B44000370E6 /* StatusPollView.swift */,
+			);
+			path = Polling;
 			sourceTree = "<group>";
 		};
 		958C0C9A27BE955E00ED6C23 /* Author */ = {
@@ -839,6 +849,7 @@
 				95ADAE1D27B6DB830011FD83 /* Layout */,
 				95D28C73299024C50051D31E /* Media Viewer */,
 				952A010F27C67F1400F36B37 /* Messaging */,
+				95860C57299815A100068425 /* Polling */,
 				95A1BF9629738A61002C88B6 /* Profiles */,
 				955F1B2629859D7600702BE8 /* Search */,
 				95645BD527C554FB00FB3426 /* Settings */,
@@ -857,6 +868,7 @@
 				95ADAE1527B6D9140011FD83 /* Timeline.json */,
 				956714192958C81E00BFF76A /* Profile.json */,
 				955F1B362985C2E300702BE8 /* SearchResult.json */,
+				95860C582998164300068425 /* Poll.json */,
 			);
 			path = "Mock Data";
 			sourceTree = "<group>";
@@ -1024,6 +1036,7 @@
 				95C0AF3E27C688170007D1D0 /* Context.json in Resources */,
 				95D1036C27A00AF000B1EE3C /* License.pdf in Resources */,
 				9503EFB427B417DD00ABB7B0 /* Localizable.strings in Resources */,
+				95860C592998164300068425 /* Poll.json in Resources */,
 				95555FBD2960BA6C005BEF45 /* CNPL.md in Resources */,
 				9547230A27A0094000D1BA89 /* Assets.xcassets in Resources */,
 				95555FC42960BE33005BEF45 /* MIT-HTML2Markdown.md in Resources */,
@@ -1044,6 +1057,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95860C5A2998164300068425 /* Poll.json in Resources */,
 				95C0AF4427C6B1AC0007D1D0 /* Conversation.json in Resources */,
 				95C0AF4027C688170007D1D0 /* Context.json in Resources */,
 				955F1B382985C2E300702BE8 /* SearchResult.json in Resources */,

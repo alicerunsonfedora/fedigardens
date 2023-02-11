@@ -13,6 +13,7 @@
 //  details.
 
 import SwiftUI
+import Charts
 import Alice
 
 struct StatusPollView: View {
@@ -24,26 +25,34 @@ struct StatusPollView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
-            ForEach(poll.options) { option in
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(option.title)
-                        .font(.subheadline)
-                        .bold()
-                    HStack {
-                        ProgressView(value: Float(option.votesCount ?? 0), total: totalPercentage)
-                            .progressViewStyle(.linear)
+            Chart {
+                ForEach(poll.options) { option in
+                    BarMark(
+                        x: .value(option.title, option.votesCount ?? 0),
+                        y: .value("Poll Option", option.title)
+                    )
+                    .annotation(position: .trailing) {
                         Text(
                             getPercentage(from: option.votesCount ?? 0),
                             format: .percent.precision(.fractionLength(0..<1))
                         )
-                        .font(.subheadline)
+                        .font(.caption)
+                        .bold()
                         .foregroundColor(.secondary)
                     }
-                    .frame(minWidth: 256, maxWidth: 600)
                 }
             }
+            .chartXAxisLabel("Total Votes: \(poll.votesCount)")
+            .frame(height: 150)
+            .frame(minWidth: 256, maxWidth: 600)
             if poll.voted == true {
-                Text("status.voted")
+                Label("status.poll.voted", systemImage: "checkmark.circle")
+                    .font(.callout)
+                    .foregroundColor(.secondary)
+            }
+
+            if poll.expired == true {
+                Label("status.poll.expired", systemImage: "info.circle")
                     .font(.callout)
                     .foregroundColor(.secondary)
             }
@@ -52,5 +61,12 @@ struct StatusPollView: View {
 
     private func getPercentage(from votes: Int) -> Float {
         return Float(votes) / totalPercentage
+    }
+}
+
+struct StatusPollView_Previews: PreviewProvider {
+    static var previews: some View {
+        StatusPollView(poll: MockData.poll!)
+            .padding()
     }
 }
