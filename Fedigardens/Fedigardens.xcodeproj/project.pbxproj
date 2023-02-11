@@ -188,6 +188,12 @@
 		95801D6F297CC15900FE8D83 /* Acknowledgement+License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95555FBA2960B9F7005BEF45 /* Acknowledgement+License.swift */; };
 		95860C592998164300068425 /* Poll.json in Resources */ = {isa = PBXBuildFile; fileRef = 95860C582998164300068425 /* Poll.json */; };
 		95860C5A2998164300068425 /* Poll.json in Resources */ = {isa = PBXBuildFile; fileRef = 95860C582998164300068425 /* Poll.json */; };
+		95860C5C29981F3700068425 /* PollVotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95860C5B29981F3700068425 /* PollVotingView.swift */; };
+		95860C5D29981F3700068425 /* PollVotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95860C5B29981F3700068425 /* PollVotingView.swift */; };
+		95860C5F29982E5100068425 /* PollVotingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95860C5E29982E5100068425 /* PollVotingViewModel.swift */; };
+		95860C6029982E5100068425 /* PollVotingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95860C5E29982E5100068425 /* PollVotingViewModel.swift */; };
+		95860C62299837ED00068425 /* StatusDetailList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95860C61299837ED00068425 /* StatusDetailList.swift */; };
+		95860C63299837ED00068425 /* StatusDetailList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95860C61299837ED00068425 /* StatusDetailList.swift */; };
 		958C0C9727BE930D00ED6C23 /* Account+AccountName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */; };
 		958C0C9927BE930D00ED6C23 /* Account+AccountName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */; };
 		958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */; };
@@ -369,6 +375,9 @@
 		95801D35297C9D2600FE8D83 /* GardensSettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensSettingsKey.swift; sourceTree = "<group>"; };
 		95801D38297CAC8B00FE8D83 /* SettingsAboutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutPage.swift; sourceTree = "<group>"; };
 		95860C582998164300068425 /* Poll.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Poll.json; sourceTree = "<group>"; };
+		95860C5B29981F3700068425 /* PollVotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollVotingView.swift; sourceTree = "<group>"; };
+		95860C5E29982E5100068425 /* PollVotingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollVotingViewModel.swift; sourceTree = "<group>"; };
+		95860C61299837ED00068425 /* StatusDetailList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailList.swift; sourceTree = "<group>"; };
 		958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+AccountName.swift"; sourceTree = "<group>"; };
 		958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorReplySegment.swift; sourceTree = "<group>"; };
 		958E208F2969F7F2008AE63F /* InteractionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsListView.swift; sourceTree = "<group>"; };
@@ -692,6 +701,8 @@
 			isa = PBXGroup;
 			children = (
 				957AF84E29591B44000370E6 /* StatusPollView.swift */,
+				95860C5B29981F3700068425 /* PollVotingView.swift */,
+				95860C5E29982E5100068425 /* PollVotingViewModel.swift */,
 			);
 			path = Polling;
 			sourceTree = "<group>";
@@ -764,6 +775,7 @@
 				956714242958D2D300BFF76A /* StatusDetailToolbar.swift */,
 				95CEFDED295A388100EEE96C /* StatusDetailQuote.swift */,
 				95A1BFAA2974D2C5002C88B6 /* StatusDetailProfileMenu.swift */,
+				95860C61299837ED00068425 /* StatusDetailList.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -1139,12 +1151,14 @@
 				95645BD727C5550B00FB3426 /* SettingsView.swift in Sources */,
 				958E20922969F9FC008AE63F /* InteractionsListViewModel.swift in Sources */,
 				95801D33297C9B6E00FE8D83 /* Visibility+Localization.swift in Sources */,
+				95860C5C29981F3700068425 /* PollVotingView.swift in Sources */,
 				95D28C75299024FE0051D31E /* AttachmentViewer.swift in Sources */,
 				95CEFDEB295A031E00EEE96C /* Pip.swift in Sources */,
 				955F1B572985FE0100702BE8 /* ProfileSheetFields.swift in Sources */,
 				95A36E96297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */,
 				956714182958C7BF00BFF76A /* UserProfileEnvironmentKey.swift in Sources */,
 				95A36E85297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift in Sources */,
+				95860C5F29982E5100068425 /* PollVotingViewModel.swift in Sources */,
 				9537C6DF297DED820039F3C4 /* InterventionAllowedMechanisms.swift in Sources */,
 				95369B5927B82D4100F39531 /* TimelineSplitView.swift in Sources */,
 				9537C6DC297DE7C50039F3C4 /* InterventionHandler.swift in Sources */,
@@ -1229,6 +1243,7 @@
 				95ADAE0227B6B2E10011FD83 /* StatusView.swift in Sources */,
 				955F1B542985FD1500702BE8 /* BadgedText.swift in Sources */,
 				95A1BFA6297464B0002C88B6 /* ProfileSheetRecentActivityView.swift in Sources */,
+				95860C62299837ED00068425 /* StatusDetailList.swift in Sources */,
 				9558C7F229579FC9001B30C7 /* TimelineSplitViewModel.swift in Sources */,
 				95555FC82960C864005BEF45 /* Collection+IsNotEmpty.swift in Sources */,
 				95A1BF9F2973B8B2002C88B6 /* Emojis.swift in Sources */,
@@ -1327,8 +1342,11 @@
 				95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */,
 				95801D51297CC10700FE8D83 /* Gardens.swift in Sources */,
 				95CEFDEC295A031E00EEE96C /* Pip.swift in Sources */,
+				95860C6029982E5100068425 /* PollVotingViewModel.swift in Sources */,
 				95801D4C297CC10700FE8D83 /* GardensPageLink.swift in Sources */,
 				95801D43297CC0F200FE8D83 /* AuthorReplySegment.swift in Sources */,
+				95860C5D29981F3700068425 /* PollVotingView.swift in Sources */,
+				95860C63299837ED00068425 /* StatusDetailList.swift in Sources */,
 				95801D21297C71F000FE8D83 /* AuthorViewModelTests.swift in Sources */,
 				95801D5F297CC13C00FE8D83 /* MessagingList.swift in Sources */,
 				95801D2B297C756200FE8D83 /* Collection+IsNotEmpty.swift in Sources */,

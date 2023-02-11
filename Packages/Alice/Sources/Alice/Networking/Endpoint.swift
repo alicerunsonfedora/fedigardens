@@ -174,6 +174,9 @@ public enum Endpoint {
     /// Privately save or unsave a status to an account's bookmarks.
     case save(id: String), undoSave(id: String)
 
+    /// Vote on a poll.
+    case votePoll(id: String)
+
     // MARK: - ENDPOINT MAPPING
 
     /// Full path
@@ -260,6 +263,8 @@ public enum Endpoint {
             return "/api/v2/search"
         case .trendingStatuses:
             return "/api/v1/trends/statuses"
+        case .votePoll(let id):
+            return "/api/v1/polls/\(id)/votes"
         default: return ""
         }
     }

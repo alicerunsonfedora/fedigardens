@@ -157,6 +157,16 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                     }.disabled(allAttached == nil || allAttached?.isEmpty == true)
                 }
             }
+            ToolbarItem(id: "vote-poll", placement: .primaryAction) {
+                if let poll = viewModel.status?.poll {
+                    Button {
+                        viewModel.shouldVote = poll
+                    } label: {
+                        Label("Vote", systemImage: "text.badge.checkmark")
+                    }
+                    .disabled(poll.expired == true || poll.voted == true)
+                }
+            }
         }
     }
 

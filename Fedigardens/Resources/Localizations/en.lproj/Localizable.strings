@@ -98,7 +98,11 @@
 
 // MARK: - Status: Polls -
 "status.poll.voted" = "You have voted on this poll.";
-"status.poll.expired" = "This poll has expired.";
+"status.poll.expired" = "This poll is no longer accepting submissions.";
+"status.poll.expirytitle" = "This poll will expire soon.";
+"status.poll.expirydetail" = "This poll will no longer accept submissions %@.";
+"status.poll.voteaction" = "Vote";
+"status.poll.votetitle" = "Select an Option";
 
 // MARK: - Status Actions
 "status.compose" = "New Status";

@@ -33,80 +33,11 @@ struct StatusDetailView: View {
 
     var body: some View {
         RecursiveNavigationStack(level: level) {
-            ScrollViewReader { scrollProxy in
-                switch viewModel.state {
-                case .initial:
-                    List {
-                        StatusView(status: MockData.status!)
-                            .profileImageSize(48)
-                            .reblogNoticePlacement(.aboveOriginalAuthor)
-                            .showsDisclosedContent($displayUndisclosedContent)
-                            .verifiedNoticePlacement(.underAuthorLabel)
-                            .listRowInsets(.init(top: 12, leading: 16, bottom: 12, trailing: 16))
-                        ProgressView()
-                    }
-                    .listStyle(.plain)
-                    .redacted(reason: .placeholder)
-                case .loading:
-                    ProgressView()
-                        .font(.largeTitle)
-                case .loaded:
-                    List {
-                        if let quote = viewModel.quote, let source = viewModel.quoteSource {
-                            VStack(alignment: .leading) {
-                                StatusDetailQuote(
-                                    displayUndisclosedContent: $displayUndisclosedContent,
-                                    status: status,
-                                    quote: quote,
-                                    source: source
-                                )
-                            }
-                            .listRowBackground(Color.accentColor.opacity(0.1))
-                        }
-                        if let context = viewModel.context, context.ancestors.isNotEmpty == true {
-                            if viewModel.expandAncestors {
-                                StatusContextProvider(
-                                    viewModel: viewModel,
-                                    context: context,
-                                    displayMode: .ancestors
-                                )
-                            } else {
-                                Button {
-                                    withAnimation {
-                                        viewModel.expandAncestors.toggle()
-                                    }
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                        withAnimation {
-                                            scrollProxy.scrollTo(viewModel.status?.uuid, anchor: .top)
-                                        }
-                                    }
-                                } label: {
-                                    Label("status.prevcontext", systemImage: "ellipsis")
-                                }
-                            }
-                        }
-                        StatusView(status: status)
-                            .profileImageSize(48)
-                            .reblogNoticePlacement(.aboveOriginalAuthor)
-                            .showsDisclosedContent($displayUndisclosedContent)
-                            .verifiedNoticePlacement(.underAuthorLabel)
-                            .listRowInsets(.init(top: 12, leading: 16, bottom: 12, trailing: 16))
-                            .id(viewModel.status?.uuid)
-                        if let context = viewModel.context {
-                            StatusContextProvider(viewModel: viewModel, context: context)
-                        }
-                    }
-                    .listStyle(.plain)
-                case .errored(let reason):
-                    VStack(spacing: 8) {
-                        Image(systemName: "exclamationmark.triangle")
-                            .font(.system(.largeTitle, design: .rounded))
-                            .foregroundColor(.secondary)
-                        Text(reason)
-                            .font(.title3)
-                    }
-                }
-            }
+            StatusDetailList(
+                status: status,
+                viewModel: viewModel,
+                displayUndisclosedContent: $displayUndisclosedContent
+            )
         }
         .recursiveDestination(of: StatusDetailViewModel.ContextCaller.self) { ctx in
             StatusDetailView(status: ctx.status, level: .child)
@@ -147,6 +78,13 @@ struct StatusDetailView: View {
         .sheet(item: $viewModel.displayedProfile) { profile in
             if let profile {
                 ProfileSheetView(profile: profile)
+            }
+        }
+        .sheet(item: $viewModel.shouldVote) { poll in
+            Group {
+                if let poll {
+                    PollVotingView(poll: poll)
+                }
             }
         }
         .fullScreenCover(item: $viewModel.displayAttachments) {

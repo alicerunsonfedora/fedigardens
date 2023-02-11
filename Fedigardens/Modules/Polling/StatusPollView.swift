@@ -45,17 +45,18 @@ struct StatusPollView: View {
             .chartXAxisLabel("Total Votes: \(poll.votesCount)")
             .frame(height: 150)
             .frame(minWidth: 256, maxWidth: 600)
-            if poll.voted == true {
-                Label("status.poll.voted", systemImage: "checkmark.circle")
-                    .font(.callout)
-                    .foregroundColor(.secondary)
-            }
 
-            if poll.expired == true {
-                Label("status.poll.expired", systemImage: "info.circle")
-                    .font(.callout)
-                    .foregroundColor(.secondary)
+            Group {
+                if poll.expired == true {
+                    Label("status.poll.expired", systemImage: "info.circle")
+                } else if poll.voted == true {
+                    Label("status.poll.voted", systemImage: "checkmark.circle")
+                }
             }
+            .font(.footnote)
+            .bold()
+            .foregroundColor(.secondary)
+
         }
     }
 
