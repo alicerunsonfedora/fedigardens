@@ -32,7 +32,7 @@ public struct Status: Codable {
 
     /// The visibility of the status,
     /// because posts can be restricted to a certain selection of people, or even be used as a direct message.
-    public let visibility: Visibility
+    public let visibility: PostVisibility
 
     /// Whether media attachments should be hidden by default by the client.
     public let sensitive: Bool?

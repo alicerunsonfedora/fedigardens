@@ -13,7 +13,7 @@
 //  details.
 
 import Foundation
-import enum Alice.Visibility
+import Alice
 
 extension UserDefaults {
     var loadLimit: Int {
@@ -63,34 +63,34 @@ extension UserDefaults {
         set { setValue(newValue, forKey: .addQuoteParticipant) }
     }
 
-    var defaultVisibility: Visibility {
+    var defaultVisibility: PostVisibility {
         get {
             let reflectedValue = getValue(forKey: .defaultVisibility, default: "public")
-            return Visibility(rawValue: reflectedValue) ?? .public
+            return PostVisibility(rawValue: reflectedValue) ?? .public
         }
         set { setValue(newValue.rawValue, forKey: .defaultVisibility) }
     }
 
-    var defaultReplyVisibility: Visibility {
+    var defaultReplyVisibility: PostVisibility {
         get {
             let reflectedValue = getValue(forKey: .defaultReplyVisibility, default: "unlisted")
-            return Visibility(rawValue: reflectedValue) ?? .unlisted
+            return PostVisibility(rawValue: reflectedValue) ?? .unlisted
         }
         set { setValue(newValue.rawValue, forKey: .defaultReplyVisibility) }
     }
 
-    var defaultQuoteVisibility: Visibility {
+    var defaultQuoteVisibility: PostVisibility {
         get {
             let reflectedValue = getValue(forKey: .defaultQuoteVisibility, default: "public")
-            return Visibility(rawValue: reflectedValue) ?? .public
+            return PostVisibility(rawValue: reflectedValue) ?? .public
         }
         set { setValue(newValue.rawValue, forKey: .defaultQuoteVisibility) }
     }
 
-    var defaultFeedbackVisibility: Visibility {
+    var defaultFeedbackVisibility: PostVisibility {
         get {
             let reflectedValue = getValue(forKey: .defaultFeedbackVisibility, default: "direct")
-            return Visibility(rawValue: reflectedValue) ?? .direct
+            return PostVisibility(rawValue: reflectedValue) ?? .direct
         }
         set { setValue(newValue.rawValue, forKey: .defaultFeedbackVisibility) }
     }

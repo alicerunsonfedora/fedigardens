@@ -14,7 +14,7 @@
 
 import UIKit
 import SwiftUI
-import enum Alice.Visibility
+import Alice
 
 enum GardensSettingsKey: String {
     case loadLimit = "network.load-limit"
@@ -70,7 +70,7 @@ extension AppStorage {
     init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == Data {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
-    init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == Visibility {
+    init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == PostVisibility {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
 }

@@ -13,16 +13,16 @@
 //  details.
 
 import SwiftUI
-import enum Alice.Visibility
+import Alice
 
 struct SettingsAuthorPage: View {
     @AppStorage(.characterLimit) var characterLimit: Int = 500
     @AppStorage(.enforceCharacterLimit) var enforceLimit: Bool = true
     @AppStorage(.addQuoteParticipant) var addQuoteParticipant: Bool = true
-    @AppStorage(.defaultVisibility) var defaultVisibility = Visibility.public
-    @AppStorage(.defaultReplyVisibility) var defaultReplyVisibility = Visibility.unlisted
-    @AppStorage(.defaultQuoteVisibility) var defaultQuoteVisibility = Visibility.public
-    @AppStorage(.defaultFeedbackVisibility) var defaultFeedbackVisibility = Visibility.direct
+    @AppStorage(.defaultVisibility) var defaultVisibility = PostVisibility.public
+    @AppStorage(.defaultReplyVisibility) var defaultReplyVisibility = PostVisibility.unlisted
+    @AppStorage(.defaultQuoteVisibility) var defaultQuoteVisibility = PostVisibility.public
+    @AppStorage(.defaultFeedbackVisibility) var defaultFeedbackVisibility = PostVisibility.direct
     @State private var characterLimitString = "500"
 
     var body: some View {
@@ -77,11 +77,11 @@ struct SettingsAuthorPage: View {
         }
     }
 
-    private func picker(for target: Binding<Visibility>, title: LocalizedStringKey) -> some View {
+    private func picker(for target: Binding<PostVisibility>, title: LocalizedStringKey) -> some View {
         LabeledContent {
             Menu(target.wrappedValue.localizedDescription) {
                 Picker("", selection: target) {
-                    ForEach(Visibility.allCases, id: \.hashValue) { visibility in
+                    ForEach(PostVisibility.allCases, id: \.hashValue) { visibility in
                         Text(visibility.localizedDescription)
                             .tag(visibility)
                     }

@@ -13,7 +13,6 @@
 //  details.
 
 import Alice
-import enum Alice.Visibility
 import Combine
 import Drops
 import UIKit
@@ -33,7 +32,7 @@ class AuthorViewModel: ObservableObject {
     @Published var sensitiveText = ""
     @Published var statusID = ""
     @Published var text: String = ""
-    @Published var visibility: Visibility = UserDefaults.standard.defaultVisibility
+    @Published var visibility: PostVisibility = UserDefaults.standard.defaultVisibility
 
     var userProfile: Account?
 

@@ -13,7 +13,6 @@
 //  details.
 
 import Alice
-import enum Alice.Visibility
 import Foundation
 import SwiftUI
 import UIKit
@@ -215,7 +214,7 @@ struct AuthorView: View {
 
     private var visibilityPicker: some View {
         Picker("status.visibility", selection: $viewModel.visibility) {
-            ForEach(Visibility.allCases, id: \.hashValue) { visibilityCase in
+            ForEach(PostVisibility.allCases, id: \.hashValue) { visibilityCase in
                 Text(visibilityCase.localizedDescription).tag(visibilityCase)
             }
         }

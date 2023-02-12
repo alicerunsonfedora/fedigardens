@@ -15,7 +15,7 @@
 import Foundation
 import Combine
 import Alice
-import class Alice.Notification
+import struct Alice.Notification
 
 class InteractionsListViewModel: ObservableObject {
     @Published var notifications = [Notification]()
@@ -28,7 +28,7 @@ class InteractionsListViewModel: ObservableObject {
         let response: Alice.Response<[Notification]> = await Alice.shared.get(
             .notifications,
             params: [
-                "types[]": NotificationType.mention.rawValue,
+                "types[]": Notification.NotificationType.mention.rawValue,
                 "limit": String(UserDefaults.standard.loadLimit)
             ]
         )
