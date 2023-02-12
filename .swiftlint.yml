@@ -13,6 +13,7 @@ opt_in_rules:
 
 included:
   - Fedigardens
+  - Packages
 
 type_name:
   allowed_symbols: ["_"]
