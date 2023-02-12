@@ -8,11 +8,8 @@
 import Foundation
 
 /// Represents the relationship between accounts, such as following / blocking / muting / etc.
-public class Relationship: Codable, Identifiable {
-
-    // MARK: - STORED PROPERTIES
-
-    /// The account id.
+public struct Relationship: Codable, Identifiable {
+    /// The account's ID.
     // swiftlint:disable:next identifier_name
     public let id: String
 
@@ -46,13 +43,12 @@ public class Relationship: Codable, Identifiable {
     /// Equals to `true` if the user was blocked by the account.
     public let blockedBy: Bool
 
-    // MARK: - COMPUTED PROPERTIES
+    /// An optional note that the user has provided.
+    public let note: String?
 
+    // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {
-
-        // swiftlint:disable:next identifier_name
-        case id
-
+        case id // swiftlint:disable:this identifier_name
         case following
         case requested
         case endorsed
@@ -63,6 +59,7 @@ public class Relationship: Codable, Identifiable {
         case blocking
         case domainBlocking = "domain_blocking"
         case blockedBy = "blocked_by"
+        case note
     }
 }
 

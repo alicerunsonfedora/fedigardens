@@ -22,7 +22,7 @@ public class PollOption: Codable, Identifiable {
     /// The number of votes for this option.
     public let votesCount: Int?
 
-    // MARK: - COMPUTED PROPERTIES
+    // MARK: - Coding Keys
 
     private enum CodingKeys: String, CodingKey {
         case title

@@ -7,11 +7,8 @@
 
 import Foundation
 
-/// A class representation of a tag's history.
-public class SearchResult: Codable, Identifiable {
-
-    // MARK: - STORED PROPERTIES
-
+/// A result from a given search query.
+public struct SearchResult: Codable, Identifiable {
     /// The ID associated with this history event.
     // swiftlint:disable:next identifier_name
     public let id = UUID()
@@ -25,7 +22,7 @@ public class SearchResult: Codable, Identifiable {
     /// Hashtags that meet the specified query
     public let hashtags: [Tag]?
 
-    // MARK: - COMPUTED PROPERTIES
+    // MARK: - Coding Keys
     enum CodingKeys: String, CodingKey {
         case accounts
         case statuses

@@ -19,7 +19,7 @@ public struct MastodonError: Codable, Identifiable {
     /// A longer description of the error, mainly provided with the OAuth API.
     public let errorDescription: String?
 
-    // MARK: - COMPUTED PROPERTIES
+    // MARK: - Coding Keys
 
     private enum CodingKeys: String, CodingKey {
         case error

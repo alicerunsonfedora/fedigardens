@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// A class representation of a private conversation.
+/// A private conversation between a limited amount of users.
 public struct Conversation: Codable {
     /// The ID of the conversation.
     // swiftlint:disable:next identifier_name

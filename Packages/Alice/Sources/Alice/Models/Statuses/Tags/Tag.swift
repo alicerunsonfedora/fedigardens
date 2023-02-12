@@ -7,12 +7,9 @@
 
 import Foundation
 
-/// A class representation of a hashtag.
-public class Tag: Codable, Identifiable {
-
-    // MARK: - STORED PROPERTIES
-
-    /// The ID associated with this tag.
+/// A representation of a hashtag.
+public struct Tag: Codable, Identifiable {
+    /// A unique identifier generated for this tag.
     // swiftlint:disable:next identifier_name
     public let id = UUID()
 
@@ -25,10 +22,10 @@ public class Tag: Codable, Identifiable {
     /// The weekly history of this tag.
     public let history: [History]?
 
+    /// Whether the user is currently following this tag.
     public let following: Bool?
 
-    // MARK: - COMPUTED PROPERTIES
-
+    // MARK: - Coding Keys
     enum CodingKeys: String, CodingKey {
         case name
         case url

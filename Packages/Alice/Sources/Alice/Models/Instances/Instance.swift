@@ -13,16 +13,22 @@ import Foundation
  A fediverse instance is the server that the user lives on. The following class gives information
  about the instance and who can be contacted.
  */
-public class Instance: Codable, Identifiable {
+public struct Instance: Codable, Identifiable {
+    /// A rule the server enforces.
+    public struct Rule: Codable, Identifiable, Hashable {
+        /// The identifier for the rule.
+        public let id: String
 
-    // MARK: - STORED PROPERTIES
+        /// The rule's text contents.
+        public let text: String
+    }
 
     /// The ID for this server.
     // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// The website URI for this instance.
-    public let uri: String
+    public let domain: String
 
     /// The instance server's title or name.
     public let title: String
@@ -39,30 +45,26 @@ public class Instance: Codable, Identifiable {
     /// The website URL to the instance server's thumbnail image.
     public let thumbnail: String?
 
-    /// The instance server's URLs.
-    public let urls: Field
-
-    /// The instance server's statistics.
-    public let stats: Field
-
     /// The instance server's supported languages.
     public let languages: [String]
 
     /// The instance server's contact account.
     public let contactAccount: Account
 
-    // MARK: - COMPUTED PROPERTIES
+    /// The rules that the instance encforces.
+    public let rules: [Rule]
+
+    // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {
-        case uri
+        case domain
         case title
         case description
-        case email
+        case email = "contact[email]"
         case version
         case thumbnail
-        case urls
-        case stats
         case languages
-        case contactAccount = "contact_account"
+        case contactAccount = "contact[account]"
+        case rules
     }
 }
 

@@ -8,12 +8,8 @@
 import Foundation
 
 /// A class representation of an OAuth token used for authenticating with the API and performing actions.
-public class Token: Codable, Identifiable {
-
-    // MARK: - STORED PROPERTIES
-
-    /// The ID associated with this tag.
-    // swiftlint:disable:next identifier_name
+public struct Token: Codable, Identifiable {
+    /// A unique identifier generated for this token.
     public let id = UUID()
 
     /// The OAuth token to be used for authorization.
@@ -28,7 +24,7 @@ public class Token: Codable, Identifiable {
     /// When the token was generated.
     public let createdAt: Date
 
-    // MARK: - COMPUTED PROPERTIES
+    // MARK: - Coding Keys
 
     enum CodingKeys: String, CodingKey {
         case accessToken = "access_token"

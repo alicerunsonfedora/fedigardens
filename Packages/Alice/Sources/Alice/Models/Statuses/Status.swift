@@ -113,7 +113,7 @@ public struct Status: Codable {
     /// Have you bookmarked this status?
     public let bookmarked: Bool?
 
-    // MARK: - COMPUTED PROPERTIES
+    // MARK: - Coding Keys
 
     private enum CodingKeys: String, CodingKey {
         // swiftlint:disable:next identifier_name

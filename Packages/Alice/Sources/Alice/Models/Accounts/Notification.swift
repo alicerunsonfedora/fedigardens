@@ -7,12 +7,36 @@
 
 import Foundation
 
-/**
- A class representation of a notification.
- */
-public class Notification: Codable, Identifiable {
-    // MARK: - STORED PROPERTIES
+/// A notification the user has received.
+public struct Notification: Codable, Identifiable {
+    /// A representation of the different account notification types.
+    public enum NotificationType: String, Codable {
+        /// When an account follows the user
+        case follow
 
+        /// When an account mentions the user in a post
+        case mention
+
+        /// When an account reblogs the user's post
+        case reblog
+
+        /// When an account favorites the user's post
+        case favourite
+
+        /// When an account is requesting to follow the user
+        case followRequest = "follow_request"
+
+        /// Someone you enabled notifications for has posted a status
+        case status
+
+        /// A poll you have voted in or created has ended
+        case poll
+
+        /// A status you interacted with has ended
+        case update
+    }
+
+    /// A unique identifier generated for this notification.
     public let uuid = UUID()
 
     /// The ID of the notification from the server.
@@ -34,8 +58,7 @@ public class Notification: Codable, Identifiable {
     // MARK: COMPUTED PROPERTIES
 
     private enum CodingKeys: String, CodingKey {
-        // swiftlint:disable:next identifier_name
-        case id
+        case id // swiftlint:disable:this identifier_name
         case type
         case account
         case status

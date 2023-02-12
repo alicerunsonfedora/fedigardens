@@ -34,7 +34,7 @@ public class Poll: Codable, Identifiable {
     /// Whether the user has voted on this poll.
     public let voted: Bool?
 
-    // MARK: - COMPUTED PROPERTIES
+    // MARK: - Coding Keys
 
     private enum CodingKeys: String, CodingKey {
         // swiftlint:disable:next identifier_name

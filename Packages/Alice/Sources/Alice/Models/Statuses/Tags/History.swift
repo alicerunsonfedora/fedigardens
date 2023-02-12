@@ -8,11 +8,8 @@
 import Foundation
 
 /// A class representation of a tag's history.
-public class History: Codable, Identifiable {
-
-    // MARK: - STORED PROPERTIES
-
-    /// The ID associated with this history event.
+public struct History: Codable, Identifiable {
+    /// A unique identifier generated for this history point.
     // swiftlint:disable:next identifier_name
     public let id = UUID()
 
@@ -25,7 +22,7 @@ public class History: Codable, Identifiable {
     /// The number of accounts that used this tag on this day.
     public let accounts: String
 
-    // MARK: - COMPUTED PROPERTIES
+    // MARK: - Coding Keys
     enum CodingKeys: String, CodingKey {
         case day
         case uses

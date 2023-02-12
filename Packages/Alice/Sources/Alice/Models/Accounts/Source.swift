@@ -7,15 +7,9 @@
 
 import Foundation
 
-/**
-*   Represents display or publishing preferences of user's own account.
-*   Returned as an additional entity when verifying and updated credentials, as an attribute of Account.
-*/
-public class Source: Codable, Identifiable {
-
-    // MARK: - STORED PROPERTIES
-
-    /// Required for being able to iterate through this data model using SwiftUI
+/// Represents display or publishing preferences of user's own account.
+public struct Source: Codable, Identifiable {
+    /// A unique identifier generated for this source.
     // swiftlint:disable:next identifier_name
     public let id = UUID()
 
@@ -24,11 +18,6 @@ public class Source: Codable, Identifiable {
 
     /// Metadata about the account.
     public let fields: [Field]
-
-    /*
-    *   Optional attributes (all these values must be optionals - i.e all the types must end with `?`-
-    *   because the API might not give a value, so they'll be `nil`).
-    */
 
     /// The default post privacy to be used for new statuses.
     public let privacy: String?
@@ -42,8 +31,7 @@ public class Source: Codable, Identifiable {
     /// The number of pending follow requests.
     public let followRequestsCount: Int?
 
-    // MARK: - COMPUTED PROPERTIES
-
+    // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {
         case note
         case fields

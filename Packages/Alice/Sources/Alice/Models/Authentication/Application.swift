@@ -9,8 +9,7 @@ import Foundation
 
 /// A registered service or app with the instance the user interacts with.
 public struct Application: Codable, Identifiable {
-    /// A unidue identifier generated for this application. This is used in cases where the application cannot be identified
-    /// easily.
+    /// A unidue identifier generated for this application.
     // swiftlint:disable:next identifier_name
     public let id = UUID()
 
@@ -30,7 +29,6 @@ public struct Application: Codable, Identifiable {
     public let vapidKey: String?
 
     // MARK: - Coding Keys
-
     private enum CodingKeys: String, CodingKey {
         case name
         case clientId = "client_id"
