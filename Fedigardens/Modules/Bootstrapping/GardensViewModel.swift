@@ -16,6 +16,7 @@ import Foundation
 import Combine
 import Alice
 import EmojiText
+import struct Alice.CustomEmoji
 
 class GardensViewModel: ObservableObject {
     @Published var userProfile: Account?
@@ -55,7 +56,7 @@ class GardensViewModel: ObservableObject {
 
     func getInstanceEmojis() async {
         guard Alice.OAuth.shared.canMakeAuthenticatedRequests else { return }
-        let response: Alice.Response<[Emoji]> = await Alice.shared.get(.customEmojis)
+        let response: Alice.Response<[CustomEmoji]> = await Alice.shared.get(.customEmojis)
         switch response {
         case .success(let newEmojis):
             DispatchQueue.main.async {

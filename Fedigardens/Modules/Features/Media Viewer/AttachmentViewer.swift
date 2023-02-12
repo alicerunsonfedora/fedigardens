@@ -19,7 +19,7 @@ struct AttachmentViewer: View {
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = AttachmentViewerViewModel()
 
-    var attachments: [Attachment]
+    var attachments: [MediaAttachment]
 
     private var zoomGesture: some Gesture {
         MagnificationGesture()
@@ -139,7 +139,7 @@ struct AttachmentViewer: View {
         }
     }
 
-    private func preview(for attachment: Attachment) -> some View {
+    private func preview(for attachment: MediaAttachment) -> some View {
         Group {
             if let path = attachment.previewURL, let url = URL(string: path) {
                 AsyncImage(url: url, transaction: .init(animation: .easeInOut)) { (phase: AsyncImagePhase) in

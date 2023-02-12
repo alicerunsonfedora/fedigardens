@@ -22,7 +22,7 @@ struct ProfileSheetView: View {
     @StateObject private var viewModel = ProfileSheetViewModel()
     var profile: Account
 
-    private var allEmojis: [any CustomEmoji] {
+    private var allEmojis: [RemoteEmoji] {
         emojis + profile.emojis.map { emoji in emoji.remote() }
     }
 

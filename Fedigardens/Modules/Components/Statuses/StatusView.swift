@@ -17,7 +17,6 @@ import SwiftUI
 import EmojiText
 
 // MARK: - Status View
-
 struct StatusView: View {
     public enum DatePlacement {
         case automatic
@@ -43,16 +42,16 @@ struct StatusView: View {
 
     var status: Status
 
-    @State fileprivate var truncateLines: Int?
-    @State fileprivate var datePlacement: DatePlacement
-    @State fileprivate var profileImagePlacement: ProfileImagePlacement
-    @State fileprivate var profileImageSize: CGFloat
-    @State fileprivate var reblogNoticePlacement: ReblogNoticePlacement
-    @State fileprivate var verifiedNoticePlacement: StatusAuthorExtendedLabel.VerificationPlacementPolicy
+    fileprivate var truncateLines: Int?
+    fileprivate var datePlacement: DatePlacement
+    fileprivate var profileImagePlacement: ProfileImagePlacement
+    fileprivate var profileImageSize: CGFloat
+    fileprivate var reblogNoticePlacement: ReblogNoticePlacement
+    fileprivate var verifiedNoticePlacement: StatusAuthorExtendedLabel.VerificationPlacementPolicy
 
     fileprivate var displayDisclosedContent: Bool
 
-    private var allEmojis: [any CustomEmoji] {
+    private var allEmojis: [RemoteEmoji] {
         let emojisFromStatus = status.account.emojis + (status.reblog?.account.emojis ?? [])
         return emojis + emojisFromStatus.map { emoji in emoji.remote() }
     }

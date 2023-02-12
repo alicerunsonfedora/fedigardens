@@ -12,10 +12,10 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import enum Alice.Visibility
+import Alice
 import SwiftUI
 
-extension Visibility {
+extension PostVisibility {
     var localizedDescription: LocalizedStringKey {
         switch self {
         case .public:

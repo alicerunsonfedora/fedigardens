@@ -26,7 +26,7 @@ class StatusDetailViewModel: ObservableObject {
 
     struct AttachmentContextCaller: Hashable, Identifiable {
         var id: String
-        var attachments: [Attachment]
+        var attachments: [MediaAttachment]
     }
 
     @Published var status: Status?

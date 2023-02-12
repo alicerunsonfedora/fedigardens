@@ -14,11 +14,8 @@ import Foundation
 ///
 /// Special thanks to **Thomas Ricouard** for inspiration.
 public enum Endpoint {
+    // MARK: - OAUTH
 
-    //  MARK: - OAUTH
-    /* Everything related with registering client applications that can be used to obtain OAuth tokens and authorizing user
-     * accounts for interacting with user-level data. */
-    
     /// Create a new application to obtain OAuth2 credentials.
     case apps
 
@@ -34,12 +31,10 @@ public enum Endpoint {
     /// Obtain or revoke an access token, to be used during API calls that are not public.
     case token, revokeToken
 
-    //  MARK: - ACCOUNTS
+    // MARK: - ACCOUNTS
     // Methods concerning user accounts and related information.
 
-
-
-    //  MARK: – CREDENTIALS
+    // MARK: – CREDENTIALS -
     // Methods concerning working with an account's credentials
 
     /// Creates a user and account records. Returns an account access token for the app that initiated the
@@ -53,9 +48,9 @@ public enum Endpoint {
     /// Update the credentials of an account.
     case updateCredentials
 
-    //  MARK: – INFORMATION
+    // MARK: – INFORMATION -
     // Methods concerning retrieving an account's related information.
-    
+
     /// View information about a profile.
     case account(id: String)
 
@@ -81,11 +76,11 @@ public enum Endpoint {
     /// - Note: To unblock, use the `DELETE` HTTP request method.
     case blockedServers
 
-   
-    //  MARK: – ACTIONS
+    // MARK: – ACTIONS
     // Methods concerning performing actions on accounts.
 
-    /// Follow or unfollow the given account. Can also be used to update whether to show reblogs or enable notifications.
+    /// Follow or unfollow the given account. Can also be used to update whether to show reblogs or enable
+    /// notifications.
     case followAccount(id: String), unfollowAccount(id: String)
 
     /// Block or unblock the given account.
@@ -95,7 +90,8 @@ public enum Endpoint {
 
     /// Mute or unmute the given account.
     ///
-    /// Clients should filter statuses and notifications from this account, if received (e.g. due to a boost in the Home timeline).
+    /// Clients should filter statuses and notifications from this account, if received (e.g. due to a boost in the Home
+    /// timeline).
     case muteAccount(id: String), unmuteAccount(id: String)
 
     /// Add or remove the given account to the user's featured profiles.
@@ -108,13 +104,13 @@ public enum Endpoint {
 
     // MARK: - COMMUNITY INFORMATION
     // Methods pertaining to information about the current instance (community) they reside in.
-    
+
     /// Information about the current server they reside in.
     case instance
-    
+
     /// A list of of custom emojis this server has registered.
     case customEmojis
-    
+
     /// A list of trending tags with their history.
     case trending
 
@@ -124,8 +120,7 @@ public enum Endpoint {
     /// Fetches trending statuses.
     case trendingStatuses
 
-
-    //  MARK: – GENERAL
+    // MARK: – GENERAL
     // Methods concerning performing general actions or retrieving general information from accounts.
 
     /// Find out whether a given account is followed, blocked, muted, etc.
@@ -136,13 +131,13 @@ public enum Endpoint {
 
     /// Retrieves lists that the user has created.
     case lists
-    
+
     // MARK: - TIMELINES AND STATUSES
     // Methods pertaining to interacting with timelines.
-    
+
     /// Get a list of posts from a particular timeline.
     case timeline(scope: TimelineScope)
-    
+
     /// Get the parenst and children to a given status.
     case context(id: String)
 
@@ -169,7 +164,7 @@ public enum Endpoint {
     case favourite(id: String), unfavorite(id: String)
 
     /// Reblog/unreblog a status.
-    case reblog(id: String), unreblog(id:String)
+    case reblog(id: String), unreblog(id: String)
 
     /// Privately save or unsave a status to an account's bookmarks.
     case save(id: String), undoSave(id: String)

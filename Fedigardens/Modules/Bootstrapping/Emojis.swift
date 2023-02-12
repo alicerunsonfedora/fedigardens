@@ -15,8 +15,9 @@
 import SwiftUI
 import EmojiText
 import Alice
+import struct Alice.CustomEmoji
 
-extension Emoji {
+extension CustomEmoji {
     func remote() -> RemoteEmoji {
         return RemoteEmoji(shortcode: self.shortcode, url: self.url)
     }

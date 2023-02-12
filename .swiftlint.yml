@@ -1,3 +1,5 @@
+child_config: Packages/Alice/.swiftlint.alice.yml
+
 disabled_rules:
   - force_try
   - duplicate_imports
@@ -11,6 +13,7 @@ opt_in_rules:
 
 included:
   - Fedigardens
+  - Packages
 
 type_name:
   allowed_symbols: ["_"]

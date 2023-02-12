@@ -14,7 +14,7 @@
 
 import SwiftUI
 import Alice
-import class Alice.Notification
+import struct Alice.Notification
 
 struct NotificationListCellView: View {
     var notification: Notification

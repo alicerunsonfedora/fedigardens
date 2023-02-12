@@ -17,9 +17,9 @@ public enum FetchError: Error {
     case message(reason: String, data: Data)
     case parseError(reason: Error)
     case mastodonAPIError(error: MastodonError, data: Data)
-    
+
     static private let decoder = JSONDecoder()
-    
+
     static func processResponse(data: Data, response: URLResponse) throws -> Data {
 
         //  First, we try to convert the httpResponse to HTTPURLResponse
@@ -29,26 +29,18 @@ public enum FetchError: Error {
         }
 
         //  Really straight-forward: if the error is 404, we already know what it means...
-        if (httpResponse.statusCode == 404) {
+        if httpResponse.statusCode == 404 {
             throw FetchError.message(reason: "Resource not found", data: data)
         }
 
         if 200 ... 299 ~= httpResponse.statusCode {
-
             return data
-
         } else {
-
             do {
-
                 let mastodonError = try decoder.decode(MastodonError.self, from: data)
-
                 throw FetchError.mastodonAPIError(error: mastodonError, data: data)
-
             } catch _ {
-
                 throw FetchError.unknown(data: data)
-
             }
         }
     }

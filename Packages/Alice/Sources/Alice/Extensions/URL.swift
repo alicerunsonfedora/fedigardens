@@ -16,7 +16,7 @@ extension URL {
         urlComponents.queryItems = queryItems
         return urlComponents.url!
     }
-    
+
     public var queryParameters: [String: String]? {
         guard
             let components = URLComponents(url: self, resolvingAgainstBaseURL: true),

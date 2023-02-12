@@ -23,7 +23,7 @@ struct AuthoringContext: Codable, Hashable, Identifiable {
     var participants: String = ""
     var prefilledText: String = ""
     var replyingToID: String = ""
-    var visibility: Visibility = .public
+    var visibility: PostVisibility = .public
     var pollExpiration: String = ""
     var pollOptions: String = ""
 }
@@ -37,7 +37,7 @@ extension AuthoringContext {
             participants: params["participants", default: ""],
             prefilledText: params["status", default: ""],
             replyingToID: params["replyID", default: ""],
-            visibility: Visibility(rawValue: params["visibility", default: "public"]) ?? .public,
+            visibility: PostVisibility(rawValue: params["visibility", default: "public"]) ?? .public,
             pollExpiration: params["poll[expires_in]", default: ""],
             pollOptions: params["poll[options][]", default: ""]
         )
