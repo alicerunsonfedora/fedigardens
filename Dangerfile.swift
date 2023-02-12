@@ -44,7 +44,7 @@ if editedFiles.count > 1, !editedFiles.contains("CHANGELOG.md") {
 }
 
 // MARK: - SwiftLint
-let linterWarnings = SwiftLint.lint()
+let linterWarnings = SwiftLint.lint(configFile: ".swiftlint.yml")
 if !linterWarnings.isEmpty {
     suggestsChanges = true
 }
