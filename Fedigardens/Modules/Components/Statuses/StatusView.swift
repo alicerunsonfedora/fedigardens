@@ -51,7 +51,7 @@ struct StatusView: View {
 
     fileprivate var displayDisclosedContent: Bool
 
-    private var allEmojis: [any CustomEmoji] {
+    private var allEmojis: [RemoteEmoji] {
         let emojisFromStatus = status.account.emojis + (status.reblog?.account.emojis ?? [])
         return emojis + emojisFromStatus.map { emoji in emoji.remote() }
     }

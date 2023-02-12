@@ -56,7 +56,7 @@ public struct Status: Codable {
     public let tags: [Tag]
 
     /// An array of all the custom emoji to be used when rendering status content.
-    public let emojis: [Emoji]
+    public let emojis: [CustomEmoji]
 
     /// How many boosts this status has received.
     public let reblogsCount: Int

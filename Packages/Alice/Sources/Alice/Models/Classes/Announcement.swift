@@ -50,7 +50,7 @@ public struct Announcement: Codable, Identifiable {
     public let tags: [Tag]
 
     /// The emojis that this announcement uses.
-    public let emojis: [Emoji]
+    public let emojis: [CustomEmoji]
 
     // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {

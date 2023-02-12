@@ -21,8 +21,8 @@ struct ProfileSheetHeaderView: View {
     @Environment(\.customEmojis) var emojis
     var profile: Account
 
-    private var allEmojis: [any CustomEmoji] {
-        emojis + profile.emojis.map { emoji in emoji.remote() }
+    private var allEmojis: [RemoteEmoji] {
+        emojis + profile.emojis.map(\.remoteEmoji)
     }
 
     var body: some View {

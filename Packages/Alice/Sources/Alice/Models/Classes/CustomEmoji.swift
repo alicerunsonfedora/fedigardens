@@ -8,11 +8,8 @@
 import Foundation
 
 /// Represents a custom emoji.
-public class Emoji: Codable, Identifiable {
-
-    // MARK: - STORED PROPERTIES
-
-    /// Required for being able to iterate through this data model using SwiftUI
+public struct CustomEmoji: Codable, Identifiable {
+    /// A unique identifier generated for this emoji.
     // swiftlint:disable:next identifier_name
     public let id = UUID()
 
@@ -25,19 +22,25 @@ public class Emoji: Codable, Identifiable {
     /// URL to the emoji image
     public let url: URL
 
-    // MARK: - COMPUTED PROPERTIES
+    // Whether the emoji is visible in the custom emoji picker.
+    public let visibleInPicker: Bool
 
+    /// The category this emoji belogs to.
+    public let category: String
+
+    // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {
         case shortcode
+        case category
+        case visibleInPicker = "visible_in_picker"
         case staticURL = "static_url"
         case url
     }
-
 }
 
 /// Grants us conformance to `Hashable` for _free_
-extension Emoji: Hashable {
-    public static func == (lhs: Emoji, rhs: Emoji) -> Bool {
+extension CustomEmoji: Hashable {
+    public static func == (lhs: CustomEmoji, rhs: CustomEmoji) -> Bool {
         return lhs.id == rhs.id
     }
 

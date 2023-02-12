@@ -61,7 +61,7 @@ public struct Account: Codable, Identifiable {
     public let headerStatic: String
 
     /// The custom emojis associated with this account.
-    public let emojis: [Emoji]
+    public let emojis: [CustomEmoji]
 
     /// The account that the person has migrated to, if available.
     /// - Note: To access this value directly, use ``moved``.

@@ -1,5 +1,5 @@
 //
-//  Visibility.swift
+//  PostVisibility.swift
 //  Chica
 //
 //  Created by Marquis Kurt on 7/6/20.
@@ -7,12 +7,15 @@
 
 import Foundation
 
+@available(*, deprecated, renamed: "PostVisibility")
+public typealias Visibility = PostVisibility
+
 /**
  An enumerated representation of a post's visibility.
  
  Posts can be restricted to a certain selection of people or used as a direct message.
  */
-public enum Visibility: String, Codable, CaseIterable {
+public enum PostVisibility: String, Codable, CaseIterable {
     /// When a post is meant for everyone to see.
     case `public`
 
