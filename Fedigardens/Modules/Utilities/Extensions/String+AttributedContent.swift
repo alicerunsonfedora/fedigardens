@@ -17,35 +17,6 @@ import SwiftUI
 import HTML2Markdown
 
 extension String {
-    /// Returns a plain-text form of an HTML-formatted string.
-    ///
-    /// This method returns asynchronously due to the nature of how ``NSAttributedString`` renders HTML with respect
-    /// to threads.
-    @available(*, deprecated, message: "Use plainTextContents instead.")
-    func toPlainText() async -> String {
-        guard let strData = data(using: String.Encoding.utf8) else {
-            return self
-        }
-
-        do {
-            var string = try NSAttributedString(
-                data: strData,
-                options: [
-                    .documentType: NSAttributedString.DocumentType.html,
-                    .characterEncoding: String.Encoding.utf8.rawValue
-                ],
-                documentAttributes: nil
-            ).string
-
-            guard let newLineStripIdx = string.lastIndex(of: "\n") else { return string }
-            string.remove(at: newLineStripIdx)
-            return string
-        } catch {
-            print("Error converting to plain text: \(error.localizedDescription)")
-            return self
-        }
-    }
-
     func attributedHTML() -> AttributedString {
         let dumbSelf = AttributedString(stringLiteral: self)
         do {

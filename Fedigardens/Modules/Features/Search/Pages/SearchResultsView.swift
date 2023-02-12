@@ -14,6 +14,7 @@
 
 import SwiftUI
 import Alice
+import Bunker
 
 struct SearchResultsView: View {
     @Environment(\.isSearching) private var isSearching

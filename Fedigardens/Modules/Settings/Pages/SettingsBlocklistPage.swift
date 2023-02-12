@@ -13,6 +13,7 @@
 //  details.
 
 import SwiftUI
+import Bunker
 
 struct SettingsBlocklistPage: View {
     @StateObject private var viewModel = SettingsBlocklistViewModel()

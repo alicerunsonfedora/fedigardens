@@ -14,6 +14,7 @@
 
 import SwiftUI
 import Alice
+import Bunker
 
 struct StatusDetailList: View {
     var status: Status

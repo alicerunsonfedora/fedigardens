@@ -15,6 +15,7 @@
 import UIKit
 import Combine
 import Alice
+import Bunker
 
 class TimelineSplitViewModel: ObservableObject {
     enum TimelineType: Equatable {

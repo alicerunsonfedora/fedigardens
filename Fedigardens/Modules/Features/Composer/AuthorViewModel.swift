@@ -18,6 +18,7 @@ import Combine
 import Drops
 import UIKit
 import SwiftUI
+import Bunker
 
 class AuthorViewModel: ObservableObject {
     @Published var editMode = false
@@ -187,7 +188,9 @@ class AuthorViewModel: ObservableObject {
             var textStrippedFromUrls = text + mentionString
             let matches = detector.matches(in: text, options: [], range: NSRange(location: 0, length: text.utf16.count))
                 .filter { match in
-                    match.text(in: text)?.firstMatch(of: URL.schemeWithAuthorityRegex) != nil
+                    guard let substring = match.text(in: text),
+                          let url = URL(string: String(substring)) else { return false }
+                    return url.scheme != nil
                 }
             for match in matches {
                 guard let range = Range(match.range, in: text) else { continue }

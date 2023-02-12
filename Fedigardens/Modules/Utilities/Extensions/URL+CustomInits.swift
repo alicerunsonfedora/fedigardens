@@ -46,8 +46,6 @@ extension URL {
         }
     }
 
-    static let schemeWithAuthorityRegex = /[a-zA-Z0-9\_\-]+\:\/\//
-
     init?(destination: AppDestination) {
         self.init(string: destination.absoluteString)
     }

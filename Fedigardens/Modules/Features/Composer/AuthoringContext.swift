@@ -14,6 +14,7 @@
 
 import Foundation
 import Alice
+import Bunker
 
 struct AuthoringContext: Codable, Hashable, Identifiable {
     var id = UUID()

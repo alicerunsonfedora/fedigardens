@@ -14,6 +14,7 @@
 
 import SwiftUI
 import Alice
+import Bunker
 
 struct SearchViewExploreList: View {
     @StateObject var viewModel: SearchViewModel

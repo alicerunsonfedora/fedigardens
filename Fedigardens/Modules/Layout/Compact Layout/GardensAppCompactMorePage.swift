@@ -14,6 +14,7 @@
 
 import SwiftUI
 import Alice
+import Bunker
 
 struct GardensAppCompactMorePage<Detail: View>: View {
     @Environment(\.userProfile) var userProfile

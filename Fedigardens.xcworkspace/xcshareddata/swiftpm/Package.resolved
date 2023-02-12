@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Bunker",
+        "repositoryURL": "https://github.com/alicerunsonfedora/bunker.git",
+        "state": {
+          "branch": "root",
+          "revision": "580a61b6fc576a9014f94b380758720967c8f087",
+          "version": null
+        }
+      },
+      {
         "package": "Drops",
         "repositoryURL": "https://github.com/omaralbeik/Drops.git",
         "state": {
@@ -24,7 +33,7 @@
         "repositoryURL": "https://github.com/divadretlaw/EmojiText",
         "state": {
           "branch": "main",
-          "revision": "3d8f6196de59634352ed317cf6ab4e292eeaaf44",
+          "revision": "263935972835482fe655d7ce44e101cc3fb463bf",
           "version": null
         }
       },
@@ -51,8 +60,8 @@
         "repositoryURL": "https://github.com/kean/Nuke",
         "state": {
           "branch": null,
-          "revision": "2e9337168d08acccf72c039bf9324be24a1cf7d7",
-          "version": "11.5.3"
+          "revision": "67bd45931180f652159e3342575277a7f197b3ab",
+          "version": "11.6.2"
         }
       },
       {

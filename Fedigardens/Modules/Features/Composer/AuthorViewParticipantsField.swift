@@ -14,6 +14,7 @@
 
 import SwiftUI
 import Alice
+import Bunker
 
 struct AuthorViewParticipantsField: View {
     @StateObject var viewModel: AuthorViewModel

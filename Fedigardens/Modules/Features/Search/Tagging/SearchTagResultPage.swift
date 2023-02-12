@@ -15,6 +15,7 @@
 import SwiftUI
 import Alice
 import Charts
+import Bunker
 
 struct SearchTagResultPage: View {
     var tag: Tag
