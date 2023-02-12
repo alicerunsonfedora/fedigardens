@@ -20,6 +20,11 @@ class PollVotingViewModel: ObservableObject {
     @Published var poll: Poll?
     @Published var currentVote: Int = -1
 
+    func expirationIsNear(difference: TimeInterval) -> Bool {
+        guard let expiry = poll?.expiresAt, let date = DateFormatter.mastodon.date(from: expiry) else { return false }
+        return abs(date.distance(to: .now)) <= difference
+    }
+
     func pollExpirationDate() -> String? {
         guard let expiration = poll?.expiresAt, let date = DateFormatter.mastodon.date(from: expiration) else {
             return nil

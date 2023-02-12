@@ -29,7 +29,7 @@ struct StatusPollView: View {
                 ForEach(poll.options) { option in
                     BarMark(
                         x: .value(option.title, option.votesCount ?? 0),
-                        y: .value("Poll Option", option.title)
+                        y: .value("status.poll.optionssection", option.title)
                     )
                     .annotation(position: .trailing) {
                         Text(

@@ -203,6 +203,8 @@
 		958E2096296A0671008AE63F /* GardensPageLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E2095296A0671008AE63F /* GardensPageLink.swift */; };
 		9594DE3B27C927820036325A /* Conversation+Authors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594DE3A27C927820036325A /* Conversation+Authors.swift */; };
 		9594DE3D27C927820036325A /* Conversation+Authors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594DE3A27C927820036325A /* Conversation+Authors.swift */; };
+		95A01C3629994D120086985E /* PollCallToActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A01C3529994D120086985E /* PollCallToActionView.swift */; };
+		95A01C3729994D120086985E /* PollCallToActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A01C3529994D120086985E /* PollCallToActionView.swift */; };
 		95A02A6F295FE94F0013EF7C /* Alice in Frameworks */ = {isa = PBXBuildFile; productRef = 95A02A6E295FE94F0013EF7C /* Alice */; };
 		95A1BF95297327B3002C88B6 /* String+Localizations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF94297327B3002C88B6 /* String+Localizations.swift */; };
 		95A1BF9829738A75002C88B6 /* ProfileSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF9729738A75002C88B6 /* ProfileSheetView.swift */; };
@@ -385,6 +387,7 @@
 		958E20932969FF24008AE63F /* NotificationListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationListCellView.swift; sourceTree = "<group>"; };
 		958E2095296A0671008AE63F /* GardensPageLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensPageLink.swift; sourceTree = "<group>"; };
 		9594DE3A27C927820036325A /* Conversation+Authors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Conversation+Authors.swift"; sourceTree = "<group>"; };
+		95A01C3529994D120086985E /* PollCallToActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollCallToActionView.swift; sourceTree = "<group>"; };
 		95A02A70295FE98B0013EF7C /* Alice */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Alice; path = ../Packages/Alice; sourceTree = "<group>"; };
 		95A1BF94297327B3002C88B6 /* String+Localizations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizations.swift"; sourceTree = "<group>"; };
 		95A1BF9729738A75002C88B6 /* ProfileSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetView.swift; sourceTree = "<group>"; };
@@ -703,6 +706,7 @@
 				957AF84E29591B44000370E6 /* StatusPollView.swift */,
 				95860C5B29981F3700068425 /* PollVotingView.swift */,
 				95860C5E29982E5100068425 /* PollVotingViewModel.swift */,
+				95A01C3529994D120086985E /* PollCallToActionView.swift */,
 			);
 			path = Polling;
 			sourceTree = "<group>";
@@ -1210,6 +1214,7 @@
 				955F1B3B2985D74100702BE8 /* SearchAccountView.swift in Sources */,
 				95ADAE1F27B6DC120011FD83 /* GardensAppWideLayout.swift in Sources */,
 				953DE4D327D69C7D0043A357 /* Bundle+AppVersion.swift in Sources */,
+				95A01C3629994D120086985E /* PollCallToActionView.swift in Sources */,
 				958C0C9727BE930D00ED6C23 /* Account+AccountName.swift in Sources */,
 				95A1BFAB2974D2C5002C88B6 /* StatusDetailProfileMenu.swift in Sources */,
 				95D2705127C6FEFA00805262 /* MessagingList.swift in Sources */,
@@ -1358,6 +1363,7 @@
 				953BC7C02957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */,
 				955F1B582985FE0100702BE8 /* ProfileSheetFields.swift in Sources */,
 				95801D2C297C756F00FE8D83 /* UserDefaults+Settings.swift in Sources */,
+				95A01C3729994D120086985E /* PollCallToActionView.swift in Sources */,
 				955F1B322985C11000702BE8 /* SearchViewExploreList.swift in Sources */,
 				955F1B422985E6E100702BE8 /* SearchTagResultPage.swift in Sources */,
 				955F1B3F2985DC1600702BE8 /* SearchTagView.swift in Sources */,

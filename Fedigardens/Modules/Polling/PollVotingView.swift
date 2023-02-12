@@ -30,7 +30,7 @@ struct PollVotingView: View {
                 }
                 .pickerStyle(.inline)
 
-                if let expiry = viewModel.pollExpirationDate() {
+                if viewModel.expirationIsNear(difference: 300), let expiry = viewModel.pollExpirationDate() {
                     Label {
                         VStack(alignment: .leading) {
                             Text("status.poll.expirytitle")

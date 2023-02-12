@@ -20,6 +20,24 @@
 			<string>%d people talking</string>
 		</dict>
 	</dict>
+	<key>status.poll.runningdetail</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>This poll currently has %#@votes@. You can submit your vote by tapping Vote in the toolbar, and you will be able to see the poll&apos;s current results once you have voted.</string>
+		<key>votes</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>no votes</string>
+			<key>one</key>
+			<string>one vote</string>
+			<key>other</key>
+			<string>%d votes</string>
+		</dict>
+	</dict>
 	<key>status.charsremain</key>
 	<dict>
 		<key>NSStringLocalizedFormatKey</key>

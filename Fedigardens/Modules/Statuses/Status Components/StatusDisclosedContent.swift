@@ -35,7 +35,7 @@ struct StatusDisclosedContent: View {
 
     private var allEmojis: [RemoteEmoji] {
         let emojisFromStatus = status.account.emojis + (status.reblog?.account.emojis ?? [])
-        return emojis + emojisFromStatus.map { emoji in emoji.remote() }
+        return emojis + emojisFromStatus.map(\.remoteEmoji)
     }
 
     private var mainContent: some View {
@@ -52,7 +52,11 @@ struct StatusDisclosedContent: View {
             if truncateLines == nil {
                 AttachmentMediaGroup(status: status)
                 if let poll = status.poll {
-                    StatusPollView(poll: poll)
+                    if poll.expired || poll.voted == true {
+                        StatusPollView(poll: poll)
+                    } else {
+                        PollCallToActionView(author: status.originalAuthor(), poll: poll)
+                    }
                 }
             }
         }

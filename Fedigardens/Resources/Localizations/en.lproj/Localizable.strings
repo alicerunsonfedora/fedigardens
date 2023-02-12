@@ -97,7 +97,7 @@
 "status.editmode.detail" = "Some composition features such as setting the visibility may not be available.";
 
 // MARK: - Status: Polls -
-"status.poll.voted" = "You have voted on this poll.";
+"status.poll.voted" = "You have contributed to this poll already.";
 "status.poll.expired" = "This poll is no longer accepting submissions.";
 "status.poll.expirytitle" = "This poll will expire soon.";
 "status.poll.expirydetail" = "This poll will no longer accept submissions %@.";
@@ -108,6 +108,8 @@
 "status.poll.optionplaceholder" = "Write an option...";
 "status.poll.optionssection" = "Poll Choices";
 "status.poll.addoption" = "Add Option";
+"status.poll.runningtitle" = "%@ is running a poll until %@.";
+"status.poll.runningdetail" = "status.poll.runningdetail";
 
 // MARK: - Status Actions -
 "status.compose" = "New Status";

@@ -157,6 +157,8 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                     }.disabled(allAttached == nil || allAttached?.isEmpty == true)
                 }
             }
+            .defaultCustomization(options: .alwaysAvailable)
+
             ToolbarItem(id: "vote-poll", placement: .primaryAction) {
                 if let poll = viewModel.status?.poll {
                     Button {
@@ -167,6 +169,7 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                     .disabled(poll.expired == true || poll.voted == true)
                 }
             }
+            .defaultCustomization(options: .alwaysAvailable)
         }
     }
 
