@@ -7,17 +7,9 @@
 
 import Foundation
 
-/**
- A class representation of a post context.
- 
- A context for a post contains all of the preceding posts that led to the post, as well as any posts that respond
- to a given post.
- */
-public class Context: Codable, Identifiable {
-
-    // MARK: - STORED PROPERTIES
-
-    /// The ID associated with this context.
+/// A class that contains the replies to a post as a descendant, or prior statuses leading up to the current post.
+public struct Context: Codable, Identifiable {
+    /// A unique identifier generated for this context.
     // swiftlint:disable:next identifier_name
     public let id = UUID()
 
@@ -27,13 +19,11 @@ public class Context: Codable, Identifiable {
     /// The posts that follow the given post.
     public let descendants: [Status]
 
-    // MARK: - COMPUTED PROPERTIES
-
+    // MARK: - Coding Keys
     enum CodingKeys: String, CodingKey {
         case ancestors
         case descendants
     }
-
 }
 
 /// Grants us conformance to `Hashable` for _free_

@@ -19,7 +19,7 @@ import AVKit
 struct AttachmentMediaGroup: View {
     var status: Status
 
-    private var mediaAttachments: [Attachment] {
+    private var mediaAttachments: [MediaAttachment] {
         status.reblog?.mediaAttachments ?? status.mediaAttachments
     }
 
@@ -30,7 +30,7 @@ struct AttachmentMediaGroup: View {
 
     var body: some View {
         LazyVGrid(columns: columns, spacing: 10) {
-            ForEach(mediaAttachments) { (attachment: Attachment) in
+            ForEach(mediaAttachments) { (attachment: MediaAttachment) in
                 AttachmentMedia(attachment: attachment)
             }
         }

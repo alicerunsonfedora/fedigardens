@@ -8,10 +8,7 @@
 import Foundation
 
 /// A class representation of a private conversation.
-public class Conversation: Codable {
-
-    // MARK: - STORED PROPERTIES
-
+public struct Conversation: Codable {
     /// The ID of the conversation.
     // swiftlint:disable:next identifier_name
     public let id: String
@@ -22,17 +19,12 @@ public class Conversation: Codable {
     /// Whether the user hasn't read the latest message.
     public let unread: Bool
 
-    /// The last status in the conversation.
-    ///
-    /// This is typically used for display purposes.
+    /// The last status in the conversation. This is typically used for display purposes.
     public let lastStatus: Status?
 
-    // MARK: - COMPUTED PROPERTIES
-
+    // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {
-
-        // swiftlint:disable:next identifier_name
-        case id
+        case id // swiftlint:disable:this identifier_name
         case accounts
         case unread
         case lastStatus = "last_status"

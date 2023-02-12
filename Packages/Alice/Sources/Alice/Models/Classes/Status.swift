@@ -8,7 +8,7 @@
 import Foundation
 
 /// Represents a status posted by an account.
-public class Status: Codable {
+public struct Status: Codable {
 
     // MARK: - STORED PROPERTIES
     /// A universally unique identifier for use in views that require fully stable IDs.
@@ -44,7 +44,7 @@ public class Status: Codable {
     public let spoilerText: String
 
     /// An array of the media that is attached to this status.
-    public let mediaAttachments: [Attachment]
+    public let mediaAttachments: [MediaAttachment]
 
     /// The application used to post this status.
     public let application: Application?
@@ -77,13 +77,17 @@ public class Status: Codable {
     public let inReplyToAccountID: String?
 
     /// The status being reblogged.
-    public let reblog: Status?
+    /// - Note: To access this value directly, use ``reblog``.
+    let reblogBox: Box<Status>?
+
+    /// The status being reblogged.
+    public var reblog: Status? { reblogBox?.wrappedValue }
 
     /// The poll attached to the status.
     public let poll: Poll?
 
     /// Preview card for links included within status content.
-    public let card: Card?
+    public let card: PreviewCard?
 
     /// Primary language of this status.
     public let language: String?
@@ -132,7 +136,7 @@ public class Status: Codable {
         case url
         case inReplyToID = "in_reply_to_id"
         case inReplyToAccountID = "in_reply_to_account_id"
-        case reblog
+        case reblogBox = "reblog"
         case poll
         case card
         case language

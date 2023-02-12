@@ -7,16 +7,10 @@
 
 import Foundation
 
-/**
- A class representation of an application.
- 
- An application is a registered service or app with the instance the user interacts with.
- */
-public class Application: Codable, Identifiable {
-
-    // MARK: - STORED PROPERTIES
-
-    /// The ID for this application.
+/// A registered service or app with the instance the user interacts with.
+public struct Application: Codable, Identifiable {
+    /// A unidue identifier generated for this application. This is used in cases where the application cannot be identified
+    /// easily.
     // swiftlint:disable:next identifier_name
     public let id = UUID()
 
@@ -35,7 +29,7 @@ public class Application: Codable, Identifiable {
     /// The application's API key for push streaming, if applicable.
     public let vapidKey: String?
 
-    // MARK: - COMPUTED PROPERTIES
+    // MARK: - Coding Keys
 
     private enum CodingKeys: String, CodingKey {
         case name

@@ -17,7 +17,7 @@ import SwiftUI
 import Alice
 
 struct AttachmentMedia: View {
-    var attachment: Attachment
+    var attachment: MediaAttachment
 
     var body: some View {
         Group {
@@ -46,7 +46,7 @@ struct AttachmentMedia: View {
         }
     }
 
-    private func image(of attachment: Attachment) -> some View {
+    private func image(of attachment: MediaAttachment) -> some View {
         AsyncImage(url: .init(string: attachment.url)!) { image in
             ZStack {
                 RoundedRectangle(cornerRadius: 10)

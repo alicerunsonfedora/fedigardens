@@ -7,11 +7,8 @@
 
 import Foundation
 
-/// Represents an emoji reaction to an Announcement.
-public class AnnouncementReaction: Codable, Identifiable {
-
-    // MARK: - STORED PROPERTIES
-
+/// Represents a reaction to an Announcement.
+public struct AnnouncementReaction: Codable, Identifiable {
     /// The reaction id, needed for iterating through the reactions.
     // swiftlint:disable:next identifier_name
     public let id = UUID()
@@ -23,8 +20,7 @@ public class AnnouncementReaction: Codable, Identifiable {
     public let count: Int
 
     /// Whether the authorized user has added this reaction to the announcement.
-    // swiftlint:disable:next identifier_name
-    public let me: Bool
+    public let reacted: Bool
 
     /// A link to the custom emoji.
     public let url: String
@@ -32,16 +28,11 @@ public class AnnouncementReaction: Codable, Identifiable {
     /// A link to a non-animated version of the custom emoji.
     public let staticUrl: String
 
-    // MARK: - COMPUTED PROPERTIES
-
+    // MARK: - CodingKeys
     private enum CodingKeys: String, CodingKey {
-
         case name
         case count
-
-        // swiftlint:disable:next identifier_name
-        case me
-
+        case reacted = "me"
         case url
         case staticUrl = "static_url"
     }
