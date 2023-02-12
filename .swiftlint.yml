@@ -1,3 +1,5 @@
+child_config: Packages/Alice/.swiftlint.alice.yml
+
 disabled_rules:
   - force_try
   - duplicate_imports
