@@ -25,7 +25,7 @@ public struct CustomEmoji: Codable, Identifiable {
     public let visibleInPicker: Bool
 
     /// The category this emoji belogs to.
-    public let category: String
+    public let category: String?
 
     // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {
