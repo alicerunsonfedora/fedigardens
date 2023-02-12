@@ -10,7 +10,6 @@ import Foundation
 /// Represents an error message.
 public struct MastodonError: Codable, Identifiable {
     /// A unique identifier for this error.
-    // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// The error message.
@@ -38,4 +37,3 @@ extension MastodonError: Hashable {
         hasher.combine(id)
     }
 }
-

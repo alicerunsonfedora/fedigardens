@@ -1,2 +1,3 @@
 disabled_rules:
   - file_header
+  - orphaned_doc_comment

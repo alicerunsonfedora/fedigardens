@@ -11,8 +11,8 @@ import Foundation
 public struct DomainBlock: Codable, Identifiable {
     /// A representation of the different severity types a domain block can be registered as.
     public enum Severity: String, Codable {
-        /// Users, notification, posts, etc. are silenced from timelines unless the current user follows anyone from this
-        /// domain.
+        /// Users, notification, posts, etc. are silenced from timelines unless the current user follows anyone from
+        /// this domain.
         case silence
 
         /// Incoming messages from this instance is dropped immediately, as if they never existed.
@@ -20,7 +20,7 @@ public struct DomainBlock: Codable, Identifiable {
     }
 
     /// A unique identifier generated for this domain block.
-    public let id = UUID() // swiftlint:disable:this identifier_name
+    public let id = UUID()
 
     /// The domain that is being blocked.
     public let domain: String

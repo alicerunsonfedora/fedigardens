@@ -10,7 +10,6 @@ import Foundation
 /// Represents a profile field as a name-value pair with optional verification.
 public struct Field: Codable, Identifiable {
     /// A unique identifier generated for this field.
-    // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// The key of a given field's key-value pair.

@@ -34,10 +34,10 @@ All of the getter and setter methods work asynchronously thanks to the new concu
 
 */
 public class Alice: ObservableObject, CustomStringConvertible {
-    //  MARK: - OAuth
+    // MARK: - OAuth
     public typealias OAuth = AuthenticationModule
 
-    //  MARK: - HTTPS METHODS
+    // MARK: - HTTPS METHODS
     public enum Method: String {
         case post = "POST"
         case get = "GET"
@@ -47,25 +47,26 @@ public class Alice: ObservableObject, CustomStringConvertible {
 
     public typealias Response<T: Decodable> = Result<T, FetchError>
 
-    //  MARK: - PROPERTIES
+    // MARK: - PROPERTIES
 
     /// A singleton everybody can access to.
     static public let shared = Alice()
 
-    //  MARK: – URLs
+    // MARK: – URLs
 
     /// The url prefix
-    static private let DEFAULT_URL_PREFIX = "starlight"
+    static private let defaultUrlPrefix = "starlight"
 
     /// The domain (without the prefixes) of the instance.
-    static var INSTANCE_DOMAIN: String = Keychain(service: OAuth.keychainService)["starlight_instance_domain"] ?? "mastodon.online"
+    static var instanceDomain: String = Keychain(service: OAuth.keychainService)["starlight_instance_domain"]
+        ?? "mastodon.online"
 
-    static public var API_URL: URL {
-        if INSTANCE_DOMAIN.isEmpty {
-            INSTANCE_DOMAIN = "mastodon.online"
+    static public var apiURL: URL {
+        if instanceDomain.isEmpty {
+            instanceDomain = "mastodon.online"
             return URL(string: "https://mastodon.online")!
         }
-        return URL(string: "https://\(INSTANCE_DOMAIN)")!
+        return URL(string: "https://\(instanceDomain)")!
     }
 
     /// Allows us to decode top-level values of the given type from the given JSON representation.
@@ -77,17 +78,17 @@ public class Alice: ObservableObject, CustomStringConvertible {
 
     private var oauthStateCancellable: AnyCancellable?
 
-    //  MARK: - INITIALIZERS
+    // MARK: - INITIALIZERS
 
     public init<Session: AliceSession>(using sessionType: Session.Type = URLSession.self) {
         _ = isOnMainThread(named: "CLIENT STARTED")
-        urlPrefix = Alice.DEFAULT_URL_PREFIX
+        urlPrefix = Alice.defaultUrlPrefix
 
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .secondsSince1970
 
         self.decoder = decoder
-        var token: String? = nil
+        var token: String?
 
         //  For the moment, we still need to use Combine and Publishers a bit, but this might change over time.
         oauthStateCancellable = OAuth.shared.$authState.sink { state in
@@ -129,7 +130,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
     ///
     /// When calling this method, future requests will use the default URL prefix of `starlight://`.
     public func resetRequestPrefix() {
-        self.urlPrefix = Alice.DEFAULT_URL_PREFIX
+        self.urlPrefix = Alice.defaultUrlPrefix
     }
 
     /// Returns a URLRequest with the specified URL, http method, and query parameters.
@@ -138,7 +139,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
         var url = url
 
         if let params = params {
-            for (_, parameter) in params.enumerated() {
+            for (_, parameter) in params.enumerated() { // swiftlint:disable:this unused_enumerated
                 if parameter.key.contains("[]") {
                     let values = parameter.value.split(separator: ",").map { String($0) }
                     values.forEach { value in
@@ -167,7 +168,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
         for endpoint: Endpoint,
         params: [String: String]? = nil
     ) async -> Response<T> {
-        let url = Self.API_URL.appendingPathComponent(endpoint.path)
+        let url = Self.apiURL.appendingPathComponent(endpoint.path)
         do {
             let request = Self.makeRequest(method, url: url, params: params)
             let (data, response) = try await self.session.request(request, delegate: nil)

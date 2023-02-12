@@ -43,7 +43,7 @@ public class AuthenticationModule: ObservableObject {
 
     public var canMakeAuthenticatedRequests: Bool {
         switch authState {
-        case .authenthicated(_):
+        case .authenthicated:
             return true
         default:
             return false
@@ -57,7 +57,7 @@ public class AuthenticationModule: ObservableObject {
     /// openURL(URL(string: "url")!)
     /// ```
     /// or
-    ///```
+    /// ```
     /// openURL(url) // Where URL.type == URL
     /// ```
     @Environment(\.openURL) private var openURL
@@ -70,7 +70,7 @@ public class AuthenticationModule: ObservableObject {
 
     private let scopes = ["read", "write", "follow", "push"]
 
-    private let URL_SUFFIX = "oauth"
+    private let urlSuffix = "oauth"
 
     init() {
         _ = isOnMainThread(named: "OAUTH CLIENT STARTED")
@@ -97,7 +97,7 @@ public class AuthenticationModule: ObservableObject {
 
         //  Then, we assign the domain of the instance we are working with.
         keychain["starlight_instance_domain"] = instanceDomain
-        Alice.INSTANCE_DOMAIN = instanceDomain
+        Alice.instanceDomain = instanceDomain
 
         //  Now, we change the state of the oauth to .signInProgress
         DispatchQueue.main.async {
@@ -106,7 +106,7 @@ public class AuthenticationModule: ObservableObject {
 
         let response: Alice.Response<Application> = await Alice.shared.post(.apps, params: [
             "client_name": app.name,
-            "redirect_uris": "\(Alice.shared.urlPrefix)://\(URL_SUFFIX)",
+            "redirect_uris": "\(Alice.shared.urlPrefix)://\(urlSuffix)",
             "scopes": scopes.joined(separator: " "),
             "website": app.website
         ])
@@ -117,9 +117,9 @@ public class AuthenticationModule: ObservableObject {
             keychain["starlight_client_secret"] = client.clientSecret
 
             //  Then, we generate the url we need to visit for authorizing the user
-            let url = Alice.API_URL.appendingPathComponent(Endpoint.authorizeUser.path)
+            let url = Alice.apiURL.appendingPathComponent(Endpoint.authorizeUser.path)
                 .queryItem("client_id", value: client.clientId)
-                .queryItem("redirect_uri", value: "\(Alice.shared.urlPrefix)://\(URL_SUFFIX)")
+                .queryItem("redirect_uri", value: "\(Alice.shared.urlPrefix)://\(urlSuffix)")
                 .queryItem("scope", value: scopes.joined(separator: " "))
                 .queryItem("response_type", value: "code")
 
@@ -147,7 +147,7 @@ public class AuthenticationModule: ObservableObject {
         let response: Alice.Response<Token> = await Alice.shared.post(.token, params: [
             "client_id": keychain["starlight_client_id"]!,
             "client_secret": keychain["starlight_client_secret"]!,
-            "redirect_uri": "\(Alice.shared.urlPrefix)://\(URL_SUFFIX)",
+            "redirect_uri": "\(Alice.shared.urlPrefix)://\(urlSuffix)",
             "grant_type": "authorization_code",
             "code": code,
             "scope": scopes.joined(separator: " ")

@@ -10,7 +10,6 @@ import Foundation
 /// A class that contains the replies to a post as a descendant, or prior statuses leading up to the current post.
 public struct Context: Codable, Identifiable {
     /// A unique identifier generated for this context.
-    // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// The posts that precede the given post.

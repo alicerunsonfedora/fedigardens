@@ -10,7 +10,6 @@ import Foundation
 /// A class representation of a tag's history.
 public struct History: Codable, Identifiable {
     /// A unique identifier generated for this history point.
-    // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// The weekday that this history event occurs on.

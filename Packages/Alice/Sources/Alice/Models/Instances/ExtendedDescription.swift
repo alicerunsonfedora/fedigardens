@@ -10,7 +10,7 @@ import Foundation
 /// An extended description of an instance that is shown on the about page.
 public struct ExtendedDescription: Codable, Identifiable {
     /// A unique identifier generated for this description.
-    public let id = UUID() // swiftlint:disable:this identifier_name
+    public let id = UUID()
 
     /// The ISO-8601 date string for when the description was last updated.
     public let updatedAt: String

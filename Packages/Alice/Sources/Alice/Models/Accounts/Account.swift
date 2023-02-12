@@ -10,17 +10,17 @@ import Foundation
 /// An account that exists in the Fediverse.
 public struct Account: Codable, Identifiable {
     /// The account's ID as registered by the server.
-    // swiftlint:disable:next identifier_name
     public let id: String
 
     /// The account's given username.
     public let username: String
 
-    /// The account's given username and domain, if applicable. This will otherwise be equivalent to the `username` value for
-    /// this account.
+    /// The account's given username and domain, if applicable. This will otherwise be equivalent to the `username`
+    /// value for this account.
     public let acct: String
 
-    /// The account's display name. The display name may differ from what is provided in `username` and may contain emojis.
+    /// The account's display name. The display name may differ from what is provided in `username` and may
+    /// contain emojis.
     public let displayName: String
 
     /// Whether the account is locked or private.
@@ -49,15 +49,15 @@ public struct Account: Codable, Identifiable {
     /// The URL associated with this account's avatar picture.
     public let avatar: String
 
-    /// The URL associated with this account's avatar picture. If the `avatar` field points to an animated pictured, this
-    /// property is used to target a static version.
+    /// The URL associated with this account's avatar picture. If the `avatar` field points to an animated pictured,
+    /// this property is used to target a static version.
     public let avatarStatic: String
 
     /// The URL associated with this account's header picture.
     public let header: String
 
-    /// The URL associated with this account's header picture. If the `header` field points to an animated pictured, this
-    /// property is used to target a static version.
+    /// The URL associated with this account's header picture. If the `header` field points to an animated pictured,
+    /// this property is used to target a static version.
     public let headerStatic: String
 
     /// The custom emojis associated with this account.
@@ -93,7 +93,7 @@ public struct Account: Codable, Identifiable {
 
     // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {
-        case id // swiftlint:disable:this identifier_name
+        case id
         case username
         case acct
         case displayName = "display_name"

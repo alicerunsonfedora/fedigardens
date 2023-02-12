@@ -13,7 +13,6 @@ public struct Announcement: Codable, Identifiable {
     public typealias Reaction = AnnouncementReaction
 
     /// The announcement id.
-    // swiftlint:disable:next identifier_name
     public let id: String
 
     /// The content of the announcement.
@@ -54,7 +53,7 @@ public struct Announcement: Codable, Identifiable {
 
     // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {
-        case id // swiftlint:disable:this identifier_name
+        case id
         case content
         case published
         case lastsAllDay = "all_day"

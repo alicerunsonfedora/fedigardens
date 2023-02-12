@@ -47,6 +47,12 @@ if editedFiles.count > 1, !editedFiles.contains("CHANGELOG.md") {
 let linterWarnings = SwiftLint.lint(configFile: ".swiftlint.yml")
 if !linterWarnings.isEmpty {
     suggestsChanges = true
+
+    let warnings = linterWarnings.filter { $0.severity == .warning }
+    let errors = linterWarnings.filter { $0.severity == .error }
+    if !errors.isEmpty || warnings.count > 20 {
+        fail("Please run SwiftLint locally and resolve any errors or warnings.")
+    }
 }
 
 // MARK: - Congratulatory message

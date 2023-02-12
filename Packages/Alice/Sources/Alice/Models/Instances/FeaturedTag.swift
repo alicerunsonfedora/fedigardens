@@ -10,7 +10,7 @@ import Foundation
 /// A tag that an account is currently featuring.
 public struct FeaturedTag: Codable, Identifiable {
     /// The tag's unique identifier.
-    public let id: String // swiftlint:disable:this identifier_name
+    public let id: String
 
     /// The name of the tag.
     public let name: String
@@ -24,9 +24,8 @@ public struct FeaturedTag: Codable, Identifiable {
     /// An ISO-8601 date string of when the last status containing this tag was created.
     public let lastStatusAt: String
 
-
     private enum CodingKeys: String, CodingKey {
-        case id, name, url // swiftlint:disable:this identifier_name
+        case id, name, url
         case numberOfStatuses = "statuses_count"
         case lastStatusAt = "last_status_at"
     }

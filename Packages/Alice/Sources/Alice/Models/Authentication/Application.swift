@@ -10,7 +10,6 @@ import Foundation
 /// A registered service or app with the instance the user interacts with.
 public struct Application: Codable, Identifiable {
     /// A unidue identifier generated for this application.
-    // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// The name of the application.

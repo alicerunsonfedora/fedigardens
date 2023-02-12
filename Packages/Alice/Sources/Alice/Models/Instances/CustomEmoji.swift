@@ -10,7 +10,6 @@ import Foundation
 /// Represents a custom emoji.
 public struct CustomEmoji: Codable, Identifiable {
     /// A unique identifier generated for this emoji.
-    // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// The shortcode of the emoji

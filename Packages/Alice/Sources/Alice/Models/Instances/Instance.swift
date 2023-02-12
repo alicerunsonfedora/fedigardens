@@ -24,7 +24,6 @@ public struct Instance: Codable, Identifiable {
     }
 
     /// The ID for this server.
-    // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// The website URI for this instance.

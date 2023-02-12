@@ -10,7 +10,6 @@ import Foundation
 /// Represents a reaction to an Announcement.
 public struct AnnouncementReaction: Codable, Identifiable {
     /// The reaction id, needed for iterating through the reactions.
-    // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// The emoji used for the reaction. Either a unicode emoji, or a custom emoji's shortcode.

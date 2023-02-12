@@ -2,7 +2,7 @@ import XCTest
 @testable import Alice
 import SwiftUI
 
-final class chicaTests: XCTestCase {
+final class AliceTests: XCTestCase {
 
     /// An EnvironmentValue that allows us to open a URL using the appropriate system service.
     ///
@@ -11,7 +11,7 @@ final class chicaTests: XCTestCase {
     /// openURL(URL(string: "url")!)
     /// ```
     /// or
-    ///```
+    /// ```
     /// openURL(url) // Where URL.type == URL
     /// ```
     @Environment(\.openURL) private var openURL
@@ -20,7 +20,7 @@ final class chicaTests: XCTestCase {
         await Alice.OAuth.shared.startOauthFlow(for: "mastodon.online")
     }
 
-    func doWhatever(_ parameters: [String : String]?) {
+    func doWhatever(_ parameters: [String: String]?) {
         print("RECEIVED DEEP LINK...")
         if let parameters = parameters {
             for parameter in parameters {
@@ -33,12 +33,12 @@ final class chicaTests: XCTestCase {
 
         let account = try! await getAccount(id: "1")
 
-        if Alice.INSTANCE_DOMAIN == "mastodon.social" {
+        if Alice.instanceDomain == "mastodon.social" {
             XCTAssertEqual(account!.username, "Gargron")
-        } else if Alice.INSTANCE_DOMAIN == "mastodon.technology" {
+        } else if Alice.instanceDomain == "mastodon.technology" {
             XCTAssertEqual(account!.username, "ashfurrow")
         }
-        
+
         XCTAssertEqual(account!.id, "1")
 
 //        XCTAssertThrowsError(async { try await getAccount(id: "0932840923890482309409238409380948") })
@@ -55,4 +55,3 @@ func getAccount(id: String) async throws -> Account? {
         return nil
     }
 }
-

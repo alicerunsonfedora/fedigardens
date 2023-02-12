@@ -10,7 +10,6 @@ import Foundation
 /// A private conversation between a limited amount of users.
 public struct Conversation: Codable {
     /// The ID of the conversation.
-    // swiftlint:disable:next identifier_name
     public let id: String
 
     /// The list of accounts that are members of the conversation.
@@ -24,7 +23,7 @@ public struct Conversation: Codable {
 
     // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {
-        case id // swiftlint:disable:this identifier_name
+        case id
         case accounts
         case unread
         case lastStatus = "last_status"
@@ -42,4 +41,3 @@ extension Conversation: Hashable {
         hasher.combine(id)
     }
 }
-
