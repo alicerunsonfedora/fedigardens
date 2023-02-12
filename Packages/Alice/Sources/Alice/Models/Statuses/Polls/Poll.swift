@@ -8,12 +8,8 @@
 import Foundation
 
 /// A class representation of a poll.
-public class Poll: Codable, Identifiable {
-
-    // MARK: - STORED PROPERTIES
-
+public struct Poll: Codable, Identifiable {
     /// The ID for this poll registered with the server.
-    // swiftlint:disable:next identifier_name
     public let id: String
 
     /// The exipration date for this poll.
@@ -35,9 +31,7 @@ public class Poll: Codable, Identifiable {
     public let voted: Bool?
 
     // MARK: - Coding Keys
-
     private enum CodingKeys: String, CodingKey {
-        // swiftlint:disable:next identifier_name
         case id
         case expiresAt = "expires_at"
         case expired

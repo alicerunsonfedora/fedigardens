@@ -10,7 +10,6 @@ import Foundation
 /// Represents display or publishing preferences of user's own account.
 public struct Source: Codable, Identifiable {
     /// A unique identifier generated for this source.
-    // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// The profile's bio / description.

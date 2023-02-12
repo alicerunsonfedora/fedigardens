@@ -15,7 +15,7 @@ public struct MastodonList: Codable, Identifiable {
     }
 
     /// The list's ID.
-    public let id: String // swiftlint:disable:this identifier_name
+    public let id: String
 
     /// The name of the list.
     public let title: String
@@ -25,7 +25,7 @@ public struct MastodonList: Codable, Identifiable {
 
     // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {
-        case id // swiftlint:disable:this identifier_name
+        case id
         case title
         case repliesPolicy = "replies_policy"
     }

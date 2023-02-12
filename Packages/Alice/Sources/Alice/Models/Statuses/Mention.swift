@@ -10,7 +10,6 @@ import Foundation
 /// A mention model that contains the data for an account that is mentioned in a given post.
 public struct Mention: Codable, Identifiable {
     /// The ID associated with this mention from the server.
-    // swiftlint:disable:next identifier_name
     public let id: String
 
     /// The mentioned account's username.

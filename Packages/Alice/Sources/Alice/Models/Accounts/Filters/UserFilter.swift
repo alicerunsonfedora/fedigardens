@@ -23,7 +23,7 @@ public struct UserFilter: Codable, Identifiable {
     }
 
     /// The filter's identifier.
-    public let id: String // swiftlint:disable:this identifier_name
+    public let id: String
 
     /// The filter's title.
     public let title: String
@@ -45,7 +45,7 @@ public struct UserFilter: Codable, Identifiable {
 
     // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {
-        case id, title, context, keywords, statuses // swiftlint:disable:this identifier_name
+        case id, title, context, keywords, statuses
         case filterAction = "filter_action"
         case expiresAt = "expires_at"
     }

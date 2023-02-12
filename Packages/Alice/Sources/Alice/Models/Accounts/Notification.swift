@@ -40,7 +40,6 @@ public struct Notification: Codable, Identifiable {
     public let uuid = UUID()
 
     /// The ID of the notification from the server.
-    // swiftlint:disable:next identifier_name
     public let id: String
 
     /// The type of notification being delivered.
@@ -58,7 +57,7 @@ public struct Notification: Codable, Identifiable {
     // MARK: COMPUTED PROPERTIES
 
     private enum CodingKeys: String, CodingKey {
-        case id // swiftlint:disable:this identifier_name
+        case id
         case type
         case account
         case status

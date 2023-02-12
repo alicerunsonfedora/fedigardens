@@ -10,7 +10,6 @@ import Foundation
 /// A result from a given search query.
 public struct SearchResult: Codable, Identifiable {
     /// The ID associated with this history event.
-    // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// Accounts that meet the specified query

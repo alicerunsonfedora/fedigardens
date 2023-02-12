@@ -10,7 +10,6 @@ import Foundation
 /// A representation of a hashtag.
 public struct Tag: Codable, Identifiable {
     /// A unique identifier generated for this tag.
-    // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// The name of the tag.

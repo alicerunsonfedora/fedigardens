@@ -10,7 +10,6 @@ import Foundation
 /// A preview card generated from the OpenGraph attributes of a URL embedded in a post.
 public struct PreviewCard: Codable, Identifiable {
     /// A unique identifier generated for this card.
-    // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// The title for this card.

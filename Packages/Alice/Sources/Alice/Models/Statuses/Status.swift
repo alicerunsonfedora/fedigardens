@@ -15,7 +15,6 @@ public struct Status: Codable {
     public let uuid = UUID()
 
     /// The status' unique identifier.
-    // swiftlint:disable:next identifier_name
     public let id: String
 
     /// URI of the status used for federation.
@@ -116,7 +115,6 @@ public struct Status: Codable {
     // MARK: - Coding Keys
 
     private enum CodingKeys: String, CodingKey {
-        // swiftlint:disable:next identifier_name
         case id
         case uri
         case createdAt = "created_at"

@@ -10,7 +10,6 @@ import Foundation
 /// Represents the relationship between accounts, such as following / blocking / muting / etc.
 public struct Relationship: Codable, Identifiable {
     /// The account's ID.
-    // swiftlint:disable:next identifier_name
     public let id: String
 
     /// Equals to `true` if the user is currently following the account.
@@ -48,7 +47,7 @@ public struct Relationship: Codable, Identifiable {
 
     // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {
-        case id // swiftlint:disable:this identifier_name
+        case id
         case following
         case requested
         case endorsed

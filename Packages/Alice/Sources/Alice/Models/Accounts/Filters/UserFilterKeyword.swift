@@ -10,7 +10,7 @@ import Foundation
 /// A keyword registered in a user filter.
 public struct UserFilterKeyword: Codable, Identifiable {
     /// The idenfitier of the keyword.
-    public let id: String // swiftlint:disable:this identifier_name
+    public let id: String
 
     /// The keyword phrase included in the filter.
     public let keyword: String
@@ -20,7 +20,7 @@ public struct UserFilterKeyword: Codable, Identifiable {
 
     // MARK: - Coding Keys
     private enum CodingKeys: String, CodingKey {
-        case id, keyword // swiftlint:disable:this identifier_name
+        case id, keyword
         case useWordBoundaries = "whole_word"
     }
 }

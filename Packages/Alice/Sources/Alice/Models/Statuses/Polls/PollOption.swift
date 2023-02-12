@@ -8,12 +8,8 @@
 import Foundation
 
 /// A class representation of a poll option.
-public class PollOption: Codable, Identifiable {
-
-    // MARK: - STORED PROPERTIES
-
+public struct PollOption: Codable, Identifiable {
     /// The ID for this poll option.
-    // swiftlint:disable:next identifier_name
     public let id = UUID()
 
     /// The title for this poll option.

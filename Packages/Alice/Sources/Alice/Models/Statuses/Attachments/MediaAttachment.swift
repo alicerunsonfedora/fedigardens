@@ -10,7 +10,6 @@ import Foundation
 /// A media attachment from a post or other content.
 public struct MediaAttachment: Codable, Identifiable {
     /// The ID associated with this attachment registered with the server.
-    // swiftlint:disable:next identifier_name
     public let id: String
 
     /// The type of attachment.
@@ -38,7 +37,7 @@ public struct MediaAttachment: Codable, Identifiable {
     // MARK: - Coding Keys
 
     private enum CodingKeys: String, CodingKey {
-        case id // swiftlint:disable:this identifier_name
+        case id
         case type
         case url
         case remoteURL = "remote_url"
