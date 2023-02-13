@@ -11,6 +11,8 @@
 		95009EF4295E780A00F32F85 /* GardensAppLayoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95009EF3295E780A00F32F85 /* GardensAppLayoutViewModel.swift */; };
 		9503EFAF27B4173C00ABB7B0 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */; };
 		9503EFB427B417DD00ABB7B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9503EFB727B417DD00ABB7B0 /* Localizable.strings */; };
+		95097E0C2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95097E0B2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift */; };
+		95097E0D2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95097E0B2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift */; };
 		951365AB298ED3B8008F6D47 /* AuthorViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951365AA298ED3B8008F6D47 /* AuthorViewToolbar.swift */; };
 		951365AC298ED3B8008F6D47 /* AuthorViewToolbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951365AA298ED3B8008F6D47 /* AuthorViewToolbar.swift */; };
 		952A011127C67F3F00F36B37 /* MessagingPresentationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A011027C67F3F00F36B37 /* MessagingPresentationView.swift */; };
@@ -297,6 +299,7 @@
 		95019DAA27A82124005DF870 /* Capstone--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Capstone--iOS--Info.plist"; sourceTree = "<group>"; };
 		9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		9503EFB627B417DD00ABB7B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		95097E0B2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInstanceBlocklistPage.swift; sourceTree = "<group>"; };
 		951365AA298ED3B8008F6D47 /* AuthorViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewToolbar.swift; sourceTree = "<group>"; };
 		952A011027C67F3F00F36B37 /* MessagingPresentationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingPresentationView.swift; sourceTree = "<group>"; };
 		952A06E029691B95008340A4 /* GardensAppCompactLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppCompactLayout.swift; sourceTree = "<group>"; };
@@ -689,6 +692,7 @@
 				95F2DE25297262D700553937 /* SettingsInterventionPage.swift */,
 				955F1B622986FBBE00702BE8 /* SettingsLicensePage.swift */,
 				9537C6D8297DC71C0039F3C4 /* SettingsReadingPage.swift */,
+				95097E0B2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -1219,6 +1223,7 @@
 				9537C6D3297DB8C30039F3C4 /* SettingsBlocklistPage.swift in Sources */,
 				95A1BF9A29738D33002C88B6 /* ProfileSheetViewModel.swift in Sources */,
 				95F2DE2429725C6100553937 /* BetaBadge.swift in Sources */,
+				95097E0C2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift in Sources */,
 				9547230627A0094000D1BA89 /* Gardens.swift in Sources */,
 				95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */,
 				955F1B5D2986FB0A00702BE8 /* SettingsVersionBlock.swift in Sources */,
@@ -1411,6 +1416,7 @@
 				95801D28297C752E00FE8D83 /* RecursiveNavigationView.swift in Sources */,
 				95801D4F297CC10700FE8D83 /* GardensAppCompactLayout.swift in Sources */,
 				95801D37297C9D2600FE8D83 /* GardensSettingsKey.swift in Sources */,
+				95097E0D2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

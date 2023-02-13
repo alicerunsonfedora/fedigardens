@@ -19,6 +19,7 @@ And list your changes under that.
 - (FGD-20) Adds the ability to edit existing statuses in the composer.
 - (FGD-8) Adds attachment viewer to view images, videos, and other attachments.
 - (FGD-33) Adds the ability to vote on and create/edit polls.
+- Adds ability to see instance-wide blocked servers in blocklist page.
 
 ## [1.0-24 (beta)] - 30/1/2023
 

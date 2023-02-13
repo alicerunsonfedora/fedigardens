@@ -256,8 +256,13 @@
 "settings.blocklist.block" = "Block";
 "settings.blocklist.empty" = "No Blocked Instances";
 "settings.blocklist.emptydetail" = "To add an instance to your blocklist, tap the 'Add Blocked Instance' button in the toolbar.";
-"settings.blocklist.admin" = "Your instance administrator may also include instance-wide federation blocks. Consult your administrator for more information.";
+"settings.blocklist.admin" = "Your instance administrator may also include instance-wide federation blocks.";
 "settings.blocklist.fetcherror" = "Couldn't Get Blocked Instances";
+"settings.blocklist.instancewideprompt" = "View Instance-wide Blocks";
+"settings.blocklist.instancewide" = "Instance-Wide Blocks";
+"settings.blocklist.silenced" = "Silenced Instances";
+"settings.blocklist.suspended" = "Suspended Instances";
+"settings.blocklist.nocomment" = "No comment provided.";
 
 // MARK: - Settings: Feedback -
 "settings.feedback.message" = "Message Fedigardens…";

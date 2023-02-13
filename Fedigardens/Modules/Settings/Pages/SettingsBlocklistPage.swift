@@ -61,10 +61,16 @@ struct SettingsBlocklistPage: View {
         .animation(.spring(), value: viewModel.blockedServers)
         .animation(.spring(), value: viewModel.layoutState)
         .onAppear {
-            Task { await viewModel.getBlockedServers() }
+            Task {
+                await viewModel.getBlockedServers()
+                await viewModel.getInstanceWideBlocks()
+            }
         }
         .refreshable {
-            Task { await viewModel.getBlockedServers() }
+            Task {
+                await viewModel.getBlockedServers()
+                await viewModel.getInstanceWideBlocks()
+            }
         }
         .toolbar {
             Button {
@@ -104,32 +110,43 @@ struct SettingsBlocklistPage: View {
                     .onDelete { offsets in
                         viewModel.deleteBlockedServers(at: offsets)
                     }
-                } footer: {
-                    Text("settings.blocklist.admin")
                 }
             } else {
+                emptyContent
+            }
+
+            if viewModel.instanceBlocks.isNotEmpty {
                 Section {
-                    HStack {
-                        Spacer()
-                        VStack(spacing: 4) {
-                            Image(systemName: "building.2")
-                                .font(.largeTitle)
-                            Text("settings.blocklist.empty")
-                                .font(.headline)
-                                .bold()
-                            Text("settings.blocklist.emptydetail")
-                                .multilineTextAlignment(.center)
-                                .foregroundColor(.secondary)
-                                .font(.subheadline)
-                        }
-                        Spacer()
+                    NavigationLink("settings.blocklist.instancewideprompt") {
+                        SettingsInstanceBlocklistPage(domainBlocks: viewModel.instanceBlocks)
                     }
-                    .listRowBackground(Color.clear)
-                    .listRowInsets(.init(top: 16, leading: 0, bottom: 16, trailing: 0))
+                    .disabled(viewModel.instanceBlocks.isEmpty)
                 } footer: {
                     Text("settings.blocklist.admin")
                 }
             }
+        }
+    }
+
+    private var emptyContent: some View {
+        Section {
+            HStack {
+                Spacer()
+                VStack(spacing: 4) {
+                    Image(systemName: "building.2")
+                        .font(.largeTitle)
+                    Text("settings.blocklist.empty")
+                        .font(.headline)
+                        .bold()
+                    Text("settings.blocklist.emptydetail")
+                        .multilineTextAlignment(.center)
+                        .foregroundColor(.secondary)
+                        .font(.subheadline)
+                }
+                Spacer()
+            }
+            .listRowBackground(Color.clear)
+            .listRowInsets(.init(top: 16, leading: 0, bottom: 16, trailing: 0))
         }
     }
 }

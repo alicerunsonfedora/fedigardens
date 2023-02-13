@@ -18,6 +18,7 @@ import Combine
 
 class SettingsBlocklistViewModel: ObservableObject {
     @Published var blockedServers = [String]()
+    @Published var instanceBlocks = [DomainBlock]()
     @Published var shouldDisplayInsertionRequest = false
     @Published var requestedDomainInsertionText = ""
     @Published var layoutState = LayoutState.initial
@@ -35,6 +36,23 @@ class SettingsBlocklistViewModel: ObservableObject {
             }
         case .failure(let error):
             print("Fetch blocked error: \(error.localizedDescription)")
+            DispatchQueue.main.async {
+                self.layoutState = .errored(message: error.localizedDescription)
+            }
+        }
+    }
+
+    func getInstanceWideBlocks() async {
+        DispatchQueue.main.async { self.layoutState = .loading }
+        let response: Alice.Response<[DomainBlock]> = await Alice.shared.get(.instanceBlocks)
+        switch response {
+        case .success(let instanceBlocks):
+            DispatchQueue.main.async {
+                self.instanceBlocks = instanceBlocks
+                self.layoutState = .loaded
+            }
+        case .failure(let error):
+            print("Fetch instance block error: \(error.localizedDescription)")
             DispatchQueue.main.async {
                 self.layoutState = .errored(message: error.localizedDescription)
             }
