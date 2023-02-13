@@ -42,6 +42,7 @@ struct AuthorViewToolbar: ToolbarContent {
                     // NOTE: This text exists so that the option shows in the keyboard shortcuts menu.
                     Text("status.postaction")
                         .frame(width: 0, height: 0)
+                        .opacity(0)
                     Label("status.postaction", systemImage: "arrow.up.circle.fill")
                         .font(.title)
                         .tint(.accentColor)
@@ -56,6 +57,7 @@ struct AuthorViewToolbar: ToolbarContent {
                 ZStack {
                     Text("status.marksensitive")
                         .frame(width: 0, height: 0)
+                        .opacity(0)
                     Label("status.marksensitive", systemImage: "eye.trianglebadge.exclamationmark")
                 }
             }
@@ -66,6 +68,7 @@ struct AuthorViewToolbar: ToolbarContent {
             Toggle(isOn: $viewModel.includesPoll) {
                 Label("status.poll.create", systemImage: "checklist")
             }
+            .keyboardShortcut("p", modifiers: [.command, .control])
             .onChange(of: viewModel.includesPoll) { updated in
                 if updated {
                     viewModel.pollExpirationDate = .now.advanced(by: 300)
@@ -80,6 +83,7 @@ struct AuthorViewToolbar: ToolbarContent {
                 Label("status.poll.addoption", systemImage: "plus.circle")
             }
             .disabled(!viewModel.includesPoll || viewModel.pollOptions.count >= 4)
+            .keyboardShortcut("+", modifiers: [.option, .shift])
             .tint(.accentColor)
         }
 
@@ -92,6 +96,7 @@ struct AuthorViewToolbar: ToolbarContent {
             } label: {
                 Label("status.languagecode", systemImage: "globe")
             }
+            .keyboardShortcut("l", modifiers: [.command, .control])
         }
     }
 
