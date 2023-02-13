@@ -68,6 +68,7 @@ struct GardensAppWideLayout: View {
                         ZStack {
                             Text("status.compose")
                                 .frame(width: 0, height: 0)
+                                .opacity(0)
                             GardensComposeButton(style: .new)
                         }
                             .keyboardShortcut("n", modifiers: .command)

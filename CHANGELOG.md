@@ -12,14 +12,24 @@ If you need to list changes to this changelog but there isn't an entry for it, c
 And list your changes under that.
 -->
 
-## [Unreleased] - Date Pending
-- (FGD-31) Adds a language picker to the composer for filtering/automatic translation purposes.
-- Moves the Mark as Sensitive toggle into the bottom toolbar in the composer.
-- Adds more keyboard shortcuts in the composer and other places of the app.
-- (FGD-20) Adds the ability to edit existing statuses in the composer.
-- (FGD-8) Adds attachment viewer to view images, videos, and other attachments.
+## [1.0-33 (beta)] - 13/2/23
+
+### Composer Updates
+Composer has received some new powers this release. You can now select your status's language, create polls for others
+to vote on, and use keyboard shortcuts to trigger actions more easily. On top of that, you can now edit existing
+statuses quite easily with the new Edit button on statuses you wrote!
+
+### Attachments
+Ever wanted to see pictures your friend posted in better detail? The new attachments view now lets you do this! View
+and share attachments easily and safely by tapping on the paperclip icon in the toolbar of any status you're viewing to
+activate the new experience.
+
+### Other general changes
 - (FGD-33) Adds the ability to vote on and create/edit polls.
-- Adds ability to see instance-wide blocked servers in blocklist page.
+- Updated design of polls that have either expired or the user has already voted on using Swift Charts.
+- Adds ability to see instance-wide blocked servers in blocklist page (**Settings &rsaquo; Blocked Instances &rsaquo;
+  View Instance-wide Blocks**).
+- Updates Alice models to include newer API features and remove unused keys.
 
 ## [1.0-24 (beta)] - 30/1/2023
 
