@@ -97,6 +97,7 @@
 		955F1B642986FBBE00702BE8 /* SettingsLicensePage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 955F1B622986FBBE00702BE8 /* SettingsLicensePage.swift */; };
 		95645BD227C5546E00FB3426 /* UserDefaults+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95645BD127C5546E00FB3426 /* UserDefaults+Settings.swift */; };
 		95645BD727C5550B00FB3426 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95645BD627C5550B00FB3426 /* SettingsView.swift */; };
+		9565B679299D94EE00969901 /* TootSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 9565B678299D94EE00969901 /* TootSDK */; };
 		95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7527B85BD3009D2251 /* StatusDetailView.swift */; };
 		95667E7A27B85C3B009D2251 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7927B85C3B009D2251 /* MockData.swift */; };
 		95667E7E27B86273009D2251 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 95667E7D27B86273009D2251 /* Localizable.stringsdict */; };
@@ -451,6 +452,7 @@
 				95A02A6F295FE94F0013EF7C /* Alice in Frameworks */,
 				95555FB52960B7A2005BEF45 /* AckGenUI in Frameworks */,
 				95A1BF9D2973B83C002C88B6 /* EmojiText in Frameworks */,
+				9565B679299D94EE00969901 /* TootSDK in Frameworks */,
 				9558C7EC29578503001B30C7 /* HTML2Markdown in Frameworks */,
 				95F2DE2929726A7E00553937 /* Drops in Frameworks */,
 				95A01C3B29995AF70086985E /* Bunker in Frameworks */,
@@ -1012,6 +1014,7 @@
 				95F2DE2829726A7E00553937 /* Drops */,
 				95A1BF9C2973B83C002C88B6 /* EmojiText */,
 				95A01C3A29995AF70086985E /* Bunker */,
+				9565B678299D94EE00969901 /* TootSDK */,
 			);
 			productName = "Capstone (iOS)";
 			productReference = 954722FD27A0094000D1BA89 /* Fedigardens.app */;
@@ -1070,6 +1073,7 @@
 				95F2DE2729726A7E00553937 /* XCRemoteSwiftPackageReference "Drops" */,
 				95A1BF9B2973B83C002C88B6 /* XCRemoteSwiftPackageReference "EmojiText" */,
 				95A01C3929995AF70086985E /* XCRemoteSwiftPackageReference "bunker" */,
+				9565B677299D94EE00969901 /* XCRemoteSwiftPackageReference "TootSDK" */,
 			);
 			productRefGroup = 954722FE27A0094000D1BA89 /* Products */;
 			projectDirPath = "";
@@ -1733,6 +1737,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		9565B677299D94EE00969901 /* XCRemoteSwiftPackageReference "TootSDK" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TootSDK/TootSDK";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.2;
+			};
+		};
 		95A01C3929995AF70086985E /* XCRemoteSwiftPackageReference "bunker" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/alicerunsonfedora/bunker.git";
@@ -1779,6 +1791,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9558C7EA29578503001B30C7 /* XCRemoteSwiftPackageReference "HTML2Markdown" */;
 			productName = HTML2Markdown;
+		};
+		9565B678299D94EE00969901 /* TootSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9565B677299D94EE00969901 /* XCRemoteSwiftPackageReference "TootSDK" */;
+			productName = TootSDK;
 		};
 		95A01C3A29995AF70086985E /* Bunker */ = {
 			isa = XCSwiftPackageProductDependency;
