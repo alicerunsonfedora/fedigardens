@@ -20,8 +20,8 @@ import SwiftUI
 /// The primary content view of the app.
 struct ContentView: View {
     @Environment(\.deviceModel) private var deviceModel
-    @Environment(\.authentication) private var authModule
     @State private var showAuthSheet: Bool = false
+    @ObservedObject private var authModule = AuthenticationModule.shared
 
     var body: some View {
         VStack {
@@ -39,7 +39,6 @@ struct ContentView: View {
             }
         }
         .animation(.spring(), value: authModule.authenticationState)
-        .onAppear { print(deviceModel) }
     }
 
     var authDialog: AuthenticationView {

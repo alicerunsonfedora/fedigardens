@@ -38,18 +38,6 @@ struct AuthenticationView: View {
             }
             .font(.system(.body, design: .rounded))
         }
-        .sheet(isPresented: $viewModel.displayAuthenticationDialog) {
-            AuthenticationBrowserWindow(url: $viewModel.authenticationAuthorizedURL)
-                .edgesIgnoringSafeArea(.all)
-                .onChange(of: viewModel.authenticationState) { authState in
-                    switch authState {
-                    case .authenticated:
-                        viewModel.displayAuthenticationDialog = false
-                    default:
-                        break
-                    }
-                }
-        }
         .alert(viewModel.authenticationRejectionTitle, isPresented: $viewModel.authenticationDomainRejected) {
             Button {
                 if let url = URL(string: "https://fedigardens.app/support") {

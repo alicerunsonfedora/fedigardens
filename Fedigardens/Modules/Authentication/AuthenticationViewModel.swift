@@ -33,7 +33,7 @@ class AuthenticationViewModel: ObservableObject {
         )
     }
 
-    private var authModule: AuthenticationModule = AuthenticationModule()
+    private var authModule: AuthenticationModule = .shared
     private var disallowedDomains = Set<String>()
 
     init(with authModule: AuthenticationModule) {
@@ -43,6 +43,10 @@ class AuthenticationViewModel: ObservableObject {
 
     init() {
         self.retrieveDisallowList()
+    }
+
+    func useAuthModule(_ module: AuthenticationModule) {
+        self.authModule = module
     }
 
     func startAuthenticationWorkflow() async {

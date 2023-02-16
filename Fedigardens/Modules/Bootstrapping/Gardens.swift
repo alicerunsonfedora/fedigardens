@@ -20,7 +20,6 @@ import SwiftUI
 struct Shout: App {
     @StateObject private var globalStore = GardensViewModel()
     @StateObject private var interventionHandler = InterventionHandler()
-    @State private var authModule = AuthenticationModule()
 
     var body: some Scene {
         WindowGroup {
@@ -29,16 +28,13 @@ struct Shout: App {
                 .environment(\.interventionAuthorization, globalStore.interventionAuthorization ?? .default)
                 .environmentObject(interventionHandler)
                 .environment(\.customEmojis, globalStore.emojis)
-                .environment(\.authentication, authModule)
                 .onOpenURL { url in
-                    authModule.synchronizeAuthenticationStatus()
                     if let newContext = globalStore.createInterventionContext(from: url) {
                         interventionHandler.assignNewContext(newContext)
                     }
                 }
                 .onAppear {
                     Alice.shared.setRequestPrefix(to: "gardens://")
-                    globalStore.authModule = authModule
                     Task {
                         await globalStore.getUserProfile()
 //                        await globalStore.getInstanceEmojis()

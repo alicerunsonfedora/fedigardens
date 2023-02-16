@@ -24,6 +24,8 @@ class AuthenticationModule: ObservableObject {
         case authenticated(token: String)
     }
 
+    static let shared = AuthenticationModule()
+
     @Published var authenticationState = State.initial
 
     private var keychain: Keychain
