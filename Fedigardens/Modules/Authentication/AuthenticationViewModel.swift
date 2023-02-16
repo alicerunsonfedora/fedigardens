@@ -17,15 +17,13 @@ import Combine
 import Alice
 
 class AuthenticationViewModel: ObservableObject {
-    typealias AuthenticationModule = Alice.OAuth
-    typealias RegisteredApp = AuthenticationModule.RegisteredApplication
     @Published var authenticationDomainName = ""
     @Published var authenticationAuthorizedURL: URL?
     @Published var displayAuthenticationDialog = false
     @Published var authenticationDomainRejected = false
 
     var authenticationState: AuthenticationModule.State {
-        return authModule.authState
+        return authModule.authenticationState
     }
 
     var authenticationRejectionTitle: String {
@@ -35,11 +33,10 @@ class AuthenticationViewModel: ObservableObject {
         )
     }
 
-    private var authModule: AuthenticationModule = .shared
+    private var authModule: AuthenticationModule = AuthenticationModule()
     private var disallowedDomains = Set<String>()
-    private let app = RegisteredApp(name: "Fedigardens", website: "https://fedigardens.app")
 
-    init(with authModule: Alice.OAuth) {
+    init(with authModule: AuthenticationModule) {
         self.authModule = authModule
         self.retrieveDisallowList()
     }
@@ -53,12 +50,7 @@ class AuthenticationViewModel: ObservableObject {
             DispatchQueue.main.async { self.authenticationDomainRejected.toggle() }
             return
         }
-        await authModule.startOauthFlow(for: authenticationDomainName, registeredAs: app) { url in
-            DispatchQueue.main.async {
-                self.authenticationAuthorizedURL = url
-                self.displayAuthenticationDialog.toggle()
-            }
-        }
+        await authModule.startAuthenticationWorkflow(for: authenticationDomainName)
     }
 
     private func retrieveDisallowList() {

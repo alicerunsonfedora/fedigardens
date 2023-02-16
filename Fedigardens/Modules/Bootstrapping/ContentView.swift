@@ -20,19 +20,14 @@ import SwiftUI
 /// The primary content view of the app.
 struct ContentView: View {
     @Environment(\.deviceModel) private var deviceModel
-
-    /// The shared Chica authentication object.
-    ///
-    /// This is used to handle authentication to the Gopherdon server and watch for state changes.
-    @ObservedObject private var chicaAuth: Alice.OAuth = .shared
-
+    @Environment(\.authentication) private var authModule
     @State private var showAuthSheet: Bool = false
 
     var body: some View {
         VStack {
             Group {
-                switch chicaAuth.authState {
-                case .authenthicated:
+                switch authModule.authenticationState {
+                case .authenticated:
                     if deviceModel.starts(with: "iPad") {
                         GardensAppWideLayout()
                     } else {
@@ -43,7 +38,7 @@ struct ContentView: View {
                 }
             }
         }
-        .animation(.spring(), value: chicaAuth.authState)
+        .animation(.spring(), value: authModule.authenticationState)
         .onAppear { print(deviceModel) }
     }
 

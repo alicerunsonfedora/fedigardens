@@ -14,15 +14,19 @@
 
 import Foundation
 import Combine
+import TootSDK
 import Alice
 import EmojiText
 import struct Alice.CustomEmoji
 
 class GardensViewModel: ObservableObject {
-    @Published var userProfile: Account?
+    @Published var userProfile: TootSDK.Account?
     @Published var interventionAuthorization: InterventionAuthorizationContext?
     @Published var emojis: [RemoteEmoji] = []
 
+    var authModule: AuthenticationModule?
+
+    @available(*, deprecated, message: "Use the auth workflow from AuthenticationModule instead.")
     func checkAuthorizationToken(from url: URL) {
         guard url.absoluteString.contains("gardens://oauth") else { return }
         Task {
@@ -42,16 +46,32 @@ class GardensViewModel: ObservableObject {
     }
 
     func getUserProfile() async {
-        guard Alice.OAuth.shared.canMakeAuthenticatedRequests else { return }
-        let response: Alice.Response<Account> = await Alice.shared.get(.verifyAccountCredentials)
-        switch response {
-        case .success(let profile):
+//        guard Alice.OAuth.shared.canMakeAuthenticatedRequests else { return }
+        guard let authModule,
+              case .authenticated = authModule.authenticationState,
+              let client = await authModule.client() else {
+            return
+        }
+        client.debugOn()
+        do {
+            let profile = try await client.verifyCredentials()
             DispatchQueue.main.async {
                 self.userProfile = profile
             }
-        case .failure(let error):
-            print("Failed to fetch user: \(error.localizedDescription)")
+        } catch {
+            print(error.localizedDescription)
         }
+        client.debugOff()
+
+//        let response: Alice.Response<Account> = await Alice.shared.get(.verifyAccountCredentials)
+//        switch response {
+//        case .success(let profile):
+//            DispatchQueue.main.async {
+//                self.userProfile = profile
+//            }
+//        case .failure(let error):
+//            print("Failed to fetch user: \(error.localizedDescription)")
+//        }
     }
 
     func getInstanceEmojis() async {

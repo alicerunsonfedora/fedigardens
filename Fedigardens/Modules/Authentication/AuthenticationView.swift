@@ -43,7 +43,7 @@ struct AuthenticationView: View {
                 .edgesIgnoringSafeArea(.all)
                 .onChange(of: viewModel.authenticationState) { authState in
                     switch authState {
-                    case .authenthicated:
+                    case .authenticated:
                         viewModel.displayAuthenticationDialog = false
                     default:
                         break
@@ -78,6 +78,7 @@ struct AuthenticationView: View {
                     TextField("mastodon.example", text: $viewModel.authenticationDomainName)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
+                        .keyboardType(.URL)
                 }
                     .padding(10)
                     .overlay(

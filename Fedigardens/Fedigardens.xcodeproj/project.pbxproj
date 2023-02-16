@@ -98,6 +98,10 @@
 		95645BD227C5546E00FB3426 /* UserDefaults+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95645BD127C5546E00FB3426 /* UserDefaults+Settings.swift */; };
 		95645BD727C5550B00FB3426 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95645BD627C5550B00FB3426 /* SettingsView.swift */; };
 		9565B679299D94EE00969901 /* TootSDK in Frameworks */ = {isa = PBXBuildFile; productRef = 9565B678299D94EE00969901 /* TootSDK */; };
+		9565B67E299E6D4100969901 /* AuthenticationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9565B67D299E6D4100969901 /* AuthenticationModule.swift */; };
+		9565B67F299E6D4100969901 /* AuthenticationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9565B67D299E6D4100969901 /* AuthenticationModule.swift */; };
+		9565B681299E75D000969901 /* AuthModuleEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9565B680299E75D000969901 /* AuthModuleEnvironmentKey.swift */; };
+		9565B682299E75D000969901 /* AuthModuleEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9565B680299E75D000969901 /* AuthModuleEnvironmentKey.swift */; };
 		95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7527B85BD3009D2251 /* StatusDetailView.swift */; };
 		95667E7A27B85C3B009D2251 /* MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95667E7927B85C3B009D2251 /* MockData.swift */; };
 		95667E7E27B86273009D2251 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 95667E7D27B86273009D2251 /* Localizable.stringsdict */; };
@@ -356,6 +360,8 @@
 		955F1B622986FBBE00702BE8 /* SettingsLicensePage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsLicensePage.swift; sourceTree = "<group>"; };
 		95645BD127C5546E00FB3426 /* UserDefaults+Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Settings.swift"; sourceTree = "<group>"; };
 		95645BD627C5550B00FB3426 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		9565B67D299E6D4100969901 /* AuthenticationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationModule.swift; sourceTree = "<group>"; };
+		9565B680299E75D000969901 /* AuthModuleEnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModuleEnvironmentKey.swift; sourceTree = "<group>"; };
 		95667E7527B85BD3009D2251 /* StatusDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailView.swift; sourceTree = "<group>"; };
 		95667E7927B85C3B009D2251 /* MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockData.swift; sourceTree = "<group>"; };
 		95667E7D27B86273009D2251 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
@@ -983,6 +989,8 @@
 				95E4531E27D7B49C00572758 /* AuthenticationBrowserWindow.swift */,
 				9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */,
 				95009EF1295E711100F32F85 /* AuthenticationViewModel.swift */,
+				9565B67D299E6D4100969901 /* AuthenticationModule.swift */,
+				9565B680299E75D000969901 /* AuthModuleEnvironmentKey.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -1225,6 +1233,7 @@
 				951365AB298ED3B8008F6D47 /* AuthorViewToolbar.swift in Sources */,
 				95667E7627B85BD3009D2251 /* StatusDetailView.swift in Sources */,
 				9537C6D3297DB8C30039F3C4 /* SettingsBlocklistPage.swift in Sources */,
+				9565B67E299E6D4100969901 /* AuthenticationModule.swift in Sources */,
 				95A1BF9A29738D33002C88B6 /* ProfileSheetViewModel.swift in Sources */,
 				95F2DE2429725C6100553937 /* BetaBadge.swift in Sources */,
 				95097E0C2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift in Sources */,
@@ -1249,6 +1258,7 @@
 				95801D1F297C6B3800FE8D83 /* SettingsAuthorPage.swift in Sources */,
 				956714252958D2D300BFF76A /* StatusDetailToolbar.swift in Sources */,
 				95645BD227C5546E00FB3426 /* UserDefaults+Settings.swift in Sources */,
+				9565B681299E75D000969901 /* AuthModuleEnvironmentKey.swift in Sources */,
 				958E20942969FF24008AE63F /* NotificationListCellView.swift in Sources */,
 				95801D36297C9D2600FE8D83 /* GardensSettingsKey.swift in Sources */,
 				955F1B3B2985D74100702BE8 /* SearchAccountView.swift in Sources */,
@@ -1328,6 +1338,7 @@
 				9537C6DD297DE7C50039F3C4 /* InterventionHandler.swift in Sources */,
 				953BC7CC2957EC27005C7F2A /* HashableType.swift in Sources */,
 				95CEFDE92959637400EEE96C /* StatusVerifiedButton.swift in Sources */,
+				9565B682299E75D000969901 /* AuthModuleEnvironmentKey.swift in Sources */,
 				95801D59297CC13400FE8D83 /* StatusDetailProfileMenu.swift in Sources */,
 				957AF85029591B44000370E6 /* StatusPollView.swift in Sources */,
 				95CDCD232990297E002BD37A /* AttachmentViewerViewModel.swift in Sources */,
@@ -1393,6 +1404,7 @@
 				95801D21297C71F000FE8D83 /* AuthorViewModelTests.swift in Sources */,
 				95801D5F297CC13C00FE8D83 /* MessagingList.swift in Sources */,
 				95801D57297CC13400FE8D83 /* StatusContextProvider.swift in Sources */,
+				9565B67F299E6D4100969901 /* AuthenticationModule.swift in Sources */,
 				95CDCD2C299066B5002BD37A /* GiantAlert.swift in Sources */,
 				95801D27297C752000FE8D83 /* Bundle+AppVersion.swift in Sources */,
 				95801D3E297CC0B600FE8D83 /* SettingsInterventionPage.swift in Sources */,
