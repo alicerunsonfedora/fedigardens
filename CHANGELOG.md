@@ -12,6 +12,10 @@ If you need to list changes to this changelog but there isn't an entry for it, c
 And list your changes under that.
 -->
 
+## Unreleased - Date Pending
+- (FGD-22) Shows an alert if Alice cannot connect to the provided instance due to invalid characters.
+- Renamed Feedback Portal instances to Raceway.
+
 ## [1.0-33 (beta)] - 13/2/23
 
 ### Composer Updates
