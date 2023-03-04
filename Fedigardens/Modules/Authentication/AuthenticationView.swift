@@ -66,6 +66,22 @@ struct AuthenticationView: View {
         } message: {
             Text("auth.disallowed.message")
         }
+        .alert(viewModel.authenticationInvalidTitle, isPresented: $viewModel.authenticationDomainInvalid) {
+            Button {
+                if let url = viewModel.authenticationInvalidRacewayLink {
+                    openURL(url)
+                }
+            } label: {
+                Text("auth.badurl.racewaycta")
+            }
+            Button {
+
+            } label: {
+                Text("OK")
+            }.keyboardShortcut(.defaultAction)
+        } message: {
+            Text("auth.badurl.message")
+        }
     }
 
     /// The authentication button.

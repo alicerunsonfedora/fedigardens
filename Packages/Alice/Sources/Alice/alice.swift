@@ -62,11 +62,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
         ?? "mastodon.online"
 
     static public var apiURL: URL {
-        if instanceDomain.isEmpty {
-            instanceDomain = "mastodon.online"
-            return URL(string: "https://mastodon.online")!
-        }
-        return URL(string: "https://\(instanceDomain)")!
+        return URL(string: "https://\(instanceDomain)") ?? URL(string: "https://mastodon.online")!
     }
 
     /// Allows us to decode top-level values of the given type from the given JSON representation.

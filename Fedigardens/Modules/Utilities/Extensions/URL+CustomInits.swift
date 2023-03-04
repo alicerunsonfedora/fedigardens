@@ -20,7 +20,7 @@ extension URL {
         case oneSecSettings
         case ghBugs
         case github
-        case feedback
+        case raceway(title: String? = nil)
         case changelog
         case orion(String)
 
@@ -34,8 +34,9 @@ extension URL {
                 return "onesec://integrationsettings?appId=fedigardens"
             case .github:
                 return ghLink
-            case .feedback:
-                return "https://feedback.marquiskurt.net/composer?primary_tag=fedigardens"
+            case .raceway(let title):
+                let titleArgument = title?.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+                return "https://feedback.marquiskurt.net/composer?primary_tag=fedigardens&title='\(titleArgument)'"
             case .changelog:
                 return "https://fedigardens.app/changelog"
             case .ghBugs:
@@ -47,6 +48,7 @@ extension URL {
     }
 
     init?(destination: AppDestination) {
+        print(destination.absoluteString)
         self.init(string: destination.absoluteString)
     }
 

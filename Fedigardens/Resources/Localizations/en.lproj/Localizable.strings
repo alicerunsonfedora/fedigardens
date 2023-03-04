@@ -60,6 +60,9 @@
 "auth.footnote.create" = "Find an Instance &rsaquo;";
 "auth.disallowed.title" = "Cannot Sign In to '%@'";
 "auth.disallowed.message" = "Fedigardens cannot sign in to this instance because the developers cannot verify that this server moderates the content posted by its users.";
+"auth.badurl.title" = "Cannot Connect to '%@";
+"auth.badurl.message" = "The instance domain likely contains invalid URL characters. If the instance domain you provided contains legal characters, you can file a report on Raceway to help us diagnose the issue.";
+"auth.badurl.racewaycta" = "Report on Raceway";
 
 // MARK: - Timelines
 "timeline.inbox.focused" = "Focused";
@@ -267,7 +270,7 @@
 // MARK: - Settings: Feedback -
 "settings.feedback.message" = "Message Fedigardens…";
 "settings.feedback.personal" = "Start a Discussion…";
-"settings.feedback.personaldetail" = "Send a bug report or suggest a feature at feedback.marquiskurt.net.";
+"settings.feedback.personaldetail" = "Send a bug report or suggest a feature on Raceway.";
 "settings.feedback.bugreportdetail" = "Submit a traditional bug report through GitHub Issues.";
 
 // MARK: - Acknowledgements

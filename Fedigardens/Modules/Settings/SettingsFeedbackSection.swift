@@ -19,7 +19,7 @@ struct SettingsFeedbackSection: View {
 
     var body: some View {
         Section {
-            if let url = URL(destination: .feedback) {
+            if let url = URL(destination: .raceway()) {
                 Link(destination: url) {
                     Label {
                         VStack(alignment: .leading) {
