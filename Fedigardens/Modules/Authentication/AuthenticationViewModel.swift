@@ -15,6 +15,7 @@
 import Foundation
 import Combine
 import Alice
+import Bunker
 
 class AuthenticationViewModel: ObservableObject {
     typealias AuthenticationModule = Alice.OAuth
@@ -23,16 +24,22 @@ class AuthenticationViewModel: ObservableObject {
     @Published var authenticationAuthorizedURL: URL?
     @Published var displayAuthenticationDialog = false
     @Published var authenticationDomainRejected = false
+    @Published var authenticationDomainInvalid = false
 
     var authenticationState: AuthenticationModule.State {
         return authModule.authState
     }
 
     var authenticationRejectionTitle: String {
-        String(
-            format: NSLocalizedString("auth.disallowed.title", comment: "Disallowed domain"),
-            authenticationDomainName
-        )
+        return "auth.disallowed.title".localized(comment: "Disallowed domain", authenticationDomainName)
+    }
+
+    var authenticationInvalidTitle: String {
+        return "auth.badurl.title".localized(comment: "Invalid URL (FGD-22)", authenticationDomainName)
+    }
+
+    var authenticationInvalidRacewayLink: URL? {
+        URL(destination: .raceway(title: "Unable to sign into '\(authenticationDomainName)'"))
     }
 
     private var authModule: AuthenticationModule = .shared
@@ -57,6 +64,10 @@ class AuthenticationViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.authenticationAuthorizedURL = url
                 self.displayAuthenticationDialog.toggle()
+            }
+        } onBadURL: { _ in
+            DispatchQueue.main.async {
+                self.authenticationDomainInvalid.toggle()
             }
         }
     }

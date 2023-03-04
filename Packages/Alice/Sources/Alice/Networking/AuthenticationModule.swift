@@ -89,11 +89,18 @@ public class AuthenticationModule: ObservableObject {
     public func startOauthFlow(
         for instanceDomain: String,
         registeredAs app: RegisteredApplication = .default,
-        authHandler: ((URL) -> Void)? = nil
+        authHandler: ((URL) -> Void)? = nil,
+        onBadURL badURLHandler: ((String) -> Void)? = nil
     ) async {
 
         //  First, we initialize the keychain object
         let keychain = Keychain(service: Alice.OAuth.keychainService)
+
+        // Check if the URL is valid, and return if the URL can't be created.
+        if URL(string: "https://\(instanceDomain)") == nil {
+            badURLHandler?(instanceDomain)
+            return
+        }
 
         //  Then, we assign the domain of the instance we are working with.
         keychain["starlight_instance_domain"] = instanceDomain

@@ -15,7 +15,7 @@
         "repositoryURL": "https://github.com/alicerunsonfedora/bunker.git",
         "state": {
           "branch": "root",
-          "revision": "580a61b6fc576a9014f94b380758720967c8f087",
+          "revision": "9f7ba80122b3f0ff525d13cf997ecaa8c2128d87",
           "version": null
         }
       },
@@ -33,7 +33,7 @@
         "repositoryURL": "https://github.com/divadretlaw/EmojiText",
         "state": {
           "branch": "main",
-          "revision": "263935972835482fe655d7ce44e101cc3fb463bf",
+          "revision": "1a906aa183228f1b5ddfb45de11e0c08fe833535",
           "version": null
         }
       },
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/kean/Nuke",
         "state": {
           "branch": null,
-          "revision": "67bd45931180f652159e3342575277a7f197b3ab",
-          "version": "11.6.2"
+          "revision": "33f7e93be5d4ec027d42af77a8ec4680d1862ad2",
+          "version": "11.6.4"
         }
       },
       {
