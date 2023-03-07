@@ -24,10 +24,11 @@ struct SettingsLabelStyle: LabelStyle {
                 .imageScale(.small)
                 .foregroundColor(.white)
                 .background(
-                    RoundedRectangle(cornerRadius: 8 * size)
-                        .frame(width: 28 * size, height: 28 * size)
+                    RoundedRectangle(cornerRadius: 6 * size)
+                        .frame(width: 24 * size, height: 24 * size)
                         .foregroundColor(color)
                 )
+                .padding(.vertical, 4 * size)
         }
     }
 }
@@ -35,5 +36,27 @@ struct SettingsLabelStyle: LabelStyle {
 extension LabelStyle where Self == SettingsLabelStyle {
     static func settings(color: Color, size: CGFloat) -> Self {
         SettingsLabelStyle(color: color, size: size)
+    }
+}
+
+struct SettingsLabelPreview: View {
+    @ScaledMetric private var size = 1.0
+    var body: some View {
+        Form {
+            Label("Test", systemImage: "star.fill")
+                .labelStyle(.settings(color: .yellow, size: size))
+            Label("Test", systemImage: "square.and.pencil")
+                .labelStyle(.settings(color: .blue, size: size))
+            Label("Test", systemImage: "app.fill")
+                .labelStyle(.settings(color: .red, size: size))
+            Label("Test", systemImage: "square.and.arrow.up")
+                .labelStyle(.settings(color: .green, size: size))
+        }
+    }
+}
+
+struct SettingsLabelStyle_Previews: PreviewProvider {
+    static var previews: some View {
+        SettingsLabelPreview()
     }
 }
