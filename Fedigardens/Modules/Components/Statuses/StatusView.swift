@@ -39,6 +39,7 @@ struct StatusView: View {
 
     @Environment(\.customEmojis) var emojis
     @AppStorage("status.show-statistics") var showsStatistics: Bool = true
+    @AppStorage(.alwaysShowUserHandle) var showsUserHandle: Bool = true
 
     var status: Status
 
@@ -104,7 +105,11 @@ struct StatusView: View {
                     if profileImagePlacement == .byAuthorName { authorImage }
                     VStack(alignment: .leading) {
                         HStack(alignment: .top) {
-                            StatusAuthorExtendedLabel(status: status, placementPolicy: verifiedNoticePlacement)
+                            StatusAuthorExtendedLabel(
+                                status: status,
+                                placementPolicy: verifiedNoticePlacement,
+                                showUserHandle: truncateLines == nil || showsUserHandle
+                            )
                             if truncateLines != nil {
                                 if datePlacement == .automatic {
                                     Spacer()
