@@ -12,6 +12,11 @@ If you need to list changes to this changelog but there isn't an entry for it, c
 And list your changes under that.
 -->
 
+## [Unreleased] - Date Pending
+
+- (FGD-39) Adds a new "Show User Handle In Timeline" toggle in Settings > Viewing that toggles whether a full user
+  handle is displayed in the timeline list.
+
 ## [1.0-34 (beta)] - 4/3/23
 
 - (FGD-22) Shows an alert if Alice cannot connect to the provided instance due to invalid characters.

@@ -27,6 +27,7 @@ struct StatusAuthorExtendedLabel: View {
 
     var status: Status
     var placementPolicy: VerificationPlacementPolicy
+    var showUserHandle = true
 
     private var hasVerifiedAccount: Bool {
         if let reblog = status.reblog {
@@ -71,10 +72,12 @@ struct StatusAuthorExtendedLabel: View {
                         .foregroundColor(.indigo)
                 }
             }
-            Text("(@\(status.reblog?.account.acct ?? status.account.acct))")
-                .foregroundColor(.secondary)
-                .font(.system(.callout, design: .rounded))
-                .lineLimit(1)
+            if showUserHandle {
+                Text("(@\(status.reblog?.account.acct ?? status.account.acct))")
+                    .foregroundColor(.secondary)
+                    .font(.system(.callout, design: .rounded))
+                    .lineLimit(1)
+            }
             if isDevelopmentMember, placementPolicy == .underAuthorLabel {
                 developerLabel
             } else if hasVerifiedAccount, placementPolicy == .underAuthorLabel {
