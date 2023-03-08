@@ -26,6 +26,11 @@ extension UserDefaults {
         set { setValue(newValue, forKey: .showsStatistics) }
     }
 
+    var alwaysShowUserHandle: Bool {
+        get { getValue(forKey: .alwaysShowUserHandle, default: true) }
+        set { setValue(newValue, forKey: .alwaysShowUserHandle) }
+    }
+
     var showOriginalPostsOnly: Bool {
         get { getValue(forKey: .useFocusedInbox, default: false) }
         set { setValue(newValue, forKey: .useFocusedInbox) }

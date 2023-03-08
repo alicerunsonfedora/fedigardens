@@ -217,6 +217,7 @@
 "settings.loadlimit.detail" = "When fetching statuses from Mastodon, batches will be limited to this size.";
 "settings.showoriginal.title" = "Use Focused Timeline";
 "settings.showoriginal.detail" = "Focused Timeline splits your timeline to filter out reblogged content and replies.";
+"settings.showhandle.title" = "Show User Handle In Timeline";
 "settings.signout.link" = "Sign Out…";
 "settings.signout.prompt" = "Sign Out";
 "settings.signout.title" = "Are you sure you want to sign out?";
