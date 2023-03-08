@@ -20,6 +20,7 @@ enum GardensSettingsKey: String {
     case loadLimit = "network.load-limit"
     case showsStatistics = "status.shows-statistics"
     case useFocusedInbox = "timeline.original-filter"
+    case alwaysShowUserHandle = "timeline.show-handles"
     case allowsInterventions = "health.interventions"
     case intervenesOnRefresh = "health.interventions.refresh"
     case intervenesOnFetch = "health.interventions.fetch"

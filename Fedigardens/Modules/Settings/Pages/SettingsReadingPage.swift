@@ -17,6 +17,7 @@ import SwiftUI
 struct SettingsReadingPage: View {
     @AppStorage(.useFocusedInbox) var hidesReblogsAndReplies = false
     @AppStorage(.showsStatistics) var showsStatistics: Bool = true
+    @AppStorage(.alwaysShowUserHandle) var alwaysShowsUserHandle: Bool = true
     @AppStorage(.loadLimit) var loadLimit: Int = 10
     @ScaledMetric private var size = 1.0
 
@@ -35,6 +36,9 @@ struct SettingsReadingPage: View {
             }
 
             Section {
+                Toggle(isOn: $alwaysShowsUserHandle) {
+                    Text("settings.showhandle.title")
+                }
                 Toggle(isOn: $showsStatistics) {
                     Text("settings.show-statistics.title")
                 }
