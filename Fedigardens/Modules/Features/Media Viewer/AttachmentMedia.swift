@@ -18,6 +18,7 @@ import Alice
 
 struct AttachmentMedia: View {
     var attachment: MediaAttachment
+    @State private var presentVideoInFullScreen = true
 
     var body: some View {
         Group {
@@ -25,18 +26,13 @@ struct AttachmentMedia: View {
             case .image:
                 image(of: attachment)
             case .video, .gifv:
-                VideoPlayer(player: videoPlayer(for: attachment.url)) {
-                    VStack {
-                        HStack {
-                            Image(systemName: "play.fill")
-                                .imageScale(.large)
-                            Spacer()
-                        }
-                        .foregroundColor(.white)
-                        Spacer()
-                    }.padding()
+                ZStack {
+                    AttachmentVideoPlayer(player: videoPlayer(for: attachment.url))
+                        .aspectRatio(3/2, contentMode: .fit)
+                        .compositingGroup()
+                    if attachment.description != nil { altBadge }
                 }
-                .aspectRatio(3/2, contentMode: .fill)
+
             default:
                 Label("Unidentified attachments", systemImage: "questionmark.circle")
                     .font(.callout)
@@ -55,6 +51,7 @@ struct AttachmentMedia: View {
                     .resizable()
                     .scaledToFit()
                     .aspectRatio(3/2, contentMode: .fill)
+                if attachment.description != nil { altBadge }
             }
             .cornerRadius(10)
             .overlay(
@@ -66,10 +63,29 @@ struct AttachmentMedia: View {
                 .fill(Color.secondary.opacity(0.2))
                 .aspectRatio(3/2, contentMode: .fill)
         }
+        .help(attachment.description ?? "")
     }
 
     private func videoPlayer(for resource: String) -> AVPlayer? {
         guard let url = URL(string: resource) else { return nil }
         return AVPlayer(url: url)
+    }
+
+    private var altBadge: some View {
+        VStack {
+            Spacer()
+            HStack {
+                Spacer()
+                Text("ALT")
+                    .font(.caption)
+                    .bold()
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 4)
+                    .foregroundColor(.accentColor)
+                    .background(.thickMaterial)
+                    .cornerRadius(8)
+                    .padding(4)
+            }
+        }
     }
 }

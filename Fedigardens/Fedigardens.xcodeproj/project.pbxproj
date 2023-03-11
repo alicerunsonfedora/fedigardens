@@ -193,6 +193,8 @@
 		95860C6029982E5100068425 /* PollVotingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95860C5E29982E5100068425 /* PollVotingViewModel.swift */; };
 		95860C62299837ED00068425 /* StatusDetailList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95860C61299837ED00068425 /* StatusDetailList.swift */; };
 		95860C63299837ED00068425 /* StatusDetailList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95860C61299837ED00068425 /* StatusDetailList.swift */; };
+		9588914B29BD11DF0092781B /* AttachmentVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9588914A29BD11DF0092781B /* AttachmentVideoPlayer.swift */; };
+		9588914C29BD11DF0092781B /* AttachmentVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9588914A29BD11DF0092781B /* AttachmentVideoPlayer.swift */; };
 		958C0C9727BE930D00ED6C23 /* Account+AccountName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */; };
 		958C0C9927BE930D00ED6C23 /* Account+AccountName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */; };
 		958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */; };
@@ -378,6 +380,7 @@
 		95860C5B29981F3700068425 /* PollVotingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollVotingView.swift; sourceTree = "<group>"; };
 		95860C5E29982E5100068425 /* PollVotingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollVotingViewModel.swift; sourceTree = "<group>"; };
 		95860C61299837ED00068425 /* StatusDetailList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailList.swift; sourceTree = "<group>"; };
+		9588914A29BD11DF0092781B /* AttachmentVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentVideoPlayer.swift; sourceTree = "<group>"; };
 		958C0C9627BE930D00ED6C23 /* Account+AccountName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Account+AccountName.swift"; sourceTree = "<group>"; };
 		958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorReplySegment.swift; sourceTree = "<group>"; };
 		958E208F2969F7F2008AE63F /* InteractionsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractionsListView.swift; sourceTree = "<group>"; };
@@ -971,6 +974,7 @@
 				95CDCD1F299027FC002BD37A /* AttachmentViewerViewModel.swift */,
 				95CDCD2129902968002BD37A /* AttachmentMedia.swift */,
 				95CDCD2729904E19002BD37A /* AttachmentViewerToolbar.swift */,
+				9588914A29BD11DF0092781B /* AttachmentVideoPlayer.swift */,
 			);
 			path = "Media Viewer";
 			sourceTree = "<group>";
@@ -1181,6 +1185,7 @@
 				9537C6D6297DBB510039F3C4 /* SettingsBlocklistViewModel.swift in Sources */,
 				95F2DE26297262D700553937 /* SettingsInterventionPage.swift in Sources */,
 				95CDCD2829904E19002BD37A /* AttachmentViewerToolbar.swift in Sources */,
+				9588914B29BD11DF0092781B /* AttachmentVideoPlayer.swift in Sources */,
 				956714162958C1BF00BFF76A /* AuthoringScene.swift in Sources */,
 				953BC7CB2957EC27005C7F2A /* HashableType.swift in Sources */,
 				955F1B342985C1D600702BE8 /* SearchResultsView.swift in Sources */,
@@ -1405,6 +1410,7 @@
 				95801D4B297CC10700FE8D83 /* InterventionAuthorizationContext.swift in Sources */,
 				95801D66297CC14200FE8D83 /* ProfileSheetRecentActivityView.swift in Sources */,
 				95801D54297CC10700FE8D83 /* InteractionsListViewModel.swift in Sources */,
+				9588914C29BD11DF0092781B /* AttachmentVideoPlayer.swift in Sources */,
 				955F1B522985FBE100702BE8 /* ProfileSheetLabel.swift in Sources */,
 				95CDCD2B29906548002BD37A /* AttachmentViewerToolbar.swift in Sources */,
 				95801D6B297CC14E00FE8D83 /* StatusView.swift in Sources */,

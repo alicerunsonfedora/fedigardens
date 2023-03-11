@@ -34,7 +34,7 @@ struct GiantAlert<Icon: View, Actions: View, Message: View>: View {
     }
 
     var body: some View {
-        VStack(spacing: 8) {
+        VStack(spacing: 16) {
             if let icon {
                 icon()
                     .font(.largeTitle)
@@ -51,6 +51,7 @@ struct GiantAlert<Icon: View, Actions: View, Message: View>: View {
                     defaultMessage
                 }
             }
+            .padding(.top)
             Spacer()
             Group {
                 actions()
