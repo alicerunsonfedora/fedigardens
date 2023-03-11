@@ -13,9 +13,9 @@
 "general.bugreport" = "Report a Bug…";
 "general.cancel" = "Cancel";
 "general.togglesidebar" = "Toggle Sidebar";
-"general.status" = "Status";
+"general.status" = "Discussion";
 "general.nopage" = "No Page Selected";
-"general.nopost" = "No Status Selected";
+"general.nopost" = "No Discussion Selected";
 "general.settings" = "Settings";
 "general.loadmore" = "Load More";
 "general.refresh" = "Refresh";
@@ -34,7 +34,7 @@
 "endpoint.directmessage" = "Messages";
 "endpoint.notifications" = "Notifications";
 "endpoint.mentions" = "Interactions";
-"endpoint.selfposts" = "Your Statuses";
+"endpoint.selfposts" = "Your Discussions";
 "endpoint.trending" = "Trending Tags";
 "endpoint.followedtags" = "Subscribed Tags";
 "endpoint.lists" = "Lists";
@@ -47,7 +47,7 @@
 
 // MARK: - Subscribed Tags
 "followedtags.alert.title" = "Subscribe To Tag";
-"followedtags.alert.detail" = "Enter the hashtag without the hashtag sign to follow statuses tagged with it in your timeline. You can also view them in Subscribed Tags.";
+"followedtags.alert.detail" = "Enter the hashtag without the hashtag sign to follow discussions tagged with it in your timeline. You can also view them in Subscribed Tags.";
 "followedtags.subscribeaction" = "Subscribe";
 "followedtags.textfield.placeholder" = "hashtag";
 
@@ -57,38 +57,38 @@
 "auth.progress" = "Signing In…";
 "auth.startinfo" = "Welcome to a simplified, discussion-oriented Mastodon experience. Sign in with your Mastodon account or create one to get started.";
 "auth.footnote" = "Don't have a Mastodon account?";
-"auth.footnote.create" = "Find an Instance &rsaquo;";
+"auth.footnote.create" = "Find a Community Server &rsaquo;";
 "auth.disallowed.title" = "Cannot Sign In to '%@'";
-"auth.disallowed.message" = "Fedigardens cannot sign in to this instance because the developers cannot verify that this server moderates the content posted by its users.";
+"auth.disallowed.message" = "Fedigardens cannot sign in to this community server because the developers cannot verify that this server moderates the content posted by its users.";
 "auth.badurl.title" = "Cannot Connect to '%@";
-"auth.badurl.message" = "The instance domain likely contains invalid URL characters. If the instance domain you provided contains legal characters, you can file a report on Raceway to help us diagnose the issue.";
+"auth.badurl.message" = "The domain to this community server likely contains invalid URL characters. If the domain you provided contains legal characters, you can file a report on Raceway to help us diagnose the issue.";
 "auth.badurl.racewaycta" = "Report on Raceway";
 
 // MARK: - Timelines
 "timeline.inbox.focused" = "Focused";
-"timeline.inbox.other" = "Other Statuses";
+"timeline.inbox.other" = "Other Discussions";
 
 // MARK: - Statuses
 "status.commentary" = "status.commentary";
-"status.new" = "New Status";
+"status.new" = "New Discussion";
 "status.newreply" = "New Reply";
-"status.edit" = "Edit Status";
+"status.edit" = "Edit Discussion";
 "status.visibility" = "Visible to: ";
 "status.charsremain" = "status.charsremain";
 "status.replytext" = "Replying to %@";
 "status.nocontext" = "No Replies";
 "status.prevcontext" = "Show previous conversation…";
 "status.marksensitive" = "Mark as Sensitive";
-"status.spoilerprompt" = "You have marked this status as sensitive to some followers.";
-"status.spoilerdetail" = "This status will require readers to acknowledge your warning before reading the contents. [Learn more…](https://docs.joinmastodon.org/user/posting/#cw)";
+"status.spoilerprompt" = "You have marked this discussion as sensitive to some followers.";
+"status.spoilerdetail" = "This discussion will require readers to acknowledge your warning before reading the contents. [Learn more…](https://docs.joinmastodon.org/user/posting/#cw)";
 "status.spoilerplaceholder" = "Write your warning here…";
-"status.spoilermessage" = "%@ has collapsed this status and has provided the warning '%@'.";
+"status.spoilermessage" = "%@ has collapsed this discussion and has provided the warning '%@'.";
 "status.spoilermessage-cta" = "Collapsed content may contain long form text and/or sensitive content, and Fedigardens cannot guarantee that this content is safe to view. You can tap the eye icon to view the content.";
-"status.quotedetect.title" = "%@ is linking to a status.";
-"status.quotedetect.detail" = "%@ may be providing additional context or quoting %@. You can tap this notice to show/hide the original status.";
+"status.quotedetect.title" = "%@ is linking to a discussion.";
+"status.quotedetect.detail" = "%@ may be providing additional context or quoting %@. You can tap this notice to show/hide the original discussion.";
 "status.quotedetect.source" = "Quote Agent: %@";
-"status.quoted.title" = "You are quoting this status.";
-"status.quoted.detail" = "A link to the status has been added automatically to maintain compatibility. Remember to follow your instance's rules, and refrain from \"dunking\". [Learn more…](https://fedigardens.app/support/#quoting)";
+"status.quoted.title" = "You are quoting this discussion.";
+"status.quoted.detail" = "A link to the discussion has been added automatically to maintain compatibility. Remember to follow your community server's rules, and refrain from \"dunking\". [Learn more…](https://fedigardens.app/support/#quoting)";
 "status.verified.title" = "Verified Domain";
 "status.verified.detail" = "%@ has verified that they own the website %@.";
 "status.developer.detail" = "%@ is a Fedigardens developer.";
@@ -96,7 +96,7 @@
 "status.tagandreply.detail" = "Remember to respect the person you are replying to, and refrain from adding hashtags for reach without consent. [Learn more…](https://fedigardens.app/support/#tags-in-replies)";
 "status.participants.empty" = "No participants";
 "status.languagecode" = "Select a Language";
-"status.editmode.title" = "You are editing this status.";
+"status.editmode.title" = "You are editing this discussion.";
 "status.editmode.detail" = "Some composition features such as setting the visibility may not be available.";
 
 // MARK: - Status: Polls -
@@ -115,8 +115,8 @@
 "status.poll.runningdetail" = "status.poll.runningdetail";
 
 // MARK: - Status Actions -
-"status.compose" = "New Status";
-"status.postaction" = "Post";
+"status.compose" = "New Discussion";
+"status.postaction" = "Publish";
 "status.editaction" = "Edit";
 "status.replyaction" = "Reply";
 "status.forwardaction" = "Quote";
@@ -135,7 +135,7 @@
 "profile.activity" = "Recent Activity";
 "profile.followers" = "Followers";
 "profile.following" = "Following";
-"profile.statusescount" = "Statuses";
+"profile.statusescount" = "Discussions";
 "profile.followsyou" = "Follows You";
 
 // MARK: - Profile Actions
@@ -152,13 +152,13 @@
 "drop.reply" = "Reply Posted";
 "drop.save" = "Added to Bookmarks";
 "drop.unsave" = "Removed from Bookmarks";
-"drop.post" = "Posted Status";
-"drop.edit" = "Edited Status";
+"drop.post" = "Published Discussion";
+"drop.edit" = "Edited Discussion";
 "drop.follow" = "Followed";
 "drop.unfollow" = "Unfollowed";
 "drop.mute" = "Muted";
 "drop.block" = "Blocked";
-"drop.postfailure" = "Couldn't Post Status";
+"drop.postfailure" = "Couldn't Publish Discussion";
 "drop.profilefailure" = "Couldn't Update Profile";
 
 // MARK: - Status Visibility
@@ -170,7 +170,7 @@
 // MARK: - Messaging
 "direct.grouptitle" = "direct.grouptitle";
 "direct.nonencrypt.title" = "Direct messages are not encrypted.";
-"direct.nonencrypt.detail" = "Messages may be visible by your instance administrator. Do not use direct messages to send personally identifying and/or sensitive information.";
+"direct.nonencrypt.detail" = "Messages may be visible by your community server administrator. Do not use direct messages to send personally identifying and/or sensitive information.";
 
 // MARK: - Search
 "search.placeholder" = "Search people, statuses, and tags...";
@@ -178,19 +178,19 @@
 "search.explore" = "Trending Activity";
 "search.filter.users" = "People";
 "search.filter.tags" = "Tags";
-"search.filter.posts" = "Statuses";
+"search.filter.posts" = "Discussions";
 "search.filter.all" = "All";
 "search.tagspeople" = "search.tagspeople";
 "search.tag.subscribe" = "Subscribe";
 "search.tag.history" = "Recent History";
-"search.tag.chartuse" = "Statuses Written";
+"search.tag.chartuse" = "Discussions Written";
 "search.tag.chartacct" = "Accounts Using Tag";
 
 // MARK: - Help Strings
 "help.sidebar" = "Show or hide the sidebar.";
-"help.feedback" = "Send user feedback through the YouTrack bug reporter.";
+"help.feedback" = "Send user feedback through Raceway.";
 "help.refresh" = "Refresh the current view.";
-"help.poststatus" = "Start a new discussion or write a status.";
+"help.poststatus" = "Start a new discussion.";
 "help.replystatus" = "Reply to this discussion.";
 "help.likestatus" = "Favorite this discussion.";
 "help.booststatus" = "Reblog this discussion to your profile.";
@@ -202,7 +202,7 @@
 "attachments.description.missing" = "No description provided.";
 "attachments.empty.warning" = "No Attachments Available";
 "attachments.share.title" = "Share Responsibly";
-"attachments.share.detail" = "Some attachments may be held under copyright or may not be shareable without the author's consent. Remember to check with the author before sharing attachments elsewhere. Your instance administrator may also have additional rules regarding sharing attachments from your instance.";
+"attachments.share.detail" = "Some attachments may be held under copyright or may not be shareable without the author's consent. Remember to check with the author before sharing attachments elsewhere. Your community server administrator may also have additional rules regarding sharing attachments from your community server.";
 "attachments.share.acknowledge" = "Share Anyway";
 "attachments.share.cancel" = "Don't Share";
 
@@ -212,9 +212,9 @@
 "settings.section.safety" = "Health and Safety";
 "settings.section.core" = "Core Experience";
 "settings.show-statistics.title" = "Show Statistics";
-"settings.show-statistics.detail" = "Show the number of favorites and reblogs when viewing a status in detail.";
+"settings.show-statistics.detail" = "Show the number of favorites and reblogs when viewing a discussion in detail.";
 "settings.loadlimit.text" = "Fetch Batch Size: %@";
-"settings.loadlimit.detail" = "When fetching statuses from Mastodon, batches will be limited to this size.";
+"settings.loadlimit.detail" = "When fetching discussions from Mastodon, batches will be limited to this size.";
 "settings.showoriginal.title" = "Use Focused Timeline";
 "settings.showoriginal.detail" = "Focused Timeline splits your timeline to filter out reblogged content and replies.";
 "settings.showhandle.title" = "Show User Handle In Timeline";
@@ -232,9 +232,9 @@
 "settings.author.characterlimitsection" = "Character Limits";
 "settings.author.enforcelimit.text" = "Enforce Character Limit";
 "settings.author.characterlimit.text" = "Character Limit";
-"settings.author.characterlimit.detail" = "Mastodon uses 500 characters as the default limit. You can change this value to match your instance's character limit or your own personal limit.";
+"settings.author.characterlimit.detail" = "Mastodon uses 500 characters as the default limit. You can change this value to match your community server's character limit or your own personal limit.";
 "settings.author.visibilitysection" = "Default Privacy Levels";
-"settings.author.defaultvisibility.text" = "New statuses: ";
+"settings.author.defaultvisibility.text" = "New discussions: ";
 "settings.author.replyvisibility.text" = "Replies: ";
 "settings.author.quotevisibility.text" = "Quotes: ";
 "settings.author.feedbackvisibility.text" = "Sending feedback: ";
@@ -245,32 +245,32 @@
 // MARK: - Settings: Interventions -
 "settings.section.interventions" = "Interventions";
 "settings.interventions.title" = "Interventions with one sec";
-"settings.interventions.info" = "Fedigardens has collaborated with **one sec** to provide more healthy ways of interacting with Mastodon. Have a moment to reflect whenever you refresh your feeds, load more statuses, or stay in the app for longer periods of time.";
+"settings.interventions.info" = "Fedigardens has collaborated with **one sec** to provide more healthy ways of interacting with Mastodon. Have a moment to reflect whenever you refresh your feeds, load more discussions, or stay in the app for longer periods of time.";
 "settings.interventions.allow" = "Allow Interventions";
-"settings.interventions.detail" = "Allow one sec to intervene with a breathing exercise when you want to refresh your timeline or load more statuses. [Learn more…](https://one-sec.app)";
+"settings.interventions.detail" = "Allow one sec to intervene with a breathing exercise when you want to refresh your timeline or load more discussions. [Learn more…](https://one-sec.app)";
 "settings.interventions.grain" = "Intervene when I do the following: ";
 "settings.interventions.refresh" = "Refresh Timeline";
-"settings.interventions.fetch" = "Fetch More Statuses";
+"settings.interventions.fetch" = "Fetch More Discussions";
 "settings.interventions.configure" = "Configure More in one sec…";
 
 // MARK: - Settings: Blocklists -
-"settings.section.blocklist" = "Blocked Instances";
-"settings.blocklist.blockaction" = "Add Blocked Instance";
-"settings.blocklist.blockmessage" = "Enter the instance domain to block. Posts originating from this instance will not be displayed in your timelines.";
+"settings.section.blocklist" = "Blocked Community Servers";
+"settings.blocklist.blockaction" = "Add Blocked Community Server";
+"settings.blocklist.blockmessage" = "Enter the domain of the community server to block. Posts originating from this community server will not be displayed in your timelines.";
 "settings.blocklist.block" = "Block";
-"settings.blocklist.empty" = "No Blocked Instances";
-"settings.blocklist.emptydetail" = "To add an instance to your blocklist, tap the 'Add Blocked Instance' button in the toolbar.";
-"settings.blocklist.admin" = "Your instance administrator may also include instance-wide federation blocks.";
-"settings.blocklist.fetcherror" = "Couldn't Get Blocked Instances";
-"settings.blocklist.instancewideprompt" = "View Instance-wide Blocks";
-"settings.blocklist.instancewide" = "Instance-Wide Blocks";
-"settings.blocklist.silenced" = "Silenced Instances";
-"settings.blocklist.suspended" = "Suspended Instances";
+"settings.blocklist.empty" = "No Blocked Communivty Servers";
+"settings.blocklist.emptydetail" = "To add a community server to your blocklist, tap the 'Add Blocked Community Server' button in the toolbar.";
+"settings.blocklist.admin" = "Your community server administrator may also include community server-wide federation blocks.";
+"settings.blocklist.fetcherror" = "Couldn't Get Blocked Community Servers";
+"settings.blocklist.instancewideprompt" = "View Community Server-wide Blocks";
+"settings.blocklist.instancewide" = "Server-Wide Blocks";
+"settings.blocklist.silenced" = "Silenced Community Servers";
+"settings.blocklist.suspended" = "Suspended Community Servers";
 "settings.blocklist.nocomment" = "No comment provided.";
 
 // MARK: - Settings: Feedback -
 "settings.feedback.message" = "Message Fedigardens…";
-"settings.feedback.personal" = "Start a Discussion…";
+"settings.feedback.personal" = "Send Feedback in Raceway…";
 "settings.feedback.personaldetail" = "Send a bug report or suggest a feature on Raceway.";
 "settings.feedback.bugreportdetail" = "Submit a traditional bug report through GitHub Issues.";
 

@@ -34,6 +34,9 @@ struct GardensAppCompactSidebarContent: View {
                             GardensComposeButton(style: .new)
                         }
                     }
+                case .messages:
+                    MessagingList()
+                        .navigationTitle(GardensAppPage.messages.localizedTitle)
                 case .saved:
                     TimelineSplitView(scope: .saved, selectedStatus: $viewModel.selectedStatus)
                         .navigationTitle("endpoint.saved")
