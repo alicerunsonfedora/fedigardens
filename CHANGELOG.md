@@ -12,10 +12,13 @@ If you need to list changes to this changelog but there isn't an entry for it, c
 And list your changes under that.
 -->
 
-## [Unreleased] - Date Pending
+## [1.0-35 (beta)] - 15/3/23
 
 - (FGD-39) Adds a new "Show User Handle In Timeline" toggle in Settings > Viewing that toggles whether a full user
   handle is displayed in the timeline list.
+- Renames "instance" to "community server" or "server", and "status" to "discussion".
+- Adds minor UI/UX tweaks to work better with Dynamic Type and other accessibility features.
+- Improves the video playing experience for discussions with attachments.
 
 ## [1.0-34 (beta)] - 4/3/23
 
