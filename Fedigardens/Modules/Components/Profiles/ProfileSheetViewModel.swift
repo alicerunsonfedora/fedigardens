@@ -76,7 +76,8 @@ class ProfileSheetViewModel: ObservableObject {
     }
 
     func startMatrixConversation() {
-        guard let matrixID = profile?.matrixID() else { return }
+        guard let matrixID = profile?.matrixID()?
+            .addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         if let url = URL(string: "https://matrix.to/#/\(matrixID)") {
             UIApplication.shared.open(url)
         }

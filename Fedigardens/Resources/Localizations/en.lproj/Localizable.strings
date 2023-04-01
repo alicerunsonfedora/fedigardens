@@ -143,7 +143,7 @@
 "profile.unfollowaction" = "Unfollow";
 "profile.muteaction" = "Mute";
 "profile.unmuteaction" = "Unmute";
-"profile.matrixaction" = "Start Matrix Conversation";
+"profile.matrixaction" = "Chat on Matrix";
 
 // MARK: - Drops
 "drop.favorite" = "Favorited";

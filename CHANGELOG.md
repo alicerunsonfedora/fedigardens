@@ -12,6 +12,12 @@ If you need to list changes to this changelog but there isn't an entry for it, c
 And list your changes under that.
 -->
 
+## [Unreleased] - Date Pending
+- (FGD-43) Adds a new setting "Prefer Matrix Conversations" which will start Matrix conversations with fediverse people
+  that have the "Matrix: (Matrix ID)" field in their bio with a valid Matrix ID. This setting applies in profile pages
+  and the profile menu in a discussion detail view.
+- (FGD-42) Adds a new "Join Our Matrix Room" section in the About page, which links to #fedigardens:one.ems.host.
+
 ## [1.0-35 (beta)] - 15/3/23
 
 - (FGD-39) Adds a new "Show User Handle In Timeline" toggle in Settings > Viewing that toggles whether a full user
