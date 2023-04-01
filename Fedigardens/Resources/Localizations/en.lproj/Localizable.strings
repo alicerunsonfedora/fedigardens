@@ -143,6 +143,7 @@
 "profile.unfollowaction" = "Unfollow";
 "profile.muteaction" = "Mute";
 "profile.unmuteaction" = "Unmute";
+"profile.matrixaction" = "Start Matrix Conversation";
 
 // MARK: - Drops
 "drop.favorite" = "Favorited";
@@ -218,6 +219,8 @@
 "settings.showoriginal.title" = "Use Focused Timeline";
 "settings.showoriginal.detail" = "Focused Timeline splits your timeline to filter out reblogged content and replies.";
 "settings.showhandle.title" = "Show User Handle In Timeline";
+"settings.prefermatrix.title" = "Prefer Matrix Conversations";
+"settings.prefermatrix.detail" = "Start conversations with a fediverse user's [Matrix ID](https://matrix.org) if available in their bio.";
 "settings.signout.link" = "Sign Out…";
 "settings.signout.prompt" = "Sign Out";
 "settings.signout.title" = "Are you sure you want to sign out?";

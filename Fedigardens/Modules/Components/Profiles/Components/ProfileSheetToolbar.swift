@@ -16,6 +16,7 @@ import SwiftUI
 import Alice
 
 struct ProfileSheetToolbar: ToolbarContent {
+    @AppStorage(.preferMatrixConversations) var prefersMatrixConversations = true
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: ProfileSheetViewModel
 
@@ -48,7 +49,18 @@ struct ProfileSheetToolbar: ToolbarContent {
                 GardensComposeButton(style: .mention)
             }
             ToolbarItem(placement: .bottomBar) {
-                GardensComposeButton(style: .message)
+                if prefersMatrixConversations, viewModel.profile?.matrixID() != nil {
+                    Button(action: viewModel.startMatrixConversation) {
+                        Label {
+                            Text("profile.matrixaction")
+                        } icon: {
+                            Text("[m]")
+                                .bold()
+                        }
+                    }
+                } else {
+                    GardensComposeButton(style: .message)
+                }
             }
             ToolbarItem(placement: .bottomBar) {
                 Button {

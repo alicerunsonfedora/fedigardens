@@ -76,15 +76,11 @@ struct StatusDetailView: View {
             }
         }
         .sheet(item: $viewModel.displayedProfile) { profile in
-            if let profile {
-                ProfileSheetView(profile: profile)
-            }
+            ProfileSheetView(profile: profile)
         }
         .sheet(item: $viewModel.shouldVote) { poll in
             Group {
-                if let poll {
-                    PollVotingView(poll: poll)
-                }
+                PollVotingView(poll: poll)
             }
         }
         .fullScreenCover(item: $viewModel.displayAttachments) {

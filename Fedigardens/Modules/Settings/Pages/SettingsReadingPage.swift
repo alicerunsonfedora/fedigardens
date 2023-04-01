@@ -19,6 +19,7 @@ struct SettingsReadingPage: View {
     @AppStorage(.showsStatistics) var showsStatistics: Bool = true
     @AppStorage(.alwaysShowUserHandle) var alwaysShowsUserHandle: Bool = true
     @AppStorage(.loadLimit) var loadLimit: Int = 10
+    @AppStorage(.preferMatrixConversations) var preferMatrixConversations: Bool = true
     @ScaledMetric private var size = 1.0
 
     var body: some View {
@@ -52,6 +53,14 @@ struct SettingsReadingPage: View {
                 }
             } footer: {
                 Text("settings.showoriginal.detail")
+            }
+
+            Section {
+                Toggle(isOn: $preferMatrixConversations) {
+                    Text("settings.prefermatrix.title")
+                }
+            } footer: {
+                Text("settings.prefermatrix.detail")
             }
 
         }

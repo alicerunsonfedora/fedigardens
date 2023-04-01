@@ -75,6 +75,13 @@ class ProfileSheetViewModel: ObservableObject {
         }
     }
 
+    func startMatrixConversation() {
+        guard let matrixID = profile?.matrixID() else { return }
+        if let url = URL(string: "https://matrix.to/#/\(matrixID)") {
+            UIApplication.shared.open(url)
+        }
+    }
+
     private func updateRelationship(
         drop: Drop? = nil,
         by means: (Account) async -> Alice.Response<Relationship>

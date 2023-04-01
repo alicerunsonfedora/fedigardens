@@ -35,8 +35,8 @@ struct GiantAlert<Icon: View, Actions: View, Message: View>: View {
 
     var body: some View {
         VStack(spacing: 16) {
-            if let icon {
-                icon()
+            if let icon = icon() {
+                icon
                     .font(.largeTitle)
                     .imageScale(.large)
                     .padding(.top)
@@ -45,8 +45,8 @@ struct GiantAlert<Icon: View, Actions: View, Message: View>: View {
                 .font(.largeTitle)
                 .bold()
             ScrollView(.vertical) {
-                if let message {
-                    message()
+                if let message = message() {
+                    message
                 } else {
                     defaultMessage
                 }
