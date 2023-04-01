@@ -16,6 +16,8 @@ import SwiftUI
 import Alice
 
 struct StatusDetailProfileMenu: View {
+    @Environment(\.openURL) private var openURL
+    @AppStorage(.preferMatrixConversations) private var prefersMatrixConversations: Bool = true
     @Binding var displayedProfile: Account?
     @Binding var composer: AuthoringContext?
     var account: Account
@@ -35,14 +37,32 @@ struct StatusDetailProfileMenu: View {
                     ),
                     style: .mention
                 )
-                GardensComposeButton(
-                    shouldInvokeParentSheet: $composer,
-                    context: AuthoringContext(
-                        participants: "@\(account.acct)",
-                        visibility: .direct
-                    ),
-                    style: .message
-                )
+                Group {
+                    if prefersMatrixConversations, let id = account.matrixID() {
+                        Button {
+                            let transformed = id.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                            if let url = URL(string: "https://matrix.to/#/\(transformed ?? "")") {
+                                openURL(url)
+                            }
+                        } label: {
+                            Label {
+                                Text("profile.matrixaction")
+                            } icon: {
+                                Text("[m]")
+                                    .bold()
+                            }
+                        }
+                    } else {
+                        GardensComposeButton(
+                            shouldInvokeParentSheet: $composer,
+                            context: AuthoringContext(
+                                participants: "@\(account.acct)",
+                                visibility: .direct
+                            ),
+                            style: .message
+                        )
+                    }
+                }
             } header: {
                 Text(account.getAccountName())
             }
