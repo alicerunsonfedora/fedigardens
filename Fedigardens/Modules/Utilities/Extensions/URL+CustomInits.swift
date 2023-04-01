@@ -23,6 +23,7 @@ extension URL {
         case raceway(title: String? = nil)
         case changelog
         case orion(String)
+        case matrixRoom
 
         private var ghLink: String { "https://github.com/alicerunsonfedora/fedigardens" }
 
@@ -43,6 +44,8 @@ extension URL {
                 return ghLink + "/issues/new?assignees=alicerunsonfedora&labels=Bug&template=bug_report.md"
             case .orion(let realURL):
                 return "orion://open-url?url=" + realURL
+            case .matrixRoom:
+                return "https://matrix.to/#/%23fedigardens:ems.host"
             }
         }
     }

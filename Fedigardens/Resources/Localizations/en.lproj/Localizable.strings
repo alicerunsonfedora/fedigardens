@@ -229,6 +229,7 @@
 "settings.about.source" = "View Source Code…";
 "settings.about.changelog" = "See What's New…";
 "settings.about.license" = "License";
+"settings.about.matrix" = "Join Our Matrix Room";
 
 // MARK: - Settings: Composer -
 "settings.section.author" = "Composing";

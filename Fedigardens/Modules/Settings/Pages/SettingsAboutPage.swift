@@ -50,6 +50,18 @@ struct SettingsAboutPage: View {
                             .labelStyle(.settings(color: .yellow, size: size))
                     }
                 }
+                if let url = URL(destination: .matrixRoom) {
+                    Link(destination: url) {
+                        Label {
+                            Text("settings.about.matrix")
+                        } icon: {
+                            Text("[m]")
+                                .bold()
+                                .font(.caption)
+                        }
+                        .labelStyle(.settings(color: .teal, size: size))
+                    }
+                }
                 GardensComposeButton(
                     shouldInvokeParentSheet: $shouldOpenFeedbackTool,
                     context: .init(
