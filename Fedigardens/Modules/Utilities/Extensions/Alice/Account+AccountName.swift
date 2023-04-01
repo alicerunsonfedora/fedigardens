@@ -25,11 +25,21 @@ extension Account {
         return "@\(acct)"
     }
 
+    /// Returns whether the account is verified.
     func verified() -> Bool {
         return fields.contains { field in field.verifiedAt != nil }
     }
 
+    /// Returns the domain from which that account was verified.
     func verifiedDomain() -> String? {
         return fields.first { field in field.verifiedAt != nil }?.value
+    }
+
+    /// Returns the Matrix ID of a user if they have left information about it in their bio.
+    func matrixID() -> String? {
+        guard let matrixValue = fields.first(where: { $0.name == "Matrix" })?
+            .value.plainTextContents() else { return nil }
+        let matrixRegex = /[\@\+\!\#\$][a-z0-9\.\_\=\-\/]+:(.*)/
+        return try? matrixRegex.wholeMatch(in: matrixValue) == nil ? nil : matrixValue
     }
 }

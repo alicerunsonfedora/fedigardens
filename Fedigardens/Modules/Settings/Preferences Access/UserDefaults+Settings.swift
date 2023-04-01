@@ -36,6 +36,11 @@ extension UserDefaults {
         set { setValue(newValue, forKey: .useFocusedInbox) }
     }
 
+    var preferMatrixConversations: Bool {
+        get { getValue(forKey: .preferMatrixConversations, default: true) }
+        set { setValue(newValue, forKey: .preferMatrixConversations) }
+    }
+
     // MARK: - Intervention Settings
     var allowsInterventions: Bool {
         get { getValue(forKey: .allowsInterventions, default: true) }

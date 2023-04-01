@@ -33,9 +33,9 @@ struct SearchTagResultPage: View {
             .listRowBackground(Color.clear)
 
             Group {
-                if let statuses = viewModel.timeline, statuses.isNotEmpty {
+                if viewModel.timeline.isNotEmpty {
                     Section {
-                        ForEach(statuses, id: \.uuid) { status in
+                        ForEach(viewModel.timeline, id: \.uuid) { status in
                             StatusView(status: status)
                                 .lineLimit(3)
                                 .profilePlacement(.hidden)
