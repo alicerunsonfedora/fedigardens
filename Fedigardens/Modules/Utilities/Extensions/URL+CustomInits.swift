@@ -45,7 +45,7 @@ extension URL {
             case .orion(let realURL):
                 return "orion://open-url?url=" + realURL
             case .matrixRoom:
-                return "https://matrix.to/#/%23fedigardens:ems.host"
+                return "https://matrix.to/#/%23fedigardens:one.ems.host"
             }
         }
     }
