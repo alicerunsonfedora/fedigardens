@@ -55,9 +55,7 @@ struct SettingsAboutPage: View {
                         Label {
                             Text("settings.about.matrix")
                         } icon: {
-                            Text("[m]")
-                                .bold()
-                                .font(.caption)
+                            Image("matrix")
                         }
                         .labelStyle(.settings(color: .teal, size: size))
                     }

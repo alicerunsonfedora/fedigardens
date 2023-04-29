@@ -54,8 +54,7 @@ struct ProfileSheetToolbar: ToolbarContent {
                         Label {
                             Text("profile.matrixaction")
                         } icon: {
-                            Text("[m]")
-                                .bold()
+                            Image("matrix")
                         }
                     }
                 } else {

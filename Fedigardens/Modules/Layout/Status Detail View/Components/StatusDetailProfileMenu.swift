@@ -48,8 +48,7 @@ struct StatusDetailProfileMenu: View {
                             Label {
                                 Text("profile.matrixaction")
                             } icon: {
-                                Text("[m]")
-                                    .bold()
+                                Image("matrix")
                             }
                         }
                     } else {
