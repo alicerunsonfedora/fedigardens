@@ -17,6 +17,8 @@ import EmojiText
 import Alice
 
 struct PollCallToActionView: View {
+    @AppStorage(.frugalMode) var frugalMode: Bool = false
+
     var author: Account
     var poll: Poll
 
@@ -25,6 +27,10 @@ struct PollCallToActionView: View {
             return "infinity"
         }
         return date.formatted(date: .abbreviated, time: .shortened)
+    }
+
+    private var emojis: [RemoteEmoji] {
+        return frugalMode ? [] : author.emojis.map(\.remoteEmoji)
     }
 
     var body: some View {
@@ -36,7 +42,7 @@ struct PollCallToActionView: View {
                         author.getAccountName(),
                         expirationDateString
                     ),
-                    emojis: author.emojis.map(\.remoteEmoji)
+                    emojis: emojis
                 )
                 .font(.headline)
                 .bold()

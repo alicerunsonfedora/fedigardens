@@ -17,6 +17,7 @@ import Alice
 import EmojiText
 
 struct StatusDisclosedContent: View {
+    @AppStorage(.frugalMode) var frugalMode: Bool = false
     @Environment(\.customEmojis) var emojis
     var discloseContent: Bool
 
@@ -34,6 +35,7 @@ struct StatusDisclosedContent: View {
     }
 
     private var allEmojis: [RemoteEmoji] {
+        if frugalMode { return [] }
         let emojisFromStatus = status.account.emojis + (status.reblog?.account.emojis ?? [])
         return emojis + emojisFromStatus.map(\.remoteEmoji)
     }
@@ -49,7 +51,7 @@ struct StatusDisclosedContent: View {
                     .lineLimit(truncateLines)
                     .textSelection(.enabled)
             }
-            if truncateLines == nil {
+            if truncateLines == nil, !frugalMode {
                 AttachmentMediaGroup(status: status)
                 if let poll = status.poll {
                     if poll.expired || poll.voted == true {

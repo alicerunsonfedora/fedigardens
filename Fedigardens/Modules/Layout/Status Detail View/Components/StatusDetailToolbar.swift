@@ -20,6 +20,7 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
     @Environment(\.openURL) var openURL
     @Environment(\.openWindow) var openWindow
     @Environment(\.userProfile) var currentUser
+    @AppStorage(.frugalMode) var frugalMode: Bool = false
     @StateObject var viewModel: StatusDetailViewModel
     @Binding var displayUndisclosedContent: Bool
 
@@ -155,7 +156,7 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                     } label: {
                         Label("status.attachmentaction", systemImage: "paperclip")
                     }
-                    .disabled(allAttached == nil || allAttached?.isEmpty == true)
+                    .disabled(frugalMode || allAttached == nil || allAttached?.isEmpty == true)
                 }
             }
             .defaultCustomization(options: .alwaysAvailable)
