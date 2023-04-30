@@ -16,6 +16,7 @@ import SwiftUI
 import Alice
 
 struct AttachmentViewerToolbar: ToolbarContent {
+    @Environment(\.openURL) private var openURL
     @Environment(\.dismiss) private var dismiss
     @StateObject var viewModel: AttachmentViewerViewModel
 
@@ -36,9 +37,18 @@ struct AttachmentViewerToolbar: ToolbarContent {
                         Button {
                             viewModel.shouldDisplayConsentAcknowledgementAlert.toggle()
                         } label: {
-                            Label("general.share", systemImage: "square.and.arrow.up")
+                            Label("general.share", systemImage: "square.and.arrow.up.trianglebadge.exclamationmark")
                         }
                     }
+                }
+            }
+            ToolbarItem {
+                Button {
+                    if let url = URL(string: viewModel.currentAttachment?.url ?? "") {
+                        openURL(url)
+                    }
+                } label: {
+                    Label("general.browseraction", systemImage: "safari")
                 }
             }
             ToolbarItem {

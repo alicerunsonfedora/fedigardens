@@ -26,6 +26,7 @@
 "general.done" = "Done";
 "general.recommend" = "Recommended";
 "general.search" = "Search";
+"general.browseraction" = "Open in Safari";
 
 // MARK: - Endpoints
 "endpoint.home" = "For You";

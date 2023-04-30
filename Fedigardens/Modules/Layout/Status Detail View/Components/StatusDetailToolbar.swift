@@ -53,7 +53,7 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                         openURL(url)
                     }
                 } label: {
-                    Label("Open in Safari", systemImage: "safari")
+                    Label("general.browseraction", systemImage: "safari")
                 }
             }
             .defaultCustomization(options: .alwaysAvailable)
@@ -154,7 +154,8 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                         }
                     } label: {
                         Label("status.attachmentaction", systemImage: "paperclip")
-                    }.disabled(allAttached == nil || allAttached?.isEmpty == true)
+                    }
+                    .disabled(allAttached == nil || allAttached?.isEmpty == true)
                 }
             }
             .defaultCustomization(options: .alwaysAvailable)
