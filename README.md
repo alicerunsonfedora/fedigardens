@@ -38,7 +38,7 @@ the OBJECTIVES.md file, located in the docs of the project's source code.
 **Optional (but Recommended) Tools**  
 - SwiftLint
 
-Clone the repository via `git clone`, then open the Shout.xcodeproj file
+Clone the repository via `git clone`, then open the Fedigardens workspace
 in the root directory.
 
 > :information_source: To prevent collisions with the normal app available
@@ -67,9 +67,10 @@ be distributed through TestFlight or the App Store.
 
 ## Bug Reporting
 
-If you have found a bug or would like to make a feature request, please
-reach out to me on my Discord at (https://chatwith.marquiskurt.net) or
-send me an email at `software @ marquiskurt.net`.
+If you have found a bug or would like to make a feature request, please do
+so on the project's Raceway page at
+https://raceway.marquiskurt.net/t/fedigardens or by filing a bug report on
+the GitHub repository's issues page.
 
 ## Licensing
 
@@ -83,5 +84,8 @@ projects:
 - Chica: Non-Violent Public License v4+
 - SafariView: Mozilla Public License v2
 - HTML2Markdown: MIT License
+- Drops: MIT License
+- EmojiText: Apache 2.0 License
+- AckGen: MIT License
 
 [capstone-link]: https://github.com/alicerunsonfedora/capstone
