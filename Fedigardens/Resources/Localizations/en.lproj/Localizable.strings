@@ -27,6 +27,7 @@
 "general.recommend" = "Recommended";
 "general.search" = "Search";
 "general.browseraction" = "Open in Safari";
+"general.frugalon" = "Frugal mode enabled.";
 
 // MARK: - Endpoints
 "endpoint.home" = "For You";
