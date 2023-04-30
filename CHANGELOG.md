@@ -18,6 +18,7 @@ And list your changes under that.
   and the profile menu in a discussion detail view.
 - (FGD-42) Adds a new "Join Our Matrix Room" section in the About page, which links to #fedigardens:one.ems.host.
 - When viewing profiles, the profile stats before the biography are shown/hiiden per the Show Statistics preference.
+- Adds a new Frugal Mode setting to use Mastodon more frugally by limiting what is loaded from the network.
 
 ## [1.0-35 (beta)] - 15/3/23
 
