@@ -37,6 +37,12 @@ struct SettingsView: View {
                         Label("settings.section.author", systemImage: "square.and.pencil")
                             .labelStyle(.settings(color: .indigo, size: size))
                     }
+                    NavigationLink {
+                        SettingsEnergyPage()
+                    } label: {
+                        Label("settings.section.energy", systemImage: "leaf")
+                            .labelStyle(.settings(color: .green, size: size))
+                    }
                 } header: {
                     Text("settings.section.core")
                 }

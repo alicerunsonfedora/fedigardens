@@ -18,24 +18,11 @@ struct SettingsReadingPage: View {
     @AppStorage(.useFocusedInbox) var hidesReblogsAndReplies = false
     @AppStorage(.showsStatistics) var showsStatistics: Bool = true
     @AppStorage(.alwaysShowUserHandle) var alwaysShowsUserHandle: Bool = true
-    @AppStorage(.loadLimit) var loadLimit: Int = 10
     @AppStorage(.preferMatrixConversations) var preferMatrixConversations: Bool = true
     @ScaledMetric private var size = 1.0
 
     var body: some View {
         Form {
-            Section {
-                Stepper(value: $loadLimit, step: 5) {
-                    Text(
-                        String(format:
-                                NSLocalizedString("settings.loadlimit.text", comment: "load limit"),
-                               String(loadLimit))
-                    )
-                }
-            } footer: {
-                Text("settings.loadlimit.detail")
-            }
-
             Section {
                 Toggle(isOn: $alwaysShowsUserHandle) {
                     Text("settings.showhandle.title")
