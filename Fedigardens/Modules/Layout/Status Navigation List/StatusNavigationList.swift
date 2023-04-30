@@ -22,7 +22,7 @@ struct StatusNavigationList<Extras: View>: View {
     @Environment(\.supportsMultipleWindows) private var supportsMultipleWindows
     @Environment(\.openWindow) private var openWindow
     @AppStorage(.useFocusedInbox) private var useFocusedInbox: Bool = false
-    @AppStorage(.frugalMode) private var frugalMode: Bool = true
+    @AppStorage(.frugalMode) private var frugalMode: Bool = false
     @State var statuses: [Status]
     @Binding var selectedStatus: Status?
     @StateObject private var viewModel = ViewModel()

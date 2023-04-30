@@ -16,6 +16,8 @@ import Alice
 import SwiftUI
 
 struct AccountImage: View {
+    @AppStorage(.frugalMode) var frugalMode: Bool = false
+
     enum ProfileImageSize: CGFloat {
         case small = 20
         case medium = 32
@@ -38,14 +40,21 @@ struct AccountImage: View {
     fileprivate var profileImageSize: ProfileImageSize = .small
 
     var body: some View {
-        AsyncImage(url: .init(string: author.avatarStatic)) { image in
-            image
-                .resizable()
-                .scaledToFit()
-                .clipShape(Circle())
-        } placeholder: {
-            Image(systemName: "person.circle")
-                .imageScale(.large)
+        Group {
+            if frugalMode {
+                Image(systemName: "person.circle")
+                    .imageScale(.large)
+            } else {
+                AsyncImage(url: .init(string: author.avatarStatic)) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .clipShape(Circle())
+                } placeholder: {
+                    Image(systemName: "person.circle")
+                        .imageScale(.large)
+                }
+            }
         }
         .frame(width: profileImageSize.rawValue, height: profileImageSize.rawValue)
     }

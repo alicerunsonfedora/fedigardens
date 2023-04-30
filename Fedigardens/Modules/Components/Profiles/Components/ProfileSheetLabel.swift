@@ -17,13 +17,18 @@ import Alice
 import EmojiText
 
 struct ProfileSheetLabel: View {
+    @AppStorage(.frugalMode) var frugalMode: Bool = false
     var profile: Account
+
+    private var emojis: [RemoteEmoji] {
+        return frugalMode ? [] : profile.emojis.map(\.remoteEmoji)
+    }
 
     var body: some View {
         VStack(spacing: 4) {
             AccountImage(author: profile)
                 .profileSize(.xxlarge)
-            EmojiText(markdown: profile.getAccountName(), emojis: profile.emojis.map(\.remoteEmoji))
+            EmojiText(markdown: profile.getAccountName(), emojis: emojis)
                 .font(.system(.largeTitle, design: .rounded))
                 .multilineTextAlignment(.center)
                 .bold()

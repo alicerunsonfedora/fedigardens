@@ -17,13 +17,15 @@ import Alice
 import EmojiText
 
 struct ProfileSheetView: View {
+    @AppStorage(.frugalMode) var frugalMode: Bool = false
     @Environment(\.customEmojis) var emojis
     @Environment(\.dismiss) var dismiss
     @StateObject private var viewModel = ProfileSheetViewModel()
     var profile: Account
 
     private var allEmojis: [RemoteEmoji] {
-        emojis + profile.emojis.map { emoji in emoji.remote() }
+        if frugalMode { return [] }
+        return emojis + profile.emojis.map { emoji in emoji.remote() }
     }
 
     var body: some View {

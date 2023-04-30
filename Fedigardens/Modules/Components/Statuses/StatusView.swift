@@ -40,6 +40,7 @@ struct StatusView: View {
     @Environment(\.customEmojis) var emojis
     @AppStorage("status.show-statistics") var showsStatistics: Bool = true
     @AppStorage(.alwaysShowUserHandle) var showsUserHandle: Bool = true
+    @AppStorage(.frugalMode) var frugalMode: Bool = false
 
     var status: Status
 
@@ -53,6 +54,7 @@ struct StatusView: View {
     fileprivate var displayDisclosedContent: Bool
 
     private var allEmojis: [RemoteEmoji] {
+        if frugalMode { return [] }
         let emojisFromStatus = status.account.emojis + (status.reblog?.account.emojis ?? [])
         return emojis + emojisFromStatus.map { emoji in emoji.remote() }
     }
@@ -92,17 +94,17 @@ struct StatusView: View {
 
     var body: some View {
         HStack(spacing: 16) {
-            if profileImagePlacement == .byEntireView {
+            if profileImagePlacement == .byEntireView, !frugalMode {
                 authorImage
             }
             VStack(alignment: .leading, spacing: truncateLines != nil ? 4 : 8) {
-                if reblogNoticePlacement == .aboveOriginalAuthor, status.reblog != nil {
+                if reblogNoticePlacement == .aboveOriginalAuthor, status.reblog != nil, !frugalMode {
                     reblogNotice
                         .font(.subheadline)
                         .padding(.vertical, 8)
                 }
                 HStack {
-                    if profileImagePlacement == .byAuthorName { authorImage }
+                    if profileImagePlacement == .byAuthorName, !frugalMode { authorImage }
                     VStack(alignment: .leading) {
                         HStack(alignment: .top) {
                             StatusAuthorExtendedLabel(
@@ -208,8 +210,14 @@ struct StatusView: View {
                     EmojiText(markdown: "\(status.account.getAccountName()) reblogged".markdown(), emojis: allEmojis)
                         .bold()
                 } icon: {
-                    AccountImage(author: status.account)
-                        .profileSize(.small)
+                    Group {
+                        if frugalMode {
+                            Image(systemName: "person.circle")
+                        } else {
+                            AccountImage(author: status.account)
+                                .profileSize(.small)
+                        }
+                    }
                 }
                 .foregroundColor(.secondary)
                 .labelStyle(.titleAndIcon)
@@ -218,8 +226,12 @@ struct StatusView: View {
                     EmojiText(markdown: "\(status.account.getAccountName()) reblogged".markdown(), emojis: allEmojis)
                         .bold()
                 } icon: {
-                    AccountImage(author: status.account)
-                        .profileSize(.small)
+                    if frugalMode {
+                        Image(systemName: "person.circle")
+                    } else {
+                        AccountImage(author: status.account)
+                            .profileSize(.small)
+                    }
                 }
                 .foregroundColor(.secondary)
                 .labelStyle(.titleOnly)

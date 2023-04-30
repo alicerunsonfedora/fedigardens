@@ -17,11 +17,17 @@ import Alice
 import EmojiText
 
 struct StatusDetailQuote: View {
+    @AppStorage(.frugalMode) var frugalMode: Bool = false
     @State private var expandQuote = false
     @Binding var displayUndisclosedContent: Bool
     var status: Status
     var quote: Status
     var source: Status.QuoteSource
+
+    private var emojis: [RemoteEmoji] {
+        if frugalMode { return [] }
+        return status.emojis.map(\.remoteEmoji) + status.account.emojis.map(\.remoteEmoji)
+    }
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -31,7 +37,7 @@ struct StatusDetailQuote: View {
                         format: "status.quotedetect.title".localized(comment: "Quote detected"),
                         status.account.getAccountName()
                     ),
-                    emojis: status.emojis.map(\.remoteEmoji) + status.account.emojis.map(\.remoteEmoji)
+                    emojis: emojis
                 )
 
             } icon: {
@@ -45,7 +51,7 @@ struct StatusDetailQuote: View {
                     status.account.getAccountName(),
                     quote.originalAuthor().getAccountName()
                 ).markdown(),
-                emojis: status.emojis.map(\.remoteEmoji) + status.account.emojis.map(\.remoteEmoji)
+                emojis: emojis
             )
             .font(.subheadline)
             .foregroundColor(.secondary)

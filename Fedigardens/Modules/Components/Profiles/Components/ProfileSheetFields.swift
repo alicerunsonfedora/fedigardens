@@ -17,13 +17,18 @@ import Alice
 import EmojiText
 
 struct ProfileSheetFields: View {
+    @AppStorage(.frugalMode) var frugalMode: Bool = false
     var profile: Account
+
+    private var emojis: [RemoteEmoji] {
+        return frugalMode ? [] : profile.emojis.map(\.remoteEmoji)
+    }
 
     var body: some View {
         Group {
             ForEach(profile.fields) { (field: Field) in
                 LabeledContent(field.name) {
-                    EmojiText(markdown: field.value.markdown(), emojis: profile.emojis.map(\.remoteEmoji))
+                    EmojiText(markdown: field.value.markdown(), emojis: emojis)
                         .multilineTextAlignment(.trailing)
                 }
                 .listRowBackground(

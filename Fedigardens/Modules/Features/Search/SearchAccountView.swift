@@ -17,7 +17,12 @@ import Alice
 import EmojiText
 
 struct SearchAccountView: View {
+    @AppStorage(.frugalMode) var frugalMode: Bool = false
     var account: Account
+
+    private var emojis: [RemoteEmoji] {
+        return frugalMode ? [] : account.emojis.map(\.remoteEmoji)
+    }
 
     var body: some View {
         HStack {
@@ -27,7 +32,7 @@ struct SearchAccountView: View {
                 HStack {
                     EmojiText(
                         markdown: account.getAccountName(),
-                        emojis: account.emojis.map(\.remoteEmoji)
+                        emojis: emojis
                     )
                     .font(.headline)
                     Text("@\(account.acct)")
@@ -36,7 +41,7 @@ struct SearchAccountView: View {
                 }
                 .lineLimit(1)
 
-                EmojiText(markdown: account.note.markdown(), emojis: account.emojis.map(\.remoteEmoji))
+                EmojiText(markdown: account.note.markdown(), emojis: emojis)
                     .lineLimit(2)
                     .font(.footnote)
             }
