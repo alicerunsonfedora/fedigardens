@@ -100,6 +100,7 @@
 "status.languagecode" = "Select a Language";
 "status.editmode.title" = "You are editing this discussion.";
 "status.editmode.detail" = "Some composition features such as setting the visibility may not be available.";
+"status.media.frugalon" = "Media attachments won't be displayed to help use less resources and curb carbon emissions.";
 
 // MARK: - Status: Polls -
 "status.poll.voted" = "You have contributed to this poll already.";
@@ -282,8 +283,8 @@
 
 // MARK: - Settings: Energy Savings -
 "settings.section.energy" = "Energy Savings";
-"settings.frugalmode.title" = "Use Frugal Mode";
-"settings.frugalmode.detail" = "Frugal mode automatically limits fetching resources such as images and larger timelines.";
+"settings.frugalmode.title" = "Frugal Mode";
+"settings.frugalmode.detail" = "Using frugal mode can help use less resources and curb carbon emissions by limiting the content being loaded. [Learn more…](https://fedigardens.app/support/#frugal-mode)";
 
 // MARK: - Acknowledgements
 "acknowledge.title" = "Acknowledgements";
