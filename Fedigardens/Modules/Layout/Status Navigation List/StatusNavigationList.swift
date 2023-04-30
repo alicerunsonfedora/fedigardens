@@ -45,7 +45,7 @@ struct StatusNavigationList<Extras: View>: View {
                 if frugalMode {
                     Label("general.frugalon", systemImage: "leaf.fill")
                         .bold()
-                        .font(.subheadline)
+                        .font(.system(.subheadline, design: .rounded))
                         .foregroundColor(.green)
                         .listRowSeparator(.hidden)
                 }

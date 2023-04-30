@@ -43,7 +43,8 @@ struct AccountImage: View {
         Group {
             if frugalMode {
                 Image(systemName: "person.circle")
-                    .imageScale(.large)
+                    .resizable()
+                    .scaledToFit()
             } else {
                 AsyncImage(url: .init(string: author.avatarStatic)) { image in
                     image

@@ -51,8 +51,17 @@ struct StatusDisclosedContent: View {
                     .lineLimit(truncateLines)
                     .textSelection(.enabled)
             }
-            if truncateLines == nil, !frugalMode {
-                AttachmentMediaGroup(status: status)
+            if truncateLines == nil {
+                if frugalMode {
+                    InformationCard(
+                        title: "general.frugalon".localized(),
+                        systemImage: "leaf",
+                        content: "status.media.frugalon".localized()
+                    )
+                    .tint(.green)
+                } else {
+                    AttachmentMediaGroup(status: status)
+                }
                 if let poll = status.poll {
                     if poll.expired || poll.voted == true {
                         StatusPollView(poll: poll)
@@ -69,23 +78,15 @@ struct StatusDisclosedContent: View {
         VStack(alignment: .leading) {
             HStack(alignment: .top) {
                 if truncateLines == nil {
-                    VStack(alignment: .leading, spacing: 6) {
-                        Label(
-                            String(
-                                format: NSLocalizedString("status.spoilermessage", comment: "CW acknowledgement"),
-                                status.account.getAccountName(),
-                                status.spoilerText
-                            ),
-                            systemImage: "exclamationmark.triangle"
-                        )
-                        .font(.headline)
-                        Text("status.spoilermessage-cta")
-                            .font(.subheadline)
-                    }
-                    .font(.callout)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color(uiColor: .tertiarySystemFill).cornerRadius(10))
+                    InformationCard(
+                        title: "status.spoilermessage".localized(
+                            comment: "CW acknowledgement",
+                            status.account.getAccountName(),
+                            status.spoilerText
+                        ),
+                        systemImage: "exclamationmark.triangle",
+                        content: "status.spoilermessage-cta".localized()
+                    )
                     Spacer()
                 } else {
                     Label(status.spoilerText, systemImage: "eye.slash")
