@@ -17,6 +17,7 @@ And list your changes under that.
   that have the "Matrix: (Matrix ID)" field in their bio with a valid Matrix ID. This setting applies in profile pages
   and the profile menu in a discussion detail view.
 - (FGD-42) Adds a new "Join Our Matrix Room" section in the About page, which links to #fedigardens:one.ems.host.
+- When viewing profiles, the profile stats before the biography are shown/hiiden per the Show Statistics preference.
 
 ## [1.0-35 (beta)] - 15/3/23
 
