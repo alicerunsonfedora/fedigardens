@@ -27,7 +27,7 @@ struct ProfileSheetStatisticCellView: View {
                 Text(value)
                     .font(.headline)
                 Text(key)
-                    .font(.subheadline)
+                    .font(.caption)
                     .foregroundColor(.secondary)
             }
         }
