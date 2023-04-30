@@ -32,6 +32,7 @@ enum GardensSettingsKey: String {
     case defaultFeedbackVisibility = "author.feedbackvisibility"
     case addQuoteParticipant = "author.quoteparticipant"
     case preferMatrixConversations = "profiles.prefermatrix"
+    case frugalMode = "core.frugal-mode"
 }
 
 extension UserDefaults {

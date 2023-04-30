@@ -21,6 +21,11 @@ extension UserDefaults {
         set { setValue(newValue, forKey: .loadLimit) }
     }
 
+    var frugalMode: Bool {
+        get { getValue(forKey: .frugalMode, default: false) }
+        set { setValue(newValue, forKey: .frugalMode) }
+    }
+
     var showsStatistics: Bool {
         get { getValue(forKey: .showsStatistics, default: false) }
         set { setValue(newValue, forKey: .showsStatistics) }
