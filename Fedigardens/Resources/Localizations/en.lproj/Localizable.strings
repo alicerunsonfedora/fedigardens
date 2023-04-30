@@ -279,6 +279,11 @@
 "settings.feedback.personaldetail" = "Send a bug report or suggest a feature on Raceway.";
 "settings.feedback.bugreportdetail" = "Submit a traditional bug report through GitHub Issues.";
 
+// MARK: - Settings: Energy Savings -
+"settings.section.energy" = "Energy Savings";
+"settings.frugalmode.title" = "Use Frugal Mode";
+"settings.frugalmode.detail" = "Frugal mode automatically limits fetching resources such as images and larger timelines.";
+
 // MARK: - Acknowledgements
 "acknowledge.title" = "Acknowledgements";
 "acknowledge.libraries" = "Libraries";

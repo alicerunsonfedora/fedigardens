@@ -115,6 +115,8 @@
 		957AF85329592DD1000370E6 /* AuthoringContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957AF85129592DD1000370E6 /* AuthoringContext.swift */; };
 		957AF855295937CF000370E6 /* AuthorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957AF854295937CF000370E6 /* AuthorViewModel.swift */; };
 		957AF856295937CF000370E6 /* AuthorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957AF854295937CF000370E6 /* AuthorViewModel.swift */; };
+		957CBC8529FEE60400FE23BA /* SettingsEnergyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957CBC8429FEE60400FE23BA /* SettingsEnergyPage.swift */; };
+		957CBC8629FEE60400FE23BA /* SettingsEnergyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957CBC8429FEE60400FE23BA /* SettingsEnergyPage.swift */; };
 		95801D1F297C6B3800FE8D83 /* SettingsAuthorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */; };
 		95801D21297C71F000FE8D83 /* AuthorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95801D20297C71F000FE8D83 /* AuthorViewModelTests.swift */; };
 		95801D26297C751C00FE8D83 /* String+AttributedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */; };
@@ -369,6 +371,7 @@
 		957AF84E29591B44000370E6 /* StatusPollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPollView.swift; sourceTree = "<group>"; };
 		957AF85129592DD1000370E6 /* AuthoringContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthoringContext.swift; sourceTree = "<group>"; };
 		957AF854295937CF000370E6 /* AuthorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewModel.swift; sourceTree = "<group>"; };
+		957CBC8429FEE60400FE23BA /* SettingsEnergyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEnergyPage.swift; sourceTree = "<group>"; };
 		95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAuthorPage.swift; sourceTree = "<group>"; };
 		95801D20297C71F000FE8D83 /* AuthorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewModelTests.swift; sourceTree = "<group>"; };
 		95801D24297C738A00FE8D83 /* Fedigardens Test Plan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Fedigardens Test Plan.xctestplan"; sourceTree = "<group>"; };
@@ -696,6 +699,7 @@
 				955F1B622986FBBE00702BE8 /* SettingsLicensePage.swift */,
 				9537C6D8297DC71C0039F3C4 /* SettingsReadingPage.swift */,
 				95097E0B2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift */,
+				957CBC8429FEE60400FE23BA /* SettingsEnergyPage.swift */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -1264,6 +1268,7 @@
 				95369B5D27B82E7D00F39531 /* LayoutStateRepresentable.swift in Sources */,
 				95CEFDF2295A3B4900EEE96C /* StatusAuthorExtendedLabel.swift in Sources */,
 				95CDCD2A29905085002BD37A /* GiantAlert.swift in Sources */,
+				957CBC8529FEE60400FE23BA /* SettingsEnergyPage.swift in Sources */,
 				95009EF4295E780A00F32F85 /* GardensAppLayoutViewModel.swift in Sources */,
 				953BC7C82957E156005C7F2A /* RecursiveNavigationView.swift in Sources */,
 				953BC7CE2957FD94005C7F2A /* AttachmentMediaGroup.swift in Sources */,
@@ -1388,6 +1393,7 @@
 				95CEFDEC295A031E00EEE96C /* Pip.swift in Sources */,
 				95860C6029982E5100068425 /* PollVotingViewModel.swift in Sources */,
 				95801D4C297CC10700FE8D83 /* GardensPageLink.swift in Sources */,
+				957CBC8629FEE60400FE23BA /* SettingsEnergyPage.swift in Sources */,
 				95801D43297CC0F200FE8D83 /* AuthorReplySegment.swift in Sources */,
 				95860C5D29981F3700068425 /* PollVotingView.swift in Sources */,
 				95860C63299837ED00068425 /* StatusDetailList.swift in Sources */,
