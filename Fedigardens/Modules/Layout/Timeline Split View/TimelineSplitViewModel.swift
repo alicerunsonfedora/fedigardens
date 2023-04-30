@@ -39,6 +39,10 @@ class TimelineSplitViewModel: ObservableObject {
     @Published var scope: TimelineType = .scopedTimeline(scope: .home, local: false)
     @Published var displayOneSecNotInstalledWarning = false
 
+    var timelineLoadLimit: Int {
+        UserDefaults.standard.frugalMode ? 10 : UserDefaults.standard.loadLimit
+    }
+
     init(scope: TimelineType) {
         self.scope = scope
     }
@@ -111,7 +115,7 @@ class TimelineSplitViewModel: ObservableObject {
     }
 
     private func requestParams(locally local: Bool = false, using policy: ReloadPolicy) -> [String: String] {
-        var parameters = ["limit": String(UserDefaults.standard.loadLimit)]
+        var parameters = ["limit": String(timelineLoadLimit)]
         if local { parameters["local"] = "true" }
         if case .scopedTimeline = scope, policy == .preloadNextBatch, let lastPost = timelineData.last {
             parameters["max_id"] = lastPost.id
