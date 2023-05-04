@@ -38,3 +38,5 @@ struct MockData {
 
     static let poll: Poll? = try! JSONDecoder.decodeFromResource(from: "Poll")
 }
+
+// swiftlint:enable force_try

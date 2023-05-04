@@ -18,6 +18,7 @@ import Alice
 
 struct PollCallToActionView: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false
+    @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
 
     var author: Account
     var poll: Poll
@@ -30,7 +31,7 @@ struct PollCallToActionView: View {
     }
 
     private var emojis: [RemoteEmoji] {
-        return frugalMode ? [] : author.emojis.map(\.remoteEmoji)
+        return (enforcedFrugalMode || frugalMode) ? [] : author.emojis.map(\.remoteEmoji)
     }
 
     var body: some View {

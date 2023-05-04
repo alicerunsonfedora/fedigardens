@@ -17,6 +17,7 @@ import Alice
 
 struct StatusDetailToolbar: CustomizableToolbarContent {
     @Environment(\.deviceModel) var deviceModel
+    @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
     @Environment(\.openURL) var openURL
     @Environment(\.openWindow) var openWindow
     @Environment(\.userProfile) var currentUser
@@ -156,7 +157,7 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                     } label: {
                         Label("status.attachmentaction", systemImage: "paperclip")
                     }
-                    .disabled(frugalMode || allAttached == nil || allAttached?.isEmpty == true)
+                    .disabled(enforcedFrugalMode || frugalMode || allAttached == nil || allAttached?.isEmpty == true)
                 }
             }
             .defaultCustomization(options: .alwaysAvailable)

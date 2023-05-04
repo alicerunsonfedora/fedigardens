@@ -18,6 +18,7 @@ import EmojiText
 
 struct SearchDirectoryView: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false
+    @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
     var directory: [Account]
     @StateObject var viewModel: SearchViewModel
 
@@ -33,7 +34,7 @@ struct SearchDirectoryView: View {
                                 .profileSize(.xlarge)
                             EmojiText(
                                 markdown: account.getAccountName(),
-                                emojis: frugalMode ? [] : account.emojis.map(\.remoteEmoji)
+                                emojis: (enforcedFrugalMode || frugalMode) ? [] : account.emojis.map(\.remoteEmoji)
                             )
                             .font(.headline)
                             Text("@\(account.acct)")

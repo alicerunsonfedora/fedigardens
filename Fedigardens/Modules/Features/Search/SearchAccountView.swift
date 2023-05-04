@@ -18,10 +18,11 @@ import EmojiText
 
 struct SearchAccountView: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false
+    @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
     var account: Account
 
     private var emojis: [RemoteEmoji] {
-        return frugalMode ? [] : account.emojis.map(\.remoteEmoji)
+        return (enforcedFrugalMode || frugalMode) ? [] : account.emojis.map(\.remoteEmoji)
     }
 
     var body: some View {
