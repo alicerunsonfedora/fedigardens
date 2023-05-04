@@ -28,6 +28,7 @@ struct Shout: App {
                 .environment(\.interventionAuthorization, globalStore.interventionAuthorization ?? .default)
                 .environmentObject(interventionHandler)
                 .environment(\.customEmojis, globalStore.emojis)
+                .environment(\.enforcedFrugalMode, globalStore.overrideFrugalMode)
                 .onOpenURL { url in
                     globalStore.checkAuthorizationToken(from: url)
                     if let newContext = globalStore.createInterventionContext(from: url) {
@@ -40,6 +41,9 @@ struct Shout: App {
                         await globalStore.getUserProfile()
                         await globalStore.getInstanceEmojis()
                     }
+                }
+                .onReceive(of: Notification.Name.NSProcessInfoPowerStateDidChange) { _ in
+                    globalStore.overrideFrugalModeFromLowPowerMode()
                 }
         }
 
