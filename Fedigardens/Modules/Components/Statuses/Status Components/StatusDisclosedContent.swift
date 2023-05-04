@@ -52,15 +52,23 @@ struct StatusDisclosedContent: View {
                     .textSelection(.enabled)
             }
             if truncateLines == nil {
-                if frugalMode {
-                    InformationCard(
-                        title: "general.frugalon".localized(),
-                        systemImage: "leaf",
-                        content: "status.media.frugalon".localized()
-                    )
-                    .tint(.green)
-                } else {
-                    AttachmentMediaGroup(status: status)
+                if status.mediaAttachments.isNotEmpty {
+                    if frugalMode {
+                        InformationCard(
+                            title: "general.frugalon".localized(),
+                            systemImage: "leaf",
+                            content: "status.media.frugalon".localized()
+                        )
+                        .tint(.green)
+                        VStack(alignment: .leading) {
+                            ForEach(status.mediaAttachments) { attachment in
+                                StatusAttachmentAlernative(attachment: attachment)
+                            }
+                        }
+                        .multilineTextAlignment(.leading)
+                    } else {
+                        AttachmentMediaGroup(status: status)
+                    }
                 }
                 if let poll = status.poll {
                     if poll.expired || poll.voted == true {
