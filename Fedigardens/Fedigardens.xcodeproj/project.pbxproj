@@ -43,6 +43,8 @@
 		9547230627A0094000D1BA89 /* Gardens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F627A0093F00D1BA89 /* Gardens.swift */; };
 		9547230827A0094000D1BA89 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F727A0093F00D1BA89 /* ContentView.swift */; };
 		9547230A27A0094000D1BA89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 954722F827A0094000D1BA89 /* Assets.xcassets */; };
+		954C95052A0461310019AE09 /* StatusAttachmentAlternative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95042A0461310019AE09 /* StatusAttachmentAlternative.swift */; };
+		954C95062A0461310019AE09 /* StatusAttachmentAlternative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95042A0461310019AE09 /* StatusAttachmentAlternative.swift */; };
 		95555FB32960B7A2005BEF45 /* AckGen in Frameworks */ = {isa = PBXBuildFile; productRef = 95555FB22960B7A2005BEF45 /* AckGen */; };
 		95555FB52960B7A2005BEF45 /* AckGenUI in Frameworks */ = {isa = PBXBuildFile; productRef = 95555FB42960B7A2005BEF45 /* AckGenUI */; };
 		95555FB72960B7F1005BEF45 /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95555FB62960B7F0005BEF45 /* Acknowledgements.plist */; };
@@ -330,6 +332,7 @@
 		954722F727A0093F00D1BA89 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		954722F827A0094000D1BA89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		954722FD27A0094000D1BA89 /* Fedigardens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fedigardens.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		954C95042A0461310019AE09 /* StatusAttachmentAlternative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAttachmentAlternative.swift; sourceTree = "<group>"; };
 		95555FB62960B7F0005BEF45 /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
 		95555FB82960B8DA005BEF45 /* SettingsAcknowledgementList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAcknowledgementList.swift; sourceTree = "<group>"; };
 		95555FBA2960B9F7005BEF45 /* Acknowledgement+License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Acknowledgement+License.swift"; sourceTree = "<group>"; };
@@ -635,6 +638,7 @@
 				956714132958B69D00BFF76A /* StatusDisclosedContent.swift */,
 				95CEFDE72959637400EEE96C /* StatusVerifiedButton.swift */,
 				95CEFDF1295A3B4900EEE96C /* StatusAuthorExtendedLabel.swift */,
+				954C95042A0461310019AE09 /* StatusAttachmentAlternative.swift */,
 			);
 			path = "Status Components";
 			sourceTree = "<group>";
@@ -1187,6 +1191,7 @@
 				953BC7C52957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */,
 				95A1BF9829738A75002C88B6 /* ProfileSheetView.swift in Sources */,
 				9558C7F029579E66001B30C7 /* GardensComposeButton.swift in Sources */,
+				954C95052A0461310019AE09 /* StatusAttachmentAlternative.swift in Sources */,
 				95CD3C4F29650A600043CDB2 /* GardensViewModel.swift in Sources */,
 				952A06E129691B95008340A4 /* GardensAppCompactLayout.swift in Sources */,
 				95009EF2295E711100F32F85 /* AuthenticationViewModel.swift in Sources */,
@@ -1343,6 +1348,7 @@
 				957AF85029591B44000370E6 /* StatusPollView.swift in Sources */,
 				95CDCD232990297E002BD37A /* AttachmentViewerViewModel.swift in Sources */,
 				95801D60297CC13C00FE8D83 /* MessagingAuthorView.swift in Sources */,
+				954C95062A0461310019AE09 /* StatusAttachmentAlternative.swift in Sources */,
 				958C0C9927BE930D00ED6C23 /* Account+AccountName.swift in Sources */,
 				95CDCD252990297E002BD37A /* AttachmentViewer.swift in Sources */,
 				955F1B2929859E0600702BE8 /* SearchView.swift in Sources */,

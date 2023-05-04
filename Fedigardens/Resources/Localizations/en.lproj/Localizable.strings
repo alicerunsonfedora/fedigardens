@@ -100,7 +100,7 @@
 "status.languagecode" = "Select a Language";
 "status.editmode.title" = "You are editing this discussion.";
 "status.editmode.detail" = "Some composition features such as setting the visibility may not be available.";
-"status.media.frugalon" = "Media attachments won't be displayed to help use less resources and curb carbon emissions.";
+"status.media.frugalon" = "Media attachments won't be displayed to help use less resources and curb carbon emissions. Below are alternate descriptions provided by the author.";
 
 // MARK: - Status: Polls -
 "status.poll.voted" = "You have contributed to this poll already.";
