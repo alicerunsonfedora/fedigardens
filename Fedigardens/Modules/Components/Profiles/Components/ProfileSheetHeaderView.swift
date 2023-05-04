@@ -20,10 +20,11 @@ struct ProfileSheetHeaderView: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false
     @EnvironmentObject var viewModel: ProfileSheetViewModel
     @Environment(\.customEmojis) var emojis
+    @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
     var profile: Account
 
     private var allEmojis: [RemoteEmoji] {
-        if frugalMode { return [] }
+        if enforcedFrugalMode || frugalMode { return [] }
         return emojis + profile.emojis.map(\.remoteEmoji)
     }
 

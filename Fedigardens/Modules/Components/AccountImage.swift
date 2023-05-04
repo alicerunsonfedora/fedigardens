@@ -17,6 +17,7 @@ import SwiftUI
 
 struct AccountImage: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false
+    @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
 
     enum ProfileImageSize: CGFloat {
         case small = 20
@@ -41,7 +42,7 @@ struct AccountImage: View {
 
     var body: some View {
         Group {
-            if frugalMode {
+            if enforcedFrugalMode || frugalMode {
                 Image(systemName: "person.circle")
                     .resizable()
                     .scaledToFit()

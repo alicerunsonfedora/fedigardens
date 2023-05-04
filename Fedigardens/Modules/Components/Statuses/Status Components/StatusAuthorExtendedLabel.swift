@@ -19,6 +19,7 @@ import EmojiText
 struct StatusAuthorExtendedLabel: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false
     @Environment(\.customEmojis) var emojis
+    @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
 
     enum VerificationPlacementPolicy {
         case byAuthorName
@@ -50,7 +51,7 @@ struct StatusAuthorExtendedLabel: View {
     }
 
     private var allEmojis: [RemoteEmoji] {
-        if frugalMode { return [] }
+        if enforcedFrugalMode || frugalMode { return [] }
         let emojisFromStatus = status.account.emojis + (status.reblog?.account.emojis ?? [])
         return emojis + emojisFromStatus.map { emoji in emoji.remote() }
     }

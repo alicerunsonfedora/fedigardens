@@ -19,6 +19,7 @@ import SwiftUI
 // MARK: - Status Navigation List
 struct StatusNavigationList<Extras: View>: View {
     typealias ViewModel = StatusNavigationListViewModel
+    @Environment(\.enforcedFrugalMode) private var enforcedFrugalMode
     @Environment(\.supportsMultipleWindows) private var supportsMultipleWindows
     @Environment(\.openWindow) private var openWindow
     @AppStorage(.useFocusedInbox) private var useFocusedInbox: Bool = false
@@ -42,7 +43,7 @@ struct StatusNavigationList<Extras: View>: View {
                     .pickerStyle(.segmented)
                     .listRowSeparator(.hidden)
                 }
-                if frugalMode {
+                if enforcedFrugalMode || frugalMode {
                     Label("general.frugalon", systemImage: "leaf.fill")
                         .bold()
                         .font(.system(.subheadline, design: .rounded))

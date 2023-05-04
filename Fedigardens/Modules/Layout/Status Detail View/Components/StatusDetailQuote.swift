@@ -18,6 +18,7 @@ import EmojiText
 
 struct StatusDetailQuote: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false
+    @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
     @State private var expandQuote = false
     @Binding var displayUndisclosedContent: Bool
     var status: Status
@@ -25,7 +26,7 @@ struct StatusDetailQuote: View {
     var source: Status.QuoteSource
 
     private var emojis: [RemoteEmoji] {
-        if frugalMode { return [] }
+        if enforcedFrugalMode || frugalMode { return [] }
         return status.emojis.map(\.remoteEmoji) + status.account.emojis.map(\.remoteEmoji)
     }
 

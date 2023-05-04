@@ -19,6 +19,7 @@ import EmojiText
 struct StatusDisclosedContent: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false
     @Environment(\.customEmojis) var emojis
+    @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
     var discloseContent: Bool
 
     var status: Status
@@ -35,7 +36,7 @@ struct StatusDisclosedContent: View {
     }
 
     private var allEmojis: [RemoteEmoji] {
-        if frugalMode { return [] }
+        if enforcedFrugalMode || frugalMode { return [] }
         let emojisFromStatus = status.account.emojis + (status.reblog?.account.emojis ?? [])
         return emojis + emojisFromStatus.map(\.remoteEmoji)
     }
@@ -53,7 +54,7 @@ struct StatusDisclosedContent: View {
             }
             if truncateLines == nil {
                 if status.mediaAttachments.isNotEmpty {
-                    if frugalMode {
+                    if enforcedFrugalMode || frugalMode {
                         InformationCard(
                             title: "general.frugalon".localized(),
                             systemImage: "leaf",

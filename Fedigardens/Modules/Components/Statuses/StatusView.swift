@@ -38,6 +38,7 @@ struct StatusView: View {
     }
 
     @Environment(\.customEmojis) var emojis
+    @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
     @AppStorage("status.show-statistics") var showsStatistics: Bool = true
     @AppStorage(.alwaysShowUserHandle) var showsUserHandle: Bool = true
     @AppStorage(.frugalMode) var frugalMode: Bool = false
@@ -54,7 +55,7 @@ struct StatusView: View {
     fileprivate var displayDisclosedContent: Bool
 
     private var allEmojis: [RemoteEmoji] {
-        if frugalMode { return [] }
+        if enforcedFrugalMode || frugalMode { return [] }
         let emojisFromStatus = status.account.emojis + (status.reblog?.account.emojis ?? [])
         return emojis + emojisFromStatus.map { emoji in emoji.remote() }
     }
@@ -94,17 +95,18 @@ struct StatusView: View {
 
     var body: some View {
         HStack(spacing: 16) {
-            if profileImagePlacement == .byEntireView, !frugalMode {
+            if profileImagePlacement == .byEntireView, !(enforcedFrugalMode || frugalMode) {
                 authorImage
             }
             VStack(alignment: .leading, spacing: truncateLines != nil ? 4 : 8) {
-                if reblogNoticePlacement == .aboveOriginalAuthor, status.reblog != nil, !frugalMode {
+                if reblogNoticePlacement == .aboveOriginalAuthor, status.reblog != nil,
+                   !(enforcedFrugalMode || frugalMode) {
                     reblogNotice
                         .font(.subheadline)
                         .padding(.vertical, 8)
                 }
                 HStack {
-                    if profileImagePlacement == .byAuthorName, !frugalMode { authorImage }
+                    if profileImagePlacement == .byAuthorName, !(enforcedFrugalMode || frugalMode) { authorImage }
                     VStack(alignment: .leading) {
                         HStack(alignment: .top) {
                             StatusAuthorExtendedLabel(
