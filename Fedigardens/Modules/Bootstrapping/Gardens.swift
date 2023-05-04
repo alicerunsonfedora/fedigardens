@@ -30,6 +30,7 @@ struct Shout: App {
                 .environment(\.customEmojis, globalStore.emojis)
                 .environment(\.enforcedFrugalMode, globalStore.overrideFrugalMode)
                 .onOpenURL { url in
+                    globalStore.overrideFrugalModeFromLowPowerMode()
                     globalStore.checkAuthorizationToken(from: url)
                     if let newContext = globalStore.createInterventionContext(from: url) {
                         interventionHandler.assignNewContext(newContext)
