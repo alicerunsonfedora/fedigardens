@@ -15,6 +15,7 @@
 import SwiftUI
 
 struct SettingsEnergyPage: View {
+    @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
     @AppStorage(.loadLimit) var loadLimit: Int = 10
     @AppStorage(.frugalMode) private var frugalMode: Bool = false
 
@@ -37,6 +38,7 @@ struct SettingsEnergyPage: View {
                 Toggle(isOn: $frugalMode) {
                     Text("settings.frugalmode.title")
                 }
+                .disabled(enforcedFrugalMode)
             } footer: {
                 Text("settings.frugalmode.detail")
             }
