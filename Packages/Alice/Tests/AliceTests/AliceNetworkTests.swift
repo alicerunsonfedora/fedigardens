@@ -32,7 +32,7 @@ final class AliceNetworkTests: XCTestCase {
     }
 
     func testFetchAuthenticatedAccount() async throws {
-        await callNetworkProvider(auth: true) { network, keychain in
+        await callNetworkProvider(auth: true) { network, _ in
             let accountResponse: Alice.Response<Account> = await network.get(.account(id: "1"))
             switch accountResponse {
             case .success(let account):
@@ -45,7 +45,7 @@ final class AliceNetworkTests: XCTestCase {
     }
 
     func testFetchFailureOnAuthentication() async throws {
-        await callNetworkProvider(auth: false) { network, keychain in
+        await callNetworkProvider(auth: false) { network, _ in
             let response: Alice.Response<Account> = await network.get(.account(id: "1"))
             switch response {
             case .success(let result):

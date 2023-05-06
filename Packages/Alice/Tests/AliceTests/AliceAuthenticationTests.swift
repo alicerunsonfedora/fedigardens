@@ -66,7 +66,7 @@ final class AliceAuthenticationTests: XCTestCase {
     func testAuthenticationAppliesFromKeychain() async throws {
         guard let keychain else { return XCTFail("Keychain is missing.") }
         keychain.setSecureStore("d076cc9f3d73a31c13a4840884535755", forKey: "starlight_acess_token")
-        
+
         let newAuthenticationModule = AuthenticationModule(using: keychain)
         switch newAuthenticationModule.authState {
         case .authenthicated(let token):
