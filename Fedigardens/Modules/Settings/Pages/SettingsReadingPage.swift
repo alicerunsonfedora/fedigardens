@@ -19,6 +19,7 @@ struct SettingsReadingPage: View {
     @AppStorage(.showsStatistics) var showsStatistics: Bool = true
     @AppStorage(.alwaysShowUserHandle) var alwaysShowsUserHandle: Bool = true
     @AppStorage(.preferMatrixConversations) var preferMatrixConversations: Bool = true
+    @AppStorage(.statusListPreviewLineCount) var statusListPreviewLineCount: Int = 2
     @ScaledMetric private var size = 1.0
 
     var body: some View {
@@ -26,6 +27,12 @@ struct SettingsReadingPage: View {
             Section {
                 Toggle(isOn: $alwaysShowsUserHandle) {
                     Text("settings.showhandle.title")
+                }
+                Picker("settings.timeline.linelimit", selection: $statusListPreviewLineCount) {
+                    ForEach([2, 3, 4, 5], id: \.self) { lineCount in
+                        Text("settings.timeline.linelimit-fmt".localized(lineCount))
+                            .tag(lineCount)
+                    }
                 }
                 Toggle(isOn: $showsStatistics) {
                     Text("settings.show-statistics.title")
