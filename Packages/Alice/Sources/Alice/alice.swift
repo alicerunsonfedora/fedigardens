@@ -186,6 +186,10 @@ public class Alice: ObservableObject, CustomStringConvertible {
                 return .failure(.unknownResponseError(response: response))
             }
 
+            if let mastoError = try? JSONDecoder().decode(MastodonError.self, from: data) {
+                return .failure(.mastodonAPIError(error: mastoError, data: data))
+            }
+
             guard (200 ..< 300).contains(response.statusCode) else {
                 return .failure(
                     .message(
@@ -194,6 +198,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
                     )
                 )
             }
+
             do {
                 let content = try JSONDecoder().decode(T.self, from: data)
                 return .success(content)
@@ -201,6 +206,8 @@ public class Alice: ObservableObject, CustomStringConvertible {
                 print(error)
                 return .failure(.parseError(reason: error))
             }
+        } catch let error as FetchError {
+            return .failure(error)
         } catch {
             return .failure(.unknownError(error: error))
         }
