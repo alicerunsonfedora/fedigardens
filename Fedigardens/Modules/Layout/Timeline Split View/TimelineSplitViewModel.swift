@@ -12,10 +12,10 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import UIKit
-import Combine
 import Alice
 import Bunker
+import Combine
+import UIKit
 
 class TimelineSplitViewModel: ObservableObject {
     enum TimelineType: Equatable {

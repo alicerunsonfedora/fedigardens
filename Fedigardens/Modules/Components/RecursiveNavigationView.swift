@@ -60,7 +60,7 @@ struct RecursiveNavigationStack<T: Hashable, NavigationContent: View, NavDestina
 }
 
 extension RecursiveNavigationStack {
-    func recursiveDestination(of value: T.Type, destination: @escaping (T) -> NavDestination) -> Self {
+    func recursiveDestination(of _: T.Type, destination: @escaping (T) -> NavDestination) -> Self {
         var copiedDestinations = destinationTypes
         copiedDestinations[T.self] = destination
         return RecursiveNavigationStack(level: level, content: content, destinationTypes: copiedDestinations)

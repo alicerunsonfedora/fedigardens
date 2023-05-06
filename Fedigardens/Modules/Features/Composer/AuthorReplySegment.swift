@@ -27,8 +27,8 @@ struct AuthorReplySegment: View {
                 format: "status.replytext".localized(comment: "Reply"),
                 reply.originalAuthor().getAccountName()
             ), systemImage: "arrowshape.turn.up.left.fill")
-            .font(.system(.callout, design: .rounded))
-            .bold()
+                .font(.system(.callout, design: .rounded))
+                .bold()
 
             StatusView(status: reply)
                 .datePlacement(.underContent)

@@ -31,6 +31,7 @@ public struct Source: Codable, Identifiable {
     public let followRequestsCount: Int?
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case note
         case fields
@@ -39,7 +40,6 @@ public struct Source: Codable, Identifiable {
         case language
         case followRequestsCount = "follow_requests_count"
     }
-
 }
 
 /// Grants us conformance to `Hashable` for _free_

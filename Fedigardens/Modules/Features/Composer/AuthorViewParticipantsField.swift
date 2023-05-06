@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
 import Bunker
+import SwiftUI
 
 struct AuthorViewParticipantsField: View {
     @StateObject var viewModel: AuthorViewModel
@@ -23,7 +23,7 @@ struct AuthorViewParticipantsField: View {
         HStack {
             Text(viewModel.visibility == .direct ? "To: " : "Cc: ")
             TextField("status.participants.empty", text: $viewModel.mentionString, axis: .vertical)
-                .lineLimit(1...3)
+                .lineLimit(1 ... 3)
                 .textInputAutocapitalization(.none)
                 .multilineTextAlignment(.trailing)
                 .autocorrectionDisabled()

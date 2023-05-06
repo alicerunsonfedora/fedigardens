@@ -18,10 +18,9 @@ public enum FetchError: Error {
     case parseError(reason: Error)
     case mastodonAPIError(error: MastodonError, data: Data)
 
-    static private let decoder = JSONDecoder()
+    private static let decoder = JSONDecoder()
 
     static func processResponse(data: Data, response: URLResponse) throws -> Data {
-
         //  First, we try to convert the httpResponse to HTTPURLResponse
         //  if it fails, it means the http error is unknown, hence, we return it as .unknown
         guard let httpResponse = response as? HTTPURLResponse else {

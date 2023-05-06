@@ -1,6 +1,6 @@
 //
 //  ExtendedDescription.swift
-//  
+//
 //
 //  Created by Marquis Kurt on 2/12/23.
 //
@@ -19,6 +19,7 @@ public struct ExtendedDescription: Codable, Identifiable {
     public let content: String
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case content
         case updatedAt = "updated_at"

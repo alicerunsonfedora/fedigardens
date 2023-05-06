@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
 import Alice
+import Foundation
 
 extension UserDefaults {
     var loadLimit: Int {
@@ -47,6 +47,7 @@ extension UserDefaults {
     }
 
     // MARK: - Intervention Settings
+
     var allowsInterventions: Bool {
         get { getValue(forKey: .allowsInterventions, default: true) }
         set { setValue(newValue, forKey: .allowsInterventions) }
@@ -63,6 +64,7 @@ extension UserDefaults {
     }
 
     // MARK: - Composer Settings
+
     var characterLimit: Int {
         get { getValue(forKey: .characterLimit, default: 500) }
         set { setValue(newValue, forKey: .characterLimit) }

@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
+import SwiftUI
 
 struct PollVotingView: View {
     @Environment(\.dismiss) private var dismiss
@@ -24,7 +24,7 @@ struct PollVotingView: View {
         NavigationStack {
             Form {
                 Picker("", selection: $viewModel.currentVote) {
-                    ForEach(0..<poll.options.count, id: \.self) { index in
+                    ForEach(0 ..< poll.options.count, id: \.self) { index in
                         Text(poll.options[index].title).tag(index)
                     }
                 }

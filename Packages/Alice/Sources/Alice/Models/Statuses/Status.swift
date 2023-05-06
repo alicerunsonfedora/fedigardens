@@ -9,8 +9,8 @@ import Foundation
 
 /// Represents a status posted by an account.
 public struct Status: Codable {
-
     // MARK: - STORED PROPERTIES
+
     /// A universally unique identifier for use in views that require fully stable IDs.
     public let uuid = UUID()
 
@@ -37,9 +37,9 @@ public struct Status: Codable {
     public let sensitive: Bool?
 
     /**
-    *   Subject or summary line, below which status content is collapsed until expanded.
-    *   If not empty, this value serves as a warning text that will be displayed before rendering the actual content.
-    */
+     *   Subject or summary line, below which status content is collapsed until expanded.
+     *   If not empty, this value serves as a warning text that will be displayed before rendering the actual content.
+     */
     public let spoilerText: String
 
     /// An array of the media that is attached to this status.
@@ -92,12 +92,12 @@ public struct Status: Codable {
     public let language: String?
 
     /**
-     Plain-text source of a status.
-     
-     Returned instead of content when status is deleted,
-     so the user may redraft from the source text without the client having to reverse-engineer
-     the original text from the HTML content.
-    */
+      Plain-text source of a status.
+
+      Returned instead of content when status is deleted,
+      so the user may redraft from the source text without the client having to reverse-engineer
+      the original text from the HTML content.
+     */
     public let text: String?
 
     /// Whether the user has reblogged the status.

@@ -46,6 +46,7 @@ public struct Relationship: Codable, Identifiable {
     public let note: String?
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case id
         case following

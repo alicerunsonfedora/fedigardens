@@ -22,12 +22,12 @@ public struct Field: Codable, Identifiable {
     public let verifiedAt: String?
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case name
         case value
         case verifiedAt = "verified_at"
     }
-
 }
 
 /// Grants us conformance to `Hashable` for _free_

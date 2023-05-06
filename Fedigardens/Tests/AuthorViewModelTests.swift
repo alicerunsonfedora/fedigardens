@@ -19,11 +19,11 @@ class ShoutAuthorViewModelTests: XCTestCase {
     var viewModel: AuthorViewModel?
 
     override func setUpWithError() throws {
-        self.viewModel = AuthorViewModel()
+        viewModel = AuthorViewModel()
     }
 
     override func tearDownWithError() throws {
-        self.viewModel = nil
+        viewModel = nil
     }
 
     func testCharacterLimitCount() throws {

@@ -22,6 +22,7 @@ public struct History: Codable, Identifiable {
     public let accounts: String
 
     // MARK: - Coding Keys
+
     enum CodingKeys: String, CodingKey {
         case day
         case uses

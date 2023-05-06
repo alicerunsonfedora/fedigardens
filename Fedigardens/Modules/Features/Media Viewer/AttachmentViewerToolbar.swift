@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
+import SwiftUI
 
 struct AttachmentViewerToolbar: ToolbarContent {
     @Environment(\.openURL) private var openURL

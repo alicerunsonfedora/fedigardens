@@ -50,7 +50,7 @@ struct MessagingList: View, LayoutStateRepresentable {
                         ForEach(convos, id: \.id) { conversation in
                             NavigationLink {
                                 MessagingDetailView(conversation: conversation)
-                                .navigationTitle(conversation.getAuthors(excluding: currentAcct.id))
+                                    .navigationTitle(conversation.getAuthors(excluding: currentAcct.id))
                             } label: {
                                 MessagingListCellView(conversation: conversation)
                             }

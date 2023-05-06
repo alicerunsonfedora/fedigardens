@@ -28,6 +28,7 @@ public struct AnnouncementReaction: Codable, Identifiable {
     public let staticUrl: String
 
     // MARK: - CodingKeys
+
     private enum CodingKeys: String, CodingKey {
         case name
         case count

@@ -1,6 +1,6 @@
 //
 //  Conversation.swift
-//  
+//
 //
 //  Created by Marquis Kurt on 23/2/22.
 //
@@ -22,13 +22,13 @@ public struct Conversation: Codable {
     public let lastStatus: Status?
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case id
         case accounts
         case unread
         case lastStatus = "last_status"
     }
-
 }
 
 /// Grants us conformance to `Hashable` for _free_

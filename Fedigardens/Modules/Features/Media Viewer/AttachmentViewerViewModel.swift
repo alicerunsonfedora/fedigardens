@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
-import Combine
 import Alice
+import Combine
+import SwiftUI
 
 class AttachmentViewerViewModel: ObservableObject {
     @Published var attachments = [MediaAttachment]()

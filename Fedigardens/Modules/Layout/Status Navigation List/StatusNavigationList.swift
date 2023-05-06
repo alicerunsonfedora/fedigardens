@@ -17,6 +17,7 @@ import Foundation
 import SwiftUI
 
 // MARK: - Status Navigation List
+
 struct StatusNavigationList<Extras: View>: View {
     typealias ViewModel = StatusNavigationListViewModel
     @Environment(\.enforcedFrugalMode) private var enforcedFrugalMode
@@ -104,15 +105,16 @@ struct StatusNavigationList<Extras: View>: View {
                 GardensComposeButton(
                     shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
                     context: AuthoringContext(replyingToID: status.id),
-                    style: .reply)
-                    .tint(.accentColor)
+                    style: .reply
+                )
+                .tint(.accentColor)
 
                 GardensComposeButton(
                     shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
                     context: AuthoringContext(
                         forwardingURI: status.uriToURL()?.absoluteString ?? "",
                         participants: UserDefaults.standard.addQuoteParticipant
-                        ? "@\(status.originalAuthor().acct)" : ""
+                            ? "@\(status.originalAuthor().acct)" : ""
                     ),
                     style: .quote
                 ).tint(.indigo)
@@ -157,7 +159,7 @@ struct StatusNavigationList<Extras: View>: View {
                 context: AuthoringContext(
                     forwardingURI: status.uriToURL()?.absoluteString ?? "",
                     participants: UserDefaults.standard.addQuoteParticipant
-                    ? "@\(status.originalAuthor().acct)" : ""
+                        ? "@\(status.originalAuthor().acct)" : ""
                 ),
                 style: .quote
             )

@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
+import SwiftUI
 
 struct StatusDetailToolbar: CustomizableToolbarContent {
     @Environment(\.deviceModel) var deviceModel
@@ -215,8 +215,8 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                     Label(
                         "status.reblogaction",
                         systemImage: viewModel.status?.reblogged == true
-                        ? "arrow.triangle.2.circlepath.circle.fill"
-                        : "arrow.triangle.2.circlepath.circle"
+                            ? "arrow.triangle.2.circlepath.circle.fill"
+                            : "arrow.triangle.2.circlepath.circle"
                     )
                 }
                 .help("help.booststatus")
@@ -228,7 +228,7 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                     context: .init(
                         forwardingURI: viewModel.status?.uriToURL()?.absoluteString ?? "",
                         participants: UserDefaults.standard.addQuoteParticipant
-                        ? "@" + (viewModel.status?.originalAuthor().acct ?? "") : "",
+                            ? "@" + (viewModel.status?.originalAuthor().acct ?? "") : "",
                         visibility: viewModel.status?.visibility ?? .public
                     ),
                     style: .quote

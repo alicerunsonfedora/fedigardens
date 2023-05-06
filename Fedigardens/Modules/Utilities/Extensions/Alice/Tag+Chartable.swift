@@ -17,7 +17,7 @@ import UIKit
 
 extension History {
     func date() -> Date {
-        let timeInterval = TimeInterval(self.day) ?? 0
+        let timeInterval = TimeInterval(day) ?? 0
         return Date(timeIntervalSince1970: timeInterval)
     }
 

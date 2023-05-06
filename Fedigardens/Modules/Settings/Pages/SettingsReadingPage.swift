@@ -49,7 +49,6 @@ struct SettingsReadingPage: View {
             } footer: {
                 Text("settings.prefermatrix.detail")
             }
-
         }
         .navigationTitle("settings.section.reading")
         .navigationBarTitleDisplayMode(.inline)

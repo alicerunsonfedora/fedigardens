@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
 import EmojiText
+import SwiftUI
 
 struct SearchAccountView: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false
@@ -55,7 +55,7 @@ struct SearchAccountView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
             List {
-                ForEach(0..<9) { _ in
+                ForEach(0 ..< 9) { _ in
                     SearchAccountView(account: MockData.profile!)
                 }
             }

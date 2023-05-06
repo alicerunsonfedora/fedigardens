@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
+import SwiftUI
 
 struct GardensAppSubscribedTagsDestination: View {
     @StateObject var viewModel: GardensAppLayoutViewModel
@@ -33,6 +33,5 @@ struct GardensAppSubscribedTagsDestination: View {
         } header: {
             Text("endpoint.followedtags")
         }
-
     }
 }

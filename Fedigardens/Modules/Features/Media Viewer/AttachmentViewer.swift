@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
+import SwiftUI
 
 struct AttachmentViewer: View {
     @Environment(\.dismiss) private var dismiss
@@ -45,10 +45,10 @@ struct AttachmentViewer: View {
                 }
             }
         }
-            .animation(.spring(), value: viewModel.contentMode)
-            .onAppear {
-                viewModel.attachments = attachments
-            }
+        .animation(.spring(), value: viewModel.contentMode)
+        .onAppear {
+            viewModel.attachments = attachments
+        }
     }
 
     private var emptyView: some View {

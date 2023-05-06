@@ -12,15 +12,15 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Runestone
+import SwiftUI
 
 struct RunestoneViewer: UIViewRepresentable {
     typealias UIViewType = Runestone.TextView
 
     var text: String
 
-    func makeUIView(context: Context) -> Runestone.TextView {
+    func makeUIView(context _: Context) -> Runestone.TextView {
         let viewer = Runestone.TextView()
         viewer.backgroundColor = .systemBackground
         viewer.setLanguageMode(PlainTextLanguageMode())
@@ -35,5 +35,5 @@ struct RunestoneViewer: UIViewRepresentable {
         return viewer
     }
 
-    func updateUIView(_ uiView: Runestone.TextView, context: Context) {}
+    func updateUIView(_: Runestone.TextView, context _: Context) {}
 }

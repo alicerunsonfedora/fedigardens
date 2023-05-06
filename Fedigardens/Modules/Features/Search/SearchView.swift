@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
+import SwiftUI
 
 struct SearchView: View {
     @StateObject private var viewModel = SearchViewModel()
@@ -68,6 +68,5 @@ struct SearchView_Previews: PreviewProvider {
                 Label("general.search", systemImage: "magnifyingglass")
             }
         }
-
     }
 }

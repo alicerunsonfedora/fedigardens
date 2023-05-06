@@ -19,6 +19,7 @@ public struct Context: Codable, Identifiable {
     public let descendants: [Status]
 
     // MARK: - Coding Keys
+
     enum CodingKeys: String, CodingKey {
         case ancestors
         case descendants

@@ -58,14 +58,14 @@ struct AuthorView: View {
                 Section {
                     statusText
                     charsRemainText
-                    .listRowSeparator(.hidden)
+                        .listRowSeparator(.hidden)
                     quoteSection
                     replyAndTagSection
                 }
 
                 if viewModel.includesPoll {
                     Section {
-                        ForEach(0..<viewModel.pollOptions.count, id: \.self) { index in
+                        ForEach(0 ..< viewModel.pollOptions.count, id: \.self) { index in
                             TextField("status.poll.optionplaceholder", text: $viewModel.pollOptions[index])
                         }
                         .onDelete { indexSet in
@@ -180,9 +180,9 @@ struct AuthorView: View {
                 viewModel.charactersRemaining
             )
         )
-            .font(.system(.footnote, design: .rounded))
-            .monospacedDigit()
-            .foregroundColor(getColorForChars())
+        .font(.system(.footnote, design: .rounded))
+        .monospacedDigit()
+        .foregroundColor(getColorForChars())
     }
 
     private var statusText: some View {
@@ -220,7 +220,6 @@ struct AuthorView: View {
         }
         .font(.system(.body, design: .rounded))
         .disabled(viewModel.editMode)
-
     }
 
     // MARK: - Author View Methods

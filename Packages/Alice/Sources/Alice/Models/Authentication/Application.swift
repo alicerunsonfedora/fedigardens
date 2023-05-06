@@ -28,6 +28,7 @@ public struct Application: Codable, Identifiable {
     public let vapidKey: String?
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case name
         case clientId = "client_id"

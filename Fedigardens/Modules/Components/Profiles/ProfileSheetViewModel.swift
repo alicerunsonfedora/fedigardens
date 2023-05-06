@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Combine
 import Alice
+import Combine
 import Drops
 import UIKit
 
@@ -53,7 +53,7 @@ class ProfileSheetViewModel: ObservableObject {
                 )
             )
         ) { account in
-            return await Alice.shared.post(.followAccount(id: account.id))
+            await Alice.shared.post(.followAccount(id: account.id))
         }
     }
 
@@ -69,7 +69,7 @@ class ProfileSheetViewModel: ObservableObject {
                 )
             )
         ) { account in
-            return await Alice.shared.post(
+            await Alice.shared.post(
                 relationship?.muting == true ? .unmuteAccount(id: account.id) : .muteAccount(id: account.id)
             )
         }
@@ -115,7 +115,7 @@ class ProfileSheetViewModel: ObservableObject {
         method: Alice.Method,
         for endpoint: Endpoint,
         with parameters: [String: String]? = nil,
-        as type: T.Type,
+        as _: T.Type,
         completion: @escaping (T) -> Void
     ) async {
         DispatchQueue.main.async {

@@ -24,7 +24,6 @@ public struct MastodonError: Codable, Identifiable {
         case error
         case errorDescription = "error_description"
     }
-
 }
 
 /// Grants us conformance to `Hashable` for _free_

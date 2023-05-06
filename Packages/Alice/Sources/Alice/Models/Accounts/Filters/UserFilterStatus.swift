@@ -1,6 +1,6 @@
 //
 //  UserFilterStatus.swift
-//  
+//
 //
 //  Created by Marquis Kurt on 2/12/23.
 //
@@ -16,6 +16,7 @@ public struct UserFilterStatus: Codable, Identifiable {
     public let statusId: String
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case id
         case statusId = "status_id"

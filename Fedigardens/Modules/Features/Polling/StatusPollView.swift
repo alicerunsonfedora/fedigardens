@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
-import Charts
 import Alice
+import Charts
+import SwiftUI
 
 struct StatusPollView: View {
     var poll: Poll
@@ -34,7 +34,7 @@ struct StatusPollView: View {
                     .annotation(position: .trailing) {
                         Text(
                             getPercentage(from: option.votesCount ?? 0),
-                            format: .percent.precision(.fractionLength(0..<1))
+                            format: .percent.precision(.fractionLength(0 ..< 1))
                         )
                         .font(.caption)
                         .bold()
@@ -56,7 +56,6 @@ struct StatusPollView: View {
             .font(.footnote)
             .bold()
             .foregroundColor(.secondary)
-
         }
     }
 

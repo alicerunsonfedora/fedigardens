@@ -25,6 +25,7 @@ public struct Tag: Codable, Identifiable {
     public let following: Bool?
 
     // MARK: - Coding Keys
+
     enum CodingKeys: String, CodingKey {
         case name
         case url

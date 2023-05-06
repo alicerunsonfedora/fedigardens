@@ -12,9 +12,9 @@
 //  Alice comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Combine
 import KeychainAccess
+import SwiftUI
 
 public class AuthenticationModule: ObservableObject {
     public struct RegisteredApplication {
@@ -39,7 +39,7 @@ public class AuthenticationModule: ObservableObject {
         case authenthicated(authToken: String)
     }
 
-    static public let shared = AuthenticationModule()
+    public static let shared = AuthenticationModule()
 
     public var canMakeAuthenticatedRequests: Bool {
         switch authState {
@@ -66,7 +66,7 @@ public class AuthenticationModule: ObservableObject {
     @Published public var authState = State.refreshing
 
     // Intializing Keychain
-    static public let keychainService = "net.marquiskurt.starlight–secrets"
+    public static let keychainService = "net.marquiskurt.starlight–secrets"
 
     private let scopes = ["read", "write", "follow", "push"]
 
@@ -92,7 +92,6 @@ public class AuthenticationModule: ObservableObject {
         authHandler: ((URL) -> Void)? = nil,
         onBadURL badURLHandler: ((String) -> Void)? = nil
     ) async {
-
         //  First, we initialize the keychain object
         let keychain = Keychain(service: Alice.OAuth.keychainService)
 

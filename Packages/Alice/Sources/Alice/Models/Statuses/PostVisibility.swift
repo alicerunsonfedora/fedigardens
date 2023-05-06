@@ -12,7 +12,7 @@ public typealias Visibility = PostVisibility
 
 /**
  An enumerated representation of a post's visibility.
- 
+
  Posts can be restricted to a certain selection of people or used as a direct message.
  */
 public enum PostVisibility: String, Codable, CaseIterable {

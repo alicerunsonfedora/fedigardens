@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
 import Bunker
+import SwiftUI
 
 struct SearchResultsView: View {
     @Environment(\.isSearching) private var isSearching
@@ -42,13 +42,12 @@ struct SearchResultsView: View {
                         } label: {
                             Text(filterCase.rawValue.localized())
                         }
-                        .tint(filter == filterCase ? .accentColor: .secondary)
+                        .tint(filter == filterCase ? .accentColor : .secondary)
                     }
                     .buttonStyle(.bordered)
                     .buttonBorderShape(.capsule)
                     .lineLimit(1)
                 }
-
             }
             .listRowSeparator(.hidden)
             .animation(.spring(), value: filter)

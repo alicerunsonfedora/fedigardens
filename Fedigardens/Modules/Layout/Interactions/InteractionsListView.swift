@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
+import SwiftUI
 
 struct InteractionsListView: View {
     @Binding var selectedStatus: Status?
@@ -39,7 +39,6 @@ struct InteractionsListView: View {
                         } else {
                             Text("WTF?!: \(mention.type.rawValue)")
                         }
-
                     }
                 }
             case .errored(let message):

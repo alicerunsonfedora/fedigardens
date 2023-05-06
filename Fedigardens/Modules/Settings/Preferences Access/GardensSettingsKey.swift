@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import UIKit
-import SwiftUI
 import Alice
+import SwiftUI
+import UIKit
 
 enum GardensSettingsKey: String {
     case loadLimit = "network.load-limit"
@@ -58,21 +58,27 @@ extension AppStorage {
     init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == Bool {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
+
     init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == Int {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
+
     init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == Double {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
+
     init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == URL {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
+
     init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == String {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
+
     init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == Data {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
+
     init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == PostVisibility {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }

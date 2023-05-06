@@ -28,6 +28,7 @@ public struct CustomEmoji: Codable, Identifiable {
     public let category: String?
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case shortcode
         case category

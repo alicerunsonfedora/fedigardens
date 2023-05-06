@@ -12,17 +12,17 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
-import Combine
 import Alice
+import Combine
+import Foundation
 
 class MessagingDetailViewModel: ObservableObject {
     @Published var conversation: Conversation?
     @Published var context: Context?
 
     init() {
-        self.conversation = nil
-        self.context = nil
+        conversation = nil
+        context = nil
     }
 
     init(conversation: Conversation) {

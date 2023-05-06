@@ -13,8 +13,8 @@
 //  details.
 
 import Foundation
-import SwiftUI
 import HTML2Markdown
+import SwiftUI
 
 extension String {
     func attributedHTML() -> AttributedString {

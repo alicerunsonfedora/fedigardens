@@ -12,10 +12,10 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
-import Combine
 import Alice
+import Combine
 import Drops
+import Foundation
 import UIKit
 
 class StatusDetailViewModel: ObservableObject {
@@ -137,7 +137,7 @@ class StatusDetailViewModel: ObservableObject {
             )
         ) { state in
             await Alice.shared.post(
-               state.reblogged == true ? .unreblog(id: state.id) : .reblog(id: state.id)
+                state.reblogged == true ? .unreblog(id: state.id) : .reblog(id: state.id)
             )
         }
     }
@@ -160,9 +160,9 @@ class StatusDetailViewModel: ObservableObject {
     }
 
     private func clear() {
-        self.status = nil
-        self.context = nil
-        self.quote = nil
+        status = nil
+        context = nil
+        quote = nil
     }
 
     /// Make a request to update the current status.

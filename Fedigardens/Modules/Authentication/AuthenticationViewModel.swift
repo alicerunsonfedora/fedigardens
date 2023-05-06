@@ -12,10 +12,10 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
-import Combine
 import Alice
 import Bunker
+import Combine
+import Foundation
 
 class AuthenticationViewModel: ObservableObject {
     typealias AuthenticationModule = Alice.OAuth
@@ -48,11 +48,11 @@ class AuthenticationViewModel: ObservableObject {
 
     init(with authModule: Alice.OAuth) {
         self.authModule = authModule
-        self.retrieveDisallowList()
+        retrieveDisallowList()
     }
 
     init() {
-        self.retrieveDisallowList()
+        retrieveDisallowList()
     }
 
     func startAuthenticationWorkflow() async {

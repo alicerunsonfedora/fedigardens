@@ -18,25 +18,29 @@ let danger = Danger()
 var suggestsChanges = false
 
 // MARK: - Configuration Variables
+
 let PR_FILE_THRESHOLD = 20 // swiftlint:disable:this identifier_name
 
 // MARK: - Big PR check
+
 let editedFiles = danger.git.modifiedFiles + danger.git.createdFiles
 if editedFiles.count > PR_FILE_THRESHOLD {
     warn(
         "This appears to be a big PR. If this PR contains multiple features or tickets, please "
-        + "consider splitting them up for easier review."
+            + "consider splitting them up for easier review."
     )
     suggestsChanges = true
 }
 
 // MARK: - Deleted file count
+
 if danger.git.deletedFiles.count > PR_FILE_THRESHOLD {
     warn("This PR contains \(danger.git.deletedFiles.count) files that were deleted.")
     suggestsChanges = true
 }
 
 // MARK: - Changelog update missing
+
 if editedFiles.count > 1, !editedFiles.contains("CHANGELOG.md") {
     warn("This PR does not have an update in the CHANGELOG.")
     markdown("If the changelog doesn't have a section for the latest unreleased version, you may create one.")
@@ -44,6 +48,7 @@ if editedFiles.count > 1, !editedFiles.contains("CHANGELOG.md") {
 }
 
 // MARK: - SwiftLint
+
 let linterWarnings = SwiftLint.lint(configFile: ".swiftlint.yml")
 if !linterWarnings.isEmpty {
     suggestsChanges = true
@@ -56,6 +61,7 @@ if !linterWarnings.isEmpty {
 }
 
 // MARK: - Congratulatory message
+
 let randomCongraulatoryMessages = [
     "Good on ya!", "Great work!", "Excellent work!", "Good job!", ";^)", "Perfection.", "Congrats!"
 ]

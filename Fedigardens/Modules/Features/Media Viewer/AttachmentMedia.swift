@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Alice
 import AVKit
 import SwiftUI
-import Alice
 
 struct AttachmentMedia: View {
     var attachment: MediaAttachment
@@ -28,7 +28,7 @@ struct AttachmentMedia: View {
             case .video, .gifv:
                 ZStack {
                     AttachmentVideoPlayer(player: videoPlayer(for: attachment.url))
-                        .aspectRatio(3/2, contentMode: .fit)
+                        .aspectRatio(3 / 2, contentMode: .fit)
                         .compositingGroup()
                     if attachment.description != nil { altBadge }
                 }
@@ -50,7 +50,7 @@ struct AttachmentMedia: View {
                 image
                     .resizable()
                     .scaledToFit()
-                    .aspectRatio(3/2, contentMode: .fill)
+                    .aspectRatio(3 / 2, contentMode: .fill)
                 if attachment.description != nil { altBadge }
             }
             .cornerRadius(10)
@@ -61,7 +61,7 @@ struct AttachmentMedia: View {
         } placeholder: {
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.secondary.opacity(0.2))
-                .aspectRatio(3/2, contentMode: .fill)
+                .aspectRatio(3 / 2, contentMode: .fill)
         }
         .help(attachment.description ?? "")
     }

@@ -1,6 +1,6 @@
 //
 //  EmptyNode.swift
-//  
+//
 //
 //  Created by Marquis Kurt on 12/31/22.
 //

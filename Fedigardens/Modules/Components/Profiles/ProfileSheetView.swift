@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
 import EmojiText
+import SwiftUI
 
 struct ProfileSheetView: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false

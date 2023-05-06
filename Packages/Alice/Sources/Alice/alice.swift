@@ -1,43 +1,45 @@
 /*
-*   THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS
-*   NON-VIOLENT PUBLIC LICENSE v4 ("LICENSE"). THE WORK IS PROTECTED BY
-*   COPYRIGHT AND ALL OTHER APPLICABLE LAWS. ANY USE OF THE WORK OTHER THAN
-*   AS AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED. BY
-*   EXERCISING ANY RIGHTS TO THE WORK PROVIDED IN THIS LICENSE, YOU AGREE
-*   TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE
-*   MAY BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS
-*   CONTAINED HERE IN AS CONSIDERATION FOR ACCEPTING THE TERMS AND
-*   CONDITIONS OF THIS LICENSE AND FOR AGREEING TO BE BOUND BY THE TERMS
-*   AND CONDITIONS OF THIS LICENSE.
-*
-*   This source file is part of the Codename Starlight open source project
-*   This file was created by Alejandro Modroño Vara on 14/7/21.
-*
-*   See `LICENSE.txt` for license information
-*   See `CONTRIBUTORS.txt` for project authors
-*
-*/
+ *   THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS
+ *   NON-VIOLENT PUBLIC LICENSE v4 ("LICENSE"). THE WORK IS PROTECTED BY
+ *   COPYRIGHT AND ALL OTHER APPLICABLE LAWS. ANY USE OF THE WORK OTHER THAN
+ *   AS AUTHORIZED UNDER THIS LICENSE OR COPYRIGHT LAW IS PROHIBITED. BY
+ *   EXERCISING ANY RIGHTS TO THE WORK PROVIDED IN THIS LICENSE, YOU AGREE
+ *   TO BE BOUND BY THE TERMS OF THIS LICENSE. TO THE EXTENT THIS LICENSE
+ *   MAY BE CONSIDERED TO BE A CONTRACT, THE LICENSOR GRANTS YOU THE RIGHTS
+ *   CONTAINED HERE IN AS CONSIDERATION FOR ACCEPTING THE TERMS AND
+ *   CONDITIONS OF THIS LICENSE AND FOR AGREEING TO BE BOUND BY THE TERMS
+ *   AND CONDITIONS OF THIS LICENSE.
+ *
+ *   This source file is part of the Codename Starlight open source project
+ *   This file was created by Alejandro Modroño Vara on 14/7/21.
+ *
+ *   See `LICENSE.txt` for license information
+ *   See `CONTRIBUTORS.txt` for project authors
+ *
+ */
+import Combine
 import Foundation
 import KeychainAccess
 import SwiftUI
-import Combine
 
 /**
-The primary client object that handles all fediverse requests. It basically works as the logic controller of
- all the networking done by the app.
+ The primary client object that handles all fediverse requests. It basically works as the logic controller of
+  all the networking done by the app.
 
-All of the getter and setter methods work asynchronously thanks to the new concurrency model introduced in
- Swift 5.5. They have been written to provide helpful error messages and have a state that can be traced by
- the app. This model works best in scenarios where data needs to be loaded into a view.
+ All of the getter and setter methods work asynchronously thanks to the new concurrency model introduced in
+  Swift 5.5. They have been written to provide helpful error messages and have a state that can be traced by
+  the app. This model works best in scenarios where data needs to be loaded into a view.
 
-- Version 2.0
+ - Version 2.0
 
-*/
+ */
 public class Alice: ObservableObject, CustomStringConvertible {
     // MARK: - OAuth
+
     public typealias OAuth = AuthenticationModule
 
     // MARK: - HTTPS METHODS
+
     public enum Method: String {
         case post = "POST"
         case get = "GET"
@@ -50,18 +52,18 @@ public class Alice: ObservableObject, CustomStringConvertible {
     // MARK: - PROPERTIES
 
     /// A singleton everybody can access to.
-    static public let shared = Alice()
+    public static let shared = Alice()
 
     // MARK: – URLs
 
     /// The url prefix
-    static private let defaultUrlPrefix = "starlight"
+    private static let defaultUrlPrefix = "starlight"
 
     /// The domain (without the prefixes) of the instance.
     static var instanceDomain: String = Keychain(service: OAuth.keychainService)["starlight_instance_domain"]
         ?? "mastodon.online"
 
-    static public var apiURL: URL {
+    public static var apiURL: URL {
         return URL(string: "https://\(instanceDomain)") ?? URL(string: "https://mastodon.online")!
     }
 
@@ -76,7 +78,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
 
     // MARK: - INITIALIZERS
 
-    public init<Session: AliceSession>(using sessionType: Session.Type = URLSession.self) {
+    public init<Session: AliceSession>(using _: Session.Type = URLSession.self) {
         _ = isOnMainThread(named: "CLIENT STARTED")
         urlPrefix = Alice.defaultUrlPrefix
 
@@ -107,7 +109,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
         configuration.timeoutIntervalForRequest = 60
         configuration.timeoutIntervalForResource = 120
 
-        self.session = Session(configuration: configuration)
+        session = Session(configuration: configuration)
     }
 
     /// Sets the URL prefix of the Chica client when making requests.
@@ -126,11 +128,11 @@ public class Alice: ObservableObject, CustomStringConvertible {
     ///
     /// When calling this method, future requests will use the default URL prefix of `starlight://`.
     public func resetRequestPrefix() {
-        self.urlPrefix = Alice.defaultUrlPrefix
+        urlPrefix = Alice.defaultUrlPrefix
     }
 
     /// Returns a URLRequest with the specified URL, http method, and query parameters.
-    static private func makeRequest(_ method: Method, url: URL, params: [String: String]? = nil) -> URLRequest {
+    private static func makeRequest(_ method: Method, url: URL, params: [String: String]? = nil) -> URLRequest {
         var request: URLRequest
         var url = url
 
@@ -167,13 +169,13 @@ public class Alice: ObservableObject, CustomStringConvertible {
         let url = Self.apiURL.appendingPathComponent(endpoint.path)
         do {
             let request = Self.makeRequest(method, url: url, params: params)
-            let (data, response) = try await self.session.request(request, delegate: nil)
+            let (data, response) = try await session.request(request, delegate: nil)
 
             guard let response = response as? HTTPURLResponse else {
                 return .failure(.unknownResponseError(response: response))
             }
 
-            guard (200..<300).contains(response.statusCode) else {
+            guard (200 ..< 300).contains(response.statusCode) else {
                 return .failure(
                     .message(
                         reason: "Request returned with error code: \(String(describing: response.statusCode))",

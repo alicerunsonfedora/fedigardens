@@ -12,15 +12,15 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import AVKit
 import SwiftUI
 import UIKit
-import AVKit
 
 struct AttachmentVideoPlayer: UIViewControllerRepresentable {
     typealias UIViewControllerType = AVPlayerViewController
     var player: AVPlayer?
 
-    func makeUIViewController(context: Context) -> AVPlayerViewController {
+    func makeUIViewController(context _: Context) -> AVPlayerViewController {
         let controller = AVPlayerViewController()
         controller.player = player
         controller.showsPlaybackControls = true
@@ -30,5 +30,5 @@ struct AttachmentVideoPlayer: UIViewControllerRepresentable {
         return controller
     }
 
-    func updateUIViewController(_ uiViewController: AVPlayerViewController, context: Context) {}
+    func updateUIViewController(_: AVPlayerViewController, context _: Context) {}
 }

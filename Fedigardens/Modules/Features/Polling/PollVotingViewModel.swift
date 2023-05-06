@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
-import Combine
 import Alice
+import Combine
+import Foundation
 
 class PollVotingViewModel: ObservableObject {
     @Published var poll: Poll?
@@ -35,7 +35,7 @@ class PollVotingViewModel: ObservableObject {
     }
 
     func submit(completion: @escaping (Poll) -> Void) async {
-        guard let poll, (0..<poll.options.count).contains(currentVote) else { return }
+        guard let poll, (0 ..< poll.options.count).contains(currentVote) else { return }
         let response: Alice.Response<Poll> = await Alice.shared.post(
             .votePoll(id: poll.id),
             params: ["choices[]": String(currentVote)]

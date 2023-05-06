@@ -55,10 +55,10 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                 StatusNavigationList(statuses: model.timelineData, selectedStatus: $selectedStatus) {
                     EmptyView()
                 }
-                    .animation(.easeInOut, value: model.timelineData)
-                    .navigationDestination(for: Status.self) { status in
-                        StatusDetailView(status: status, level: .parent)
-                    }
+                .animation(.easeInOut, value: model.timelineData)
+                .navigationDestination(for: Status.self) { status in
+                    StatusDetailView(status: status, level: .parent)
+                }
             case .errored(let message):
                 VStack(spacing: 4) {
                     Image(systemName: "exclamationmark.triangle")
@@ -128,9 +128,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
             } label: {
                 Text("interventions.cta.disable")
             }
-            Button {
-
-            } label: {
+            Button {} label: {
                 Text("interventions.cta.dismiss")
             }.keyboardShortcut(.defaultAction)
         } message: {

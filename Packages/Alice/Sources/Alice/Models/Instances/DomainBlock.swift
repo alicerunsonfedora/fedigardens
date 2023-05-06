@@ -1,6 +1,6 @@
 //
 //  DomainBlock.swift
-//  
+//
 //
 //  Created by Marquis Kurt on 2/12/23.
 //
@@ -35,10 +35,12 @@ public struct DomainBlock: Codable, Identifiable {
     public let comment: String?
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case domain, digest, severity, comment
     }
 }
 
 // MARK: - Conformances
+
 extension DomainBlock: Hashable {}

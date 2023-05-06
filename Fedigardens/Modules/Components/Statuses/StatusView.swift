@@ -13,10 +13,11 @@
 //  details.
 
 import Alice
-import SwiftUI
 import EmojiText
+import SwiftUI
 
 // MARK: - Status View
+
 struct StatusView: View {
     public enum DatePlacement {
         case automatic
@@ -100,7 +101,8 @@ struct StatusView: View {
             }
             VStack(alignment: .leading, spacing: truncateLines != nil ? 4 : 8) {
                 if reblogNoticePlacement == .aboveOriginalAuthor, status.reblog != nil,
-                   !(enforcedFrugalMode || frugalMode) {
+                   !(enforcedFrugalMode || frugalMode)
+                {
                     reblogNotice
                         .font(.subheadline)
                         .padding(.vertical, 8)
@@ -117,9 +119,9 @@ struct StatusView: View {
                             if truncateLines != nil {
                                 if datePlacement == .automatic {
                                     Spacer()
-                                    if !status.mediaAttachments.isEmpty || (
+                                    if !status.mediaAttachments.isEmpty ||
                                         !(status.reblog?.mediaAttachments.isEmpty ?? true)
-                                    ) {
+                                    {
                                         Image(systemName: "paperclip")
                                             .foregroundColor(.secondary)
                                             .font(.footnote)
@@ -127,13 +129,12 @@ struct StatusView: View {
                                     statusCreationDate
                                 }
                             }
-
                         }
                         .font(.system(.title3, design: .rounded))
                         if datePlacement == .underUsername {
-                            if !status.mediaAttachments.isEmpty || (
+                            if !status.mediaAttachments.isEmpty ||
                                 !(status.reblog?.mediaAttachments.isEmpty ?? true)
-                            ) {
+                            {
                                 Image(systemName: "paperclip")
                                     .foregroundColor(.secondary)
                                     .font(.footnote)
@@ -303,7 +304,7 @@ extension StatusView {
 
     /// Whether to show the likes and boosts for this status.
     @available(*, deprecated, message: "This method is no longer supported and will be removed in a future release.")
-    func statistics(_ show: Binding<Bool>) -> StatusView {
+    func statistics(_: Binding<Bool>) -> StatusView {
         StatusView(
             status: status,
             truncateLines: truncateLines,

@@ -22,6 +22,7 @@ public struct SearchResult: Codable, Identifiable {
     public let hashtags: [Tag]?
 
     // MARK: - Coding Keys
+
     enum CodingKeys: String, CodingKey {
         case accounts
         case statuses

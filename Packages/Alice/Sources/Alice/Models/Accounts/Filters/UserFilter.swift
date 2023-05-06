@@ -1,6 +1,6 @@
 //
 //  UserFilter.swift
-//  
+//
 //
 //  Created by Marquis Kurt on 2/12/23.
 //
@@ -44,6 +44,7 @@ public struct UserFilter: Codable, Identifiable {
     public let statuses: [UserFilterStatus]
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case id, title, context, keywords, statuses
         case filterAction = "filter_action"

@@ -12,11 +12,11 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
-import Combine
 import Alice
-import EmojiText
 import struct Alice.CustomEmoji
+import Combine
+import EmojiText
+import Foundation
 
 class GardensViewModel: ObservableObject {
     @Published var userProfile: Account?

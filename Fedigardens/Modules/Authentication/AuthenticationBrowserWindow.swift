@@ -13,8 +13,8 @@
 //  details.
 
 import Foundation
-import SwiftUI
 import SafariView
+import SwiftUI
 
 /// A browser window used in the authentication view for rendering OAuth webpages in Gopherdon.
 struct AuthenticationBrowserWindow: View {

@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
 import Alice
+import Foundation
 
 public class Pip {
     public typealias Response<T: Decodable> = Result<T, ChicaError>
@@ -36,12 +36,12 @@ public class Pip {
 
         do {
             let (data, response) = try await URLSession.shared.data(for: URLRequest(url: quoteURL))
-            guard let response = response as? HTTPURLResponse, (200..<300).contains(response.statusCode) else {
+            guard let response = response as? HTTPURLResponse, (200 ..< 300).contains(response.statusCode) else {
                 return .failure(
                     .fetchError(
                         .message(
                             reason: "Request returned with error code: " +
-                            (String(describing: (response as? HTTPURLResponse)?.statusCode)),
+                                String(describing: (response as? HTTPURLResponse)?.statusCode),
                             data: data
                         )
                     )

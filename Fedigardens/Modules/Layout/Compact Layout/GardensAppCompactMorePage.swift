@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
 import Bunker
+import SwiftUI
 
 struct GardensAppCompactMorePage<Detail: View>: View {
     @Environment(\.userProfile) var userProfile

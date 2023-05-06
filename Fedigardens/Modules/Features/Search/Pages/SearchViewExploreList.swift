@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
 import Bunker
+import SwiftUI
 
 struct SearchViewExploreList: View {
     @StateObject var viewModel: SearchViewModel
@@ -53,7 +53,6 @@ struct SearchViewExploreList: View {
                     .listRowSeparator(.hidden)
                 }
             }
-
         }
         .listStyle(.inset)
         .navigationDestination(for: Status.self) { status in

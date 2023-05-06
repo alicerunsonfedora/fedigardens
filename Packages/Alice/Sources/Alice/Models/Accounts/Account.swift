@@ -92,6 +92,7 @@ public struct Account: Codable, Identifiable {
     public let limited: Bool?
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case id
         case username

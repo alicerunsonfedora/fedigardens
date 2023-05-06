@@ -24,9 +24,11 @@ struct SettingsEnergyPage: View {
             Section {
                 Stepper(value: $loadLimit, step: 5) {
                     Text(
-                        String(format:
-                                NSLocalizedString("settings.loadlimit.text", comment: "load limit"),
-                               String(loadLimit))
+                        String(
+                            format:
+                            NSLocalizedString("settings.loadlimit.text", comment: "load limit"),
+                            String(loadLimit)
+                        )
                     )
                 }
             } footer: {

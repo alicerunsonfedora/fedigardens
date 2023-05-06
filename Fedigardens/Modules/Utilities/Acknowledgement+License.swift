@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
 import AckGen
+import Foundation
 
 extension Acknowledgement {
     static func license(named name: String, ofType type: String = "txt") -> String {

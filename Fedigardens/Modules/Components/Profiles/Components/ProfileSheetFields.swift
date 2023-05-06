@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
 import EmojiText
+import SwiftUI
 
 struct ProfileSheetFields: View {
     @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
@@ -34,13 +34,13 @@ struct ProfileSheetFields: View {
                 }
                 .listRowBackground(
                     field.value == profile.verifiedDomain()
-                    ? Color.green.opacity(0.2)
-                    : Color(uiColor: .secondarySystemGroupedBackground)
+                        ? Color.green.opacity(0.2)
+                        : Color(uiColor: .secondarySystemGroupedBackground)
                 )
                 .tint(
                     field.value == profile.verifiedDomain()
-                    ? Color.green
-                    : Color.accentColor
+                        ? Color.green
+                        : Color.accentColor
                 )
             }
         }

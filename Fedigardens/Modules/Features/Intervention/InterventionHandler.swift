@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import UIKit
 import Combine
+import UIKit
 
 class InterventionHandler: ObservableObject {
     typealias Context = InterventionAuthorizationContext
@@ -25,12 +25,12 @@ class InterventionHandler: ObservableObject {
     }
 
     init(context: InterventionAuthorizationContext = .default) {
-        self.currentInterventionContext = context
+        currentInterventionContext = context
     }
 
     func assignNewContext(_ context: Context) {
-        self.currentInterventionContext = context
-        self.lastInterventionTimeoutDate = .now
+        currentInterventionContext = context
+        lastInterventionTimeoutDate = .now
     }
 
     @discardableResult

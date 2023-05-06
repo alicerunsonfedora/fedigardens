@@ -94,7 +94,7 @@ extension View {
         @ViewBuilder actions: @escaping () -> A,
         @ViewBuilder message: @escaping () -> M? = { nil }
     ) -> some View {
-        self.modifier(
+        modifier(
             GiantAlertModifier(
                 isPresented: isPresented,
                 title: title,

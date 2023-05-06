@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
 import struct Alice.Notification
+import SwiftUI
 
 struct NotificationListCellView: View {
     var notification: Notification
@@ -33,7 +33,6 @@ struct NotificationListCellView: View {
                     StatusQuickGlanceView(status: reply)
                 }
             }
-
         }
     }
 }

@@ -12,17 +12,17 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import UIKit
 import SwiftUI
+import UIKit
 
 extension UIDevice {
     typealias ModelName = String
     /// Returns the device model identifier.
     /// Pulled from https://stackoverflow.com/questions/26028918/how-to-determine-the-current-iphone-device-model.
     static let model: ModelName = {
-        #if targetEnvironment(simulator)
+#if targetEnvironment(simulator)
         return ProcessInfo().environment["SIMULATOR_MODEL_IDENTIFIER"] ?? "arm64"
-        #else
+#else
         var systemInfo = utsname()
         uname(&systemInfo)
         let machineMirror = Mirror(reflecting: systemInfo.machine)
@@ -31,7 +31,7 @@ extension UIDevice {
             return identifier + String(UnicodeScalar(UInt8(value)))
         }
         return identifier
-        #endif
+#endif
     }()
 }
 

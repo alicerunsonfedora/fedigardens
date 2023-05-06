@@ -13,8 +13,8 @@
 //  details.
 
 import Alice
-import SwiftUI
 import Bunker
+import SwiftUI
 
 // MARK: - Widescreen Layout
 
@@ -54,7 +54,7 @@ struct GardensAppWideLayout: View {
                                 .opacity(0)
                             GardensComposeButton(style: .new)
                         }
-                            .keyboardShortcut("n", modifiers: .command)
+                        .keyboardShortcut("n", modifiers: .command)
                     }
                 }
         } detail: {

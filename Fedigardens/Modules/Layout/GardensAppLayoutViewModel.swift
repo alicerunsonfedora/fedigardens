@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
-import Combine
 import Alice
+import Combine
+import Foundation
 
 class GardensAppLayoutViewModel: ObservableObject {
     @Published var dummyTimeline: [Status] = MockData.timeline!
@@ -92,5 +92,4 @@ class GardensAppLayoutViewModel: ObservableObject {
             print("Unfollow tag error: \(error.localizedDescription)")
         }
     }
-
 }

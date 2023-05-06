@@ -12,10 +12,10 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
-import EmojiText
 import Alice
 import struct Alice.CustomEmoji
+import EmojiText
+import SwiftUI
 
 extension CustomEmoji {
     func remote() -> RemoteEmoji {

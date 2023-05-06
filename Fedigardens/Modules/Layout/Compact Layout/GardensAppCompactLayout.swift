@@ -34,7 +34,7 @@ struct GardensAppCompactLayout: View {
             } detail: {
                 navigationDetailView
             }
-                .tabItem {
+            .tabItem {
                 Label(page: .mentions)
             }
             NavigationSplitView {
@@ -48,7 +48,7 @@ struct GardensAppCompactLayout: View {
             GardensAppCompactMorePage(viewModel: viewModel, currentPage: $currentUserPage) {
                 navigationDetailView
             }
-                .tabItem { Label("general.more", systemImage: "ellipsis.circle") }
+            .tabItem { Label("general.more", systemImage: "ellipsis.circle") }
         }
         .onAppear {
             loadSidebar()
@@ -86,13 +86,13 @@ struct GardensAppCompactLayout: View {
     private func rootTab(for scope: TimelineType, page: GardensAppPage) -> some View {
         NavigationSplitView {
             TimelineSplitView(scope: scope, selectedStatus: $viewModel.selectedStatus)
-            .listStyle(.inset)
-            .navigationTitle(page.localizedTitle)
-            .toolbar {
-                ToolbarItem {
-                    GardensComposeButton(style: .new)
+                .listStyle(.inset)
+                .navigationTitle(page.localizedTitle)
+                .toolbar {
+                    ToolbarItem {
+                        GardensComposeButton(style: .new)
+                    }
                 }
-            }
         } detail: {
             navigationDetailView
         }

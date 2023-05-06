@@ -52,6 +52,7 @@ public struct Announcement: Codable, Identifiable {
     public let emojis: [CustomEmoji]
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case id
         case content

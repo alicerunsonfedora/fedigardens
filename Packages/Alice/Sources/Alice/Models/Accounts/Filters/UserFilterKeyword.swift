@@ -1,6 +1,6 @@
 //
 //  UserFilterKeyword.swift
-//  
+//
 //
 //  Created by Marquis Kurt on 2/12/23.
 //
@@ -19,6 +19,7 @@ public struct UserFilterKeyword: Codable, Identifiable {
     public let useWordBoundaries: Bool
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case id, keyword
         case useWordBoundaries = "whole_word"

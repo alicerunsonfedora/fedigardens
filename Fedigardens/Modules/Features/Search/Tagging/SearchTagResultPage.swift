@@ -12,10 +12,10 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
-import Charts
 import Bunker
+import Charts
+import SwiftUI
 
 struct SearchTagResultPage: View {
     var tag: Tag

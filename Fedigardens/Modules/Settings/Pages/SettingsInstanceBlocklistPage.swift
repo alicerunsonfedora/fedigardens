@@ -5,9 +5,9 @@
 //  Created by Marquis Kurt on 2/12/23.
 //
 
-import SwiftUI
 import Alice
 import Bunker
+import SwiftUI
 
 struct SettingsInstanceBlocklistPage: View {
     var domainBlocks: [DomainBlock]

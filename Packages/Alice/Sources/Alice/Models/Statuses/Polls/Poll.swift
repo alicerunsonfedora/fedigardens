@@ -31,6 +31,7 @@ public struct Poll: Codable, Identifiable {
     public let voted: Bool?
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case id
         case expiresAt = "expires_at"

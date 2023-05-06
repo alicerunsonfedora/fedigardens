@@ -21,6 +21,6 @@ extension View {
         in object: AnyObject? = nil,
         perform action: @escaping (Notification) -> Void
     ) -> some View {
-        self.onReceive(center.publisher(for: name, object: object), perform: action)
+        onReceive(center.publisher(for: name, object: object), perform: action)
     }
 }

@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
+import SwiftUI
 
 struct SearchTagView: View {
     var tag: Tag
@@ -31,7 +31,7 @@ struct SearchTagView: View {
                 Text(
                     String(format: "search.tagspeople".localized(), accountsUsingTag)
                 )
-                    .font(.subheadline)
+                .font(.subheadline)
             }
         } icon: {
             Image(systemName: "tag")

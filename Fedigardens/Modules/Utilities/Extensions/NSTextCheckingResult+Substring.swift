@@ -16,7 +16,7 @@ import Foundation
 
 extension NSTextCheckingResult {
     func text(in sourceText: String) -> Substring? {
-        guard let range = Range(self.range, in: sourceText) else { return nil }
+        guard let range = Range(range, in: sourceText) else { return nil }
         return sourceText[range]
     }
 }

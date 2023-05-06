@@ -1,6 +1,6 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Marquis Kurt on 2/12/23.
 //
@@ -27,11 +27,11 @@ extension Endpoint {
             return "/api/v1/accounts/verify_credentials"
         case .updateCredentials:
             return "/api/v1/accounts/update_credentials"
-        case let .account(id):
+        case .account(let id):
             return "/api/v1/accounts/\(id)"
-        case let .accountStatuses(id):
+        case .accountStatuses(let id):
             return "/api/v1/accounts/\(id)/statuses"
-        case let .accountFollowers(id):
+        case .accountFollowers(let id):
             return "/api/v1/accounts/\(id)/statuses"
         case .instance:
             return "/api/v1/instance"
@@ -43,7 +43,7 @@ extension Endpoint {
             return "/api/v1/trends"
         case .timeline(let scope):
             return scope.path
-        case let .context(id):
+        case .context(let id):
             return "/api/v1/statuses/\(id)/context"
         case .directory:
             return "/api/v1/directory"

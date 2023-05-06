@@ -9,7 +9,7 @@ import Foundation
 
 /**
  A class representation of a fediverse instance.
- 
+
  A fediverse instance is the server that the user lives on. The following class gives information
  about the instance and who can be contacted.
  */
@@ -54,6 +54,7 @@ public struct Instance: Codable, Identifiable {
     public let rules: [Rule]
 
     // MARK: - Coding Keys
+
     private enum CodingKeys: String, CodingKey {
         case domain
         case title

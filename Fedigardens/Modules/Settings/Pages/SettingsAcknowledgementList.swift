@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import AckGen
+import SwiftUI
 
 struct SettingsAcknowledgementList: View {
     var libraries: [Acknowledgement] {
@@ -53,7 +53,7 @@ struct SettingsAcknowledgementList: View {
         ForEach(list, id: \.title) { notice in
             NavigationLink {
                 RunestoneViewer(text: notice.license)
-                .navigationTitle(notice.title)
+                    .navigationTitle(notice.title)
             } label: {
                 Text(notice.title)
             }

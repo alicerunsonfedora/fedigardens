@@ -9,7 +9,6 @@ import Foundation
 
 /// An enumerated representation of the card content type.
 public enum PreviewCardType: String, Codable {
-
     /// When the content type is a link.
     case link
 

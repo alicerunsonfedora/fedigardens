@@ -13,11 +13,11 @@
 //  details.
 
 import Alice
+import Bunker
 import Combine
 import Drops
-import UIKit
 import SwiftUI
-import Bunker
+import UIKit
 
 class AuthorViewModel: ObservableObject {
     @Published var editMode = false
@@ -72,11 +72,11 @@ class AuthorViewModel: ObservableObject {
     private var drop: Drop?
 
     func setAuthor(to account: Account) {
-        self.userProfile = account
+        userProfile = account
     }
 
     func setupTextContents(with context: AuthoringContext) async {
-        await self.fetchPromptIfUninitalized(in: context)
+        await fetchPromptIfUninitalized(in: context)
         DispatchQueue.main.async {
             if context.prefilledText.isNotEmpty {
                 self.text = context.prefilledText
@@ -176,7 +176,8 @@ class AuthorViewModel: ObservableObject {
 
         // Second pass to add the reblogged author if not included for a given reason.
         if let reblogged = reply.reblog, !allMentions.map(\.acct).contains(reblogged.account.acct),
-           reblogged.account != userProfile {
+           reblogged.account != userProfile
+        {
             mentionString += " @\(reblogged.account.acct)"
         }
     }
@@ -202,7 +203,7 @@ class AuthorViewModel: ObservableObject {
                 textStrippedFromUrls = textStrippedFromUrls.replacingOccurrences(of: output.0, with: "@\(output.1)")
             }
             let charactersWithoutLinks = textStrippedFromUrls.count + (matches.count * 23)
-            return UserDefaults.standard.characterLimit - (charactersWithoutLinks)
+            return UserDefaults.standard.characterLimit - charactersWithoutLinks
         } catch {
             print("Err: couldn't make detector: \(error.localizedDescription). Using naive approach instead.")
             return UserDefaults.standard.characterLimit - text.count
@@ -210,7 +211,7 @@ class AuthorViewModel: ObservableObject {
     }
 
     private func memberString(from members: [Mention], excluding respondentAccount: String) -> String {
-        let excluded = [respondentAccount, (userProfile?.acct ?? "")]
+        let excluded = [respondentAccount, userProfile?.acct ?? ""]
         return members.filter { member in !excluded.contains(member.acct) }
             .map { mention in "@\(mention.acct)" }
             .joined(separator: " ")

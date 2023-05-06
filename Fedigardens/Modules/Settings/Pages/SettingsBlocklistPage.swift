@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Bunker
+import SwiftUI
 
 struct SettingsBlocklistPage: View {
     @StateObject private var viewModel = SettingsBlocklistViewModel()
@@ -25,7 +25,7 @@ struct SettingsBlocklistPage: View {
                 ProgressView()
             case .loading:
                 List {
-                    ForEach(0..<7) { _ in
+                    ForEach(0 ..< 7) { _ in
                         Label("example.domain", systemImage: "building.2")
                             .labelStyle(.settings(color: .red, size: size))
                     }

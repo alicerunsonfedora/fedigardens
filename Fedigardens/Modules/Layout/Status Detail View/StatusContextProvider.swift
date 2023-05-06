@@ -12,14 +12,15 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
 import Alice
+import SwiftUI
 
 struct StatusContextProvider: View {
     enum ContextDisplayMode {
         case ancestors
         case descendants
     }
+
     @ObservedObject var viewModel: StatusDetailViewModel
     var context: Context
     var displayMode: ContextDisplayMode = .descendants

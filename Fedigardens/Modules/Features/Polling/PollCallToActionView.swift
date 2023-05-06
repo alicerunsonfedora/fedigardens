@@ -12,9 +12,9 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import SwiftUI
-import EmojiText
 import Alice
+import EmojiText
+import SwiftUI
 
 struct PollCallToActionView: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false
@@ -50,8 +50,8 @@ struct PollCallToActionView: View {
                 Text(
                     String(format: "status.poll.runningdetail".localized(), poll.votesCount)
                 )
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
             }
         } icon: {
             Image(systemName: "checklist")

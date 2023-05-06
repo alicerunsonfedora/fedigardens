@@ -12,8 +12,8 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Combine
 import Alice
+import Combine
 import Drops
 import UIKit
 
@@ -29,6 +29,7 @@ class StatusNavigationListViewModel: ObservableObject {
             }
         }
     }
+
     @Published private var internalStatuses: [Status]
     @Published var shouldOpenCompositionTool: AuthoringContext?
     @Published var inbox: InboxPage = .focused
@@ -44,15 +45,15 @@ class StatusNavigationListViewModel: ObservableObject {
     }
 
     init(statuses: [Status]) {
-        self.internalStatuses = statuses
+        internalStatuses = statuses
     }
 
     init() {
-        self.internalStatuses = []
+        internalStatuses = []
     }
 
     func insert(statuses: [Status]) {
-        self.internalStatuses = statuses
+        internalStatuses = statuses
     }
 
     func toggleFavorite(status: Status) async {
@@ -102,7 +103,6 @@ class StatusNavigationListViewModel: ObservableObject {
             }
         case .failure(let error):
             print("Error occured when updating status: \(error.localizedDescription)")
-
         }
     }
 

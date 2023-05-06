@@ -58,9 +58,7 @@ struct AuthenticationView: View {
             } label: {
                 Text("general.learnmore")
             }
-            Button {
-
-            } label: {
+            Button {} label: {
                 Text("OK")
             }.keyboardShortcut(.defaultAction)
         } message: {
@@ -74,9 +72,7 @@ struct AuthenticationView: View {
             } label: {
                 Text("auth.badurl.racewaycta")
             }
-            Button {
-
-            } label: {
+            Button {} label: {
                 Text("OK")
             }.keyboardShortcut(.defaultAction)
         } message: {
@@ -95,11 +91,11 @@ struct AuthenticationView: View {
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                 }
-                    .padding(10)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.secondary.opacity(0.5))
-                    )
+                .padding(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.secondary.opacity(0.5))
+                )
                 Button {
                     Task { await viewModel.startAuthenticationWorkflow() }
                 } label: {

@@ -1,9 +1,8 @@
-import XCTest
 @testable import Alice
 import SwiftUI
+import XCTest
 
 final class AliceTests: XCTestCase {
-
     /// An EnvironmentValue that allows us to open a URL using the appropriate system service.
     ///
     /// Can be used as follows:
@@ -30,7 +29,6 @@ final class AliceTests: XCTestCase {
     }
 
     func testBasicRequests() async throws {
-
         let account = try! await getAccount(id: "1")
 
         if Alice.instanceDomain == "mastodon.social" {
@@ -42,7 +40,6 @@ final class AliceTests: XCTestCase {
         XCTAssertEqual(account!.id, "1")
 
 //        XCTAssertThrowsError(async { try await getAccount(id: "0932840923890482309409238409380948") })
-
     }
 }
 

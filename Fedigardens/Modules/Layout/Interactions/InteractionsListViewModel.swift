@@ -12,10 +12,10 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Foundation
-import Combine
 import Alice
 import struct Alice.Notification
+import Combine
+import Foundation
 
 class InteractionsListViewModel: ObservableObject {
     @Published var notifications = [Notification]()

@@ -32,9 +32,11 @@ public enum Endpoint {
     case token, revokeToken
 
     // MARK: - ACCOUNTS
+
     // Methods concerning user accounts and related information.
 
     // MARK: – CREDENTIALS -
+
     // Methods concerning working with an account's credentials
 
     /// Creates a user and account records. Returns an account access token for the app that initiated the
@@ -49,6 +51,7 @@ public enum Endpoint {
     case updateCredentials
 
     // MARK: – INFORMATION -
+
     // Methods concerning retrieving an account's related information.
 
     /// View information about a profile.
@@ -77,6 +80,7 @@ public enum Endpoint {
     case blockedServers
 
     // MARK: – ACTIONS
+
     // Methods concerning performing actions on accounts.
 
     /// Follow or unfollow the given account. Can also be used to update whether to show reblogs or enable
@@ -103,6 +107,7 @@ public enum Endpoint {
     case noteOnAccount(id: String)
 
     // MARK: - COMMUNITY INFORMATION
+
     // Methods pertaining to information about the current instance (community) they reside in.
 
     /// Information about the current server they reside in.
@@ -124,6 +129,7 @@ public enum Endpoint {
     case trendingStatuses
 
     // MARK: – GENERAL
+
     // Methods concerning performing general actions or retrieving general information from accounts.
 
     /// Find out whether a given account is followed, blocked, muted, etc.
@@ -136,6 +142,7 @@ public enum Endpoint {
     case lists
 
     // MARK: - TIMELINES AND STATUSES
+
     // Methods pertaining to interacting with timelines.
 
     /// Get a list of posts from a particular timeline.
@@ -160,6 +167,7 @@ public enum Endpoint {
     case followTag(id: String), unfollowTag(id: String)
 
     // MARK: - ACTIONS
+
     // Methods pertaining to actions that can be performed on statuses.
 
     /// Like or favorite a status.
