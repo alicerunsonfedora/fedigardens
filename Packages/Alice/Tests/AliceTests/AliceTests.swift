@@ -15,40 +15,47 @@ final class AliceTests: XCTestCase {
     /// ```
     @Environment(\.openURL) private var openURL
 
-    func testOauth() async throws {
-        await Alice.OAuth.shared.startOauthFlow(for: "mastodon.online")
+    var networkProvider: Alice?
+    var keychain: AliceMockKeychain?
+
+    override func setUp() async throws {
+        let mockKeychain = AliceMockKeychain()
+        keychain = AliceMockKeychain()
+        Alice.instanceDomain = "hyrma.example"
+        networkProvider = Alice(using: AliceMockSession.self, with: .init(using: mockKeychain))
     }
 
-    func doWhatever(_ parameters: [String: String]?) {
-        print("RECEIVED DEEP LINK...")
-        if let parameters = parameters {
-            for parameter in parameters {
-                print("\(parameter.key) : \(parameter.value)")
+    override func tearDown() async throws {
+        networkProvider = nil
+        keychain?.flush()
+        keychain = nil
+    }
+
+    func testOauth() async throws {
+        await callNetworkProvider { network, keychain in
+            await network.authenticator.startOauthFlow(for: "hyrma.example", using: network, store: keychain) { url in
+                XCTAssertTrue(url.absoluteString.starts(with: "https://hyrma.example"))
+            } onBadURL: { error in
+                XCTFail("Failure: \(error)")
             }
         }
     }
 
     func testBasicRequests() async throws {
-        let account = try! await getAccount(id: "1")
-
-        if Alice.instanceDomain == "mastodon.social" {
-            XCTAssertEqual(account!.username, "Gargron")
-        } else if Alice.instanceDomain == "mastodon.technology" {
-            XCTAssertEqual(account!.username, "ashfurrow")
+        await callNetworkProvider { network, keychain in
+            let accountResponse: Alice.Response<Account> = await network.get(.account(id: "1"))
+            switch accountResponse {
+            case .success(let account):
+                XCTAssertEqual(account.id, "1")
+                XCTAssertEqual(account.acct, "admin")
+            case .failure(let error):
+                XCTFail("Received error: \(error.localizedDescription)")
+            }
         }
-
-        XCTAssertEqual(account!.id, "1")
-
-//        XCTAssertThrowsError(async { try await getAccount(id: "0932840923890482309409238409380948") })
     }
-}
 
-func getAccount(id: String) async throws -> Account? {
-    let response: Alice.Response<Account> = await Alice().request(.get, for: .account(id: id))
-    switch response {
-    case .success(let account):
-        return account
-    case .failure:
-        return nil
+    func callNetworkProvider(_ operation: (Alice, AliceMockKeychain) async throws -> Void) async rethrows {
+        guard let networkProvider, let keychain else { return XCTFail("Network provider or keychain doesn't exist.") }
+        try await operation(networkProvider, keychain)
     }
 }
