@@ -25,6 +25,7 @@ struct StatusNavigationList<Extras: View>: View {
     @Environment(\.openWindow) private var openWindow
     @AppStorage(.useFocusedInbox) private var useFocusedInbox: Bool = false
     @AppStorage(.frugalMode) private var frugalMode: Bool = false
+    @AppStorage(.statusListPreviewLineCount) var statusListPreviewLineCount: Int = 2
     @State var statuses: [Status]
     @Binding var selectedStatus: Status?
     @StateObject private var viewModel = ViewModel()
@@ -79,7 +80,7 @@ struct StatusNavigationList<Extras: View>: View {
 
     private func statusLink(for status: Status) -> some View {
         StatusView(status: status)
-            .lineLimit(2)
+            .lineLimit(statusListPreviewLineCount)
             .profilePlacement(.hidden)
             .datePlacement(.automatic)
             .profileImageSize(44)
