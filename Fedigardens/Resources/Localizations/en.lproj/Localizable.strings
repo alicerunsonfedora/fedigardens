@@ -233,6 +233,8 @@
 "settings.about.changelog" = "See What's New…";
 "settings.about.license" = "License";
 "settings.about.matrix" = "Join Our Matrix Room";
+"settings.timeline.linelimit" = "Discussion Preview";
+"settings.timeline.linelimit-fmt" = "%d Lines";
 
 // MARK: - Settings: Composer -
 "settings.section.author" = "Composing";
