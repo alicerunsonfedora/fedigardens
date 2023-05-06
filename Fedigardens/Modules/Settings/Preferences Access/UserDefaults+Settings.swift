@@ -46,6 +46,11 @@ extension UserDefaults {
         set { setValue(newValue, forKey: .preferMatrixConversations) }
     }
 
+    var statusListPreviewLineCount: Int {
+        get { getValue(forKey: .statusListPreviewLineCount, default: 2) }
+        set { setValue(newValue, forKey: .statusListPreviewLineCount) }
+    }
+
     // MARK: - Intervention Settings
 
     var allowsInterventions: Bool {

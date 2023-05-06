@@ -33,6 +33,7 @@ enum GardensSettingsKey: String {
     case addQuoteParticipant = "author.quoteparticipant"
     case preferMatrixConversations = "profiles.prefermatrix"
     case frugalMode = "core.frugal-mode"
+    case statusListPreviewLineCount = "timeline.statuslines"
 }
 
 extension UserDefaults {
