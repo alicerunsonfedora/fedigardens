@@ -49,6 +49,9 @@
 		954C950A2A04691E0019AE09 /* FrugalModeEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95082A04691E0019AE09 /* FrugalModeEnvironmentKey.swift */; };
 		954C950C2A046AA20019AE09 /* View+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C950B2A046AA20019AE09 /* View+NotificationCenter.swift */; };
 		954C950D2A046AA20019AE09 /* View+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C950B2A046AA20019AE09 /* View+NotificationCenter.swift */; };
+		954C95162A05E67F0019AE09 /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 954C95152A05E67F0019AE09 /* Runestone */; };
+		954C95192A05E6A50019AE09 /* RunestoneViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95182A05E6A50019AE09 /* RunestoneViewer.swift */; };
+		954C951A2A05E6A50019AE09 /* RunestoneViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95182A05E6A50019AE09 /* RunestoneViewer.swift */; };
 		95555FB32960B7A2005BEF45 /* AckGen in Frameworks */ = {isa = PBXBuildFile; productRef = 95555FB22960B7A2005BEF45 /* AckGen */; };
 		95555FB52960B7A2005BEF45 /* AckGenUI in Frameworks */ = {isa = PBXBuildFile; productRef = 95555FB42960B7A2005BEF45 /* AckGenUI */; };
 		95555FB72960B7F1005BEF45 /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95555FB62960B7F0005BEF45 /* Acknowledgements.plist */; };
@@ -339,6 +342,7 @@
 		954C95042A0461310019AE09 /* StatusAttachmentAlternative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAttachmentAlternative.swift; sourceTree = "<group>"; };
 		954C95082A04691E0019AE09 /* FrugalModeEnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrugalModeEnvironmentKey.swift; sourceTree = "<group>"; };
 		954C950B2A046AA20019AE09 /* View+NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+NotificationCenter.swift"; sourceTree = "<group>"; };
+		954C95182A05E6A50019AE09 /* RunestoneViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunestoneViewer.swift; sourceTree = "<group>"; };
 		95555FB62960B7F0005BEF45 /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
 		95555FB82960B8DA005BEF45 /* SettingsAcknowledgementList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAcknowledgementList.swift; sourceTree = "<group>"; };
 		95555FBA2960B9F7005BEF45 /* Acknowledgement+License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Acknowledgement+License.swift"; sourceTree = "<group>"; };
@@ -467,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95A02A6F295FE94F0013EF7C /* Alice in Frameworks */,
+				954C95162A05E67F0019AE09 /* Runestone in Frameworks */,
 				95555FB52960B7A2005BEF45 /* AckGenUI in Frameworks */,
 				95A1BF9D2973B83C002C88B6 /* EmojiText in Frameworks */,
 				9558C7EC29578503001B30C7 /* HTML2Markdown in Frameworks */,
@@ -547,6 +552,14 @@
 				954C95082A04691E0019AE09 /* FrugalModeEnvironmentKey.swift */,
 			);
 			path = "Frugal Mode";
+			sourceTree = "<group>";
+		};
+		954C95172A05E6910019AE09 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				954C95182A05E6A50019AE09 /* RunestoneViewer.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 		95555FC02960BDDD005BEF45 /* Licenses */ = {
@@ -937,6 +950,7 @@
 				956714202958CDC300BFF76A /* Components */,
 				95A01C38299955020086985E /* Features */,
 				95ADAE1D27B6DB830011FD83 /* Layout */,
+				954C95172A05E6910019AE09 /* Source */,
 				95645BD527C554FB00FB3426 /* Settings */,
 				95ADADE227B6A6AB0011FD83 /* Utilities */,
 			);
@@ -1044,6 +1058,7 @@
 				95F2DE2829726A7E00553937 /* Drops */,
 				95A1BF9C2973B83C002C88B6 /* EmojiText */,
 				95A01C3A29995AF70086985E /* Bunker */,
+				954C95152A05E67F0019AE09 /* Runestone */,
 			);
 			productName = "Capstone (iOS)";
 			productReference = 954722FD27A0094000D1BA89 /* Fedigardens.app */;
@@ -1102,6 +1117,7 @@
 				95F2DE2729726A7E00553937 /* XCRemoteSwiftPackageReference "Drops" */,
 				95A1BF9B2973B83C002C88B6 /* XCRemoteSwiftPackageReference "EmojiText" */,
 				95A01C3929995AF70086985E /* XCRemoteSwiftPackageReference "bunker" */,
+				954C95142A05E67F0019AE09 /* XCRemoteSwiftPackageReference "Runestone" */,
 			);
 			productRefGroup = 954722FE27A0094000D1BA89 /* Products */;
 			projectDirPath = "";
@@ -1214,6 +1230,7 @@
 				95009EF2295E711100F32F85 /* AuthenticationViewModel.swift in Sources */,
 				9537C6D6297DBB510039F3C4 /* SettingsBlocklistViewModel.swift in Sources */,
 				95F2DE26297262D700553937 /* SettingsInterventionPage.swift in Sources */,
+				954C95192A05E6A50019AE09 /* RunestoneViewer.swift in Sources */,
 				95CDCD2829904E19002BD37A /* AttachmentViewerToolbar.swift in Sources */,
 				9588914B29BD11DF0092781B /* AttachmentVideoPlayer.swift in Sources */,
 				956714162958C1BF00BFF76A /* AuthoringScene.swift in Sources */,
@@ -1413,6 +1430,7 @@
 				9594DE3D27C927820036325A /* Conversation+Authors.swift in Sources */,
 				95801D5C297CC13400FE8D83 /* StatusDetailQuote.swift in Sources */,
 				95801D58297CC13400FE8D83 /* TimelineSplitViewModel.swift in Sources */,
+				954C951A2A05E6A50019AE09 /* RunestoneViewer.swift in Sources */,
 				95801D3C297CC0A300FE8D83 /* SettingsView.swift in Sources */,
 				95801D6E297CC15900FE8D83 /* UIDevice+Model.swift in Sources */,
 				95801D64297CC13C00FE8D83 /* MessagingListCellView.swift in Sources */,
@@ -1753,6 +1771,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		954C95142A05E67F0019AE09 /* XCRemoteSwiftPackageReference "Runestone" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/simonbs/Runestone";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
 		95555FB12960B7A1005BEF45 /* XCRemoteSwiftPackageReference "AckGen" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MartinP7r/AckGen";
@@ -1804,6 +1830,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		954C95152A05E67F0019AE09 /* Runestone */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 954C95142A05E67F0019AE09 /* XCRemoteSwiftPackageReference "Runestone" */;
+			productName = Runestone;
+		};
 		95555FB22960B7A2005BEF45 /* AckGen */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 95555FB12960B7A1005BEF45 /* XCRemoteSwiftPackageReference "AckGen" */;

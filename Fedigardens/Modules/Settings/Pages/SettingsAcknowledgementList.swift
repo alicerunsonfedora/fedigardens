@@ -52,11 +52,8 @@ struct SettingsAcknowledgementList: View {
     private func section(of list: [Acknowledgement]) -> some View {
         ForEach(list, id: \.title) { notice in
             NavigationLink {
-                ScrollView(.vertical) {
-                    VStack(alignment: .leading) {
-                        Text(notice.license)
-                    }.frame(maxWidth: .infinity)
-                }.navigationTitle(notice.title)
+                RunestoneViewer(text: notice.license)
+                .navigationTitle(notice.title)
             } label: {
                 Text(notice.title)
             }

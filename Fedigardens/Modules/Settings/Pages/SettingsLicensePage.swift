@@ -15,18 +15,16 @@
 import SwiftUI
 
 struct SettingsLicensePage: View {
-    @State private var licenseText: AttributedString = .init(stringLiteral: "")
+    @State private var licenseText: String = ""
 
     var body: some View {
-        ScrollView(.vertical) {
-            if licenseText == AttributedString(stringLiteral: "") {
+        Group {
+            if licenseText.isEmpty {
                 VStack {
                     ProgressView()
                 }
             } else {
-                Text(licenseText)
-                    .font(.system(.body, design: .serif))
-                    .padding(.horizontal, 20)
+                RunestoneViewer(text: licenseText)
             }
         }
         .navigationTitle("settings.about.license")
@@ -42,17 +40,18 @@ struct SettingsLicensePage: View {
     private func fetchLicense() async {
         guard let resource = Bundle.main.path(forResource: "CNPL", ofType: "md") else { return }
         guard let string = try? String(contentsOfFile: resource) else { return }
-        let attributedString = try? AttributedString(
-            markdown: string,
-            options: .init(
-                allowsExtendedAttributes: true,
-                interpretedSyntax: .inlineOnlyPreservingWhitespace
-            )
-        )
-        DispatchQueue.main.async {
-            if let text = attributedString {
-                self.licenseText = text
-            }
-        }
+        licenseText = string
+//        let attributedString = try? AttributedString(
+//            markdown: string,
+//            options: .init(
+//                allowsExtendedAttributes: true,
+//                interpretedSyntax: .inlineOnlyPreservingWhitespace
+//            )
+//        )
+//        DispatchQueue.main.async {
+//            if let text = attributedString {
+//                self.licenseText = text
+//            }
+//        }
     }
 }

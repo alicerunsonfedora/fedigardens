@@ -51,7 +51,6 @@ extension URL {
     }
 
     init?(destination: AppDestination) {
-        print(destination.absoluteString)
         self.init(string: destination.absoluteString)
     }
 
