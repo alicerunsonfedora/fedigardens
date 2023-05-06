@@ -39,7 +39,7 @@ public class AuthenticationModule: ObservableObject {
         case authenthicated(authToken: String)
     }
 
-    public static let shared = AuthenticationModule()
+    public static let shared = AuthenticationModule(using: Keychain(service: Alice.OAuth.keychainService))
 
     public var canMakeAuthenticatedRequests: Bool {
         switch authState {
@@ -72,10 +72,9 @@ public class AuthenticationModule: ObservableObject {
 
     private let urlSuffix = "oauth"
 
-    init() {
+    init<T: AliceSecurityModule>(using secureModule: T) {
         _ = isOnMainThread(named: "OAUTH CLIENT STARTED")
-        let keychain = Keychain(service: Alice.OAuth.keychainService)
-        if let accessToken = keychain["starlight_acess_token"] {
+        if let accessToken = secureModule.getSecureStore("starlight_access_token") {
             authState = .authenthicated(authToken: accessToken)
         } else {
             authState = .signedOut
@@ -89,12 +88,28 @@ public class AuthenticationModule: ObservableObject {
     public func startOauthFlow(
         for instanceDomain: String,
         registeredAs app: RegisteredApplication = .default,
+        using service: Alice = .shared,
         authHandler: ((URL) -> Void)? = nil,
         onBadURL badURLHandler: ((String) -> Void)? = nil
     ) async {
-        //  First, we initialize the keychain object
-        let keychain = Keychain(service: Alice.OAuth.keychainService)
+        await startOauthFlow(
+            for: instanceDomain,
+            registeredAs: app,
+            using: service,
+            store: Keychain(service: Alice.OAuth.keychainService),
+            authHandler: authHandler,
+            onBadURL: badURLHandler
+        )
+    }
 
+    func startOauthFlow<T: AliceSecurityModule>(
+        for instanceDomain: String,
+        registeredAs app: RegisteredApplication = .default,
+        using service: Alice = .shared,
+        store: T,
+        authHandler: ((URL) -> Void)? = nil,
+        onBadURL badURLHandler: ((String) -> Void)? = nil
+    ) async {
         // Check if the URL is valid, and return if the URL can't be created.
         if URL(string: "https://\(instanceDomain)") == nil {
             badURLHandler?(instanceDomain)
@@ -102,7 +117,7 @@ public class AuthenticationModule: ObservableObject {
         }
 
         //  Then, we assign the domain of the instance we are working with.
-        keychain["starlight_instance_domain"] = instanceDomain
+        store.setSecureStore(instanceDomain, forKey: "starlight_instance_domain")
         Alice.instanceDomain = instanceDomain
 
         //  Now, we change the state of the oauth to .signInProgress
@@ -110,7 +125,7 @@ public class AuthenticationModule: ObservableObject {
             self.authState = .signinInProgress
         }
 
-        let response: Alice.Response<Application> = await Alice.shared.post(.apps, params: [
+        let response: Alice.Response<Application> = await service.post(.apps, params: [
             "client_name": app.name,
             "redirect_uris": "\(Alice.shared.urlPrefix)://\(urlSuffix)",
             "scopes": scopes.joined(separator: " "),
@@ -119,8 +134,8 @@ public class AuthenticationModule: ObservableObject {
 
         switch response {
         case .success(let client):
-            keychain["starlight_client_id"] = client.clientId
-            keychain["starlight_client_secret"] = client.clientSecret
+            store.setSecureStore(client.clientId, forKey: "starlight_client_id")
+            store.setSecureStore(client.clientSecret, forKey: "starlight_client_secret")
 
             //  Then, we generate the url we need to visit for authorizing the user
             let url = Alice.apiURL.appendingPathComponent(Endpoint.authorizeUser.path)
@@ -141,16 +156,24 @@ public class AuthenticationModule: ObservableObject {
     }
 
     /// Continues with the OAuth flow after obtaining the user authorization code from the redirect URI
-    public func continueOauthFlow(_ url: URL) async {
+    public func continueOauthFlow<T: AliceSecurityModule>(_ url: URL, store: T) async {
         if let code = url.queryParameters?.first(where: { $0.key == "code" }) {
-            await continueOauthFlow(code.value)
+            await continueOauthFlow(code.value, store: store)
         }
     }
 
     /// Continues with the OAuth flow after obtaining the user authorization code from the redirect URI
-    public func continueOauthFlow(_ code: String) async {
+    public func continueOauthFlow(_ url: URL) async {
+        await continueOauthFlow(url, store: Keychain(service: Alice.OAuth.keychainService))
+    }
+
+    func continueOauthFlow<T: AliceSecurityModule>(
+        _ code: String,
+        using service: Alice = .shared,
+        store: T
+    ) async {
         let keychain = Keychain(service: Alice.OAuth.keychainService)
-        let response: Alice.Response<Token> = await Alice.shared.post(.token, params: [
+        let response: Alice.Response<Token> = await service.post(.token, params: [
             "client_id": keychain["starlight_client_id"]!,
             "client_secret": keychain["starlight_client_secret"]!,
             "redirect_uri": "\(Alice.shared.urlPrefix)://\(urlSuffix)",
@@ -170,14 +193,11 @@ public class AuthenticationModule: ObservableObject {
         }
     }
 
-    /// Removes the tokens in the keychain for this app, effectively signing a user out.
-    public func signOut() async {
-        let keychain = Keychain(service: Alice.OAuth.keychainService)
-
-        let response: Alice.Response<EmptyNode> = await Alice.shared.post(.revokeToken, params: [
-            "client_id": keychain["starlight_client_id"]!,
-            "client_secret": keychain["starlight_client_secret"]!,
-            "token": keychain["starlight_access_token"] ?? ""
+    func signOut<T: AliceSecurityModule>(using service: Alice = .shared, store: T) async {
+        let response: Alice.Response<EmptyNode> = await service.post(.revokeToken, params: [
+            "client_id": store.getSecureStore("starlight_client_id")!,
+            "client_secret": store.getSecureStore("starlight_client_secret")!,
+            "token": store.getSecureStore("starlight_access_token") ?? ""
         ])
 
         switch response {
@@ -187,13 +207,14 @@ public class AuthenticationModule: ObservableObject {
             print("Failed to revoke token: \(error)")
         }
 
-        do {
-            try keychain.removeAll()
-            DispatchQueue.main.async {
-                self.authState = .signedOut
-            }
-        } catch {
-            print(error)
+        store.flush()
+        DispatchQueue.main.async {
+            self.authState = .signedOut
         }
+    }
+
+    /// Removes the tokens in the keychain for this app, effectively signing a user out.
+    public func signOut(using service: Alice = .shared) async {
+        await signOut(using: service, store: Keychain(service: Alice.OAuth.keychainService))
     }
 }

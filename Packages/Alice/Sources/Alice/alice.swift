@@ -67,6 +67,8 @@ public class Alice: ObservableObject, CustomStringConvertible {
         return URL(string: "https://\(instanceDomain)") ?? URL(string: "https://mastodon.online")!
     }
 
+    public var authenticator: AuthenticationModule
+
     /// Allows us to decode top-level values of the given type from the given JSON representation.
     private let decoder: JSONDecoder
 
@@ -78,8 +80,12 @@ public class Alice: ObservableObject, CustomStringConvertible {
 
     // MARK: - INITIALIZERS
 
-    public init<Session: AliceSession>(using _: Session.Type = URLSession.self) {
+    public init<Session: AliceSession>(
+        using _: Session.Type = URLSession.self,
+        with authModule: AuthenticationModule = .shared
+    ) {
         _ = isOnMainThread(named: "CLIENT STARTED")
+        self.authenticator = authModule
         urlPrefix = Alice.defaultUrlPrefix
 
         let decoder = JSONDecoder()
@@ -89,7 +95,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
         var token: String?
 
         //  For the moment, we still need to use Combine and Publishers a bit, but this might change over time.
-        oauthStateCancellable = OAuth.shared.$authState.sink { state in
+        oauthStateCancellable = authenticator.$authState.sink { state in
             switch state {
             case .authenthicated(let oToken):
                 token = oToken
@@ -132,7 +138,12 @@ public class Alice: ObservableObject, CustomStringConvertible {
     }
 
     /// Returns a URLRequest with the specified URL, http method, and query parameters.
-    private static func makeRequest(_ method: Method, url: URL, params: [String: String]? = nil) -> URLRequest {
+    private static func makeRequest(
+        _ method: Method,
+        url: URL,
+        params: [String: String]? = nil,
+        with auth: AuthenticationModule = .shared
+    ) -> URLRequest {
         var request: URLRequest
         var url = url
 
@@ -153,7 +164,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
         request = URLRequest(url: url)
         request.httpMethod = method.rawValue
 
-        let authState = Alice.OAuth.shared.authState
+        let authState = auth.authState
         if case .authenthicated(let token) = authState {
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
@@ -168,7 +179,7 @@ public class Alice: ObservableObject, CustomStringConvertible {
     ) async -> Response<T> {
         let url = Self.apiURL.appendingPathComponent(endpoint.path)
         do {
-            let request = Self.makeRequest(method, url: url, params: params)
+            let request = Self.makeRequest(method, url: url, params: params, with: authenticator)
             let (data, response) = try await session.request(request, delegate: nil)
 
             guard let response = response as? HTTPURLResponse else {
