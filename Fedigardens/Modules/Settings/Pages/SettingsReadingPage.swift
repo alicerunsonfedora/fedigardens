@@ -29,7 +29,7 @@ struct SettingsReadingPage: View {
                     Text("settings.showhandle.title")
                 }
                 Picker("settings.timeline.linelimit", selection: $statusListPreviewLineCount) {
-                    ForEach([2, 3, 4, 5], id: \.self) { lineCount in
+                    ForEach(2...5, id: \.self) { lineCount in
                         Text("settings.timeline.linelimit-fmt".localized(lineCount))
                             .tag(lineCount)
                     }
