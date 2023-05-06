@@ -18,10 +18,11 @@ import Alice
 struct GardensAppSidebarContent: View {
     @Environment(\.userProfile) var userProfile
     @StateObject var viewModel: GardensAppLayoutViewModel
+    @Binding var currentPage: GardensAppPage?
 
     var body: some View {
         Group {
-            if let destination = viewModel.currentPage {
+            if let destination = currentPage {
                 Group {
                     switch destination {
                     case .forYou:

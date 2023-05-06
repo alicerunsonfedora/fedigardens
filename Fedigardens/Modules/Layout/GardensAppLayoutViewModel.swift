@@ -18,7 +18,10 @@ import Alice
 
 class GardensAppLayoutViewModel: ObservableObject {
     @Published var dummyTimeline: [Status] = MockData.timeline!
+
+    @available(*, deprecated, message: "Use SceneStorage to store the current page instead.")
     @Published var currentPage: GardensAppPage? = .forYou
+
     @Published var selectedStatus: Status?
     @Published var subscribedTags: [Tag] = []
     @Published var tags: [Tag] = []

@@ -22,30 +22,13 @@ struct GardensAppWideLayout: View {
     @Environment(\.userProfile) var userProfile: Account
     @StateObject private var viewModel = GardensAppLayoutViewModel()
     @State private var shouldDisplayComposeModal = false
+    @SceneStorage("currentUserPage") var currentUserPage: GardensAppPage?
 
     var body: some View {
         NavigationSplitView {
-            List(selection: $viewModel.currentPage) {
+            List(selection: $currentUserPage) {
                 GardensAppWideCommonDestinationsGroup()
-                if viewModel.lists.isNotEmpty {
-                    Section {
-                        ForEach(viewModel.lists) { list in
-                            NavigationLink(value: GardensAppPage.list(id: list.id)) {
-                                Label(list.title, systemImage: "folder")
-                            }
-                        }
-                    } header: {
-                        Text(GardensAppPage.list(id: "0").localizedTitle)
-                    }
-                }
-
-                if viewModel.subscribedTags.isNotEmpty {
-                    GardensAppSubscribedTagsDestination(viewModel: viewModel)
-                }
-
-                if viewModel.tags.isNotEmpty {
-                    GardensAppTrendingTagsDestination(viewModel: viewModel)
-                }
+                dynamicSidebarContent
             }
             .listStyle(.sidebar)
             .navigationTitle("general.appname")
@@ -62,7 +45,7 @@ struct GardensAppWideLayout: View {
                 EditButton()
             }
         } content: {
-            GardensAppSidebarContent(viewModel: viewModel)
+            GardensAppSidebarContent(viewModel: viewModel, currentPage: $currentUserPage)
                 .toolbar {
                     ToolbarItem {
                         ZStack {
@@ -112,6 +95,30 @@ struct GardensAppWideLayout: View {
             }
         } message: {
             Text("followedtags.alert.detail")
+        }
+    }
+
+    private var dynamicSidebarContent: some View {
+        Group {
+            if viewModel.lists.isNotEmpty {
+                Section {
+                    ForEach(viewModel.lists) { list in
+                        NavigationLink(value: GardensAppPage.list(id: list.id)) {
+                            Label(list.title, systemImage: "folder")
+                        }
+                    }
+                } header: {
+                    Text(GardensAppPage.list(id: "0").localizedTitle)
+                }
+            }
+
+            if viewModel.subscribedTags.isNotEmpty {
+                GardensAppSubscribedTagsDestination(viewModel: viewModel)
+            }
+
+            if viewModel.tags.isNotEmpty {
+                GardensAppTrendingTagsDestination(viewModel: viewModel)
+            }
         }
     }
 

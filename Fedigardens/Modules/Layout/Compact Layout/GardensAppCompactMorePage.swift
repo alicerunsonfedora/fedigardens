@@ -19,12 +19,13 @@ import Bunker
 struct GardensAppCompactMorePage<Detail: View>: View {
     @Environment(\.userProfile) var userProfile
     @StateObject var viewModel: GardensAppLayoutViewModel
+    @Binding var currentPage: GardensAppPage?
 
     var sharedDetail: () -> Detail
 
     var body: some View {
         NavigationSplitView {
-            List(selection: $viewModel.currentPage) {
+            List(selection: $currentPage) {
                 Group {
                     GardensPageLink(page: .public)
                     GardensPageLink(page: .messages)
@@ -66,7 +67,7 @@ struct GardensAppCompactMorePage<Detail: View>: View {
                 EditButton()
             }
         } content: {
-            GardensAppCompactSidebarContent(viewModel: viewModel)
+            GardensAppCompactSidebarContent(viewModel: viewModel, currentPage: $currentPage)
         } detail: {
             sharedDetail()
         }

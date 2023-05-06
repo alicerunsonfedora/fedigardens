@@ -21,6 +21,7 @@ struct GardensAppCompactLayout: View {
     @StateObject private var viewModel = GardensAppLayoutViewModel()
     @State private var shouldDisplayComposeModal = false
     @State private var path: [Status] = []
+    @SceneStorage("currentUserPage") var currentUserPage: GardensAppPage?
 
     var body: some View {
         TabView {
@@ -44,7 +45,7 @@ struct GardensAppCompactLayout: View {
             .tabItem {
                 Label(page: .search)
             }
-            GardensAppCompactMorePage(viewModel: viewModel) {
+            GardensAppCompactMorePage(viewModel: viewModel, currentPage: $currentUserPage) {
                 navigationDetailView
             }
                 .tabItem { Label("general.more", systemImage: "ellipsis.circle") }
@@ -76,7 +77,7 @@ struct GardensAppCompactLayout: View {
     }
 
     private func loadSidebar() {
-        viewModel.currentPage = nil
+        currentUserPage = nil
         Task { await viewModel.fetchTags() }
         Task { await viewModel.fetchSubscriptions() }
         Task { await viewModel.fetchLists() }

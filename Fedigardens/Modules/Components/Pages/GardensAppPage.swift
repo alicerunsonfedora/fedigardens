@@ -88,6 +88,70 @@ enum GardensAppPage: Hashable {
     }
 }
 
+extension GardensAppPage: RawRepresentable {
+    var rawValue: String {
+        switch self {
+        case .forYou:
+            return "gardens.page.foryou"
+        case .local:
+            return "gardens.page.local"
+        case .public:
+            return "gardens.page.public"
+        case .messages:
+            return "gardens.page.messages"
+        case .selfPosts:
+            return "gardens.page.authored"
+        case .saved:
+            return "gardens.page.saved"
+        case .notifications:
+            return "gardens.page.notifications"
+        case .mentions:
+            return "gardens.page.mentions"
+        case .list(let id):
+            return "gardens.page.list:\(id)"
+        case .trending(let id):
+            return "gardens.page.trends:\(id)"
+        case .settings:
+            return "gardens.page.settings"
+        case .search:
+            return "gardens.page.search"
+        }
+    }
+
+    init?(rawValue: String) { // swiftlint:disable:this cyclomatic_complexity
+        switch rawValue {
+        case "gardens.page.foryou":
+            self = .forYou
+        case "gardens.page.local":
+            self = .local
+        case "gardens.page.public":
+            self = .public
+        case "gardens.page.messages":
+            self = .messages
+        case "gardens.page.authored":
+            self = .selfPosts
+        case "gardens.page.saved":
+            self = .saved
+        case "gardens.page.notifications":
+            self = .notifications
+        case "gardens.page.mentions":
+            self = .mentions
+        case "gardens.page.settings":
+            self = .settings
+        case "gardens.page.search":
+            self = .search
+        case rawValue where rawValue.starts(with: "gardens.page.list:"):
+            guard let id = rawValue.split(separator: ":").last else { return nil }
+            self = .list(id: String(id))
+        case rawValue where rawValue.starts(with: "gardens.page.trends:"):
+            guard let id = rawValue.split(separator: ":").last else { return nil }
+            self = .trending(id: String(id))
+        default:
+            return nil
+        }
+    }
+}
+
 extension Label where Title == Text, Icon == Image {
     init(page: GardensAppPage) {
         self = Label(page.localizedTitle, systemImage: page.symbol)

@@ -18,10 +18,11 @@ import Alice
 struct GardensAppCompactSidebarContent: View {
     @Environment(\.userProfile) var userProfile: Account
     @StateObject var viewModel: GardensAppLayoutViewModel
+    @Binding var currentPage: GardensAppPage?
 
     var body: some View {
         Group {
-            if let destination = viewModel.currentPage {
+            if let destination = currentPage {
                 switch destination {
                 case .public:
                     TimelineSplitView(
