@@ -37,6 +37,7 @@ struct AuthorViewParticipantsField: View {
                         .labelStyle(.iconOnly)
                         .foregroundColor(.secondary)
                 }
+                .buttonStyle(.borderless)
             }
         }
     }
