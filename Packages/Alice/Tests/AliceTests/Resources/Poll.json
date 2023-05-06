@@ -1,0 +1,25 @@
+{
+    "id": "6",
+    "expires_at": "2020-09-15T03:59:02.588Z",
+    "expired": true,
+    "multiple": true,
+    "votes_count": 3,
+    "voters_count": 3,
+    "voted": true,
+    "own_votes": [],
+    "options": [
+        {
+            "title": "Hell yeah!",
+            "votes_count": 3
+        },
+        {
+            "title": "Probably not...",
+            "votes_count": 0
+        },
+        {
+            "title": "I'm not sure",
+            "votes_count": 0
+        }
+    ],
+    "emojis": []
+}
