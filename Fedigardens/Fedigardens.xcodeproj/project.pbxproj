@@ -52,6 +52,7 @@
 		954C95162A05E67F0019AE09 /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 954C95152A05E67F0019AE09 /* Runestone */; };
 		954C95192A05E6A50019AE09 /* RunestoneViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95182A05E6A50019AE09 /* RunestoneViewer.swift */; };
 		954C951A2A05E6A50019AE09 /* RunestoneViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95182A05E6A50019AE09 /* RunestoneViewer.swift */; };
+		954C951C2A05F39B0019AE09 /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 954C951B2A05F39B0019AE09 /* Runestone */; };
 		95555FB32960B7A2005BEF45 /* AckGen in Frameworks */ = {isa = PBXBuildFile; productRef = 95555FB22960B7A2005BEF45 /* AckGen */; };
 		95555FB52960B7A2005BEF45 /* AckGenUI in Frameworks */ = {isa = PBXBuildFile; productRef = 95555FB42960B7A2005BEF45 /* AckGenUI */; };
 		95555FB72960B7F1005BEF45 /* Acknowledgements.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95555FB62960B7F0005BEF45 /* Acknowledgements.plist */; };
@@ -486,6 +487,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				954C951C2A05F39B0019AE09 /* Runestone in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1078,6 +1080,9 @@
 				95801D23297C72EB00FE8D83 /* PBXTargetDependency */,
 			);
 			name = FedigardensTests;
+			packageProductDependencies = (
+				954C951B2A05F39B0019AE09 /* Runestone */,
+			);
 			productName = Tests;
 			productReference = 95ADADF327B6A9630011FD83 /* FedigardensTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -1831,6 +1836,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		954C95152A05E67F0019AE09 /* Runestone */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 954C95142A05E67F0019AE09 /* XCRemoteSwiftPackageReference "Runestone" */;
+			productName = Runestone;
+		};
+		954C951B2A05F39B0019AE09 /* Runestone */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 954C95142A05E67F0019AE09 /* XCRemoteSwiftPackageReference "Runestone" */;
 			productName = Runestone;
