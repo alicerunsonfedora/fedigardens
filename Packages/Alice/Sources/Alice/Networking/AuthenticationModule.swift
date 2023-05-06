@@ -74,7 +74,7 @@ public class AuthenticationModule: ObservableObject {
 
     init<T: AliceSecurityModule>(using secureModule: T) {
         _ = isOnMainThread(named: "OAUTH CLIENT STARTED")
-        if let accessToken = secureModule.getSecureStore("starlight_access_token") {
+        if let accessToken = secureModule.getSecureStore("starlight_acess_token") {
             authState = .authenthicated(authToken: accessToken)
         } else {
             authState = .signedOut
@@ -172,10 +172,9 @@ public class AuthenticationModule: ObservableObject {
         using service: Alice = .shared,
         store: T
     ) async {
-        let keychain = Keychain(service: Alice.OAuth.keychainService)
         let response: Alice.Response<Token> = await service.post(.token, params: [
-            "client_id": keychain["starlight_client_id"]!,
-            "client_secret": keychain["starlight_client_secret"]!,
+            "client_id": store.getSecureStore("starlight_client_id")!,
+            "client_secret": store.getSecureStore("starlight_client_secret")!,
             "redirect_uri": "\(Alice.shared.urlPrefix)://\(urlSuffix)",
             "grant_type": "authorization_code",
             "code": code,
@@ -184,7 +183,7 @@ public class AuthenticationModule: ObservableObject {
 
         switch response {
         case .success(let tokenData):
-            keychain["starlight_acess_token"] = tokenData.accessToken
+            store.setSecureStore(tokenData.accessToken, forKey: "starlight_acess_token")
             DispatchQueue.main.async {
                 self.authState = .authenthicated(authToken: tokenData.accessToken)
             }

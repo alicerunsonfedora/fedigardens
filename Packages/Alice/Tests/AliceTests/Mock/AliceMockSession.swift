@@ -40,6 +40,8 @@ class AliceMockSession {
         case status = "https://hyrma.example/api/v1/statuses/105833885501246760"
         case account = "https://hyrma.example/api/v1/accounts/1"
         case apps = "https://hyrma.example/api/v1/apps"
+        case oauth = "https://hyrma.example/oauth/token"
+        case revoke = "https://hyrma.example/oauth/revoke"
     }
 
     required init(configuration: URLSessionConfiguration) {
@@ -69,6 +71,16 @@ class AliceMockSession {
         }
         return (data, response)
     }
+
+    private func unauthorized() -> FetchError {
+        guard let data = data(for: "UnauthorizedError") else {
+            return .unknownError(error: AliceMockError.noMockDataFound)
+        }
+        guard let error = try? JSONDecoder().decode(MastodonError.self, from: data) else {
+            return .unknown(data: data)
+        }
+        return .mastodonAPIError(error: error, data: data)
+    }
 }
 
 extension AliceMockSession: AliceSession {
@@ -76,14 +88,21 @@ extension AliceMockSession: AliceSession {
         guard let url = request.url else {
             throw FetchError.unknownError(error: AliceMockError.badRequest)
         }
+        let authenticated = request.allHTTPHeaderFields?["Authorization"]?.starts(with: "Bearer") == true
 
         switch url.absoluteString {
         case Touchpoint.status.rawValue:
+            guard authenticated else { throw unauthorized() }
             return try await requestedSet(for: "Status", to: url)
         case Touchpoint.account.rawValue:
+            guard authenticated else { throw unauthorized() }
             return try await requestedSet(for: "Profile", to: url)
         case url.absoluteString where url.absoluteString.starts(with: Touchpoint.apps.rawValue):
             return try await requestedSet(for: "Registration", to: url)
+        case url.absoluteString where url.absoluteString.starts(with: Touchpoint.oauth.rawValue):
+            return try await requestedSet(for: "Token", to: url)
+        case url.absoluteString where url.absoluteString.starts(with: Touchpoint.revoke.rawValue):
+            return try await requestedSet(for: "Empty", to: url)
         default:
             throw FetchError.unknownError(error: AliceMockError.unknownEndpoint)
         }
