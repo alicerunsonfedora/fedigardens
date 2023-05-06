@@ -14,6 +14,19 @@ enum AliceMockError: Error {
     case noMockDataFound
 }
 
+extension AliceMockError: LocalizedError {
+    var localizedDescription: String {
+        switch self {
+        case .badRequest:
+            return "The request received was malformed."
+        case .unknownEndpoint:
+            return "The mock service is unable to recognize the endpoint."
+        case .noMockDataFound:
+            return "No mock data was found for the endpoint in question."
+        }
+    }
+}
+
 class AliceMockResponse: URLResponse {
     var data: Data?
 }
@@ -29,24 +42,12 @@ class AliceMockSession {
         case apps = "https://hyrma.example/api/v1/apps"
     }
 
-    class Keychain: AliceSecurityModule {
-        private var keychain = [String: String]()
-
-        func setSecureStore(_ value: String?, forKey key: String) {
-            keychain[key] = value
-        }
-
-        func getSecureStore(_ key: String) -> String? {
-            return keychain[key]
-        }
-    }
-
     required init(configuration: URLSessionConfiguration) {
         self.urlSessionConfiguration = configuration
     }
 
     private func data(for mockResource: String) -> Data? {
-        guard let mockPath = Bundle(for: AliceMockSession.self).path(forResource: mockResource, ofType: "json") else {
+        guard let mockPath = Bundle.module.path(forResource: mockResource, ofType: "json") else {
             return nil
         }
         let url = URL(filePath: mockPath)
@@ -80,7 +81,7 @@ extension AliceMockSession: AliceSession {
         case Touchpoint.status.rawValue:
             return try await requestedSet(for: "Status", to: url)
         case Touchpoint.account.rawValue:
-            return try await requestedSet(for: "Account", to: url)
+            return try await requestedSet(for: "Profile", to: url)
         case url.absoluteString where url.absoluteString.starts(with: Touchpoint.apps.rawValue):
             return try await requestedSet(for: "Registration", to: url)
         default:
