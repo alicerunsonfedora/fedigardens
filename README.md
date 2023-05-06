@@ -43,7 +43,7 @@ in the root directory.
 
 > :information_source: To prevent collisions with the normal app available
 > in the App Store and/or TestFlight, it is recommended that you change
-> the URL scheme from `gardens://` to your own URL scheme. Change this in
+> the URL scheme from `gardens:` to your own URL scheme. Change this in
 > the URL Types section of each target, then change the corresponding line
 > inGardens.swift to match your URL prefix:
 >
@@ -69,7 +69,7 @@ be distributed through TestFlight or the App Store.
 
 If you have found a bug or would like to make a feature request, please do
 so on the project's Raceway page at
-https://raceway.marquiskurt.net/t/fedigardens or by filing a bug report on
+https://feedback.marquiskurt.net/t/fedigardens or by filing a bug report on
 the GitHub repository's issues page.
 
 ## Licensing
@@ -87,5 +87,6 @@ projects:
 - Drops: MIT License
 - EmojiText: Apache 2.0 License
 - AckGen: MIT License
+- Runestone: MIT License
 
 [capstone-link]: https://github.com/alicerunsonfedora/capstone
