@@ -1,11 +1,11 @@
-// swift-tools-version:5.5
+// swift-tools-version:5.7
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
 let package = Package(
     name: "Alice",
-    platforms: [.macOS(.v12), .iOS(.v15), .tvOS(.v15), .watchOS(.v8)],
+    platforms: [.macOS(.v13), .iOS(.v16), .tvOS(.v16), .watchOS(.v9)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
@@ -26,8 +26,11 @@ let package = Package(
             dependencies: ["KeychainAccess"]
         ),
         .testTarget(
-            name: "ChicaTests",
-            dependencies: ["Alice"]
+            name: "AliceTests",
+            dependencies: ["Alice"],
+            resources: [
+                .process("Resources")
+            ]
         )
     ]
 )

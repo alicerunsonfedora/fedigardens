@@ -15,17 +15,17 @@
     {
       "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:..\/Packages\/Alice",
-        "identifier" : "ChicaTests",
-        "name" : "ChicaTests"
+        "containerPath" : "container:Fedigardens.xcodeproj",
+        "identifier" : "95ADADF227B6A9630011FD83",
+        "name" : "FedigardensTests"
       }
     },
     {
       "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:Fedigardens.xcodeproj",
-        "identifier" : "95ADADF227B6A9630011FD83",
-        "name" : "FedigardensTests"
+        "containerPath" : "container:",
+        "identifier" : "AliceTests",
+        "name" : "AliceTests"
       }
     }
   ],
