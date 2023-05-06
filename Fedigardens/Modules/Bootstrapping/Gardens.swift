@@ -37,7 +37,7 @@ struct Shout: App {
                     }
                 }
                 .onAppear {
-                    Alice.shared.setRequestPrefix(to: "gardens://")
+                    Alice.shared.setRequestPrefix(to: "gardens")
                     Task {
                         await globalStore.getUserProfile()
                         await globalStore.getInstanceEmojis()
