@@ -24,6 +24,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
     @EnvironmentObject var interventionHandler: InterventionHandler
 
     @AppStorage(.frugalMode) var frugalMode: Bool = false
+    @AppStorage(.useFocusedInbox) private var useFocusedInbox: Bool = false
 
     @State var state: LayoutState = .initial
     var scope: TimelineSplitViewModel.TimelineType
@@ -161,7 +162,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                 }
             }
         } label: {
-            Label("timeline.loadmore.title", systemImage: "doc.append")
+            Label(useFocusedInbox ? "general.loadmore" : "timeline.loadmore.title", systemImage: "doc.append")
                 .bold()
                 .textCase(.uppercase)
                 .frame(maxWidth: .infinity)
