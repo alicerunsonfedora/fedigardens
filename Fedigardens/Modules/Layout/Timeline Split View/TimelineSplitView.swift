@@ -18,9 +18,12 @@ import UIKit
 
 /// A view used to render a timeline in the widescreen layout.
 struct TimelineSplitView: View, LayoutStateRepresentable {
+    @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
     @Environment(\.openURL) var openURL
 
     @EnvironmentObject var interventionHandler: InterventionHandler
+
+    @AppStorage(.frugalMode) var frugalMode: Bool = false
 
     @State var state: LayoutState = .initial
     var scope: TimelineSplitViewModel.TimelineType
@@ -53,7 +56,13 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                 }
             case .loaded:
                 StatusNavigationList(statuses: model.timelineData, selectedStatus: $selectedStatus) {
-                    EmptyView()
+                    Group {
+                        if enforcedFrugalMode || frugalMode {
+                            EmptyView()
+                        } else {
+                            loadNextButton
+                        }
+                    }
                 }
                 .animation(.easeInOut, value: model.timelineData)
                 .navigationDestination(for: Status.self) { status in
@@ -101,6 +110,9 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                 )
             }
         }
+        .onDisappear {
+            model.timelineData.removeAll()
+        }
         .refreshable {
             withAnimation {
                 state = .loading
@@ -137,29 +149,28 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
     }
 
     private var loadNextButton: some View {
-        HStack {
-            Spacer()
-            Button {
-                withAnimation {
-                    state = .loading
-                    Task {
-                        state = await model.loadTimeline(
-                            forcefully: true,
-                            policy: .preloadNextBatch,
-                            using: interventionHandler
-                        )
-                    }
+        Button {
+            withAnimation {
+                state = .loading
+                Task {
+                    state = await model.loadTimeline(
+                        forcefully: true,
+                        policy: .preloadNextBatch,
+                        using: interventionHandler
+                    )
                 }
-            } label: {
-                Label("general.loadmore", systemImage: "ellipsis.rectangle")
             }
-            .buttonStyle(.bordered)
-            .buttonBorderShape(.capsule)
-            .controlSize(.regular)
-            .tint(.accentColor)
-            Spacer()
+        } label: {
+            Label("timeline.loadmore.title", systemImage: "doc.append")
+                .bold()
+                .textCase(.uppercase)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 4)
         }
-        .padding(.vertical, 4)
-        .listRowSeparator(.hidden, edges: .bottom)
+        .controlSize(.large)
+        .foregroundColor(.accentColor)
+        .listRowInsets(.none)
+        .listRowSeparator(.hidden, edges: [.top, .bottom])
+        .listRowBackground(Color.accentColor.opacity(0.1).cornerRadius(10))
     }
 }

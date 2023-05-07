@@ -56,6 +56,17 @@ class StatusNavigationListViewModel: ObservableObject {
         internalStatuses = statuses
     }
 
+    func merge(from upstream: [Status]) {
+        for status in upstream {
+            if internalStatuses.contains(where: { $0.id == status.id }) { continue }
+            internalStatuses.append(status)
+        }
+    }
+
+    func destroyStatuses() {
+        internalStatuses.removeAll()
+    }
+
     func toggleFavorite(status: Status) async {
         await update(
             status: status,

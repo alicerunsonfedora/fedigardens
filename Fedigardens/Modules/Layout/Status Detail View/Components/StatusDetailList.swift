@@ -34,7 +34,7 @@ struct StatusDetailList: View {
                         .listRowInsets(.init(top: 12, leading: 16, bottom: 12, trailing: 16))
                     ProgressView()
                 }
-                .listStyle(.plain)
+                .listStyle(.inset)
                 .redacted(reason: .placeholder)
             case .loading:
                 ProgressView()

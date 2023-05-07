@@ -26,7 +26,7 @@ struct StatusNavigationList<Extras: View>: View {
     @AppStorage(.useFocusedInbox) private var useFocusedInbox: Bool = false
     @AppStorage(.frugalMode) private var frugalMode: Bool = false
     @AppStorage(.statusListPreviewLineCount) var statusListPreviewLineCount: Int = 2
-    @State var statuses: [Status]
+    var statuses: [Status]
     @Binding var selectedStatus: Status?
     @StateObject private var viewModel = ViewModel()
 
@@ -70,6 +70,12 @@ struct StatusNavigationList<Extras: View>: View {
         .animation(.spring(), value: viewModel.inbox)
         .onAppear {
             viewModel.insert(statuses: statuses)
+        }
+        .onChange(of: statuses) { newValue in
+            viewModel.merge(from: newValue)
+        }
+        .onDisappear {
+            viewModel.destroyStatuses()
         }
         .sheet(item: $viewModel.shouldOpenCompositionTool) { context in
             NavigationStack {

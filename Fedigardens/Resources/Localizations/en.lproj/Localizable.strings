@@ -69,6 +69,7 @@
 // MARK: - Timelines
 "timeline.inbox.focused" = "Focused";
 "timeline.inbox.other" = "Other Discussions";
+"timeline.loadmore.title" = "Next Page";
 
 // MARK: - Statuses
 "status.commentary" = "status.commentary";
