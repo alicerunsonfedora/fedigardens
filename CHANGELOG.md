@@ -20,6 +20,7 @@ And list your changes under that.
 - When viewing profiles, the profile stats before the biography are shown/hiiden per the Show Statistics preference.
 - Adds a new Frugal Mode setting to use Mastodon more frugally by limiting what is loaded from the network.
 - Adds an option in Settings > Viewing to adjust the number of lines in a status preview in a timeline.
+- Adds a new "Next Page" button to load more content upon request.
 
 ## [1.0-35 (beta)] - 15/3/23
 
