@@ -12,7 +12,7 @@ If you need to list changes to this changelog but there isn't an entry for it, c
 And list your changes under that.
 -->
 
-## [Unreleased] - Date Pending
+## [1.0-40 (beta)] - 8/5/23
 - (FGD-43) Adds a new setting "Prefer Matrix Conversations" which will start Matrix conversations with fediverse people
   that have the "Matrix: (Matrix ID)" field in their bio with a valid Matrix ID. This setting applies in profile pages
   and the profile menu in a discussion detail view.
@@ -20,7 +20,7 @@ And list your changes under that.
 - When viewing profiles, the profile stats before the biography are shown/hiiden per the Show Statistics preference.
 - Adds a new Frugal Mode setting to use Mastodon more frugally by limiting what is loaded from the network.
 - Adds an option in Settings > Viewing to adjust the number of lines in a status preview in a timeline.
-- Adds a new "Next Page" button to load more content upon request.
+- Adds a new "Next Page"/"Load More" button to load more content upon request.
 
 ## [1.0-35 (beta)] - 15/3/23
 
