@@ -1,4 +1,5 @@
 @testable import Alice
+import AliceMockingbird
 import SwiftUI
 import XCTest
 

@@ -8,18 +8,20 @@
 import Foundation
 import Alice
 
-class AliceMockKeychain: AliceSecurityModule {
+public class AliceMockKeychain: AliceSecurityModule {
     private var keychain = [String: String]()
 
-    func setSecureStore(_ value: String?, forKey key: String) {
+    public init() {}
+
+    public func setSecureStore(_ value: String?, forKey key: String) {
         keychain[key] = value
     }
 
-    func getSecureStore(_ key: String) -> String? {
+    public func getSecureStore(_ key: String) -> String? {
         return keychain[key]
     }
 
-    func flush() {
+    public func flush() {
         keychain.removeAll()
     }
 }

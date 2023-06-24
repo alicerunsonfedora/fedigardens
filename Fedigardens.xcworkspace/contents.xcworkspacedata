@@ -4,6 +4,23 @@
    <FileRef
       location = "group:README.md">
    </FileRef>
+   <Group
+      location = "container:"
+      name = "Modules">
+      <Group
+         location = "container:"
+         name = "Fundamentals">
+         <FileRef
+            location = "group:Packages/Alice">
+         </FileRef>
+         <FileRef
+            location = "group:Packages/FlowKit">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:Packages/GardenGate">
+      </FileRef>
+   </Group>
    <FileRef
       location = "group:LICENSE.md">
    </FileRef>
@@ -12,8 +29,5 @@
    </FileRef>
    <FileRef
       location = "group:Fedigardens/Fedigardens.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Packages/Alice">
    </FileRef>
 </Workspace>
