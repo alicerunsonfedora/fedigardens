@@ -14,8 +14,34 @@
 
 import SwiftUI
 
+/// A SwiftUI view with a flow provider.
 public protocol StatefulView: View {
+    /// The flow that the view follows.
     associatedtype FlowProvider: StatefulFlowProviding
 
+    /// The body type of this view.
+    /// - SeeAlso: ``SwiftUI/View/body``
+    associatedtype StatefulBody: View
+
+    /// The primary contents of this view that will subscribe to events.
+    @ViewBuilder var statefulBody: Self.StatefulBody { get }
+
+    /// The current flow that the view has.
     var flow: FlowProvider { get set }
+
+    /// A callback method that executes whenever the state of the current flow changes.
+    ///
+    /// When the SwiftUI view first appears, the ``flow`` subscribes to this method.
+    ///
+    /// - Parameter state: The current state of the flow to perform actions on.
+    func stateChanged(_ state: FlowProvider.State)
+}
+
+extension View where Self: StatefulView {
+    public var body: some View {
+        statefulBody
+            .onAppear {
+                flow.subscribe(perform: stateChanged)
+            }
+    }
 }

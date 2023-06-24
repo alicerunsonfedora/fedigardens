@@ -1,8 +1,8 @@
 //
-//  AuthenticationBrowserWindow.swift
+//  AuthenticationGateBrowser.swift
 //  Fedigardens
 //
-//  Created by Marquis Kurt on 8/3/22.
+//  Created by Marquis Kurt on 24/6/23.
 //
 //  This file is part of Fedigardens.
 //
@@ -17,7 +17,7 @@ import SafariView
 import SwiftUI
 
 /// A browser window used in the authentication view for rendering OAuth webpages in Gopherdon.
-struct AuthenticationBrowserWindow: View {
+struct AuthenticationGateBrowser: View {
     /// The URL that the browser will open when the view is rendered.
     ///
     /// If this value is `nil`, an error screen will appear instead, informing the user that the URL could not

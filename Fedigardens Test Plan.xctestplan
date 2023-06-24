@@ -13,7 +13,6 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:Fedigardens.xcodeproj",
         "identifier" : "95ADADF227B6A9630011FD83",
@@ -21,11 +20,26 @@
       }
     },
     {
-      "parallelizable" : true,
       "target" : {
         "containerPath" : "container:..\/Packages\/Alice",
         "identifier" : "AliceTests",
         "name" : "AliceTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/Packages\/FlowKit",
+        "identifier" : "FlowKitTests",
+        "name" : "FlowKitTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/Packages\/GardenGate",
+        "identifier" : "GardenGateTests",
+        "name" : "GardenGateTests"
       }
     }
   ],

@@ -4,6 +4,12 @@
    <FileRef
       location = "group:README.md">
    </FileRef>
+   <FileRef
+      location = "group:Fedigardens/Supporting Files/../../Fedigardens Test Plan.xctestplan">
+   </FileRef>
+   <FileRef
+      location = "group:Fedigardens/Fedigardens.xcodeproj">
+   </FileRef>
    <Group
       location = "container:"
       name = "Modules">
@@ -26,8 +32,5 @@
    </FileRef>
    <FileRef
       location = "group:CHANGELOG.md">
-   </FileRef>
-   <FileRef
-      location = "group:Fedigardens/Fedigardens.xcodeproj">
    </FileRef>
 </Workspace>

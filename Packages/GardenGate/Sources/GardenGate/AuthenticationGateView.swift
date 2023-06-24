@@ -1,8 +1,8 @@
 //
-//  AuthenticationView.swift
+//  AuthenticationGateView.swift
 //  Fedigardens
 //
-//  Created by Marquis Kurt on 9/2/22.
+//  Created by Marquis Kurt on 24/6/23.
 //
 //  This file is part of Fedigardens.
 //
@@ -12,22 +12,35 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Alice
-import Foundation
+import FlowKit
 import SwiftUI
 
-// MARK: - Authentication View
-
-/// A view that displays information prompting the user to authenticate and authorize the app to access Gopherdon.
-struct AuthenticationView: View {
+public struct AuthenticationGateView: StatefulView {
     @Environment(\.horizontalSizeClass) private var horizontalSizeClass
     @Environment(\.openURL) var openURL: OpenURLAction
 
-    @StateObject private var viewModel = AuthenticationViewModel()
+    @State private var callbackUrl: URL?
+    @State private var domainName = ""
+    @State private var displayAuthenticationDialog = false
+    @State private var displayDomainValidationError = false
 
-    // MARK: - Auth View Components
+    private var domainValidationTitle: String {
+        switch flow.state {
+        case .error(let cause):
+            if let domainCause = cause as? DomainValidationError {
+                return domainCause.message
+            }
+            return cause.localizedDescription
+        default:
+            return ""
+        }
+    }
 
-    var body: some View {
+    public var flow = AuthenticationGate(auth: .shared, network: .shared)
+
+    public init() {}
+
+    public var statefulBody: some View {
         ZStack {
             Group {
                 if horizontalSizeClass == .compact {
@@ -38,45 +51,40 @@ struct AuthenticationView: View {
             }
             .font(.system(.body, design: .rounded))
         }
-        .sheet(isPresented: $viewModel.displayAuthenticationDialog) {
-            AuthenticationBrowserWindow(url: $viewModel.authenticationAuthorizedURL)
+        .sheet(isPresented: $displayAuthenticationDialog) {
+            AuthenticationGateBrowser(url: $callbackUrl)
                 .edgesIgnoringSafeArea(.all)
-                .onChange(of: viewModel.authenticationState) { authState in
-                    switch authState {
-                    case .authenthicated:
-                        viewModel.displayAuthenticationDialog = false
-                    default:
-                        break
-                    }
-                }
         }
-        .alert(viewModel.authenticationRejectionTitle, isPresented: $viewModel.authenticationDomainRejected) {
-            Button {
-                if let url = URL(string: "https://fedigardens.app/support") {
-                    openURL(url)
+        .alert(
+            NSLocalizedString("auth.failure.title", bundle: .module, comment: "Could not sign in"),
+            isPresented: $displayDomainValidationError) {
+                Link(destination: URL(string: "https://fedigardens.app/support")!) {
+                    Text("auth.learnmore", bundle: .module)
                 }
-            } label: {
-                Text("general.learnmore")
-            }
-            Button {} label: {
-                Text("OK")
-            }.keyboardShortcut(.defaultAction)
-        } message: {
-            Text("auth.disallowed.message")
-        }
-        .alert(viewModel.authenticationInvalidTitle, isPresented: $viewModel.authenticationDomainInvalid) {
-            Button {
-                if let url = viewModel.authenticationInvalidRacewayLink {
-                    openURL(url)
+                Link(destination: URL(string: "https://feedback.marquiskurt.net/t/fedigardens")!) {
+                    Text("auth.badurl.racewaycta", bundle: .module)
                 }
-            } label: {
-                Text("auth.badurl.racewaycta")
+                Button {
+                    Task { await flow.emit(.reset) }
+                } label: {
+                    Text("OK")
+                }.keyboardShortcut(.defaultAction)
+            } message: {
+                Text(domainValidationTitle)
             }
-            Button {} label: {
-                Text("OK")
-            }.keyboardShortcut(.defaultAction)
-        } message: {
-            Text("auth.badurl.message")
+    }
+
+    public func stateChanged(_ state: AuthenticationGate.State) {
+        switch state {
+        case .openAuth(_, let callback):
+            self.callbackUrl = callback
+            self.displayAuthenticationDialog = true
+        case .error(let cause):
+            if cause is DomainValidationError {
+                self.displayDomainValidationError = true
+            }
+        default:
+            break
         }
     }
 
@@ -87,9 +95,12 @@ struct AuthenticationView: View {
                 HStack {
                     Text("https://")
                         .foregroundColor(.secondary)
-                    TextField("mastodon.example", text: $viewModel.authenticationDomainName)
+                    TextField("mastodon.example", text: $domainName)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
+                        .onChange(of: domainName, perform: { value in
+                            Task { await flow.emit(.edit(domain: value)) }
+                        })
                 }
                 .padding(10)
                 .overlay(
@@ -97,9 +108,11 @@ struct AuthenticationView: View {
                         .stroke(Color.secondary.opacity(0.5))
                 )
                 Button {
-                    Task { await viewModel.startAuthenticationWorkflow() }
+                    Task {
+                        await flow.emit(.getAuthorizationToken)
+                    }
                 } label: {
-                    Text("auth.login.button")
+                    Text("auth.login.button", bundle: .module)
                         .font(.title3)
                         .bold()
                         .frame(maxWidth: .infinity)
@@ -109,10 +122,10 @@ struct AuthenticationView: View {
             .padding(.horizontal)
             .controlSize(.large)
             HStack {
-                Text("auth.footnote")
+                Text("auth.footnote", bundle: .module)
                     .foregroundColor(.secondary)
                 Link(destination: URL(string: "https://joinmastodon.org/servers")!) {
-                    Text("auth.footnote.create")
+                    Text("auth.footnote.create", bundle: .module)
                 }
             }
             .font(.footnote)
@@ -127,7 +140,7 @@ struct AuthenticationView: View {
             Spacer()
             VStack(alignment: .leading, spacing: 32) {
                 welcomeHeader(alignment: .leading)
-                Text("auth.startinfo")
+                Text("auth.startinfo", bundle: .module)
                     .font(.title3)
             }
             .padding()
@@ -143,7 +156,7 @@ struct AuthenticationView: View {
         HStack(spacing: 8) {
             VStack(alignment: .trailing, spacing: 32) {
                 welcomeHeader(alignment: .trailing)
-                Text("auth.startinfo")
+                Text("auth.startinfo", bundle: .module)
                     .font(.title3)
             }
             .frame(maxWidth: 450)
@@ -159,30 +172,24 @@ struct AuthenticationView: View {
     func welcomeHeader(alignment: HorizontalAlignment) -> some View {
         VStack(alignment: alignment) {
             Image("GardensIcon")
+                .symbolRenderingMode(.palette)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 76, height: 76)
                 .cornerRadius(16)
-            Text("auth.welcome")
+            Text("auth.welcome", bundle: .module)
                 .font(.system(.title2, design: .rounded))
                 .bold()
-            Text("general.appname")
+            Text("auth.appname", bundle: .module)
                 .font(.system(size: 56, weight: .bold, design: .rounded))
                 .foregroundColor(.accentColor)
         }
     }
 }
 
-// MARK: - Previews
-
-struct AuthenticationView_Previews: PreviewProvider {
+struct AuthenticationGateView_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
-            AuthenticationView()
-                .previewDevice("iPhone 13 Pro")
-            AuthenticationView()
-                .previewDevice("iPad mini (6th generation)")
-                .previewInterfaceOrientation(.landscapeLeft)
-        }
+        AuthenticationGateView()
+            .environment(\.locale, Locale(identifier: "en"))
     }
 }

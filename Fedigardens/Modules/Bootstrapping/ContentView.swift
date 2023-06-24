@@ -13,6 +13,7 @@
 //  details.
 
 import Alice
+import GardenGate
 import SwiftUI
 
 // MARK: - Content View
@@ -47,8 +48,8 @@ struct ContentView: View {
         .onAppear { print(deviceModel) }
     }
 
-    var authDialog: AuthenticationView {
-        AuthenticationView()
+    var authDialog: AuthenticationGateView {
+        AuthenticationGateView()
     }
 }
 

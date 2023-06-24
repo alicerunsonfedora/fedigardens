@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		95009EF2295E711100F32F85 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95009EF1295E711100F32F85 /* AuthenticationViewModel.swift */; };
 		95009EF4295E780A00F32F85 /* GardensAppLayoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95009EF3295E780A00F32F85 /* GardensAppLayoutViewModel.swift */; };
-		9503EFAF27B4173C00ABB7B0 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */; };
 		9503EFB427B417DD00ABB7B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9503EFB727B417DD00ABB7B0 /* Localizable.strings */; };
 		95097E0C2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95097E0B2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift */; };
 		95097E0D2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95097E0B2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift */; };
@@ -62,7 +60,6 @@
 		95555FBF2960BC21005BEF45 /* NPL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 95555FBE2960BC21005BEF45 /* NPL.txt */; };
 		95555FC42960BE33005BEF45 /* MIT-HTML2Markdown.md in Resources */ = {isa = PBXBuildFile; fileRef = 95555FC32960BE33005BEF45 /* MIT-HTML2Markdown.md */; };
 		95555FC62960BE9A005BEF45 /* MPLv2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 95555FC52960BE9A005BEF45 /* MPLv2.txt */; };
-		9558C7E52957711A001B30C7 /* SafariView in Frameworks */ = {isa = PBXBuildFile; productRef = 9558C7E42957711A001B30C7 /* SafariView */; };
 		9558C7EC29578503001B30C7 /* HTML2Markdown in Frameworks */ = {isa = PBXBuildFile; productRef = 9558C7EB29578503001B30C7 /* HTML2Markdown */; };
 		9558C7EE29578B59001B30C7 /* AccountImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9558C7ED29578B59001B30C7 /* AccountImage.swift */; };
 		9558C7F029579E66001B30C7 /* GardensComposeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9558C7EF29579E66001B30C7 /* GardensComposeButton.swift */; };
@@ -153,10 +150,7 @@
 		95801D3F297CC0B800FE8D83 /* SettingsAuthorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */; };
 		95801D40297CC0DA00FE8D83 /* GardensComposeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9558C7EF29579E66001B30C7 /* GardensComposeButton.swift */; };
 		95801D41297CC0DE00FE8D83 /* AuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */; };
-		95801D42297CC0F200FE8D83 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */; };
 		95801D43297CC0F200FE8D83 /* AuthorReplySegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958C0C9B27BE956F00ED6C23 /* AuthorReplySegment.swift */; };
-		95801D44297CC0F200FE8D83 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95009EF1295E711100F32F85 /* AuthenticationViewModel.swift */; };
-		95801D45297CC0F200FE8D83 /* AuthenticationBrowserWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E4531E27D7B49C00572758 /* AuthenticationBrowserWindow.swift */; };
 		95801D46297CC0F200FE8D83 /* AuthoringScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956714152958C1BF00BFF76A /* AuthoringScene.swift */; };
 		95801D47297CC10700FE8D83 /* UserProfileEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956714172958C7BF00BFF76A /* UserProfileEnvironmentKey.swift */; };
 		95801D48297CC10700FE8D83 /* GardensViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD3C4E29650A600043CDB2 /* GardensViewModel.swift */; };
@@ -291,7 +285,6 @@
 		95D3E521295FD36800800FE6 /* Disallow.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95D3E520295FD36800800FE6 /* Disallow.plist */; };
 		95D3EADD27BBE51F00AF33D9 /* AuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */; };
 		95D70D352A478262007774B0 /* GardenGate in Frameworks */ = {isa = PBXBuildFile; productRef = 95D70D342A478262007774B0 /* GardenGate */; };
-		95E4531F27D7B49C00572758 /* AuthenticationBrowserWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E4531E27D7B49C00572758 /* AuthenticationBrowserWindow.swift */; };
 		95F2DE22297253FD00553937 /* Label+SettingsStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */; };
 		95F2DE2429725C6100553937 /* BetaBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE2329725C6100553937 /* BetaBadge.swift */; };
 		95F2DE26297262D700553937 /* SettingsInterventionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE25297262D700553937 /* SettingsInterventionPage.swift */; };
@@ -312,10 +305,8 @@
 
 /* Begin PBXFileReference section */
 		95009EF0295D440B00F32F85 /* Fedigardens.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Fedigardens.entitlements; sourceTree = "<group>"; };
-		95009EF1295E711100F32F85 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		95009EF3295E780A00F32F85 /* GardensAppLayoutViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensAppLayoutViewModel.swift; sourceTree = "<group>"; };
 		95019DAA27A82124005DF870 /* Capstone--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Capstone--iOS--Info.plist"; sourceTree = "<group>"; };
-		9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		9503EFB627B417DD00ABB7B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95097E0B2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInstanceBlocklistPage.swift; sourceTree = "<group>"; };
 		951365AA298ED3B8008F6D47 /* AuthorViewToolbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewToolbar.swift; sourceTree = "<group>"; };
@@ -393,7 +384,7 @@
 		957CBC8729FF09A400FE23BA /* InformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCard.swift; sourceTree = "<group>"; };
 		95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAuthorPage.swift; sourceTree = "<group>"; };
 		95801D20297C71F000FE8D83 /* AuthorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewModelTests.swift; sourceTree = "<group>"; };
-		95801D24297C738A00FE8D83 /* Fedigardens Test Plan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Fedigardens Test Plan.xctestplan"; sourceTree = "<group>"; };
+		95801D24297C738A00FE8D83 /* Fedigardens Test Plan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Fedigardens Test Plan.xctestplan"; path = "../../Fedigardens Test Plan.xctestplan"; sourceTree = "<group>"; };
 		95801D2D297C852100FE8D83 /* NSTextCheckingResult+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextCheckingResult+Substring.swift"; sourceTree = "<group>"; };
 		95801D32297C9B6E00FE8D83 /* Visibility+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Visibility+Localization.swift"; sourceTree = "<group>"; };
 		95801D35297C9D2600FE8D83 /* GardensSettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensSettingsKey.swift; sourceTree = "<group>"; };
@@ -461,7 +452,6 @@
 		95D28C74299024FE0051D31E /* AttachmentViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentViewer.swift; sourceTree = "<group>"; };
 		95D3E520295FD36800800FE6 /* Disallow.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Disallow.plist; sourceTree = "<group>"; };
 		95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorView.swift; sourceTree = "<group>"; };
-		95E4531E27D7B49C00572758 /* AuthenticationBrowserWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationBrowserWindow.swift; sourceTree = "<group>"; };
 		95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+SettingsStyle.swift"; sourceTree = "<group>"; };
 		95F2DE2329725C6100553937 /* BetaBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetaBadge.swift; sourceTree = "<group>"; };
 		95F2DE25297262D700553937 /* SettingsInterventionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInterventionPage.swift; sourceTree = "<group>"; };
@@ -482,7 +472,6 @@
 				9581C9652A473D8900621585 /* FlowKit in Frameworks */,
 				95F2DE2929726A7E00553937 /* Drops in Frameworks */,
 				95A01C3B29995AF70086985E /* Bunker in Frameworks */,
-				9558C7E52957711A001B30C7 /* SafariView in Frameworks */,
 				95555FB32960B7A2005BEF45 /* AckGen in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -951,7 +940,6 @@
 		95ADAE0027B6B2D10011FD83 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				95E4531D27D7B48800572758 /* Authentication */,
 				9558C7E9295775E9001B30C7 /* Bootstrapping */,
 				956714202958CDC300BFF76A /* Components */,
 				95A01C38299955020086985E /* Features */,
@@ -1027,16 +1015,6 @@
 			path = "Media Viewer";
 			sourceTree = "<group>";
 		};
-		95E4531D27D7B48800572758 /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-				95E4531E27D7B49C00572758 /* AuthenticationBrowserWindow.swift */,
-				9503EFAE27B4173C00ABB7B0 /* AuthenticationView.swift */,
-				95009EF1295E711100F32F85 /* AuthenticationViewModel.swift */,
-			);
-			path = Authentication;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1056,7 +1034,6 @@
 			);
 			name = Fedigardens;
 			packageProductDependencies = (
-				9558C7E42957711A001B30C7 /* SafariView */,
 				9558C7EB29578503001B30C7 /* HTML2Markdown */,
 				95A02A6E295FE94F0013EF7C /* Alice */,
 				95555FB22960B7A2005BEF45 /* AckGen */,
@@ -1122,7 +1099,6 @@
 			);
 			mainGroup = 954722F027A0093F00D1BA89;
 			packageReferences = (
-				9558C7E32957711A001B30C7 /* XCRemoteSwiftPackageReference "SafariView" */,
 				9558C7EA29578503001B30C7 /* XCRemoteSwiftPackageReference "HTML2Markdown" */,
 				95555FB12960B7A1005BEF45 /* XCRemoteSwiftPackageReference "AckGen" */,
 				95F2DE2729726A7E00553937 /* XCRemoteSwiftPackageReference "Drops" */,
@@ -1240,7 +1216,6 @@
 				954C95052A0461310019AE09 /* StatusAttachmentAlternative.swift in Sources */,
 				95CD3C4F29650A600043CDB2 /* GardensViewModel.swift in Sources */,
 				952A06E129691B95008340A4 /* GardensAppCompactLayout.swift in Sources */,
-				95009EF2295E711100F32F85 /* AuthenticationViewModel.swift in Sources */,
 				9537C6D6297DBB510039F3C4 /* SettingsBlocklistViewModel.swift in Sources */,
 				95F2DE26297262D700553937 /* SettingsInterventionPage.swift in Sources */,
 				954C95192A05E6A50019AE09 /* RunestoneViewer.swift in Sources */,
@@ -1270,7 +1245,6 @@
 				955F1B2E2985B31600702BE8 /* SearchDirectoryView.swift in Sources */,
 				956714142958B69D00BFF76A /* StatusDisclosedContent.swift in Sources */,
 				955F1B602986FB4800702BE8 /* SettingsFeedbackSection.swift in Sources */,
-				95E4531F27D7B49C00572758 /* AuthenticationBrowserWindow.swift in Sources */,
 				955F1B2B29859FA300702BE8 /* SearchViewModel.swift in Sources */,
 				95ADADE427B6A6BB0011FD83 /* String+AttributedContent.swift in Sources */,
 				95CDCD2229902968002BD37A /* AttachmentMedia.swift in Sources */,
@@ -1347,7 +1321,6 @@
 				95CEFDE82959637400EEE96C /* StatusVerifiedButton.swift in Sources */,
 				955F1B452985E79400702BE8 /* SearchTagViewModel.swift in Sources */,
 				95A1BFA4297463B9002C88B6 /* ProfileSheetStatisticCellView.swift in Sources */,
-				9503EFAF27B4173C00ABB7B0 /* AuthenticationView.swift in Sources */,
 				952A011127C67F3F00F36B37 /* MessagingPresentationView.swift in Sources */,
 				95ADAE0227B6B2E10011FD83 /* StatusView.swift in Sources */,
 				955F1B542985FD1500702BE8 /* BadgedText.swift in Sources */,
@@ -1369,7 +1342,6 @@
 				955F1B552985FD1500702BE8 /* BadgedText.swift in Sources */,
 				955F1B642986FBBE00702BE8 /* SettingsLicensePage.swift in Sources */,
 				955F1B4C2985F3A300702BE8 /* TagHistoryChart.swift in Sources */,
-				95801D45297CC0F200FE8D83 /* AuthenticationBrowserWindow.swift in Sources */,
 				95801D65297CC14200FE8D83 /* ProfileSheetToolbar.swift in Sources */,
 				95801D29297C753C00FE8D83 /* Emojis.swift in Sources */,
 				95A36E94297CEDB900DA11D3 /* GardensAppCompactMorePage.swift in Sources */,
@@ -1416,11 +1388,9 @@
 				95801D3A297CAC8B00FE8D83 /* SettingsAboutPage.swift in Sources */,
 				955F1B492985EDB300702BE8 /* Tag+Chartable.swift in Sources */,
 				95ADAE0C27B6B49A0011FD83 /* JSONDecoder+Resources.swift in Sources */,
-				95801D42297CC0F200FE8D83 /* AuthenticationView.swift in Sources */,
 				95801D67297CC14200FE8D83 /* ProfileSheetStatisticCellView.swift in Sources */,
 				955F1B2F2985B31600702BE8 /* SearchDirectoryView.swift in Sources */,
 				95801D3F297CC0B800FE8D83 /* SettingsAuthorPage.swift in Sources */,
-				95801D44297CC0F200FE8D83 /* AuthenticationViewModel.swift in Sources */,
 				95801D5B297CC13400FE8D83 /* StatusDetailToolbar.swift in Sources */,
 				95801D61297CC13C00FE8D83 /* MessagingPresentationView.swift in Sources */,
 				95A36E97297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */,
@@ -1813,14 +1783,6 @@
 				minimumVersion = 0.1.5;
 			};
 		};
-		9558C7E32957711A001B30C7 /* XCRemoteSwiftPackageReference "SafariView" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/alicerunsonfedora/SafariView";
-			requirement = {
-				branch = root;
-				kind = branch;
-			};
-		};
 		9558C7EA29578503001B30C7 /* XCRemoteSwiftPackageReference "HTML2Markdown" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://gitlab.com/mflint/HTML2Markdown/";
@@ -1875,11 +1837,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 95555FB12960B7A1005BEF45 /* XCRemoteSwiftPackageReference "AckGen" */;
 			productName = AckGenUI;
-		};
-		9558C7E42957711A001B30C7 /* SafariView */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9558C7E32957711A001B30C7 /* XCRemoteSwiftPackageReference "SafariView" */;
-			productName = SafariView;
 		};
 		9558C7EB29578503001B30C7 /* HTML2Markdown */ = {
 			isa = XCSwiftPackageProductDependency;
