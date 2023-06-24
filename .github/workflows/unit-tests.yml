@@ -6,8 +6,6 @@ on:
     paths:
       - 'Fedigardens/**'
       - 'Packages/**'
-  pull_request:
-    branches: [ root, devel ]
   workflow_dispatch:
 
 
