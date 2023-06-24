@@ -8,14 +8,14 @@
 import Foundation
 import Alice
 
-enum AliceMockError: Error {
+public enum AliceMockError: Error {
     case badRequest
     case unknownEndpoint
     case noMockDataFound
 }
 
 extension AliceMockError: LocalizedError {
-    var localizedDescription: String {
+    public var localizedDescription: String {
         switch self {
         case .badRequest:
             return "The request received was malformed."
@@ -27,16 +27,16 @@ extension AliceMockError: LocalizedError {
     }
 }
 
-class AliceMockResponse: URLResponse {
-    var data: Data?
+public class AliceMockResponse: URLResponse {
+    public var data: Data?
 }
 
-class AliceMockSession {
-    typealias MockResponse = AliceMockResponse
-    var configuration: URLSessionConfiguration { urlSessionConfiguration }
+public class AliceMockSession {
+    public typealias MockResponse = AliceMockResponse
+    public var configuration: URLSessionConfiguration { urlSessionConfiguration }
     private var urlSessionConfiguration: URLSessionConfiguration
 
-    enum Touchpoint: String {
+    public enum Touchpoint: String {
         case status = "https://hyrma.example/api/v1/statuses/105833885501246760"
         case account = "https://hyrma.example/api/v1/accounts/1"
         case apps = "https://hyrma.example/api/v1/apps"
@@ -44,7 +44,7 @@ class AliceMockSession {
         case revoke = "https://hyrma.example/oauth/revoke"
     }
 
-    required init(configuration: URLSessionConfiguration) {
+    public required init(configuration: URLSessionConfiguration) {
         self.urlSessionConfiguration = configuration
     }
 
@@ -84,7 +84,7 @@ class AliceMockSession {
 }
 
 extension AliceMockSession: AliceSession {
-    func request(_ request: URLRequest, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse) {
+    public func request(_ request: URLRequest, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse) {
         guard let url = request.url else {
             throw FetchError.unknownError(error: AliceMockError.badRequest)
         }

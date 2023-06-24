@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 55;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -199,6 +199,7 @@
 		95801D6D297CC14E00FE8D83 /* StatusQuickGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */; };
 		95801D6E297CC15900FE8D83 /* UIDevice+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A06E429692E95008340A4 /* UIDevice+Model.swift */; };
 		95801D6F297CC15900FE8D83 /* Acknowledgement+License.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95555FBA2960B9F7005BEF45 /* Acknowledgement+License.swift */; };
+		9581C9652A473D8900621585 /* FlowKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9581C9642A473D8900621585 /* FlowKit */; };
 		95860C592998164300068425 /* Poll.json in Resources */ = {isa = PBXBuildFile; fileRef = 95860C582998164300068425 /* Poll.json */; };
 		95860C5A2998164300068425 /* Poll.json in Resources */ = {isa = PBXBuildFile; fileRef = 95860C582998164300068425 /* Poll.json */; };
 		95860C5C29981F3700068425 /* PollVotingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95860C5B29981F3700068425 /* PollVotingView.swift */; };
@@ -289,6 +290,7 @@
 		95D28C75299024FE0051D31E /* AttachmentViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D28C74299024FE0051D31E /* AttachmentViewer.swift */; };
 		95D3E521295FD36800800FE6 /* Disallow.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95D3E520295FD36800800FE6 /* Disallow.plist */; };
 		95D3EADD27BBE51F00AF33D9 /* AuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */; };
+		95D70D352A478262007774B0 /* GardenGate in Frameworks */ = {isa = PBXBuildFile; productRef = 95D70D342A478262007774B0 /* GardenGate */; };
 		95E4531F27D7B49C00572758 /* AuthenticationBrowserWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95E4531E27D7B49C00572758 /* AuthenticationBrowserWindow.swift */; };
 		95F2DE22297253FD00553937 /* Label+SettingsStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */; };
 		95F2DE2429725C6100553937 /* BetaBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE2329725C6100553937 /* BetaBadge.swift */; };
@@ -473,9 +475,11 @@
 			files = (
 				95A02A6F295FE94F0013EF7C /* Alice in Frameworks */,
 				954C95162A05E67F0019AE09 /* Runestone in Frameworks */,
+				95D70D352A478262007774B0 /* GardenGate in Frameworks */,
 				95555FB52960B7A2005BEF45 /* AckGenUI in Frameworks */,
 				95A1BF9D2973B83C002C88B6 /* EmojiText in Frameworks */,
 				9558C7EC29578503001B30C7 /* HTML2Markdown in Frameworks */,
+				9581C9652A473D8900621585 /* FlowKit in Frameworks */,
 				95F2DE2929726A7E00553937 /* Drops in Frameworks */,
 				95A01C3B29995AF70086985E /* Bunker in Frameworks */,
 				9558C7E52957711A001B30C7 /* SafariView in Frameworks */,
@@ -1061,6 +1065,8 @@
 				95A1BF9C2973B83C002C88B6 /* EmojiText */,
 				95A01C3A29995AF70086985E /* Bunker */,
 				954C95152A05E67F0019AE09 /* Runestone */,
+				9581C9642A473D8900621585 /* FlowKit */,
+				95D70D342A478262007774B0 /* GardenGate */,
 			);
 			productName = "Capstone (iOS)";
 			productReference = 954722FD27A0094000D1BA89 /* Fedigardens.app */;
@@ -1123,6 +1129,8 @@
 				95A1BF9B2973B83C002C88B6 /* XCRemoteSwiftPackageReference "EmojiText" */,
 				95A01C3929995AF70086985E /* XCRemoteSwiftPackageReference "bunker" */,
 				954C95142A05E67F0019AE09 /* XCRemoteSwiftPackageReference "Runestone" */,
+				9581C9632A473D8900621585 /* XCLocalSwiftPackageReference "../Packages/FlowKit" */,
+				95D70D332A478262007774B0 /* XCLocalSwiftPackageReference "../Packages/GardenGate" */,
 			);
 			productRefGroup = 954722FE27A0094000D1BA89 /* Products */;
 			projectDirPath = "";
@@ -1653,9 +1661,10 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TARGETED_DEVICE_FAMILY = "1,2,6,7";
 			};
 			name = Debug;
 		};
@@ -1688,9 +1697,10 @@
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,6";
+				TARGETED_DEVICE_FAMILY = "1,2,6,7";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1774,6 +1784,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		9581C9632A473D8900621585 /* XCLocalSwiftPackageReference "../Packages/FlowKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../Packages/FlowKit;
+		};
+		95D70D332A478262007774B0 /* XCLocalSwiftPackageReference "../Packages/GardenGate" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../Packages/GardenGate;
+		};
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
 		954C95142A05E67F0019AE09 /* XCRemoteSwiftPackageReference "Runestone" */ = {
@@ -1865,6 +1886,10 @@
 			package = 9558C7EA29578503001B30C7 /* XCRemoteSwiftPackageReference "HTML2Markdown" */;
 			productName = HTML2Markdown;
 		};
+		9581C9642A473D8900621585 /* FlowKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FlowKit;
+		};
 		95A01C3A29995AF70086985E /* Bunker */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 95A01C3929995AF70086985E /* XCRemoteSwiftPackageReference "bunker" */;
@@ -1878,6 +1903,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 95A1BF9B2973B83C002C88B6 /* XCRemoteSwiftPackageReference "EmojiText" */;
 			productName = EmojiText;
+		};
+		95D70D342A478262007774B0 /* GardenGate */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GardenGate;
 		};
 		95F2DE2829726A7E00553937 /* Drops */ = {
 			isa = XCSwiftPackageProductDependency;

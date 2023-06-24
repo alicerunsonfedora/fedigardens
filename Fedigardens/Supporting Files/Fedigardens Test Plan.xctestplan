@@ -23,7 +23,7 @@
     {
       "parallelizable" : true,
       "target" : {
-        "containerPath" : "container:",
+        "containerPath" : "container:..\/Packages\/Alice",
         "identifier" : "AliceTests",
         "name" : "AliceTests"
       }

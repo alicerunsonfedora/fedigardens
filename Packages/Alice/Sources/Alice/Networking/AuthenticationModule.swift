@@ -72,7 +72,7 @@ public class AuthenticationModule: ObservableObject {
 
     private let urlSuffix = "oauth"
 
-    init<T: AliceSecurityModule>(using secureModule: T) {
+    public init<T: AliceSecurityModule>(using secureModule: T) {
         _ = isOnMainThread(named: "OAUTH CLIENT STARTED")
         if let accessToken = secureModule.getSecureStore("starlight_acess_token") {
             authState = .authenthicated(authToken: accessToken)
