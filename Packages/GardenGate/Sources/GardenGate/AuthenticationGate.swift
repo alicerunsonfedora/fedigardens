@@ -56,7 +56,13 @@ public class AuthenticationGate: ObservableObject {
         case reset
     }
 
-    @Published var internalState: State = .initial
+    @Published var internalState: State = .initial {
+        didSet {
+            onStateChange?(internalState)
+        }
+    }
+
+    public var onStateChange: ((State) -> Void)?
 
     private let app = Alice.OAuth.RegisteredApplication(name: "Fedigardens", website: "https://fedigardens.app")
     private let disallowedDomains: Set<String> = {

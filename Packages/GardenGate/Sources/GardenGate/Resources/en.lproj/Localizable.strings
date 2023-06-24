@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Marquis Kurt on 6/24/23.
+  
+*/
+"auth.appname" = "Fedigardens";
+"auth.learnmore" = "Learn More…";
+"auth.welcome" = "Welcome to";
+"auth.login.button" = "Get Started";
+"auth.progress" = "Signing In…";
+"auth.startinfo" = "Welcome to a simplified, discussion-oriented Mastodon experience. Sign in with your Mastodon account or create one to get started.";
+"auth.footnote" = "Don't have a Mastodon account?";
+"auth.footnote.create" = "Find a Community Server &rsaquo;";
+"auth.failure.title" = "Unable to Sign In";
+"auth.disallowed.message" = "Fedigardens cannot sign in to %@ because the developers cannot verify that this server moderates the content posted by its users.";
+"auth.badurl.message" = "The community server '%@' likely contains invalid URL characters. If the domain you provided contains legal characters, you can file a report on Raceway to help us diagnose the issue.";
+"auth.badurl.racewaycta" = "Report on Raceway…";

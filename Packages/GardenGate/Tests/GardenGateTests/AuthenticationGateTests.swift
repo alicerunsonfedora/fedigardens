@@ -92,6 +92,55 @@ final class AuthenticationGateTests: XCTestCase {
             await current.emit(.edit(domain: badURL))
             await current.emit(.getAuthorizationToken)
             XCTAssertEqual(current.state, .error(DomainValidationError.rejected(domain: badURL)))
+            XCTAssertEqual(DomainValidationError.rejected(domain: badURL).message,
+                           "Fedigardens cannot sign in to gab.ai because the developers cannot verify that this server moderates the content posted by its users.")
+        }
+    }
+
+    func testFlowDispatchErrorOnPrematureAuthorization() async throws {
+        await expectWithFlow { current in
+            await current.emit(.getAuthorizationToken)
+            XCTAssertEqual(current.state, .error(AuthenticationGate.AuthenticationError.unitializedGate))
+        }
+    }
+
+    func testFlowDispatchErrorOnInProgressAuthorization() async throws {
+        let domain = "hyrma.example"
+        let expectation = XCTestExpectation(description: "Network called")
+        await expectWithFlow { current in
+            await current.emit(.edit(domain: domain))
+            await current.emit(.getAuthorizationToken)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+                expectation.fulfill()
+            }
+            await self.fulfillment(of: [expectation], timeout: 10)
+            XCTAssertEqual(current.state, .openAuth(domain: domain, callback: URL(string: self.cbString)!))
+
+            await current.emit(.getAuthorizationToken)
+            XCTAssertEqual(current.state,
+                           .error(AuthenticationGate.AuthenticationError.authorizationInProgress(domain)))
+        }
+    }
+
+    func testFlowDispatchErrorOnAmbushedError() async throws {
+        let domain = "hyrma.example"
+        let expectation = XCTestExpectation(description: "Network called")
+        await expectWithFlow { current in
+            await current.emit(.edit(domain: domain))
+            await current.emit(.getAuthorizationToken)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+                expectation.fulfill()
+            }
+            await self.fulfillment(of: [expectation], timeout: 10)
+            XCTAssertEqual(current.state, .openAuth(domain: domain, callback: URL(string: self.cbString)!))
+
+            await current.emit(.getAuthorizationToken)
+            XCTAssertEqual(current.state,
+                           .error(AuthenticationGate.AuthenticationError.authorizationInProgress(domain)))
+
+            await current.emit(.getAuthorizationToken)
+            XCTAssertEqual(current.state,
+                           .error(AuthenticationGate.AuthenticationError.authorizationInProgress(domain)))
         }
     }
 

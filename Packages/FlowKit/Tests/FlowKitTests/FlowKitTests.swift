@@ -16,11 +16,32 @@ import XCTest
 @testable import FlowKit
 
 final class FlowKitTests: XCTestCase {
-    func testExample() throws {
-        // XCTest Documentation
-        // https://developer.apple.com/documentation/xctest
+    func testFlowEmits() async throws {
+        let flow = DummyFlow()
+        XCTAssertEqual(flow.state, .initial)
+        await flow.emit(.enterUnknownState)
+        XCTAssertEqual(flow.state, .unknown)
+        await flow.emit(.reset)
+        XCTAssertEqual(flow.state, .initial)
+    }
 
-        // Defining Test Cases and Test Methods
-        // https://developer.apple.com/documentation/xctest/defining_test_cases_and_test_methods
+    func testSubscription() async throws {
+        var numbers = [Int]()
+        let flow = DummyFlow()
+        flow.subscribe { state in
+            switch state {
+            case .initial:
+                numbers.append(1)
+            case .unknown:
+                numbers.append(0)
+            }
+        }
+
+        XCTAssertNotNil(flow.onStateChange)
+
+        await flow.emit(.enterUnknownState)
+        await flow.emit(.reset)
+
+        XCTAssertEqual(numbers, [0, 1])
     }
 }

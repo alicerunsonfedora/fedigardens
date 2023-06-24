@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "GardenGate",
+    defaultLocalization: "en",
     platforms: [.iOS(.v16)],
     products: [
         .library(
@@ -13,12 +14,13 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Alice", path: "../Alice"),
-        .package(name: "FlowKit", path: "../FlowKit")
+        .package(name: "FlowKit", path: "../FlowKit"),
+        .package(url: "https://github.com/alicerunsonfedora/SafariView", branch: "root")
     ],
     targets: [
         .target(
             name: "GardenGate",
-            dependencies: ["Alice", "FlowKit"],
+            dependencies: ["Alice", "FlowKit", "SafariView"],
             resources: [
                 .process("Resources")
             ]),

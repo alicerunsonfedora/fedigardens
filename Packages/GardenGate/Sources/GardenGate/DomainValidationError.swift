@@ -18,14 +18,20 @@ public enum DomainValidationError: Error {
     case invalid(domain: String)
     case rejected(domain: String)
 
-    func alertTitle(from bundle: Bundle) -> String {
+    public var message: String {
         switch self {
         case .invalid(let domain):
-            String(format: NSLocalizedString("auth.badurl.title", bundle: bundle, comment: "Invalid URL (FGD-22)"),
+            String(format: NSLocalizedString("auth.badurl.message", bundle: .module, comment: "Invalid URL (FGD-22)"),
                    domain)
         case.rejected(let domain):
-            String(format: NSLocalizedString("auth.disallowed.title", bundle: bundle, comment: "In disallow list"),
+            String(format: NSLocalizedString("auth.disallowed.message", bundle: .module, comment: "In disallow list"),
                    domain)
         }
+    }
+}
+
+extension DomainValidationError: LocalizedError {
+    public var localizedDescription: String {
+        message
     }
 }

@@ -29,7 +29,7 @@
       shouldUseLaunchSchemeArgsEnv = "YES">
       <TestPlans>
          <TestPlanReference
-            reference = "container:Supporting Files/Fedigardens Test Plan.xctestplan"
+            reference = "container:../Fedigardens Test Plan.xctestplan"
             default = "YES">
          </TestPlanReference>
       </TestPlans>
