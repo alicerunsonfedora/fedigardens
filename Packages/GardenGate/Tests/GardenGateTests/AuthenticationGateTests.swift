@@ -14,10 +14,12 @@
 
 import Alice
 import AliceMockingbird
+import FlowKitTestSupport
 @testable import GardenGate
 import XCTest
 
-final class AuthenticationGateTests: XCTestCase {
+final class AuthenticationGateTests: XCTestCase, StatefulTestCase {
+    typealias TestableFlow = AuthenticationGate
     var cbString: String {
         "https://hyrma.example/api/v1/apps?client_name=Fedigardens&redirect_uris="
         + "starlight://oauth&scopes=read%20write%20follow%20push&website=https://fedigardens.app"
@@ -41,7 +43,7 @@ final class AuthenticationGateTests: XCTestCase {
     }
 
     func testFlowInitialStateMatches() async throws {
-        await expectWithFlow { current in
+        await withCheckedFlow { current in
             XCTAssertEqual(current.state, .initial)
         }
     }
@@ -49,7 +51,7 @@ final class AuthenticationGateTests: XCTestCase {
     func testFlowDispatchEditEvent() async throws {
         let domain = "hyrma.example"
         var domainString = ""
-        await expectWithFlow { current in
+        await withCheckedFlow { current in
             for character in domain {
                 domainString += String(character)
                 await current.emit(.edit(domain: domainString))
@@ -61,7 +63,7 @@ final class AuthenticationGateTests: XCTestCase {
     func testFlowDispatchStartAuthorization() async throws {
         let domain = "hyrma.example"
         let expectation = XCTestExpectation(description: "Network called")
-        await expectWithFlow { current in
+        await withCheckedFlow { current in
             await current.emit(.edit(domain: domain))
             await current.emit(.getAuthorizationToken)
             DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
@@ -75,7 +77,7 @@ final class AuthenticationGateTests: XCTestCase {
     func testFlowDispatchErrorOnInvalidDomain() async throws {
         let badURL = " "
         let expectation = XCTestExpectation(description: "Network called")
-        await expectWithFlow { current in
+        await withCheckedFlow { current in
             await current.emit(.edit(domain: badURL))
             await current.emit(.getAuthorizationToken)
             DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
@@ -88,7 +90,7 @@ final class AuthenticationGateTests: XCTestCase {
 
     func testFlowDispatchErrorOnRejectedDomain() async throws {
         let badURL = "gab.ai"
-        await expectWithFlow { current in
+        await withCheckedFlow { current in
             await current.emit(.edit(domain: badURL))
             await current.emit(.getAuthorizationToken)
             XCTAssertEqual(current.state, .error(DomainValidationError.rejected(domain: badURL)))
@@ -98,7 +100,7 @@ final class AuthenticationGateTests: XCTestCase {
     }
 
     func testFlowDispatchErrorOnPrematureAuthorization() async throws {
-        await expectWithFlow { current in
+        await withCheckedFlow { current in
             await current.emit(.getAuthorizationToken)
             XCTAssertEqual(current.state, .error(AuthenticationGate.AuthenticationError.unitializedGate))
         }
@@ -107,7 +109,7 @@ final class AuthenticationGateTests: XCTestCase {
     func testFlowDispatchErrorOnInProgressAuthorization() async throws {
         let domain = "hyrma.example"
         let expectation = XCTestExpectation(description: "Network called")
-        await expectWithFlow { current in
+        await withCheckedFlow { current in
             await current.emit(.edit(domain: domain))
             await current.emit(.getAuthorizationToken)
             DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
@@ -125,7 +127,7 @@ final class AuthenticationGateTests: XCTestCase {
     func testFlowDispatchErrorOnAmbushedError() async throws {
         let domain = "hyrma.example"
         let expectation = XCTestExpectation(description: "Network called")
-        await expectWithFlow { current in
+        await withCheckedFlow { current in
             await current.emit(.edit(domain: domain))
             await current.emit(.getAuthorizationToken)
             DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
@@ -147,7 +149,7 @@ final class AuthenticationGateTests: XCTestCase {
     func testFlowDispatchReset() async throws {
         let domain = "hyrma.example"
         var domainString = ""
-        await expectWithFlow { current in
+        await withCheckedFlow { current in
             for character in domain {
                 domainString += String(character)
                 await current.emit(.edit(domain: domainString))
@@ -156,13 +158,5 @@ final class AuthenticationGateTests: XCTestCase {
             await current.emit(.reset)
             XCTAssertEqual(current.state, .initial)
         }
-    }
-
-    func expectWithFlow(_ test: @escaping (AuthenticationGate) async throws -> Void) async rethrows {
-        guard let flow else {
-            XCTFail("Flow is not properly initialized in this test.")
-            return
-        }
-        try await test(flow)
     }
 }

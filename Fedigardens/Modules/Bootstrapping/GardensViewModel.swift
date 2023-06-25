@@ -22,7 +22,6 @@ class GardensViewModel: ObservableObject {
     @Published var userProfile: Account?
     @Published var interventionAuthorization: InterventionAuthorizationContext?
     @Published var emojis: [RemoteEmoji] = []
-    @Published var overrideFrugalMode = false
 
     func checkAuthorizationToken(from url: URL) {
         guard url.absoluteString.contains("gardens://oauth") else { return }
@@ -66,9 +65,5 @@ class GardensViewModel: ObservableObject {
         case .failure(let error):
             print("Failed to fetch emojis: \(error.localizedDescription)")
         }
-    }
-
-    func overrideFrugalModeFromLowPowerMode() {
-        overrideFrugalMode = ProcessInfo.processInfo.isLowPowerModeEnabled
     }
 }

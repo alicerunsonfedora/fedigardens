@@ -13,13 +13,19 @@
 //  details.
 
 import Alice
+import FrugalMode
 import SwiftUI
 
 /// The main entry structure of the app.
 @main
 struct Shout: App {
+    private var frugalFlow = FrugalModeFlow()
     @StateObject private var globalStore = GardensViewModel()
     @StateObject private var interventionHandler = InterventionHandler()
+
+    private var overrideFrugalMode: Bool {
+        frugalFlow.state == .overridden
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -28,9 +34,8 @@ struct Shout: App {
                 .environment(\.interventionAuthorization, globalStore.interventionAuthorization ?? .default)
                 .environmentObject(interventionHandler)
                 .environment(\.customEmojis, globalStore.emojis)
-                .environment(\.enforcedFrugalMode, globalStore.overrideFrugalMode)
+                .environment(\.enforcedFrugalMode, overrideFrugalMode)
                 .onOpenURL { url in
-                    globalStore.overrideFrugalModeFromLowPowerMode()
                     globalStore.checkAuthorizationToken(from: url)
                     if let newContext = globalStore.createInterventionContext(from: url) {
                         interventionHandler.assignNewContext(newContext)
@@ -39,12 +44,17 @@ struct Shout: App {
                 .onAppear {
                     Alice.shared.setRequestPrefix(to: "gardens")
                     Task {
-                        await globalStore.getUserProfile()
-                        await globalStore.getInstanceEmojis()
+                        await withTaskGroup(of: Void.self) { group in
+                            group.addTask { await frugalFlow.emit(.checkOverrides) }
+                            group.addTask { await globalStore.getUserProfile() }
+                            group.addTask { await globalStore.getInstanceEmojis() }
+                        }
                     }
                 }
                 .onReceive(of: Notification.Name.NSProcessInfoPowerStateDidChange) { _ in
-                    globalStore.overrideFrugalModeFromLowPowerMode()
+                    Task {
+                        await frugalFlow.emit(.checkOverrides)
+                    }
                 }
         }
 

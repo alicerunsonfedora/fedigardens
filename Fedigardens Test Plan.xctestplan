@@ -41,6 +41,14 @@
         "identifier" : "GardenGateTests",
         "name" : "GardenGateTests"
       }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/Packages\/FrugalMode",
+        "identifier" : "FrugalModeTests",
+        "name" : "FrugalModeTests"
+      }
     }
   ],
   "version" : 1

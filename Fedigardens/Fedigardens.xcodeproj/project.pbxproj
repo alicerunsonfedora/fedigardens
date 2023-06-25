@@ -43,8 +43,6 @@
 		9547230A27A0094000D1BA89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 954722F827A0094000D1BA89 /* Assets.xcassets */; };
 		954C95052A0461310019AE09 /* StatusAttachmentAlternative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95042A0461310019AE09 /* StatusAttachmentAlternative.swift */; };
 		954C95062A0461310019AE09 /* StatusAttachmentAlternative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95042A0461310019AE09 /* StatusAttachmentAlternative.swift */; };
-		954C95092A04691E0019AE09 /* FrugalModeEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95082A04691E0019AE09 /* FrugalModeEnvironmentKey.swift */; };
-		954C950A2A04691E0019AE09 /* FrugalModeEnvironmentKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95082A04691E0019AE09 /* FrugalModeEnvironmentKey.swift */; };
 		954C950C2A046AA20019AE09 /* View+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C950B2A046AA20019AE09 /* View+NotificationCenter.swift */; };
 		954C950D2A046AA20019AE09 /* View+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C950B2A046AA20019AE09 /* View+NotificationCenter.swift */; };
 		954C95162A05E67F0019AE09 /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 954C95152A05E67F0019AE09 /* Runestone */; };
@@ -211,6 +209,7 @@
 		958E20922969F9FC008AE63F /* InteractionsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E20912969F9FC008AE63F /* InteractionsListViewModel.swift */; };
 		958E20942969FF24008AE63F /* NotificationListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E20932969FF24008AE63F /* NotificationListCellView.swift */; };
 		958E2096296A0671008AE63F /* GardensPageLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E2095296A0671008AE63F /* GardensPageLink.swift */; };
+		958E5A482A48B79800B87B5A /* FrugalMode in Frameworks */ = {isa = PBXBuildFile; productRef = 958E5A472A48B79800B87B5A /* FrugalMode */; };
 		9594DE3B27C927820036325A /* Conversation+Authors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594DE3A27C927820036325A /* Conversation+Authors.swift */; };
 		9594DE3D27C927820036325A /* Conversation+Authors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9594DE3A27C927820036325A /* Conversation+Authors.swift */; };
 		95A01C3629994D120086985E /* PollCallToActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A01C3529994D120086985E /* PollCallToActionView.swift */; };
@@ -334,7 +333,6 @@
 		954722F827A0094000D1BA89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		954722FD27A0094000D1BA89 /* Fedigardens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fedigardens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		954C95042A0461310019AE09 /* StatusAttachmentAlternative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAttachmentAlternative.swift; sourceTree = "<group>"; };
-		954C95082A04691E0019AE09 /* FrugalModeEnvironmentKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrugalModeEnvironmentKey.swift; sourceTree = "<group>"; };
 		954C950B2A046AA20019AE09 /* View+NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+NotificationCenter.swift"; sourceTree = "<group>"; };
 		954C95182A05E6A50019AE09 /* RunestoneViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunestoneViewer.swift; sourceTree = "<group>"; };
 		95555FB62960B7F0005BEF45 /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
@@ -469,6 +467,7 @@
 				95555FB52960B7A2005BEF45 /* AckGenUI in Frameworks */,
 				95A1BF9D2973B83C002C88B6 /* EmojiText in Frameworks */,
 				9558C7EC29578503001B30C7 /* HTML2Markdown in Frameworks */,
+				958E5A482A48B79800B87B5A /* FrugalMode in Frameworks */,
 				9581C9652A473D8900621585 /* FlowKit in Frameworks */,
 				95F2DE2929726A7E00553937 /* Drops in Frameworks */,
 				95A01C3B29995AF70086985E /* Bunker in Frameworks */,
@@ -539,14 +538,6 @@
 			);
 			name = Products;
 			path = ..;
-			sourceTree = "<group>";
-		};
-		954C95072A04690C0019AE09 /* Frugal Mode */ = {
-			isa = PBXGroup;
-			children = (
-				954C95082A04691E0019AE09 /* FrugalModeEnvironmentKey.swift */,
-			);
-			path = "Frugal Mode";
 			sourceTree = "<group>";
 		};
 		954C95172A05E6910019AE09 /* Source */ = {
@@ -786,7 +777,6 @@
 			isa = PBXGroup;
 			children = (
 				958C0C9A27BE955E00ED6C23 /* Composer */,
-				954C95072A04690C0019AE09 /* Frugal Mode */,
 				95CD3C4B296509260043CDB2 /* Intervention */,
 				95D28C73299024C50051D31E /* Media Viewer */,
 				952A010F27C67F1400F36B37 /* Messaging */,
@@ -1044,6 +1034,7 @@
 				954C95152A05E67F0019AE09 /* Runestone */,
 				9581C9642A473D8900621585 /* FlowKit */,
 				95D70D342A478262007774B0 /* GardenGate */,
+				958E5A472A48B79800B87B5A /* FrugalMode */,
 			);
 			productName = "Capstone (iOS)";
 			productReference = 954722FD27A0094000D1BA89 /* Fedigardens.app */;
@@ -1078,7 +1069,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					954722FC27A0094000D1BA89 = {
 						CreatedOnToolsVersion = 13.2;
@@ -1107,6 +1098,7 @@
 				954C95142A05E67F0019AE09 /* XCRemoteSwiftPackageReference "Runestone" */,
 				9581C9632A473D8900621585 /* XCLocalSwiftPackageReference "../Packages/FlowKit" */,
 				95D70D332A478262007774B0 /* XCLocalSwiftPackageReference "../Packages/GardenGate" */,
+				958E5A462A48B79800B87B5A /* XCLocalSwiftPackageReference "../Packages/FrugalMode" */,
 			);
 			productRefGroup = 954722FE27A0094000D1BA89 /* Products */;
 			projectDirPath = "";
@@ -1204,7 +1196,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				954C95092A04691E0019AE09 /* FrugalModeEnvironmentKey.swift in Sources */,
 				95A36E93297CEDB900DA11D3 /* GardensAppCompactMorePage.swift in Sources */,
 				952A06E529692E95008340A4 /* UIDevice+Model.swift in Sources */,
 				955F1B3E2985DC1600702BE8 /* SearchTagView.swift in Sources */,
@@ -1363,7 +1354,6 @@
 				95801D5A297CC13400FE8D83 /* TimelineSplitView.swift in Sources */,
 				9537C6DD297DE7C50039F3C4 /* InterventionHandler.swift in Sources */,
 				953BC7CC2957EC27005C7F2A /* HashableType.swift in Sources */,
-				954C950A2A04691E0019AE09 /* FrugalModeEnvironmentKey.swift in Sources */,
 				95CEFDE92959637400EEE96C /* StatusVerifiedButton.swift in Sources */,
 				95801D59297CC13400FE8D83 /* StatusDetailProfileMenu.swift in Sources */,
 				957AF85029591B44000370E6 /* StatusPollView.swift in Sources */,
@@ -1491,6 +1481,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1552,6 +1543,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -1760,6 +1752,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../Packages/FlowKit;
 		};
+		958E5A462A48B79800B87B5A /* XCLocalSwiftPackageReference "../Packages/FrugalMode" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../Packages/FrugalMode;
+		};
 		95D70D332A478262007774B0 /* XCLocalSwiftPackageReference "../Packages/GardenGate" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../Packages/GardenGate;
@@ -1846,6 +1842,10 @@
 		9581C9642A473D8900621585 /* FlowKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = FlowKit;
+		};
+		958E5A472A48B79800B87B5A /* FrugalMode */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = FrugalMode;
 		};
 		95A01C3A29995AF70086985E /* Bunker */ = {
 			isa = XCSwiftPackageProductDependency;

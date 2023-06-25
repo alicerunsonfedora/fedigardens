@@ -13,7 +13,7 @@
 //  details.
 
 import Alice
-import Foundation
+import FrugalMode
 import SwiftUI
 
 // MARK: - Status Navigation List
@@ -46,10 +46,9 @@ struct StatusNavigationList<Extras: View>: View {
                     .listRowSeparator(.hidden)
                 }
                 if enforcedFrugalMode || frugalMode {
-                    Label("general.frugalon", systemImage: "leaf.fill")
-                        .bold()
+                    FrugalModeLabel()
                         .font(.system(.subheadline, design: .rounded))
-                        .foregroundColor(.green)
+                        .bold()
                         .listRowSeparator(.hidden)
                 }
             }

@@ -2,7 +2,7 @@
 //  FrugalModeFlow.swift
 //  Fedigardens
 //
-//  Created by Marquis Kurt on 5/4/23.
+//  Created by Marquis Kurt on 25/6/23.
 //
 //  This file is part of Fedigardens.
 //
@@ -12,10 +12,11 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Combine
 import FlowKit
 import Foundation
 
-public class FrugalModeFlow {
+public class FrugalModeFlow: ObservableObject {
     public enum State {
         case initial
         case overridden
@@ -29,9 +30,11 @@ public class FrugalModeFlow {
 
     public var onStateChange: ((State) -> Void)?
 
-    var internalState: State = .initial {
+    @Published var internalState: State = .initial {
         didSet { onStateChange?(internalState) }
     }
+
+    public init() {}
 }
 
 extension FrugalModeFlow: StatefulFlowProviding {
@@ -39,7 +42,7 @@ extension FrugalModeFlow: StatefulFlowProviding {
     public func emit(_ event: Event) async {
         switch event {
         case .checkOverrides:
-            break
+            internalState = ProcessInfo.processInfo.isLowPowerModeEnabled ? .overridden: .userDefaults
         case .reset:
             internalState = .initial
         }
