@@ -382,7 +382,6 @@
 		957CBC8729FF09A400FE23BA /* InformationCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationCard.swift; sourceTree = "<group>"; };
 		95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAuthorPage.swift; sourceTree = "<group>"; };
 		95801D20297C71F000FE8D83 /* AuthorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewModelTests.swift; sourceTree = "<group>"; };
-		95801D24297C738A00FE8D83 /* Fedigardens Test Plan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = "Fedigardens Test Plan.xctestplan"; path = "../../Fedigardens Test Plan.xctestplan"; sourceTree = "<group>"; };
 		95801D2D297C852100FE8D83 /* NSTextCheckingResult+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextCheckingResult+Substring.swift"; sourceTree = "<group>"; };
 		95801D32297C9B6E00FE8D83 /* Visibility+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Visibility+Localization.swift"; sourceTree = "<group>"; };
 		95801D35297C9D2600FE8D83 /* GardensSettingsKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensSettingsKey.swift; sourceTree = "<group>"; };
@@ -701,7 +700,6 @@
 			isa = PBXGroup;
 			children = (
 				95555FB62960B7F0005BEF45 /* Acknowledgements.plist */,
-				95801D24297C738A00FE8D83 /* Fedigardens Test Plan.xctestplan */,
 				95555FC02960BDDD005BEF45 /* Licenses */,
 				95A3587027B2B18D00DBB76E /* Metadata */,
 				954722FE27A0094000D1BA89 /* Products */,

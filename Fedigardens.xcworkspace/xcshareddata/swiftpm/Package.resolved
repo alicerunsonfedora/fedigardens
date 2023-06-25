@@ -1,88 +1,86 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "AckGen",
-        "repositoryURL": "https://github.com/MartinP7r/AckGen",
-        "state": {
-          "branch": null,
-          "revision": "dc155629c4bcb8eae87407967d4cc777a3b9e438",
-          "version": "0.1.5"
-        }
-      },
-      {
-        "package": "Bunker",
-        "repositoryURL": "https://github.com/alicerunsonfedora/bunker.git",
-        "state": {
-          "branch": "root",
-          "revision": "9f7ba80122b3f0ff525d13cf997ecaa8c2128d87",
-          "version": null
-        }
-      },
-      {
-        "package": "Drops",
-        "repositoryURL": "https://github.com/omaralbeik/Drops.git",
-        "state": {
-          "branch": null,
-          "revision": "f4eabe3e4e5da69e5205a69a5ddc0effd4a90519",
-          "version": "1.6.1"
-        }
-      },
-      {
-        "package": "EmojiText",
-        "repositoryURL": "https://github.com/divadretlaw/EmojiText",
-        "state": {
-          "branch": "main",
-          "revision": "1a906aa183228f1b5ddfb45de11e0c08fe833535",
-          "version": null
-        }
-      },
-      {
-        "package": "HTML2Markdown",
-        "repositoryURL": "https://gitlab.com/mflint/HTML2Markdown/",
-        "state": {
-          "branch": null,
-          "revision": "00d7a9744bbd1e7762c587bbd248775e16345a65",
-          "version": "1.0.0"
-        }
-      },
-      {
-        "package": "KeychainAccess",
-        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess",
-        "state": {
-          "branch": null,
-          "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
-          "version": "4.2.2"
-        }
-      },
-      {
-        "package": "Nuke",
-        "repositoryURL": "https://github.com/kean/Nuke",
-        "state": {
-          "branch": null,
-          "revision": "33f7e93be5d4ec027d42af77a8ec4680d1862ad2",
-          "version": "11.6.4"
-        }
-      },
-      {
-        "package": "Runestone",
-        "repositoryURL": "https://github.com/simonbs/Runestone",
-        "state": {
-          "branch": null,
-          "revision": "1d0e79051a18d79f12882e9fad0b130e47d4a06b",
-          "version": "0.3.0"
-        }
-      },
-      {
-        "package": "SafariView",
-        "repositoryURL": "https://github.com/alicerunsonfedora/SafariView",
-        "state": {
-          "branch": "root",
-          "revision": "3f58d7915d97a0e15bc53618e54cbfbbba1f1b8f",
-          "version": null
-        }
+  "pins" : [
+    {
+      "identity" : "ackgen",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MartinP7r/AckGen",
+      "state" : {
+        "revision" : "c28170c4b709bd69a17255c0c904158a3cce922b",
+        "version" : "0.1.6"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "bunker",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/alicerunsonfedora/bunker.git",
+      "state" : {
+        "branch" : "root",
+        "revision" : "9f7ba80122b3f0ff525d13cf997ecaa8c2128d87"
+      }
+    },
+    {
+      "identity" : "drops",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/omaralbeik/Drops.git",
+      "state" : {
+        "revision" : "f4eabe3e4e5da69e5205a69a5ddc0effd4a90519",
+        "version" : "1.6.1"
+      }
+    },
+    {
+      "identity" : "emojitext",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/divadretlaw/EmojiText",
+      "state" : {
+        "branch" : "main",
+        "revision" : "94d9346b378e03483c094cbf7b3b9fa3a368a8bb"
+      }
+    },
+    {
+      "identity" : "html2markdown",
+      "kind" : "remoteSourceControl",
+      "location" : "https://gitlab.com/mflint/HTML2Markdown/",
+      "state" : {
+        "revision" : "00d7a9744bbd1e7762c587bbd248775e16345a65",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "keychainaccess",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kishikawakatsumi/KeychainAccess",
+      "state" : {
+        "revision" : "84e546727d66f1adc5439debad16270d0fdd04e7",
+        "version" : "4.2.2"
+      }
+    },
+    {
+      "identity" : "nuke",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kean/Nuke",
+      "state" : {
+        "revision" : "282b9562c84d76cebbbecd1cc3aaf430448a0cce",
+        "version" : "12.1.1"
+      }
+    },
+    {
+      "identity" : "runestone",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/simonbs/Runestone",
+      "state" : {
+        "revision" : "1d0e79051a18d79f12882e9fad0b130e47d4a06b",
+        "version" : "0.3.0"
+      }
+    },
+    {
+      "identity" : "safariview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/alicerunsonfedora/SafariView",
+      "state" : {
+        "branch" : "root",
+        "revision" : "3f58d7915d97a0e15bc53618e54cbfbbba1f1b8f"
+      }
+    }
+  ],
+  "version" : 2
 }

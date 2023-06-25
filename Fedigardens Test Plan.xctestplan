@@ -9,7 +9,36 @@
     }
   ],
   "defaultOptions" : {
-
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:..\/Packages\/Alice",
+          "identifier" : "Alice",
+          "name" : "Alice"
+        },
+        {
+          "containerPath" : "container:Fedigardens.xcodeproj",
+          "identifier" : "954722FC27A0094000D1BA89",
+          "name" : "Fedigardens"
+        },
+        {
+          "containerPath" : "container:..\/Packages\/FlowKit",
+          "identifier" : "FlowKit",
+          "name" : "FlowKit"
+        },
+        {
+          "containerPath" : "container:..\/Packages\/FrugalMode",
+          "identifier" : "FrugalMode",
+          "name" : "FrugalMode"
+        },
+        {
+          "containerPath" : "container:..\/Packages\/GardenGate",
+          "identifier" : "GardenGate",
+          "name" : "GardenGate"
+        }
+      ]
+    },
+    "testExecutionOrdering" : "random"
   },
   "testTargets" : [
     {
