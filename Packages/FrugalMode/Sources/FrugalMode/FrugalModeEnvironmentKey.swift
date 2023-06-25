@@ -21,8 +21,8 @@ private struct FrugalModeEnvironmentKey: EnvironmentKey {
 public extension EnvironmentValues {
     /// Whether frugal mode should be enforced all the time, rather than per user defaults.
     ///
-    /// Typically, this environment variable can be used to suspend expensive tasks or selectively display contents that aren't
-    /// computationally intensive with respect to time and/or resources.
+    /// Typically, this environment variable can be used to suspend expensive tasks or selectively display contents that
+    /// aren't computationally intensive with respect to time and/or resources.
     ///
     /// Use this alongside ``FrugalModeFlow`` to automatically override frugal mode settings based on Low Power Mode:
     /// ```swift

@@ -94,8 +94,10 @@ final class AuthenticationGateTests: XCTestCase, StatefulTestCase {
             await current.emit(.edit(domain: badURL))
             await current.emit(.getAuthorizationToken)
             XCTAssertEqual(current.state, .error(DomainValidationError.rejected(domain: badURL)))
-            XCTAssertEqual(DomainValidationError.rejected(domain: badURL).message,
-                           "Fedigardens cannot sign in to gab.ai because the developers cannot verify that this server moderates the content posted by its users.")
+            XCTAssertEqual(
+                DomainValidationError.rejected(domain: badURL).message,
+                "Fedigardens cannot sign in to gab.ai because the developers cannot verify that this server moderates"
+                + " the content posted by its users.")
         }
     }
 
