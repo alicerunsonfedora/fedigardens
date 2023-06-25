@@ -17,6 +17,28 @@ import Foundation
 import XCTest
 
 /// A subtype of `XCTestCase` that handles testing of flows.
+///
+/// This protocol can be used to define test cases that test a flow:
+/// ```swift
+/// import FlowKit
+/// import XCTest
+///
+/// final class ExampleFlowTests: XCTestCase, StatefulTestCase {
+///     typealias TestableFlow = ExampleFlow
+///
+///     var flow: ExampleFlow?
+///
+///     override func setUp() async throws {
+///         flow = ExampleFlow()
+///     }
+///
+///     override func tearDown() async throws {
+///         flow = nil
+///     }
+///
+///     func testEmitEvent() async throws { ... }
+/// }
+/// ```
 public protocol StatefulTestCase: XCTestCase {
     /// The flow type that will be tested.
     associatedtype TestableFlow: StatefulFlowProviding
@@ -29,6 +51,9 @@ public protocol StatefulTestCase: XCTestCase {
 
 public extension StatefulTestCase {
     /// Runs a test case function with a pre-checked initialized flow.
+    ///
+    /// If the flow hasn't been initialized properly in the test's setup, the test the method is called in will fail
+    /// automatically, stating that the flow wasn't initialized yet.
     ///
     /// Use this inside a test case function to run your tests, guaranteeing that ``flow`` is present:
     ///
