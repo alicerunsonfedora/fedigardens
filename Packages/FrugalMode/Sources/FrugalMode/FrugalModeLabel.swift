@@ -14,6 +14,7 @@
 
 import SwiftUI
 
+/// A label that displays "Frugal mode enabled" based on the current locales.
 public struct FrugalModeLabel: View {
     public init() {}
 

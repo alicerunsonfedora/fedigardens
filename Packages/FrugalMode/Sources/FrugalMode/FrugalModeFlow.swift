@@ -16,15 +16,24 @@ import Combine
 import FlowKit
 import Foundation
 
+/// A flow designed to assess the state of frugal mode in an app.
 public class FrugalModeFlow: ObservableObject {
     public enum State {
+        /// The initial state of the flow, which indicates nothing has occurred.
         case initial
+
+        /// Frugal mode has been overridden due to environment factors, such as Low Power Mode.
         case overridden
+
+        /// Frugal mode is dictated by what is in the user's defaults.
         case userDefaults
     }
 
     public enum Event {
+        /// Check whether frugal mode will be overridden by environment factors such as Low Poer Mode.
         case checkOverrides
+
+        /// Resets the state of the flow to the initial state.
         case reset
     }
 
