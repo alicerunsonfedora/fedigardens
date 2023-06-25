@@ -9,11 +9,17 @@ let package = Package(
     products: [
         .library(
             name: "FlowKit",
-            targets: ["FlowKit"])
+            targets: ["FlowKit"]),
+        .library(
+            name: "FlowKitTestSupport",
+            targets: ["FlowKitTestSupport"])
     ],
     targets: [
         .target(
             name: "FlowKit"),
+        .target(
+            name: "FlowKitTestSupport",
+            dependencies: ["FlowKit"]),
         .testTarget(
             name: "FlowKitTests",
             dependencies: ["FlowKit"])

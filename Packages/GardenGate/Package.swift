@@ -29,7 +29,8 @@ let package = Package(
             dependencies: [
                 "GardenGate",
                 "Alice",
-                .product(name: "AliceMockingbird", package: "Alice")
+                .product(name: "AliceMockingbird", package: "Alice"),
+                .product(name: "FlowKitTestSupport", package: "FlowKit")
             ])
     ]
 )

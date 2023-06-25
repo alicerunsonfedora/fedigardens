@@ -15,6 +15,13 @@
       name = "Modules">
       <Group
          location = "container:"
+         name = "Features">
+         <FileRef
+            location = "group:Packages/FrugalMode">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
          name = "Fundamentals">
          <FileRef
             location = "group:Packages/Alice">
