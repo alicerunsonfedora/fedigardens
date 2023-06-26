@@ -17,6 +17,9 @@
          location = "container:"
          name = "Features">
          <FileRef
+            location = "group:Packages/Interventions">
+         </FileRef>
+         <FileRef
             location = "group:Packages/FrugalMode">
          </FileRef>
       </Group>
