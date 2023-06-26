@@ -74,4 +74,35 @@ public extension StatefulTestCase {
         }
         try await task(flow)
     }
+
+    /// Asserts that the flow's current state matches an expected state.
+    /// - Parameter expectedState: The expected state that the flow should be in.
+    /// - Parameter message: An optional message for the assertion if it fails.
+    func expectState(matches expectedState: TestableFlow.State, message: String = "") {
+        XCTAssertEqual(self.flow?.state, expectedState, message)
+    }
+
+    /// Asserts that the flow's current state doesn't match an expected state.
+    /// - Parameter expectedState: The expected state that the flow should not be in.
+    /// - Parameter message: An optional message for the assertion if it fails.
+    func expectState(doesNotMatch expectedState: TestableFlow.State, message: String = "") {
+        XCTAssertNotEqual(self.flow?.state, expectedState, message)
+    }
+
+    /// Emits an event and waits for a period of time, ensuring that the event has succeeded.
+    /// - Parameter event: The event to emit and wait on.
+    /// - Parameter time: The time interval that the test will wait for.
+    /// - Parameter timeout: The time interval that the test will wait until declaring a failure.
+    /// - Parameter message: An optional message for what the test will wait for.
+    func emitAndWait(event: TestableFlow.Event,
+                     forPeriod time: TimeInterval,
+                     timeout: TimeInterval = 10,
+                     message: String? = nil) async {
+        let expectation = XCTestExpectation(description: message ?? "Event \(event) emitted.")
+        await self.flow?.emit(event)
+        DispatchQueue.main.asyncAfter(deadline: .now() + time) {
+            expectation.fulfill()
+        }
+        await self.fulfillment(of: [expectation], timeout: timeout)
+    }
 }
