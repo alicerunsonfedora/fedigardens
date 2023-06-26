@@ -15,22 +15,22 @@
       name = "Modules">
       <Group
          location = "container:"
-         name = "Features">
-         <FileRef
-            location = "group:Packages/Interventions">
-         </FileRef>
-         <FileRef
-            location = "group:Packages/FrugalMode">
-         </FileRef>
-      </Group>
-      <Group
-         location = "container:"
          name = "Fundamentals">
          <FileRef
             location = "group:Packages/Alice">
          </FileRef>
          <FileRef
             location = "group:Packages/FlowKit">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Features">
+         <FileRef
+            location = "group:Packages/Interventions">
+         </FileRef>
+         <FileRef
+            location = "group:Packages/FrugalMode">
          </FileRef>
       </Group>
       <FileRef
