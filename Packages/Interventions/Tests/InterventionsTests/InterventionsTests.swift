@@ -10,7 +10,7 @@ import XCTest
 
 struct DummyLinkOpener: InterventionLinkOpener {
     func canOpenURL(_ url: URL) async -> Bool { true }
-    func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey: Any]) async -> Bool { return true }
+    func open(_ url: URL) async -> Bool { return true }
 }
 
 final class InterventionFlowTests: XCTestCase, StatefulTestCase {
