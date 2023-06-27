@@ -14,11 +14,17 @@
 
 import Foundation
 
+/// The set of allowed cases for which an intervention can occur.
 @OptionSet<UInt8>
 public struct InterventionAllowedMechanisms {
     private enum Options: Int {
+        /// An intervention can never occur.
         case none
+
+        /// An intervention occurs whenever a refresh action is committed.
         case refresh
+
+        /// An interventions occurs whenever a fetch action is commited.
         case fetchMore
     }
 }

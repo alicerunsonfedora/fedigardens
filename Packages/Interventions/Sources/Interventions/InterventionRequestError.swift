@@ -14,10 +14,21 @@
 
 import Foundation
 
+/// An enumeration representing the various errors that can occur when requesting an intervention.
 public enum InterventionRequestError: Error {
+    /// one sec is not installed on the device.
     case oneSecNotAvailable
+
+    /// A request has already been made.
     case requestAlreadyMade(Date)
+
+    /// An authorization request was made from an invalid state.
+    ///
+    /// This usually occurs when the request was made in its initial state, or if the request was made after it
+    /// encountered an error.
     case invalidAuthorizationFlowState
+
+    /// The user has already authorized the action, and no further action is needed.
     case alreadyAuthorized(Date, context: InterventionAuthorizationContext)
 }
 
