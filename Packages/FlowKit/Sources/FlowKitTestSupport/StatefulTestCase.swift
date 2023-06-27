@@ -106,3 +106,21 @@ public extension StatefulTestCase {
         await self.fulfillment(of: [expectation], timeout: timeout)
     }
 }
+
+public extension StatefulTestCase where TestableFlow: Actor {
+    /// Asserts that the flow's current state matches an expected state.
+    /// - Parameter expectedState: The expected state that the flow should be in.
+    /// - Parameter message: An optional message for the assertion if it fails.
+    func expectState(matches expectedState: TestableFlow.State, message: String = "") async {
+        let state = await self.flow?.state
+        XCTAssertEqual(state, expectedState, message)
+    }
+
+    /// Asserts that the flow's current state doesn't match an expected state.
+    /// - Parameter expectedState: The expected state that the flow should not be in.
+    /// - Parameter message: An optional message for the assertion if it fails.
+    func expectState(doesNotMatch expectedState: TestableFlow.State, message: String = "") async {
+        let state = await self.flow?.state
+        XCTAssertNotEqual(state, expectedState, message)
+    }
+}

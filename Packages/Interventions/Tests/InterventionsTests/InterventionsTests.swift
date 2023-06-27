@@ -19,7 +19,7 @@ final class InterventionFlowTests: XCTestCase, StatefulTestCase {
     var flow: InterventionFlow<DummyLinkOpener>?
 
     override func setUp() async throws {
-        self.flow = InterventionFlow(linkOpener: DummyLinkOpener())
+        self.flow = await InterventionFlow(linkOpener: DummyLinkOpener())
     }
 
     override func tearDown() async throws {
@@ -29,7 +29,7 @@ final class InterventionFlowTests: XCTestCase, StatefulTestCase {
     func testEmitAuthorizationRequest() async throws {
         let initialRequestDate = Date.now
         await emitAndWait(event: .requestIntervention, forPeriod: 2, timeout: 5, message: "Authorization request")
-        expectState(matches: .requestedIntervention(initialRequestDate))
+        await expectState(matches: .requestedIntervention(initialRequestDate))
     }
 
     func testEmitAuthorizationCompletion() async throws {
@@ -38,7 +38,7 @@ final class InterventionFlowTests: XCTestCase, StatefulTestCase {
             let context = InterventionAuthorizationContext(allowedTimeInterval: 5, allowedFetchSize: 10)
             let capturedDate = Date.now
             await currentFlow.emit(.authorizeIntervention(capturedDate, context: context))
-            expectState(matches: .authorizedIntervention(capturedDate, context: context))
+            await expectState(matches: .authorizedIntervention(capturedDate, context: context))
         }
     }
 
@@ -46,7 +46,7 @@ final class InterventionFlowTests: XCTestCase, StatefulTestCase {
         await withCheckedFlow { [self] currentFlow in
             await emitAndWait(event: .requestIntervention, forPeriod: 2, timeout: 5, message: "Authorization request")
             await currentFlow.emit(.reset)
-            expectState(matches: .initial)
+            await expectState(matches: .initial)
         }
     }
 
@@ -55,7 +55,7 @@ final class InterventionFlowTests: XCTestCase, StatefulTestCase {
                           forPeriod: 2,
                           timeout: 5,
                           message: "Authorization request")
-        expectState(matches: .error(InterventionRequestError.invalidAuthorizationFlowState))
+        await expectState(matches: .error(InterventionRequestError.invalidAuthorizationFlowState))
     }
 
     func testEmitFailureFromBruteForceRequest() async throws {
@@ -63,7 +63,7 @@ final class InterventionFlowTests: XCTestCase, StatefulTestCase {
             let initialRequestDate = Date.now
             await emitAndWait(event: .requestIntervention, forPeriod: 2, timeout: 5, message: "Authorization request")
             await emitAndWait(event: .requestIntervention, forPeriod: 2, timeout: 5, message: "Authorization request")
-            expectState(matches: .error(InterventionRequestError.requestAlreadyMade(initialRequestDate)))
+            await expectState(matches: .error(InterventionRequestError.requestAlreadyMade(initialRequestDate)))
         }
     }
 
@@ -79,7 +79,7 @@ final class InterventionFlowTests: XCTestCase, StatefulTestCase {
                           forPeriod: 2,
                           timeout: 5,
                           message: "Complete authorization")
-        expectState(matches: .error(InterventionRequestError.alreadyAuthorized(capturedDate, context: context)))
+        await expectState(matches: .error(InterventionRequestError.alreadyAuthorized(capturedDate, context: context)))
     }
 
     func testEmitFailureFromError() async throws {
@@ -91,22 +91,23 @@ final class InterventionFlowTests: XCTestCase, StatefulTestCase {
                           forPeriod: 2,
                           timeout: 5,
                           message: "Authorization request")
-        expectState(matches: .error(InterventionRequestError.invalidAuthorizationFlowState))
+        await expectState(matches: .error(InterventionRequestError.invalidAuthorizationFlowState))
     }
 
     func testEmitFailureFromMissingOneSec() async throws {
         let expectation = XCTestExpectation(description: "Request intervention")
         #if os(macOS)
-        let realFlow = InterventionFlow()
+        let realFlow = await InterventionFlow(linkOpener: NSWorkspace.shared)
         #else
-        let realFlow = InterventionFlow()
+        let realFlow = await InterventionFlow(linkOpener: UIApplication.shared)
         #endif
         await realFlow.emit(.requestIntervention)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             expectation.fulfill()
         }
         await self.fulfillment(of: [expectation], timeout: 5)
-        XCTAssertEqual(realFlow.state, .error(InterventionRequestError.oneSecNotAvailable))
+        let currentState = await realFlow.state
+        XCTAssertEqual(currentState, .error(InterventionRequestError.oneSecNotAvailable))
     }
 
     func testEmitDropoutAfterRequestingInterventionWhileAuthorized() async throws {
@@ -116,7 +117,7 @@ final class InterventionFlowTests: XCTestCase, StatefulTestCase {
             let capturedDate = Date.now
             await currentFlow.emit(.authorizeIntervention(capturedDate, context: context))
             await emitAndWait(event: .requestIntervention, forPeriod: 2, timeout: 5, message: "Authorization request")
-            expectState(matches: .authorizedIntervention(capturedDate, context: context))
+            await expectState(matches: .authorizedIntervention(capturedDate, context: context))
         }
     }
 }
