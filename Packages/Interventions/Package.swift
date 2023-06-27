@@ -10,19 +10,20 @@ let package = Package(
     products: [
         .library(
             name: "Interventions",
-            targets: ["Interventions"]),
+            targets: ["Interventions"])
     ],
     dependencies: [
         .package(name: "FlowKit", path: "../FlowKit")
     ],
     targets: [
         .target(
-            name: "Interventions"),
+            name: "Interventions",
+            dependencies: ["FlowKit"]),
         .testTarget(
             name: "InterventionsTests",
             dependencies: [
                 "Interventions",
                 .product(name: "FlowKitTestSupport", package: "FlowKit")
-            ]),
+            ])
     ]
 )

@@ -2,9 +2,26 @@
   "configurations" : [
     {
       "id" : "57020C65-72B4-46A2-AB95-8C90B6F72F8A",
-      "name" : "Configuration 1",
+      "name" : "General Tests",
       "options" : {
-
+        "language" : "en",
+        "locationScenario" : {
+          "identifier" : "San Francisco, CA, USA",
+          "referenceType" : "built-in"
+        },
+        "maximumTestRepetitions" : 5,
+        "region" : "US",
+        "repeatInNewRunnerProcess" : true,
+        "testRepetitionMode" : "retryOnFailure"
+      }
+    },
+    {
+      "id" : "40BD4BC4-552C-466B-B707-74F2A2ECFC83",
+      "name" : "Memory and Concurrency",
+      "options" : {
+        "nsZombieEnabled" : true,
+        "threadSanitizerEnabled" : true,
+        "undefinedBehaviorSanitizerEnabled" : true
       }
     }
   ],
@@ -35,6 +52,11 @@
           "containerPath" : "container:..\/Packages\/GardenGate",
           "identifier" : "GardenGate",
           "name" : "GardenGate"
+        },
+        {
+          "containerPath" : "container:..\/Packages\/Interventions",
+          "identifier" : "Interventions",
+          "name" : "Interventions"
         }
       ]
     },
@@ -77,6 +99,14 @@
         "containerPath" : "container:..\/Packages\/FrugalMode",
         "identifier" : "FrugalModeTests",
         "name" : "FrugalModeTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/Packages\/Interventions",
+        "identifier" : "InterventionsTests",
+        "name" : "InterventionsTests"
       }
     }
   ],
