@@ -14,16 +14,14 @@
 
 import Combine
 import FlowKit
+
+#if os(macOS)
+import AppKit
+#else
 import UIKit
+#endif
 
 public class InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject {
-    public enum InterventionRequestError: Error {
-        case oneSecNotAvailable
-        case requestAlreadyMade(Date)
-        case invalidAuthorizationFlowState
-        case alreadyAuthorized(Date, context: InterventionAuthorizationContext)
-    }
-
     public enum State: Equatable, Hashable {
         case initial
         case requestedIntervention(Date)
@@ -66,9 +64,15 @@ public class InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject 
     private let oneSecUrl = URL(string: "onesec://reintervene?appId=fedigardens")!
     var opener: Opener
 
+    #if os(macOS)
+    public init(linkOpener: Opener = NSApplication.shared) {
+        self.opener = linkOpener
+    }
+    #else
     public init(linkOpener: Opener = UIApplication.shared) {
         self.opener = linkOpener
     }
+    #endif
 
     func requestIntervention(startTime: Date) async {
         if case .authorizedIntervention(let date, let context) = internalState,
@@ -91,11 +95,11 @@ public class InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject 
         switch internalState {
         case .initial:
             await assignState(.error(InterventionRequestError.invalidAuthorizationFlowState))
-        case .requestedIntervention(_):
+        case .requestedIntervention:
             internalState = .authorizedIntervention(startTime, context: context)
         case .authorizedIntervention(let date, let context):
             await assignState(.error(InterventionRequestError.alreadyAuthorized(date, context: context)))
-        case .error(_):
+        case .error:
             return
         }
     }

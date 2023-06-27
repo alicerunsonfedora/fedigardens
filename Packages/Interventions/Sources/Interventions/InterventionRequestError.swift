@@ -1,5 +1,5 @@
 //
-//  InterventionLinkOpener.swift
+//  InterventionRequestError.swift
 //  Fedigardens
 //
 //  Created by Marquis Kurt on 26/6/23.
@@ -12,21 +12,11 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-#if os(macOS)
-import AppKit
-#else
-import UIKit
-#endif
+import Foundation
 
-public protocol InterventionLinkOpener {
-    func canOpenURL(_ url: URL) async -> Bool
-
-    @discardableResult
-    func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey: Any]) async -> Bool
+public enum InterventionRequestError: Error {
+    case oneSecNotAvailable
+    case requestAlreadyMade(Date)
+    case invalidAuthorizationFlowState
+    case alreadyAuthorized(Date, context: InterventionAuthorizationContext)
 }
-
-#if os(macOS)
-extension NSApplication: InterventionLinkOpener {}
-#else
-extension UIApplication: InterventionLinkOpener {}
-#endif
