@@ -21,11 +21,23 @@ import AppKit
 import UIKit
 #endif
 
+/// A flow that manages interventions in an app.
+///
+/// This flow is commonly used to provide interventions to have a user reflect and confirm that they want to perform
+/// the action that triggered the intervention. This works hand-in-hand with [one sec](https://one-sec.app) to provide
+/// intervention exercises.
 public class InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject {
     public enum State: Equatable, Hashable {
+        /// The initial state of the flow, where no interventions have been requested.
         case initial
+
+        /// An intervention was requested at a specific date and time.
         case requestedIntervention(Date)
+
+        /// An intervention was authorized by the user at a specific date and time.
         case authorizedIntervention(Date, context: InterventionAuthorizationContext)
+
+        /// An error has occurred.
         case error(Error)
 
         public static func == (lhs: State, rhs: State) -> Bool {
@@ -50,8 +62,13 @@ public class InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject 
     }
 
     public enum Event {
+        /// Requests an intervention.
         case requestIntervention
+
+        /// Authorized the currently requested intervention at a specific date with a context.
         case authorizeIntervention(Date, context: InterventionAuthorizationContext)
+
+        /// Resets the flow to its initial state.
         case reset
     }
 
@@ -65,10 +82,14 @@ public class InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject 
     var opener: Opener
 
     #if os(macOS)
+    /// Creates an intervention flow with a link opener.
+    /// - Parameter linkOpener: The actor that will open links to call one sec. Default is `NSWorkspace.shared`.
     public init(linkOpener: Opener = NSApplication.shared) {
         self.opener = linkOpener
     }
     #else
+    /// Creates an intervention flow with a link opener.
+    /// - Parameter linkOpener: The actor that will open links to call one sec. Default is `UIApplication.shared`.
     public init(linkOpener: Opener = UIApplication.shared) {
         self.opener = linkOpener
     }
@@ -87,7 +108,7 @@ public class InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject 
             await assignState(.error(InterventionRequestError.oneSecNotAvailable))
             return
         }
-        await opener.open(oneSecUrl, options: [:])
+        await opener.open(oneSecUrl)
         await assignState(.requestedIntervention(startTime))
     }
 

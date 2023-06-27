@@ -15,6 +15,11 @@
 import SwiftUI
 
 public extension View {
+    /// Presents an alert to the user that one sec could not be found, preventing an intervention from being requested.
+    /// 
+    /// - Parameter isPresented: Whether the alert is being presented.
+    /// - Parameter opener: The action that will open the URL to one sec's App Store page.
+    /// - Parameter disableAction: A closure that executes when the user presses the action to disable interventions.
     func interventionsAlert(isPresented: Binding<Bool>,
                             opener: OpenURLAction,
                             disableAction: @escaping () -> Void) -> some View {
