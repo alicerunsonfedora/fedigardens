@@ -127,26 +127,8 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                 }
             }
         }
-        .alert("interventions.missing.title", isPresented: $model.displayOneSecNotInstalledWarning) {
-            Button {
-                if let url = URL(
-                    string: "https://apps.apple.com/app/apple-store/id1532875441?pt=120233067&ct=fedigardens"
-                ) {
-                    openURL(url)
-                }
-            } label: {
-                Text("interventions.cta.install")
-            }
-            Button {
-                UserDefaults.standard.allowsInterventions = false
-            } label: {
-                Text("interventions.cta.disable")
-            }
-            Button {} label: {
-                Text("interventions.cta.dismiss")
-            }.keyboardShortcut(.defaultAction)
-        } message: {
-            Text("interventions.missing.detail")
+        .interventionsAlert(isPresented: $model.displayOneSecNotInstalledWarning, opener: openURL) {
+            UserDefaults.standard.allowsInterventions = false
         }
     }
 

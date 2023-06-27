@@ -18,7 +18,10 @@ let package = Package(
     targets: [
         .target(
             name: "Interventions",
-            dependencies: ["FlowKit"]),
+            dependencies: ["FlowKit"],
+            resources: [
+                .process("Resources")
+            ]),
         .testTarget(
             name: "InterventionsTests",
             dependencies: [
