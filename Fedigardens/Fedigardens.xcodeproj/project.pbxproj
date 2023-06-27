@@ -395,7 +395,6 @@
 		958E2095296A0671008AE63F /* GardensPageLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensPageLink.swift; sourceTree = "<group>"; };
 		9594DE3A27C927820036325A /* Conversation+Authors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Conversation+Authors.swift"; sourceTree = "<group>"; };
 		95A01C3529994D120086985E /* PollCallToActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PollCallToActionView.swift; sourceTree = "<group>"; };
-		95A02A70295FE98B0013EF7C /* Alice */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Alice; path = ../Packages/Alice; sourceTree = "<group>"; };
 		95A1BF9729738A75002C88B6 /* ProfileSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetView.swift; sourceTree = "<group>"; };
 		95A1BF9929738D33002C88B6 /* ProfileSheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSheetViewModel.swift; sourceTree = "<group>"; };
 		95A1BF9E2973B8B2002C88B6 /* Emojis.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emojis.swift; sourceTree = "<group>"; };
@@ -515,7 +514,6 @@
 		954722F027A0093F00D1BA89 = {
 			isa = PBXGroup;
 			children = (
-				95A02A66295FE88B0013EF7C /* Packages */,
 				95009EF0295D440B00F32F85 /* Fedigardens.entitlements */,
 				95ADAE0027B6B2D10011FD83 /* Modules */,
 				95D1036E27A00AF400B1EE3C /* Resources */,
@@ -815,14 +813,6 @@
 				95801D35297C9D2600FE8D83 /* GardensSettingsKey.swift */,
 			);
 			path = "Preferences Access";
-			sourceTree = "<group>";
-		};
-		95A02A66295FE88B0013EF7C /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				95A02A70295FE98B0013EF7C /* Alice */,
-			);
-			name = Packages;
 			sourceTree = "<group>";
 		};
 		95A02A6B295FE93E0013EF7C /* Frameworks */ = {

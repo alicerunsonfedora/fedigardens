@@ -16,12 +16,13 @@ import Alice
 import FrugalMode
 import Interventions
 import SwiftUI
+import UIKit
 
 /// The main entry structure of the app.
 @main
 struct Shout: App {
-    private var frugalFlow = FrugalModeFlow()
-    private var interventions = InterventionFlow()
+    @State private var frugalFlow = FrugalModeFlow()
+    @State private var interventions = InterventionFlow(linkOpener: UIApplication.shared)
     @StateObject private var globalStore = GardensViewModel()
 
     private var overrideFrugalMode: Bool {
@@ -53,6 +54,7 @@ struct Shout: App {
                     }
                 }
                 .onAppear {
+                    interventions = .init(linkOpener: UIApplication.shared)
                     Alice.shared.setRequestPrefix(to: "gardens")
                     Task {
                         await withTaskGroup(of: Void.self) { group in

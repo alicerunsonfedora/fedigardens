@@ -69,7 +69,7 @@ class TimelineSplitViewModel: ObservableObject {
         let currentMechanisms = InterventionAllowedMechanisms.fromDefaults()
         if userInitiated, let handler, currentMechanisms.contains(expectedMechanism) {
             await handler.emit(.requestIntervention)
-            if case .error(let error) = handler.state {
+            if case .error(let error) = await handler.state {
                 if (error as? InterventionRequestError) == InterventionRequestError.oneSecNotAvailable {
                     DispatchQueue.main.async {
                         self.displayOneSecNotInstalledWarning.toggle()

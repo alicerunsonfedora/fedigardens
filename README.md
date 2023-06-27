@@ -25,14 +25,11 @@ This project aims to experiment with the following:
   inclusive, and being accountable in source.
 - Being _frugally_ designed by being lightweight, network-efficient, and
   native with SwiftUI and other iOS/macOS technologies.
-  
-More information on the objectives of this project can be discovered in
-the OBJECTIVES.md file, located in the docs of the project's source code.
 
 ## Building from Source
 
 **Required Tools**  
-- Xcode 13 or later
+- Xcode 14 or later
 - SwiftFormat
 
 **Optional (but Recommended) Tools**  
@@ -45,12 +42,13 @@ in the root directory.
 > in the App Store and/or TestFlight, it is recommended that you change
 > the URL scheme from `gardens:` to your own URL scheme. Change this in
 > the URL Types section of each target, then change the corresponding line
-> inGardens.swift to match your URL prefix:
+> in Gardens.swift to match your URL prefix:
 >
 > ```swift
-> 37 .onAppear {
-> 38    Chica.shared.setRequestPrefix(to: "<your-url-prefix-here>")
-> 39 }
+> .onAppear {
+>     Alice.shared.setRequestPrefix(to: "<your-url-prefix-here>")
+>     ...
+> }
 > ```
 
 Press the Run button in the toolbar or go to **Product > Run** in the menu

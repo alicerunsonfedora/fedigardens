@@ -14,18 +14,14 @@
 
 import Combine
 import FlowKit
-
-#if os(macOS)
-import AppKit
-#else
-import UIKit
-#endif
+import Foundation
 
 /// A flow that manages interventions in an app.
 ///
 /// This flow is commonly used to provide interventions to have a user reflect and confirm that they want to perform
 /// the action that triggered the intervention. This works hand-in-hand with [one sec](https://one-sec.app) to provide
 /// intervention exercises.
+@MainActor
 public class InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject {
     public enum State: Equatable, Hashable {
         /// The initial state of the flow, where no interventions have been requested.
@@ -41,7 +37,7 @@ public class InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject 
         case error(Error)
 
         public static func == (lhs: State, rhs: State) -> Bool {
-            lhs.hashValue == rhs.hashValue
+            return lhs.hashValue == rhs.hashValue
         }
 
         public func hash(into hasher: inout Hasher) {
@@ -81,19 +77,11 @@ public class InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject 
     private let oneSecUrl = URL(string: "onesec://reintervene?appId=fedigardens")!
     var opener: Opener
 
-    #if os(macOS)
     /// Creates an intervention flow with a link opener.
-    /// - Parameter linkOpener: The actor that will open links to call one sec. Default is `NSWorkspace.shared`.
-    public init(linkOpener: Opener = NSApplication.shared) {
+    /// - Parameter linkOpener: The actor that will open links to call one sec.
+    public init(linkOpener: Opener) {
         self.opener = linkOpener
     }
-    #else
-    /// Creates an intervention flow with a link opener.
-    /// - Parameter linkOpener: The actor that will open links to call one sec. Default is `UIApplication.shared`.
-    public init(linkOpener: Opener = UIApplication.shared) {
-        self.opener = linkOpener
-    }
-    #endif
 
     func requestIntervention(startTime: Date) async {
         if case .authorizedIntervention(let date, let context) = internalState,
