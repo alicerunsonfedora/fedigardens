@@ -70,8 +70,17 @@ final class AliceNetworkTests: XCTestCase {
             return XCTFail("Network provider or keychain doesn't exist.")
         }
         if auth {
+            let startExpectation = XCTestExpectation(description: "Start auth")
+            let finalExpectation = XCTestExpectation(description: "Finish auth")
             await network.authenticator.startOauthFlow(for: "hyrma.example", using: network, store: keychain)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                startExpectation.fulfill()
+            }
             await network.authenticator.continueOauthFlow("auth", using: network, store: keychain)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                finalExpectation.fulfill()
+            }
+            await self.fulfillment(of: [startExpectation, finalExpectation], timeout: 10)
         }
         try await operation(network, keychain)
     }
