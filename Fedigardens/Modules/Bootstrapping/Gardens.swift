@@ -14,31 +14,42 @@
 
 import Alice
 import FrugalMode
+import Interventions
 import SwiftUI
 
 /// The main entry structure of the app.
 @main
 struct Shout: App {
     private var frugalFlow = FrugalModeFlow()
+    private var interventions = InterventionFlow()
     @StateObject private var globalStore = GardensViewModel()
-    @StateObject private var interventionHandler = InterventionHandler()
 
     private var overrideFrugalMode: Bool {
         frugalFlow.state == .overridden
+    }
+
+    private var currentInterventionAuthContext: InterventionAuthorizationContext {
+        if case .authorizedIntervention(_, let context) = interventions.state {
+            return context
+        }
+        return .default
     }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.userProfile, globalStore.userProfile ?? MockData.profile!)
-                .environment(\.interventionAuthorization, globalStore.interventionAuthorization ?? .default)
-                .environmentObject(interventionHandler)
+                .environment(\.interventionAuthorization, currentInterventionAuthContext)
+                .environmentObject(interventions)
                 .environment(\.customEmojis, globalStore.emojis)
                 .environment(\.enforcedFrugalMode, overrideFrugalMode)
                 .onOpenURL { url in
                     globalStore.checkAuthorizationToken(from: url)
-                    if let newContext = globalStore.createInterventionContext(from: url) {
-                        interventionHandler.assignNewContext(newContext)
+                    if let newContext = globalStore.createInterventionContext(from: url),
+                       case .requestedIntervention = interventions.state {
+                        Task {
+                            await interventions.emit(.authorizeIntervention(.now, context: newContext))
+                        }
                     }
                 }
                 .onAppear {

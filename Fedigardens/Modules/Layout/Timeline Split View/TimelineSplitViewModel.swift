@@ -15,6 +15,7 @@
 import Alice
 import Bunker
 import Combine
+import Interventions
 import UIKit
 
 class TimelineSplitViewModel: ObservableObject {
@@ -59,19 +60,23 @@ class TimelineSplitViewModel: ObservableObject {
     func loadTimeline(
         forcefully userInitiated: Bool = false,
         policy: ReloadPolicy,
-        using handler: InterventionHandler? = nil
+        using handler: InterventionFlow<UIApplication>? = nil
     ) async -> LayoutState {
         if !userInitiated, timelineData.isEmpty == false {
             return .loaded
         }
         let expectedMechanism: InterventionAllowedMechanisms = policy == .refreshEntireContents ? .refresh : .fetchMore
-        if userInitiated, let handler, handler.allowedMechanisms.contains(expectedMechanism) {
-            let eventualState = await handler.startIntervention {
-                DispatchQueue.main.async {
-                    self.displayOneSecNotInstalledWarning.toggle()
+        let currentMechanisms = InterventionAllowedMechanisms.fromDefaults()
+        if userInitiated, let handler, currentMechanisms.contains(expectedMechanism) {
+            await handler.emit(.requestIntervention)
+            if case .error(let error) = handler.state {
+                if (error as? InterventionRequestError) == InterventionRequestError.oneSecNotAvailable {
+                    DispatchQueue.main.async {
+                        self.displayOneSecNotInstalledWarning.toggle()
+                    }
                 }
             }
-            return eventualState
+            return .loaded
         }
 
         var callInLocalScope = false

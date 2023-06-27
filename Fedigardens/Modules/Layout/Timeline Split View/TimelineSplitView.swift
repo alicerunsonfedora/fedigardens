@@ -14,6 +14,7 @@
 
 import Alice
 import SwiftUI
+import Interventions
 import UIKit
 
 /// A view used to render a timeline in the widescreen layout.
@@ -21,7 +22,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
     @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
     @Environment(\.openURL) var openURL
 
-    @EnvironmentObject var interventionHandler: InterventionHandler
+    @EnvironmentObject var interventions: InterventionFlow<UIApplication>
 
     @AppStorage(.frugalMode) var frugalMode: Bool = false
     @AppStorage(.useFocusedInbox) private var useFocusedInbox: Bool = false
@@ -80,7 +81,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                             state = .loading
                             state = await model.loadTimeline(
                                 policy: .refreshEntireContents,
-                                using: interventionHandler
+                                using: interventions
                             )
                         }
                     } label: {
@@ -96,7 +97,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                 Task {
                     state = await model.loadTimeline(
                         policy: .refreshEntireContents,
-                        using: interventionHandler
+                        using: interventions
                     )
                 }
             }
@@ -121,7 +122,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                     state = await model.loadTimeline(
                         forcefully: true,
                         policy: .refreshEntireContents,
-                        using: interventionHandler
+                        using: interventions
                     )
                 }
             }
@@ -157,7 +158,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
                     state = await model.loadTimeline(
                         forcefully: true,
                         policy: .preloadNextBatch,
-                        using: interventionHandler
+                        using: interventions
                     )
                 }
             }
