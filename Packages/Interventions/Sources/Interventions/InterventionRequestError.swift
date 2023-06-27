@@ -20,3 +20,9 @@ public enum InterventionRequestError: Error {
     case invalidAuthorizationFlowState
     case alreadyAuthorized(Date, context: InterventionAuthorizationContext)
 }
+
+extension InterventionRequestError: Equatable {
+    public static func == (lhs: InterventionRequestError, rhs: InterventionRequestError) -> Bool {
+        lhs.localizedDescription == rhs.localizedDescription
+    }
+}

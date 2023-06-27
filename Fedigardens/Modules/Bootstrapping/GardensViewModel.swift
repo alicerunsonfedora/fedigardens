@@ -17,6 +17,7 @@ import struct Alice.CustomEmoji
 import Combine
 import EmojiText
 import Foundation
+import Interventions
 
 class GardensViewModel: ObservableObject {
     @Published var userProfile: Account?

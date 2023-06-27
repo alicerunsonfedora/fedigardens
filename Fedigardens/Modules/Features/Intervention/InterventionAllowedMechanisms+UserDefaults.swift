@@ -1,8 +1,8 @@
 //
-//  InterventionAllowedMechanism.swift
+//  InterventionAllowedMechanism+UserDefaults.swift
 //  Fedigardens
 //
-//  Created by Marquis Kurt on 1/22/23.
+//  Created by Marquis Kurt on 26/6/23.
 //
 //  This file is part of Fedigardens.
 //
@@ -13,13 +13,7 @@
 //  details.
 
 import Foundation
-
-struct InterventionAllowedMechanisms: OptionSet {
-    let rawValue: Int
-    static let none = InterventionAllowedMechanisms(rawValue: 1 << 0)
-    static let refresh = InterventionAllowedMechanisms(rawValue: 1 << 1)
-    static let fetchMore = InterventionAllowedMechanisms(rawValue: 1 << 2)
-}
+import Interventions
 
 extension InterventionAllowedMechanisms {
     static func fromDefaults(_ store: UserDefaults = .standard) -> InterventionAllowedMechanisms {

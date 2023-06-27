@@ -25,10 +25,8 @@
 		9537C6D7297DBB510039F3C4 /* SettingsBlocklistViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6D5297DBB510039F3C4 /* SettingsBlocklistViewModel.swift */; };
 		9537C6D9297DC71C0039F3C4 /* SettingsReadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6D8297DC71C0039F3C4 /* SettingsReadingPage.swift */; };
 		9537C6DA297DC71C0039F3C4 /* SettingsReadingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6D8297DC71C0039F3C4 /* SettingsReadingPage.swift */; };
-		9537C6DC297DE7C50039F3C4 /* InterventionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6DB297DE7C50039F3C4 /* InterventionHandler.swift */; };
-		9537C6DD297DE7C50039F3C4 /* InterventionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6DB297DE7C50039F3C4 /* InterventionHandler.swift */; };
-		9537C6DF297DED820039F3C4 /* InterventionAllowedMechanisms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6DE297DED820039F3C4 /* InterventionAllowedMechanisms.swift */; };
-		9537C6E0297DED820039F3C4 /* InterventionAllowedMechanisms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6DE297DED820039F3C4 /* InterventionAllowedMechanisms.swift */; };
+		9537C6DF297DED820039F3C4 /* InterventionAllowedMechanisms+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6DE297DED820039F3C4 /* InterventionAllowedMechanisms+UserDefaults.swift */; };
+		9537C6E0297DED820039F3C4 /* InterventionAllowedMechanisms+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9537C6DE297DED820039F3C4 /* InterventionAllowedMechanisms+UserDefaults.swift */; };
 		953BC7BF2957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */; };
 		953BC7C02957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */; };
 		953BC7C52957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7C42957C73E005C7F2A /* StatusDetailViewModel.swift */; };
@@ -154,7 +152,6 @@
 		95801D48297CC10700FE8D83 /* GardensViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD3C4E29650A600043CDB2 /* GardensViewModel.swift */; };
 		95801D49297CC10700FE8D83 /* AccountImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9558C7ED29578B59001B30C7 /* AccountImage.swift */; };
 		95801D4A297CC10700FE8D83 /* InteractionsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E208F2969F7F2008AE63F /* InteractionsListView.swift */; };
-		95801D4B297CC10700FE8D83 /* InterventionAuthorizationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD3C4C296509470043CDB2 /* InterventionAuthorizationContext.swift */; };
 		95801D4C297CC10700FE8D83 /* GardensPageLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 958E2095296A0671008AE63F /* GardensPageLink.swift */; };
 		95801D4D297CC10700FE8D83 /* GardensAppPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952A06E229691C3D008340A4 /* GardensAppPage.swift */; };
 		95801D4E297CC10700FE8D83 /* BetaBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE2329725C6100553937 /* BetaBadge.swift */; };
@@ -238,6 +235,7 @@
 		95A36E96297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E95297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift */; };
 		95A36E97297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A36E95297CEEC900DA11D3 /* GardensAppCompactSidebarContent.swift */; };
 		95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A5C82A296A5CA00069F174 /* StatusQuickGlanceView.swift */; };
+		95A757B42A4A5F39003A1CAE /* Interventions in Frameworks */ = {isa = PBXBuildFile; productRef = 95A757B32A4A5F39003A1CAE /* Interventions */; };
 		95ADADE427B6A6BB0011FD83 /* String+AttributedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */; };
 		95ADADFC27B6A96F0011FD83 /* Statuses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE727B6A7F10011FD83 /* Statuses.swift */; };
 		95ADADFE27B6A9730011FD83 /* Shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADEB27B6A8E40011FD83 /* Shared.swift */; };
@@ -259,7 +257,6 @@
 		95C0AF4627C6B39E0007D1D0 /* MessagingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0AF4527C6B39E0007D1D0 /* MessagingDetailView.swift */; };
 		95C0AF4A27C6C7920007D1D0 /* MessagingAuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C0AF4927C6C7920007D1D0 /* MessagingAuthorView.swift */; };
 		95CC7593295BEBC600629798 /* MessagingDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CC7592295BEBC600629798 /* MessagingDetailViewModel.swift */; };
-		95CD3C4D296509470043CDB2 /* InterventionAuthorizationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD3C4C296509470043CDB2 /* InterventionAuthorizationContext.swift */; };
 		95CD3C4F29650A600043CDB2 /* GardensViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD3C4E29650A600043CDB2 /* GardensViewModel.swift */; };
 		95CDCD20299027FC002BD37A /* AttachmentViewerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CDCD1F299027FC002BD37A /* AttachmentViewerViewModel.swift */; };
 		95CDCD2229902968002BD37A /* AttachmentMedia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CDCD2129902968002BD37A /* AttachmentMedia.swift */; };
@@ -318,8 +315,7 @@
 		9537C6D2297DB8C30039F3C4 /* SettingsBlocklistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBlocklistPage.swift; sourceTree = "<group>"; };
 		9537C6D5297DBB510039F3C4 /* SettingsBlocklistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsBlocklistViewModel.swift; sourceTree = "<group>"; };
 		9537C6D8297DC71C0039F3C4 /* SettingsReadingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsReadingPage.swift; sourceTree = "<group>"; };
-		9537C6DB297DE7C50039F3C4 /* InterventionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterventionHandler.swift; sourceTree = "<group>"; };
-		9537C6DE297DED820039F3C4 /* InterventionAllowedMechanisms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterventionAllowedMechanisms.swift; sourceTree = "<group>"; };
+		9537C6DE297DED820039F3C4 /* InterventionAllowedMechanisms+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InterventionAllowedMechanisms+UserDefaults.swift"; sourceTree = "<group>"; };
 		953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Status+URIToUrl.swift"; sourceTree = "<group>"; };
 		953BC7C42957C73E005C7F2A /* StatusDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailViewModel.swift; sourceTree = "<group>"; };
 		953BC7C72957E156005C7F2A /* RecursiveNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveNavigationView.swift; sourceTree = "<group>"; };
@@ -433,7 +429,6 @@
 		95C0AF4527C6B39E0007D1D0 /* MessagingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingDetailView.swift; sourceTree = "<group>"; };
 		95C0AF4927C6C7920007D1D0 /* MessagingAuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingAuthorView.swift; sourceTree = "<group>"; };
 		95CC7592295BEBC600629798 /* MessagingDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagingDetailViewModel.swift; sourceTree = "<group>"; };
-		95CD3C4C296509470043CDB2 /* InterventionAuthorizationContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterventionAuthorizationContext.swift; sourceTree = "<group>"; };
 		95CD3C4E29650A600043CDB2 /* GardensViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GardensViewModel.swift; sourceTree = "<group>"; };
 		95CDCD1F299027FC002BD37A /* AttachmentViewerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentViewerViewModel.swift; sourceTree = "<group>"; };
 		95CDCD2129902968002BD37A /* AttachmentMedia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentMedia.swift; sourceTree = "<group>"; };
@@ -461,6 +456,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95A02A6F295FE94F0013EF7C /* Alice in Frameworks */,
+				95A757B42A4A5F39003A1CAE /* Interventions in Frameworks */,
 				954C95162A05E67F0019AE09 /* Runestone in Frameworks */,
 				95D70D352A478262007774B0 /* GardenGate in Frameworks */,
 				95555FB52960B7A2005BEF45 /* AckGenUI in Frameworks */,
@@ -973,9 +969,7 @@
 		95CD3C4B296509260043CDB2 /* Intervention */ = {
 			isa = PBXGroup;
 			children = (
-				95CD3C4C296509470043CDB2 /* InterventionAuthorizationContext.swift */,
-				9537C6DB297DE7C50039F3C4 /* InterventionHandler.swift */,
-				9537C6DE297DED820039F3C4 /* InterventionAllowedMechanisms.swift */,
+				9537C6DE297DED820039F3C4 /* InterventionAllowedMechanisms+UserDefaults.swift */,
 			);
 			path = Intervention;
 			sourceTree = "<group>";
@@ -1033,6 +1027,7 @@
 				9581C9642A473D8900621585 /* FlowKit */,
 				95D70D342A478262007774B0 /* GardenGate */,
 				958E5A472A48B79800B87B5A /* FrugalMode */,
+				95A757B32A4A5F39003A1CAE /* Interventions */,
 			);
 			productName = "Capstone (iOS)";
 			productReference = 954722FD27A0094000D1BA89 /* Fedigardens.app */;
@@ -1097,6 +1092,7 @@
 				9581C9632A473D8900621585 /* XCLocalSwiftPackageReference "../Packages/FlowKit" */,
 				95D70D332A478262007774B0 /* XCLocalSwiftPackageReference "../Packages/GardenGate" */,
 				958E5A462A48B79800B87B5A /* XCLocalSwiftPackageReference "../Packages/FrugalMode" */,
+				95A757B22A4A5F39003A1CAE /* XCLocalSwiftPackageReference "../Packages/Interventions" */,
 			);
 			productRefGroup = 954722FE27A0094000D1BA89 /* Products */;
 			projectDirPath = "";
@@ -1228,9 +1224,8 @@
 				95A36E85297CE1CE00DA11D3 /* GardensAppWideCommonDestinationsGroup.swift in Sources */,
 				95860C5F29982E5100068425 /* PollVotingViewModel.swift in Sources */,
 				957CBC8829FF09A400FE23BA /* InformationCard.swift in Sources */,
-				9537C6DF297DED820039F3C4 /* InterventionAllowedMechanisms.swift in Sources */,
+				9537C6DF297DED820039F3C4 /* InterventionAllowedMechanisms+UserDefaults.swift in Sources */,
 				95369B5927B82D4100F39531 /* TimelineSplitView.swift in Sources */,
-				9537C6DC297DE7C50039F3C4 /* InterventionHandler.swift in Sources */,
 				955F1B2E2985B31600702BE8 /* SearchDirectoryView.swift in Sources */,
 				956714142958B69D00BFF76A /* StatusDisclosedContent.swift in Sources */,
 				955F1B602986FB4800702BE8 /* SettingsFeedbackSection.swift in Sources */,
@@ -1265,7 +1260,6 @@
 				953BC7BF2957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */,
 				95CEFDF0295A38E500EEE96C /* StatusContextProvider.swift in Sources */,
 				95A1BFA8297465EE002C88B6 /* ProfileSheetHeaderView.swift in Sources */,
-				95CD3C4D296509470043CDB2 /* InterventionAuthorizationContext.swift in Sources */,
 				95FEC3B3298F37F700F628C3 /* AuthorViewParticipantsField.swift in Sources */,
 				958C0C9C27BE956F00ED6C23 /* AuthorReplySegment.swift in Sources */,
 				9594DE3B27C927820036325A /* Conversation+Authors.swift in Sources */,
@@ -1350,7 +1344,6 @@
 				95801D3D297CC0A500FE8D83 /* Label+SettingsStyle.swift in Sources */,
 				95801D49297CC10700FE8D83 /* AccountImage.swift in Sources */,
 				95801D5A297CC13400FE8D83 /* TimelineSplitView.swift in Sources */,
-				9537C6DD297DE7C50039F3C4 /* InterventionHandler.swift in Sources */,
 				953BC7CC2957EC27005C7F2A /* HashableType.swift in Sources */,
 				95CEFDE92959637400EEE96C /* StatusVerifiedButton.swift in Sources */,
 				95801D59297CC13400FE8D83 /* StatusDetailProfileMenu.swift in Sources */,
@@ -1423,7 +1416,7 @@
 				95801D27297C752000FE8D83 /* Bundle+AppVersion.swift in Sources */,
 				954C950D2A046AA20019AE09 /* View+NotificationCenter.swift in Sources */,
 				95801D3E297CC0B600FE8D83 /* SettingsInterventionPage.swift in Sources */,
-				9537C6E0297DED820039F3C4 /* InterventionAllowedMechanisms.swift in Sources */,
+				9537C6E0297DED820039F3C4 /* InterventionAllowedMechanisms+UserDefaults.swift in Sources */,
 				953BC7C02957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */,
 				955F1B582985FE0100702BE8 /* ProfileSheetFields.swift in Sources */,
 				95801D2C297C756F00FE8D83 /* UserDefaults+Settings.swift in Sources */,
@@ -1433,7 +1426,6 @@
 				955F1B3F2985DC1600702BE8 /* SearchTagView.swift in Sources */,
 				953BC7C62957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */,
 				95801D4A297CC10700FE8D83 /* InteractionsListView.swift in Sources */,
-				95801D4B297CC10700FE8D83 /* InterventionAuthorizationContext.swift in Sources */,
 				95801D66297CC14200FE8D83 /* ProfileSheetRecentActivityView.swift in Sources */,
 				95801D54297CC10700FE8D83 /* InteractionsListViewModel.swift in Sources */,
 				9588914C29BD11DF0092781B /* AttachmentVideoPlayer.swift in Sources */,
@@ -1754,6 +1746,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../Packages/FrugalMode;
 		};
+		95A757B22A4A5F39003A1CAE /* XCLocalSwiftPackageReference "../Packages/Interventions" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../Packages/Interventions;
+		};
 		95D70D332A478262007774B0 /* XCLocalSwiftPackageReference "../Packages/GardenGate" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../Packages/GardenGate;
@@ -1858,6 +1854,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 95A1BF9B2973B83C002C88B6 /* XCRemoteSwiftPackageReference "EmojiText" */;
 			productName = EmojiText;
+		};
+		95A757B32A4A5F39003A1CAE /* Interventions */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Interventions;
 		};
 		95D70D342A478262007774B0 /* GardenGate */ = {
 			isa = XCSwiftPackageProductDependency;
