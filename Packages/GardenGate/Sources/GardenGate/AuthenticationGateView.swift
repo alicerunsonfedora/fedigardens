@@ -96,6 +96,7 @@ public struct AuthenticationGateView: StatefulView {
                     Text("https://")
                         .foregroundColor(.secondary)
                     TextField("mastodon.example", text: $domainName)
+                        .keyboardType(.URL)
                         .autocorrectionDisabled()
                         .textInputAutocapitalization(.never)
                         .onChange(of: domainName, perform: { value in
