@@ -5,6 +5,12 @@
       location = "group:README.md">
    </FileRef>
    <FileRef
+      location = "group:LICENSE.md">
+   </FileRef>
+   <FileRef
+      location = "group:CHANGELOG.md">
+   </FileRef>
+   <FileRef
       location = "group:Fedigardens/Supporting Files/../../Fedigardens Test Plan.xctestplan">
    </FileRef>
    <FileRef
@@ -37,10 +43,4 @@
          location = "group:Packages/GardenGate">
       </FileRef>
    </Group>
-   <FileRef
-      location = "group:LICENSE.md">
-   </FileRef>
-   <FileRef
-      location = "group:CHANGELOG.md">
-   </FileRef>
 </Workspace>
