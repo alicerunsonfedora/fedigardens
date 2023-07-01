@@ -20,9 +20,9 @@ public struct AuthenticationGateView: StatefulView {
     @Environment(\.openURL) var openURL: OpenURLAction
 
     @State private var callbackUrl: URL?
-    @State private var domainName = ""
     @State private var displayAuthenticationDialog = false
     @State private var displayDomainValidationError = false
+    @FocusState private var focusedDomainEntry: Bool
 
     private var domainValidationTitle: String {
         switch flow.state {
@@ -92,36 +92,26 @@ public struct AuthenticationGateView: StatefulView {
     private var authForm: some View {
         VStack(spacing: 24) {
             VStack(spacing: 12) {
-                HStack {
-                    Text("https://")
-                        .foregroundColor(.secondary)
-                    TextField("mastodon.example", text: $domainName)
-                        .keyboardType(.URL)
-                        .autocorrectionDisabled()
-                        .textInputAutocapitalization(.never)
-                        .onChange(of: domainName, perform: { value in
-                            Task { await flow.emit(.edit(domain: value)) }
-                        })
+                AuthenticationGateTextField(focusedDomainEntry: $focusedDomainEntry) { domain in
+                    Task {
+                        await flow.emit(.edit(domain: domain))
+                    }
                 }
-                .padding(10)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(Color.secondary.opacity(0.5))
-                )
+                .padding(.horizontal)
                 Button {
                     Task {
                         await flow.emit(.getAuthorizationToken)
                     }
                 } label: {
                     Text("auth.login.button", bundle: .module)
-                        .font(.title3)
+                        .font(.system(.title3, design: .rounded))
                         .bold()
                         .frame(maxWidth: .infinity)
                 }
+                .buttonStyle(.borderedProminent)
+                .padding(.horizontal)
+                .controlSize(.large)
             }
-            .buttonStyle(.borderedProminent)
-            .padding(.horizontal)
-            .controlSize(.large)
             HStack {
                 Text("auth.footnote", bundle: .module)
                     .foregroundColor(.secondary)
@@ -140,7 +130,8 @@ public struct AuthenticationGateView: StatefulView {
         VStack {
             Spacer()
             VStack(alignment: .leading, spacing: 32) {
-                welcomeHeader(alignment: .leading)
+                AuthenticationGateHeaderView(compact: focusedDomainEntry,
+                                             alignment: .leading)
                 Text("auth.startinfo", bundle: .module)
                     .font(.title3)
             }
@@ -156,7 +147,8 @@ public struct AuthenticationGateView: StatefulView {
     private var widescreenLayout: some View {
         HStack(spacing: 8) {
             VStack(alignment: .trailing, spacing: 32) {
-                welcomeHeader(alignment: .trailing)
+                AuthenticationGateHeaderView(compact: focusedDomainEntry,
+                                             alignment: .trailing)
                 Text("auth.startinfo", bundle: .module)
                     .font(.title3)
             }
@@ -164,26 +156,6 @@ public struct AuthenticationGateView: StatefulView {
             .padding()
             authForm
                 .frame(maxWidth: 450)
-        }
-    }
-
-    // MARK: - Auth View Methods
-
-    /// Returns the welcome header with the specified alignment.
-    func welcomeHeader(alignment: HorizontalAlignment) -> some View {
-        VStack(alignment: alignment) {
-            Image("GardensIcon")
-                .symbolRenderingMode(.palette)
-                .resizable()
-                .scaledToFit()
-                .frame(width: 76, height: 76)
-                .cornerRadius(16)
-            Text("auth.welcome", bundle: .module)
-                .font(.system(.title2, design: .rounded))
-                .bold()
-            Text("auth.appname", bundle: .module)
-                .font(.system(size: 56, weight: .bold, design: .rounded))
-                .foregroundColor(.accentColor)
         }
     }
 }
