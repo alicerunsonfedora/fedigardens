@@ -12,6 +12,13 @@ If you need to list changes to this changelog but there isn't an entry for it, c
 And list your changes under that.
 -->
 
+## [Unreleased] - Date Pending
+
+- Disables predictive text on the authentication screen.
+- Updates the authentication, frugal mode, and interventions modules with FlowKit.
+- Adds a clear button and "Done" accessory to the authentication text field.
+- Autohides the Fedigardens logo when actively editing text in the authentication screen.
+
 ## [1.0-40 (beta)] - 8/5/23
 - (FGD-43) Adds a new setting "Prefer Matrix Conversations" which will start Matrix conversations with fediverse people
   that have the "Matrix: (Matrix ID)" field in their bio with a valid Matrix ID. This setting applies in profile pages
