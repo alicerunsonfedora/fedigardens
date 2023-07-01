@@ -5,6 +5,7 @@
   Created by Marquis Kurt on 6/24/23.
   
 */
+
 "auth.appname" = "Fedigardens";
 "auth.learnmore" = "Learn More…";
 "auth.welcome" = "Welcome to";
@@ -17,3 +18,5 @@
 "auth.disallowed.message" = "Fedigardens cannot sign in to %@ because the developers cannot verify that this server moderates the content posted by its users.";
 "auth.badurl.message" = "The community server '%@' likely contains invalid URL characters. If the domain you provided contains legal characters, you can file a report on Raceway to help us diagnose the issue.";
 "auth.badurl.racewaycta" = "Report on Raceway…";
+"auth.keyboard.done" = "Done";
+"auth.textfield.clear" = "Clear";
