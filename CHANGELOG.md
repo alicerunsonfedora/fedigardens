@@ -12,7 +12,7 @@ If you need to list changes to this changelog but there isn't an entry for it, c
 And list your changes under that.
 -->
 
-## [Unreleased] - Date Pending
+## [1.0-53 (beta)] - 3/7/23
 
 - Disables predictive text on the authentication screen.
 - Updates the authentication, frugal mode, and interventions modules with FlowKit.
