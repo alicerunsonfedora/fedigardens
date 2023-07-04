@@ -23,7 +23,6 @@ class GardensViewModel: ObservableObject {
     @Published var currentInterventionAuthContext = InterventionAuthorizationContext.default
     @Published var overrideFrugalMode: Bool = false
     @Published var userProfile: Account?
-    @Published var interventionAuthorization: InterventionAuthorizationContext?
     @Published var emojis: [RemoteEmoji] = []
 
     func checkAuthorizationToken(from url: URL) {
@@ -35,12 +34,12 @@ class GardensViewModel: ObservableObject {
 
     func createInterventionContext(from url: URL) -> InterventionAuthorizationContext? {
         guard let parameters = url.queryParameters else {
-            interventionAuthorization = nil
             return nil
         }
         let allowedTimeInterval = TimeInterval(parameters["allowedTimeInterval"] ?? "0") ?? 0
         let allowedFetchSize = Int(parameters["allowedPostsCount"] ?? "10") ?? 10
-        return interventionAuthorization
+        return InterventionAuthorizationContext(allowedTimeInterval: allowedTimeInterval,
+                                                allowedFetchSize: allowedFetchSize)
     }
 
     func getUserProfile() async {

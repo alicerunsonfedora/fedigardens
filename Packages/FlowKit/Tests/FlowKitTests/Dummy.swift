@@ -15,13 +15,18 @@
 import FlowKit
 import SwiftUI
 
-class DummyFlow: StatefulFlowProviding {
+actor DummyFlow: StatefulFlowProviding {
     var state: State { internalState }
 
     var onStateChange: ((State) -> Void)?
+    var stateSubscribers = [((State) -> Void)]()
 
     private var internalState: State = .initial {
-        didSet { onStateChange?(internalState) }
+        didSet {
+            stateSubscribers.forEach { callback in
+                callback(internalState)
+            }
+        }
     }
 
     enum State {

@@ -44,7 +44,7 @@ public protocol StatefulFlowProviding: Actor {
     /// A handler that executes whenever the ``state-swift.property`` is changed.
     ///
     /// - Important: This should never be directly set, but it should be subscribed to using ``subscribe(perform:)``.
-    var onStateChange: ((State) -> Void)? { get set }
+    var stateSubscribers: [((State) -> Void)] { get set }
 
     /// Emits an event asynchronously.
     ///
@@ -81,6 +81,6 @@ extension StatefulFlowProviding {
     ///
     /// - Parameter handler: The closure that will be executed whenever ``state-swift.property`` changes.
     public func subscribe(perform handler: @escaping (State) -> Void) {
-        self.onStateChange = handler
+        self.stateSubscribers.append(handler)
     }
 }

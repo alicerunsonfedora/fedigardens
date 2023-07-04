@@ -38,9 +38,14 @@ public actor FrugalModeFlow: ObservableObject {
     }
 
     public var onStateChange: ((State) -> Void)?
+    public var stateSubscribers = [((State) -> Void)]()
 
     @Published var internalState: State = .initial {
-        didSet { onStateChange?(internalState) }
+        didSet {
+            stateSubscribers.forEach { callback in
+                callback(internalState)
+            }
+        }
     }
 
     public init() {}

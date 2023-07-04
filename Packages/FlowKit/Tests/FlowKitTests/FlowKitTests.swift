@@ -18,17 +18,18 @@ import XCTest
 final class FlowKitTests: XCTestCase {
     func testFlowEmits() async throws {
         let flow = DummyFlow()
-        XCTAssertEqual(flow.state, .initial)
+        await expectState(matches: .initial, in: flow)
         await flow.emit(.enterUnknownState)
-        XCTAssertEqual(flow.state, .unknown)
+        await expectState(matches: .unknown, in: flow)
         await flow.emit(.reset)
-        XCTAssertEqual(flow.state, .initial)
+        await expectState(matches: .initial, in: flow)
     }
 
     func testSubscription() async throws {
         var numbers = [Int]()
         let flow = DummyFlow()
-        flow.subscribe { state in
+
+        await flow.subscribe { state in
             switch state {
             case .initial:
                 numbers.append(1)
@@ -37,11 +38,17 @@ final class FlowKitTests: XCTestCase {
             }
         }
 
-        XCTAssertNotNil(flow.onStateChange)
+        let subscribers = await flow.stateSubscribers
+        XCTAssertFalse(subscribers.isEmpty)
 
         await flow.emit(.enterUnknownState)
         await flow.emit(.reset)
 
         XCTAssertEqual(numbers, [0, 1])
+    }
+
+    func expectState(matches expectation: DummyFlow.State, in flow: DummyFlow) async {
+        let state = await flow.state
+        XCTAssertEqual(state, expectation)
     }
 }
