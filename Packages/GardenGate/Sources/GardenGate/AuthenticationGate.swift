@@ -58,11 +58,13 @@ public actor AuthenticationGate: ObservableObject {
 
     @Published var internalState: State = .initial {
         didSet {
-            onStateChange?(internalState)
+            stateSubscribers.forEach { callback in
+                callback(internalState)
+            }
         }
     }
 
-    public var onStateChange: ((State) -> Void)?
+    public var stateSubscribers = [((State) -> Void)]()
 
     private let app = Alice.OAuth.RegisteredApplication(name: "Fedigardens", website: "https://fedigardens.app")
     private let disallowedDomains: Set<String> = {

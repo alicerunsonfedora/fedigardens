@@ -18,7 +18,7 @@ final class FrugalModeFlowTests: XCTestCase, StatefulTestCase {
     func testEmitCheckedOverrides() async throws {
         await withCheckedFlow { currentFlow in
             await currentFlow.emit(.checkOverrides)
-            XCTAssertEqual(currentFlow.state, .userDefaults)
+            await self.expectState(matches: .userDefaults)
         }
     }
 
@@ -31,7 +31,7 @@ final class FrugalModeFlowTests: XCTestCase, StatefulTestCase {
             }
             await self.fulfillment(of: [expectation], timeout: 10)
             await currentFlow.emit(.reset)
-            XCTAssertEqual(currentFlow.state, .initial)
+            await self.expectState(matches: .initial)
         }
     }
 }

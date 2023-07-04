@@ -67,10 +67,14 @@ public actor InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject 
         case reset
     }
 
-    public var onStateChange: ((State) -> Void)?
+    public var stateSubscribers = [((State) -> Void)]()
 
     @Published var internalState: State = .initial {
-        didSet { onStateChange?(internalState) }
+        didSet {
+            stateSubscribers.forEach { callback in
+                callback(internalState)
+            }
+        }
     }
 
     private let oneSecUrl = URL(string: "onesec://reintervene?appId=fedigardens")!

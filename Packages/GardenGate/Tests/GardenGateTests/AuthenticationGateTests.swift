@@ -43,9 +43,7 @@ final class AuthenticationGateTests: XCTestCase, StatefulTestCase {
     }
 
     func testFlowInitialStateMatches() async throws {
-        await withCheckedFlow { current in
-            XCTAssertEqual(current.state, .initial)
-        }
+        await self.expectState(matches: .initial)
     }
 
     func testFlowDispatchEditEvent() async throws {
@@ -55,7 +53,7 @@ final class AuthenticationGateTests: XCTestCase, StatefulTestCase {
             for character in domain {
                 domainString += String(character)
                 await current.emit(.edit(domain: domainString))
-                XCTAssertEqual(current.state, .editing(domain: domainString))
+                await self.expectState(matches: .editing(domain: domainString))
             }
         }
     }
@@ -70,7 +68,7 @@ final class AuthenticationGateTests: XCTestCase, StatefulTestCase {
                 expectation.fulfill()
             }
             await self.fulfillment(of: [expectation], timeout: 10)
-            XCTAssertEqual(current.state, .openAuth(domain: domain, callback: URL(string: self.cbString)!))
+            await self.expectState(matches: .openAuth(domain: domain, callback: URL(string: self.cbString)!))
         }
     }
 
@@ -84,7 +82,7 @@ final class AuthenticationGateTests: XCTestCase, StatefulTestCase {
                 expectation.fulfill()
             }
             await self.fulfillment(of: [expectation], timeout: 10)
-            XCTAssertEqual(current.state, .error(DomainValidationError.invalid(domain: badURL)))
+            await self.expectState(matches: .error(DomainValidationError.invalid(domain: badURL)))
         }
     }
 
@@ -93,7 +91,7 @@ final class AuthenticationGateTests: XCTestCase, StatefulTestCase {
         await withCheckedFlow { current in
             await current.emit(.edit(domain: badURL))
             await current.emit(.getAuthorizationToken)
-            XCTAssertEqual(current.state, .error(DomainValidationError.rejected(domain: badURL)))
+            await self.expectState(matches: .error(DomainValidationError.rejected(domain: badURL)))
             XCTAssertEqual(
                 DomainValidationError.rejected(domain: badURL).message,
                 "Fedigardens cannot sign in to gab.ai because the developers cannot verify that this server moderates"
@@ -104,7 +102,7 @@ final class AuthenticationGateTests: XCTestCase, StatefulTestCase {
     func testFlowDispatchErrorOnPrematureAuthorization() async throws {
         await withCheckedFlow { current in
             await current.emit(.getAuthorizationToken)
-            XCTAssertEqual(current.state, .error(AuthenticationGate.AuthenticationError.unitializedGate))
+            await self.expectState(matches: .error(AuthenticationGate.AuthenticationError.unitializedGate))
         }
     }
 
@@ -118,11 +116,11 @@ final class AuthenticationGateTests: XCTestCase, StatefulTestCase {
                 expectation.fulfill()
             }
             await self.fulfillment(of: [expectation], timeout: 10)
-            XCTAssertEqual(current.state, .openAuth(domain: domain, callback: URL(string: self.cbString)!))
+            await self.expectState(matches: .openAuth(domain: domain, callback: URL(string: self.cbString)!))
 
             await current.emit(.getAuthorizationToken)
-            XCTAssertEqual(current.state,
-                           .error(AuthenticationGate.AuthenticationError.authorizationInProgress(domain)))
+            await self.expectState(
+                matches: .error(AuthenticationGate.AuthenticationError.authorizationInProgress(domain)))
         }
     }
 
@@ -136,15 +134,15 @@ final class AuthenticationGateTests: XCTestCase, StatefulTestCase {
                 expectation.fulfill()
             }
             await self.fulfillment(of: [expectation], timeout: 10)
-            XCTAssertEqual(current.state, .openAuth(domain: domain, callback: URL(string: self.cbString)!))
+            await self.expectState(matches: .openAuth(domain: domain, callback: URL(string: self.cbString)!))
 
             await current.emit(.getAuthorizationToken)
-            XCTAssertEqual(current.state,
-                           .error(AuthenticationGate.AuthenticationError.authorizationInProgress(domain)))
+            await self.expectState(
+                matches: .error(AuthenticationGate.AuthenticationError.authorizationInProgress(domain)))
 
             await current.emit(.getAuthorizationToken)
-            XCTAssertEqual(current.state,
-                           .error(AuthenticationGate.AuthenticationError.authorizationInProgress(domain)))
+            await self.expectState(
+                matches: .error(AuthenticationGate.AuthenticationError.authorizationInProgress(domain)))
         }
     }
 
@@ -155,10 +153,10 @@ final class AuthenticationGateTests: XCTestCase, StatefulTestCase {
             for character in domain {
                 domainString += String(character)
                 await current.emit(.edit(domain: domainString))
-                XCTAssertEqual(current.state, .editing(domain: domainString))
+                await self.expectState(matches: .editing(domain: domainString))
             }
             await current.emit(.reset)
-            XCTAssertEqual(current.state, .initial)
+            await self.expectState(matches: .initial)
         }
     }
 }
