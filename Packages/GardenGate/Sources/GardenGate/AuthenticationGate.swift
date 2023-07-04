@@ -17,7 +17,7 @@ import Combine
 import FlowKit
 import Foundation
 
-public class AuthenticationGate: ObservableObject {
+public actor AuthenticationGate: ObservableObject {
     public enum AuthenticationError: Error {
         case unitializedGate
         case authorizationInProgress(String)
@@ -81,8 +81,7 @@ public class AuthenticationGate: ObservableObject {
     private var auth: Alice.OAuth
     private var network: Alice
 
-    public init(auth: Alice.OAuth = .shared, network: Alice = .shared) {
-        self.internalState = .initial
+    public init(auth: Alice.OAuth, network: Alice) {
         self.auth = auth
         self.network = network
     }

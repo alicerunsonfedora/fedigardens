@@ -25,37 +25,44 @@ struct Shout: App {
     @State private var interventions = InterventionFlow(linkOpener: UIApplication.shared)
     @StateObject private var globalStore = GardensViewModel()
 
-    private var overrideFrugalMode: Bool {
-        frugalFlow.state == .overridden
-    }
-
-    private var currentInterventionAuthContext: InterventionAuthorizationContext {
-        if case .authorizedIntervention(_, let context) = interventions.state {
-            return context
+    @discardableResult
+    func checkForInterventionsToAuthorize(url: URL) async -> Bool {
+        guard let newContext = globalStore.createInterventionContext(from: url) else { return false }
+        if case .requestedIntervention = await interventions.state {
+            await interventions.emit(.authorizeIntervention(.now, context: newContext))
+            return true
         }
-        return .default
+        return false
     }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.userProfile, globalStore.userProfile ?? MockData.profile!)
-                .environment(\.interventionAuthorization, currentInterventionAuthContext)
+                .environment(\.interventionAuthorization, globalStore.currentInterventionAuthContext)
                 .environmentObject(interventions)
                 .environment(\.customEmojis, globalStore.emojis)
-                .environment(\.enforcedFrugalMode, overrideFrugalMode)
+                .environment(\.enforcedFrugalMode, globalStore.overrideFrugalMode)
                 .onOpenURL { url in
                     globalStore.checkAuthorizationToken(from: url)
-                    if let newContext = globalStore.createInterventionContext(from: url),
-                       case .requestedIntervention = interventions.state {
-                        Task {
-                            await interventions.emit(.authorizeIntervention(.now, context: newContext))
-                        }
+                    Task {
+                        await checkForInterventionsToAuthorize(url: url)
                     }
                 }
                 .onAppear {
                     interventions = .init(linkOpener: UIApplication.shared)
                     Alice.shared.setRequestPrefix(to: "gardens")
+                    Task {
+                        await frugalFlow.subscribe { state in
+                            globalStore.overrideFrugalMode = state == .overridden
+                        }
+                        await interventions.subscribe { state in
+                            if case .authorizedIntervention(_, let context) = state {
+                                globalStore.currentInterventionAuthContext = context
+                            }
+                            globalStore.currentInterventionAuthContext = .default
+                        }
+                    }
                     Task {
                         await withTaskGroup(of: Void.self) { group in
                             group.addTask { await frugalFlow.emit(.checkOverrides) }

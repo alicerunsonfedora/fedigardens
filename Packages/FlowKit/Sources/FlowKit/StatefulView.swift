@@ -59,7 +59,9 @@ extension View where Self: StatefulView {
     public var body: some View {
         statefulBody
             .onAppear {
-                flow.subscribe(perform: stateChanged)
+                Task {
+                    await flow.subscribe(perform: stateChanged)
+                }
             }
     }
 }

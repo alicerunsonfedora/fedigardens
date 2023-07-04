@@ -15,7 +15,7 @@
 /// A protocol that provides a stateful flow.
 ///
 /// This is the basis for most view models that follow this approach.
-public protocol StatefulFlowProviding: AnyObject {
+public protocol StatefulFlowProviding: Actor {
     /// The possible states that the flow can encounter.
     ///
     /// This is typically defined as an enum with multiple cases:

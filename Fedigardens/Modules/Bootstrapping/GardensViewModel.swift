@@ -20,6 +20,8 @@ import Foundation
 import Interventions
 
 class GardensViewModel: ObservableObject {
+    @Published var currentInterventionAuthContext = InterventionAuthorizationContext.default
+    @Published var overrideFrugalMode: Bool = false
     @Published var userProfile: Account?
     @Published var interventionAuthorization: InterventionAuthorizationContext?
     @Published var emojis: [RemoteEmoji] = []
@@ -38,7 +40,6 @@ class GardensViewModel: ObservableObject {
         }
         let allowedTimeInterval = TimeInterval(parameters["allowedTimeInterval"] ?? "0") ?? 0
         let allowedFetchSize = Int(parameters["allowedPostsCount"] ?? "10") ?? 10
-        interventionAuthorization = .init(allowedTimeInterval: allowedTimeInterval, allowedFetchSize: allowedFetchSize)
         return interventionAuthorization
     }
 
