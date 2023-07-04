@@ -25,10 +25,8 @@ let PR_FILE_THRESHOLD = 20 // swiftlint:disable:this identifier_name
 
 let editedFiles = danger.git.modifiedFiles + danger.git.createdFiles
 if editedFiles.count > PR_FILE_THRESHOLD {
-    warn(
-        "This appears to be a big PR. If this PR contains multiple features or tickets, please "
-            + "consider splitting them up for easier review."
-    )
+    warn("This appears to be a big PR. If this PR contains multiple features or tickets, please "
+         + "consider splitting them up for easier review.")
     suggestsChanges = true
 }
 
@@ -45,6 +43,32 @@ if editedFiles.count > 1, !editedFiles.contains("CHANGELOG.md") {
     warn("This PR does not have an update in the CHANGELOG.")
     markdown("If the changelog doesn't have a section for the latest unreleased version, you may create one.")
     suggestsChanges = true
+}
+
+// MARK: - Test Changes
+let tests = editedFiles.filter { filename in filename.contains("Tests") }
+
+if !tests.isEmpty { warn("Unit tests have been changed.") }
+
+// MARK: - GitHub PR changes
+
+if danger.github.pullRequest.body?.isEmpty != false {
+    fail("Please provide a description of what this PR changes.")
+    markdown("""
+Per the contribution guidelines:
+
+> - Pull requests should have an adequate description of the changes being made, and
+>   any feedback reports it addresses.
+> - Pull requests should be properly tagged with the modules it affects, such as
+>   Authentication and Frugal Mode.
+> - With some execeptions, pull requests should _always_ pass Danger checks and any
+>   unit tests attached.
+""")
+    suggestsChanges = true
+}
+
+if danger.github.pullRequest.draft == true {
+    message("PR is a draft.")
 }
 
 // MARK: - SwiftLint
