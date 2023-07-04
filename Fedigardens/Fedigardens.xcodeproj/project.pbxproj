@@ -41,8 +41,8 @@
 		9547230A27A0094000D1BA89 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 954722F827A0094000D1BA89 /* Assets.xcassets */; };
 		954C95052A0461310019AE09 /* StatusAttachmentAlternative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95042A0461310019AE09 /* StatusAttachmentAlternative.swift */; };
 		954C95062A0461310019AE09 /* StatusAttachmentAlternative.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95042A0461310019AE09 /* StatusAttachmentAlternative.swift */; };
-		954C950C2A046AA20019AE09 /* View+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C950B2A046AA20019AE09 /* View+NotificationCenter.swift */; };
-		954C950D2A046AA20019AE09 /* View+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C950B2A046AA20019AE09 /* View+NotificationCenter.swift */; };
+		954C950C2A046AA20019AE09 /* View+ExtraModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C950B2A046AA20019AE09 /* View+ExtraModifiers.swift */; };
+		954C950D2A046AA20019AE09 /* View+ExtraModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C950B2A046AA20019AE09 /* View+ExtraModifiers.swift */; };
 		954C95162A05E67F0019AE09 /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 954C95152A05E67F0019AE09 /* Runestone */; };
 		954C95192A05E6A50019AE09 /* RunestoneViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95182A05E6A50019AE09 /* RunestoneViewer.swift */; };
 		954C951A2A05E6A50019AE09 /* RunestoneViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95182A05E6A50019AE09 /* RunestoneViewer.swift */; };
@@ -329,7 +329,7 @@
 		954722F827A0094000D1BA89 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		954722FD27A0094000D1BA89 /* Fedigardens.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fedigardens.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		954C95042A0461310019AE09 /* StatusAttachmentAlternative.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAttachmentAlternative.swift; sourceTree = "<group>"; };
-		954C950B2A046AA20019AE09 /* View+NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+NotificationCenter.swift"; sourceTree = "<group>"; };
+		954C950B2A046AA20019AE09 /* View+ExtraModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ExtraModifiers.swift"; sourceTree = "<group>"; };
 		954C95182A05E6A50019AE09 /* RunestoneViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunestoneViewer.swift; sourceTree = "<group>"; };
 		95555FB62960B7F0005BEF45 /* Acknowledgements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Acknowledgements.plist; sourceTree = "<group>"; };
 		95555FB82960B8DA005BEF45 /* SettingsAcknowledgementList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAcknowledgementList.swift; sourceTree = "<group>"; };
@@ -682,10 +682,11 @@
 				959349F1295A94ED0073D000 /* Alice */,
 				953DE4D227D69C7D0043A357 /* Bundle+AppVersion.swift */,
 				95ADAE1127B6CDC50011FD83 /* DateFormatter+Mastodon.swift */,
+				95801D2D297C852100FE8D83 /* NSTextCheckingResult+Substring.swift */,
 				95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */,
 				952A06E429692E95008340A4 /* UIDevice+Model.swift */,
 				95B368A02965106C00336284 /* URL+CustomInits.swift */,
-				95801D2D297C852100FE8D83 /* NSTextCheckingResult+Substring.swift */,
+				954C950B2A046AA20019AE09 /* View+ExtraModifiers.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -896,7 +897,6 @@
 				953BC7CA2957EC27005C7F2A /* HashableType.swift */,
 				95CEFDEA295A031E00EEE96C /* Pip.swift */,
 				95555FBA2960B9F7005BEF45 /* Acknowledgement+License.swift */,
-				954C950B2A046AA20019AE09 /* View+NotificationCenter.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1241,7 +1241,7 @@
 				9547230627A0094000D1BA89 /* Gardens.swift in Sources */,
 				95A5C82B296A5CA00069F174 /* StatusQuickGlanceView.swift in Sources */,
 				955F1B5D2986FB0A00702BE8 /* SettingsVersionBlock.swift in Sources */,
-				954C950C2A046AA20019AE09 /* View+NotificationCenter.swift in Sources */,
+				954C950C2A046AA20019AE09 /* View+ExtraModifiers.swift in Sources */,
 				95555FBB2960B9F7005BEF45 /* Acknowledgement+License.swift in Sources */,
 				9537C6D9297DC71C0039F3C4 /* SettingsReadingPage.swift in Sources */,
 				9558C7EE29578B59001B30C7 /* AccountImage.swift in Sources */,
@@ -1404,7 +1404,7 @@
 				95801D57297CC13400FE8D83 /* StatusContextProvider.swift in Sources */,
 				95CDCD2C299066B5002BD37A /* GiantAlert.swift in Sources */,
 				95801D27297C752000FE8D83 /* Bundle+AppVersion.swift in Sources */,
-				954C950D2A046AA20019AE09 /* View+NotificationCenter.swift in Sources */,
+				954C950D2A046AA20019AE09 /* View+ExtraModifiers.swift in Sources */,
 				95801D3E297CC0B600FE8D83 /* SettingsInterventionPage.swift in Sources */,
 				9537C6E0297DED820039F3C4 /* InterventionAllowedMechanisms+UserDefaults.swift in Sources */,
 				953BC7C02957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */,

@@ -21,25 +21,40 @@ import Interventions
 
 class GardensViewModel: ObservableObject {
     @Published var currentInterventionAuthContext = InterventionAuthorizationContext.default
-    @Published var overrideFrugalMode: Bool = false
+    @Published var overiddenFrugalMode: Bool = false
     @Published var userProfile: Account?
     @Published var emojis: [RemoteEmoji] = []
 
-    func checkAuthorizationToken(from url: URL) {
+    func checkAuthorizationToken(from url: URL) async {
         guard url.absoluteString.contains("gardens://oauth") else { return }
-        Task {
-            await Alice.OAuth.shared.continueOauthFlow(url)
-        }
+        await Alice.OAuth.shared.continueOauthFlow(url)
     }
 
     func createInterventionContext(from url: URL) -> InterventionAuthorizationContext? {
-        guard let parameters = url.queryParameters else {
-            return nil
-        }
+        guard let parameters = url.queryParameters else { return nil }
         let allowedTimeInterval = TimeInterval(parameters["allowedTimeInterval"] ?? "0") ?? 0
         let allowedFetchSize = Int(parameters["allowedPostsCount"] ?? "10") ?? 10
         return InterventionAuthorizationContext(allowedTimeInterval: allowedTimeInterval,
                                                 allowedFetchSize: allowedFetchSize)
+    }
+
+    @MainActor
+    func updateInterventionContext<T: InterventionLinkOpener>(drivedFrom state: InterventionFlow<T>.State) async {
+        if case .authorizedIntervention(_, let context) = state {
+            currentInterventionAuthContext = context
+            return
+        }
+        currentInterventionAuthContext = .default
+    }
+
+    @MainActor
+    func updateInterventionContext(to newContext: InterventionAuthorizationContext) async {
+        currentInterventionAuthContext = newContext
+    }
+
+    @MainActor
+    func overrideFrugalMode(_ state: Bool) async {
+        overiddenFrugalMode = state
     }
 
     func getUserProfile() async {
@@ -47,7 +62,7 @@ class GardensViewModel: ObservableObject {
         let response: Alice.Response<Account> = await Alice.shared.get(.verifyAccountCredentials)
         switch response {
         case .success(let profile):
-            DispatchQueue.main.async {
+            await MainActor.run {
                 self.userProfile = profile
             }
         case .failure(let error):
@@ -60,8 +75,8 @@ class GardensViewModel: ObservableObject {
         let response: Alice.Response<[CustomEmoji]> = await Alice.shared.get(.customEmojis)
         switch response {
         case .success(let newEmojis):
-            DispatchQueue.main.async {
-                self.emojis = newEmojis.map { emoji in emoji.remote() }
+            await MainActor.run {
+                self.emojis = newEmojis.map(\.remoteEmoji)
             }
         case .failure(let error):
             print("Failed to fetch emojis: \(error.localizedDescription)")

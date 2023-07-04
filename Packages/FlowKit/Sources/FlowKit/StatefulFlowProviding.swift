@@ -83,4 +83,37 @@ extension StatefulFlowProviding {
     public func subscribe(perform handler: @escaping (State) -> Void) {
         self.stateSubscribers.append(handler)
     }
+
+    /// Creates a subscription to a flow's state, performing actions whenever the state changes in a detached task.
+    ///
+    /// Typically, this will be used to update SwiftUI views when the view model doesn't provide any information on
+    /// its own:
+    ///
+    /// ```swift
+    /// struct SomeFlowView: StatefulView {
+    ///     var flow = SomeFlow()
+    ///
+    ///     var statefulBody: some View {
+    ///         Text("Hello, world!")
+    ///             .padding()
+    ///     }
+    ///
+    ///     func stateChanged(_ state: FlowProvider.State) {
+    ///         switch state { ... }
+    ///     }
+    /// }
+    /// ```
+    ///
+    /// - Important: ``subscribe(perform:)`` should **never** trigger an event using ``emit(_:)``, as this may cause an
+    ///   infinite loop in state changes.
+    ///
+    /// - Parameter handler: The closure that will be executed whenever ``state-swift.property`` changes.
+    public func subscribe(perform handler: @escaping (State) async -> Void) {
+        let task: ((State) -> Void) = { state in
+            Task.detached {
+                await handler(state)
+            }
+        }
+        self.stateSubscribers.append(task)
+    }
 }
