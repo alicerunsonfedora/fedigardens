@@ -1,5 +1,5 @@
 //
-//  View+NotificationCenter.swift
+//  View+ExtraModifiers.swift
 //  Fedigardens
 //
 //  Created by Marquis Kurt on 5/4/23.
@@ -15,12 +15,18 @@
 import SwiftUI
 
 extension View {
-    func onReceive(
-        of name: Notification.Name,
-        from center: NotificationCenter = .default,
-        in object: AnyObject? = nil,
-        perform action: @escaping (Notification) -> Void
-    ) -> some View {
+    func onReceive(of name: Notification.Name,
+                   from center: NotificationCenter = .default,
+                   in object: AnyObject? = nil,
+                   perform action: @escaping (Notification) -> Void) -> some View {
         onReceive(center.publisher(for: name, object: object), perform: action)
+    }
+
+    func onOpenURL(perform task: @escaping (URL) async -> Void) -> some View {
+        self.onOpenURL(perform: { url in
+            Task {
+                await task(url)
+            }
+        })
     }
 }

@@ -33,13 +33,13 @@ public actor InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject 
         case authorizedIntervention(Date, context: InterventionAuthorizationContext)
 
         /// An error has occurred.
-        case error(Error)
+        case error(InterventionRequestError)
 
-        public static func == (lhs: State, rhs: State) -> Bool {
+        nonisolated public static func == (lhs: State, rhs: State) -> Bool {
             return lhs.hashValue == rhs.hashValue
         }
 
-        public func hash(into hasher: inout Hasher) {
+        nonisolated public func hash(into hasher: inout Hasher) {
             switch self {
             case .initial:
                 hasher.combine("\(State.self)__initial")
@@ -69,7 +69,7 @@ public actor InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject 
 
     public var stateSubscribers = [((State) -> Void)]()
 
-    @Published var internalState: State = .initial {
+    var internalState: State = .initial {
         didSet {
             stateSubscribers.forEach { callback in
                 callback(internalState)
