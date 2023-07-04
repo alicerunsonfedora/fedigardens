@@ -22,19 +22,8 @@ public struct AuthenticationGateView: StatefulView {
     @State private var callbackUrl: URL?
     @State private var displayAuthenticationDialog = false
     @State private var displayDomainValidationError = false
+    @State private var domainValidationErrorTitle = ""
     @FocusState private var focusedDomainEntry: Bool
-
-    private var domainValidationTitle: String {
-        switch flow.state {
-        case .error(let cause):
-            if let domainCause = cause as? DomainValidationError {
-                return domainCause.message
-            }
-            return cause.localizedDescription
-        default:
-            return ""
-        }
-    }
 
     public var flow = AuthenticationGate(auth: .shared, network: .shared)
 
@@ -70,7 +59,7 @@ public struct AuthenticationGateView: StatefulView {
                     Text("OK")
                 }.keyboardShortcut(.defaultAction)
             } message: {
-                Text(domainValidationTitle)
+                Text(domainValidationErrorTitle)
             }
     }
 
@@ -79,12 +68,14 @@ public struct AuthenticationGateView: StatefulView {
         case .openAuth(_, let callback):
             self.callbackUrl = callback
             self.displayAuthenticationDialog = true
+            self.domainValidationErrorTitle = ""
         case .error(let cause):
             if cause is DomainValidationError {
                 self.displayDomainValidationError = true
             }
+            self.domainValidationErrorTitle = (cause as? DomainValidationError)?.message ?? cause.localizedDescription
         default:
-            break
+            self.domainValidationErrorTitle = ""
         }
     }
 

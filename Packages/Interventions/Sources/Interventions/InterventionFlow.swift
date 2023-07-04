@@ -21,8 +21,7 @@ import Foundation
 /// This flow is commonly used to provide interventions to have a user reflect and confirm that they want to perform
 /// the action that triggered the intervention. This works hand-in-hand with [one sec](https://one-sec.app) to provide
 /// intervention exercises.
-@MainActor
-public class InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject {
+public actor InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject {
     public enum State: Equatable, Hashable {
         /// The initial state of the flow, where no interventions have been requested.
         case initial
@@ -89,33 +88,27 @@ public class InterventionFlow<Opener: InterventionLinkOpener>: ObservableObject 
             return
         }
         if case .requestedIntervention(let date) = internalState {
-            await assignState(.error(InterventionRequestError.requestAlreadyMade(date)))
+            self.internalState = .error(InterventionRequestError.requestAlreadyMade(date))
             return
         }
         guard await opener.canOpenURL(oneSecUrl) else {
-            await assignState(.error(InterventionRequestError.oneSecNotAvailable))
+            self.internalState = .error(InterventionRequestError.oneSecNotAvailable)
             return
         }
         await opener.open(oneSecUrl)
-        await assignState(.requestedIntervention(startTime))
+        self.internalState = .requestedIntervention(startTime)
     }
 
     func authorizeIntervention(startTime: Date, context: InterventionAuthorizationContext) async {
         switch internalState {
         case .initial:
-            await assignState(.error(InterventionRequestError.invalidAuthorizationFlowState))
+            self.internalState = .error(InterventionRequestError.invalidAuthorizationFlowState)
         case .requestedIntervention:
             internalState = .authorizedIntervention(startTime, context: context)
         case .authorizedIntervention(let date, let context):
-            await assignState(.error(InterventionRequestError.alreadyAuthorized(date, context: context)))
+            self.internalState = .error(InterventionRequestError.alreadyAuthorized(date, context: context))
         case .error:
             return
-        }
-    }
-
-    func assignState(_ newState: State) async {
-        DispatchQueue.main.async { [weak self] in
-            self?.internalState = newState
         }
     }
 }

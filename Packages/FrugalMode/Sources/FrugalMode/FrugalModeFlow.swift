@@ -17,7 +17,7 @@ import FlowKit
 import Foundation
 
 /// A flow designed to assess the state of frugal mode in an app.
-public class FrugalModeFlow: ObservableObject {
+public actor FrugalModeFlow: ObservableObject {
     public enum State {
         /// The initial state of the flow, which indicates nothing has occurred.
         case initial
