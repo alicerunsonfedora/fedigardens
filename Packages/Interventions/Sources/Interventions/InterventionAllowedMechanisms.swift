@@ -15,16 +15,22 @@
 import Foundation
 
 /// The set of allowed cases for which an intervention can occur.
-@OptionSet<UInt8>
-public struct InterventionAllowedMechanisms {
-    private enum Options: Int {
-        /// An intervention can never occur.
-        case none
+public struct InterventionAllowedMechanisms: OptionSet {
+    public var rawValue: UInt8
 
-        /// An intervention occurs whenever a refresh action is committed.
-        case refresh
-
-        /// An interventions occurs whenever a fetch action is commited.
-        case fetchMore
+    public init(rawValue: UInt8) {
+        self.rawValue = rawValue
     }
+
+    /// No interventions can occur.
+    public static let none = InterventionAllowedMechanisms(rawValue: 1 << 0)
+
+    /// Presents an intervention when refreshing content.
+    public static let refresh = InterventionAllowedMechanisms(rawValue: 1 << 1)
+
+    /// Presents an intervention when requesting for more content.
+    public static let fetchMore = InterventionAllowedMechanisms(rawValue: 1 << 2)
+
+    /// Presents an intervention at all possible opportunities.
+    public static let all: InterventionAllowedMechanisms = [.refresh, .fetchMore]
 }
