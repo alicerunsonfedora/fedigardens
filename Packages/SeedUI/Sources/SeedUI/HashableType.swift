@@ -2,7 +2,7 @@
 //  HashableType.swift
 //  Fedigardens
 //
-//  Created by Marquis Kurt on 12/24/22.
+//  Created by Marquis Kurt on 8/7/23.
 //
 //  This file is part of Fedigardens.
 //
@@ -14,23 +14,26 @@
 
 import Foundation
 
-struct HashableType<T>: Hashable {
-    let base: T.Type
+/// A box type that allows keying in a dictionary from a hashable type.
+///
+/// This is used in conjunction with ``RecursiveNavigationStack`` to set recursive destinations.
+public struct HashableType<T>: Hashable {
+    public let base: T.Type
 
-    init(_ base: T.Type) {
+    public init(_ base: T.Type) {
         self.base = base
     }
 
-    static func == (lhs: HashableType, rhs: HashableType) -> Bool {
+    public static func == (lhs: HashableType, rhs: HashableType) -> Bool {
         lhs.base == rhs.base
     }
 
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(ObjectIdentifier(base))
     }
 }
 
-extension Dictionary {
+public extension Dictionary {
     subscript<T>(key: T.Type) -> Value? where Key == HashableType<T> {
         get { return self[HashableType(key)] }
         set { self[HashableType(key)] = newValue }
