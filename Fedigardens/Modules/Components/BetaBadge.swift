@@ -14,6 +14,7 @@
 
 import SwiftUI
 
+@available(*, deprecated, message: "Use SeedUI BadgedText instead.")
 struct BetaBadge: View {
     var body: some View {
         Text("BETA")
