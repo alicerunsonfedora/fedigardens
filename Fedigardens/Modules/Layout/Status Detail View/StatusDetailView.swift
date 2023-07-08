@@ -13,7 +13,7 @@
 //  details.
 
 import Alice
-import Foundation
+import SeedUI
 import SwiftUI
 
 // MARK: - Status Detail View
@@ -29,7 +29,7 @@ struct StatusDetailView: View {
     @StateObject var viewModel = StatusDetailViewModel()
 
     var status: Status
-    var level: RecursiveNavigationLevel
+    var level: RecursiveNavigationStackLevel
 
     var body: some View {
         RecursiveNavigationStack(level: level) {

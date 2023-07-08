@@ -31,9 +31,6 @@
 		953BC7C02957B9E0005C7F2A /* Status+URIToUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */; };
 		953BC7C52957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7C42957C73E005C7F2A /* StatusDetailViewModel.swift */; };
 		953BC7C62957C73E005C7F2A /* StatusDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7C42957C73E005C7F2A /* StatusDetailViewModel.swift */; };
-		953BC7C82957E156005C7F2A /* RecursiveNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7C72957E156005C7F2A /* RecursiveNavigationView.swift */; };
-		953BC7CB2957EC27005C7F2A /* HashableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7CA2957EC27005C7F2A /* HashableType.swift */; };
-		953BC7CC2957EC27005C7F2A /* HashableType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7CA2957EC27005C7F2A /* HashableType.swift */; };
 		953BC7CE2957FD94005C7F2A /* AttachmentMediaGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7CD2957FD94005C7F2A /* AttachmentMediaGroup.swift */; };
 		953DE4D327D69C7D0043A357 /* Bundle+AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DE4D227D69C7D0043A357 /* Bundle+AppVersion.swift */; };
 		9547230627A0094000D1BA89 /* Gardens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954722F627A0093F00D1BA89 /* Gardens.swift */; };
@@ -122,7 +119,6 @@
 		95801D21297C71F000FE8D83 /* AuthorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95801D20297C71F000FE8D83 /* AuthorViewModelTests.swift */; };
 		95801D26297C751C00FE8D83 /* String+AttributedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */; };
 		95801D27297C752000FE8D83 /* Bundle+AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DE4D227D69C7D0043A357 /* Bundle+AppVersion.swift */; };
-		95801D28297C752E00FE8D83 /* RecursiveNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953BC7C72957E156005C7F2A /* RecursiveNavigationView.swift */; };
 		95801D29297C753C00FE8D83 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF9E2973B8B2002C88B6 /* Emojis.swift */; };
 		95801D2A297C755200FE8D83 /* LayoutStateRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95369B5C27B82E7D00F39531 /* LayoutStateRepresentable.swift */; };
 		95801D2C297C756F00FE8D83 /* UserDefaults+Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95645BD127C5546E00FB3426 /* UserDefaults+Settings.swift */; };
@@ -315,8 +311,6 @@
 		9537C6DE297DED820039F3C4 /* InterventionAllowedMechanisms+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "InterventionAllowedMechanisms+UserDefaults.swift"; sourceTree = "<group>"; };
 		953BC7BE2957B9E0005C7F2A /* Status+URIToUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Status+URIToUrl.swift"; sourceTree = "<group>"; };
 		953BC7C42957C73E005C7F2A /* StatusDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusDetailViewModel.swift; sourceTree = "<group>"; };
-		953BC7C72957E156005C7F2A /* RecursiveNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecursiveNavigationView.swift; sourceTree = "<group>"; };
-		953BC7CA2957EC27005C7F2A /* HashableType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HashableType.swift; sourceTree = "<group>"; };
 		953BC7CD2957FD94005C7F2A /* AttachmentMediaGroup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentMediaGroup.swift; sourceTree = "<group>"; };
 		953DE4CB27D662450043A357 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; name = .swiftformat; path = ../.swiftformat; sourceTree = "<group>"; };
 		953DE4CE27D66BEF0043A357 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = .swiftlint.yml; path = ../.swiftlint.yml; sourceTree = "<group>"; };
@@ -663,7 +657,6 @@
 				95A1BF9629738A61002C88B6 /* Profiles */,
 				95369B6927B8406B00F39531 /* Statuses */,
 				9558C7ED29578B59001B30C7 /* AccountImage.swift */,
-				953BC7C72957E156005C7F2A /* RecursiveNavigationView.swift */,
 				95F2DE2329725C6100553937 /* BetaBadge.swift */,
 				95CDCD2929905085002BD37A /* GiantAlert.swift */,
 			);
@@ -888,7 +881,6 @@
 			children = (
 				95A01C3E299960B70086985E /* Mock */,
 				956714212958CE6800BFF76A /* Extensions */,
-				953BC7CA2957EC27005C7F2A /* HashableType.swift */,
 				95CEFDEA295A031E00EEE96C /* Pip.swift */,
 				95555FBA2960B9F7005BEF45 /* Acknowledgement+License.swift */,
 			);
@@ -1193,7 +1185,6 @@
 				95CDCD2829904E19002BD37A /* AttachmentViewerToolbar.swift in Sources */,
 				9588914B29BD11DF0092781B /* AttachmentVideoPlayer.swift in Sources */,
 				956714162958C1BF00BFF76A /* AuthoringScene.swift in Sources */,
-				953BC7CB2957EC27005C7F2A /* HashableType.swift in Sources */,
 				955F1B342985C1D600702BE8 /* SearchResultsView.swift in Sources */,
 				95C0AF4A27C6C7920007D1D0 /* MessagingAuthorView.swift in Sources */,
 				95CEFDEE295A388100EEE96C /* StatusDetailQuote.swift in Sources */,
@@ -1270,7 +1261,6 @@
 				95CDCD2A29905085002BD37A /* GiantAlert.swift in Sources */,
 				957CBC8529FEE60400FE23BA /* SettingsEnergyPage.swift in Sources */,
 				95009EF4295E780A00F32F85 /* GardensAppLayoutViewModel.swift in Sources */,
-				953BC7C82957E156005C7F2A /* RecursiveNavigationView.swift in Sources */,
 				953BC7CE2957FD94005C7F2A /* AttachmentMediaGroup.swift in Sources */,
 				952A06E329691C3D008340A4 /* GardensAppPage.swift in Sources */,
 				95ADAE1A27B6D9740011FD83 /* StatusNavigationList.swift in Sources */,
@@ -1327,7 +1317,6 @@
 				95801D3D297CC0A500FE8D83 /* Label+SettingsStyle.swift in Sources */,
 				95801D49297CC10700FE8D83 /* AccountImage.swift in Sources */,
 				95801D5A297CC13400FE8D83 /* TimelineSplitView.swift in Sources */,
-				953BC7CC2957EC27005C7F2A /* HashableType.swift in Sources */,
 				95CEFDE92959637400EEE96C /* StatusVerifiedButton.swift in Sources */,
 				95801D59297CC13400FE8D83 /* StatusDetailProfileMenu.swift in Sources */,
 				957AF85029591B44000370E6 /* StatusPollView.swift in Sources */,
@@ -1420,7 +1409,6 @@
 				955F1B5E2986FB0A00702BE8 /* SettingsVersionBlock.swift in Sources */,
 				95801D41297CC0DE00FE8D83 /* AuthorView.swift in Sources */,
 				95801D4E297CC10700FE8D83 /* BetaBadge.swift in Sources */,
-				95801D28297C752E00FE8D83 /* RecursiveNavigationView.swift in Sources */,
 				95801D4F297CC10700FE8D83 /* GardensAppCompactLayout.swift in Sources */,
 				95801D37297C9D2600FE8D83 /* GardensSettingsKey.swift in Sources */,
 				95097E0D2999BB5400EB8552 /* SettingsInstanceBlocklistPage.swift in Sources */,

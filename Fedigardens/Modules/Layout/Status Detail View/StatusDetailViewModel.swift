@@ -15,7 +15,7 @@
 import Alice
 import Combine
 import Drops
-import Foundation
+import SeedUI
 import UIKit
 
 class StatusDetailViewModel: ObservableObject {
@@ -101,7 +101,7 @@ class StatusDetailViewModel: ObservableObject {
         return ContextCaller(id: reply.id, status: reply)
     }
 
-    func navigationTitle(with level: RecursiveNavigationLevel) -> String {
+    func navigationTitle(with level: RecursiveNavigationStackLevel) -> String {
         if let status {
             return "\(level == .parent ? "Status" : "Reply") - \(status.account.getAccountName())"
         }
