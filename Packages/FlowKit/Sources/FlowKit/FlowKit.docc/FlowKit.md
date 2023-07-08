@@ -12,11 +12,9 @@ simplified, actor-based architecture.
 ### Essentials
 
 - <doc:Introduction-to-Flows>
-
-### Stateful Flow Actors
-
 - ``StatefulFlowProviding``
-
-### Working with SwiftUI
-
 - ``StatefulView``
+
+### Test Support
+
+- <doc:Testing-Flows>
