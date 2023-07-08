@@ -13,6 +13,7 @@
 //  details.
 
 import Alice
+import SeedUI
 import SwiftUI
 
 struct AttachmentViewer: View {
