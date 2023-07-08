@@ -19,9 +19,6 @@
    <Group
       location = "container:"
       name = "Modules">
-      <FileRef
-         location = "group:Packages/SeedUI">
-      </FileRef>
       <Group
          location = "container:"
          name = "Fundamentals">
@@ -30,6 +27,9 @@
          </FileRef>
          <FileRef
             location = "group:Packages/FlowKit">
+         </FileRef>
+         <FileRef
+            location = "group:Packages/SeedUI">
          </FileRef>
       </Group>
       <Group
