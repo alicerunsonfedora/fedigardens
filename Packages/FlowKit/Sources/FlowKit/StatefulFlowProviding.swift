@@ -14,7 +14,8 @@
 
 /// A protocol that provides a stateful flow.
 ///
-/// This is the basis for most view models that follow this approach.
+/// This protocol is the basis for all flows in FlowKit. Any flows that conform to this protocol must be an actor and
+/// provide a safe means of updating state through ``emit(_:)``.
 public protocol StatefulFlowProviding: Actor {
     /// The possible states that the flow can encounter.
     ///
