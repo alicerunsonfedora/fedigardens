@@ -2,7 +2,7 @@
 //  GiantAlert.swift
 //  Fedigardens
 //
-//  Created by Marquis Kurt on 2/5/23.
+//  Created by Marquis Kurt on 8/7/23.
 //
 //  This file is part of Fedigardens.
 //
@@ -21,12 +21,10 @@ struct GiantAlert<Icon: View, Actions: View, Message: View>: View {
     var actions: () -> Actions
     var message: () -> Message?
 
-    init(
-        title: LocalizedStringKey,
-        @ViewBuilder icon: @escaping () -> Icon? = { nil },
-        @ViewBuilder actions: @escaping () -> Actions,
-        @ViewBuilder message: @escaping () -> Message? = { nil }
-    ) {
+    init(title: LocalizedStringKey,
+         @ViewBuilder icon: @escaping () -> Icon? = { nil },
+         @ViewBuilder actions: @escaping () -> Actions,
+         @ViewBuilder message: @escaping () -> Message? = { nil }) {
         self.title = title
         self.actions = actions
         self.message = message
@@ -87,21 +85,24 @@ struct GiantAlertModifier<Icon: View, Actions: View, Message: View>: ViewModifie
 }
 
 extension View {
-    func giantAlert<I: View, A: View, M: View>(
-        isPresented: Binding<Bool>,
-        title: LocalizedStringKey,
-        @ViewBuilder icon: @escaping () -> I? = { nil },
-        @ViewBuilder actions: @escaping () -> A,
-        @ViewBuilder message: @escaping () -> M? = { nil }
-    ) -> some View {
+    /// Presents an alert as a sheet, similar to other alerts Apple presents.
+    ///
+    /// - Parameter isPresented: Whether the alert should be presented.
+    /// - Parameter title: The alert's title message.
+    /// - Parameter icon: The icon that will appear above the message, if applicable.
+    /// - Parameter actions: The actions that can be taken in the alert.
+    /// - Parameter message: The message content of the alert, if applicable.
+    public func giantAlert<I: View, A: View, M: View>(isPresented: Binding<Bool>,
+                                                      title: LocalizedStringKey,
+                                                      @ViewBuilder icon: @escaping () -> I? = { nil },
+                                                      @ViewBuilder actions: @escaping () -> A,
+                                                      @ViewBuilder message: @escaping () -> M? = { nil }) -> some View {
         modifier(
-            GiantAlertModifier(
-                isPresented: isPresented,
-                title: title,
-                icon: icon,
-                actions: actions,
-                message: message
-            )
+            GiantAlertModifier(isPresented: isPresented,
+                               title: title,
+                               icon: icon,
+                               actions: actions,
+                               message: message)
         )
     }
 }
