@@ -2,7 +2,7 @@
 //  InformationCard.swift
 //  Fedigardens
 //
-//  Created by Marquis Kurt on 1/29/23.
+//  Created by Marquis Kurt on 8/7/23.
 //
 //  This file is part of Fedigardens.
 //
@@ -14,12 +14,19 @@
 
 import SwiftUI
 
-struct InformationCard<TextContent: StringProtocol>: View {
+/// A card with a labelled heading, with multiline content.
+public struct InformationCard<TextContent: StringProtocol>: View {
     var title: TextContent
     var systemImage: String
     var content: TextContent
 
-    var body: some View {
+    public init(title: TextContent, systemImage: String, content: TextContent) {
+        self.title = title
+        self.systemImage = systemImage
+        self.content = content
+    }
+
+    public var body: some View {
         VStack(alignment: .leading, spacing: 6) {
             Label(title, systemImage: systemImage)
                 .font(.system(.headline, design: .rounded))
@@ -28,7 +35,6 @@ struct InformationCard<TextContent: StringProtocol>: View {
                 .font(.system(.subheadline, design: .rounded))
                 .multilineTextAlignment(.leading)
         }
-        .font(.callout)
         .padding()
         .frame(maxWidth: .infinity)
         .background(Color(uiColor: .tertiarySystemFill).cornerRadius(10))
@@ -40,7 +46,7 @@ struct InformationCard_Previews: PreviewProvider {
         InformationCard(
             title: "Unable to load data",
             systemImage: "exclamationmark.triangle",
-            content: "No internet connection was established."
+            content: "A secure connection to the server could not be made."
         )
         .padding()
     }
