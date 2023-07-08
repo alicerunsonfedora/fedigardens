@@ -14,6 +14,7 @@
 
 import Alice
 import EmojiText
+import SeedUI
 import SwiftUI
 
 struct ProfileSheetHeaderView: View {
@@ -35,7 +36,8 @@ struct ProfileSheetHeaderView: View {
                 VStack(spacing: 4) {
                     ProfileSheetLabel(profile: profile)
                     if viewModel.relationship?.followedBy == true {
-                        BadgedText("profile.followsyou", color: .secondary)
+                        BadgedText("profile.followsyou")
+                            .badgeColor(.secondary)
                             .font(.system(.footnote, design: .rounded))
                     }
                 }

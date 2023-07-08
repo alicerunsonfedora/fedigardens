@@ -13,6 +13,7 @@
 //  details.
 
 import SwiftUI
+import SeedUI
 
 struct SettingsFeedbackSection: View {
     @ScaledMetric private var size = 1.0
@@ -29,8 +30,8 @@ struct SettingsFeedbackSection: View {
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                                 .multilineTextAlignment(.leading)
-                            BadgedText("general.recommend", color: .green)
-                                .font(.caption2)
+                            BadgedText("general.recommend")
+                                .badgeColor(.green)
                                 .padding(.top, 1)
                         }
                     } icon: {
