@@ -19,6 +19,9 @@
    <Group
       location = "container:"
       name = "Modules">
+      <FileRef
+         location = "group:Packages/SeedUI">
+      </FileRef>
       <Group
          location = "container:"
          name = "Fundamentals">
