@@ -14,6 +14,7 @@
 
 import Alice
 import EmojiText
+import SeedUI
 import SwiftUI
 
 struct StatusDisclosedContent: View {
