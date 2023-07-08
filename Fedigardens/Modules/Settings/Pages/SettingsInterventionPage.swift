@@ -12,6 +12,7 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import SeedUI
 import SwiftUI
 
 struct SettingsInterventionPage: View {
@@ -27,7 +28,9 @@ struct SettingsInterventionPage: View {
                 Toggle(isOn: $allowInterventions) {
                     HStack {
                         Text("settings.interventions.allow")
-                        BetaBadge()
+                        BadgedText("Beta")
+                            .textCase(.uppercase)
+                            .font(.system(.footnote, design: .rounded))
                     }
                 }
             } footer: {
