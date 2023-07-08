@@ -26,21 +26,7 @@ public enum RecursiveNavigationStackLevel {
 /// A navigation stack type that allows recursive definitions.
 ///
 /// Similarly to a navigation stack, this is used to create a navigation stack that pushes a detail view based on its
-/// type:
-/// ```swift
-/// struct Employee: Identifiable, Hashable {
-///     var id = UUID()
-///     var name: String
-///     var department: String
-/// }
-///
-/// RecursiveNavigationStack(level: .parent) {
-///     ...
-/// }
-/// .recursiveDestination(of: Employee.self) { employee in
-///     EmployeeDetailView(employee, recursiveLevel: .child)
-/// }
-/// ```
+/// type.
 public struct RecursiveNavigationStack<T: Hashable, NavigationContent: View, NavDestination: View>: View {
     public typealias Destination = (T) -> NavDestination
     public typealias Level = RecursiveNavigationStackLevel
