@@ -16,10 +16,3 @@ jobs:
       run: |
         cd Packages/FlowKit
         swift test
-
-    # - name: Danger
-    #   uses: docker://ghcr.io/danger/danger-swift-with-swiftlint:3.15.0
-    #   with:
-    #     args: --failOnErrors --no-publish-check
-    #   env:
-    #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
