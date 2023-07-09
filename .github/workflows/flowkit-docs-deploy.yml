@@ -3,6 +3,8 @@ name: Deploy FlowKit Docs
 on:
   push:
     branches: [ root, devel ]
+  pull_request:
+    branches: [ root, devel ]
   workflow_dispatch:
 
 jobs:
