@@ -13,6 +13,7 @@
 //  details.
 
 import SeedUI
+import GardenSettings
 import SwiftUI
 
 struct SettingsInterventionPage: View {

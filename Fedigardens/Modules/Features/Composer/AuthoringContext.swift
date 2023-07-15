@@ -15,15 +15,19 @@
 import Alice
 import Bunker
 import Foundation
+import GardenSettings
 
 struct AuthoringContext: Codable, Hashable, Identifiable {
+    @GardenSetting(key: .defaultVisibility, defaultVisibility: .public)
+    static var defaultPostVisibility = PostVisibility.public
+
     var id = UUID()
     var editablePostID: String = ""
     var forwardingURI: String = ""
     var participants: String = ""
     var prefilledText: String = ""
     var replyingToID: String = ""
-    var visibility: PostVisibility = .public
+    var visibility: PostVisibility = AuthoringContext.defaultPostVisibility
     var pollExpiration: String = ""
     var pollOptions: String = ""
 }

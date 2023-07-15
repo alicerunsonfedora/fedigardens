@@ -95,10 +95,10 @@ public extension StatefulTestCase {
     /// Asserts that the flow's current state matches an expected state.
     /// - Parameter expectedState: The expected state that the flow should be in.
     /// - Parameter message: An optional message for the assertion if it fails.
-    /// - Parameter file: The file where the call is executed from. This is used to report assertion failures to the call
-    ///   site instead of the expectation definition. Defaults to the current file path. (Thanks, Grant!)
-    /// - Parameter line: The line where the call is executed from. This is used to report assertion failures to the call
-    ///   site instead of the expectation definition. Defaults to the current line. (Thanks, Grant!)
+    /// - Parameter file: The file where the call is executed from. This is used to report assertion failures to the
+    ///   call site instead of the expectation definition. Defaults to the current file path. (Thanks, Grant!)
+    /// - Parameter line: The line where the call is executed from. This is used to report assertion failures to the
+    /// call site instead of the expectation definition. Defaults to the current line. (Thanks, Grant!)
     func expectState(matches expectedState: TestableFlow.State,
                      message: String = "",
                      file: StaticString = #filePath,
@@ -110,10 +110,10 @@ public extension StatefulTestCase {
     /// Asserts that the flow's current state doesn't match an expected state.
     /// - Parameter expectedState: The expected state that the flow should not be in.
     /// - Parameter message: An optional message for the assertion if it fails.
-    /// - Parameter file: The file where the call is executed from. This is used to report assertion failures to the call
-    ///   site instead of the expectation definition. Defaults to the current file path. (Thanks, Grant!)
-    /// - Parameter line: The line where the call is executed from. This is used to report assertion failures to the call
-    ///   site instead of the expectation definition. Defaults to the current line. (Thanks, Grant!)
+    /// - Parameter file: The file where the call is executed from. This is used to report assertion failures to the
+    ///   call site instead of the expectation definition. Defaults to the current file path. (Thanks, Grant!)
+    /// - Parameter line: The line where the call is executed from. This is used to report assertion failures to the
+    ///   call site instead of the expectation definition. Defaults to the current line. (Thanks, Grant!)
     func expectState(doesNotMatch expectedState: TestableFlow.State,
                      message: String = "",
                      file: StaticString = #filePath,

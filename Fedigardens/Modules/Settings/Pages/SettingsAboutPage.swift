@@ -12,9 +12,11 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Alice
 import SwiftUI
 
 struct SettingsAboutPage: View {
+    @AppStorage(.defaultFeedbackVisibility) private var defaultFeedbackVisibility = PostVisibility.direct
     @State private var shouldOpenFeedbackTool: AuthoringContext?
     @ScaledMetric private var size = 1.0
 
@@ -64,7 +66,7 @@ struct SettingsAboutPage: View {
                     shouldInvokeParentSheet: $shouldOpenFeedbackTool,
                     context: .init(
                         participants: "@fedigardens@indieapps.space",
-                        visibility: UserDefaults.standard.defaultFeedbackVisibility
+                        visibility: defaultFeedbackVisibility
                     ),
                     style: .feedback
                 )

@@ -15,6 +15,7 @@
 import Alice
 import Combine
 import Drops
+import GardenSettings
 import UIKit
 
 class StatusNavigationListViewModel: ObservableObject {
@@ -34,8 +35,10 @@ class StatusNavigationListViewModel: ObservableObject {
     @Published var shouldOpenCompositionTool: AuthoringContext?
     @Published var inbox: InboxPage = .focused
 
+    @GardenSetting(key: .useFocusedInbox) private var showOriginalPostsOnly = false
+
     var statuses: [Status] {
-        if !UserDefaults.standard.showOriginalPostsOnly { return internalStatuses }
+        if !showOriginalPostsOnly { return internalStatuses }
         switch inbox {
         case .focused:
             return internalStatuses.filter { post in post.reblog == nil && post.inReplyToID == nil }

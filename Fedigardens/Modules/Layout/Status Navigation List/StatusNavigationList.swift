@@ -26,6 +26,7 @@ struct StatusNavigationList<Extras: View>: View {
     @AppStorage(.useFocusedInbox) private var useFocusedInbox: Bool = false
     @AppStorage(.frugalMode) private var frugalMode: Bool = false
     @AppStorage(.statusListPreviewLineCount) var statusListPreviewLineCount: Int = 2
+    @AppStorage(.addQuoteParticipant) var addQuoteParticipant = true
     var statuses: [Status]
     @Binding var selectedStatus: Status?
     @StateObject private var viewModel = ViewModel()
@@ -119,8 +120,7 @@ struct StatusNavigationList<Extras: View>: View {
                     shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
                     context: AuthoringContext(
                         forwardingURI: status.uriToURL()?.absoluteString ?? "",
-                        participants: UserDefaults.standard.addQuoteParticipant
-                            ? "@\(status.originalAuthor().acct)" : ""
+                        participants: addQuoteParticipant ? "@\(status.originalAuthor().acct)" : ""
                     ),
                     style: .quote
                 ).tint(.indigo)
@@ -164,8 +164,7 @@ struct StatusNavigationList<Extras: View>: View {
                 shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
                 context: AuthoringContext(
                     forwardingURI: status.uriToURL()?.absoluteString ?? "",
-                    participants: UserDefaults.standard.addQuoteParticipant
-                        ? "@\(status.originalAuthor().acct)" : ""
+                    participants: addQuoteParticipant ? "@\(status.originalAuthor().acct)" : ""
                 ),
                 style: .quote
             )
