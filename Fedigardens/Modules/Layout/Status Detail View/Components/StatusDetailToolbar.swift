@@ -13,6 +13,7 @@
 //  details.
 
 import Alice
+import GardenSettings
 import SwiftUI
 
 struct StatusDetailToolbar: CustomizableToolbarContent {
@@ -22,6 +23,7 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
     @Environment(\.openWindow) var openWindow
     @Environment(\.userProfile) var currentUser
     @AppStorage(.frugalMode) var frugalMode: Bool = false
+    @AppStorage(.addQuoteParticipant) var addQuoteParticipant: Bool = true
     @StateObject var viewModel: StatusDetailViewModel
     @Binding var displayUndisclosedContent: Bool
 
@@ -227,8 +229,7 @@ struct StatusDetailToolbar: CustomizableToolbarContent {
                     shouldInvokeParentSheet: $viewModel.shouldOpenCompositionTool,
                     context: .init(
                         forwardingURI: viewModel.status?.uriToURL()?.absoluteString ?? "",
-                        participants: UserDefaults.standard.addQuoteParticipant
-                            ? "@" + (viewModel.status?.originalAuthor().acct ?? "") : "",
+                        participants: addQuoteParticipant ? "@" + (viewModel.status?.originalAuthor().acct ?? "") : "",
                         visibility: viewModel.status?.visibility ?? .public
                     ),
                     style: .quote
