@@ -57,6 +57,11 @@
           "containerPath" : "container:..\/Packages\/Interventions",
           "identifier" : "Interventions",
           "name" : "Interventions"
+        },
+        {
+          "containerPath" : "container:..\/Packages\/GardenSettings",
+          "identifier" : "GardenSettings",
+          "name" : "GardenSettings"
         }
       ]
     },
@@ -107,6 +112,14 @@
         "containerPath" : "container:..\/Packages\/Interventions",
         "identifier" : "InterventionsTests",
         "name" : "InterventionsTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:..\/Packages\/GardenSettings",
+        "identifier" : "GardenSettingsTests",
+        "name" : "GardenSettingsTests"
       }
     }
   ],

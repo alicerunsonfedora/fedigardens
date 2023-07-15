@@ -43,7 +43,7 @@ class TimelineSplitViewModel: ObservableObject {
 
     @GardenSetting(key: .frugalMode) private var frugalMode = false
 
-    @GardenSetting(key: .loadLimit, maximum: 10)
+    @GardenSetting(key: .loadLimit, minimum: 10)
     private var loadLimit: Int = 10
 
     var timelineLoadLimit: Int { frugalMode ? 10 : loadLimit }
