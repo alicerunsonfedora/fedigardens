@@ -1,0 +1,17 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "frugalmode.on" : {
+      "comment" : "Frugal mode has been enabled on the device.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frugal mode enabled."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
