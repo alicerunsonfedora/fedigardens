@@ -15,19 +15,17 @@
 import Foundation
 
 extension UserDefaults {
-    /// Retrieves a decoded value from the user defaults store and decodes it. If no value is found, the default value is
-    /// returned.
+    /// Retrieves a decoded value from the user defaults store and decodes it. If no value is found, the default value
+    /// is returned.
     ///
     /// - Parameter key: The settings key to retrieve from user defaults.
     /// - Parameter defaultValue: The default value for this user default if the value was not found in the user
     /// defaults store.
     public func getValue<T: Decodable>(forKey key: GardenSettingsKey, default defaultValue: T) -> T {
-        print("Type decoding to: \(T.self)")
         let value = value(forKey: key)
         if let trueValue = value as? T {
             return trueValue
         }
-        print("Key: \(key.rawValue) not registered?")
         return defaultValue
     }
 
