@@ -1,0 +1,64 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Click me!" : {
+
+    },
+    "interventions.cta.disable" : {
+      "comment" : "Turn off the interventions feature.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Turn Off Interventions"
+          }
+        }
+      }
+    },
+    "interventions.cta.dismiss" : {
+      "comment" : "Dismiss the intervention dialog.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not Now"
+          }
+        }
+      }
+    },
+    "interventions.cta.install" : {
+      "comment" : "Prompt to install one sec from the App Store.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Install one sec…"
+          }
+        }
+      }
+    },
+    "interventions.missing.detail" : {
+      "comment" : "Explains that one sec can be installed from the App Store or interventions can be disabled.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You can install one sec from the App Store or disable interventions."
+          }
+        }
+      }
+    },
+    "interventions.missing.title" : {
+      "comment" : "Informs the user that one sec is not installed.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "one sec is Not Installed"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
