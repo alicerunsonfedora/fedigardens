@@ -34,20 +34,21 @@ import Foundation
     /// The default visibility to supply if decoding the value fails.
     var defaultVisibility: PostVisibility = .public
 
-    /// The maximum value that that can be supplied.
-    var maximum: Int?
+    /// The minimum value that that can be supplied.
+    var minimum: Int?
 
     /// The user defaults store to retrieve and assign settings values to and from.
     var store: UserDefaults = .standard
 
     public var wrappedValue: UserDefaultValue {
         get {
-            if value is Int, let maximum, let storedValue = store.getValue(forKey: key, default: value) as? Int {
-                return max(maximum, storedValue) as! UserDefaultValue // swiftlint:disable:this force_cast
+            if value is Int, let minimum, let storedValue = store.getValue(forKey: key, default: value) as? Int {
+                return max(minimum, storedValue) as! UserDefaultValue // swiftlint:disable:this force_cast
             }
             if let castValue = value as? PostVisibility {
                 let storedValue = store.getValue(forKey: key, default: castValue.rawValue)
                 let convertedValue = PostVisibility(rawValue: storedValue) ?? defaultVisibility
+
                 // swiftlint:disable:next force_cast
                 return convertedValue as! UserDefaultValue
             }
@@ -71,19 +72,19 @@ import Foundation
         self.store = store
     }
 
-    /// Creates a wrapped settings value from user defaults, supplying a maximum that the value can reach.
+    /// Creates a wrapped settings value from user defaults, supplying a minimum that the value can reach.
     /// - Parameter wrappedValue: The value that will be stored in user defaults.
     /// - Parameter key: The settings key that this value corresponds to.
     /// - Parameter store: The store that will contain the user default. Defaults to the standard suite.
-    /// - Parameter maximum: The maximum value that can be reached for this value.
+    /// - Parameter minimum: The minimum value that can be reached for this value.
     public init(wrappedValue: UserDefaultValue,
                 key: GardenSettingsKey,
                 store: UserDefaults = .standard,
-                maximum: Int? = nil) where UserDefaultValue == Int {
+                minimum: Int? = nil) where UserDefaultValue == Int {
         self.value = wrappedValue
         self.key = key
         self.store = store
-        self.maximum = maximum
+        self.minimum = minimum
     }
 
     /// Creates a wrapped settings value from user defaults, supplying a default visibility type if decoding fails.
