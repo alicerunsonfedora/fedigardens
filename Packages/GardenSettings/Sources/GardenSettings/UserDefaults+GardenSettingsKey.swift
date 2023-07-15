@@ -15,7 +15,7 @@
 import Foundation
 
 extension UserDefaults {
-    /// Retrieves a decoded value from the user defaults store and decodes it. If no value is found, the default vaue is
+    /// Retrieves a decoded value from the user defaults store and decodes it. If no value is found, the default value is
     /// returned.
     ///
     /// - Parameter key: The settings key to retrieve from user defaults.
@@ -44,8 +44,4 @@ extension UserDefaults {
         setValue(value, forKey: key.rawValue)
     }
 
-}
-
-struct Settings {
-    @GardenSetting(key: .loadLimit) var loadLimit: Int = 10
 }
