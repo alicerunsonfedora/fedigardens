@@ -1,0 +1,170 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "auth.appname" : {
+      "comment" : "Fedigardens (the app's name).",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fedigardens"
+          }
+        }
+      }
+    },
+    "auth.badurl.message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The community server '%@' likely contains invalid URL characters. If the domain you provided contains legal characters, you can file a report on Raceway to help us diagnose the issue."
+          }
+        }
+      }
+    },
+    "auth.badurl.racewaycta" : {
+      "comment" : "Prompt to report on Raceway.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report on Raceway…"
+          }
+        }
+      }
+    },
+    "auth.disallowed.message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fedigardens cannot sign in to %@ because the developers cannot verify that this server moderates the content posted by its users."
+          }
+        }
+      }
+    },
+    "auth.failure.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to Sign In"
+          }
+        }
+      }
+    },
+    "auth.footnote" : {
+      "comment" : "Asks if the user doesn't have an existing Mastodon account.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Don't have a Mastodon account?"
+          }
+        }
+      }
+    },
+    "auth.footnote.create" : {
+      "comment" : "Prompts the user to find a community server (instance).",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find a Community Server &rsaquo;"
+          }
+        }
+      }
+    },
+    "auth.keyboard.done" : {
+      "comment" : "Dismisses the keyboard (Done).",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done"
+          }
+        }
+      }
+    },
+    "auth.learnmore" : {
+      "comment" : "Learn more.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learn More…"
+          }
+        }
+      }
+    },
+    "auth.login.button" : {
+      "comment" : "Prompt to get started.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get Started"
+          }
+        }
+      }
+    },
+    "auth.progress" : {
+      "comment" : "Text to indicate sign in progress.",
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Signing In…"
+          }
+        }
+      }
+    },
+    "auth.startinfo" : {
+      "comment" : "A short summary of what the app is and a call to sign in with a Mastodon account or create one.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to a simplified, discussion-oriented Mastodon experience. Sign in with your Mastodon account or create one to get started."
+          }
+        }
+      }
+    },
+    "auth.textfield.clear" : {
+      "comment" : "Clears the text field.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        }
+      }
+    },
+    "auth.welcome" : {
+      "comment" : "A short welcome message, minus the app's name.",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to"
+          }
+        }
+      }
+    },
+    "Current text: %@" : {
+
+    },
+    "https://" : {
+
+    },
+    "mastodon.example" : {
+
+    },
+    "OK" : {
+
+    }
+  },
+  "version" : "1.0"
+}
