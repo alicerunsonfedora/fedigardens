@@ -13,21 +13,16 @@ let package = Package(
             targets: ["GardenSettings"])
     ],
     dependencies: [
-        .package(name: "Alice", path: "../Alice"),
-        .package(name: "FlowKit", path: "../FlowKit")
+        .package(name: "Alice", path: "../Alice")
     ],
     targets: [
         .target(
             name: "GardenSettings",
             dependencies: [
-                .product(name: "FlowKit", package: "FlowKit"),
                 .product(name: "Alice", package: "Alice")
             ]),
         .testTarget(
             name: "GardenSettingsTests",
-            dependencies: [
-                "GardenSettings",
-                .product(name: "FlowKitTestSupport", package: "FlowKit")
-            ])
+            dependencies: ["GardenSettings"])
     ]
 )
