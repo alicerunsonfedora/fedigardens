@@ -16,10 +16,28 @@ import Alice
 import Bunker
 import Combine
 import Drops
+import GardenSettings
 import SwiftUI
 import UIKit
 
 class AuthorViewModel: ObservableObject {
+    private struct SettingConstants {
+        @GardenSetting(key: .defaultVisibility, defaultVisibility: .public)
+        static var defaultPostVisibility = PostVisibility.public
+
+        @GardenSetting(key: .defaultQuoteVisibility, defaultVisibility: .public)
+        static var defaultQuoteVisibility = PostVisibility.public
+
+        @GardenSetting(key: .defaultReplyVisibility, defaultVisibility: .unlisted)
+        static var defaultReplyVisibility = PostVisibility.unlisted
+
+        @GardenSetting(key: .enforceCharacterLimit)
+        static var enforceCharacterLimit = true
+
+        @GardenSetting(key: .characterLimit)
+        static var characterLimit = 500
+    }
+
     @Published var editMode = false
     @Published var includesPoll = false
     @Published var mentionString = ""
@@ -32,7 +50,7 @@ class AuthorViewModel: ObservableObject {
     @Published var sensitiveText = ""
     @Published var statusID = ""
     @Published var text: String = ""
-    @Published var visibility: PostVisibility = UserDefaults.standard.defaultVisibility
+    @Published var visibility: PostVisibility = SettingConstants.defaultPostVisibility
 
     var userProfile: Account?
 
@@ -65,11 +83,13 @@ class AuthorViewModel: ObservableObject {
         return prompt != nil && text.matches(of: regex).isNotEmpty
     }
 
-    var shouldDisableSubmission: Bool {
-        UserDefaults.standard.enforceCharacterLimit && charactersRemaining < 0
-    }
+    var shouldDisableSubmission: Bool { SettingConstants.enforceCharacterLimit && charactersRemaining < 0 }
 
     private var drop: Drop?
+
+    init() {
+        self.visibility = SettingConstants.defaultPostVisibility
+    }
 
     func setAuthor(to account: Account) {
         userProfile = account
@@ -86,10 +106,10 @@ class AuthorViewModel: ObservableObject {
             self.drop = self.makeDrop(from: context)
             if context.forwardingURI.isNotEmpty {
                 self.text.append("💬: \(context.forwardingURI)")
-                self.visibility = UserDefaults.standard.defaultQuoteVisibility
+                self.visibility = SettingConstants.defaultQuoteVisibility
             }
             if context.replyingToID.isNotEmpty {
-                self.visibility = UserDefaults.standard.defaultReplyVisibility
+                self.visibility = SettingConstants.defaultReplyVisibility
             }
             if context.editablePostID.isNotEmpty {
                 self.editMode = true
@@ -106,7 +126,7 @@ class AuthorViewModel: ObservableObject {
     }
 
     func submitStatus(completion: @escaping () -> Void) async {
-        if UserDefaults.standard.enforceCharacterLimit, charactersRemaining < 0 { return }
+        if SettingConstants.enforceCharacterLimit, charactersRemaining < 0 { return }
         let params = constructParameters()
         guard params["status", default: ""] == submittableText else { return }
         let requestMethod: Alice.Method = editMode ? .put : .post
@@ -176,8 +196,7 @@ class AuthorViewModel: ObservableObject {
 
         // Second pass to add the reblogged author if not included for a given reason.
         if let reblogged = reply.reblog, !allMentions.map(\.acct).contains(reblogged.account.acct),
-           reblogged.account != userProfile
-        {
+           reblogged.account != userProfile {
             mentionString += " @\(reblogged.account.acct)"
         }
     }
@@ -203,10 +222,10 @@ class AuthorViewModel: ObservableObject {
                 textStrippedFromUrls = textStrippedFromUrls.replacingOccurrences(of: output.0, with: "@\(output.1)")
             }
             let charactersWithoutLinks = textStrippedFromUrls.count + (matches.count * 23)
-            return UserDefaults.standard.characterLimit - charactersWithoutLinks
+            return SettingConstants.characterLimit - charactersWithoutLinks
         } catch {
             print("Err: couldn't make detector: \(error.localizedDescription). Using naive approach instead.")
-            return UserDefaults.standard.characterLimit - text.count
+            return SettingConstants.characterLimit - text.count
         }
     }
 

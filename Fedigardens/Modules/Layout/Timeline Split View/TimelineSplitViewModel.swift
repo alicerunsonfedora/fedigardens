@@ -15,6 +15,7 @@
 import Alice
 import Bunker
 import Combine
+import GardenSettings
 import Interventions
 import UIKit
 
@@ -40,9 +41,12 @@ class TimelineSplitViewModel: ObservableObject {
     @Published var scope: TimelineType = .scopedTimeline(scope: .home, local: false)
     @Published var displayOneSecNotInstalledWarning = false
 
-    var timelineLoadLimit: Int {
-        UserDefaults.standard.frugalMode ? 10 : UserDefaults.standard.loadLimit
-    }
+    @GardenSetting(key: .frugalMode) private var frugalMode = false
+
+    @GardenSetting(key: .loadLimit, maximum: 10)
+    private var loadLimit: Int = 10
+
+    var timelineLoadLimit: Int { frugalMode ? 10 : loadLimit }
 
     init(scope: TimelineType) {
         self.scope = scope

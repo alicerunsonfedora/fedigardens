@@ -45,9 +45,11 @@ import Foundation
             if value is Int, let maximum, let storedValue = store.getValue(forKey: key, default: value) as? Int {
                 return max(maximum, storedValue) as! UserDefaultValue // swiftlint:disable:this force_cast
             }
-            if value is PostVisibility, let storedValue = store.getValue(forKey: key, default: value) as? String {
+            if let castValue = value as? PostVisibility {
+                let storedValue = store.getValue(forKey: key, default: castValue.rawValue)
+                let convertedValue = PostVisibility(rawValue: storedValue) ?? defaultVisibility
                 // swiftlint:disable:next force_cast
-                return (PostVisibility(rawValue: storedValue) ?? defaultVisibility) as! UserDefaultValue
+                return convertedValue as! UserDefaultValue
             }
             return store.getValue(forKey: key, default: value)
         }

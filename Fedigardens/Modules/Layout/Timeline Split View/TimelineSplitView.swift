@@ -26,6 +26,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
 
     @AppStorage(.frugalMode) var frugalMode: Bool = false
     @AppStorage(.useFocusedInbox) private var useFocusedInbox: Bool = false
+    @AppStorage(.allowsInterventions) private var allowsInterventions: Bool = true
 
     @State var state: LayoutState = .initial
     var scope: TimelineSplitViewModel.TimelineType
@@ -128,7 +129,7 @@ struct TimelineSplitView: View, LayoutStateRepresentable {
             }
         }
         .interventionsAlert(isPresented: $model.displayOneSecNotInstalledWarning, opener: openURL) {
-            UserDefaults.standard.allowsInterventions = false
+            allowsInterventions = false
         }
     }
 

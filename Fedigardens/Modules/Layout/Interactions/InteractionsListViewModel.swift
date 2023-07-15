@@ -16,10 +16,12 @@ import Alice
 import struct Alice.Notification
 import Combine
 import Foundation
+import GardenSettings
 
 class InteractionsListViewModel: ObservableObject {
     @Published var notifications = [Notification]()
     @Published var state = LayoutState.initial
+    @GardenSetting(key: .loadLimit) private var loadLimit = 10
 
     init() {}
 
@@ -29,7 +31,7 @@ class InteractionsListViewModel: ObservableObject {
             .notifications,
             params: [
                 "types[]": Notification.NotificationType.mention.rawValue,
-                "limit": String(UserDefaults.standard.loadLimit)
+                "limit": String(loadLimit)
             ]
         )
         switch response {

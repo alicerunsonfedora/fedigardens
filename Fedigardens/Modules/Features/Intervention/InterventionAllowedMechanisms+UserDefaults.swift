@@ -13,17 +13,39 @@
 //  details.
 
 import Foundation
+import GardenSettings
 import Interventions
 
 extension InterventionAllowedMechanisms {
+    private struct InterventionConstants {
+        @GardenSetting(key: .allowsInterventions) static var allowsInterventions = true
+        @GardenSetting(key: .intervenesOnRefresh) static var intervenesOnRefresh = true
+        @GardenSetting(key: .intervenesOnFetch) static var intervenesOnFetch = true
+    }
+
+    @available(*, deprecated, message: "Use InterventionAllowedMechanisms.fromDefaults without any arguments.")
     static func fromDefaults(_ store: UserDefaults = .standard) -> InterventionAllowedMechanisms {
-        guard store.allowsInterventions else { return .none }
+        guard InterventionConstants.allowsInterventions else { return .none }
         var options: InterventionAllowedMechanisms = []
-        if store.intervenesOnRefresh {
+        if InterventionConstants.intervenesOnRefresh {
             options.insert(.refresh)
         }
 
-        if store.intervenesOnFetch {
+        if InterventionConstants.intervenesOnFetch {
+            options.insert(.fetchMore)
+        }
+
+        return options
+    }
+
+    static func fromDefaults() -> InterventionAllowedMechanisms {
+        guard InterventionConstants.allowsInterventions else { return .none }
+        var options: InterventionAllowedMechanisms = []
+        if InterventionConstants.intervenesOnRefresh {
+            options.insert(.refresh)
+        }
+
+        if InterventionConstants.intervenesOnFetch {
             options.insert(.fetchMore)
         }
 

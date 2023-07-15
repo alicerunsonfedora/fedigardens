@@ -13,6 +13,7 @@
 //  details.
 
 import Alice
+import GardenSettings
 import SwiftUI
 
 struct SettingsAuthorPage: View {
