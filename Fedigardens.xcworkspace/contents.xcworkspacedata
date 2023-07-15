@@ -19,9 +19,6 @@
    <Group
       location = "container:"
       name = "Modules">
-      <FileRef
-         location = "group:Packages/GardenSettings">
-      </FileRef>
       <Group
          location = "container:"
          name = "Fundamentals">
@@ -47,6 +44,9 @@
       </Group>
       <FileRef
          location = "group:Packages/GardenGate">
+      </FileRef>
+      <FileRef
+         location = "group:Packages/GardenSettings">
       </FileRef>
    </Group>
 </Workspace>
