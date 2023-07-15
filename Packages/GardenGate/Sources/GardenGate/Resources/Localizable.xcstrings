@@ -13,6 +13,7 @@
       }
     },
     "auth.badurl.message" : {
+      "comment" : "Invalid URL (FGD-22)",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -34,6 +35,7 @@
       }
     },
     "auth.disallowed.message" : {
+      "comment" : "In disallow list",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -44,6 +46,7 @@
       }
     },
     "auth.failure.title" : {
+      "comment" : "Could not sign in",
       "localizations" : {
         "en" : {
           "stringUnit" : {

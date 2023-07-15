@@ -21,7 +21,7 @@ extension UserDefaults {
     /// - Parameter key: The settings key to retrieve from user defaults.
     /// - Parameter defaultValue: The default value for this user default if the value was not found in the user defaults
     ///   store.
-    func getValue<T: Decodable>(forKey key: GardensSettingsKey, default defaultValue: T) -> T {
+    func getValue<T: Decodable>(forKey key: GardenSettingsKey, default defaultValue: T) -> T {
         if let value = value(forKey: key) as? T {
             return value
         }
@@ -30,14 +30,19 @@ extension UserDefaults {
 
     /// Retrieves a value from the user defaults store.
     /// - Parameter key: The settings key to retrieve from user defaults.
-    func value(forKey key: GardensSettingsKey) -> Any? {
+    func value(forKey key: GardenSettingsKey) -> Any? {
         return value(forKey: key.rawValue)
     }
 
     /// Sets a value in the user defaults store with a specified key.
     /// - Parameter value: The value to store into user defaults store.
     /// - Parameter key: The settings key the value will be stored at.
-    func setValue(_ value: Any?, forKey key: GardensSettingsKey) {
+    func setValue(_ value: Any?, forKey key: GardenSettingsKey) {
         setValue(value, forKey: key.rawValue)
     }
+
+}
+
+struct Settings {
+    @GardenSetting(key: .loadLimit) var loadLimit: Int = 10
 }

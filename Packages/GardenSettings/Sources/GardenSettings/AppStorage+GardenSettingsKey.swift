@@ -24,7 +24,7 @@ public extension AppStorage {
     /// - Parameter value: The value containing the user default.
     /// - Parameter key: The ``GardensSettingsKey`` that the value derives from.
     /// - Parameter store: The user defaults store where this key is found, if not in the standard bundle.
-    init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == Bool {
+    init(wrappedValue: Value, _ key: GardenSettingsKey, store: UserDefaults? = nil) where Value == Bool {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
 
@@ -32,7 +32,7 @@ public extension AppStorage {
     /// - Parameter value: The value containing the user default.
     /// - Parameter key: The ``GardensSettingsKey`` that the value derives from.
     /// - Parameter store: The user defaults store where this key is found, if not in the standard bundle.
-    init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == Int {
+    init(wrappedValue: Value, _ key: GardenSettingsKey, store: UserDefaults? = nil) where Value == Int {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
 
@@ -40,7 +40,7 @@ public extension AppStorage {
     /// - Parameter value: The value containing the user default.
     /// - Parameter key: The ``GardensSettingsKey`` that the value derives from.
     /// - Parameter store: The user defaults store where this key is found, if not in the standard bundle.
-    init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == Double {
+    init(wrappedValue: Value, _ key: GardenSettingsKey, store: UserDefaults? = nil) where Value == Double {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
 
@@ -48,7 +48,7 @@ public extension AppStorage {
     /// - Parameter value: The value containing the user default.
     /// - Parameter key: The ``GardensSettingsKey`` that the value derives from.
     /// - Parameter store: The user defaults store where this key is found, if not in the standard bundle.
-    init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == URL {
+    init(wrappedValue: Value, _ key: GardenSettingsKey, store: UserDefaults? = nil) where Value == URL {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
 
@@ -56,7 +56,7 @@ public extension AppStorage {
     /// - Parameter value: The value containing the user default.
     /// - Parameter key: The ``GardensSettingsKey`` that the value derives from.
     /// - Parameter store: The user defaults store where this key is found, if not in the standard bundle.
-    init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == String {
+    init(wrappedValue: Value, _ key: GardenSettingsKey, store: UserDefaults? = nil) where Value == String {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
 
@@ -64,7 +64,7 @@ public extension AppStorage {
     /// - Parameter value: The value containing the user default.
     /// - Parameter key: The ``GardensSettingsKey`` that the value derives from.
     /// - Parameter store: The user defaults store where this key is found, if not in the standard bundle.
-    init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == Data {
+    init(wrappedValue: Value, _ key: GardenSettingsKey, store: UserDefaults? = nil) where Value == Data {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
 
@@ -72,7 +72,7 @@ public extension AppStorage {
     /// - Parameter value: The value containing the user default.
     /// - Parameter key: The ``GardensSettingsKey`` that the value derives from.
     /// - Parameter store: The user defaults store where this key is found, if not in the standard bundle.
-    init(wrappedValue: Value, _ key: GardensSettingsKey, store: UserDefaults? = nil) where Value == PostVisibility {
+    init(wrappedValue: Value, _ key: GardenSettingsKey, store: UserDefaults? = nil) where Value == PostVisibility {
         self.init(wrappedValue: wrappedValue, key.rawValue, store: store)
     }
 }

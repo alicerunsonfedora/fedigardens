@@ -17,7 +17,7 @@ import Foundation
 /// An enumeration for the various settings that Fedigardens contains.
 ///
 /// These keys are used to access values more directly in both UserDefaults and AppStorage.
-public enum GardensSettingsKey: String {
+public enum GardenSettingsKey: String {
     /// The number of items to fetch at a given time.
     case loadLimit = "network.load-limit"
 
