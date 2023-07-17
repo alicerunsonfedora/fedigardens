@@ -12,7 +12,7 @@ If you need to list changes to this changelog but there isn't an entry for it, c
 And list your changes under that.
 -->
 
-## [Unreleased] - Date Pending
+## [1.0-69 (beta)] - 17/7/23
 
 - Updates the backend logic for setting and accessing user defaults.
 - Updates modules with FlowKit to support actors and concurrency.
