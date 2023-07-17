@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/MartinP7r/AckGen",
       "state" : {
-        "revision" : "c28170c4b709bd69a17255c0c904158a3cce922b",
-        "version" : "0.1.6"
+        "revision" : "f7ea8c15fd1410991d5aaa4e234901a6ff555fc9",
+        "version" : "0.1.7"
       }
     },
     {
@@ -33,7 +33,7 @@
       "location" : "https://github.com/divadretlaw/EmojiText",
       "state" : {
         "branch" : "main",
-        "revision" : "94d9346b378e03483c094cbf7b3b9fa3a368a8bb"
+        "revision" : "a4ddf5077c241170e8ac0d3a9480c511e27c1ae9"
       }
     },
     {
@@ -59,8 +59,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/kean/Nuke",
       "state" : {
-        "revision" : "f67266f176af4add9f7a7020486826d82d562473",
-        "version" : "12.1.2"
+        "revision" : "c3864b8882bc69f5edfe5c70e18786c91d228b28",
+        "version" : "12.1.3"
       }
     },
     {
@@ -68,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/simonbs/Runestone",
       "state" : {
-        "revision" : "1d0e79051a18d79f12882e9fad0b130e47d4a06b",
-        "version" : "0.3.0"
+        "revision" : "00dee9fbc9c93b709f6b1b052bce84cb971e493a",
+        "version" : "0.3.2"
       }
     },
     {
@@ -79,6 +79,15 @@
       "state" : {
         "branch" : "root",
         "revision" : "3f58d7915d97a0e15bc53618e54cbfbbba1f1b8f"
+      }
+    },
+    {
+      "identity" : "tree-sitter",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/simonbs/tree-sitter",
+      "state" : {
+        "revision" : "f88ae4ebe351d8aa99c31a17111607017d805118",
+        "version" : "0.20.9-beta-1"
       }
     }
   ],
