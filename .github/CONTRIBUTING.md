@@ -43,6 +43,9 @@ were made, if possible.
 
 More information on Gitmoji can be found at https://gitmoji.dev.
 
+- Note: For commits relating to Xcode Cloud where any existing emoji doesn't
+  neatly define the type of commit, use the `:cloud:` :cloud: emoji instead.
+
 ### Pull requests
 
 - Pull requests should have an adequate description of the changes being made, and
