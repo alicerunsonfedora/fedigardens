@@ -269,6 +269,7 @@
 		95D3E521295FD36800800FE6 /* Disallow.plist in Resources */ = {isa = PBXBuildFile; fileRef = 95D3E520295FD36800800FE6 /* Disallow.plist */; };
 		95D3EADD27BBE51F00AF33D9 /* AuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */; };
 		95D70D352A478262007774B0 /* GardenGate in Frameworks */ = {isa = PBXBuildFile; productRef = 95D70D342A478262007774B0 /* GardenGate */; };
+		95EDB1972A79AE3D00778EBA /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 95EDB1962A79AE3D00778EBA /* PrivacyInfo.xcprivacy */; };
 		95F2DE22297253FD00553937 /* Label+SettingsStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */; };
 		95F2DE2429725C6100553937 /* BetaBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE2329725C6100553937 /* BetaBadge.swift */; };
 		95F2DE26297262D700553937 /* SettingsInterventionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE25297262D700553937 /* SettingsInterventionPage.swift */; };
@@ -424,6 +425,7 @@
 		95D28C74299024FE0051D31E /* AttachmentViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentViewer.swift; sourceTree = "<group>"; };
 		95D3E520295FD36800800FE6 /* Disallow.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Disallow.plist; sourceTree = "<group>"; };
 		95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorView.swift; sourceTree = "<group>"; };
+		95EDB1962A79AE3D00778EBA /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Label+SettingsStyle.swift"; sourceTree = "<group>"; };
 		95F2DE2329725C6100553937 /* BetaBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BetaBadge.swift; sourceTree = "<group>"; };
 		95F2DE25297262D700553937 /* SettingsInterventionPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInterventionPage.swift; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 		954722F027A0093F00D1BA89 = {
 			isa = PBXGroup;
 			children = (
+				95EDB1962A79AE3D00778EBA /* PrivacyInfo.xcprivacy */,
 				95009EF0295D440B00F32F85 /* Fedigardens.entitlements */,
 				95ADAE0027B6B2D10011FD83 /* Modules */,
 				95D1036E27A00AF400B1EE3C /* Resources */,
@@ -1079,6 +1082,7 @@
 				95555FC42960BE33005BEF45 /* MIT-HTML2Markdown.md in Resources */,
 				95C0AF4227C6B1AC0007D1D0 /* Conversation.json in Resources */,
 				95D3E521295FD36800800FE6 /* Disallow.plist in Resources */,
+				95EDB1972A79AE3D00778EBA /* PrivacyInfo.xcprivacy in Resources */,
 				95ADAE0627B6B3900011FD83 /* Status.json in Resources */,
 				95555FBF2960BC21005BEF45 /* NPL.txt in Resources */,
 				95ADAE1627B6D9140011FD83 /* Timeline.json in Resources */,
