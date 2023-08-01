@@ -36,6 +36,9 @@
          location = "container:"
          name = "Features">
          <FileRef
+            location = "group:Packages/GardenComposer">
+         </FileRef>
+         <FileRef
             location = "group:Packages/Interventions">
          </FileRef>
          <FileRef

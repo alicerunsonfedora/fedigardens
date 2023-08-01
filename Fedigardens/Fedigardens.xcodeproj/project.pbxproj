@@ -270,6 +270,7 @@
 		95D3EADD27BBE51F00AF33D9 /* AuthorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95D3EADC27BBE51F00AF33D9 /* AuthorView.swift */; };
 		95D70D352A478262007774B0 /* GardenGate in Frameworks */ = {isa = PBXBuildFile; productRef = 95D70D342A478262007774B0 /* GardenGate */; };
 		95EDB1972A79AE3D00778EBA /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 95EDB1962A79AE3D00778EBA /* PrivacyInfo.xcprivacy */; };
+		95EF0BA82A79C4CC003451F4 /* GardenComposer in Frameworks */ = {isa = PBXBuildFile; productRef = 95EF0BA72A79C4CC003451F4 /* GardenComposer */; };
 		95F2DE22297253FD00553937 /* Label+SettingsStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE21297253FD00553937 /* Label+SettingsStyle.swift */; };
 		95F2DE2429725C6100553937 /* BetaBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE2329725C6100553937 /* BetaBadge.swift */; };
 		95F2DE26297262D700553937 /* SettingsInterventionPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F2DE25297262D700553937 /* SettingsInterventionPage.swift */; };
@@ -440,6 +441,7 @@
 				95A4E1C82A59BF9A00D6DC0E /* SeedUI in Frameworks */,
 				95A02A6F295FE94F0013EF7C /* Alice in Frameworks */,
 				95A757B42A4A5F39003A1CAE /* Interventions in Frameworks */,
+				95EF0BA82A79C4CC003451F4 /* GardenComposer in Frameworks */,
 				954C95162A05E67F0019AE09 /* Runestone in Frameworks */,
 				95D70D352A478262007774B0 /* GardenGate in Frameworks */,
 				95555FB52960B7A2005BEF45 /* AckGenUI in Frameworks */,
@@ -991,6 +993,7 @@
 				95A757B32A4A5F39003A1CAE /* Interventions */,
 				95A4E1C72A59BF9A00D6DC0E /* SeedUI */,
 				95330A962A63033A001EA75B /* GardenSettings */,
+				95EF0BA72A79C4CC003451F4 /* GardenComposer */,
 			);
 			productName = "Capstone (iOS)";
 			productReference = 954722FD27A0094000D1BA89 /* Fedigardens.app */;
@@ -1058,6 +1061,7 @@
 				95A757B22A4A5F39003A1CAE /* XCLocalSwiftPackageReference "../Packages/Interventions" */,
 				95A4E1C62A59BF9A00D6DC0E /* XCLocalSwiftPackageReference "../Packages/SeedUI" */,
 				95330A952A63033A001EA75B /* XCLocalSwiftPackageReference "../Packages/GardenSettings" */,
+				95EF0BA62A79C4CC003451F4 /* XCLocalSwiftPackageReference "../Packages/GardenComposer" */,
 			);
 			productRefGroup = 954722FE27A0094000D1BA89 /* Products */;
 			projectDirPath = "";
@@ -1716,6 +1720,10 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../Packages/GardenGate;
 		};
+		95EF0BA62A79C4CC003451F4 /* XCLocalSwiftPackageReference "../Packages/GardenComposer" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../Packages/GardenComposer;
+		};
 /* End XCLocalSwiftPackageReference section */
 
 /* Begin XCRemoteSwiftPackageReference section */
@@ -1832,6 +1840,10 @@
 		95D70D342A478262007774B0 /* GardenGate */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GardenGate;
+		};
+		95EF0BA72A79C4CC003451F4 /* GardenComposer */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GardenComposer;
 		};
 		95F2DE2829726A7E00553937 /* Drops */ = {
 			isa = XCSwiftPackageProductDependency;
