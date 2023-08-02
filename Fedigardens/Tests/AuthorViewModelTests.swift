@@ -15,6 +15,7 @@
 @testable import Fedigardens
 import XCTest
 
+// TODO: Migrate these tests to the new flow once implemented.
 class ShoutAuthorViewModelTests: XCTestCase {
     var viewModel: AuthorViewModel?
 

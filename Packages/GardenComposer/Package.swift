@@ -14,12 +14,13 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Alice", path: "../Alice"),
-        .package(name: "FlowKit", path: "../FlowKit")
+        .package(name: "FlowKit", path: "../FlowKit"),
+        .package(name: "GardenSettings", path: "../GardenSettings")
     ],
     targets: [
         .target(
             name: "GardenComposer",
-            dependencies: ["Alice", "FlowKit"],
+            dependencies: ["Alice", "FlowKit", "GardenSettings"],
             resources: [
                 .process("Resources")
             ]),

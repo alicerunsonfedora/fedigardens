@@ -14,6 +14,7 @@
 
 import Alice
 import FrugalMode
+import GardenComposer
 import SwiftUI
 
 // MARK: - Status Navigation List
