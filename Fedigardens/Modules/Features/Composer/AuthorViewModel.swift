@@ -16,6 +16,7 @@ import Alice
 import Bunker
 import Combine
 import Drops
+import GardenComposer
 import GardenSettings
 import SwiftUI
 import UIKit

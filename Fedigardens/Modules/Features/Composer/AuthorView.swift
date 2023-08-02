@@ -13,7 +13,7 @@
 //  details.
 
 import Alice
-import Foundation
+import GardenComposer
 import SwiftUI
 import UIKit
 

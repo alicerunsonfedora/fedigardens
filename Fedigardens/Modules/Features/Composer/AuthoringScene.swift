@@ -14,6 +14,7 @@
 
 import Alice
 import enum Alice.Visibility
+import GardenComposer
 import SwiftUI
 
 struct AuthoringScene: Scene {

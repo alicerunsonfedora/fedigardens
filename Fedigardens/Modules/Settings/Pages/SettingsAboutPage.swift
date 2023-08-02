@@ -13,6 +13,7 @@
 //  details.
 
 import Alice
+import GardenComposer
 import SwiftUI
 
 struct SettingsAboutPage: View {
