@@ -18,12 +18,14 @@ import FlowKitTestSupport
 @testable import GardenComposer
 import XCTest
 
-class ComposerFlowTests: XCTestCase, StatefulTestCase {
+final class ComposerFlowTests: XCTestCase, StatefulTestCase {
     typealias TestableFlow = ComposerFlow
     var flow: ComposerFlow?
 
     override func setUp() async throws {
-        flow = ComposerFlow(characterLimit: 25)
+        let mock = AliceMockKeychain()
+        let provider = Alice(using: AliceMockSession.self, with: .init(using: mock))
+        flow = ComposerFlow(characterLimit: 25, provider: provider)
     }
 
     override func tearDown() async throws {
@@ -48,20 +50,35 @@ class ComposerFlowTests: XCTestCase, StatefulTestCase {
         await expectState(matches: .editing(expectedDraft))
     }
 
-    func testAddPollEvent() async throws {
-        var expectedDraft = ComposerDraft(new: "")
-        await emitAndWait(event: .startDraft(.init(new: "")), forPeriod: 2, timeout: 5)
-        expectedDraft.poll = .init(options: ["", ""], expirationDate: Date.now.advanced(by: 300))
-        await emitAndWait(event: .addPoll, forPeriod: 2, timeout: 5)
+    func testUpdatePollEvent() async throws {
+        let initialPoll = ComposerDraftPoll(options: ["Hello", "World"], expirationDate: .now.advanced(by: 300))
+        let expectedDraft = ComposerDraft(content: "Hello, world!", poll: initialPoll)
+        await emitAndWait(event: .startDraft(.init(new: "Hello, world!")), forPeriod: 2, timeout: 5)
+        await emitAndWait(event: .updatePoll(initialPoll), forPeriod: 2, timeout: 5)
         await expectState(matches: .editing(expectedDraft))
     }
 
-    func testAddPollOptionEvent() async throws {
-        var expectedDraft = ComposerDraft(new: "")
-        await emitAndWait(event: .startDraft(.init(new: "")), forPeriod: 2, timeout: 5)
-        expectedDraft.poll = .init(options: ["", "", "Test"], expirationDate: Date.now.advanced(by: 300))
-        await emitAndWait(event: .addPoll, forPeriod: 2, timeout: 5)
-        await emitAndWait(event: .addPollOption("Test"), forPeriod: 2, timeout: 5)
+    func testUpdateLocalizationEvent() async throws {
+        var expectedDraft = ComposerDraft(new: "Hello, world!")
+        expectedDraft.localizationCode = "fr"
+        await emitAndWait(event: .startDraft(.init(new: "Hello, world!")), forPeriod: 2, timeout: 5)
+        await emitAndWait(event: .updateLocalizationCode("fr"), forPeriod: 2, timeout: 5)
+        await expectState(matches: .editing(expectedDraft))
+    }
+
+    func testUpdateVisibilityEvent() async throws {
+        let expectedDraft = ComposerDraft(new: "Hello, world!", visibility: .direct)
+        await emitAndWait(event: .startDraft(.init(new: "Hello, world!")), forPeriod: 2, timeout: 5)
+        await emitAndWait(event: .updateVisibility(.direct), forPeriod: 2, timeout: 5)
+        await expectState(matches: .editing(expectedDraft))
+    }
+
+    func testUpdateContentWarningEvent() async throws {
+        var expectedDraft = ComposerDraft(new: "Hello, world!")
+        expectedDraft.containsSensitiveInformation = true
+        expectedDraft.sensitiveDisclaimer = "Uh oh"
+        await emitAndWait(event: .startDraft(.init(new: "Hello, world!")), forPeriod: 2, timeout: 5)
+        await emitAndWait(event: .updateContentWarning(true, message: "Uh oh"), forPeriod: 2, timeout: 5)
         await expectState(matches: .editing(expectedDraft))
     }
 
@@ -82,5 +99,10 @@ class ComposerFlowTests: XCTestCase, StatefulTestCase {
         await emitAndWait(event: .startDraft(draft), forPeriod: 2, timeout: 5)
         await emitAndWait(event: .publish, forPeriod: 5, timeout: 10)
         await expectState(matches: .errored(.exceedsCharacterLimit))
+    }
+
+    func testUpdateEventErrorsWithNoDraft() async throws {
+        await emitAndWait(event: .updateContentWarning(true, message: "How did I get here?"), forPeriod: 2, timeout: 5)
+        await expectState(matches: .errored(.noDraftSupplied))
     }
 }

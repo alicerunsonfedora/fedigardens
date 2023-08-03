@@ -26,12 +26,12 @@ public actor ComposerFlow {
 
     public enum Event {
         case startDraft(ComposerDraft)
-        case addPoll
-        case addPollOption(String)
-        case setPollExpiration(Date)
         case updateContent(String)
+        case updatePoll(ComposerDraftPoll)
         case updateParticipants(String)
         case updateLocalizationCode(String)
+        case updateContentWarning(Bool, message: String)
+        case updateVisibility(PostVisibility)
         case publish
         case reset
     }
@@ -42,14 +42,16 @@ public actor ComposerFlow {
     var characterLimit: Int
     var internalState: State = .initial {
         didSet {
-            for subscriber in stateSubscribers {
-                subscriber(internalState)
+            for callback in stateSubscribers {
+                callback(internalState)
             }
         }
     }
+    var networkProvider: Alice
 
-    public init(characterLimit: Int) {
+    public init(characterLimit: Int, provider: Alice) {
         self.characterLimit = characterLimit
+        self.networkProvider = provider
     }
 
 }
