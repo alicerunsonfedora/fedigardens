@@ -27,7 +27,7 @@ public actor ComposerFlow {
     public enum Event {
         case startDraft(ComposerDraft)
         case updateContent(String)
-        case updatePoll(ComposerDraftPoll)
+        case updatePoll(ComposerDraftPoll?)
         case updateParticipants(String)
         case updateLocalizationCode(String)
         case updateContentWarning(Bool, message: String)
@@ -58,6 +58,34 @@ public actor ComposerFlow {
 
 extension ComposerFlow: StatefulFlowProviding {
     public func emit(_ event: Event) async {
-
+        switch (internalState, event) {
+        case (.initial, .startDraft(let draft)):
+            internalState = .editing(draft)
+        case (.initial, .publish):
+            internalState = .errored(.noDraftSupplied)
+        case (.editing(var draft), .updateContent(let newMessage)):
+            draft.content = newMessage
+            internalState = .editing(draft)
+        case (.editing(var draft), .updateParticipants(let newParticipants)):
+            draft.mentions = newParticipants
+            internalState = .editing(draft)
+        case (.editing(var draft), .updateLocalizationCode(let locale)):
+            draft.localizationCode = locale
+            internalState = .editing(draft)
+        case (.editing(var draft), .updatePoll(let poll)):
+            draft.poll = poll
+            internalState = .editing(draft)
+        case (.editing(var draft), .updateVisibility(let newVisibility)):
+            draft.visibility = newVisibility
+            internalState = .editing(draft)
+        case (.editing(var draft), .updateContentWarning(let sensitive, message: let disclaimer)):
+            draft.containsSensitiveInformation = sensitive
+            draft.sensitiveDisclaimer = disclaimer
+            internalState = .editing(draft)
+        case (_, .reset):
+            internalState = .initial
+        default:
+            internalState = .errored(.unsupportedEventDispatch)
+        }
     }
 }

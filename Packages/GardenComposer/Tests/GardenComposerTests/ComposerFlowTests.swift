@@ -103,6 +103,6 @@ final class ComposerFlowTests: XCTestCase, StatefulTestCase {
 
     func testUpdateEventErrorsWithNoDraft() async throws {
         await emitAndWait(event: .updateContentWarning(true, message: "How did I get here?"), forPeriod: 2, timeout: 5)
-        await expectState(matches: .errored(.noDraftSupplied))
+        await expectState(matches: .errored(.unsupportedEventDispatch))
     }
 }
