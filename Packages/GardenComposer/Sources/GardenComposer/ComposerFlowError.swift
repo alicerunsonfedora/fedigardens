@@ -12,11 +12,14 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
+import Alice
 import Foundation
 
 public enum ComposerFlowError: LocalizedError {
     case noDraftSupplied
     case exceedsCharacterLimit
+    case mastodonError(MastodonError)
+    case unsupportedEventDispatch
 }
 
 extension ComposerFlowError: Equatable, Hashable {}
