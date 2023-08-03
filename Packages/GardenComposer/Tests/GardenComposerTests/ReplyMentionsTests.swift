@@ -35,5 +35,5 @@ final class ReplyMentionsTests: XCTestCase {
         let nonUniqueAccount = allAccounts.first { account in account != MockConstants.profile }
         let reply = MockConstants.status.replyMentions(excluding: nonUniqueAccount!)
         XCTAssertEqual(reply, "@admin")
-    }    
+    }
 }

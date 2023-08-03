@@ -97,22 +97,22 @@ public struct ComposerDraft {
     /// The count property uses the same counting algorithm as a Mastodon server to better reflect character limits
     /// Mastodon community servers impose.
     ///
-    /// If ``content`` contains any URLs, each URL will account for 23 characters per URL, rather than the full length of
-    /// the URL's absolute string. For example, the following content counts as 44 characters total:
+    /// If ``content`` contains any URLs, each URL will account for 23 characters per URL, rather than the full length
+    /// of the URL's absolute string. For example, the following content counts as 44 characters total:
     /// ```
     /// Testing https://www.google.com is that kool
     /// ```
     ///
-    /// If ``content`` contains any mentioned participants, or if ``mentions`` is not empty, only the usernames contribute
-    /// to the count, rather than the full handle (i.e., `@johnsmith` instead of `@johnsmith@apple.social`). For example,
-    /// the following content counts as 47 characters:
+    /// If ``content`` contains any mentioned participants, or if ``mentions`` is not empty, only the usernames
+    /// contribute to the count, rather than the full handle (i.e., `@johnsmith` instead of `@johnsmith@apple.social`).
+    /// For example, the following content counts as 47 characters:
     /// ```
     /// Let's mention @Gargron@mastodon.social in this reply, shall we?
     /// ```
     ///
-    /// - Note: In the event that an NSDataDetector cannot be generated for the current content, the content's string count
-    ///   is returned instead. However, this rarely occurs. Use ``count`` instead of `content.count` for a consistent
-    ///   character count.
+    /// - Note: In the event that an NSDataDetector cannot be generated for the current content, the content's string
+    ///   count is returned instead. However, this rarely occurs. Use ``count`` instead of `content.count` for a
+    ///   consistent character count.
     public var count: Int {
         do {
             let detector = try NSDataDetector(types: NSTextCheckingResult.CheckingType.link.rawValue)
