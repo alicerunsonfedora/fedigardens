@@ -159,3 +159,6 @@ public struct ComposerDraftPoll {
         self.expirationDate = expirationDate
     }
 }
+
+extension ComposerDraftPoll: Equatable, Hashable {}
+extension ComposerDraft: Equatable, Hashable {}
