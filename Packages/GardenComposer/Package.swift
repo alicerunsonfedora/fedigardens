@@ -10,7 +10,7 @@ let package = Package(
     products: [
         .library(
             name: "GardenComposer",
-            targets: ["GardenComposer"]),
+            targets: ["GardenComposer"])
     ],
     dependencies: [
         .package(name: "Alice", path: "../Alice"),
@@ -30,6 +30,6 @@ let package = Package(
                 "GardenComposer",
                 .product(name: "AliceMockingbird", package: "Alice"),
                 .product(name: "FlowKitTestSupport", package: "FlowKit")
-            ]),
+            ])
     ]
 )
