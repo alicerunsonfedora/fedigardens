@@ -15,11 +15,18 @@
 import Alice
 import Foundation
 
+/// A representation of the various errors the ``ComposerFlow`` can encounter.
 public enum ComposerFlowError: LocalizedError {
+    /// A draft wasn't supplied to the flow.
     case noDraftSupplied
+
+    /// The current contents of the draft exceed the imposed character limit.
     case exceedsCharacterLimit
-    case mismatchedContent
+
+    /// An error occurred server-side.
     case mastodonError(FetchError)
+
+    /// The current flow state and event being emitted doesn't match the expected chain of events.
     case unsupportedEventDispatch
 }
 

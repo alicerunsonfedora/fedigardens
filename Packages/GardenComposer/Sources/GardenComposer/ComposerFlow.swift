@@ -17,31 +17,64 @@ import FlowKit
 import Foundation
 import GardenSettings
 
+/// A flow used to author and publish discussions.
+///
+/// This flow is typically used in conjunction with a view to create a composition window.
 public actor ComposerFlow {
     private struct SettingConstants {
         @GardenSetting(key: .enforceCharacterLimit)
         static var enforcesCharacterLimit = true
     }
+
+    /// A representation of the various states this flow can exist in.
     public enum State: Equatable, Hashable {
+        /// The initial state.
         case initial
+
+        /// A discussion is actively being edited.
         case editing(ComposerDraft)
+
+        /// A discussion has been published to Mastodon.
         case published(Status)
+
+        /// An error occurred in the flow.
         case errored(ComposerFlowError)
     }
 
+    /// A representation of the various events that can occur.
     public enum Event {
+        /// Starts writing a discussion from an initial draft.
         case startDraft(ComposerDraft)
+
+        /// Updates the draft's primary content.
         case updateContent(String)
+
+        /// Updates the draft's poll, adding one when necessary.
         case updatePoll(ComposerDraftPoll?)
+
+        /// Updates the participants list of the current draft.
         case updateParticipants(String)
+
+        /// Updates the draft's locale.
         case updateLocalizationCode(String)
+
+        /// Updates the draft's content warning, marking the content as sensitive if necessary.
         case updateContentWarning(Bool, message: String)
+
+        /// Updates the draft's visibility.
         case updateVisibility(PostVisibility)
+
+        /// Publishes the current draft to Mastodon.
         case publish
+
+        /// Resets the flow to its initial state.
         case reset
     }
 
+    /// The current state of the flow.
     public var state: State { internalState }
+
+    /// An array of subscribers currently subscribed to this flow.
     public var stateSubscribers = [((State) -> Void)]()
 
     var characterLimit: Int
@@ -54,6 +87,9 @@ public actor ComposerFlow {
     }
     var networkProvider: Alice
 
+    /// Creates a new composer flow.
+    /// - Parameter characterLimit: The character limit the Mastodon instance enforces.
+    /// - Parameter provider: The network provider that the flow makes network requests with.
     public init(characterLimit: Int, provider: Alice) {
         self.characterLimit = characterLimit
         self.networkProvider = provider
@@ -82,6 +118,8 @@ public actor ComposerFlow {
 }
 
 extension ComposerFlow: StatefulFlowProviding {
+    /// Emits an event to the flow, updating the state as necessary.
+    /// - parameter event: The event that will be emitted and acted upon.
     public func emit(_ event: Event) async { // swiftlint:disable:this cyclomatic_complexity
         switch (internalState, event) {
         case (.initial, .startDraft(let draft)):
