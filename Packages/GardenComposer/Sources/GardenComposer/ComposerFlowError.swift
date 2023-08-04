@@ -18,8 +18,19 @@ import Foundation
 public enum ComposerFlowError: LocalizedError {
     case noDraftSupplied
     case exceedsCharacterLimit
-    case mastodonError(MastodonError)
+    case mismatchedContent
+    case mastodonError(FetchError)
     case unsupportedEventDispatch
 }
 
 extension ComposerFlowError: Equatable, Hashable {}
+
+extension FetchError: Equatable, Hashable {
+    public static func == (lhs: FetchError, rhs: FetchError) -> Bool {
+        lhs.description == rhs.description
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(description)
+    }
+}
