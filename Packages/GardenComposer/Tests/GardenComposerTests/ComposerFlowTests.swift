@@ -12,7 +12,7 @@
 //  Fedigardens comes with ABSOLUTELY NO WARRANTY, to the extent permitted by applicable law. See the CNPL for
 //  details.
 
-import Alice
+@testable import Alice
 import AliceMockingbird
 import FlowKitTestSupport
 @testable import GardenComposer
@@ -24,6 +24,7 @@ final class ComposerFlowTests: XCTestCase, StatefulTestCase {
 
     override func setUp() async throws {
         let mock = AliceMockKeychain()
+        mock.setSecureStore("d076cc9f3d73a31c13a4840884535755", forKey: "starlight_acess_token")
         let provider = Alice(using: AliceMockSession.self, with: .init(using: mock))
         flow = ComposerFlow(characterLimit: 25, provider: provider)
     }
@@ -86,7 +87,7 @@ final class ComposerFlowTests: XCTestCase, StatefulTestCase {
         let draft = ComposerDraft(new: "Hello, world!")
         await emitAndWait(event: .startDraft(draft), forPeriod: 2, timeout: 5)
         await emitAndWait(event: .publish, forPeriod: 5, timeout: 10)
-        await expectState(matches: .published)
+        await expectState(matches: .published(MockConstants.status))
     }
 
     func testPublishErrorsWithoutDraft() async throws {

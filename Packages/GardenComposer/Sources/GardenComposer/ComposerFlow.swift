@@ -15,12 +15,17 @@
 import Alice
 import FlowKit
 import Foundation
+import GardenSettings
 
 public actor ComposerFlow {
+    private struct SettingConstants {
+        @GardenSetting(key: .enforceCharacterLimit)
+        static var enforcesCharacterLimit = true
+    }
     public enum State: Equatable, Hashable {
         case initial
         case editing(ComposerDraft)
-        case published
+        case published(Status)
         case errored(ComposerFlowError)
     }
 
@@ -54,10 +59,30 @@ public actor ComposerFlow {
         self.networkProvider = provider
     }
 
+    func publishDraft() async -> State {
+        guard case .editing(let composerDraft) = internalState else {
+            return .errored(.noDraftSupplied)
+        }
+        if SettingConstants.enforcesCharacterLimit, composerDraft.count > characterLimit {
+            return .errored(.exceedsCharacterLimit)
+        }
+        let parameters = composerDraft.discussionQueryParameters
+        let requestMethod: Alice.Method = composerDraft.publishedStatusID == nil ? .post : .put
+        let response: Alice.Response<Status> = await networkProvider.request(
+            requestMethod,
+            for: .statuses(id: composerDraft.publishedStatusID),
+            params: parameters)
+        switch response {
+        case .success(let publishedStatus):
+            return .published(publishedStatus)
+        case .failure(let fetchError):
+            return .errored(.mastodonError(fetchError))
+        }
+    }
 }
 
 extension ComposerFlow: StatefulFlowProviding {
-    public func emit(_ event: Event) async {
+    public func emit(_ event: Event) async { // swiftlint:disable:this cyclomatic_complexity
         switch (internalState, event) {
         case (.initial, .startDraft(let draft)):
             internalState = .editing(draft)
@@ -82,6 +107,8 @@ extension ComposerFlow: StatefulFlowProviding {
             draft.containsSensitiveInformation = sensitive
             draft.sensitiveDisclaimer = disclaimer
             internalState = .editing(draft)
+        case (.editing, .publish):
+            internalState = await publishDraft()
         case (_, .reset):
             internalState = .initial
         default:
