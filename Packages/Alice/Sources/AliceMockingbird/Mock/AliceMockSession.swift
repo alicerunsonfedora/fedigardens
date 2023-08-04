@@ -34,9 +34,11 @@ public class AliceMockResponse: URLResponse {
 public class AliceMockSession {
     public typealias MockResponse = AliceMockResponse
     public var configuration: URLSessionConfiguration { urlSessionConfiguration }
+    public var rewriteUnknownHostsToMockHost = true
     private var urlSessionConfiguration: URLSessionConfiguration
 
     public enum Touchpoint: String {
+        case newStatus = "https://hyrma.example/api/v1/statuses"
         case status = "https://hyrma.example/api/v1/statuses/105833885501246760"
         case account = "https://hyrma.example/api/v1/accounts/1"
         case apps = "https://hyrma.example/api/v1/apps"
@@ -72,6 +74,15 @@ public class AliceMockSession {
         return (data, response)
     }
 
+    private func requestedSet(data: Data, to url: URL) async throws -> (Data, URLResponse) {
+        guard let response = response(from: url) else {
+            let fakedResp = MockResponse(url: url, mimeType: nil, expectedContentLength: 0, textEncodingName: nil)
+            fakedResp.data = data
+            throw FetchError.unknownResponseError(response: fakedResp)
+        }
+        return (data, response)
+    }
+
     private func unauthorized() -> FetchError {
         guard let data = data(for: "UnauthorizedError") else {
             return .unknownError(error: AliceMockError.noMockDataFound)
@@ -81,27 +92,72 @@ public class AliceMockSession {
         }
         return .mastodonAPIError(error: error, data: data)
     }
+
+    private func validateStatusPost(url: URL) async -> Data? {
+        guard let queryParameters = url.queryParameters else {
+            return data(for: "UnprocessableEntity")
+        }
+        if !queryParameters.keys.contains("status") { return data(for: "UnprocessableEntity") }
+        if queryParameters["status", default: ""].isEmpty {
+            return data(for: "UnprocessableEntity")
+        }
+
+        var nullifiedPoll = false
+        let requiredParams = ["poll[options][]", "poll[expires_in]"]
+        for (key, value) in queryParameters where key.starts(with: "poll") {
+            switch (key, value) {
+            case ("poll", "null"):
+                nullifiedPoll = true
+            case (key, _):
+                if nullifiedPoll || !requiredParams.contains(key) { return data(for: "UnprocessableEntity") }
+            default:
+                break
+            }
+        }
+
+        return nil
+    }
 }
 
 extension AliceMockSession: AliceSession {
     public func request(_ request: URLRequest, delegate: URLSessionTaskDelegate?) async throws -> (Data, URLResponse) {
-        guard let url = request.url else {
+        guard var url = request.url else {
             throw FetchError.unknownError(error: AliceMockError.badRequest)
         }
         let authenticated = request.allHTTPHeaderFields?["Authorization"]?.starts(with: "Bearer") == true
 
-        switch url.absoluteString {
-        case Touchpoint.status.rawValue:
+        if url.host() != "https://hyrma.example", rewriteUnknownHostsToMockHost {
+            var baseURL = "https://hyrma.example\(url.path())"
+            if let params = url.query() {
+                baseURL.append(contentsOf: "?\(params)")
+            }
+            url = URL(string: baseURL)!
+        }
+        return try await provideRequestedData(url: url, authenticated: authenticated, method: request.httpMethod)
+    }
+
+    func provideRequestedData( // swiftlint:disable:this cyclomatic_complexity
+        url: URL,
+        authenticated: Bool,
+        method: String? = "GET") async throws -> (Data, URLResponse) {
+        switch (method, url.absoluteString) {
+        case ("GET", Touchpoint.status.rawValue):
             guard authenticated else { throw unauthorized() }
             return try await requestedSet(for: "Status", to: url)
-        case Touchpoint.account.rawValue:
+        case ("POST", url.absoluteString) where url.absoluteString.starts(with: Touchpoint.newStatus.rawValue):
+            guard authenticated else { throw unauthorized() }
+            if let data = await validateStatusPost(url: url) {
+                return try await requestedSet(data: data, to: url)
+            }
+            return try await requestedSet(for: "Status", to: url)
+        case ("GET", Touchpoint.account.rawValue):
             guard authenticated else { throw unauthorized() }
             return try await requestedSet(for: "Profile", to: url)
-        case url.absoluteString where url.absoluteString.starts(with: Touchpoint.apps.rawValue):
+        case ("POST", url.absoluteString) where url.absoluteString.starts(with: Touchpoint.apps.rawValue):
             return try await requestedSet(for: "Registration", to: url)
-        case url.absoluteString where url.absoluteString.starts(with: Touchpoint.oauth.rawValue):
+        case ("POST", url.absoluteString) where url.absoluteString.starts(with: Touchpoint.oauth.rawValue):
             return try await requestedSet(for: "Token", to: url)
-        case url.absoluteString where url.absoluteString.starts(with: Touchpoint.revoke.rawValue):
+        case ("POST", url.absoluteString) where url.absoluteString.starts(with: Touchpoint.revoke.rawValue):
             return try await requestedSet(for: "Empty", to: url)
         default:
             throw FetchError.unknownError(error: AliceMockError.unknownEndpoint)
