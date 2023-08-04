@@ -142,6 +142,33 @@ public struct ComposerDraft {
             return content.count
         }
     }
+
+    /// A dictionary that contains the query parameters required to post this draft discussion to Mastodon.
+    public var discussionQueryParameters: [String: String] {
+        let fullContent = mentions.isEmpty ? content : [content, mentions].joined(separator: " ")
+        var parameters = ["status": fullContent, "language": localizationCode]
+
+        if publishedStatusID == nil {
+            parameters["visibility"] = visibility.rawValue
+        }
+
+        if let replyId = publishedStatusID ?? prompt?.id {
+            parameters["in_reply_to_id"] = replyId
+        }
+
+        if containsSensitiveInformation {
+            parameters["sensitive"] = "true"
+            parameters["spoiler_text"] = sensitiveDisclaimer
+        }
+
+        if let poll {
+            parameters["poll[options][]"] = poll.options.joined(separator: ",")
+            parameters["poll[expires_in]"] = String(poll.expirationDate.timeIntervalSinceNow.rounded())
+        } else {
+            parameters["poll"] = "null"
+        }
+        return parameters
+    }
 }
 
 /// A structure that represents a poll being drafted.
