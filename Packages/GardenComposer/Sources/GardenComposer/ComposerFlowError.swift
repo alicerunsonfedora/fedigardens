@@ -28,6 +28,19 @@ public enum ComposerFlowError: LocalizedError {
 
     /// The current flow state and event being emitted doesn't match the expected chain of events.
     case unsupportedEventDispatch
+
+    public var localizedDescription: String {
+        switch self {
+        case .noDraftSupplied:
+            return String(localized: "composer.error.missing-draft")
+        case .exceedsCharacterLimit:
+            return String(localized: "composer.error.character-limit")
+        case .mastodonError(let fetchError):
+            return fetchError.localizedDescription
+        case .unsupportedEventDispatch:
+            return String(localized: "composer.error.unsupported-event")
+        }
+    }
 }
 
 extension ComposerFlowError: Equatable, Hashable {}

@@ -1,0 +1,36 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "composer.error.character-limit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This draft exceeds the character limit."
+          }
+        }
+      }
+    },
+    "composer.error.missing-draft" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A draft is required to publish a discussion."
+          }
+        }
+      }
+    },
+    "composer.error.unsupported-event" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The flow has encountered an unsupported state-event pair."
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}
