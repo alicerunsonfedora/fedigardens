@@ -114,7 +114,6 @@
 		957CBC8529FEE60400FE23BA /* SettingsEnergyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957CBC8429FEE60400FE23BA /* SettingsEnergyPage.swift */; };
 		957CBC8629FEE60400FE23BA /* SettingsEnergyPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957CBC8429FEE60400FE23BA /* SettingsEnergyPage.swift */; };
 		95801D1F297C6B3800FE8D83 /* SettingsAuthorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */; };
-		95801D21297C71F000FE8D83 /* AuthorViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95801D20297C71F000FE8D83 /* AuthorViewModelTests.swift */; };
 		95801D26297C751C00FE8D83 /* String+AttributedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95ADADE327B6A6BB0011FD83 /* String+AttributedContent.swift */; };
 		95801D27297C752000FE8D83 /* Bundle+AppVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953DE4D227D69C7D0043A357 /* Bundle+AppVersion.swift */; };
 		95801D29297C753C00FE8D83 /* Emojis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95A1BF9E2973B8B2002C88B6 /* Emojis.swift */; };
@@ -359,7 +358,6 @@
 		957AF854295937CF000370E6 /* AuthorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewModel.swift; sourceTree = "<group>"; };
 		957CBC8429FEE60400FE23BA /* SettingsEnergyPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsEnergyPage.swift; sourceTree = "<group>"; };
 		95801D1E297C6B3800FE8D83 /* SettingsAuthorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAuthorPage.swift; sourceTree = "<group>"; };
-		95801D20297C71F000FE8D83 /* AuthorViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewModelTests.swift; sourceTree = "<group>"; };
 		95801D2D297C852100FE8D83 /* NSTextCheckingResult+Substring.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSTextCheckingResult+Substring.swift"; sourceTree = "<group>"; };
 		95801D32297C9B6E00FE8D83 /* Visibility+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Visibility+Localization.swift"; sourceTree = "<group>"; };
 		95801D38297CAC8B00FE8D83 /* SettingsAboutPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAboutPage.swift; sourceTree = "<group>"; };
@@ -875,7 +873,6 @@
 			children = (
 				95ADADE727B6A7F10011FD83 /* Statuses.swift */,
 				95ADADEB27B6A8E40011FD83 /* Shared.swift */,
-				95801D20297C71F000FE8D83 /* AuthorViewModelTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -1364,7 +1361,6 @@
 				95801D43297CC0F200FE8D83 /* AuthorReplySegment.swift in Sources */,
 				95860C5D29981F3700068425 /* PollVotingView.swift in Sources */,
 				95860C63299837ED00068425 /* StatusDetailList.swift in Sources */,
-				95801D21297C71F000FE8D83 /* AuthorViewModelTests.swift in Sources */,
 				95801D5F297CC13C00FE8D83 /* MessagingList.swift in Sources */,
 				95801D57297CC13400FE8D83 /* StatusContextProvider.swift in Sources */,
 				95801D27297C752000FE8D83 /* Bundle+AppVersion.swift in Sources */,
