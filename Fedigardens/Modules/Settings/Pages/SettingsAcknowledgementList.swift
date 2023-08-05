@@ -20,7 +20,8 @@ struct SettingsAcknowledgementList: View {
         Acknowledgement.all() + [
             .init(title: "Alice (Chica fork)", license: Acknowledgement.license(named: "NPL")),
             .init(title: "HTML2Markdown", license: Acknowledgement.license(named: "MIT-HTML2Markdown", ofType: "md")),
-            .init(title: "SafariView", license: Acknowledgement.license(named: "MPLv2"))
+            .init(title: "SafariView", license: Acknowledgement.license(named: "MPLv2")),
+            .init(title: "FlowKit", license: Acknowledgement.license(named: "MPLv2"))
         ]
     }
 
