@@ -21,10 +21,10 @@ public enum ComposerFlowError: LocalizedError {
     case noDraftSupplied
 
     /// The current contents of the draft exceed the imposed character limit.
-    case exceedsCharacterLimit
+    case exceedsCharacterLimit(draft: ComposerDraft)
 
     /// An error occurred server-side.
-    case mastodonError(FetchError)
+    case mastodonError(FetchError, draft: ComposerDraft)
 
     /// The current flow state and event being emitted doesn't match the expected chain of events.
     case unsupportedEventDispatch
@@ -35,7 +35,7 @@ public enum ComposerFlowError: LocalizedError {
             return String(localized: "composer.error.missing-draft")
         case .exceedsCharacterLimit:
             return String(localized: "composer.error.character-limit")
-        case .mastodonError(let fetchError):
+        case .mastodonError(let fetchError, _):
             return fetchError.localizedDescription
         case .unsupportedEventDispatch:
             return String(localized: "composer.error.unsupported-event")

@@ -111,7 +111,7 @@ public actor ComposerFlow {
             return .errored(.noDraftSupplied)
         }
         if characterLimitProperties.enforced, composerDraft.count > characterLimitProperties.maximumCharacters {
-            return .errored(.exceedsCharacterLimit)
+            return .errored(.exceedsCharacterLimit(draft: composerDraft))
         }
         let parameters = composerDraft.discussionQueryParameters
         let requestMethod: Alice.Method = composerDraft.publishedStatusID == nil ? .post : .put
@@ -123,7 +123,7 @@ public actor ComposerFlow {
         case .success(let publishedStatus):
             return .published(publishedStatus)
         case .failure(let fetchError):
-            return .errored(.mastodonError(fetchError))
+            return .errored(.mastodonError(fetchError, draft: composerDraft))
         }
     }
 }
