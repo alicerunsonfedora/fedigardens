@@ -20,6 +20,10 @@ import XCTest
 
 final class ComposerFlowTests: XCTestCase, StatefulTestCase {
     typealias TestableFlow = ComposerFlow
+
+    private let defaultText = "Hello, world!"
+    private let overflowedText = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+
     var flow: ComposerFlow?
 
     override func setUp() async throws {
@@ -45,46 +49,46 @@ final class ComposerFlowTests: XCTestCase, StatefulTestCase {
     }
 
     func testUpdateContentEvent() async throws {
-        let expectedDraft = ComposerDraft(new: "Hello, world!")
+        let expectedDraft = ComposerDraft(new: defaultText)
         await emitAndWait(event: .startDraft(.init(new: "")), forPeriod: 2, timeout: 5)
-        await emitAndWait(event: .updateContent("Hello, world!"), forPeriod: 2, timeout: 5)
+        await emitAndWait(event: .updateContent(defaultText), forPeriod: 2, timeout: 5)
         await expectState(matches: .editing(expectedDraft))
     }
 
     func testUpdatePollEvent() async throws {
         let initialPoll = ComposerDraftPoll(options: ["Hello", "World"], expirationDate: .now.advanced(by: 300))
-        let expectedDraft = ComposerDraft(content: "Hello, world!", poll: initialPoll)
-        await emitAndWait(event: .startDraft(.init(new: "Hello, world!")), forPeriod: 2, timeout: 5)
+        let expectedDraft = ComposerDraft(content: defaultText, poll: initialPoll)
+        await emitAndWait(event: .startDraft(.init(new: defaultText)), forPeriod: 2, timeout: 5)
         await emitAndWait(event: .updatePoll(initialPoll), forPeriod: 2, timeout: 5)
         await expectState(matches: .editing(expectedDraft))
     }
 
     func testUpdateLocalizationEvent() async throws {
-        var expectedDraft = ComposerDraft(new: "Hello, world!")
+        var expectedDraft = ComposerDraft(new: defaultText)
         expectedDraft.localizationCode = "fr"
-        await emitAndWait(event: .startDraft(.init(new: "Hello, world!")), forPeriod: 2, timeout: 5)
+        await emitAndWait(event: .startDraft(.init(new: defaultText)), forPeriod: 2, timeout: 5)
         await emitAndWait(event: .updateLocalizationCode("fr"), forPeriod: 2, timeout: 5)
         await expectState(matches: .editing(expectedDraft))
     }
 
     func testUpdateVisibilityEvent() async throws {
-        let expectedDraft = ComposerDraft(new: "Hello, world!", visibility: .direct)
-        await emitAndWait(event: .startDraft(.init(new: "Hello, world!")), forPeriod: 2, timeout: 5)
+        let expectedDraft = ComposerDraft(new: defaultText, visibility: .direct)
+        await emitAndWait(event: .startDraft(.init(new: defaultText)), forPeriod: 2, timeout: 5)
         await emitAndWait(event: .updateVisibility(.direct), forPeriod: 2, timeout: 5)
         await expectState(matches: .editing(expectedDraft))
     }
 
     func testUpdateContentWarningEvent() async throws {
-        var expectedDraft = ComposerDraft(new: "Hello, world!")
+        var expectedDraft = ComposerDraft(new: defaultText)
         expectedDraft.containsSensitiveInformation = true
         expectedDraft.sensitiveDisclaimer = "Uh oh"
-        await emitAndWait(event: .startDraft(.init(new: "Hello, world!")), forPeriod: 2, timeout: 5)
+        await emitAndWait(event: .startDraft(.init(new: defaultText)), forPeriod: 2, timeout: 5)
         await emitAndWait(event: .updateContentWarning(true, message: "Uh oh"), forPeriod: 2, timeout: 5)
         await expectState(matches: .editing(expectedDraft))
     }
 
     func testPublishEvent() async throws {
-        let draft = ComposerDraft(new: "Hello, world!")
+        let draft = ComposerDraft(new: defaultText)
         await emitAndWait(event: .startDraft(draft), forPeriod: 2, timeout: 5)
         await emitAndWait(event: .publish, forPeriod: 5, timeout: 10)
         await expectState(matches: .published(MockConstants.status))
@@ -96,7 +100,7 @@ final class ComposerFlowTests: XCTestCase, StatefulTestCase {
     }
 
     func testPublishErrorsExceedingCharacterLimit() async throws {
-        let draft = ComposerDraft(new: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+        let draft = ComposerDraft(new: overflowedText)
         await emitAndWait(event: .startDraft(draft), forPeriod: 2, timeout: 5)
         await emitAndWait(event: .publish, forPeriod: 5, timeout: 10)
         await expectState(matches: .errored(.exceedsCharacterLimit(draft: draft)))
