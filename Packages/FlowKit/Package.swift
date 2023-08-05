@@ -14,6 +14,9 @@ let package = Package(
             name: "FlowKitTestSupport",
             targets: ["FlowKitTestSupport"])
     ],
+    dependencies: [
+        .package(url: "https://github.com/apple/swift-docc-plugin", from: "1.3.0"),
+    ],
     targets: [
         .target(
             name: "FlowKit"),
