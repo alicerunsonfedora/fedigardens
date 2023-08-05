@@ -21,11 +21,6 @@ import GardenSettings
 ///
 /// This flow is typically used in conjunction with a view to create a composition window.
 public actor ComposerFlow {
-    private struct SettingConstants {
-        @GardenSetting(key: .enforceCharacterLimit)
-        static var enforcesCharacterLimit = true
-    }
-
     /// A structure representing the character limit enforcement rules.
     public struct CharacterLimit {
         /// Whether the rule is enforced client-side.
