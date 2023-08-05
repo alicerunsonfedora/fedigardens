@@ -15,6 +15,7 @@
 import Alice
 import SwiftUI
 
+@available(*, deprecated, renamed: "DiscussionVerifiedBadge")
 struct StatusVerifiedButton: View {
     @State private var showVerifiedInformation = false
 

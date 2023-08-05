@@ -41,6 +41,9 @@
          <FileRef
             location = "group:Packages/FlowKit">
          </FileRef>
+         <FileRef
+            location = "group:Packages/WebString">
+         </FileRef>
       </Group>
       <Group
          location = "container:"

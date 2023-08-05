@@ -13,6 +13,7 @@
 //  details.
 
 import Alice
+import GardenDiscussions
 import EmojiText
 import SwiftUI
 
@@ -67,7 +68,7 @@ struct StatusAuthorExtendedLabel: View {
                 .bold()
                 .lineLimit(1)
                 if hasVerifiedAccount, placementPolicy == .byAuthorName {
-                    StatusVerifiedButton(status: status)
+                    DiscussionVerifiedBadge(status: status)
                 }
                 if isDevelopmentMember, placementPolicy == .byAuthorName {
                     Image(systemName: "camera.macro")
