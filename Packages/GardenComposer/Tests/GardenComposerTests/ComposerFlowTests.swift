@@ -26,7 +26,7 @@ final class ComposerFlowTests: XCTestCase, StatefulTestCase {
         let mock = AliceMockKeychain()
         mock.setSecureStore("d076cc9f3d73a31c13a4840884535755", forKey: "starlight_acess_token")
         let provider = Alice(using: AliceMockSession.self, with: .init(using: mock))
-        flow = ComposerFlow(characterLimit: 25, provider: provider)
+        flow = ComposerFlow(provider: provider, limit: .init(maximumCharacters: 25))
     }
 
     override func tearDown() async throws {

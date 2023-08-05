@@ -26,6 +26,21 @@ public actor ComposerFlow {
         static var enforcesCharacterLimit = true
     }
 
+    /// A structure representing the character limit enforcement rules.
+    public struct CharacterLimit {
+        /// Whether the rule is enforced client-side.
+        public var enforced: Bool
+
+        /// The maximum number of characters the Mastodon instance accepts.
+        public var maximumCharacters: Int
+
+        /// Creates a character limit rule.
+        public init(enforced: Bool = true, maximumCharacters: Int = 500) {
+            self.enforced = enforced
+            self.maximumCharacters = maximumCharacters
+        }
+    }
+
     /// A representation of the various states this flow can exist in.
     public enum State: Equatable, Hashable {
         /// The initial state.
@@ -77,7 +92,8 @@ public actor ComposerFlow {
     /// An array of subscribers currently subscribed to this flow.
     public var stateSubscribers = [((State) -> Void)]()
 
-    var characterLimit: Int
+    var characterLimitProperties: CharacterLimit
+
     var internalState: State = .initial {
         didSet {
             for callback in stateSubscribers {
@@ -88,10 +104,10 @@ public actor ComposerFlow {
     var networkProvider: Alice
 
     /// Creates a new composer flow.
-    /// - Parameter characterLimit: The character limit the Mastodon instance enforces.
     /// - Parameter provider: The network provider that the flow makes network requests with.
-    public init(characterLimit: Int, provider: Alice) {
-        self.characterLimit = characterLimit
+    /// - Parameter maximumCharacters: The character limit the Mastodon instance enforces.
+    public init(provider: Alice, limit: CharacterLimit) {
+        self.characterLimitProperties = limit
         self.networkProvider = provider
     }
 
@@ -99,7 +115,7 @@ public actor ComposerFlow {
         guard case .editing(let composerDraft) = internalState else {
             return .errored(.noDraftSupplied)
         }
-        if SettingConstants.enforcesCharacterLimit, composerDraft.count > characterLimit {
+        if characterLimitProperties.enforced, composerDraft.count > characterLimitProperties.maximumCharacters {
             return .errored(.exceedsCharacterLimit)
         }
         let parameters = composerDraft.discussionQueryParameters
