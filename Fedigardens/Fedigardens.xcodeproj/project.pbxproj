@@ -45,6 +45,8 @@
 		954C95192A05E6A50019AE09 /* RunestoneViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95182A05E6A50019AE09 /* RunestoneViewer.swift */; };
 		954C951A2A05E6A50019AE09 /* RunestoneViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 954C95182A05E6A50019AE09 /* RunestoneViewer.swift */; };
 		954C951C2A05F39B0019AE09 /* Runestone in Frameworks */ = {isa = PBXBuildFile; productRef = 954C951B2A05F39B0019AE09 /* Runestone */; };
+		954FEEE22A7EF98D00874628 /* GardenProfiles in Frameworks */ = {isa = PBXBuildFile; productRef = 954FEEE12A7EF98D00874628 /* GardenProfiles */; };
+		954FEEE52A7EF99E00874628 /* GardenDiscussions in Frameworks */ = {isa = PBXBuildFile; productRef = 954FEEE42A7EF99E00874628 /* GardenDiscussions */; };
 		9552C36B2A7ED8B400CC3F87 /* GardenProfiles in Frameworks */ = {isa = PBXBuildFile; productRef = 9552C36A2A7ED8B400CC3F87 /* GardenProfiles */; };
 		95555FB32960B7A2005BEF45 /* AckGen in Frameworks */ = {isa = PBXBuildFile; productRef = 95555FB22960B7A2005BEF45 /* AckGen */; };
 		95555FB52960B7A2005BEF45 /* AckGenUI in Frameworks */ = {isa = PBXBuildFile; productRef = 95555FB42960B7A2005BEF45 /* AckGenUI */; };
@@ -440,7 +442,9 @@
 				95D70D352A478262007774B0 /* GardenGate in Frameworks */,
 				95555FB52960B7A2005BEF45 /* AckGenUI in Frameworks */,
 				95330A972A63033A001EA75B /* GardenSettings in Frameworks */,
+				954FEEE52A7EF99E00874628 /* GardenDiscussions in Frameworks */,
 				95A1BF9D2973B83C002C88B6 /* EmojiText in Frameworks */,
+				954FEEE22A7EF98D00874628 /* GardenProfiles in Frameworks */,
 				9558C7EC29578503001B30C7 /* HTML2Markdown in Frameworks */,
 				958E5A482A48B79800B87B5A /* FrugalMode in Frameworks */,
 				9581C9652A473D8900621585 /* FlowKit in Frameworks */,
@@ -986,6 +990,8 @@
 				95330A962A63033A001EA75B /* GardenSettings */,
 				95EF0BA72A79C4CC003451F4 /* GardenComposer */,
 				9552C36A2A7ED8B400CC3F87 /* GardenProfiles */,
+				954FEEE12A7EF98D00874628 /* GardenProfiles */,
+				954FEEE42A7EF99E00874628 /* GardenDiscussions */,
 			);
 			productName = "Capstone (iOS)";
 			productReference = 954722FD27A0094000D1BA89 /* Fedigardens.app */;
@@ -1054,6 +1060,8 @@
 				95A4E1C62A59BF9A00D6DC0E /* XCLocalSwiftPackageReference "../Packages/SeedUI" */,
 				95330A952A63033A001EA75B /* XCLocalSwiftPackageReference "../Packages/GardenSettings" */,
 				95EF0BA62A79C4CC003451F4 /* XCLocalSwiftPackageReference "../Packages/GardenComposer" */,
+				954FEEE02A7EF98D00874628 /* XCLocalSwiftPackageReference "../Packages/GardenProfiles" */,
+				954FEEE32A7EF99E00874628 /* XCLocalSwiftPackageReference "../Packages/GardenDiscussions" */,
 			);
 			productRefGroup = 954722FE27A0094000D1BA89 /* Products */;
 			projectDirPath = "";
@@ -1687,6 +1695,14 @@
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../Packages/GardenSettings;
 		};
+		954FEEE02A7EF98D00874628 /* XCLocalSwiftPackageReference "../Packages/GardenProfiles" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../Packages/GardenProfiles;
+		};
+		954FEEE32A7EF99E00874628 /* XCLocalSwiftPackageReference "../Packages/GardenDiscussions" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../Packages/GardenDiscussions;
+		};
 		9581C9632A473D8900621585 /* XCLocalSwiftPackageReference "../Packages/FlowKit" */ = {
 			isa = XCLocalSwiftPackageReference;
 			relativePath = ../Packages/FlowKit;
@@ -1778,6 +1794,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 954C95142A05E67F0019AE09 /* XCRemoteSwiftPackageReference "Runestone" */;
 			productName = Runestone;
+		};
+		954FEEE12A7EF98D00874628 /* GardenProfiles */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GardenProfiles;
+		};
+		954FEEE42A7EF99E00874628 /* GardenDiscussions */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GardenDiscussions;
 		};
 		9552C36A2A7ED8B400CC3F87 /* GardenProfiles */ = {
 			isa = XCSwiftPackageProductDependency;
