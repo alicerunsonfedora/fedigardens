@@ -99,7 +99,7 @@ final class ComposerFlowTests: XCTestCase, StatefulTestCase {
         let draft = ComposerDraft(new: "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
         await emitAndWait(event: .startDraft(draft), forPeriod: 2, timeout: 5)
         await emitAndWait(event: .publish, forPeriod: 5, timeout: 10)
-        await expectState(matches: .errored(.exceedsCharacterLimit))
+        await expectState(matches: .errored(.exceedsCharacterLimit(draft: draft)))
     }
 
     func testUpdateEventErrorsWithNoDraft() async throws {
