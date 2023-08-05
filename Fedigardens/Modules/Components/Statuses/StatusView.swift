@@ -14,6 +14,7 @@
 
 import Alice
 import EmojiText
+import GardenProfiles
 import SwiftUI
 
 // MARK: - Status View
@@ -217,7 +218,7 @@ struct StatusView: View {
                         if frugalMode {
                             Image(systemName: "person.circle")
                         } else {
-                            AccountImage(author: status.account)
+                            ProfileImage(author: status.account)
                                 .profileSize(.small)
                         }
                     }
@@ -232,7 +233,7 @@ struct StatusView: View {
                     if frugalMode {
                         Image(systemName: "person.circle")
                     } else {
-                        AccountImage(author: status.account)
+                        ProfileImage(author: status.account)
                             .profileSize(.small)
                     }
                 }

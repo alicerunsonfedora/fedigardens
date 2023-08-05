@@ -14,6 +14,7 @@
 
 import Alice
 import EmojiText
+import GardenProfiles
 import SwiftUI
 
 struct SearchAccountView: View {
@@ -27,7 +28,7 @@ struct SearchAccountView: View {
 
     var body: some View {
         HStack {
-            AccountImage(author: account)
+            ProfileImage(author: account)
                 .profileSize(.large)
             VStack(alignment: .leading) {
                 HStack {

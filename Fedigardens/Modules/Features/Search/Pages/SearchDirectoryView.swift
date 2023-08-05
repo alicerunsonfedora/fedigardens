@@ -14,6 +14,7 @@
 
 import Alice
 import EmojiText
+import GardenProfiles
 import SwiftUI
 
 struct SearchDirectoryView: View {
@@ -30,7 +31,7 @@ struct SearchDirectoryView: View {
                         viewModel.currentPresentedAccount = account
                     } label: {
                         VStack {
-                            AccountImage(author: account)
+                            ProfileImage(author: account)
                                 .profileSize(.xlarge)
                             EmojiText(
                                 markdown: account.getAccountName(),

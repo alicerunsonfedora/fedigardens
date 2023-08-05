@@ -69,4 +69,3 @@ public extension ProfileImage {
         ProfileImage(author: author, profileImageSize: size)
     }
 }
-

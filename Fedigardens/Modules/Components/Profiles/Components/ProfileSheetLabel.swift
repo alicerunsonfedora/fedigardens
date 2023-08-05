@@ -14,6 +14,7 @@
 
 import Alice
 import EmojiText
+import GardenProfiles
 import SwiftUI
 
 struct ProfileSheetLabel: View {
@@ -27,7 +28,7 @@ struct ProfileSheetLabel: View {
 
     var body: some View {
         VStack(spacing: 4) {
-            AccountImage(author: profile)
+            ProfileImage(author: profile)
                 .profileSize(.xxlarge)
             EmojiText(markdown: profile.getAccountName(), emojis: emojis)
                 .font(.system(.largeTitle, design: .rounded))
