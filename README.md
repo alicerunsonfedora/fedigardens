@@ -86,5 +86,6 @@ projects:
 - EmojiText: Apache 2.0 License
 - AckGen: MIT License
 - Runestone: MIT License
+- FlowKit: Mozilla Public License v2
 
 [capstone-link]: https://github.com/alicerunsonfedora/capstone
