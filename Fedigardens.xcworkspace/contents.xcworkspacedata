@@ -21,19 +21,6 @@
       name = "Modules">
       <Group
          location = "container:"
-         name = "Fundamentals">
-         <FileRef
-            location = "group:Packages/Alice">
-         </FileRef>
-         <FileRef
-            location = "group:Packages/FlowKit">
-         </FileRef>
-         <FileRef
-            location = "group:Packages/SeedUI">
-         </FileRef>
-      </Group>
-      <Group
-         location = "container:"
          name = "Features">
          <FileRef
             location = "group:Packages/GardenComposer">
@@ -45,8 +32,28 @@
             location = "group:Packages/FrugalMode">
          </FileRef>
       </Group>
+      <Group
+         location = "container:"
+         name = "Fundamentals">
+         <FileRef
+            location = "group:Packages/Alice">
+         </FileRef>
+         <FileRef
+            location = "group:Packages/FlowKit">
+         </FileRef>
+      </Group>
+      <Group
+         location = "container:"
+         name = "Interface">
+         <FileRef
+            location = "group:Packages/SeedUI">
+         </FileRef>
+      </Group>
       <FileRef
          location = "group:Packages/GardenGate">
+      </FileRef>
+      <FileRef
+         location = "group:Packages/GardenProfiles">
       </FileRef>
       <FileRef
          location = "group:Packages/GardenSettings">
