@@ -15,6 +15,9 @@ included:
   - Fedigardens
   - Packages
 
+excluded:
+  - Packages/FlowKit
+
 type_name:
   allowed_symbols: ["_"]
 
