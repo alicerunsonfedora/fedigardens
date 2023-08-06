@@ -17,6 +17,7 @@ import HTML2Markdown
 import SwiftUI
 
 extension String {
+    @available(*, deprecated, message: "Use WebString to create attributed HTML strings.")
     func attributedHTML() -> AttributedString {
         let dumbSelf = AttributedString(stringLiteral: self)
         do {
@@ -32,6 +33,7 @@ extension String {
         }
     }
 
+    @available(*, deprecated, message: "Use WebString to fetch markdown.")
     func markdown() -> String {
         let dumbSelf = self
         do {
@@ -43,6 +45,7 @@ extension String {
         }
     }
 
+    @available(*, deprecated, message: "Use WebString to fetch plain text contents.")
     func plainTextContents() -> String {
         do {
             let htmlDOM = try HTMLParser().parse(html: self)

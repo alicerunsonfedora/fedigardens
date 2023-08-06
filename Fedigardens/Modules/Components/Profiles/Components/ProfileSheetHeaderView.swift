@@ -16,6 +16,7 @@ import Alice
 import EmojiText
 import SeedUI
 import SwiftUI
+import WebString
 
 struct ProfileSheetHeaderView: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false
@@ -44,7 +45,7 @@ struct ProfileSheetHeaderView: View {
                 Spacer()
             }
             ProfileSheetStatistics(profile: profile)
-            EmojiText(markdown: profile.note.markdown(), emojis: allEmojis)
+            EmojiText(markdown: profile.note.markdown, emojis: allEmojis)
                 .font(.subheadline)
         }
         .listRowSeparator(.hidden)

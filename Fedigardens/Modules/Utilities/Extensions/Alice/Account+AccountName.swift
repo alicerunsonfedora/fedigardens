@@ -14,6 +14,7 @@
 
 import Alice
 import Foundation
+import WebString
 
 extension Account {
     /// Returns the account name for this account.
@@ -38,7 +39,7 @@ extension Account {
     /// Returns the Matrix ID of a user if they have left information about it in their bio.
     func matrixID() -> String? {
         guard let matrixValue = fields.first(where: { $0.name == "Matrix" })?
-            .value.plainTextContents() else { return nil }
+            .value.plainTextContent else { return nil }
         let matrixRegex = /[\@\+\!\#\$][a-z0-9\.\_\=\-\/]+:(.*)/
         return try? matrixRegex.wholeMatch(in: matrixValue) == nil ? nil : matrixValue
     }

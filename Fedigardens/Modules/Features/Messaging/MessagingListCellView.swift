@@ -13,8 +13,8 @@
 //  details.
 
 import Alice
-import Foundation
 import SwiftUI
+import WebString
 
 // MARK: - Messaging List Cell
 
@@ -45,7 +45,7 @@ struct MessagingListCellView: View {
                         .font(.system(.footnote, design: .rounded))
                     }
                 }
-                Text(conversation.lastStatus?.content.attributedHTML() ?? "")
+                Text(AttributedString(html: conversation.lastStatus?.content ?? ""))
                     .foregroundColor(.secondary)
                     .lineLimit(2)
                     .tint(Color(uiColor: .tertiaryLabel))

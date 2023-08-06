@@ -10,7 +10,7 @@ let package = Package(
     products: [
         .library(
             name: "GardenDiscussions",
-            targets: ["GardenDiscussions"]),
+            targets: ["GardenDiscussions"])
     ],
     dependencies: [
         .package(name: "Alice", path: "../Alice"),
@@ -26,6 +26,6 @@ let package = Package(
             dependencies: ["Alice", "FrugalMode", "GardenProfiles", "GardenSettings", "WebString", "EmojiText"]),
         .testTarget(
             name: "GardenDiscussionsTests",
-            dependencies: ["GardenDiscussions"]),
+            dependencies: ["GardenDiscussions"])
     ]
 )

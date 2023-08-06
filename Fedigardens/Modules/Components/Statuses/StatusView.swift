@@ -16,6 +16,7 @@ import Alice
 import EmojiText
 import GardenProfiles
 import SwiftUI
+import WebString
 
 // MARK: - Status View
 
@@ -211,7 +212,7 @@ struct StatusView: View {
         Group {
             if truncateLines == nil {
                 Label {
-                    EmojiText(markdown: "\(status.account.getAccountName()) reblogged".markdown(), emojis: allEmojis)
+                    EmojiText(markdown: "\(status.account.getAccountName()) reblogged".markdown, emojis: allEmojis)
                         .bold()
                 } icon: {
                     Group {
@@ -227,7 +228,7 @@ struct StatusView: View {
                 .labelStyle(.titleAndIcon)
             } else {
                 Label {
-                    EmojiText(markdown: "\(status.account.getAccountName()) reblogged".markdown(), emojis: allEmojis)
+                    EmojiText(markdown: "\(status.account.getAccountName()) reblogged".markdown, emojis: allEmojis)
                         .bold()
                 } icon: {
                     if frugalMode {

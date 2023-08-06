@@ -13,8 +13,8 @@
 //  details.
 
 import Alice
-import Foundation
 import SwiftUI
+import WebString
 
 // MARK: - Message Presentation View
 
@@ -114,7 +114,7 @@ private struct MessagePresentationBubble: View {
 
     /// The text view that renders the message contents.
     private var baseTextView: some View {
-        Text(message.content.attributedHTML())
+        Text(AttributedString(html: message.content))
             .padding(.vertical, 8)
             .padding(.horizontal, 12)
     }

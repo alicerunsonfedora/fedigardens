@@ -15,6 +15,7 @@
 import Alice
 import EmojiText
 import SwiftUI
+import WebString
 
 struct ProfileSheetFields: View {
     @Environment(\.enforcedFrugalMode) var enforcedFrugalMode
@@ -29,7 +30,7 @@ struct ProfileSheetFields: View {
         Group {
             ForEach(profile.fields) { (field: Field) in
                 LabeledContent(field.name) {
-                    EmojiText(markdown: field.value.markdown(), emojis: emojis)
+                    EmojiText(markdown: field.value.markdown, emojis: emojis)
                         .multilineTextAlignment(.trailing)
                 }
                 .listRowBackground(

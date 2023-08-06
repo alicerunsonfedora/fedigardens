@@ -15,6 +15,7 @@
 import Alice
 import EmojiText
 import SwiftUI
+import WebString
 
 struct StatusDetailQuote: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false
@@ -51,7 +52,7 @@ struct StatusDetailQuote: View {
                     format: "status.quotedetect.detail".localized(comment: "Quote detected"),
                     status.account.getAccountName(),
                     quote.originalAuthor().getAccountName()
-                ).markdown(),
+                ).markdown,
                 emojis: emojis
             )
             .font(.subheadline)

@@ -16,6 +16,7 @@ import Alice
 import GardenDiscussions
 import EmojiText
 import SwiftUI
+import WebString
 
 struct StatusAuthorExtendedLabel: View {
     @AppStorage(.frugalMode) var frugalMode: Bool = false
@@ -98,7 +99,7 @@ struct StatusAuthorExtendedLabel: View {
                         format: NSLocalizedString("status.verified.detail", comment: "Verified domain"),
                         status.originalAuthor().getAccountName(),
                         verifiedAccountDomain ?? ""
-                    ).markdown(),
+                    ).markdown,
                     emojis: allEmojis
                 )
             } icon: {
@@ -119,7 +120,7 @@ struct StatusAuthorExtendedLabel: View {
                     markdown: String(
                         format: NSLocalizedString("status.developer.detail", comment: "Developer"),
                         status.originalAuthor().getAccountName()
-                    ).markdown(),
+                    ).markdown,
                     emojis: allEmojis
                 )
             } icon: {

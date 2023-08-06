@@ -9,10 +9,10 @@ let package = Package(
     products: [
         .library(
             name: "WebString",
-            targets: ["WebString"]),
+            targets: ["WebString"])
     ],
     dependencies: [
-        .package(url: "https://gitlab.com/mflint/HTML2Markdown", from: "1.0.0"),
+        .package(url: "https://gitlab.com/mflint/HTML2Markdown", from: "1.0.0")
     ],
     targets: [
         .target(
@@ -20,6 +20,6 @@ let package = Package(
             dependencies: ["HTML2Markdown"]),
         .testTarget(
             name: "WebStringTests",
-            dependencies: ["WebString"]),
+            dependencies: ["WebString"])
     ]
 )
