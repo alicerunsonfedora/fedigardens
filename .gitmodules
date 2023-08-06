@@ -1,0 +1,4 @@
+[submodule "Packages/FlowKit"]
+	path = Packages/FlowKit
+	url = https://github.com/alicerunsonfedora/FlowKit
+	branch = v0.1.0
