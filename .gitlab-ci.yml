@@ -26,6 +26,7 @@ danger:
     stage: ".pre"
     rules:
         - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+          when: always
     variables:
         DANGER_GITLAB_API_TOKEN: glpat-oHfjvsrqMBGUaKdrpdGx
     image: "ghcr.io/danger/danger-swift-with-swiftlint:3.15.0"
