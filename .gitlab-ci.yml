@@ -25,7 +25,7 @@ stages:
 danger:
     stage: ".pre"
     rules:
-        - if: $CI_PIPELINE_SOURCE == 'merge_request_event'
+        - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
           when: always
     variables:
         DANGER_GITLAB_API_TOKEN: glpat-oHfjvsrqMBGUaKdrpdGx
