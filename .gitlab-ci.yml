@@ -17,16 +17,13 @@
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
 stages:
-  - ".pre"          # List of stages for jobs, and their order of execution
+  - preflight
   - build
   - test
   - deploy
 
 danger:
-    stage: ".pre"
-    rules:
-        - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
-          when: always
+    stage: preflight
     variables:
         DANGER_GITLAB_API_TOKEN: glpat-oHfjvsrqMBGUaKdrpdGx
     image: "ghcr.io/danger/danger-swift-with-swiftlint:3.15.0"
@@ -34,3 +31,6 @@ danger:
       - brew install danger/tap/danger-swift
     script:
         - danger-swift ci --failOnErrors --no-publish-check
+    rules:
+      - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+        when: always
