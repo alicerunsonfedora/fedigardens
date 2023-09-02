@@ -23,13 +23,19 @@
          location = "container:"
          name = "Features">
          <FileRef
+            location = "group:Packages/FrugalMode">
+         </FileRef>
+         <FileRef
             location = "group:Packages/GardenComposer">
          </FileRef>
          <FileRef
-            location = "group:Packages/Interventions">
+            location = "group:Packages/GardenGate">
          </FileRef>
          <FileRef
-            location = "group:Packages/FrugalMode">
+            location = "group:Packages/GardenSettings">
+         </FileRef>
+         <FileRef
+            location = "group:Packages/Interventions">
          </FileRef>
       </Group>
       <Group
@@ -52,17 +58,11 @@
             location = "group:Packages/GardenDiscussions">
          </FileRef>
          <FileRef
+            location = "group:Packages/GardenProfiles">
+         </FileRef>
+         <FileRef
             location = "group:Packages/SeedUI">
          </FileRef>
       </Group>
-      <FileRef
-         location = "group:Packages/GardenGate">
-      </FileRef>
-      <FileRef
-         location = "group:Packages/GardenProfiles">
-      </FileRef>
-      <FileRef
-         location = "group:Packages/GardenSettings">
-      </FileRef>
    </Group>
 </Workspace>
