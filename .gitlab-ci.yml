@@ -28,7 +28,7 @@ danger:
         DANGER_GITLAB_API_TOKEN: glpat-oHfjvsrqMBGUaKdrpdGx
     image:
       name: "ghcr.io/danger/danger-swift-with-swiftlint:3.15.0"
-      entrypoint: [ '/bin/sh', '-c' ]
+      entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
     script:
         - ls -l
         - danger-swift ci --failOnErrors --no-publish-check
