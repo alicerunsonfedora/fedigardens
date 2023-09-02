@@ -26,11 +26,9 @@ danger:
     stage: preflight
     variables:
         DANGER_GITLAB_API_TOKEN: glpat-oHfjvsrqMBGUaKdrpdGx
-    image:
-      name: "ghcr.io/danger/danger-swift-with-swiftlint:3.17.1"
-      entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
+    image: macos-13-xcode-14
     script:
-        - ls -l
+        - brew install danger/tap/danger-swift
         - danger-swift ci --failOnErrors --no-publish-check
     only:
       - merge_requests
