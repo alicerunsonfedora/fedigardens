@@ -24,10 +24,12 @@ stages:
 
 danger:
     stage: preflight
+    tags:
+      - saas-macos-medium-m1
     variables:
         DANGER_GITLAB_API_TOKEN: glpat-oHfjvsrqMBGUaKdrpdGx
     image:
-      name: "ghcr.io/danger/danger-swift-with-swiftlint:3.15.0"
+      name: "ghcr.io/danger/danger-swift-with-swiftlint:3.17.1"
       entrypoint: [ '/bin/bash', '-c', 'ln -snf /bin/bash /bin/sh && /bin/bash -c $0' ]
     script:
         - ls -l
