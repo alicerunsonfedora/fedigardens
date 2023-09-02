@@ -26,7 +26,9 @@ danger:
     stage: preflight
     variables:
         DANGER_GITLAB_API_TOKEN: glpat-oHfjvsrqMBGUaKdrpdGx
-    image: "ghcr.io/danger/danger-swift-with-swiftlint:3.15.0"
+    image:
+      name: "ghcr.io/danger/danger-swift-with-swiftlint:3.15.0"
+      entrypoint: [ '/bin/sh', '-c' ]
     script:
         - ls -l
         - danger-swift ci --failOnErrors --no-publish-check
