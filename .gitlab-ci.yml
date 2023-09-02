@@ -24,8 +24,6 @@ stages:
 
 danger:
     stage: preflight
-    tags:
-      - saas-macos-medium-m1
     variables:
         DANGER_GITLAB_API_TOKEN: glpat-oHfjvsrqMBGUaKdrpdGx
     image:
