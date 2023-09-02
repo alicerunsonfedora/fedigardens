@@ -27,9 +27,8 @@ danger:
     variables:
         DANGER_GITLAB_API_TOKEN: glpat-oHfjvsrqMBGUaKdrpdGx
     image: "ghcr.io/danger/danger-swift-with-swiftlint:3.15.0"
-    before_script:
-      - brew install danger/tap/danger-swift
     script:
+        - ls -l
         - danger-swift ci --failOnErrors --no-publish-check
     only:
       - merge_requests
