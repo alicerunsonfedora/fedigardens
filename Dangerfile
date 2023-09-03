@@ -1,7 +1,7 @@
 pr_file_threshold = 20
 suggest_changes = false
 
-edited_files = (git.modified_files + git.created_files)
+edited_files = (git.modified_files + git.added_files)
 
 if edited_files.count > pr_file_threshold
 	warn "This appears to be a big merge request." \
@@ -15,7 +15,7 @@ if deleted_files > pr_file_threshold
 	suggest_changes = true
 end
 
-if edited_files.count > 3, !edited_files.include?("CHANGELOG.md")
+if edited_files.count > 3 && !edited_files.include?("CHANGELOG.md")
 	warn "This merge request does not have an update in the CHANGELOG."
     markdown "If the changelog doesn't have a section for the latest unreleased version, you may create one."
 end
@@ -24,16 +24,13 @@ warn "Unit tests have been changed." if !edited_files.grep(/Tests/).empty?
 
 if gitlab.mr_body.length < 1
 	fail "Please provide a description of what this PR changes."
-	markdown <<- MARKDOWN
-Per the contribution guidelines:
-
-> - Pull requests should have an adequate description of the changes being made, and
->   any feedback reports it addresses.
-> - Pull requests should be properly tagged with the modules it affects, such as
->   Authentication and Frugal Mode.
-> - With some execeptions, pull requests should _always_ pass Danger checks and any
->   unit tests attached.
-MARKDOWN
+	markdown "Per the contribution guidelines:" \
+		"> - Pull requests should have an adequate description of the changes being made, and" \
+		">   any feedback reports it addresses." \
+		"> - Pull requests should be properly tagged with the modules it affects, such as" \
+		">   Authentication and Frugal Mode." \
+		"> - With some execeptions, pull requests should _always_ pass Danger checks and any" \
+		">   unit tests attached."
     suggest_changes = true
 end
 
