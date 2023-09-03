@@ -1,0 +1,13 @@
+stages:
+    - preflight
+    - build
+    - test
+
+danger:
+    stage: preflight
+    before_script:
+        - bundle install
+    script:
+        - bundle exec danger
+    only:
+        - merge_requests
