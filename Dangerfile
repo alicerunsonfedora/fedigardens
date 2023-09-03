@@ -1,7 +1,7 @@
 pr_file_threshold = 20
 suggest_changes = false
 
-edited_files = (git.modified_files + git.created_files)
+edited_files = (git.modified_files + git.added_files)
 
 if edited_files.count > pr_file_threshold
 	warn "This appears to be a big merge request." \
