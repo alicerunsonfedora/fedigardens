@@ -24,16 +24,13 @@ warn "Unit tests have been changed." if !edited_files.grep(/Tests/).empty?
 
 if gitlab.mr_body.length < 1
 	fail "Please provide a description of what this PR changes."
-	markdown <<- MARKDOWN
-Per the contribution guidelines:
-
-> - Pull requests should have an adequate description of the changes being made, and
->   any feedback reports it addresses.
-> - Pull requests should be properly tagged with the modules it affects, such as
->   Authentication and Frugal Mode.
-> - With some execeptions, pull requests should _always_ pass Danger checks and any
->   unit tests attached.
-MARKDOWN
+	markdown "Per the contribution guidelines:" \
+		"> - Pull requests should have an adequate description of the changes being made, and" \
+		">   any feedback reports it addresses." \
+		"> - Pull requests should be properly tagged with the modules it affects, such as" \
+		">   Authentication and Frugal Mode." \
+		"> - With some execeptions, pull requests should _always_ pass Danger checks and any" \
+		">   unit tests attached."
     suggest_changes = true
 end
 
