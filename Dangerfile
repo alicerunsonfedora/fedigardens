@@ -15,7 +15,7 @@ if deleted_files > pr_file_threshold
 	suggest_changes = true
 end
 
-if edited_files.count > 3, !edited_files.include?("CHANGELOG.md")
+if edited_files.count > 3 && !edited_files.include?("CHANGELOG.md")
 	warn "This merge request does not have an update in the CHANGELOG."
     markdown "If the changelog doesn't have a section for the latest unreleased version, you may create one."
 end
